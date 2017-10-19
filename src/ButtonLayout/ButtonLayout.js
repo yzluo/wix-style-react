@@ -1,5 +1,5 @@
 import React from 'react';
-import {any, bool, oneOf} from 'prop-types';
+import {any, bool, oneOf, string} from 'prop-types';
 import classNames from 'classnames';
 import styles from './ButtonLayout.scss';
 
@@ -7,7 +7,7 @@ import styles from './ButtonLayout.scss';
   * General Buttons
   */
 const ButtonLayout = props => {
-  const {theme, hover, active, disabled, height, children, matchParent} = props;
+  const {theme, hover, active, disabled, height, children, matchParent, dataHook} = props;
 
   const className = classNames({
     [styles.button]: true,
@@ -33,7 +33,7 @@ const ButtonLayout = props => {
   if (React.Children.count(children) === 1) {
     return React.cloneElement(
       children,
-      {className, style: _style},
+      {className, style: _style, 'data-hook': dataHook},
       <div className={styles.inner}>
         {children.props.children}
       </div>
@@ -50,6 +50,7 @@ ButtonLayout.propTypes = {
   active: bool,
   children: any,
   disabled: bool,
+  dataHook: string,
 
   /** The size of the button */
   height: oneOf(['small', 'medium', 'large', 'x-large']),

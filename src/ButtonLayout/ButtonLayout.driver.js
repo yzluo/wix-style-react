@@ -8,6 +8,7 @@ const buttonLayoutDriverFactory = ({element, wrapper, component}) => {
   return {
     exists: () => !!element,
     doesComponentHasClass: className => isClassExists(element, className),
+    doesComponentHaveTheme: theme => isClassExists(element, theme),
     getComponentAttribute: attribute => getAttribute(element, attribute),
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));

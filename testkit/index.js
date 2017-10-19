@@ -33,6 +33,9 @@ export const inputWithOptionsTestkitFactory = testkitFactoryCreator(inputWithOpt
 import buttonWithOptionsDriverFactory from '../src/ButtonWithOptions/ButtonWithOptions.driver';
 export const buttonWithOptionsTestkitFactory = testkitFactoryCreator(buttonWithOptionsDriverFactory);
 
+import buttonLayoutDriverFactory from '../src/ButtonLayout/ButtonLayout.driver';
+export const buttonLayoutTestkitFactory = testkitFactoryCreator(buttonLayoutDriverFactory);
+
 import languagePickerDriverFactory from '../src/LanguagePicker/LanguagePicker.driver';
 export const languagePickerTestkitFactory = testkitFactoryCreator(languagePickerDriverFactory);
 

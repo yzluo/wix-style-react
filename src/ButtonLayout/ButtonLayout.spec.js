@@ -2,6 +2,10 @@ import React from 'react';
 import ButtonLayout from './ButtonLayout';
 import {createDriverFactory} from '../test-common';
 import buttonDriverFactory from './ButtonLayout.driver';
+import {mount} from 'enzyme';
+import {buttonLayoutTestkitFactory as enzymeButtonLayoutTestkitFactory} from '../../testkit/enzyme';
+import {buttonLayoutTestkitFactory} from '../../testkit';
+import ReactTestUtils from 'react-dom/test-utils';
 
 const someDivWithLayout = (props = {}) => (
   <ButtonLayout {...props}>
@@ -116,12 +120,40 @@ describe('ButtonLayout', () => {
       const driver = createDriver(someDivWithLayout({theme}));
 
       expect(driver.doesComponentHasClass(theme)).toBeTruthy();
+      expect(driver.doesComponentHaveTheme(theme)).toBeTruthy();
     });
 
     it('should get "hover" class', () => {
       const driver = createDriver(someDivWithLayout({hover: true}));
 
       expect(driver.doesComponentHasClass('hover')).toBeTruthy();
+    });
+  });
+
+  describe('testkit', () => {
+    it('should exist', () => {
+      const div = document.createElement('div');
+      const dataHook = 'dataHook';
+      const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(
+        <div>
+          <ButtonLayout dataHook={dataHook}>
+            <div/>
+          </ButtonLayout>
+        </div>));
+      const buttonLayoutTestkit = buttonLayoutTestkitFactory({wrapper, dataHook});
+      expect(buttonLayoutTestkit.exists()).toBeTruthy();
+    });
+  });
+
+  describe('enzyme testkit', () => {
+    it('should exist', () => {
+      const dataHook = 'dataHook';
+      const wrapper = mount(
+        <ButtonLayout dataHook={dataHook}>
+          <div/>
+        </ButtonLayout>);
+      const buttonLayoutTestkit = enzymeButtonLayoutTestkitFactory({wrapper, dataHook});
+      expect(buttonLayoutTestkit.exists()).toBeTruthy();
     });
   });
 });

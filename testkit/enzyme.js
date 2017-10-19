@@ -33,6 +33,9 @@ export const inputWithOptionsTestkitFactory = enzymeTestkitFactoryCreator(inputW
 import buttonWithOptionsDriverFactory from '../src/ButtonWithOptions/ButtonWithOptions.driver';
 export const buttonWithOptionsTestkitFactory = enzymeTestkitFactoryCreator(buttonWithOptionsDriverFactory);
 
+import buttonLayoutDriverFactory from '../src/ButtonLayout/ButtonLayout.driver';
+export const buttonLayoutTestkitFactory = enzymeTestkitFactoryCreator(buttonLayoutDriverFactory);
+
 import languagePickerDriverFactory from '../src/LanguagePicker/LanguagePicker.driver';
 export const languagePickerTestkitFactory = enzymeTestkitFactoryCreator(languagePickerDriverFactory);
 
