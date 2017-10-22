@@ -2,10 +2,10 @@ import React from 'react';
 import ButtonLayout from './ButtonLayout';
 import {createDriverFactory} from '../test-common';
 import buttonDriverFactory from './ButtonLayout.driver';
-import {mount} from 'enzyme';
 import {buttonLayoutTestkitFactory as enzymeButtonLayoutTestkitFactory} from '../../testkit/enzyme';
 import {buttonLayoutTestkitFactory} from '../../testkit';
-import ReactTestUtils from 'react-dom/test-utils';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+
 
 const someDivWithLayout = (props = {}) => (
   <ButtonLayout {...props}>
@@ -119,7 +119,6 @@ describe('ButtonLayout', () => {
       const theme = 'emptyblue';
       const driver = createDriver(someDivWithLayout({theme}));
 
-      expect(driver.doesComponentHasClass(theme)).toBeTruthy();
       expect(driver.doesComponentHaveTheme(theme)).toBeTruthy();
     });
 
@@ -132,28 +131,20 @@ describe('ButtonLayout', () => {
 
   describe('testkit', () => {
     it('should exist', () => {
-      const div = document.createElement('div');
-      const dataHook = 'dataHook';
-      const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(
-        <div>
-          <ButtonLayout dataHook={dataHook}>
-            <div/>
-          </ButtonLayout>
-        </div>));
-      const buttonLayoutTestkit = buttonLayoutTestkitFactory({wrapper, dataHook});
-      expect(buttonLayoutTestkit.exists()).toBeTruthy();
+      expect(isTestkitExists(
+        <ButtonLayout>
+          <div/>
+        </ButtonLayout>,
+        buttonLayoutTestkitFactory)).toBe(true);
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      const dataHook = 'dataHook';
-      const wrapper = mount(
-        <ButtonLayout dataHook={dataHook}>
+      expect(isEnzymeTestkitExists(
+        <ButtonLayout>
           <div/>
-        </ButtonLayout>);
-      const buttonLayoutTestkit = enzymeButtonLayoutTestkitFactory({wrapper, dataHook});
-      expect(buttonLayoutTestkit.exists()).toBeTruthy();
+        </ButtonLayout>, enzymeButtonLayoutTestkitFactory)).toBe(true);
     });
   });
 });
