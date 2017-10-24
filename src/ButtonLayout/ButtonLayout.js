@@ -33,8 +33,8 @@ const ButtonLayout = props => {
   if (React.Children.count(children) === 1) {
     return React.cloneElement(
       children,
-      {className, style: _style, 'data-hook': dataHook},
-      <div className={styles.inner}>
+      {className, style: _style},
+      <div className={styles.inner} data-hook={dataHook}>
         {children.props.children}
       </div>
     );
