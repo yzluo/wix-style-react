@@ -30,8 +30,7 @@ export class GoogleMapsIframeClient {
     let requestIframe;
     if (this._iframesManager.hasIframe(apiKey, lang)) {
       requestIframe = this._iframesManager.getIframe(apiKey, lang);
-    }
-    else {
+    } else {
       requestIframe = this._iframesManager.addIframe(apiKey, lang);
     }
 
