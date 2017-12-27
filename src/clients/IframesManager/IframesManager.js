@@ -5,7 +5,7 @@ export class IframesManager {
     this._iframeMap = new Map();
   }
 
-  getKey(apiKey, lang) {
+  static getKey(apiKey, lang) {
     return `${apiKey}-${lang}`;
   }
 
@@ -14,7 +14,7 @@ export class IframesManager {
       return this.getIframe(apiKey, lang);
     }
 
-    const iframeKey = this.getKey(apiKey, lang);
+    const iframeKey = IframesManager.getKey(apiKey, lang);
     const iframe = document.createElement('iframe');
 
     const scriptElement = document.createElement('script');
@@ -36,12 +36,12 @@ export class IframesManager {
   }
 
   getIframe(apiKey, lang) {
-    const iframeKey = this.getKey(apiKey, lang);
+    const iframeKey = IframesManager.getKey(apiKey, lang);
     return this._iframeMap.get(iframeKey);
   }
 
   hasIframe(apiKey, lang) {
-    const iframeKey = this.getKey(apiKey, lang);
+    const iframeKey = IframesManager.getKey(apiKey, lang);
     return this._iframeMap.has(iframeKey);
   }
 }
