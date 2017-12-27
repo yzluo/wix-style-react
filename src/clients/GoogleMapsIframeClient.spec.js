@@ -1,70 +1,120 @@
-import GoogleMapsIframeClient from './GoogleMapsIframeClient';
+import {GoogleMapsIframeClient} from './GoogleMapsIframeClient';
 
-describe.only('GoogleMapsIframeClient', () => {
+let client;
 
-  beforeEach(() => {
-    document.body.innerHTML = ''; //remove previous modals from body
+const mockApiKey = 'a';
+const mockLang = 'en';
+
+
+jest.mock('./IframesManager/IframesManager');
+const frameManager = require('./IframesManager/IframesManager');
+const iframeManagerPrototype = frameManager.IframesManager.prototype;
+
+describe('GoogleMapsIframeClient', () => {
+  it('should return a resolved promise once the status sent by iframesManager is OK', async () => {
+    iframeManagerPrototype.hasIframe.mockImplementationOnce(() => true);
+    iframeManagerPrototype.getIframe.mockImplementationOnce(() => ({
+      postMessage: requestObj => {
+        const targetOrigin = '*';
+        const {requestId} = requestObj;
+        global.postMessage({requestId, results: [], status: 'OK'}, targetOrigin);
+      }
+    }));
+
+    client = new GoogleMapsIframeClient();
+    await expect(client.autocomplete(mockApiKey, mockLang)).resolves.toEqual([]);
+    expect(iframeManagerPrototype.getIframe).toBeCalled();
   });
 
-  it('should add one iframe to the DOM for one request', () => {
-    const apiKey = 'a';
-    const lang = 'en';
-    const request = 'Tel';
-    const client = new GoogleMapsIframeClient();
-    client.autocomplete(apiKey, lang, {request});
+  it('should return a rejected promise once the status sent by iframesManager is ERROR', async () => {
+    iframeManagerPrototype.hasIframe.mockImplementationOnce(() => true);
+    iframeManagerPrototype.getIframe.mockImplementationOnce(() => ({
+      postMessage: requestObj => {
+        const targetOrigin = '*';
+        const {requestId} = requestObj;
+        global.postMessage({requestId, results: [], status: 'ERROR'}, targetOrigin);
+      }
+    }));
 
-    expect(document.querySelectorAll('iframe').length).toEqual(1);
+    client = new GoogleMapsIframeClient();
+    await expect(client.autocomplete(mockApiKey, mockLang)).rejects.toEqual();
+    expect(iframeManagerPrototype.getIframe).toBeCalled();
   });
 
-  it('should use the same iframe for autocomplete in case apiKey & lang are the same', () => {
-    const apiKey = 'a';
-    const lang = 'en';
-    const request = 'Tel';
-    const secondRequest = 'Aviv';
-    const client = new GoogleMapsIframeClient();
-    client.autocomplete(apiKey, lang, {request});
-    client.autocomplete(apiKey, lang, {request: secondRequest});
+  it('should return results and trigger addIframe if the iframe does not exist', async () => {
+    iframeManagerPrototype.hasIframe.mockImplementationOnce(() => false);
+    iframeManagerPrototype.addIframe.mockImplementationOnce(() => ({
+      postMessage: requestObj => {
+        const targetOrigin = '*';
+        const {requestId} = requestObj;
+        global.postMessage({requestId, results: [], status: 'OK'}, targetOrigin);
+      }
+    }));
 
-    expect(document.querySelectorAll('iframe').length).toEqual(1);
+    client = new GoogleMapsIframeClient();
+    await expect(client.autocomplete(mockApiKey, mockLang)).resolves.toEqual([]);
+    expect(iframeManagerPrototype.addIframe).toBeCalled();
   });
 
-  it('should create 2 iframes on the dom as 2 requests are using 2 different apiKeys', () => {
-    const firstApiKey = 'a';
-    const secondApiKey = 'b';
-    const lang = 'en';
-    const request = 'Tel';
-    const client = new GoogleMapsIframeClient();
+  it('should return a rejected promise and trigger addIframe if the iframe does not exist', async () => {
+    iframeManagerPrototype.hasIframe.mockImplementationOnce(() => false);
+    iframeManagerPrototype.addIframe.mockImplementationOnce(() => ({
+      postMessage: requestObj => {
+        const targetOrigin = '*';
+        const {requestId} = requestObj;
+        global.postMessage({requestId, results: [], status: 'ERROR'}, targetOrigin);
+      }
+    }));
 
-    client.autocomplete(firstApiKey, lang, {request});
-    client.autocomplete(secondApiKey, lang, {request});
-
-    expect(document.querySelectorAll('iframe').length).toEqual(2);
+    client = new GoogleMapsIframeClient();
+    await expect(client.autocomplete(mockApiKey, mockLang)).rejects.toEqual();
+    expect(iframeManagerPrototype.addIframe).toBeCalled();
   });
 
-  it('should create 2 iframes on the dom as 2 requests are using 2 different langs', () => {
-    const apiKey = 'a';
-    const firstLang = 'en';
-    const secondLang = 'fr';
-    const request = 'Tel';
-    const client = new GoogleMapsIframeClient();
+  it('should resolve 2 requests', async () => {
+    const firstRequest = 'first';
+    const secondRequest = 'second';
 
-    client.autocomplete(apiKey, firstLang, {request});
-    client.autocomplete(apiKey, secondLang, {request});
+    iframeManagerPrototype.hasIframe.mockImplementation(() => true);
+    iframeManagerPrototype.getIframe.mockImplementation(() => ({
+      postMessage: requestObj => {
+        const targetOrigin = '*';
+        const {requestId, request} = requestObj;
+        const timeout = request === firstRequest ? 200 : 100;
+        setTimeout(() => global.postMessage({requestId, results: [request], status: 'OK'}, targetOrigin), timeout);
+      }
+    })
+    );
 
-    expect(document.querySelectorAll('iframe').length).toEqual(2);
+    client = new GoogleMapsIframeClient();
+    await expect(client.autocomplete(mockApiKey, mockLang, secondRequest)).resolves.toEqual([secondRequest]);
+    await expect(client.autocomplete(mockApiKey, mockLang, firstRequest)).resolves.toEqual([firstRequest]);
+
+    iframeManagerPrototype.hasIframe.mockRestore();
+    iframeManagerPrototype.getIframe.mockRestore();
   });
 
-  it('should create 2 iframes on the DOM as 2 requests are using 2 different langs & apiKeys', () => {
-    const firstApiKey = 'a';
-    const secondApiKey = 'b';
-    const firstLang = 'en';
-    const secondLang = 'fr';
-    const request = 'Tel';
-    const client = new GoogleMapsIframeClient();
+  it('should reject first requests and resolve the second one', async () => {
+    const firstRequest = 'first';
+    const secondRequest = 'second';
 
-    client.autocomplete(firstApiKey, firstLang, {request});
-    client.autocomplete(secondApiKey, secondLang, {request});
+    iframeManagerPrototype.hasIframe.mockImplementation(() => true);
+    iframeManagerPrototype.getIframe.mockImplementation(() => ({
+      postMessage: requestObj => {
+        const targetOrigin = '*';
+        const {requestId, request} = requestObj;
+        const timeout = request === firstRequest ? 200 : 100;
+        const status = request === firstRequest ? 'OK' : 'ERROR';
+        setTimeout(() => global.postMessage({requestId, results: [request], status}, targetOrigin), timeout);
+      }
+    })
+    );
 
-    expect(document.querySelectorAll('iframe').length).toEqual(2);
+    client = new GoogleMapsIframeClient();
+    await expect(client.autocomplete(mockApiKey, mockLang, secondRequest)).rejects.toEqual();
+    await expect(client.autocomplete(mockApiKey, mockLang, firstRequest)).resolves.toEqual([firstRequest]);
+
+    iframeManagerPrototype.hasIframe.mockRestore();
+    iframeManagerPrototype.getIframe.mockRestore();
   });
 });

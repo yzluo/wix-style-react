@@ -1,46 +1,45 @@
-import {IframeInnerScript} from './IframeUtils';
+import {IframesManager} from './IframesManager/IframesManager';
 
-class GoogleMapsIframeClient{
+export class GoogleMapsIframeClient {
   constructor() {
-    this._iframeMap = new Map();
+    this._iframesManager = new IframesManager();
+    this._promisesMap = new Map();
+    window.addEventListener('message', this.handleMessage, false);
   }
 
-  getKey(apiKey, lang) {
-    return `${apiKey}-${lang}`;
+  handleMessage = event => {
+    const {data} = event;
+    if (data.requestId && this._promisesMap.has(data.requestId)) {
+      const promise = this._promisesMap.get(data.requestId);
+      data.status === 'OK' ? promise.resolve(data.results) : promise.reject();
+    }
   }
 
-  addIframe(apiKey, lang) {
-    const iframe = document.createElement('iframe');
-    const iframeKey = this.getKey(apiKey, lang);
+  generateID() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
 
-    const scriptElement = document.createElement('script');
-    scriptElement.type = 'text/javascript';
-    scriptElement.innerText = '(' + IframeInnerScript.toString() + ')()';
-
-    iframe.onload = () =>{
-      iframe.contentWindow.document.body.appendChild(scriptElement);
-      const googleScript = document.createElement('script');
-      googleScript.type = 'text/javascript';
-      googleScript.src = `https://maps.googleapis.com/maps/api/js?libraries=places&key=${apiKey}&language=${lang}&callback=() => initAutocomplete(window.google)`;
-
-      iframe.contentWindow.document.body.appendChild(myscript);
-    };
-
-    document.body.appendChild(iframe);
-    this._iframeMap.set(iframeKey, iframe);
-    return iframe;
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4();
   }
 
   autocomplete(apiKey, lang, request) {
     let requestIframe;
-    const iframeKey = this.getKey(apiKey, lang);
-    if (this._iframeMap.has(iframeKey)) {
-      requestIframe = this._iframeMap.get(iframeKey);
+    if (this._iframesManager.hasIframe(apiKey, lang)) {
+      requestIframe = this._iframesManager.getIframe(apiKey, lang);
     }
     else {
-      requestIframe = this.addIframe(apiKey, lang);
+      requestIframe = this._iframesManager.addIframe(apiKey, lang);
     }
+
+    const requestId = this.generateID();
+    const requestPromise = new Promise((resolve, reject) => {
+      this._promisesMap.set(requestId, {requestPromise, resolve, reject});
+    });
+    requestIframe.postMessage({request, requestId});
+    return requestPromise;
   }
 }
-
-export default GoogleMapsIframeClient;
