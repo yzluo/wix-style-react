@@ -1,5 +1,5 @@
 import {IframesManager} from './IframesManager';
-import {getIframes, getIframeWithLangAndApiKey} from '../IframeTestUtils';
+import {getIframes, getIframeWithLangAndApiKey, isIframeVisible} from '../IframeTestUtils';
 let iframesManager;
 
 describe('IframesManager', () => {
@@ -8,14 +8,27 @@ describe('IframesManager', () => {
     iframesManager = new IframesManager();
   });
 
-  it('should add one iframe to the DOM when trying to add an iframe with same key', () => {
+  it('should add invisible iframe to the DOM when trying to add an iframe with same key', () => {
     const apiKey = 'a';
     const lang = 'en';
     iframesManager.addIframe(apiKey, lang);
     iframesManager.addIframe(apiKey, lang);
 
+    const iframe = getIframeWithLangAndApiKey(lang, apiKey);
+
     expect(getIframes().length).toEqual(1);
-    expect(getIframeWithLangAndApiKey(lang, apiKey)).toBeDefined();
+    expect(iframe).toBeDefined();
+    expect(isIframeVisible(iframe)).toEqual(false);
+  });
+
+  it('should return an postMessageable object when calling adding of getting iframe', () => {
+    const apiKey = 'a';
+    const lang = 'en';
+    let eventEmitter = iframesManager.addIframe(apiKey, lang);
+
+    expect(eventEmitter.postMessage).toBeDefined();
+    eventEmitter = iframesManager.getIframe(apiKey, lang);
+    expect(eventEmitter.postMessage).toBeDefined();
   });
 
   it('should create 2 iframes on the dom as 2 requests are using 2 different apiKeys', () => {

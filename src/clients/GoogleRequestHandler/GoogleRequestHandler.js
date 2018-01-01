@@ -1,21 +1,36 @@
-import {autocompleteHandlerName, geocodeHandlerName, placeDetailsHandlerName} from '../handlersName';
-
 export const googleRequestHandler = function (eventEmitter) {
+  const handlersName = preval.require('../handlersName');
   const context = {
     handleGoogleRequest,
     requestsQueue: []
   };
 
-  const handlerMap = {
-    [autocompleteHandlerName]: autocomplete,
-    [geocodeHandlerName]: geocode,
-    [placeDetailsHandlerName]: getDetails
-  };
+
+  const handlerMap = {};
+  handlerMap[handlersName.autocompleteHandlerName] = autocomplete;
+  handlerMap[handlersName.geocodeHandlerName] = geocode;
+  handlerMap[handlersName.placeDetailsHandlerName] = getDetails;
 
   function handleGoogleRequest(event) {
-    const handler = handlerMap[event.method];
+    if (!event.data.method) {
+      throw 'no method was supplied';
+    }
+    const handler = handlerMap[event.data.method];
     handler(event);
   }
+
+  const locationFuncOrValue = locationProp => {
+    return typeof locationProp === 'function' ? locationProp() : locationProp;
+  };
+
+  const serializeResult = results => Object.assign(results, {
+    geometry: {
+      location: {
+        lat: locationFuncOrValue(results.geometry.location.lat),
+        lng: locationFuncOrValue(results.geometry.location.lng)
+      }
+    }
+  });
 
   function autocomplete(event) {
     !context._autocomplete ? addToQueue(event) : handleAutocompleteRequest(event);
@@ -45,28 +60,37 @@ export const googleRequestHandler = function (eventEmitter) {
   }
 
   function handleGeocodeRequest(event) {
-    const request = typeof event.data.request === 'string' ? {input: event.data.request} : event.data.request;
+    const request = typeof event.data.request === 'string' ? {address: event.data.request} : event.data.request;
     context._geocoder.geocode(request, (results, status) => {
       if ((status !== context.googleInstance.maps.GeocoderStatus.OK) && (status !== context.googleInstance.maps.GeocoderStatus.ZERO_RESULTS)) {
         event.source.postMessage({results, status: 'ERROR', requestId: event.data.requestId}, '*');
       } else {
-        event.source.postMessage({results, status: 'OK', requestId: event.data.requestId}, '*');
+        event.source.postMessage({
+          results: results.map(element =>
+            serializeResult(element)
+          ),
+          status: 'OK', requestId: event.data.requestId
+        }, '*');
       }
     });
   }
 
   function handleGetDetailsRequest(event) {
-    const request = typeof event.data.request === 'string' ? {input: event.data.request} : event.data.request;
+    const request = typeof event.data.request === 'string' ? {placeId: event.data.request} : event.data.request;
     context._placesServices.getDetails(request, (results, status) => {
       if ((status !== context.googleInstance.maps.GeocoderStatus.OK) && (status !== context.googleInstance.maps.GeocoderStatus.ZERO_RESULTS)) {
         event.source.postMessage({results, status: 'ERROR', requestId: event.data.requestId}, '*');
       } else {
-        event.source.postMessage({results, status: 'OK', requestId: event.data.requestId}, '*');
+        results.photos = {};
+        event.source.postMessage({
+          results: serializeResult(results),
+          status: 'OK', requestId: event.data.requestId
+        }, '*');
       }
     });
   }
 
-  const initRequestHandler = function initRequestHandler(googleInstance) {
+  const initRequestHandler = function (googleInstance) {
     context.googleInstance = googleInstance;
 
     context._autocomplete = new googleInstance.maps.places.AutocompleteService();

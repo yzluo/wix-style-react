@@ -1,4 +1,4 @@
-import {GoogleRequestHandler} from '../GoogleRequestHandler/GoogleRequestHandler';
+import {googleRequestHandler} from '../GoogleRequestHandler/GoogleRequestHandler';
 
 export class IframesManager {
   constructor() {
@@ -16,28 +16,29 @@ export class IframesManager {
 
     const iframeKey = IframesManager.getKey(apiKey, lang);
     const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
 
     const scriptElement = document.createElement('script');
     scriptElement.type = 'text/javascript';
-    scriptElement.innerText = '(' + GoogleRequestHandler.toString() + ')(window)'; //iframe's window
+    scriptElement.innerText = 'window.initAutoComplete = (' + googleRequestHandler.toString() + ')(window); window.googleReady = () => window.initAutoComplete(window.google);';
 
     iframe.onload = () => {
       iframe.contentWindow.document.body.appendChild(scriptElement);
       const googleScript = document.createElement('script');
       googleScript.type = 'text/javascript';
-      googleScript.src = `https://maps.googleapis.com/maps/api/js?libraries=places&key=${apiKey}&language=${lang}&callback=() => initAutocomplete(window.google)`;
+      googleScript.src = `https://maps.googleapis.com/maps/api/js?libraries=places&key=${apiKey}&language=${lang}&callback=googleReady`;
 
       iframe.contentWindow.document.body.appendChild(googleScript);
     };
 
     document.body.appendChild(iframe);
     this._iframeMap.set(iframeKey, iframe);
-    return iframe;
+    return iframe.contentWindow;
   }
 
   getIframe(apiKey, lang) {
     const iframeKey = IframesManager.getKey(apiKey, lang);
-    return this._iframeMap.get(iframeKey);
+    return this._iframeMap.get(iframeKey).contentWindow;
   }
 
   hasIframe(apiKey, lang) {

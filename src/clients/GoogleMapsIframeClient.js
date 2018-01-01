@@ -1,4 +1,5 @@
 import {IframesManager} from './IframesManager/IframesManager';
+import {autocompleteHandlerName, geocodeHandlerName, placeDetailsHandlerName} from './handlersName';
 
 export class GoogleMapsIframeClient {
   constructor() {
@@ -13,7 +14,7 @@ export class GoogleMapsIframeClient {
       const promise = this._promisesMap.get(data.requestId);
       data.status === 'OK' ? promise.resolve(data.results) : promise.reject();
     }
-  }
+  };
 
   generateID() {
     function s4() {
@@ -38,7 +39,45 @@ export class GoogleMapsIframeClient {
     const requestPromise = new Promise((resolve, reject) => {
       this._promisesMap.set(requestId, {requestPromise, resolve, reject});
     });
-    requestIframe.postMessage({request, requestId});
+
+    requestIframe.postMessage({request, requestId, method: autocompleteHandlerName}, '*');
+    return requestPromise;
+  }
+
+  geocode(apiKey, lang, request) {
+    let requestIframe;
+    if (this._iframesManager.hasIframe(apiKey, lang)) {
+      requestIframe = this._iframesManager.getIframe(apiKey, lang);
+    } else {
+      requestIframe = this._iframesManager.addIframe(apiKey, lang);
+    }
+
+    const requestId = this.generateID();
+    const requestPromise = new Promise((resolve, reject) => {
+      this._promisesMap.set(requestId, {requestPromise, resolve, reject});
+    });
+
+    console.log(request, 'request');
+    console.log(requestId, 'requestId');
+    console.log(geocodeHandlerName, 'geocodeHandlerName');
+
+    requestIframe.postMessage({request, requestId, method: geocodeHandlerName}, '*');
+    return requestPromise;
+  }
+
+  placeDetails(apiKey, lang, request) {
+    let requestIframe;
+    if (this._iframesManager.hasIframe(apiKey, lang)) {
+      requestIframe = this._iframesManager.getIframe(apiKey, lang);
+    } else {
+      requestIframe = this._iframesManager.addIframe(apiKey, lang);
+    }
+
+    const requestId = this.generateID();
+    const requestPromise = new Promise((resolve, reject) => {
+      this._promisesMap.set(requestId, {requestPromise, resolve, reject});
+    });
+    requestIframe.postMessage({request, requestId, method: placeDetailsHandlerName}, '*');
     return requestPromise;
   }
 }

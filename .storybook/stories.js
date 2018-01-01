@@ -39,6 +39,7 @@ import '../stories/Selector';
 import '../stories/ThemedButton';
 import '../stories/ThemedInput';
 import '../stories/ThemedToggleSwitch';
+import '../stories/clients';
 
 //TPA
 import '../stories/TPA/Button';
