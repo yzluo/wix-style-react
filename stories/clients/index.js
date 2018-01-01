@@ -25,17 +25,16 @@ class Blabla extends React.Component {
   }
 
   placeDetails(apiKey, lang) {
-    this.client.placeDetails(apiKey, lang, this.state.inputValue).then(result => this.setState({result}));
+    const firstResult = Array.isArray(this.state.result) ? this.state.result[0] : this.state.result;
+    this.client.placeDetails(apiKey, lang, firstResult.place_id).then(result => this.setState({result}));
   }
 
   render() {
-    console.log(this.state.result);
     return (
       <div>
         <input
           type="text"
-          onChange={evt => this.updateInputValue(evt)}
-        />
+          onChange={evt => this.updateInputValue(evt)}/>
         <button onClick={() => this.autocomplete('AIzaSyD62EDVK-7ssPsChsfBiSjEnix4oZHjSsU', 'en')}>autocomplete(apkKey1,
           en)
         </button>
@@ -45,11 +44,9 @@ class Blabla extends React.Component {
         <button onClick={() => this.autocomplete('AIzaSyCWzV1viw-6rUbKDAhzVq848lPB6P9u2EI', 'fr')}>autocomplete(apkKey2,
           fr)
         </button>
-        <button onClick={() => this.geocode('AIzaSyCWzV1viw-6rUbKDAhzVq848lPB6P9u2EI', 'fr')}>geocode(apkKey2,
-          fr)
+        <button onClick={() => this.geocode('AIzaSyCWzV1viw-6rUbKDAhzVq848lPB6P9u2EI', 'fr')}>geocode for input
         </button>
-        <button onClick={() => this.placeDetails('AIzaSyCWzV1viw-6rUbKDAhzVq848lPB6P9u2EI', 'fr')}>placeDetails(apkKey2,
-          fr)
+        <button onClick={() => this.placeDetails('AIzaSyCWzV1viw-6rUbKDAhzVq848lPB6P9u2EI', 'fr')}>placeDetails for place_id of first result
         </button>
         <pre>{JSON.stringify(this.state.result, null, 4)}</pre>
       </div>
