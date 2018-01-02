@@ -113,3 +113,6 @@ export const statsWidgetTestkitFactory = protractorTestkitFactoryCreator(statsWi
 
 import loaderDriverFactory from '../src/Loader/Loader.protractor.driver';
 export const loaderTestkitFactory = protractorTestkitFactoryCreator(loaderDriverFactory);
+
+import googleMapsIframeClientFactory from '../src/clients/GoogleMapsIframeClient.protractor.driver';
+export const googleMapsIframeClientTestkitFactory = protractorTestkitFactoryCreator(googleMapsIframeClientFactory);
