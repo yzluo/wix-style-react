@@ -4,4 +4,4 @@ export const placeDetailsHandlerName = 'placeDetails';
 
 module.exports = {
   autocompleteHandlerName, geocodeHandlerName, placeDetailsHandlerName
-}
+};

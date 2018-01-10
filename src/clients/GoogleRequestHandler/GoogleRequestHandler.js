@@ -1,3 +1,4 @@
+/*global preval*/
 export const googleRequestHandler = function (eventEmitter) {
   const handlersName = preval.require('../handlersName');
   const context = {

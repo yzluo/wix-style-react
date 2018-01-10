@@ -20,7 +20,7 @@ describe('googleRequestHandler', async () => {
         }
       },
       icon: 'https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png',
-      id: '043fda0f408c31b200eaf6e161e4fe3adf51b25c',
+      id: '043fda0f408c31b200eaf6e161e4fe3adf51b25c'
     };
     mockGeocodeResult = [{
       geometry: {
@@ -40,7 +40,7 @@ describe('googleRequestHandler', async () => {
           }
         }
       },
-      placeId: 'ChIJnYWtvK_DxokRLIqoK6qTKDk',
+      placeId: 'ChIJnYWtvK_DxokRLIqoK6qTKDk'
     }];
     eventEmitterMock = new EventEmitterMock();
     googleMock = new GoogleMapsMock(

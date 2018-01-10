@@ -151,13 +151,13 @@ describe('GoogleMapsIframeClient', () => {
 
     iframeManagerPrototype.hasIframe.mockImplementation(() => true);
     iframeManagerPrototype.getIframe.mockImplementation(() => ({
-        postMessage: requestObj => {
-          const targetOrigin = '*';
-          const {requestId, request} = requestObj;
-          const timeout = request === firstRequest ? 200 : 100;
-          setTimeout(() => global.postMessage({requestId, results: [request], status: 'OK'}, targetOrigin), timeout);
-        }
-      })
+      postMessage: requestObj => {
+        const targetOrigin = '*';
+        const {requestId, request} = requestObj;
+        const timeout = request === firstRequest ? 200 : 100;
+        setTimeout(() => global.postMessage({requestId, results: [request], status: 'OK'}, targetOrigin), timeout);
+      }
+    })
     );
 
     client = new GoogleMapsIframeClient();
@@ -174,14 +174,14 @@ describe('GoogleMapsIframeClient', () => {
 
     iframeManagerPrototype.hasIframe.mockImplementation(() => true);
     iframeManagerPrototype.getIframe.mockImplementation(() => ({
-        postMessage: requestObj => {
-          const targetOrigin = '*';
-          const {requestId, request} = requestObj;
-          const timeout = request === firstRequest ? 200 : 100;
-          const status = request === firstRequest ? 'OK' : 'ERROR';
-          setTimeout(() => global.postMessage({requestId, results: [request], status}, targetOrigin), timeout);
-        }
-      })
+      postMessage: requestObj => {
+        const targetOrigin = '*';
+        const {requestId, request} = requestObj;
+        const timeout = request === firstRequest ? 200 : 100;
+        const status = request === firstRequest ? 'OK' : 'ERROR';
+        setTimeout(() => global.postMessage({requestId, results: [request], status}, targetOrigin), timeout);
+      }
+    })
     );
 
     client = new GoogleMapsIframeClient();
@@ -198,14 +198,14 @@ describe('GoogleMapsIframeClient', () => {
 
     iframeManagerPrototype.hasIframe.mockImplementation(() => true);
     iframeManagerPrototype.getIframe.mockImplementation(() => ({
-        postMessage: requestObj => {
-          const targetOrigin = '*';
-          const {requestId, request} = requestObj;
-          const timeout = request === firstRequest ? 200 : 100;
-          const status = request === firstRequest ? 'OK' : 'ERROR';
-          setTimeout(() => global.postMessage({requestId, results: [request], status}, targetOrigin), timeout);
-        }
-      })
+      postMessage: requestObj => {
+        const targetOrigin = '*';
+        const {requestId, request} = requestObj;
+        const timeout = request === firstRequest ? 200 : 100;
+        const status = request === firstRequest ? 'OK' : 'ERROR';
+        setTimeout(() => global.postMessage({requestId, results: [request], status}, targetOrigin), timeout);
+      }
+    })
     );
 
     client = new GoogleMapsIframeClient();

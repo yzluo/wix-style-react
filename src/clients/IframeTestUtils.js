@@ -48,7 +48,7 @@ export const GoogleMapsMock = (autocompleteInstance, geocoderInstance, placesSer
       }
     }
   };
-}
+};
 
 export class EventEmitterMock {
   constructor() {
@@ -60,6 +60,6 @@ export class EventEmitterMock {
   }
 
   triggerMessage(event) {
-    this.eventListeners.forEach((callback) => callback(event));
+    this.eventListeners.forEach(callback => callback(event));
   }
 }

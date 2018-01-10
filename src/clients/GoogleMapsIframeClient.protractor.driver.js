@@ -1,11 +1,14 @@
 const googleMapsIframeClientDriverFactory = component => {
   const getButtons = () => component.$$('button');
   const input = component.$('input');
-  const resultsElementWrapper = () => $('pre');
+  const resultsElementWrapper = component.$('pre');
 
   return {
-    getParsedResults: () => resultsElementWrapper().getText(),
-    getResultsElementWrapper: () => resultsElementWrapper(),
+    getParsedResults: async () => {
+      const results = await resultsElementWrapper.getText();
+      return JSON.parse(results);
+    },
+    getResultsElementWrapper: () => resultsElementWrapper,
     enterText: text => input.clear().sendKeys(text),
     selectByValue: value => {
       return getButtons().getText()
