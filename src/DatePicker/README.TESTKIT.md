@@ -75,7 +75,10 @@ datePickerPolyfills(window, global);
   const testkit = DatePickerTestkitFactory({wrapper, dataHook});
 
   //Do tests
+  const day = 10;
   expect(testkit.driver.exists()).toBeTruthy();
+  testkit.inputDriver.trigger('click');
+  testkit.calendarDriver.clickOnNthDay(day);
 ```
 
 ## E2E testing
