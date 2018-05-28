@@ -74,13 +74,17 @@ class InputWithOptions extends WixComponent {
     });
   }
 
+  get _isControlled() {
+    return 'value' in this.props && 'onChange' in this.props;
+  }
+
   _processOptions(options) {
     return !this.props.highlight ? options : (
       options.map(option => {
         return {
           ...option,
           value: (
-            <Highlighter match={this.state.inputValue} dataHook={`highlighter-${option.id}`}>
+            <Highlighter match={this._isControlled ? this.props.value : this.state.inputValue} dataHook={`highlighter-${option.id}`}>
               {option.value}
             </Highlighter>
           )
