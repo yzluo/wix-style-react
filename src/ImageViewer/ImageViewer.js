@@ -21,6 +21,7 @@ class ImageViewer extends WixComponent {
 
     const tooltipCommonProps = {
       showDelay: 0,
+      theme: 'dark',
       hideDelay: 0,
       align: 'center',
       placement: 'top',
@@ -29,10 +30,12 @@ class ImageViewer extends WixComponent {
 
     return (
       <div className={`${style.container} ${imageUrl && style.hasLogo}`} style={{width, height}} data-hook="image-container">
-        <div data-hook="add-image" className={style.addLogo} onClick={onAddImage}>
-          <div className={style.dashedBorder}/>
-          <div className={style.plusIcon}><Plus2 size="47px"/></div>
-        </div>
+        <Tooltip content="Add Image" {...tooltipCommonProps}>
+          <div data-hook="add-image" className={style.addLogo} onClick={onAddImage}>
+            <div className={style.dashedBorder}/>
+            <div className={style.plusIcon}><Plus2 size="47px"/></div>
+          </div>
+        </Tooltip>
         {!!imageUrl &&
         <div className={style.changeLogoContainer}>
           <div className={style.imageLayout}>
