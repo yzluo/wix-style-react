@@ -16,6 +16,11 @@ describe('ImageViewer', () => {
   const updateImage = jest.fn();
   const removeImage = jest.fn();
 
+
+  beforeEach(() => {
+    document.body.innerHTML = '';
+  });
+
   describe('when default scenario', () => {
     beforeEach(() => {
       props = {
@@ -31,11 +36,6 @@ describe('ImageViewer', () => {
       expect(driver.getImageUrl()).toBe(IMAGE_URL);
     });
 
-    it('should trigger add image', () => {
-      driver.clickAdd();
-      expect(addImage).toBeCalled();
-    });
-
     it('should trigger update image', () => {
       driver.clickUpdate();
       expect(updateImage).toBeCalled();
@@ -44,6 +44,16 @@ describe('ImageViewer', () => {
     it('should trigger remove image', () => {
       driver.clickRemove();
       expect(removeImage).toBeCalled();
+    });
+
+    it('should trigger add image', () => {
+      props = {
+        imageUrl: '',
+        onAddImage: addImage
+      };
+      driver = createDriver(<ImageViewer {...props}/>);
+      driver.clickAdd();
+      expect(addImage).toBeCalled();
     });
 
   });
@@ -84,6 +94,46 @@ describe('ImageViewer', () => {
       driver = createDriver(<ImageViewer {...props}/>);
       expect(driver.getContainerStyles()).toEqual(null);
     });
+  });
+  describe('hide or show add image', () => {
+
+    it('should not have an display Add Image button if image exists', () => {
+
+      props = {
+        imageUrl: IMAGE_URL
+      };
+
+      driver = createDriver(<ImageViewer {...props}/>);
+      expect(driver.isAddButtonVisible()).toBeFalsy();
+    });
+
+    it('should not have an Add Image tooltip when image exists', () => {
+
+      props = {
+        imageUrl: IMAGE_URL
+      };
+
+      driver = createDriver(<ImageViewer {...props}/>);
+      expect(driver.isAddTooltipVisible()).toBeFalsy();
+    });
+
+    it('should have an Add Image tooltip', () => {
+
+      props = {
+        imageUrl: ''
+      };
+
+      driver = createDriver(<ImageViewer {...props}/>);
+      const wrapper = driver.getElement();
+      const TooltipDriver = tooltipTestkitFactory({wrapper, dataHook: 'add-image-tooltip'});
+      TooltipDriver.mouseEnter();
+      return resolveIn(50)
+        .then(() => {
+          expect(TooltipDriver.isShown()).toBeTruthy();
+          expect(TooltipDriver.getContent()).toEqual('Add Image');
+        });
+    });
+
   });
 
 

@@ -12,6 +12,7 @@ const imageViewerDriverFactory = ({component, wrapper, element}) => {
   const updateImageButton = () => byHook('update-image');
   const removeImageButton = () => byHook('remove-image');
   const errorIcon = () => byHook('error-tooltip');
+  const addTooltip = () => byHook('add-image-tooltip');
 
   return {
     getElement: () => element,
@@ -19,6 +20,8 @@ const imageViewerDriverFactory = ({component, wrapper, element}) => {
     getImageUrl: () => image().getAttribute('src'),
     isImageVisible: () => !!image(),
     isErrorVisible: () => !!errorIcon(),
+    isAddButtonVisible: () => !!addImageButton(),
+    isAddTooltipVisible: () => !!addTooltip(),
     clickAdd: () => ReactTestUtils.Simulate.click(addImageButton()),
     clickUpdate: () => ReactTestUtils.Simulate.click(updateImageButton()),
     clickRemove: () => ReactTestUtils.Simulate.click(removeImageButton()),
