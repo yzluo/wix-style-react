@@ -138,6 +138,9 @@ export const timeInputTestkitFactory = enzymeTestkitFactoryCreator(timeInputDriv
 import sliderDriverFactory from '../src/Slider/Slider.driver';
 export const sliderTestkitFactory = enzymeTestkitFactoryCreator(sliderDriverFactory);
 
+import addItemDriverFactory from '../src/AddItem/AddItem.driver';
+export const addItemTestkitFactory = enzymeTestkitFactoryCreator(addItemDriverFactory);
+
 import imageViewerDriverFactory from '../src/ImageViewer/ImageViewer.driver';
 export const imageViewerTestkitFactory = enzymeTestkitFactoryCreator(imageViewerDriverFactory);
 

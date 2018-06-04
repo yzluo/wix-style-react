@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import addItemDriverFactory from '../AddItem/AddItem.driver';
+import {createDriverFactory} from '../test-common';
 
 const imageViewerDriverFactory = ({component, wrapper, element}) => {
 
@@ -12,7 +14,7 @@ const imageViewerDriverFactory = ({component, wrapper, element}) => {
   const updateImageButton = () => byHook('update-image');
   const removeImageButton = () => byHook('remove-image');
   const errorIcon = () => byHook('error-tooltip');
-  const addTooltip = () => byHook('add-image-tooltip');
+  const addImageDriver = () => createDriverFactory(addItemDriverFactory);
 
   return {
     getElement: () => element,
@@ -21,8 +23,7 @@ const imageViewerDriverFactory = ({component, wrapper, element}) => {
     isImageVisible: () => !!image(),
     isErrorVisible: () => !!errorIcon(),
     isAddButtonVisible: () => !!addImageButton(),
-    isAddTooltipVisible: () => !!addTooltip(),
-    clickAdd: () => ReactTestUtils.Simulate.click(addImageButton()),
+    clickAdd: () => addImageDriver().clickAdd(),
     clickUpdate: () => ReactTestUtils.Simulate.click(updateImageButton()),
     clickRemove: () => ReactTestUtils.Simulate.click(removeImageButton()),
     exists: () => !!element,

@@ -4,10 +4,10 @@ import style from './ImageViewer.scss';
 import Tooltip from '../Tooltip';
 import Trash3 from '../Icons/dist/components/Trash3';
 import Replace from '../Icons/dist/components/Replace';
-import Plus2 from '../Icons/dist/components/Plus2';
 import WixComponent from '../BaseComponents/WixComponent';
 import FormFieldError from 'wix-ui-icons-common/system/FormFieldError';
 import classNames from 'classnames';
+import AddItem from '../AddItem/AddItem';
 
 class ImageViewer extends WixComponent {
 
@@ -31,17 +31,11 @@ class ImageViewer extends WixComponent {
       placement: 'top',
       moveBy: {x: 2, y: 0}
     };
-    const classes = classNames(style.container, {[style.hasLogo]: imageUrl, [style.hasError]: error, [style.addPadding]: !imageUrl});
+    const classes = classNames(style.container, {[style.hasLogo]: imageUrl, [style.hasError]: error});
     return (
       <div className={classes} style={{width, height}} data-hook="image-container">
         {!imageUrl &&
-        <div data-hook="add-image" className={style.addLogo} onClick={onAddImage}>
-          <Tooltip content="Add Image" dataHook="add-image-tooltip" {...tooltipCommonProps}>
-            <div className={style.dashedBorder} >
-              <div className={style.plusIcon}><Plus2 size="47px"/></div>
-            </div>
-          </Tooltip>
-        </div>
+        <AddItem data-hook="add-image" style={{width, height}} onAddItem={onAddImage}/>
         }
         {!!imageUrl &&
         <div className={style.changeLogoContainer}>
