@@ -107,15 +107,6 @@ describe('ImageViewer', () => {
       expect(driver.isAddButtonVisible()).toBeFalsy();
     });
 
-    it('should not have an Add Image tooltip when image exists', () => {
-
-      props = {
-        imageUrl: IMAGE_URL
-      };
-
-      driver = createDriver(<ImageViewer {...props}/>);
-      expect(driver.isAddTooltipVisible()).toBeFalsy();
-    });
 
     it('should have an Add Image tooltip', () => {
 
