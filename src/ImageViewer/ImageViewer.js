@@ -34,12 +34,15 @@ class ImageViewer extends WixComponent {
     const classes = classNames(style.container, {[style.hasLogo]: imageUrl, [style.hasError]: error, [style.addPadding]: !imageUrl});
     return (
       <div className={classes} style={{width, height}} data-hook="image-container">
-        <Tooltip content="Add Image" {...tooltipCommonProps}>
-          <div data-hook="add-image" className={style.addLogo} onClick={onAddImage}>
-            <div className={style.dashedBorder}/>
-            <div className={style.plusIcon}><Plus2 size="47px"/></div>
-          </div>
-        </Tooltip>
+        {!imageUrl &&
+        <div data-hook="add-image" className={style.addLogo} onClick={onAddImage}>
+          <Tooltip content="Add Image" dataHook="add-image-tooltip" {...tooltipCommonProps}>
+            <div className={style.dashedBorder} >
+              <div className={style.plusIcon}><Plus2 size="47px"/></div>
+            </div>
+          </Tooltip>
+        </div>
+        }
         {!!imageUrl &&
         <div className={style.changeLogoContainer}>
           <div className={style.imageLayout}>
