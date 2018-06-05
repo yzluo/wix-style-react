@@ -1,12 +1,11 @@
 import React from 'react';
-import ImageViewer from './ImageViewer';
 import {createDriverFactory, resolveIn} from '../test-common';
 import {addItemTestkitFactory, tooltipTestkitFactory} from '../../testkit';
 import {addItemTestkitFactory as enzymeAddItemTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
 import ReactTestUtils from 'react-dom/test-utils';
 import AddItem from './AddItem';
-import addItemDriverFactory from 'AddItem.driver';
+import addItemDriverFactory from './AddItem.driver';
 
 describe('AddItem', () => {
 
@@ -50,7 +49,7 @@ describe('AddItem', () => {
     });
 
     it('should not add style attribute when width and height props are not passed', () => {
-      driver = createDriver(<ImageViewer/>);
+      driver = createDriver(<AddItem/>);
       expect(driver.getContainerStyles()).toEqual(null);
     });
   });

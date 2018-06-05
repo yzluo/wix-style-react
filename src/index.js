@@ -2,6 +2,7 @@ import './assets/helvetica.scss';
 
 import {MessageBoxMarketerialLayout, MessageBoxFunctionalLayout, HeaderLayout, FooterLayout} from './MessageBox';
 
+export {default as AddItem} from './AddItem';
 export {default as Button} from './Button';
 export {default as ButtonLayout} from './ButtonLayout';
 export {default as Input} from './Input';
