@@ -4,7 +4,7 @@ import ReactTestUtils from 'react-dom/test-utils';
 import {addItemTestkitFactory} from '../../testkit/index';
 
 const imageViewerDriverFactory = ({component, wrapper, element}) => {
-  const addItemDataHook = 'image-container';
+  const addItemDataHook = 'add-container';
   const byHook = dataHook =>
     element.querySelector(`[data-hook="${dataHook}"]`);
   const image = () => byHook('image-viewer-image');

@@ -1,16 +1,14 @@
-# ImageViewer Testkits
+# AddItem Testkits
 
-> ImageViewer
+> AddItem
 
-## ImageViewer TestKit API
+## AddItem TestKit API
 
 | method | arguments | returned value | description |
 |--------|-----------|----------------|-------------|
-| getImageUrl | - | string | returns the image url |
-| isImageVisible | - | boolean | returns true if image is visible |
+| isAddTooltipVisible | - | boolean | returns true if tooltip is visible |
+| isAddButtonVisible | - | boolean | returns true if button is visible |
 | clickAdd | - | - | click the add button |
-| clickUpdate | - | - | click the update button |
-| clickRemove | - | - | click the remove button |
 | exists (Only in Unit Test) | - | bool | fulfilled if element in the DOM |
 | click (Only in E2E) | - | - | click the element |
 | element (Only in E2E) | - | element | returns the driver element |
@@ -21,15 +19,15 @@
 
 ```javascript
   import React from 'react';
-  import {imageViewerTestkitFactory} from 'wix-style-react/dist/testkit';
-  import {imageViewerTestkitFactory as enzymeImageViewerTestkitFactory} from 'wix-style-react/dist/testkit/enzyme';
+  import {addItemTestkitFactory} from 'wix-style-react/dist/testkit';
+  import {addItemTestkitFactory as enzymeImageViewerTestkitFactory} from 'wix-style-react/dist/testkit/enzyme';
 
   /***************
    enzyme example
   ***************/
 
   const dataHook = 'myDataHook';
-  const wrapper = mount(<div/><ImageViewer dataHook={dataHook}/></div>);
+  const wrapper = mount(<div/><AddItem tooltipContent="test" dataHook={dataHook}/></div>);
   const testkit = enzymeImageViewerTestkitFactory({wrapper, dataHook});
 
   //Do tests
@@ -42,9 +40,9 @@
   const div = document.createElement('div');
   const dataHook = 'myDataHook';
   const wrapper = div.appendChild(
-    ReactTestUtils.renderIntoDocument(<div/><ImageViewer dataHook={dataHook}/></div>, {dataHook})
+    ReactTestUtils.renderIntoDocument(<div/><AddItem tooltipContent="test" dataHook={dataHook}/></div>, {dataHook})
   );
-  const testkit = imageViewerTestkitFactory({wrapper, dataHook});
+  const testkit = addItemTestkitFactory({wrapper, dataHook});
 
   //Do tests
   expect(testkit.exists()).toBeTruthy();
@@ -53,7 +51,7 @@
 
 ```javascript
   //Element should be rendered with a data-hook into the DOM
-  <ImageViewer dataHook='myDataHook'/>
+  <AddItem tooltipContent="test" dataHook='myDataHook'/>
 
   /*******************
    protractor example
@@ -62,11 +60,11 @@
   import {imageViewerTestkitFactory, waitForVisibilityOf} from 'wix-style-react/dist/testkit/protractor';
 
   //Create an element testkit via the data-hook attribute
-  const testkit = imageViewerTestkitFactory({dataHook: 'myDataHook'});
+  const testkit = AddItemTestkitFactory({dataHook: 'myDataHook'});
 
   browser.get(appUrl); //Your application url
 
-  waitForVisibilityOf(testkit.element(), 'Cannot find ImageViewer')
+  waitForVisibilityOf(testkit.element(), 'Cannot find AddItem')
      .then(() => {
         //Do tests
         expect(testkit.element().isDisplayed()).toBeTruthy();

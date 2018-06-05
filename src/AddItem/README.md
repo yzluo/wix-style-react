@@ -1,12 +1,12 @@
-# ImageViewer component
+# AddItem component
 
-> ImageViewer
+> AddItem
 
 ## Properties
 
 | propName | propType | defaultValue | isRequired | description |
 |----------|----------|--------------|------------|-------------|
-| imageUrl | string | - | - | An image url to present or image data to show |
-| onAddImage | func | - | - | Callback when the user click the '+' add image button |
-| onUpdateImage | string | - | - | Callback when the user click the update image button |
-| onRemoveImage | string | - | - | Callback when the user click the remove image button |
+| tooltipContent | string | - | true | content for the tooltip of the component |
+| onAddItem | func | - | - | Callback when the user click the '+' add item button |
+| width | number | - | - | Callback when the user click the update image button |
+| height | number | - | - | Callback when the user click the remove image button |
