@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
-import {addItemTestkitFactory} from '../../testkit/index';
 
 const imageViewerDriverFactory = ({component, wrapper, element}) => {
   const addItemDataHook = 'add-container';
@@ -12,16 +11,15 @@ const imageViewerDriverFactory = ({component, wrapper, element}) => {
   const removeImageButton = () => byHook('remove-image');
   const errorIcon = () => byHook('error-tooltip');
   const addItem = () => byHook(addItemDataHook);
-  const addItemDriver = () => addItemTestkitFactory({wrapper: element, dataHook: addItemDataHook});
 
   return {
+    getAddItemDataHook: () => addItemDataHook,
     getElement: () => element,
     getContainerStyles: () => element.getAttribute('style'),
     getImageUrl: () => image().getAttribute('src'),
     isAddItemVisible: () => !!addItem(),
     isImageVisible: () => !!image(),
     isErrorVisible: () => !!errorIcon(),
-    clickAdd: () => addItemDriver().clickAdd(),
     clickUpdate: () => ReactTestUtils.Simulate.click(updateImageButton()),
     clickRemove: () => ReactTestUtils.Simulate.click(removeImageButton()),
     exists: () => !!element,

@@ -83,8 +83,8 @@ describe('AddItem', () => {
       const div = document.createElement('div');
       const dataHook = 'myDataHook';
       const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(<div><AddItem {...props} dataHook={dataHook}/></div>));
-      const imageViewerTestkit = addItemTestkitFactory({wrapper, dataHook});
-      expect(imageViewerTestkit.exists()).toBeTruthy();
+      const addItemTestkit = addItemTestkitFactory({wrapper, dataHook});
+      expect(addItemTestkit.exists()).toBeTruthy();
     });
   });
 
@@ -92,8 +92,8 @@ describe('AddItem', () => {
     it('should exist', () => {
       const dataHook = 'myDataHook';
       const wrapper = mount(<AddItem {...props} dataHook={dataHook}/>);
-      const imageViewerTestkit = enzymeAddItemTestkitFactory({wrapper, dataHook});
-      expect(imageViewerTestkit.exists()).toBeTruthy();
+      const addItemTestkit = enzymeAddItemTestkitFactory({wrapper, dataHook});
+      expect(addItemTestkit.exists()).toBeTruthy();
     });
   });
 

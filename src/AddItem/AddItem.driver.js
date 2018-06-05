@@ -9,7 +9,7 @@ const addItemDriverFactory = ({component, wrapper, element}) => {
 
   const addImageButton = () => byHook('add-area');
   const addTooltip = () => byHook('add-tooltip');
-  
+
   return {
     getElement: () => element,
     getContainerStyles: () => element.getAttribute('style'),
