@@ -4,23 +4,23 @@ import ReactTestUtils from 'react-dom/test-utils';
 import {addItemTestkitFactory} from '../../testkit/index';
 
 const imageViewerDriverFactory = ({component, wrapper, element}) => {
-  const dataHook = 'add-image';
+  const addItemDataHook = 'image-container';
   const byHook = dataHook =>
     element.querySelector(`[data-hook="${dataHook}"]`);
   const image = () => byHook('image-viewer-image');
-  const addImageButton = () => byHook('add-image');
   const updateImageButton = () => byHook('update-image');
   const removeImageButton = () => byHook('remove-image');
   const errorIcon = () => byHook('error-tooltip');
-  const addItemDriver = () => addItemTestkitFactory({element, dataHook});
+  const addItem = () => byHook(addItemDataHook);
+  const addItemDriver = () => addItemTestkitFactory({wrapper: element, dataHook: addItemDataHook});
 
   return {
     getElement: () => element,
     getContainerStyles: () => element.getAttribute('style'),
     getImageUrl: () => image().getAttribute('src'),
+    isAddItemVisible: () => !!addItem(),
     isImageVisible: () => !!image(),
     isErrorVisible: () => !!errorIcon(),
-    isAddButtonVisible: () => !!addImageButton(),
     clickAdd: () => addItemDriver().clickAdd(),
     clickUpdate: () => ReactTestUtils.Simulate.click(updateImageButton()),
     clickRemove: () => ReactTestUtils.Simulate.click(removeImageButton()),

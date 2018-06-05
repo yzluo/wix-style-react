@@ -10,7 +10,7 @@ class AddItem extends WixComponent {
   render() {
 
     const {
-      onAddImage,
+      onAddItem,
       width,
       height
     } = this.props;
@@ -23,10 +23,11 @@ class AddItem extends WixComponent {
       placement: 'top',
       moveBy: {x: 2, y: 0}
     };
+
     return (
       <div className={style.container} style={{width, height}} data-hook="image-container">
-        <div data-hook="add-image" className={style.addLogo} onClick={onAddImage}>
-          <Tooltip content="Add Image" dataHook="add-image-tooltip" {...tooltipCommonProps}>
+        <div data-hook="add-area" className={style.addLogo} onClick={onAddItem}>
+          <Tooltip content="Add Image" dataHook="add-tooltip" {...tooltipCommonProps}>
             <div className={style.dashedBorder} >
               <div className={style.plusIcon}><Plus2 size="47px"/></div>
             </div>
@@ -38,7 +39,7 @@ class AddItem extends WixComponent {
 }
 
 AddItem.propTypes = {
-  onAddImage: PropTypes.func,
+  onAddItem: PropTypes.func,
   width: PropTypes.number,
   height: PropTypes.number
 };

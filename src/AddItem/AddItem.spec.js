@@ -59,7 +59,7 @@ describe('AddItem', () => {
     it('should have an Add Image tooltip', () => {
       driver = createDriver(<AddItem/>);
       const wrapper = driver.getElement();
-      const TooltipDriver = tooltipTestkitFactory({wrapper, dataHook: 'add-image-tooltip'});
+      const TooltipDriver = tooltipTestkitFactory({wrapper, dataHook: 'add-tooltip'});
       TooltipDriver.mouseEnter();
       return resolveIn(50)
         .then(() => {

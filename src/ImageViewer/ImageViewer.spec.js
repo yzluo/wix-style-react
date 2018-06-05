@@ -17,10 +17,6 @@ describe('ImageViewer', () => {
   const removeImage = jest.fn();
 
 
-  beforeEach(() => {
-    document.body.innerHTML = '';
-  });
-
   describe('when default scenario', () => {
     beforeEach(() => {
       props = {
@@ -97,32 +93,24 @@ describe('ImageViewer', () => {
   });
   describe('hide or show add image', () => {
 
-    it('should not have an display Add Image button if image exists', () => {
+    it('should display AddItem component if image exists', () => {
 
       props = {
         imageUrl: IMAGE_URL
       };
 
       driver = createDriver(<ImageViewer {...props}/>);
-      expect(driver.isAddButtonVisible()).toBeFalsy();
+      expect(driver.isAddItemVisible()).toBeFalsy();
     });
 
-
-    it('should have an Add Image tooltip', () => {
+    it('should not display AddItem component if image dosnt exists', () => {
 
       props = {
         imageUrl: ''
       };
 
       driver = createDriver(<ImageViewer {...props}/>);
-      const wrapper = driver.getElement();
-      const TooltipDriver = tooltipTestkitFactory({wrapper, dataHook: 'add-image-tooltip'});
-      TooltipDriver.mouseEnter();
-      return resolveIn(50)
-        .then(() => {
-          expect(TooltipDriver.isShown()).toBeTruthy();
-          expect(TooltipDriver.getContent()).toEqual('Add Image');
-        });
+      expect(driver.isAddItemVisible()).toBeTruthy();
     });
 
   });

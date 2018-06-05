@@ -7,9 +7,10 @@ const addItemDriverFactory = ({component, wrapper, element}) => {
   const byHook = dataHook =>
     element.querySelector(`[data-hook="${dataHook}"]`);
 
-  const addImageButton = () => byHook('add-image');
-  const addTooltip = () => byHook('add-image-tooltip');
-
+  const addImageButton = () => byHook('add-area');
+  const addTooltip = () => byHook('add-tooltip');
+  console.log('addImageButton : ', !!addImageButton());
+  console.log('addImageButton: ', !!addImageButton());
   return {
     getElement: () => element,
     getContainerStyles: () => element.getAttribute('style'),
