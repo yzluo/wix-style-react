@@ -12,7 +12,8 @@ class AddItem extends WixComponent {
     const {
       onAddItem,
       width,
-      height
+      height,
+      tooltipContent
     } = this.props;
 
     const tooltipCommonProps = {
@@ -27,7 +28,7 @@ class AddItem extends WixComponent {
     return (
       <div className={style.container} style={{width, height}} data-hook="image-container">
         <div data-hook="add-area" className={style.addLogo} onClick={onAddItem}>
-          <Tooltip content="Add Image" dataHook="add-tooltip" {...tooltipCommonProps}>
+          <Tooltip content={tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
             <div className={style.dashedBorder} >
               <div className={style.plusIcon}><Plus2 size="47px"/></div>
             </div>
@@ -41,7 +42,8 @@ class AddItem extends WixComponent {
 AddItem.propTypes = {
   onAddItem: PropTypes.func,
   width: PropTypes.number,
-  height: PropTypes.number
+  height: PropTypes.number,
+  tooltipContent: PropTypes.string.isRequired
 };
 
 export default AddItem;
