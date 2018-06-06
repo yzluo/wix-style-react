@@ -10,7 +10,8 @@ const style = {
 
 const Example = () =>
   <div>
-    <div className="ltr" style={style}>Add Item<br/><br/><AddItem dataHook="add-item" tooltipContent="Add Tooltip Content" onAddImage={() => {}}/></div>
+    <div className="ltr" style={style}>Add Item - no tooltip<br/><br/><AddItem dataHook="add-item" onAddImage={() => {}}/></div>
+    <div className="ltr" style={style}>Add Item - with tooltip <br/><br/><AddItem dataHook="add-item" tooltipContent="Add Tooltip Content" onAddImage={() => {}}/></div>
   </div>;
 
 Example.propTypes = {
