@@ -26,13 +26,15 @@ class AddItem extends WixComponent {
     };
 
     return (
-      <div className={style.container} style={{width, height}} data-hook="add-container">
-        <div data-hook="add-area" className={style.addLogo} onClick={onAddItem}>
-          <Tooltip content={tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
-            <div className={style.dashedBorder} >
-              <div className={style.plusIcon}><Plus2 size="47px"/></div>
-            </div>
-          </Tooltip>
+      <div className={style.box}>
+        <div className={style.container} style={{width, height}} data-hook="add-container">
+          <div data-hook="add-area" className={style.addLogo} onClick={onAddItem}>
+            <Tooltip content={tooltipContent} disabled={!tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
+              <div className={style.dashedBorder} >
+                <div className={style.plusIcon}><Plus2 size="47px"/></div>
+              </div>
+            </Tooltip>
+          </div>
         </div>
       </div>
     );

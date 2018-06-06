@@ -4,9 +4,22 @@
 
 }
 
+.box{
+  height: 0;
+  overflow: hidden;
+  padding-top: 591.44px / 1127.34px * 100%;
+  background: white;
+  position: relative;
+}
+
 .container {
-  width: 204.7px;
-  height: 144px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
   border-radius: 8px;
   background-color: #eaf7ff;
   display: flex;
@@ -14,7 +27,6 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  position: relative;
   transition: background .2s linear;
   overflow: hidden;
   box-sizing: border-box;
@@ -23,6 +35,17 @@
   // This fixes animation bug when border radius doesn't affect on animation
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
+}
+
+.box{
+  position: relative;
+}
+
+.box:before{
+  content: "";
+  display: block;
+  width: 100%;
+  padding-bottom: calc(100%  * 9/16);
 }
 
 .dashed-border {
