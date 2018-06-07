@@ -3,22 +3,17 @@ import PropTypes from 'prop-types';
 import AddItem from '../../src/AddItem/AddItem';
 import {Container, Row, Col} from '../../src/Grid';
 
-const style = {
-  display: 'inline-block',
-  verticalAlign: 'middle',
-  padding: '0 25px 25px'
-};
-
 const Example = () => (
   <Container>
     <Row>
-      <Col span={8}>
-        <h3>Add Item - no tooltip</h3>
+      <Col span={2}>
+        <h3>Add Item - default</h3>
         <AddItem dataHook="add-item" onAddImage={() => {}}/>
       </Col>
       <Col span={4}>
-        <h3>Add Item - with tooltip</h3>
+        <h3>Add Item - with tooltip & radio 16/9 </h3>
         <AddItem
+          aspectRatio="16/9"
           dataHook="add-item"
           tooltipContent="Add Tooltip Content"
           onAddImage={() => {}}
