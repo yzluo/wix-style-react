@@ -46,8 +46,8 @@ class AddItem extends WixComponent {
     }
 
     return (
-      <div className={style.box}>
-        <div className={classNames(style.content, style.container, {ratio})} style={{width, height}} data-hook="add-container">
+      <div className={classNames(ratio, style.box)}>
+        <div className={classNames(style.content, style.container)} style={{width, height}} data-hook="add-container">
           <div data-hook="add-area" className={style.addLogo} onClick={onAddItem}>
             <Tooltip content={tooltipContent} disabled={!tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
               <div className={style.dashedBorder} >
