@@ -11,7 +11,7 @@ const Example = () => (
         <AddItem dataHook="add-item" onAddImage={() => {}}/>
       </Col>
       <Col span={4}>
-        <h3>Add Item - with tooltip & radio 16/9 </h3>
+        <h3>Add Item - with tooltip & ratio 16/9 </h3>
         <AddItem
           aspectRatio="16/9"
           dataHook="add-item"
