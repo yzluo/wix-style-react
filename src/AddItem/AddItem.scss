@@ -4,22 +4,8 @@
 
 }
 
-.box{
-  height: 0;
-  overflow: hidden;
-  padding-top: 591.44px / 1127.34px * 100%;
-  background: white;
-  position: relative;
-}
-
 .container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   width: 100%;
-  height: auto;
   border-radius: 8px;
   background-color: #eaf7ff;
   display: flex;
@@ -37,15 +23,36 @@
   transform: translate3d(0, 0, 0);
 }
 
-.box{
+@mixin aspect-ratio($width, $height) {
   position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }
 
-.box:before{
-  content: "";
-  display: block;
-  width: 100%;
-  padding-bottom: calc(100%  * 9/16);
+.box{
+  &.ratio16x9{
+    @include aspect-ratio(16, 6);
+  }
+  &.ratio4x3{
+    @include aspect-ratio(4, 3);
+  }
+  &.ratio3x4{
+    @include aspect-ratio(3,4);
+  }
+  &.ratio1x1{
+    @include aspect-ratio(1, 1);
+  }
 }
 
 .dashed-border {

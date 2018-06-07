@@ -4,6 +4,7 @@ import style from './AddItem.scss';
 import Tooltip from '../Tooltip';
 import Plus2 from '../Icons/dist/components/Plus2';
 import WixComponent from '../BaseComponents/WixComponent';
+import classNames from 'classnames';
 
 class AddItem extends WixComponent {
 
@@ -13,7 +14,8 @@ class AddItem extends WixComponent {
       onAddItem,
       width,
       height,
-      tooltipContent
+      tooltipContent,
+      aspectRatio
     } = this.props;
 
     const tooltipCommonProps = {
@@ -24,10 +26,28 @@ class AddItem extends WixComponent {
       placement: 'top',
       moveBy: {x: 2, y: 0}
     };
+    let ratio;
+    switch (aspectRatio) {
+      case '16/9':
+        ratio = style.ratio16x9;
+        break;
+      case '3/4':
+        ratio = style.ratio2x1;
+        break;
+      case '4/3':
+        ratio = style.ratio3x1;
+        break;
+      case '1/1':
+        ratio = style.ratio1x1;
+        break;
+      default:
+        ratio = style.ratio1x1;
+        break;
+    }
 
     return (
       <div className={style.box}>
-        <div className={style.container} style={{width, height}} data-hook="add-container">
+        <div className={classNames(style.content, style.container, {ratio})} style={{width, height}} data-hook="add-container">
           <div data-hook="add-area" className={style.addLogo} onClick={onAddItem}>
             <Tooltip content={tooltipContent} disabled={!tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
               <div className={style.dashedBorder} >
