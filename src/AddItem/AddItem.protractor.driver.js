@@ -1,6 +1,6 @@
-const checkboxDriverFactory = component => ({
+const addItemDriverFactory = component => ({
   click: () => component.click(),
   element: () => component
 });
 
-export default checkboxDriverFactory;
+export default addItemDriverFactory;
