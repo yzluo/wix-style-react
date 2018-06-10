@@ -12,7 +12,6 @@ class AddItem extends WixComponent {
 
     const {
       onAddItem,
-      width,
       height,
       tooltipContent,
       aspectRatio
@@ -27,27 +26,26 @@ class AddItem extends WixComponent {
       moveBy: {x: 2, y: 0}
     };
     let ratio;
-    switch (aspectRatio) {
-      case '16/9':
-        ratio = style.ratio16x9;
-        break;
-      case '3/4':
-        ratio = style.ratio2x1;
-        break;
-      case '4/3':
-        ratio = style.ratio3x1;
-        break;
-      case '1/1':
-        ratio = style.ratio1x1;
-        break;
-      default:
-        ratio = style.ratio1x1;
-        break;
-    }
 
+    if (!height){
+      switch (aspectRatio) {
+        case '16/9':
+          ratio = style.ratio16x9;
+          break;
+        case '3/4':
+          ratio = style.ratio2x1;
+          break;
+        case '4/3':
+          ratio = style.ratio3x1;
+          break;
+        default:
+          ratio = style.ratio1x1;
+          break;
+      }
+  }
     return (
       <div className={classNames(ratio, style.box)}>
-        <div className={classNames(style.content, style.container)} style={{width, height}} data-hook="add-container">
+        <div className={classNames(style.content, style.container)} style={{height}} data-hook="add-container">
           <div data-hook="add-area" className={style.addLogo} onClick={onAddItem}>
             <Tooltip content={tooltipContent} disabled={!tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
               <div className={style.dashedBorder} >

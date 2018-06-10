@@ -13,6 +13,7 @@ const addItemDriverFactory = ({component, wrapper, element}) => {
   return {
     getElement: () => element,
     getContainerStyles: () => element.getAttribute('style'),
+    getContainerClasses: () => element.getAttribute('class'),
     isAddButtonVisible: () => !!addImageButton(),
     isAddTooltipVisible: () => !!addTooltip(),
     clickAdd: () => ReactTestUtils.Simulate.click(addImageButton()),
