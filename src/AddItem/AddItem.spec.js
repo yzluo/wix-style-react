@@ -65,6 +65,11 @@ describe('AddItem', () => {
   describe('hide or show add item', () => {
 
     it('should have an Add item tooltip', () => {
+      props = {
+        tooltipContent: TOOLTIP_CONTENT,
+        width: 300,
+        height: 300
+      };
       driver = createDriver(<AddItem {...props}/>);
       const wrapper = driver.getElement();
       const TooltipDriver = tooltipTestkitFactory({wrapper, dataHook: 'add-tooltip'});
@@ -73,6 +78,18 @@ describe('AddItem', () => {
         .then(() => {
           expect(TooltipDriver.isShown()).toBeTruthy();
           expect(TooltipDriver.getContent()).toEqual(props.tooltipContent);
+        });
+    });
+
+    it('should not have an Add item tooltip', () => {
+      props = { };
+      driver = createDriver(<AddItem {...props}/>);
+      const wrapper = driver.getElement();
+      const TooltipDriver = tooltipTestkitFactory({wrapper, dataHook: 'add-tooltip'});
+      TooltipDriver.mouseEnter();
+      return resolveIn(50)
+        .then(() => {
+          expect(TooltipDriver.isShown()).toBeFalsy();
         });
     });
 
