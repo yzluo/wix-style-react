@@ -2,10 +2,10 @@ import React from 'react';
 import {createDriverFactory, resolveIn} from '../test-common';
 import {addItemTestkitFactory, tooltipTestkitFactory} from '../../testkit';
 import {addItemTestkitFactory as enzymeAddItemTestkitFactory} from '../../testkit/enzyme';
-import {mount} from 'enzyme';
-import ReactTestUtils from 'react-dom/test-utils';
 import AddItem from './AddItem';
 import addItemDriverFactory from './AddItem.driver';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {mount} from 'enzyme';
 
 describe('AddItem', () => {
 
@@ -37,7 +37,7 @@ describe('AddItem', () => {
         tooltipContent: TOOLTIP_CONTENT
       };
       driver = createDriver(<AddItem {...props}/>);
-      driver.clickAdd();
+      driver.click();
       expect(addItem).toBeCalled();
     });
 
@@ -97,20 +97,13 @@ describe('AddItem', () => {
 
   describe('testkit', () => {
     it('should exist', () => {
-      const div = document.createElement('div');
-      const dataHook = 'myDataHook';
-      const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(<div><AddItem {...props} dataHook={dataHook}/></div>));
-      const addItemTestkit = addItemTestkitFactory({wrapper, dataHook});
-      expect(addItemTestkit.exists()).toBeTruthy();
+      expect(isTestkitExists(<AddItem {...props}/>, addItemTestkitFactory)).toBeTruthy();
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      const dataHook = 'myDataHook';
-      const wrapper = mount(<AddItem {...props} dataHook={dataHook}/>);
-      const addItemTestkit = enzymeAddItemTestkitFactory({wrapper, dataHook});
-      expect(addItemTestkit.exists()).toBeTruthy();
+      expect(isEnzymeTestkitExists(<AddItem {...props}/>, enzymeAddItemTestkitFactory, mount)).toBeTruthy();
     });
   });
 
