@@ -1,4 +1,5 @@
 import AddItem from 'wix-style-react/AddItem';
+import Example from './Example';
 
 export default {
   category: '3. Inputs',
@@ -9,6 +10,7 @@ export default {
 
   componentProps: () => ({
     onAddItem: () => {},
+    examples: Example,
     dataHook: 'storybook-addItem'
   })
 };
