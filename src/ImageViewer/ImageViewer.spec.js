@@ -51,7 +51,7 @@ describe('ImageViewer', () => {
       const dataHook = driver.getAddItemDataHook();
       const wrapper = driver.getElement();
       const addItemDriver = addItemTestkitFactory({wrapper, dataHook});
-      addItemDriver.clickAdd();
+      addItemDriver.click();
       expect(addImage).toBeCalled();
     });
 

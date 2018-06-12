@@ -10,8 +10,9 @@ const addItemDriverFactory = ({wrapper, element}) => {
   const addTooltip = () => byHook('add-tooltip');
 
   return {
-    getElement: () => element,
-    getContainerStyles: () => element.getAttribute('style'),
+    element: () => element,
+    getHeight: () => window.getComputedStyle(element).height,
+    getWidth: () => window.getComputedStyle(element).width,
     isAddButtonVisible: () => !!addImageButton(),
     isAddTooltipVisible: () => !!addTooltip(),
     click: () => ReactTestUtils.Simulate.click(addImageButton()),

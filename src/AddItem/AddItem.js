@@ -10,7 +10,7 @@ class AddItem extends WixComponent {
   render() {
 
     let {
-      onAddItem,
+      onClick,
       width,
       height,
       tooltipContent
@@ -28,7 +28,7 @@ class AddItem extends WixComponent {
 
     return (
       <div className={style.container} style={{width, height}} data-hook="add-container">
-        <div data-hook="add-area" className={style.addLogo} onClick={onAddItem}>
+        <div data-hook="add-area" className={style.addLogo} onClick={onClick}>
           <Tooltip content={tooltipContent} disabled={!tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
             <div className={style.dashedBorder} >
               <div className={style.plusIcon}><Plus2 size="47px"/></div>
@@ -41,7 +41,7 @@ class AddItem extends WixComponent {
 }
 
 AddItem.propTypes = {
-  onAddItem: PropTypes.func,
+  onClick: PropTypes.func,
   width: PropTypes.number,
   height: PropTypes.number,
   tooltipContent: PropTypes.string

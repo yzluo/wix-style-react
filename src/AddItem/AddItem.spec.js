@@ -17,22 +17,19 @@ describe('AddItem', () => {
 
   beforeEach(() => {
     document.body.innerHTML = '';
+    addItem = jest.fn();
+    props = {
+      onAddItem: addItem,
+      tooltipContent: TOOLTIP_CONTENT,
+      width: 300,
+      height: 400
+    };
+
   });
 
   describe('when default scenario', () => {
-    beforeEach(() => {
-      props = {
-        onAddItem: addItem,
-        tooltipContent: TOOLTIP_CONTENT
-      };
-      addItem = jest.fn();
-    });
 
     it('should trigger add item', () => {
-      props = {
-        onAddItem: addItem,
-        tooltipContent: TOOLTIP_CONTENT
-      };
       driver = createDriver(<AddItem {...props}/>);
       driver.click();
       expect(addItem).toBeCalled();
@@ -43,19 +40,16 @@ describe('AddItem', () => {
   describe('height and width', () => {
 
     it('should be added to style attribute when item is not present', () => {
-      props = {
-        tooltipContent: TOOLTIP_CONTENT,
-        width: 300,
-        height: 300
-      };
       driver = createDriver(<AddItem {...props}/>);
-      expect(driver.getContainerStyles()).toEqual('width: 300px; height: 300px;');
+      expect(driver.getHeight()).toEqual('400px');
+      expect(driver.getWidth()).toEqual('300px');
     });
 
     it('should not add style attribute when width and height props are not passed', () => {
       props = {};
       driver = createDriver(<AddItem {...props}/>);
-      expect(driver.getContainerStyles()).toEqual(null);
+      expect(driver.getHeight()).toEqual('');
+      expect(driver.getWidth()).toEqual('');
     });
 
   });
@@ -63,11 +57,6 @@ describe('AddItem', () => {
   describe('hide or show add item', () => {
 
     it('should have an Add item tooltip', () => {
-      props = {
-        tooltipContent: TOOLTIP_CONTENT,
-        width: 300,
-        height: 300
-      };
       driver = createDriver(<AddItem {...props}/>);
       const TooltipDriver = driver.getTooltipDriver();
       TooltipDriver.mouseEnter();
