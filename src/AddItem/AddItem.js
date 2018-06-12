@@ -23,8 +23,7 @@ class AddItem extends WixComponent {
       theme: 'dark',
       hideDelay: 0,
       align: 'center',
-      placement: 'top',
-      moveBy: {x: 2, y: 0}
+      placement: 'top'
     };
 
     return (
