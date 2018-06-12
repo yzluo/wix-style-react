@@ -17,7 +17,6 @@ describe('ImageViewer', () => {
   const updateImage = jest.fn();
   const removeImage = jest.fn();
 
-
   describe('when default scenario', () => {
     beforeEach(() => {
       props = {
@@ -156,7 +155,6 @@ describe('ImageViewer', () => {
     });
 
   });
-
 
   describe('testkit', () => {
     it('should exist', () => {
