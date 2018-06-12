@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import omit from 'lodash/omit';
-
 import Ticker from './Ticker';
 import Unit from './Unit';
 import Group from './Group';
@@ -42,7 +40,7 @@ class Input extends Component {
     this.isComposing = isComposing;
   };
 
-  render(props = {}) {
+  render() {
     const {
       id,
       name,
@@ -129,7 +127,6 @@ class Input extends Component {
         onCompositionStart={() => this.onCompositionChange(true)}
         onCompositionEnd={() => this.onCompositionChange(false)}
         {...ariaAttribute}
-        {...omit(props, 'className')}
         />);
 
     //needs additional wrapper with class .prefixSuffixWrapper to fix inputs with prefix in ie11
@@ -312,7 +309,7 @@ Input.propTypes = {
   /** Displays clear button (X) on a non-empty input */
   clearButton: PropTypes.bool,
 
-  /** A single CSS class name to be appended to ther Input's wrapper element. */
+  /** A single CSS class name to be appended to the Input's wrapper element. */
   className: PropTypes.string,
 
   name: PropTypes.string,

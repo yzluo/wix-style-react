@@ -632,7 +632,6 @@ describe('DatePicker', () => {
     });
   });
 
-
   describe('testkit', () => {
     it('should exist', () => {
       const div = document.createElement('div');

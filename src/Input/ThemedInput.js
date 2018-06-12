@@ -34,16 +34,10 @@ class ThemedInput extends Input {
       [styles.hasFocus]: forceFocus || this.state.focus,
       [styles.roundInput]: roundInput,
       [styles.hasValue]: (value && value.length) || (this.input && !!this.input.value),
-      [styles.noRightBorderRadius]: noRightBorderRadius === true, // assert boolean type
-      [styles.noLeftBorderRadius]: noLeftBorderRadius === true, // assert boolean type
-      /* Adding [noRightBorderRadius] and [noLeftBorderRadius] as a string className, is a hack for backward compatibility with
-       * a bug that existed in WSR version <= 4.1.0. This should be removed in version 5.x.x.
-       */
-      [noRightBorderRadius]: typeof noRightBorderRadius === 'string',
-      [noLeftBorderRadius]: typeof noLeftBorderRadius === 'string'
+      [styles.noRightBorderRadius]: noRightBorderRadius,
+      [styles.noLeftBorderRadius]: noLeftBorderRadius
     };
 
-    const placeholder = this.props.placeholder;
     return (
       <div
         className={classNames(classes, styles.root, styles[`theme-${theme}`], styles[`size-${size}${withSelection ? '-with-selection' : ''}`], className)}
@@ -51,7 +45,7 @@ class ThemedInput extends Input {
         >
         {(theme === 'amaterial') &&
         <label className={classNames(styles.materialTitle, Typography.t1_1)} htmlFor={id}>{title}</label>}
-        {super.render({placeholder})}
+        {super.render()}
         {(theme === 'material') && <div className={`${styles.bar} ${styles.barBlack}`}/>}
         {(theme === 'amaterial') && <div className={`${styles.bar} ${styles.barBlue}`}/>}
       </div>

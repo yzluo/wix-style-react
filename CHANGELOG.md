@@ -12,6 +12,10 @@ Types of changes:
 1. **Security** in case of vulnerabilities.
 1. **Breaking** for breaking changes
 
+## 5.0.0
+### Breaking
+- `<Input/>` fix noRightBorderRadius [#1799](https://github.com/wix/wix-style-react/pull/1799/files#diff-ebb6a9e9734dbf6d9ca8709a429cdc36). See MIGRATION.ms under the `src/Input` folder.
+
 ## next
 
 ## 4.1.2 - 2018-06-12
@@ -33,6 +37,8 @@ Types of changes:
 - `<ImageViewer>` align buttons [#1781](https://github.com/wix/wix-style-react/pull/1781/files#diff-48c04422f656c8c0c6302f9b6db9b0ff)
 
 ## 4.1.0 - 2018-06-06
+
+## 4.0.1 - 2018-06-05
 ### Fixed
 - `<Input/>` - display error icon and dropdown arrow [#1769](https://github.com/wix/wix-style-react/pull/1769)
 - `<Search/>` - keep the focus after pressing clear button [#1764](https://github.com/wix/wix-style-react/pull/1764)
