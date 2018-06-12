@@ -12,14 +12,11 @@ describe('AddItem', () => {
   const TOOLTIP_CONTENT = 'BLA BLA';
   const createDriver = createDriverFactory(addItemDriverFactory);
   let props, driver;
-  const addItem = jest.fn();
+  let addItem;
 
 
   beforeEach(() => {
     document.body.innerHTML = '';
-    props = {
-      tooltipContent: TOOLTIP_CONTENT
-    };
   });
 
   describe('when default scenario', () => {
@@ -28,7 +25,7 @@ describe('AddItem', () => {
         onAddItem: addItem,
         tooltipContent: TOOLTIP_CONTENT
       };
-      driver = createDriver(<AddItem {...props}/>);
+      addItem = jest.fn();
     });
 
     it('should trigger add item', () => {
@@ -56,6 +53,7 @@ describe('AddItem', () => {
     });
 
     it('should not add style attribute when width and height props are not passed', () => {
+      props = {};
       driver = createDriver(<AddItem {...props}/>);
       expect(driver.getContainerStyles()).toEqual(null);
     });
@@ -97,13 +95,13 @@ describe('AddItem', () => {
 
   describe('testkit', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<AddItem {...props}/>, addItemTestkitFactory)).toBeTruthy();
+      expect(isTestkitExists(<AddItem/>, addItemTestkitFactory)).toBeTruthy();
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<AddItem {...props}/>, enzymeAddItemTestkitFactory, mount)).toBeTruthy();
+      expect(isEnzymeTestkitExists(<AddItem/>, enzymeAddItemTestkitFactory, mount)).toBeTruthy();
     });
   });
 
