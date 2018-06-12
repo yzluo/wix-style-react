@@ -6,6 +6,9 @@ export {getStoryUrl, waitForVisibilityOf, scrollToElement} from '../src/test-com
 import inputDriverFactory from '../src/Input/Input.protractor.driver';
 export const inputTestkitFactory = protractorTestkitFactoryCreator(inputDriverFactory);
 
+import addItemDriverFactory from '../src/AddItem/AddItem.protractor.driver';
+export const addItemTestkitFactory = protractorTestkitFactoryCreator(addItemDriverFactory);
+
 import richTextAreaDriverFactory from '../src/RichTextArea/RichTextArea.protractor.driver';
 export const richTextAreaTestkitFactory = protractorTestkitFactoryCreator(richTextAreaDriverFactory);
 

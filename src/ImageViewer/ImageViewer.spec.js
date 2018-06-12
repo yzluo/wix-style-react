@@ -17,7 +17,6 @@ describe('ImageViewer', () => {
   const updateImage = jest.fn();
   const removeImage = jest.fn();
 
-
   describe('when default scenario', () => {
     beforeEach(() => {
       props = {
@@ -97,7 +96,7 @@ describe('ImageViewer', () => {
   });
   describe('hide or show add image', () => {
 
-    it('should display AddItem component if image exists', () => {
+    it('should not display AddItem component if image exists', () => {
 
       props = {
         imageUrl: IMAGE_URL
@@ -107,7 +106,7 @@ describe('ImageViewer', () => {
       expect(driver.isAddItemVisible()).toBeFalsy();
     });
 
-    it('should not display AddItem component if image dosnt exists', () => {
+    it('should display AddItem component if image dosnt exists', () => {
 
       props = {
         imageUrl: ''
@@ -156,7 +155,6 @@ describe('ImageViewer', () => {
     });
 
   });
-
 
   describe('testkit', () => {
     it('should exist', () => {

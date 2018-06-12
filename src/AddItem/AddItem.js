@@ -10,24 +10,25 @@ class AddItem extends WixComponent {
 
   render() {
 
-    const {
+    let {
       onAddItem,
       height,
       tooltipContent,
       aspectRatio
     } = this.props;
 
+    tooltipContent = tooltipContent || '';
+
     const tooltipCommonProps = {
       showDelay: 0,
       theme: 'dark',
       hideDelay: 0,
       align: 'center',
-      placement: 'top',
-      moveBy: {x: 2, y: 0}
+      placement: 'top'
     };
     let ratio;
 
-    if (!height){
+    if (!height) {
       switch (aspectRatio) {
         case '16/9':
           ratio = style.ratio16x9;
@@ -63,7 +64,7 @@ AddItem.propTypes = {
   onAddItem: PropTypes.func,
   width: PropTypes.number,
   height: PropTypes.number,
-  tooltipContent: PropTypes.string.isRequired
+  tooltipContent: PropTypes.string
 };
 
 export default AddItem;

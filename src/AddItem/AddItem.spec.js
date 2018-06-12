@@ -1,25 +1,22 @@
 import React from 'react';
 import {createDriverFactory, resolveIn} from '../test-common';
-import {addItemTestkitFactory, tooltipTestkitFactory} from '../../testkit';
+import {addItemTestkitFactory} from '../../testkit';
 import {addItemTestkitFactory as enzymeAddItemTestkitFactory} from '../../testkit/enzyme';
-import {mount} from 'enzyme';
-import ReactTestUtils from 'react-dom/test-utils';
 import AddItem from './AddItem';
 import addItemDriverFactory from './AddItem.driver';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {mount} from 'enzyme';
 
 describe('AddItem', () => {
 
   const TOOLTIP_CONTENT = 'BLA BLA';
   const createDriver = createDriverFactory(addItemDriverFactory);
   let props, driver;
-  const addItem = jest.fn();
+  let addItem;
 
 
   beforeEach(() => {
     document.body.innerHTML = '';
-    props = {
-      tooltipContent: TOOLTIP_CONTENT
-    };
   });
 
   describe('when default scenario', () => {
@@ -28,7 +25,7 @@ describe('AddItem', () => {
         onAddItem: addItem,
         tooltipContent: TOOLTIP_CONTENT
       };
-      driver = createDriver(<AddItem {...props}/>);
+      addItem = jest.fn();
     });
 
     it('should trigger add item', () => {
@@ -37,7 +34,7 @@ describe('AddItem', () => {
         tooltipContent: TOOLTIP_CONTENT
       };
       driver = createDriver(<AddItem {...props}/>);
-      driver.clickAdd();
+      driver.click();
       expect(addItem).toBeCalled();
     });
 
@@ -70,19 +67,20 @@ describe('AddItem', () => {
         height: 300
       };
       driver = createDriver(<AddItem {...props}/>);
-      expect(driver.getContainerStyles()).toEqual('height: 300px');
+      expect(driver.getContainerStyles()).toEqual('height: 300px;');
     });
-
-    
 
   });
 
   describe('hide or show add item', () => {
 
     it('should have an Add item tooltip', () => {
+      props = {
+        tooltipContent: TOOLTIP_CONTENT,
+        height: 300
+      };
       driver = createDriver(<AddItem {...props}/>);
-      const wrapper = driver.getElement();
-      const TooltipDriver = tooltipTestkitFactory({wrapper, dataHook: 'add-tooltip'});
+      const TooltipDriver = driver.getTooltipDriver();
       TooltipDriver.mouseEnter();
       return resolveIn(50)
         .then(() => {
@@ -91,24 +89,28 @@ describe('AddItem', () => {
         });
     });
 
+    it('should not have an Add item tooltip', () => {
+      props = { };
+      driver = createDriver(<AddItem {...props}/>);
+      const TooltipDriver = driver.getTooltipDriver();
+      TooltipDriver.mouseEnter();
+      return resolveIn(50)
+        .then(() => {
+          expect(TooltipDriver.isShown()).toBeFalsy();
+        });
+    });
+
   });
 
   describe('testkit', () => {
     it('should exist', () => {
-      const div = document.createElement('div');
-      const dataHook = 'myDataHook';
-      const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(<div><AddItem {...props} dataHook={dataHook}/></div>));
-      const addItemTestkit = addItemTestkitFactory({wrapper, dataHook});
-      expect(addItemTestkit.exists()).toBeTruthy();
+      expect(isTestkitExists(<AddItem/>, addItemTestkitFactory)).toBeTruthy();
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      const dataHook = 'myDataHook';
-      const wrapper = mount(<AddItem {...props} dataHook={dataHook}/>);
-      const addItemTestkit = enzymeAddItemTestkitFactory({wrapper, dataHook});
-      expect(addItemTestkit.exists()).toBeTruthy();
+      expect(isEnzymeTestkitExists(<AddItem/>, enzymeAddItemTestkitFactory, mount)).toBeTruthy();
     });
   });
 

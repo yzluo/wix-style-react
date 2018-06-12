@@ -1,8 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {tooltipTestkitFactory} from '../../testkit';
 
-const addItemDriverFactory = ({component, wrapper, element}) => {
+const addItemDriverFactory = ({wrapper, element}) => {
 
   const byHook = dataHook =>
     element.querySelector(`[data-hook="${dataHook}"]`);
@@ -16,12 +15,9 @@ const addItemDriverFactory = ({component, wrapper, element}) => {
     getContainerClasses: () => element.getAttribute('class'),
     isAddButtonVisible: () => !!addImageButton(),
     isAddTooltipVisible: () => !!addTooltip(),
-    clickAdd: () => ReactTestUtils.Simulate.click(addImageButton()),
-    exists: () => !!element,
-    setProps: props => {
-      const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
-      ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);
-    }
+    click: () => ReactTestUtils.Simulate.click(addImageButton()),
+    getTooltipDriver: () => tooltipTestkitFactory({wrapper, dataHook: 'add-tooltip'}),
+    exists: () => !!element
   };
 };
 

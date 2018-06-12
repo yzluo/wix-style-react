@@ -40,7 +40,7 @@ import '../stories/Search.story.js'; // 3.9 Search
 import '../stories/ImageViewer'; // 3.10 ImageViewer
 import '../stories/FilePicker'; // 3.10 + FilePicker
 import '../stories/GoogleAddressInput'; // 3.11 GoogleAddressInput
-import '../stories/AddItem'; // 3.12 AddItem
+import '../stories/AddItem/addItem.story.js'; // 3.12 AddItem
 
 // 4. Selection
 import '../stories/Dropdown'; // 4.1 Dropdown
