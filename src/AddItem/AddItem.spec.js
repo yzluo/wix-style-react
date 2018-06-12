@@ -1,6 +1,6 @@
 import React from 'react';
 import {createDriverFactory, resolveIn} from '../test-common';
-import {addItemTestkitFactory, tooltipTestkitFactory} from '../../testkit';
+import {addItemTestkitFactory} from '../../testkit';
 import {addItemTestkitFactory as enzymeAddItemTestkitFactory} from '../../testkit/enzyme';
 import AddItem from './AddItem';
 import addItemDriverFactory from './AddItem.driver';
@@ -69,8 +69,7 @@ describe('AddItem', () => {
         height: 300
       };
       driver = createDriver(<AddItem {...props}/>);
-      const wrapper = driver.getElement();
-      const TooltipDriver = tooltipTestkitFactory({wrapper, dataHook: 'add-tooltip'});
+      const TooltipDriver = driver.getTooltipDriver();
       TooltipDriver.mouseEnter();
       return resolveIn(50)
         .then(() => {
@@ -82,8 +81,7 @@ describe('AddItem', () => {
     it('should not have an Add item tooltip', () => {
       props = { };
       driver = createDriver(<AddItem {...props}/>);
-      const wrapper = driver.getElement();
-      const TooltipDriver = tooltipTestkitFactory({wrapper, dataHook: 'add-tooltip'});
+      const TooltipDriver = driver.getTooltipDriver();
       TooltipDriver.mouseEnter();
       return resolveIn(50)
         .then(() => {
