@@ -41,9 +41,13 @@ class AddItem extends WixComponent {
 }
 
 AddItem.propTypes = {
+  /** Callback function for adding an item */
   onClick: PropTypes.func,
+  /** Width in pixels */
   width: PropTypes.number,
+  /** Height in pixels */
   height: PropTypes.number,
+  /** Content of the tooltip */
   tooltipContent: PropTypes.string
 };
 
