@@ -62,7 +62,7 @@ class AddItem extends WixComponent {
 
 AddItem.propTypes = {
   onAddItem: PropTypes.func,
-  aspectRatio: PropTypes.string,
+  aspectRatio: PropTypes.oneOf(['3/4','16/9']),
   height: PropTypes.number,
   tooltipContent: PropTypes.string
 };
