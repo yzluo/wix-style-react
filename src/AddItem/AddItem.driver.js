@@ -1,5 +1,5 @@
 import ReactTestUtils from 'react-dom/test-utils';
-import {tooltipTestkitFactory} from '../../testkit';
+import tooltipDriverFactory from '../Tooltip/Tooltip.driver';
 
 const addItemDriverFactory = ({wrapper, element}) => {
 
@@ -23,7 +23,7 @@ const addItemDriverFactory = ({wrapper, element}) => {
     /** click the add button */
     click: () => ReactTestUtils.Simulate.click(addImageButton()),
     /** get the Tooltip's driver */
-    getTooltipDriver: () => tooltipTestkitFactory({wrapper, dataHook: 'add-tooltip'}),
+    getTooltipDriver: () => tooltipDriverFactory({wrapper, element: addTooltip()}),
     exists: () => !!element
   };
 };

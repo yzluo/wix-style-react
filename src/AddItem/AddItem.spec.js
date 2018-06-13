@@ -68,8 +68,7 @@ describe('AddItem', () => {
     });
 
     it('should not have an Add item tooltip', () => {
-      props = { };
-      driver = createDriver(<AddItem {...props}/>);
+      driver = createDriver(<AddItem/>);
       const TooltipDriver = driver.getTooltipDriver();
       TooltipDriver.mouseEnter();
       return resolveIn(50)
