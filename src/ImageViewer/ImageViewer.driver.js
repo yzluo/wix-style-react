@@ -13,7 +13,7 @@ const imageViewerDriverFactory = ({component, wrapper, element}) => {
   const errorIcon = () => byHook('error-tooltip');
   const addItem = () => byHook(addItemDataHook);
   const addItemDriver = addItemDriverFactory({wrapper, element});
-  
+
   return {
     getAddItemDataHook: () => addItemDataHook,
     getElement: () => element,
