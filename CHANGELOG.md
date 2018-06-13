@@ -14,9 +14,17 @@ Types of changes:
 
 ## next
 
+## 4.1.3 - 2018-06-12
+### Fixed
+- `<TextLink/>` - Updated disabled property behaciour [#1798](https://github.com/wix/wix-style-react/pull/1798)
+
+### Added
+- `<DataTable>` - Add info icon with tooltip to table header [#1770](https://github.com/wix/wix-style-react/pull/1770)
+
 ## 4.1.2 - 2018-06-12
 ### Added
 - `<RichTextArea/>` - add a flag to generate absolute paths url links [#1746](https://github.com/wix/wix-style-react/pull/1746)
+- `<DataTable/>` - add info icon with tooltip to table header [#1770](https://github.com/wix/wix-style-react/pull/1770)
 
 ### Fixed
 - `<TimePicker/>` - Prevent typing letters [#1751](https://github.com/wix/wix-style-react/pull/1751)

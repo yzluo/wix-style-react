@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {buttonTestkitFactory} from 'wix-style-react/dist/testkit';
+import addItemDriverFactory from '../AddItem/AddItem.driver';
 
 const imageViewerDriverFactory = ({component, wrapper, element}) => {
   const addItemDataHook = 'add-container';
@@ -11,6 +12,7 @@ const imageViewerDriverFactory = ({component, wrapper, element}) => {
   const removeImageButton = () => buttonTestkitFactory({wrapper: element, dataHook: 'remove-image'});
   const errorIcon = () => byHook('error-tooltip');
   const addItem = () => byHook(addItemDataHook);
+  const addItemDriver = addItemDriverFactory({wrapper, element});
 
   return {
     getAddItemDataHook: () => addItemDataHook,
@@ -20,6 +22,7 @@ const imageViewerDriverFactory = ({component, wrapper, element}) => {
     isAddItemVisible: () => !!addItem(),
     isImageVisible: () => !!image(),
     isErrorVisible: () => !!errorIcon(),
+    clickAdd: () => addItemDriver.click(),
     clickUpdate: () => updateImageButton().click(),
     clickRemove: () => removeImageButton().click(),
     exists: () => !!element,

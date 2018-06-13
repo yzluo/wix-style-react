@@ -11,7 +11,7 @@
 | clickAdd | - | - | click the add button |
 | exists (Only in Unit Test) | - | bool | fulfilled if element in the DOM |
 | click (Only in E2E) | - | - | click the element |
-| element (Only in E2E) | - | element | returns the driver element |
+| element | - | element | returns the driver element |
 
 ## Usage Example
 

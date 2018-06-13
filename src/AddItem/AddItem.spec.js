@@ -5,7 +5,7 @@ import {addItemTestkitFactory as enzymeAddItemTestkitFactory} from '../../testki
 import AddItem from './AddItem';
 import addItemDriverFactory from './AddItem.driver';
 import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
-import {mount} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 
 describe('AddItem', () => {
 
@@ -17,22 +17,19 @@ describe('AddItem', () => {
 
   beforeEach(() => {
     document.body.innerHTML = '';
+    addItem = jest.fn();
+    props = {
+      onClick: addItem,
+      tooltipContent: TOOLTIP_CONTENT,
+      width: 300,
+      height: 400
+    };
+
   });
 
   describe('when default scenario', () => {
-    beforeEach(() => {
-      props = {
-        onAddItem: addItem,
-        tooltipContent: TOOLTIP_CONTENT
-      };
-      addItem = jest.fn();
-    });
 
     it('should trigger add item', () => {
-      props = {
-        onAddItem: addItem,
-        tooltipContent: TOOLTIP_CONTENT
-      };
       driver = createDriver(<AddItem {...props}/>);
       driver.click();
       expect(addItem).toBeCalled();
@@ -89,15 +86,14 @@ describe('AddItem', () => {
         });
     });
 
-    it('should not have an Add item tooltip', () => {
-      props = { };
-      driver = createDriver(<AddItem {...props}/>);
-      const TooltipDriver = driver.getTooltipDriver();
-      TooltipDriver.mouseEnter();
-      return resolveIn(50)
-        .then(() => {
-          expect(TooltipDriver.isShown()).toBeFalsy();
-        });
+    it('should have an AddItem tooltip markup', () => {
+      const wrapper = shallow(<AddItem {...props}/>);
+      expect(wrapper.find('Tooltip').exists()).toBeTruthy();
+    });
+
+    it('should not have an AddItem tooltip markup', () => {
+      const wrapper = shallow(<AddItem/>);
+      expect(wrapper.find('Tooltip').exists()).toBeFalsy();
     });
 
   });

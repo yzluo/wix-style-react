@@ -6,7 +6,6 @@ import {imageViewerTestkitFactory, tooltipTestkitFactory} from '../../testkit';
 import {imageViewerTestkitFactory as enzymeImageViewerTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
 import ReactTestUtils from 'react-dom/test-utils';
-import {addItemTestkitFactory} from '../../testkit/index';
 
 describe('ImageViewer', () => {
 
@@ -48,10 +47,7 @@ describe('ImageViewer', () => {
         onAddImage: addImage
       };
       driver = createDriver(<ImageViewer {...props}/>);
-      const dataHook = driver.getAddItemDataHook();
-      const wrapper = driver.getElement();
-      const addItemDriver = addItemTestkitFactory({wrapper, dataHook});
-      addItemDriver.clickAdd();
+      driver.clickAdd();
       expect(addImage).toBeCalled();
     });
 

@@ -1,5 +1,5 @@
 import ReactTestUtils from 'react-dom/test-utils';
-import {tooltipTestkitFactory} from '../../testkit';
+import tooltipDriverFactory from '../Tooltip/Tooltip.driver';
 
 const addItemDriverFactory = ({wrapper, element}) => {
 
@@ -10,13 +10,20 @@ const addItemDriverFactory = ({wrapper, element}) => {
   const addTooltip = () => byHook('add-tooltip');
 
   return {
-    getElement: () => element,
-    getContainerStyles: () => element.getAttribute('style'),
-    getContainerClasses: () => element.getAttribute('class'),
+    /** return the driver element */
+    element: () => element,
+    /** return the element's height */
+    getHeight: () => window.getComputedStyle(element).height,
+    /** return the element's width */
+    getWidth: () => window.getComputedStyle(element).width,
+    /** return true if tooltip is visible */
     isAddButtonVisible: () => !!addImageButton(),
+    /** return true if button is visible */
     isAddTooltipVisible: () => !!addTooltip(),
+    /** click the add button */
     click: () => ReactTestUtils.Simulate.click(addImageButton()),
-    getTooltipDriver: () => tooltipTestkitFactory({wrapper, dataHook: 'add-tooltip'}),
+    /** get the Tooltip's driver */
+    getTooltipDriver: () => tooltipDriverFactory({wrapper, element: addTooltip()}),
     exists: () => !!element
   };
 };
