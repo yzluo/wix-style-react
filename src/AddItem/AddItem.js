@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './AddItem.scss';
 import Tooltip from '../Tooltip';
-import Plus2 from '../Icons/dist/components/Plus2';
+import AddMedia from 'wix-ui-icons-common/system/AddMedia';
+
 import WixComponent from '../BaseComponents/WixComponent';
 
 class AddItem extends WixComponent {
@@ -31,7 +32,7 @@ class AddItem extends WixComponent {
         <div data-hook="add-area" className={style.addLogo} onClick={onClick}>
           <Tooltip content={tooltipContent} disabled={!tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
             <div className={style.dashedBorder} >
-              <div className={style.plusIcon}><Plus2 size="47px"/></div>
+              <div className={style.plusIcon}><AddMedia size="31px"/></div>
             </div>
           </Tooltip>
         </div>
