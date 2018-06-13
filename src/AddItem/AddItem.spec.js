@@ -5,7 +5,7 @@ import {addItemTestkitFactory as enzymeAddItemTestkitFactory} from '../../testki
 import AddItem from './AddItem';
 import addItemDriverFactory from './AddItem.driver';
 import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
-import {mount} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 
 describe('AddItem', () => {
 
@@ -67,15 +67,23 @@ describe('AddItem', () => {
         });
     });
 
-    it('should not have an Add item tooltip', () => {
-      driver = createDriver(<AddItem/>);
-      const TooltipDriver = driver.getTooltipDriver();
-      TooltipDriver.mouseEnter();
-      return resolveIn(50)
-        .then(() => {
-          expect(TooltipDriver.isShown()).toBeFalsy();
-        });
+    it('should have an AddItem tooltip markup', () => {
+      const wrapper = shallow(<AddItem {...props}/>);
+      expect(wrapper.find('Tooltip').exists()).toBeTruthy();
     });
+
+    it('should not have an AddItem tooltip markup', () => {
+      const wrapper = shallow(<AddItem/>);
+      expect(wrapper.find('Tooltip').exists()).toBeFalsy();
+    });
+
+    // it('should not have an Add item tooltip', () => {
+    //   const wrapper = shallow(<AddItem/>);
+    //   expect(wrapper.find('<Tooltip/>').exists()).toBeFalsey();
+    //   driver = createDriver(<AddItem/>);
+    //   const TooltipDriver = driver.getTooltipDriver();
+    //   expect(TooltipDriver.exists()).toBeFalsey();
+    // });
 
   });
 

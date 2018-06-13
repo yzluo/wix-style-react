@@ -6,35 +6,39 @@ import AddMedia from 'wix-ui-icons-common/system/AddMedia';
 
 import WixComponent from '../BaseComponents/WixComponent';
 
+const tooltipCommonProps = {
+  showDelay: 0,
+  theme: 'dark',
+  hideDelay: 0,
+  align: 'center',
+  placement: 'top'
+};
+
+const renderInnerAddItem = () => (
+  <div className={style.dashedBorder} >
+    <div className={style.plusIcon}><AddMedia size="31px"/></div>
+  </div>
+);
+
 class AddItem extends WixComponent {
-
   render() {
-
-    let {
+    const {
       onClick,
       width,
       height,
       tooltipContent
     } = this.props;
 
-    tooltipContent = tooltipContent || '';
-
-    const tooltipCommonProps = {
-      showDelay: 0,
-      theme: 'dark',
-      hideDelay: 0,
-      align: 'center',
-      placement: 'top'
-    };
-
     return (
       <div className={style.container} style={{width, height}} data-hook="add-container">
         <div data-hook="add-area" className={style.addLogo} onClick={onClick}>
-          <Tooltip content={tooltipContent} disabled={!tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
-            <div className={style.dashedBorder} >
-              <div className={style.plusIcon}><AddMedia size="31px"/></div>
-            </div>
-          </Tooltip>
+          {
+            tooltipContent ?
+              <Tooltip content={tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
+                {renderInnerAddItem()}
+              </Tooltip> :
+              renderInnerAddItem()
+          }
         </div>
       </div>
     );
