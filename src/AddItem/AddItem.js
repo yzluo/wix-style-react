@@ -15,6 +15,13 @@ const tooltipCommonProps = {
   placement: 'top'
 };
 
+const ratioClasses = {
+  '16/9': style.ratio16x9,
+  '3/4': style.ratio3x4,
+  '4/3': style.ratio4x3,
+  default: style.ratio1x1
+};
+
 const renderInnerAddItem = () => (
   <div className={style.dashedBorder} >
     <div className={style.plusIcon}><AddMedia size="31px"/></div>
@@ -30,24 +37,8 @@ class AddItem extends WixComponent {
       aspectRatio
     } = this.props;
 
-    let ratio;
+    const ratio = height && ratioClasses[aspectRatio] ? ratioClasses[aspectRatio] : ratioClasses.default;
 
-    if (!height) {
-      switch (aspectRatio) {
-        case '16/9':
-          ratio = style.ratio16x9;
-          break;
-        case '3/4':
-          ratio = style.ratio3x4;
-          break;
-        case '4/3':
-          ratio = style.ratio4x3;
-          break;
-        default:
-          ratio = style.ratio1x1;
-          break;
-      }
-    }
     return (
       <div className={classNames(ratio, style.box)} style={{height}} >
         <div className={classNames(style.content, style.container)} data-hook="add-container">
@@ -67,8 +58,11 @@ class AddItem extends WixComponent {
 }
 
 AddItem.propTypes = {
+  /** Funciton called upon click */
   onClick: PropTypes.func,
+  /** The elemnt's asspect ratio   */
   aspectRatio: PropTypes.oneOf(['3/4', '4/3', '1/1', '16/9']),
+  /** Element's height - overrides the asspect ratio */
   height: PropTypes.number,
   /** Content of the tooltip */
   tooltipContent: PropTypes.string
