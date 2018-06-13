@@ -19,7 +19,7 @@ describe('AddItem', () => {
     document.body.innerHTML = '';
     addItem = jest.fn();
     props = {
-      onAddItem: addItem,
+      onClick: addItem,
       tooltipContent: TOOLTIP_CONTENT,
       width: 300,
       height: 400
