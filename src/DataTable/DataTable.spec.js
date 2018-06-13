@@ -365,6 +365,23 @@ describe('Table', () => {
       expect(_props.onSortClick).not.toHaveBeenCalled();
     });
   });
+
+  describe('Tooltip titles', () => {
+    it('should display tooltip icon', () => {
+      const props = {
+        ...defaultProps,
+        columns: [
+          {title: 'Row Num', render: (row, rowNum) => rowNum},
+          {title: 'A', infoTooltip: {content: 'Vary informative tooltip text'}, render: row => row.a},
+          {title: 'B', render: row => row.b}
+        ]
+      };
+      const driver = createDriver(<DataTable {...props}/>);
+      expect(driver.hasInfoIcon(0)).toBe(false);
+      expect(driver.hasInfoIcon(1)).toBe(true);
+    });
+  });
+
   describe('testkit', () => {
     it('should exist', () => {
       const div = document.createElement('div');
