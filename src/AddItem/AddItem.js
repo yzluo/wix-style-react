@@ -21,13 +21,10 @@ const renderInnerAddItem = () => (
   </div>
 );
 
-  
 class AddItem extends WixComponent {
   render() {
-    
     const {
       onClick,
-      width,
       height,
       tooltipContent,
       aspectRatio
@@ -41,21 +38,21 @@ class AddItem extends WixComponent {
           ratio = style.ratio16x9;
           break;
         case '3/4':
-          ratio = style.ratio2x1;
+          ratio = style.ratio3x4;
           break;
         case '4/3':
-          ratio = style.ratio3x1;
+          ratio = style.ratio4x3;
           break;
         default:
           ratio = style.ratio1x1;
           break;
       }
-  }
+    }
     return (
       <div className={classNames(ratio, style.box)} style={{height}} >
         <div className={classNames(style.content, style.container)} data-hook="add-container">
-          <div data-hook="add-area" className={style.addLogo} onClick={onAddItem}>
-          {
+          <div data-hook="add-area" className={style.addLogo} onClick={onClick}>
+            {
             tooltipContent ?
               <Tooltip content={tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
                 {renderInnerAddItem()}
@@ -71,7 +68,7 @@ class AddItem extends WixComponent {
 
 AddItem.propTypes = {
   onClick: PropTypes.func,
-  aspectRatio: PropTypes.oneOf(['3/4','16/9']),
+  aspectRatio: PropTypes.oneOf(['3/4', '4/3', '1/1', '16/9']),
   height: PropTypes.number,
   /** Content of the tooltip */
   tooltipContent: PropTypes.string
