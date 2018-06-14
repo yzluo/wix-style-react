@@ -42,7 +42,7 @@ describe('AddItem', () => {
         aspectRatio: '16/9'
       };
       driver = createDriver(<AddItem {...props}/>);
-      expect(driver.getContainerClasses()).toContain('ratio16x9');
+      expect(driver.getRadio()).toEqual('ratio16x9');
     });
 
     it('should have default asspect ratio 1x1', () => {
