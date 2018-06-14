@@ -35,7 +35,7 @@ class ImageViewer extends WixComponent {
     return (
       <div className={classes} style={{width, height}} data-hook="image-container">
         {!imageUrl &&
-        <AddItem data-hook="add-image" tooltipContent="Add Image" style={{width, height}} onClick={onAddImage}/>
+        <AddItem data-hook="add-image" tooltipContent="Add Image" height={height} onClick={onAddImage}/>
         }
         {!!imageUrl &&
         <div className={style.changeLogoContainer}>

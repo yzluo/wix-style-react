@@ -21,6 +21,9 @@
 }
 
 .box{
+  width: 100%;
+  height: 100%;
+  
   &.ratio16x9{
     @include aspect-ratio(16, 9);
   }
