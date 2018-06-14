@@ -40,7 +40,7 @@ class AddItem extends WixComponent {
     const ratio = !height && ratioClasses[aspectRatio] ? ratioClasses[aspectRatio] : ratioClasses[defaultRatio];
     return (
       <div className={classNames(ratio, style.box)} style={{height}} >
-        <div className={classNames(style.content, style.container)} data-hook="add-container">
+        <div className={style.container} data-hook="add-container">
           <div data-hook="add-area" className={style.addLogo} onClick={onClick}>
             {
             tooltipContent ?
