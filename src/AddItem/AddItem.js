@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import style from './AddItem.scss';
 import Tooltip from '../Tooltip';
 import AddMedia from 'wix-ui-icons-common/system/AddMedia';
-
 import WixComponent from '../BaseComponents/WixComponent';
 import classNames from 'classnames';
 
@@ -19,8 +18,10 @@ const ratioClasses = {
   '16/9': style.ratio16x9,
   '3/4': style.ratio3x4,
   '4/3': style.ratio4x3,
-  default: style.ratio1x1
+  '1/1': style.ratio1x1
 };
+
+const defaultRatio = '1/1';
 
 const renderInnerAddItem = () => (
   <div className={style.dashedBorder} >
@@ -37,7 +38,7 @@ class AddItem extends WixComponent {
       aspectRatio
     } = this.props;
 
-    const ratio = height && ratioClasses[aspectRatio] ? ratioClasses[aspectRatio] : ratioClasses.default;
+    const ratio = height && ratioClasses[aspectRatio] ? ratioClasses[aspectRatio] : ratioClasses[defaultRatio];
 
     return (
       <div className={classNames(ratio, style.box)} style={{height}} >
@@ -61,7 +62,7 @@ AddItem.propTypes = {
   /** Funciton called upon click */
   onClick: PropTypes.func,
   /** The elemnt's asspect ratio   */
-  aspectRatio: PropTypes.oneOf(['3/4', '4/3', '1/1', '16/9']),
+  aspectRatio: PropTypes.oneOf(Object.keys(ratioClasses)),
   /** Element's height - overrides the asspect ratio */
   height: PropTypes.number,
   /** Content of the tooltip */
