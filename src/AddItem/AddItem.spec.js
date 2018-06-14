@@ -42,12 +42,12 @@ describe('AddItem', () => {
         aspectRatio: '16/9'
       };
       driver = createDriver(<AddItem {...props}/>);
-      expect(driver.getRadio()).toEqual('ratio16x9');
+      expect(driver.getRadio()).toEqual('16x9');
     });
 
     it('should have default asspect ratio 1x1', () => {
       driver = createDriver(<AddItem/>);
-      expect(driver.getRadio()).toEqual('ratio1x1');
+      expect(driver.getRadio()).toEqual('1x1');
     });
 
     it('should ignore asspect ratio from props when height is given', () => {

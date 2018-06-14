@@ -14,7 +14,7 @@ const addItemDriverFactory = ({wrapper, element}) => {
     /** return the element ratio class */
     getRadio: () => {
       const result = element.getAttribute('class').match(ratioRegex);
-      return result ? result[0] : '';
+      return result ? result[0].replace('ratio', '') : '';
     },
     /** return the element's height */
     getHeight: () => window.getComputedStyle(element).height,
