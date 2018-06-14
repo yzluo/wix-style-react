@@ -13,6 +13,8 @@ const addItemDriverFactory = ({wrapper, element}) => {
     /** return the driver element */
     element: () => element,
     /** return the element's height */
+    getContainerClasses: () => window.getComputedStyle(element).height,
+    /** return the element's height */
     getHeight: () => window.getComputedStyle(element).height,
     /** return the element's width */
     getWidth: () => window.getComputedStyle(element).width,

@@ -45,7 +45,6 @@ describe('AddItem', () => {
         aspectRatio: '16/9'
       };
       driver = createDriver(<AddItem {...props}/>);
-      console.log('classes:', driver.getContainerStyles());
       expect(driver.getContainerClasses()).toContain('ratio16x9');
     });
 
@@ -64,7 +63,7 @@ describe('AddItem', () => {
         height: 300
       };
       driver = createDriver(<AddItem {...props}/>);
-      expect(driver.getContainerStyles()).toEqual('height: 300px;');
+      expect(driver.getHeight()).toEqual('300px');
     });
 
   });
