@@ -20,9 +20,7 @@ describe('AddItem', () => {
     addItem = jest.fn();
     props = {
       onClick: addItem,
-      tooltipContent: TOOLTIP_CONTENT,
-      width: 300,
-      height: 400
+      tooltipContent: TOOLTIP_CONTENT
     };
 
   });
@@ -41,7 +39,6 @@ describe('AddItem', () => {
 
     it('should be use asspect ratio from props', () => {
       props = {
-        tooltipContent: TOOLTIP_CONTENT,
         aspectRatio: '16/9'
       };
       driver = createDriver(<AddItem {...props}/>);
@@ -49,16 +46,12 @@ describe('AddItem', () => {
     });
 
     it('should have default asspect ratio 1x1', () => {
-      props = {
-        tooltipContent: TOOLTIP_CONTENT
-      };
-      driver = createDriver(<AddItem {...props}/>);
+      driver = createDriver(<AddItem/>);
       expect(driver.getContainerClasses()).toContain('ratio1x1');
     });
 
     it('should be ignore asspect ratio from props when height is given', () => {
       props = {
-        tooltipContent: TOOLTIP_CONTENT,
         aspectRatio: '16/9',
         height: 300
       };
@@ -70,11 +63,7 @@ describe('AddItem', () => {
 
   describe('hide or show add item', () => {
 
-    it('should have an Add item tooltip', () => {
-      props = {
-        tooltipContent: TOOLTIP_CONTENT,
-        height: 300
-      };
+    it('should have an tooltip with given content', () => {
       driver = createDriver(<AddItem {...props}/>);
       const TooltipDriver = driver.getTooltipDriver();
       TooltipDriver.mouseEnter();
