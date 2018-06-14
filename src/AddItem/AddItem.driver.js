@@ -4,10 +4,7 @@ import tooltipDriverFactory from '../Tooltip/Tooltip.driver';
 const addItemDriverFactory = ({wrapper, element}) => {
 
   const ratioRegex = /ratio\d+x\d+/;
-
-  const byHook = dataHook =>
-    element.querySelector(`[data-hook="${dataHook}"]`);
-
+  const byHook = dataHook => element.querySelector(`[data-hook="${dataHook}"]`);
   const addButton = () => byHook('add-container');
   const addTooltip = () => byHook('add-tooltip');
 
