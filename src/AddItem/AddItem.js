@@ -37,9 +37,7 @@ class AddItem extends WixComponent {
       tooltipContent,
       aspectRatio
     } = this.props;
-
-    const ratio = height && ratioClasses[aspectRatio] ? ratioClasses[aspectRatio] : ratioClasses[defaultRatio];
-
+    const ratio = !height && ratioClasses[aspectRatio] ? ratioClasses[aspectRatio] : ratioClasses[defaultRatio];
     return (
       <div className={classNames(ratio, style.box)} style={{height}} >
         <div className={classNames(style.content, style.container)} data-hook="add-container">
