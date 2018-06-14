@@ -21,11 +21,9 @@ const ratioClasses = {
   '1/1': style.ratio1x1
 };
 
-const defaultRatio = '1/1';
-
 const renderInnerAddItem = () => (
   <div className={style.dashedBorder} >
-    <div className={style.plusIcon}><AddMedia size="31px"/></div>
+    <AddMedia className={style.plusIcon} size="31px"/>
   </div>
 );
 
@@ -37,19 +35,17 @@ class AddItem extends WixComponent {
       tooltipContent,
       aspectRatio
     } = this.props;
-    const ratio = !height && ratioClasses[aspectRatio] ? ratioClasses[aspectRatio] : ratioClasses[defaultRatio];
+    const ratio = !height && ratioClasses[aspectRatio];
     return (
       <div className={classNames(ratio, style.box)} style={{height}} >
-        <div className={style.container} data-hook="add-container">
-          <div data-hook="add-area" className={style.addLogo} onClick={onClick}>
-            {
+        <div className={style.container} onClick={onClick} data-hook="add-container">
+          {
             tooltipContent ?
               <Tooltip content={tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
                 {renderInnerAddItem()}
               </Tooltip> :
               renderInnerAddItem()
           }
-          </div>
         </div>
       </div>
     );
@@ -65,6 +61,10 @@ AddItem.propTypes = {
   height: PropTypes.number,
   /** Content of the tooltip */
   tooltipContent: PropTypes.string
+};
+
+AddItem.defaultProps = {
+  aspectRatio: '1/1'
 };
 
 export default AddItem;

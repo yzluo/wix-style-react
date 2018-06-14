@@ -37,7 +37,7 @@ describe('AddItem', () => {
 
   describe('height and width', () => {
 
-    it('should be use asspect ratio from props', () => {
+    it('should use asspect ratio from props', () => {
       props = {
         aspectRatio: '16/9'
       };
@@ -47,10 +47,10 @@ describe('AddItem', () => {
 
     it('should have default asspect ratio 1x1', () => {
       driver = createDriver(<AddItem/>);
-      expect(driver.getContainerClasses()).toContain('ratio1x1');
+      expect(driver.getRadio()).toEqual('ratio1x1');
     });
 
-    it('should be ignore asspect ratio from props when height is given', () => {
+    it('should ignore asspect ratio from props when height is given', () => {
       props = {
         aspectRatio: '16/9',
         height: 300
@@ -63,7 +63,7 @@ describe('AddItem', () => {
 
   describe('hide or show add item', () => {
 
-    it('should have an tooltip with given content', () => {
+    it('should have a tooltip with given content', () => {
       driver = createDriver(<AddItem {...props}/>);
       const TooltipDriver = driver.getTooltipDriver();
       TooltipDriver.mouseEnter();
