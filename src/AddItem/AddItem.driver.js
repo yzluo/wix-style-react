@@ -12,7 +12,7 @@ const addItemDriverFactory = ({wrapper, element}) => {
     /** return the driver element */
     element: () => element,
     /** return the element ratio class */
-    getRadio: () => {
+    getRatio: () => {
       const result = element.getAttribute('class').match(ratioRegex);
       return result ? result[0].replace('ratio', '') : '';
     },
