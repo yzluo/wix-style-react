@@ -7,7 +7,6 @@
   border-radius: 8px;
   background-color: #eaf7ff;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -20,20 +19,20 @@
   transform: translate3d(0, 0, 0);
 }
 
-.box{
+.box {
   width: 100%;
   height: 100%;
   
-  &.ratio16x9{
+  &.ratio16x9 {
     @include aspect-ratio(16, 9);
   }
-  &.ratio4x3{
+  &.ratio4x3 {
     @include aspect-ratio(4, 3);
   }
-  &.ratio3x4{
-    @include aspect-ratio(3,4);
+  &.ratio3x4 {
+    @include aspect-ratio(3, 4);
   }
-  &.ratio1x1{
+  &.ratio1x1 {
     @include aspect-ratio(1, 1);
   }
 }
@@ -49,11 +48,7 @@
   justify-content: center;
 }
 
-
 .plus-icon {
   color: rgb(78, 183, 245);
   position: absolute;
 }
-
-
-
