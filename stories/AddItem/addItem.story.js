@@ -10,7 +10,7 @@ export default {
   componentPath: '../../src/AddItem',
 
   componentProps: () => ({
-    onAddItem: () => {},
+    onClick: () => {},
     examples: <Example/>,
     dataHook: 'storybook-addItem'
   })
