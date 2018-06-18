@@ -7,10 +7,6 @@ module.exports = (config, env, defaultConfig) => {
 
   return merge(newConfig, {
     context: path.resolve(__dirname, '../src'),
-    externals: {
-      react: 'React',
-      'react-dom': 'ReactDOM'
-    },
     resolve: {
       alias: {
         'wix-style-react': path.resolve(__dirname, '../src')
@@ -18,12 +14,13 @@ module.exports = (config, env, defaultConfig) => {
     },
     module: {
       rules: newConfig.module.rules.concat({
-        test: /\.story\.js$/,
+        test: /\.story\.[j|t]sx?$/,
         loader: 'wix-storybook-utils/loader',
         options: {
           storyConfig: {
             moduleName: 'wix-style-react',
-            repoBaseURL: 'https://github.com/wix/wix-style-react/tree/master/src/'
+            repoBaseURL: 'https://github.com/wix/wix-style-react/tree/master/src/',
+            importFormat: "import {%componentName} from '%moduleName/%componentName'"
           }
         }
       })
