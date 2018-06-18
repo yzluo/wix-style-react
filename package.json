@@ -152,10 +152,19 @@
       "<rootDir>/node_modules/babel-polyfill",
       "<rootDir>/test/jest-setup.js"
     ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
     "setupTestFrameworkScriptFile": "wix-ui-test-utils/jest-setup",
     "moduleNameMapper": {
       "\\.(?!\\st).(css|less|scss)$": "identity-obj-proxy"
     },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "testRegex": "/src/.*\\.spec\\.(t|j)(s|sx)$",
     "testPathIgnorePatterns": [
       "<rootDir>/dist/",
       "<rootDir>/node_modules/"
