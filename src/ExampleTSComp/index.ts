@@ -1,0 +1,1 @@
+export {ExampleTSComp} from './ExampleTSComp';
