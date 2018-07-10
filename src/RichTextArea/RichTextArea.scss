@@ -11,6 +11,7 @@ $paddingTop: 6px;
 $marginTop: $paddingTop;
 $paddingLeft: 12px;
 $marginLeft: $paddingLeft;
+$richTextAreaFocus: 0 0 0 2px $F00;
 
 .container {
   display: flex;
@@ -79,7 +80,7 @@ $marginLeft: $paddingLeft;
   .isEditorFocused & {
     @include FocusBox;
   }
-  
+
   .isEditorFocused.withError & {
     @include FocusBoxError;
   }
@@ -125,7 +126,7 @@ $marginLeft: $paddingLeft;
     display: flex;
     position: absolute;
     top: 6px;
-    right: 6px;
+    right: 12px;
 
     &:hover {
       background-color: $R10;
@@ -135,6 +136,7 @@ $marginLeft: $paddingLeft;
 
 .placeholder {
   @extend .t2_1;
+  color: $D40;
 }
 
 .link {
@@ -163,5 +165,5 @@ $marginLeft: $paddingLeft;
 }
 
 .activeEditorImage {
-  box-shadow: 0 0 0 2px blue;
+  box-shadow: $richTextAreaFocus;
 }

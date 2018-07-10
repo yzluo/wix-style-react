@@ -5,8 +5,11 @@ import styles from './Input.scss';
 
 const inputDriverFactory = ({element, wrapper, component}) => {
   const input = element && element.querySelector('input');
-  const clearButton = element && element.querySelector(`.${styles.clearButton}`);
+  const clearButton = element && element.querySelector(`[data-hook=input-clear-button]`);
   const suffixNode = element && element.querySelector(`.${styles.suffix}`);
+  const unitNode = element && element.querySelector(`.${styles.unit}`);
+  const magnifyingGlassNode = element && element.querySelector(`.${styles.magnifyingGlass}`);
+  const menuArrowNode = element && element.querySelector(`.${styles.menuArrow}`);
 
   const driver = {
     trigger: (trigger, event) => ReactTestUtils.Simulate[trigger](input, event),
@@ -22,6 +25,9 @@ const inputDriverFactory = ({element, wrapper, component}) => {
     click: () => ReactTestUtils.Simulate.click(input),
     clickSuffix: () => ReactTestUtils.Simulate.click(suffixNode),
     clickClear: () => ReactTestUtils.Simulate.click(clearButton),
+    clickUnit: () => ReactTestUtils.Simulate.click(unitNode),
+    clickMagnifyingGlass: () => ReactTestUtils.Simulate.click(magnifyingGlassNode),
+    clickMenuArrow: () => ReactTestUtils.Simulate.click(menuArrowNode),
     mouseOver: () => ReactTestUtils.Simulate.mouseOver(input),
     mouseOut: () => ReactTestUtils.Simulate.mouseOut(input),
     clearText: () => driver.enterText(''),
@@ -38,7 +44,6 @@ const inputDriverFactory = ({element, wrapper, component}) => {
     getAutocomplete: () => input.getAttribute('autocomplete'),
     getRequired: () => input.required,
     getType: () => input.type,
-    getWidth: () => input.style.width,
     hasPrefix: () => element.querySelectorAll(`.${styles.prefix}`).length === 1,
     hasPrefixClass: () => element.querySelectorAll(`.${styles.input}.${styles.withPrefix}`).length === 1,
     hasSuffix: () => !!suffixNode,
@@ -54,9 +59,9 @@ const inputDriverFactory = ({element, wrapper, component}) => {
     getTooltipElement: () => element,
     getTooltipDataHook: () => 'input-tooltip',
     getDataHook: () => element.getAttribute('data-hook'),
-    getUnit: () => element.querySelector(`.${styles.unit}`).textContent,
-    hasMagnifyingGlass: () => !!element.querySelector(`.${styles.magnifyingGlass}`),
-    hasMenuArrow: () => !!element.querySelector(`.${styles.menuArrow}`),
+    getUnit: () => unitNode.textContent,
+    hasMagnifyingGlass: () => !!magnifyingGlassNode,
+    hasMenuArrow: () => !!menuArrowNode,
     hasClearButton: () => !!clearButton,
     isRTL: () => element.className.indexOf(styles.rtl) >= 0,
     isFocusedStyle: () => element.classList.contains(styles.hasFocus),

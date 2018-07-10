@@ -15,12 +15,16 @@ const loaderDriverFactory = component => {
 
   return {
     element: () => component,
+    isTiny: () => hasClass(component, css, 'tiny'),
     isSmall: () => hasClass(component, css, 'small'),
     isMedium: () => hasClass(component, css, 'medium'),
     isLarge: () => hasClass(component, css, 'large'),
     getColor: () => hasClass(component, css, 'blue').then(hasClass => hasClass ? 'blue' : 'white'),
     hasText: () => textDriver.element().isPresent(),
-    getText: () => textDriver.getText()
+    getText: () => textDriver.getText(),
+    isError: () => hasClass(component, css, 'error'),
+    isSuccess: () => hasClass(component, css, 'success'),
+    isLoading: () => hasClass(component, css, 'loading')
   };
 };
 

@@ -66,3 +66,4 @@ export const resolveIn = timeout =>
     }, timeout);
   });
 
+export const findByHook = (element, hook) => element.querySelector(`[data-hook*="${hook}"]`);

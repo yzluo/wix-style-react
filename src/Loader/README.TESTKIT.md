@@ -13,7 +13,12 @@
 | isLarge  | -         | boolean        | true when using the large loader         |
 | isMedium | -         | boolean        | true when using the medium loader        |
 | isSmall  | -         | boolean        | true when using the small loader         |
+| isTiny   | -         | boolean        | true when using the tiny loader          |
 | setProps | object    | element        | returns a clone of this element with the new props from the json |
+| isLoading| -         | boolean        | true when loader is in loading status     |
+| isError  | -         | boolean        | true when loader is in error status       |
+| isSuccess| -         | boolean        | true when loader is in success status     |
+| getStatusMessage | - | string         | trigger the tooltip and returns the value of the tooltip message (async function) |
 
 ## Loader Protractor TestKit API
 
@@ -27,6 +32,10 @@
 | isLarge  | -         | boolean        | true when using the large loader         |
 | isMedium | -         | boolean        | true when using the medium loader        |
 | isSmall  | -         | boolean        | true when using the small loader         |
+| isTiny   | -         | boolean        | true when using the tiny loader          |
+| isLoading| -         | boolean        | true when loader is in loading status     |
+| isError  | -         | boolean        | true when loader is in error status       |
+| isSuccess| -         | boolean        | true when loader is in success status     |
 
 ## Usage Example
 

@@ -1,13 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import {isClassExists} from '../../test/utils';
-import Loader from './Loader';
-import {testkitFactoryCreator} from '../test-common';
+import {findByHook, resolveIn, testkitFactoryCreator} from '../test-common';
 import textDriverFactory from '../Deprecated/Text/Text.driver';
+import tooltipDriverFactory from '../Tooltip/Tooltip.driver';
 
 const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 
-const loaderDriverFactory = ({element, wrapper}) => {
+const loaderDriverFactory = ({element}) => {
   const textDriver = element && textTestkitFactory({wrapper: element, dataHook: 'loader-text'});
 
   return {
@@ -19,8 +17,18 @@ const loaderDriverFactory = ({element, wrapper}) => {
     isLarge: () => isClassExists(element, 'large'),
     isMedium: () => isClassExists(element, 'medium'),
     isSmall: () => isClassExists(element, 'small'),
-    setProps: props => {
-      ReactDOM.render(<div ref={r => element = r}><Loader {...props}/></div>, wrapper);
+    isTiny: () => isClassExists(element, 'tiny'),
+    isLoading: () => isClassExists(element, 'loading'),
+    isError: () => isClassExists(element, 'error'),
+    isSuccess: () => isClassExists(element, 'success'),
+    getStatusMessage: () => {
+      const tooltipDriver = tooltipDriverFactory({
+        element: findByHook(element, 'loader-tooltip')
+      });
+
+      tooltipDriver.mouseEnter();
+      return resolveIn(500)
+        .then(() => tooltipDriver.getContent());
     }
   };
 };

@@ -6,12 +6,21 @@
   position: fixed;
 }
 
-[data-hook="body-content"] {
-  margin-left: 200px;
+@mixin PageConteiner() {
   height: calc(100vh - 16px); // -16px account for chrome default body margin
   display: flex;
   flex-flow: column;
   min-height: 0;
+}
+
+.pageContainer {
+  @include PageConteiner;
+  margin: 0px 50px;
+}
+
+[data-hook="body-content"] {
+  @include PageConteiner;
+  margin-left: 200px;
 }
 
 [data-hook="top-bar"] {

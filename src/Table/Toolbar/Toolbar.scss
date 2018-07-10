@@ -1,0 +1,60 @@
+@import '../../common.scss';
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 21px 30px;
+  height: 78px;
+  width: 100%;
+}
+
+@mixin MarginBetween($margin: 12px) {
+  &:not(:first-child) {
+    margin-left:$margin;
+  }
+
+  &:not(:last-child) {
+    margin-right: $margin;
+  }
+}
+
+.itemGroup {
+  display: flex;
+  align-items: center;
+  
+  .positionStart {
+    justify-content: start;
+  }
+  
+  .positionEnd {
+    justify-content: end
+  }
+
+  .item {
+    &:not(.layoutButton) {
+      @include MarginBetween(12px);
+    }
+
+    &.layoutButton {
+      @include MarginBetween(0px)
+    }
+  }
+
+  .itemLabel {
+    display: flex;
+    align-items: center;
+    > * {
+      @include MarginBetween(6px);
+    }
+  }
+}
+
+.divider {
+  height: 36px;
+  width: 1px;
+  margin-left: 18px;
+  margin-right: 17px;
+  background-color: $D60
+}

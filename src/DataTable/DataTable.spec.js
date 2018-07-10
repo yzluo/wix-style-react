@@ -10,7 +10,7 @@ import {mount} from 'enzyme';
 describe('Table', () => {
   const createDriver = createDriverFactory(dataTableDriverFactory);
 
-  const defaultProps = {
+  const createDefaultProps = () => ({
     id: 'id',
     data: [{a: 'value 1', b: 'value 2'}, {a: 'value 3', b: 'value 4'}],
     columns: [
@@ -19,7 +19,8 @@ describe('Table', () => {
       {title: 'B', render: row => row.b}
     ],
     rowClass: 'class-name'
-  };
+  });
+  const defaultProps = createDefaultProps();
 
   it('should pass id prop to child', () => {
     const driver = createDriver(<DataTable {...defaultProps}/>);
@@ -156,6 +157,25 @@ describe('Table', () => {
     expect(driver.getRowsWithDataHook(rowDataHook).length).toBe(defaultProps.data.length);
   });
 
+  describe('row keys', () => {
+    const getRowKey = (wrapper, index) => wrapper.find('tbody tr[data-table-row="dataTableRow"]').at(index).key();
+
+    it('should assign data.id as row keys', () => {
+      const props = createDefaultProps();
+      props.data[0].id = '000';
+      props.data[1].id = '111';
+      const wrapper = mount(<DataTable {...props}/>);
+      expect(getRowKey(wrapper, 0)).toBe('000');
+      expect(getRowKey(wrapper, 1)).toBe('111');
+    });
+
+    it('should use rowIndex as keys', () => {
+      const wrapper = mount(<DataTable {...createDefaultProps()}/>);
+      expect(getRowKey(wrapper, 0)).toBe('0');
+      expect(getRowKey(wrapper, 1)).toBe('1');
+    });
+  });
+
   it('should assign a dynamic dataHook to rows', () => {
     const calcDataHook = (rowData, rowIndex) => `row-index-${rowIndex}-a-${rowData.a.replace(' ', '_')}`;
     const props = Object.assign({}, defaultProps, {rowDataHook: calcDataHook});
@@ -203,14 +223,14 @@ describe('Table', () => {
       title: 'c',
       render: () => 'c',
       style: {
-        padding: '1px',
+        paddingLeft: '1px',
         height: '2px',
         width: '100px'
       }
     });
     const driver = createDriver(<DataTable {...clonedProps}/>);
     expect(driver.getCellStyle(0, 3)).toEqual(jasmine.objectContaining({
-      padding: '1px',
+      'padding-left': '1px',
       height: '2px',
       width: '100px'
     }));
@@ -349,6 +369,13 @@ describe('Table', () => {
       const driver = createDriver(<DataTable {..._props}/>);
       expect(driver.hasSortDescending(1)).toBe(false);
       expect(driver.hasSortDescending(3)).toBe(true);
+    });
+
+    it('should display new sort asc/desc style', () => {
+      const _props = Object.assign({}, props, {onSortClick: jest.fn()});
+      const driver = createDriver(<DataTable {..._props} newDesign/>);
+      expect(driver.hasNewSortDescending(1)).toBe(false);
+      expect(driver.hasNewSortDescending(3)).toBe(true);
     });
 
     it('should call on sort callback', () => {

@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import s from './DataTable.scss';
+import oldStyle from './DataTable.old.scss';
+import newStyle from './DataTable.scss';
+import typography from '../Typography/Typography.scss';
 import classNames from 'classnames';
 import InfiniteScroll from './InfiniteScroll';
 import WixComponent from '../BaseComponents/WixComponent';
-import ArrowVertical from '../Icons/dist/components/ArrowVertical';
+import SortByArrowUp from '../new-icons/system/SortByArrowUp';
+import SortByArrowDown from '../new-icons/system/SortByArrowDown';
 import {Animator} from 'wix-animations';
 import InfoCircle from 'wix-ui-icons-common/InfoCircle';
 import Tooltip from '../Tooltip/Tooltip';
@@ -12,17 +15,18 @@ import omit from 'lodash/omit';
 
 export const DataTableHeader = props => (
   <div>
-    <table style={{width: props.width}} className={s.table}>
+    <table style={{width: props.width}} className={newStyle.table}>
       <TableHeader {...props}/>
     </table>
   </div>
 );
 
 DataTableHeader.propTypes = {
-  width: PropTypes.number
+  width: PropTypes.string
 };
 
 class DataTable extends WixComponent {
+
   constructor(props) {
     super(props);
     let state = {selectedRows: {}};
@@ -30,6 +34,10 @@ class DataTable extends WixComponent {
       state = {...state, ...this.createInitialScrollingState(props)};
     }
     this.state = state;
+  }
+
+  get style() {
+    return this.props.newDesign ? newStyle : oldStyle;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -52,6 +60,12 @@ class DataTable extends WixComponent {
     }
   }
 
+  shouldComponentUpdate() {
+    // DataTable extends WixComponent which is a PureComponent, but DataTable is not pure.
+    // returning true, disables the PureComponent optimization.
+    return true;
+  }
+
   createInitialScrollingState(props) {
     return {currentPage: 0, lastPage: this.calcLastPage(props)};
   }
@@ -68,7 +82,6 @@ class DataTable extends WixComponent {
       data;
 
     const table = this.renderTable(rowsToRender);
-
     if (infiniteScroll) {
       return this.wrapWithInfiniteScroll(table);
     }
@@ -95,7 +108,15 @@ class DataTable extends WixComponent {
     const style = {width: this.props.width};
     return (
       <div>
-        <table id={this.props.id} style={style} className={s.table}>
+        <table
+          id={this.props.id} style={style}
+          className={classNames(
+            this.style.table,
+            {
+              [this.style.showLastRowDivider]: this.props.showLastRowDivider
+            }
+          )}
+          >
           {!this.props.hideHeader &&
           <TableHeader {...this.props}/>}
           {this.renderBody(rowsToRender)}
@@ -138,11 +159,11 @@ class DataTable extends WixComponent {
     });
 
     if (onRowClick) {
-      rowClasses.push(s.clickableDataRow);
+      rowClasses.push(this.style.clickableDataRow);
     }
 
     if (rowDetails) {
-      rowClasses.push(s.animatedDataRow);
+      rowClasses.push(this.style.animatedDataRow);
     }
 
     if (rowDataHook) {
@@ -159,8 +180,9 @@ class DataTable extends WixComponent {
 
     optionalRowProps.className = classNames(rowClasses);
 
+    const key = rowData.id === undefined ? rowNum : rowData.id;
     const rowsToRender = [(
-      <tr data-table-row="dataTableRow" key={rowNum} {...optionalRowProps}>
+      <tr data-table-row="dataTableRow" key={key} {...optionalRowProps}>
         {this.props.columns.map((column, colNum) => this.renderCell(rowData, column, rowNum, colNum))}
       </tr>
     )];
@@ -169,13 +191,13 @@ class DataTable extends WixComponent {
       const showDetails = !!this.state.selectedRows[rowNum];
 
       rowsToRender.push(
-        <tr key={`${rowNum}_details`} className={classNames(s.rowDetails)}>
+        <tr key={`${key}_details`} className={classNames(this.style.rowDetails)}>
           <td
             data-hook={`${rowNum}_details`}
-            className={classNames(s.details, showDetails ? s.active : '')}
+            className={classNames(this.style.details, showDetails ? this.style.active : '')}
             colSpan={this.props.columns.length}
             >
-            <div className={classNames(s.rowDetailsInner)}>
+            <div className={classNames(this.style.rowDetailsInner)}>
               <Animator show={showDetails} height>
                 {rowDetails(rowData, rowNum)}
               </Animator>
@@ -189,7 +211,11 @@ class DataTable extends WixComponent {
   };
 
   renderCell = (rowData, column, rowNum, colNum) => {
-    const classes = classNames({[s.important]: column.important});
+    const classes = classNames(
+      {[typography.t1]: this.props.newDesign},
+      {[this.style.important]: column.important},
+      {[this.style.largeVerticalPadding]: this.props.rowVerticalPadding === 'large'},
+      {[this.style.mediumVerticalPadding]: this.props.rowVerticalPadding !== 'large'});
     const width = rowNum === 0 && this.props.hideHeader ? column.width : undefined;
 
     return (<td
@@ -222,6 +248,7 @@ class DataTable extends WixComponent {
 }
 
 class TableHeader extends Component {
+
   static propTypes = {
     onSortClick: PropTypes.func,
     thPadding: PropTypes.string,
@@ -231,15 +258,31 @@ class TableHeader extends Component {
     thColor: PropTypes.string,
     thOpacity: PropTypes.string,
     thLetterSpacing: PropTypes.string,
-    columns: PropTypes.array
+    thBoxShadow: PropTypes.string,
+    columns: PropTypes.array,
+    newDesign: PropTypes.bool
   };
+
+  get style() {
+    return this.props.newDesign ? newStyle : oldStyle;
+  }
 
   renderSortingArrow = (sortDescending, colNum) => {
     if (sortDescending === undefined) {
       return null;
     }
-    const sortDirectionClassName = sortDescending ? s.sortArrowAsc : s.sortArrowDesc;
-    return <span data-hook={`${colNum}_title`} className={sortDirectionClassName}><ArrowVertical/></span>;
+    if (this.props.newDesign) {
+      const Arrow = sortDescending ? SortByArrowUp : SortByArrowDown;
+      return (
+        <span
+          data-hook={`${colNum}_title`}
+          className={this.style.sortArrow}
+          >
+          <Arrow height={12} data-hook={sortDescending ? 'sort_arrow_dec' : 'sort_arrow_asc'}/>
+        </span>);
+    }
+    const sortDirectionClassName = sortDescending ? this.style.sortArrowAsc : this.style.sortArrowDesc;
+    return <span data-hook={`${colNum}_title`} className={sortDirectionClassName}><SortByArrowUp/></span>;
   };
 
   renderInfoTooltip = (tooltipProps, colNum) => {
@@ -251,11 +294,12 @@ class TableHeader extends Component {
       moveBy: {x: 2.5, y: -7}
     });
     return (
-      <div onClick={e => e.stopPropagation()}>
-        <Tooltip {..._tooltipProps}>
-          <span><InfoCircle className={s.infoIcon} size={24}/></span>
-        </Tooltip>
-      </div>);
+      <Tooltip {..._tooltipProps}>
+        <span className={this.style.infoTooltipWrapper}>
+          <InfoCircle className={this.style.infoIcon} size={24}/>
+        </span>
+      </Tooltip>
+    );
   };
 
   renderHeaderCell = (column, colNum) => {
@@ -265,6 +309,7 @@ class TableHeader extends Component {
       height: this.props.thHeight,
       fontSize: this.props.thFontSize,
       border: this.props.thBorder,
+      boxShadow: this.props.thBoxShadow,
       color: this.props.thColor,
       opacity: this.props.thOpacity,
       letterSpacing: this.props.thLetterSpacing,
@@ -279,9 +324,10 @@ class TableHeader extends Component {
       <th
         style={style}
         key={colNum}
+        className={classNames({[typography.t4]: this.props.newDesign})}
         {...optionalHeaderCellProps}
         >
-        <div className={s.thContainer}>
+        <div className={this.style.thContainer}>
           {column.title}{this.renderSortingArrow(column.sortDescending, colNum)}{this.renderInfoTooltip(column.infoTooltip, colNum)}
         </div>
       </th>);
@@ -320,14 +366,17 @@ DataTable.defaultProps = {
   loader: <div className="loader">Loading ...</div>,
   scrollElement: null,
   useWindow: true,
-  thPadding: '5px',
-  thHeight: '36px',
-  thFontSize: '12px'
+  rowVerticalPadding: 'medium',
+  newDesign: false,
+  showLastRowDivider: true
 };
 
 DataTable.propTypes = {
+  /** An id to pass to the table */
   id: PropTypes.string,
+  /** The data to display. (If data.id exists then it will be used as the React key value for each row, otherwise, the rowIndex will be used) */
   data: validateData,
+  /** Configuration of the table's columns. See table below */
   columns: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.oneOfType([
       PropTypes.node,
@@ -337,37 +386,88 @@ DataTable.propTypes = {
     sortable: PropTypes.bool,
     infoTooltipProps: PropTypes.shape(omit(Tooltip.propTypes, ['moveBy', 'dataHook'])),
     sortDescending: PropTypes.bool
-  })),
+  })).isRequired,
+  /** Should the table show the header when data is empty */
   showHeaderWhenEmpty: PropTypes.bool,
+  /** A string data-hook to apply to all table body rows. or a func which calculates the data-hook for each row  - Signature: `(rowData, rowNum) => string` */
   rowDataHook: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.string
   ]),
+  /** A class to apply to all table body rows */
   rowClass: PropTypes.string,
+  /** A func that gets row data and returns a class(es) to apply to that specific row */
   dynamicRowClass: PropTypes.func,
+  /** A callback method to be called on row click. Signature: `onRowClick(rowData, rowNum)` */
   onRowClick: PropTypes.func,
+  /** A callback method to be called on row mouse enter. Signature: `onMouseEnterRow(rowData, rowNum)` */
   onMouseEnterRow: PropTypes.func,
+  /** A callback method to be called on row mouse leave. Signature: `onMouseLeaveRow(rowData, rowNum)` */
   onMouseLeaveRow: PropTypes.func,
+  /** If true, table will not render all data to begin with, but will gradually render the data as the user scrolls */
   infiniteScroll: PropTypes.bool,
+  /** If infiniteScroll is on, this prop will determine how many rows will be rendered on each load */
   itemsPerPage: PropTypes.number,
+  /** The width of the fixed table. Can be in percentages or pixels. */
   width: PropTypes.string,
+  /** A callback when more items are requested by the user. */
   loadMore: PropTypes.func,
+  /** Whether there are more items to be loaded. Event listeners are removed if false. */
   hasMore: PropTypes.bool,
+  /** The loader to show when loading more items. */
   loader: PropTypes.node,
+  /** Add scroll listeners to the window, or else, the component's parentNode. */
   useWindow: PropTypes.bool,
+  /** Add scroll listeners to specified DOM Object. */
   scrollElement: PropTypes.object,
+  /** Table cell vertical padding. should be 'medium' or 'large'  */
+  rowVerticalPadding: PropTypes.oneOf([
+    'medium',
+    'large'
+  ]),
+  /** this prop is deprecated and should not be used
+   * @deprecated
+   */
   thPadding: PropTypes.string,
+  /** this prop is deprecated and should not be used
+   * @deprecated
+   */
   thHeight: PropTypes.string,
+  /** this prop is deprecated and should not be used
+   * @deprecated
+   */
   thFontSize: PropTypes.string,
+  /** this prop is deprecated and should not be used
+   * @deprecated
+   */
   thBorder: PropTypes.string,
+  /** this prop is deprecated and should not be used
+   * @deprecated
+   */
   thColor: PropTypes.string,
+  /** this prop is deprecated and should not be used
+   * @deprecated
+   */
   thOpacity: PropTypes.string,
+  /** this prop is deprecated and should not be used
+   * @deprecated
+   */
+  thBoxShadow: PropTypes.string,
+  /** this prop is deprecated and should not be used
+   * @deprecated
+   */
   thLetterSpacing: PropTypes.string,
+  /** Function that returns React component that will be rendered in row details section. Example: `rowDetails={(row, rowNum) => <MyRowDetailsComponent {...row} />}` */
   rowDetails: PropTypes.func,
+  /** Allows to open multiple row details */
   allowMultiDetailsExpansion: PropTypes.bool,
-  hideHeader: PropTypes.bool
+  /** Should we hide the header of the table. */
+  hideHeader: PropTypes.bool,
+  /** A flag specifying weather to apply the new layout/design update. Default will change to true in the next major release (version 5.0.0) */
+  newDesign: PropTypes.bool,
+    /** A flag specifying weather to show a divider after the last row */
+  showLastRowDivider: PropTypes.bool
 };
-
 DataTable.displayName = 'DataTable';
 
 export default DataTable;

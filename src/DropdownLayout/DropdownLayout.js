@@ -129,6 +129,8 @@ class DropdownLayout extends WixComponent {
         break;
       }
 
+      case ' ':
+      case 'Spacebar':
       case 'Enter': {
         if (!this._onSelect(this.state.hovered)) {
           return false;
@@ -189,7 +191,7 @@ class DropdownLayout extends WixComponent {
 
     return (
       <div tabIndex={tabIndex} className={classNames(styles.wrapper, styles[`theme-${this.props.theme}`])} onKeyDown={this._onKeyDown} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        <div className={contentContainerClassName} style={{maxHeight: this.props.maxHeightPixels + 'px'}}>
+        <div className={contentContainerClassName} style={{maxHeight: this.props.maxHeightPixels + 'px', minWidth: this.props.minWidthPixels ? `${this.props.minWidthPixels}px` : undefined}}>
           {this.renderNode(fixedHeader)}
           <div className={styles.options} style={{maxHeight: this.props.maxHeightPixels - 35 + 'px'}} ref={options => this.options = options} data-hook="dropdown-layout-options">
             {options.map((option, idx) => (
@@ -326,6 +328,7 @@ DropdownLayout.propTypes = {
   fixedHeader: PropTypes.node,
   fixedFooter: PropTypes.node,
   maxHeightPixels: PropTypes.number,
+  minWidthPixels: PropTypes.number,
   withArrow: PropTypes.bool,
   closeOnSelect: PropTypes.bool,
   onMouseEnter: PropTypes.func,

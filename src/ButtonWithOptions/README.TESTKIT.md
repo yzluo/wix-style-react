@@ -24,8 +24,8 @@
 > Unit Testing Example
 ```javascript
   import React from 'react';
-  import {ButtonWithOptionsTestkitFactory} from 'wix-style-react/dist/testkit';
-  import {ButtonWithOptionsTestkitFactory as enzymeButtonWithOptionsTestkitFactory} from 'wix-style-react/dist/testkit/enzyme';
+  import {buttonWithOptionsTestkitFactory} from 'wix-style-react/dist/testkit';
+  import {buttonWithOptionsTestkitFactory as enzymeButtonWithOptionsTestkitFactory} from 'wix-style-react/dist/testkit/enzyme';
 
   /***************
    enzyme example
@@ -33,12 +33,12 @@
   
   const dataHook = 'myDataHook';
   const wrapper = mount(<ButtonWithOptions dataHook={dataHook}/>);
-  const ButtonWithOptionsTestkit = enzymeButtonWithOptionsTestkitFactory({wrapper, dataHook});
+  const buttonWithOptionsTestkit = enzymeButtonWithOptionsTestkitFactory({wrapper, dataHook});
 
   //Do tests
-  expect(ButtonWithOptionsTestkit.driver.exists()).toBeTruthy();
-  expect(ButtonWithOptionsTestkit.buttonDriver.exists()).toBeTruthy();
-  expect(ButtonWithOptionsTestkit.dropdownLayoutDriver.exists()).toBeTruthy();
+  expect(buttonWithOptionsTestkit.driver.exists()).toBeTruthy();
+  expect(buttonWithOptionsTestkit.buttonDriver.exists()).toBeTruthy();
+  expect(buttonWithOptionsTestkit.dropdownLayoutDriver.exists()).toBeTruthy();
 
   /**********************
    ReactTestUtils example
@@ -47,10 +47,10 @@
   const div = document.createElement('div');
   const dataHook = 'myDataHook';
   const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(<div><ButtonWithOptions dataHook={dataHook}/></div>));
-  const ButtonWithOptionsTestkit = ButtonWithOptionsTestkitFactory({wrapper, dataHook});
+  const buttonWithOptionsTestkit = buttonWithOptionsTestkitFactory({wrapper, dataHook});
 
   //Do tests
-  expect(ButtonWithOptionsTestkit.driver.exists()).toBeTruthy();
-  expect(ButtonWithOptionsTestkit.buttonDriver.exists()).toBeTruthy();
-  expect(ButtonWithOptionsTestkit.dropdownLayoutDriver.exists()).toBeTruthy();
+  expect(buttonWithOptionsTestkit.driver.exists()).toBeTruthy();
+  expect(buttonWithOptionsTestkit.buttonDriver.exists()).toBeTruthy();
+  expect(buttonWithOptionsTestkit.dropdownLayoutDriver.exists()).toBeTruthy();
 ```

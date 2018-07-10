@@ -19,6 +19,7 @@
 | fixedHeader | node | - | - | A fixed header to the list |
 | fixedFooter | node | - | - | A fixed footer to the list |
 | theme | string | - | - | The theme of the dropdown. currently only 'b2b' theme is supported |
+| minWidthPixels | number | - | - | Set the min width of the dropdownLayout in pixels |
 | maxHeightPixels | number | 260 | - | Set the max height of the dropdownLayout in pixels |
 | closeOnSelect | bool | true | - | Will preventDefault of the event when pressing the tab key|
 | onMouseEnter | func | - | - | Callback function called whenever the user entered with the mouse to the dropdown layout|

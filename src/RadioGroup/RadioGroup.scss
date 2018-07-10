@@ -1,6 +1,9 @@
 @import '../common.scss';
 @import '../common/Focusable/Focusable';
 
+$radioButtonCheckedShadow: $B10 0 0 0 1px;
+$radioButtonDisabledShadow: $B50 0 0 0 1px;
+
 .vertical {
   display: flex;
   flex-direction: column;
@@ -147,10 +150,10 @@ button.radioButton {
   }
 
   &.checked {
-    box-shadow: $B10 0 0 0 1px;
+    box-shadow: $radioButtonCheckedShadow;
 
     &:disabled {
-      box-shadow: $B50 0 0 0 1px;
+      box-shadow: $radioButtonDisabledShadow;
     }
   }
 

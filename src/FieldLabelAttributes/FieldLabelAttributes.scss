@@ -1,22 +1,24 @@
 @import '../common.scss';
 
 .root {
-  display: inline-block;
+  display: flex;
   position: relative;
+  height: 27px;
 }
 
 .required {
-  &:before {
-    content: '*';
-    font-size: 22px;
-    margin-left: 6px;
-    color: $B20;
-  }
+  font-size: 22px;
+  color: $B20;
+  display: inline-block;
+  width: 13px;
+  line-height: 17px;
+  text-align: right;
+  align-self: start;
 }
 
 .icon {
   color: $B10;
-  margin-left: 8px;
   position: relative;
-  top: 3px
+  display: inline-block;
+  margin-left: 3px;
 }

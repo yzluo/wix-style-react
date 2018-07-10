@@ -5,6 +5,10 @@ import ReactTestUtils from 'react-dom/test-utils';
 export default ({element, wrapper, component}) => ({
   exists: () => !!element,
   click: () => ReactTestUtils.Simulate.click(element),
+  focus: () => ReactTestUtils.Simulate.focus(element),
+  blur: () => ReactTestUtils.Simulate.blur(element),
+  mouseEnter: () => ReactTestUtils.Simulate.mouseEnter(element),
+  mouseLeave: () => ReactTestUtils.Simulate.mouseLeave(element),
   getButtonTextContent: () => element.textContent,
   isButtonDisabled: () => element.getAttribute('disabled') === '',
   isPrefixIconExists: () => element.innerHTML.indexOf('prefix') !== -1,

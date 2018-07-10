@@ -122,7 +122,9 @@ class RichTextArea extends WixComponent {
   }
 
   componentWillReceiveProps(props) {
-    if (props.value && props.value !== this.props.value && props.value !== this.lastValue) {
+    const isPlaceholderChanged = props.placeholder !== this.props.placeholder;
+    const isValueChanged = props.value && props.value !== this.props.value && props.value !== this.lastValue;
+    if (isPlaceholderChanged || isValueChanged) {
       if (props.isAppend) {
         const newEditorState = this.state.editorState
               .transform()
@@ -166,6 +168,7 @@ class RichTextArea extends WixComponent {
   hasLink = () => this.state.editorState.inlines.some(inline => inline.type === 'link');
 
   handleButtonClick = (action, type) => {
+    this.setState({activeToolbarButton: type})
     switch (action) {
       case 'mark':
         return this.handleMarkButtonClick(type);
@@ -283,14 +286,6 @@ class RichTextArea extends WixComponent {
     if (this.hasLink()) {
       transform
         .unwrapInline('link');
-    } else if (editorState.isExpanded) {
-      transform
-        .wrapInline({
-          type: 'link',
-          data: {href: decoratedHref}
-        })
-        .focus()
-        .collapseToEnd()
     } else {
       const linkContent = text || decoratedHref;
       const startPos = editorState.anchorOffset;
@@ -326,6 +321,11 @@ class RichTextArea extends WixComponent {
       <div className={className} data-hook={dataHook}>
         <div className={classNames(styles.toolbar, {[styles.disabled]: disabled})} data-hook='toolbar'>
           <RichTextEditorToolbar
+            /*
+              activeToolbarButton prop required to trigger RichTextEditorToolbar re-render after toolbar button click
+            */
+            activeToolbarButton={this.state.activeToolbarButton}
+            selection={editorState.fragment.text}
             disabled={disabled}
             onClick={this.handleButtonClick}
             onLinkButtonClick={this.handleLinkButtonClick}

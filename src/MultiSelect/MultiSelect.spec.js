@@ -10,7 +10,7 @@ import {runInputWithOptionsTest} from '../InputWithOptions/InputWithOptions.spec
 
 runInputWithOptionsTest(multiSelectDriverFactory);
 
-describe('multiSelect', () => {
+describe('MultiSelect', () => {
 
   const createDriver = createDriverFactory(multiSelectDriverFactory);
   const options = [
@@ -199,28 +199,52 @@ describe('multiSelect', () => {
     expect(onSelectCallArgs[1].id.startsWith('customOption_')).toEqual(true);
   });
 
-  it('should call onManuallyInput after delimiter is pressed and input is not empty', () => {
-    const onManuallyInput = jest.fn();
-    const {driver, inputDriver} = createDriver(<MultiSelect options={options} onManuallyInput={onManuallyInput} value="custom value"/>);
+  describe('onManuallyCalled', () => {
+    it('should be called after Enter is pressed and input is not empty', () => {
+      const onManuallyInput = jest.fn();
+      const {driver, inputDriver} = createDriver(<MultiSelect options={options} onManuallyInput={onManuallyInput} value="custom value"/>);
 
-    driver.focus();
-    inputDriver.enterText('custom value');
-    driver.pressCommaKey();
+      driver.focus();
+      inputDriver.enterText('custom value');
+      driver.pressEnterKey();
 
-    expect(onManuallyInput).toHaveBeenCalled();
-    expect(onManuallyInput.mock.calls[0][0]).toBe('custom value');
+      expect(onManuallyInput.mock.calls.length).toBe(1);
+    });
+
+    it('should be called after delimiter is pressed and input is not empty', () => {
+      const onManuallyInput = jest.fn();
+      const {driver, inputDriver} = createDriver(<MultiSelect options={options} onManuallyInput={onManuallyInput} value="custom value"/>);
+
+      driver.focus();
+      inputDriver.enterText('custom value');
+      driver.pressCommaKey();
+
+      expect(onManuallyInput.mock.calls.length).toBe(1);
+      expect(onManuallyInput.mock.calls[0][0]).toBe('custom value');
+    });
+
+    it('should be called after delimiter is pressed given no options', () => {
+      const onManuallyInput = jest.fn();
+      const {driver, inputDriver} = createDriver(<MultiSelect onManuallyInput={onManuallyInput} value="custom value"/>);
+
+      driver.focus();
+      inputDriver.enterText('custom value');
+      driver.pressCommaKey();
+
+      expect(onManuallyInput.mock.calls.length).toBe(1);
+      expect(onManuallyInput.mock.calls[0][0]).toBe('custom value');
+    });
   });
 
-  it('should call onManuallyInput after delimiter is pressed given no options', () => {
-    const onManuallyInput = jest.fn();
-    const {driver, inputDriver} = createDriver(<MultiSelect onManuallyInput={onManuallyInput} value="custom value"/>);
+  describe('onKeyDown', () => {
+    it('should be called once when character key pressed', () => {
+      const onKeyDown = jest.fn();
+      const {driver, inputDriver} = createDriver(<MultiSelect options={options} onKeyDown={onKeyDown}/>);
 
-    driver.focus();
-    inputDriver.enterText('custom value');
-    driver.pressCommaKey();
-
-    expect(onManuallyInput).toHaveBeenCalled();
-    expect(onManuallyInput.mock.calls[0][0]).toBe('custom value');
+      driver.focus();
+      inputDriver.keyDown('a');
+      expect(onKeyDown.mock.calls.length).toBe(1);
+    });
   });
 
   it('should call onRemoveTag when removing tags', () => {
@@ -244,7 +268,7 @@ describe('multiSelect', () => {
   it('should set maxHeight when maxNumRows defined', () => {
     const {driver} = createDriver(<MultiSelect maxNumRows={2} options={options}/>);
 
-    expect(driver.getMaxHeight()).toBe('72px');
+    expect(driver.getMaxHeight()).toBe('70px');
   });
 
   it('should set maxHeight when maxNumRows defined (large tags)', () => {
@@ -254,7 +278,7 @@ describe('multiSelect', () => {
 
     const {driver} = createDriver(<MultiSelect maxNumRows={2} tags={options} options={options}/>);
 
-    expect(driver.getMaxHeight()).toBe('96px');
+    expect(driver.getMaxHeight()).toBe('94px');
   });
 
   it('should allow to write any text as tag when options are empty', () => {

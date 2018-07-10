@@ -21,7 +21,7 @@ $dayHoverColor: $B50;
 :global {
   .DayPicker {
     min-width: 333px;
-    box-shadow: 0 0 11px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: $Shadow30;
     @include FontLight;
     font-size: 14px;
     line-height: 1.29;

@@ -19,7 +19,7 @@ import setMonth from 'date-fns/set_month';
 import setDate from 'date-fns/set_date';
 
 import WixComponent from '../BaseComponents/WixComponent';
-import CalendarIcon from '../Icons/dist/components/Calendar';
+import CalendarIcon from '../new-icons/Date';
 import localeUtilsFactory, {formatDate} from './LocaleUtils';
 
 import styles from './DatePicker.scss';
@@ -56,22 +56,27 @@ export default class DatePicker extends WixComponent {
     dateFormat: PropTypes.string,
 
     /** DatePicker instance locale */
-    locale: PropTypes.oneOf([
-      'en',
-      'es',
-      'pt',
-      'fr',
-      'de',
-      'pl',
-      'it',
-      'ru',
-      'ja',
-      'ko',
-      'tr',
-      'sv',
-      'no',
-      'nl',
-      'da'
+    locale: PropTypes.oneOfType([
+      PropTypes.oneOf([
+        'en',
+        'es',
+        'pt',
+        'fr',
+        'de',
+        'pl',
+        'it',
+        'ru',
+        'ja',
+        'ko',
+        'tr',
+        'sv',
+        'no',
+        'nl',
+        'da']),
+      PropTypes.shape({
+        distanceInWords: PropTypes.object,
+        format: PropTypes.object
+      })
     ]),
 
     /** Is the DatePicker disabled */
@@ -250,7 +255,7 @@ export default class DatePicker extends WixComponent {
       month: value,
       year: value,
       firstDayOfWeek: 1,
-      locale,
+      locale: typeof locale === 'string' ? locale : '',
       showOutsideDays: true,
       modifiers: value ? {'keyboard-selected': value} : {},
       onKeyDown: this._handleKeyDown,

@@ -21,6 +21,27 @@
   flex-direction: column;
   align-items: center;
 
+  .statusIndicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    svg {
+      height: 15px;
+      width: 20px;
+    }
+  }
+
+  &.small, &.tiny {
+    .statusIndicator {
+      svg {
+        height: 9px;
+        width: 12px;
+      }
+    }
+  }
+
   .arcsContainer {
     position: relative;
   }
@@ -48,39 +69,81 @@
     margin-top: 18px;
   }
 
-  &.small {
-    .arcsContainer {
+  &.success {
+    color: $B00;
 
-      .lightArc {
-        animation: rotation 2s linear infinite;
-      }
+    &.tiny {
+      color: $GR50;
 
       .darkArc {
-        animation: rotation 0.5s linear infinite;
+        fill: $B00;
       }
     }
   }
 
-  &.medium {
-    .arcsContainer {
-      animation: rotation 2s linear infinite;
+  &.error {
+    color: $R10;
 
-      .lightArc {
-        animation: rotation 666ms ease-in-out infinite;
+    .darkArc {
+      stroke: $R10;
+    }
+
+    &.tiny {
+      color: $GR50;
+
+      .darkArc {
+        fill: $R10;
       }
     }
   }
 
-  &.large {
-    .arcsContainer {
-      animation: rotation 2s linear infinite;
+  &.loading {
+    &.tiny {
+      .arcsContainer {
 
-      .lightArc {
-        animation: staggered-rotation 2s ease-in-out infinite;
+        .lightArc {
+          animation: rotation 2s linear infinite;
+        }
+
+        .darkArc {
+          animation: rotation 666ms linear infinite;
+        }
+      }
+    }
+
+    &.small {
+      .arcsContainer {
+
+        .lightArc {
+          animation: rotation 2s linear infinite;
+        }
+
+        .darkArc {
+          animation: rotation 0.5s linear infinite;
+        }
+      }
+    }
+
+    &.medium {
+      .arcsContainer {
+        animation: rotation 2s linear infinite;
+
+        .lightArc {
+          animation: rotation 666ms ease-in-out infinite;
+        }
+      }
+    }
+
+    &.large {
+      .arcsContainer {
+        animation: rotation 2s linear infinite;
+
+        .lightArc {
+          animation: staggered-rotation 2s ease-in-out infinite;
+        }
       }
     }
   }
-
   &.blue {
     .lightArc {
       stroke: $B30;

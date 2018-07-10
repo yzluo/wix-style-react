@@ -5,6 +5,7 @@ import Input from '../Input';
 import omit from 'omit';
 import DropdownLayout from '../DropdownLayout/DropdownLayout';
 import Highlighter from '../Highlighter/Highlighter';
+import {chainEventHandlers} from '../utils/ChainEventHandlers';
 
 class InputWithOptions extends WixComponent {
 
@@ -13,6 +14,12 @@ class InputWithOptions extends WixComponent {
   dropdownClasses() {}
   dropdownAdditionalProps() {}
   inputAdditionalProps() {}
+  /**
+   * An array of key codes (default ['Enter','Tab']) that act as manual submit. Will be used with the onKeyDown(event), tha key codes are values of event.key. When a manual submit key is pressed then onManuallyInput will be called.
+   */
+  getManualSubmitKeys() {
+    return ['Enter', 'Tab'];
+  }
 
   constructor(props) {
     super(props);
@@ -56,13 +63,17 @@ class InputWithOptions extends WixComponent {
   }
 
   renderInput() {
-    const inputProps = Object.assign(omit(Object.keys(DropdownLayout.propTypes).concat(['onChange', 'dataHook']), this.props), this.inputAdditionalProps());
+    const inputAdditionalProps = this.inputAdditionalProps();
+    const inputProps = Object.assign(omit(Object.keys(DropdownLayout.propTypes).concat(['onChange', 'dataHook']), this.props), inputAdditionalProps);
 
     const {inputElement} = inputProps;
     return React.cloneElement(inputElement, {
       menuArrow: true,
       ref: input => this.input = input,
       ...inputProps,
+      onKeyDown: chainEventHandlers(
+        inputAdditionalProps && inputAdditionalProps.onKeyDown,
+        this._onKeyDown),
       theme: this.props.theme,
       onChange: this._onChange,
       onInputClicked: this._onInputClicked,
@@ -123,7 +134,7 @@ class InputWithOptions extends WixComponent {
     return (
       <div>
         {dropDirectionUp ? this._renderDropdownLayout() : null}
-        <div onKeyDown={this._onKeyDown} data-input-parent className={this.inputClasses()}>
+        <div data-input-parent className={this.inputClasses()}>
           {this.renderInput()}
         </div>
         {!dropDirectionUp ? this._renderDropdownLayout() : null}
@@ -143,6 +154,11 @@ class InputWithOptions extends WixComponent {
 
   closeOnSelect() {
     return this.props.closeOnSelect;
+  }
+
+  get isReadOnly() {
+    const {readOnly} = this.inputAdditionalProps() || {};
+    return readOnly;
   }
 
   _onManuallyInput(inputValue = '') {
@@ -181,7 +197,6 @@ class InputWithOptions extends WixComponent {
 
   _onChange(event) {
     this.setState({inputValue: event.target.value});
-
     if (this.props.onChange) {
       this.props.onChange(event);
     }
@@ -220,18 +235,18 @@ class InputWithOptions extends WixComponent {
     if (this.props.disabled) {
       return;
     }
+
     if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') {
       this.setState({isEditing: true});
     }
-    if (!this.dropdownLayout._onKeyDown(event)) {
-      switch (event.key) {
-        case 'Enter':
-        case 'Tab': {
-          this._onManuallyInput(this.state.inputValue);
-          break;
-        }
-        default:
-          this.showOptions();
+
+    const shouldDelegate = !['Spacebar', ' '].includes(event.key) || this.isReadOnly;
+
+    if (shouldDelegate && !this.dropdownLayout._onKeyDown(event)) {
+      if (this.getManualSubmitKeys().indexOf(event.key) !== -1) {
+        this._onManuallyInput(this.state.inputValue);
+      } else {
+        this.showOptions();
       }
     }
   }

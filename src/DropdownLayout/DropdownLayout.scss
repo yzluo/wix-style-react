@@ -5,6 +5,8 @@ $option_height: 35px;
 $big_option_hight: 47px;
 $content_container_height: 260px;
 $top-arrow-size: 8px;
+$arrowUpShadow: 3px 3px 8px rgba(0, 0, 0, .1);
+$arrowDownShadow: -3px -3px 8px rgba(0, 0, 0, .1);
 
 .wrapper {
   box-sizing: border-box;
@@ -25,7 +27,7 @@ $top-arrow-size: 8px;
   background: $D80;
   border: none;
   border-radius: 8px;
-  box-shadow: 0 0 16px 0 fade-out(black, 0.86);
+  box-shadow: $Shadow30;
   display: block;
   opacity: 0;
   overflow: hidden;
@@ -188,12 +190,12 @@ a[data-hook=link-item] {
 
   &.up {
     bottom: $top-arrow-size / 2;
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, .1);
+    box-shadow: $arrowUpShadow;
   }
 
   &.down {
     top: $top-arrow-size / 2;
-    box-shadow: -3px -3px 8px rgba(0, 0, 0, .1);
+    box-shadow: $arrowDownShadow;
   }
 }
 

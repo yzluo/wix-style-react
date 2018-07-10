@@ -368,6 +368,63 @@ const runInputWithOptionsTest = driverFactory => {
       expect(inputDriver.getRequired()).toBeTruthy();
     });
 
+    describe('onKeyDown', () => {
+      it('should bahave normal when external onKeyDown passed', () => {
+        const {driver, dropdownLayoutDriver} = createDriver(
+          <InputWithOptions options={options} onKeyDown={() => null}/>
+        );
+        driver.focus();
+        expect(dropdownLayoutDriver.isShown()).toBeTruthy();
+        driver.pressEnterKey();
+        expect(dropdownLayoutDriver.isShown()).toBeFalsy();
+        driver.pressUpKey();
+        expect(dropdownLayoutDriver.isShown()).toBeTruthy();
+        driver.pressEscKey();
+        expect(dropdownLayoutDriver.isShown()).toBeFalsy();
+      });
+    });
+
+    describe('onSelect', () => {
+      it('should call onSelect on enter key press', () => {
+        const onSelect = jest.fn();
+        const {driver} = createDriver(<InputWithOptions options={options} onSelect={onSelect}/>);
+        driver.focus();
+        driver.pressDownKey();
+        driver.pressEnterKey();
+        expect(onSelect).toBeCalledWith(options[0]);
+      });
+
+      it('should call onSelect on tab key press', () => {
+        const onSelect = jest.fn();
+        const {driver} = createDriver(<InputWithOptions options={options} onSelect={onSelect}/>);
+        driver.focus();
+        driver.pressDownKey();
+        driver.pressTabKey();
+        expect(onSelect).toBeCalledWith(options[0]);
+      });
+
+      it('should not call onSelect on space key press', () => {
+        const onSelect = jest.fn();
+        const {driver} = createDriver(<InputWithOptions options={options} onSelect={onSelect}/>);
+        driver.focus();
+        driver.pressDownKey();
+        driver.pressSpaceKey();
+        expect(onSelect).not.toHaveBeenCalled();
+      });
+
+      it('should call onSelect on space key press in readOnly mode', () => {
+        const onSelect = jest.fn();
+        class ReadOnlyInput extends InputWithOptions {
+          inputAdditionalProps = () => ({readOnly: true})
+        }
+        const {driver} = createDriver(<ReadOnlyInput options={options} onSelect={onSelect}/>);
+        driver.focus();
+        driver.pressDownKey();
+        driver.pressSpaceKey();
+        expect(onSelect).toBeCalledWith(options[0]);
+      });
+    });
+
     describe('testkit', () => {
       it('should exist', () => {
         const div = document.createElement('div');

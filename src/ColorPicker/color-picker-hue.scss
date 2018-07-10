@@ -1,3 +1,5 @@
+@import '../common.scss';
+
 .root {
   position: relative;
   height: 12px;
@@ -33,6 +35,6 @@
   width: 16px;
   background-color: #ffffff;
   border-radius: 50%;
-  box-shadow: 0 1px 2px 0 rgba(22, 45, 61, 0.24), 0 0 3px 0 rgba(22, 45, 61, 0.12);
+  box-shadow: $Shadow10;
   cursor: pointer;
 }

@@ -30,6 +30,9 @@ export const pageTestkitFactory = protractorTestkitFactoryCreator(pageDriverFact
 import dataTableDriverFactory from '../src/DataTable/DataTable.protractor.driver';
 export const dataTableTestkitFactory = protractorTestkitFactoryCreator(dataTableDriverFactory);
 
+import tableDriverFactory from '../src/Table/Table.protractor.driver';
+export const tableTestkitFactory = protractorTestkitFactoryCreator(tableDriverFactory);
+
 import breadcrumbsDriverFactory from '../src/Breadcrumbs/Breadcrumbs.protractor.driver';
 export const breadcrumbsTestkitFactory = protractorTestkitFactoryCreator(breadcrumbsDriverFactory);
 
@@ -129,6 +132,9 @@ export const drillViewTestkitFactory = protractorTestkitFactoryCreator(drillView
 import tooltipDriverFactory from '../src/Tooltip/Tooltip.protractor.driver';
 export const tooltipTestkitFactory = protractorTestkitFactoryCreator(tooltipDriverFactory);
 
+import formFieldDriverFactory from '../src/FormField/FormField.protractor.driver';
+export const formFieldTestkitFactory = protractorTestkitFactoryCreator(formFieldDriverFactory);
+
 // wix-ui-backoffice proxy
 
 export {
@@ -138,5 +144,7 @@ export {
   toggleSwitchTestkitFactory,
   textTestkitFactory,
   labelTestkitFactory,
-  floatingHelperTestkitFactory
+  floatingHelperTestkitFactory,
+  linearProgressBarTestkitFactory,
+  circularProgressBarTestkitFactory
 } from 'wix-ui-backoffice/dist/src/testkit/protractor';

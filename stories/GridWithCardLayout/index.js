@@ -21,6 +21,9 @@ import ExampleAutoAdjustedRowRaw from '!raw-loader!./ExampleAutoAdjustedRow';
 import ExampleGridActionHeaders from './ExampleGridActionHeaders';
 import ExampleGridActionHeadersRaw from '!raw-loader!./ExampleGridActionHeaders';
 
+import ExampleOutsideGrid from './ExampleOutsideGrid';
+import ExampleOutsideGridRaw from '!raw-loader!./ExampleOutsideGrid';
+
 import GridReadme from '../../src/Grid/README.md';
 import CardReadme from '../../src/Card/README.md';
 
@@ -76,6 +79,10 @@ storiesOf('2. Layout', module)
 
       <CodeExample title="Cards with collapsed header" code={ExampleCollapseableHeadersRaw}>
         <ExampleCollapseableHeaders/>
+      </CodeExample>
+
+      <CodeExample title="Card without Grid" code={ExampleOutsideGridRaw}>
+        <ExampleOutsideGrid/>
       </CodeExample>
     </div>
   ))

@@ -66,6 +66,9 @@ export const textLinkLayoutTestkitFactory = enzymeTestkitFactoryCreator(textLink
 import dataTableDriverFactory from '../src/DataTable/DataTable.driver';
 export const dataTableTestkitFactory = enzymeTestkitFactoryCreator(dataTableDriverFactory);
 
+import tableDriverFactory from '../src/Table/Table.driver';
+export const tableTestkitFactory = enzymeTestkitFactoryCreator(tableDriverFactory);
+
 import textAreaDriverFactory from '../src/TextArea/TextArea.driver';
 export const textAreaTestkitFactory = enzymeTestkitFactoryCreator(textAreaDriverFactory);
 
@@ -198,6 +201,9 @@ export const modalSelectorLayoutTestkitFactory = enzymeTestkitFactoryCreator(mod
 import sectionHelperDriverFactory from '../src/SectionHelper/SectionHelper.driver';
 export const sectionHelperTestkitFactory = enzymeTestkitFactoryCreator(sectionHelperDriverFactory);
 
+import formFieldDriverFactory from '../src/FormField/FormField.driver';
+export const formFieldTestkitFactory = enzymeTestkitFactoryCreator(formFieldDriverFactory);
+
 // wix-ui-backoffice proxy
 
 export {
@@ -207,5 +213,7 @@ export {
   toggleSwitchTestkitFactory,
   textTestkitFactory,
   labelTestkitFactory,
-  floatingHelperTestkitFactory
+  floatingHelperTestkitFactory,
+  linearProgressBarTestkitFactory,
+  circularProgressBarTestkitFactory
 } from 'wix-ui-backoffice/dist/src/testkit/enzyme';

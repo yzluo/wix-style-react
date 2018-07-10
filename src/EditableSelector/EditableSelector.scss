@@ -29,6 +29,10 @@ $rows-margin: 6px;
   line-height: 34px;
 }
 
+.newRowText {
+  display: inline-flex;
+}
+
 .newRowButton {
   cursor: pointer;
   display: inline-block;

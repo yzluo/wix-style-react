@@ -5,8 +5,17 @@ import WixComponent from '../BaseComponents/WixComponent';
 import Arc from './Arc';
 import css from './Loader.scss';
 import Text from '../Deprecated/Text';
+import Tooltip from '../Tooltip';
+import FormFieldError from '../new-icons/system/FormFieldError';
+import FormFieldErrorSmall from '../new-icons/system/FormFieldErrorSmall';
+import CircleLoaderCheck from '../new-icons/system/CircleLoaderCheck';
+import CircleLoaderCheckSmall from '../new-icons/system/CircleLoaderCheckSmall';
 
 const arcsAngles = {
+  tiny: {
+    light: 216,
+    dark: 144
+  },
   small: {
     light: 216,
     dark: 144
@@ -22,9 +31,26 @@ const arcsAngles = {
 };
 const strokeWidth = 4;
 const sizesInPx = {
+  tiny: 18,
   small: 30,
   medium: 54,
   large: 102
+};
+
+const FULL_CIRCLE_ANGLE = 359;
+
+const sizeToSuccessIcon = {
+  tiny: <CircleLoaderCheckSmall/>,
+  small: <CircleLoaderCheckSmall/>,
+  medium: <CircleLoaderCheck/>,
+  large: <CircleLoaderCheck/>
+};
+
+const sizeToErrorIcon = {
+  tiny: <FormFieldErrorSmall/>,
+  small: <FormFieldErrorSmall/>,
+  medium: <FormFieldError/>,
+  large: <FormFieldError/>
 };
 
 export default class Loader extends WixComponent {
@@ -33,49 +59,76 @@ export default class Loader extends WixComponent {
 
   static propTypes = {
     /** The size of the loader */
-    size: PropTypes.oneOf(['small', 'medium', 'large']),
+    size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
 
     /** The color of the loader */
     color: PropTypes.oneOf(['blue', 'white']),
 
     /** Node (usually text) to be shown below the loader */
-    text: PropTypes.node
+    text: PropTypes.node,
+
+    /** The status of the loader */
+    status: PropTypes.oneOf(['loading', 'success', 'error']),
+
+    /** Text to be shown in the tolltip **/
+    statusMessage: PropTypes.string
   };
 
   static defaultProps = {
     size: 'medium',
-    color: 'blue'
+    color: 'blue',
+    status: 'loading'
   };
 
   render() {
-    const {size, color, text} = this.props;
+    const {size, color, text, status, statusMessage} = this.props;
     const sizeInPx = sizesInPx[size];
-    const lightArcAngle = arcsAngles[size].light;
-    const darkArcAngle = arcsAngles[size].dark;
+    const shouldShowFullCircle = status !== 'loading';
+    const lightArcAngle = !shouldShowFullCircle ? arcsAngles[size].light : FULL_CIRCLE_ANGLE;
+    const darkArcAngle = !shouldShowFullCircle ? arcsAngles[size].dark : FULL_CIRCLE_ANGLE;
+    const shouldShowText = size !== 'tiny';
+    const successIcon = sizeToSuccessIcon[size];
+    const errorIcon = sizeToErrorIcon[size];
+    const loader = (
+      <div
+        className={css.arcsContainer}
+        style={{
+          width: `${sizeInPx}px`,
+          height: `${sizeInPx}px`
+        }}
+        >
+        <Arc
+          angle={lightArcAngle}
+          className={css.lightArc}
+          strokeWidth={strokeWidth}
+          viewBoxSize={sizeInPx}
+          />
+        <Arc
+          angle={darkArcAngle}
+          className={css.darkArc}
+          strokeWidth={strokeWidth}
+          viewBoxSize={sizeInPx}
+          />
+        {status !== 'loading' &&
+        <div className={css.statusIndicator}>
+          {status === 'success' && successIcon}
+          {status === 'error' && errorIcon}
+        </div>
+        }
+      </div>
+    );
 
     return (
-      <div className={classNames(css.loaderContainer, css[size], css[color])}>
-        <div
-          className={css.arcsContainer}
-          style={{
-            width: `${sizeInPx}px`,
-            height: `${sizeInPx}px`}}
-          >
-          <Arc
-            angle={lightArcAngle}
-            className={css.lightArc}
-            strokeWidth={strokeWidth}
-            viewBoxSize={sizeInPx}
-            />
-          <Arc
-            angle={darkArcAngle}
-            className={css.darkArc}
-            strokeWidth={strokeWidth}
-            viewBoxSize={sizeInPx}
-            />
-        </div>
+      <div className={classNames(css.loaderContainer, css[size], css[color], css[status])}>
         {
-          text &&
+          statusMessage ?
+            <Tooltip dataHook="loader-tooltip" placement="top" textAlign="center" alignment="center" content={statusMessage} theme="dark">
+              {loader}
+            </Tooltip> :
+            loader
+        }
+        {
+          shouldShowText && text &&
           <div className={css.text}>
             <Text appearance="T5" dataHook="loader-text">{this.props.text}</Text>
           </div>

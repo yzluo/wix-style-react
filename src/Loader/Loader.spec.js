@@ -16,6 +16,11 @@ describe('Loader', () => {
       expect(driver.isMedium()).toEqual(true);
     });
 
+    it('should allow creating a tiny loader', () => {
+      const driver = createDriver(<Loader size="tiny"/>);
+      expect(driver.isTiny()).toEqual(true);
+    });
+
     it('should allow creating a small loader', () => {
       const driver = createDriver(<Loader size="small"/>);
       expect(driver.isSmall()).toEqual(true);
@@ -53,6 +58,13 @@ describe('Loader', () => {
       expect(driver.hasText()).toEqual(true);
       expect(driver.getText()).toEqual(text);
     });
+
+    it('should not show text next to tiny loader', () => {
+      const size = 'tiny';
+      const text = 'All computers wait at the same speed';
+      const driver = createDriver(<Loader size={size} text={text}/>);
+      expect(driver.hasText()).toEqual(false);
+    });
   });
 
   describe('color property', () => {
@@ -64,6 +76,35 @@ describe('Loader', () => {
     it('should get the given color', () => {
       const driver = createDriver(<Loader color="white"/>);
       expect(driver.getColor()).toEqual('white');
+    });
+  });
+
+  describe('status property', () => {
+    it('should be loading by default', () => {
+      const driver = createDriver(<Loader/>);
+      expect(driver.isLoading()).toEqual(true);
+    });
+
+    it('should allow setting error status', () => {
+      const driver = createDriver(<Loader status="error"/>);
+      expect(driver.isError()).toEqual(true);
+    });
+
+    it('should allow setting success status', () => {
+      const driver = createDriver(<Loader status="success"/>);
+      expect(driver.isSuccess()).toEqual(true);
+    });
+
+    describe('tooltip message when hovered', () => {
+      afterEach(() => {
+        document.body.innerHTML = ''; // required for tooltip element to be removed and not to leak in consecutive tests
+      });
+
+      it('should show tooltip when hovered', async () => {
+        const statusMessage = 'this is a some message';
+        const driver = createDriver(<Loader status="success" statusMessage={statusMessage}/>);
+        expect(await driver.getStatusMessage()).toBe(statusMessage);
+      });
     });
   });
 

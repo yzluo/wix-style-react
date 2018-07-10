@@ -73,5 +73,19 @@ export default () =>
         <div>With error</div>
         <Dropdown selectedId={1} options={options} error errorMessage="Somthing is wrong"/>
       </div>
+      <div className="ltr" style={style}>
+        <div>Round</div>
+        <Dropdown roundInput selectedId={1} options={options}/>
+      </div>
+    </div>
+    <div>
+      <div className="ltr" style={style}>
+        <div>No left border radius</div>
+        <Dropdown selectedId={1} options={options} noLeftBorderRadius/>
+      </div>
+      <div className="ltr" style={style}>
+        <div>No right border radius</div>
+        <Dropdown selectedId={1} options={options} noRightBorderRadius/>
+      </div>
     </div>
   </div>;

@@ -1,0 +1,51 @@
+@import '../common.scss';
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  flex: 1 0 auto;
+  margin-bottom: 6px;
+}
+
+.children {
+  flex: 1 0 100%;
+}
+
+.childrenWithoutLabel {
+  flex: 1 0 auto;
+}
+
+.asterisk {
+  display: inline-block;
+  color: $B20;
+  font-size: 22px;
+  margin-left: 6px;
+  margin-top: -4px;
+}
+
+.infoIcon {
+  color: $B20;
+  margin-left: 3px;
+  height: 24px;
+}
+
+.suffixesInline {
+  display: flex;
+
+  .asterisk {
+    margin-top: 1px;
+  }
+
+  .infoIcon {
+    margin-top: 6px;
+  }
+}
+
+.counter {
+  margin-left: auto;
+}

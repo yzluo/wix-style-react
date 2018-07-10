@@ -1,13 +1,16 @@
-// import eyes from 'eyes.it';
+import eyes from 'eyes.it';
+import {createStoryUrl, waitForVisibilityOf, scrollToElement} from '../../test/utils/protractor';
 
-// describe('Card and Grid', () => {
-//   eyes.it('should not break design', () => {
+describe('Card and Grid', () => {
+  const byDataHook = dataHook => $(`[data-hook="${dataHook}"]`);
 
-//     const element = $('[data-hook="card-example"]');
+  eyes.it('should not break design', async () => {
+    const dataHook = 'card-example-outside-a-grid';
+    const element = byDataHook(dataHook);
+    const url = createStoryUrl({kind: '2. Layout', story: 'Card'});
 
-//     browser.get('iframe.html?selectedKind=Common&selectedStory=Grid%20with%20card%20layout');
-
-//     const EC = protractor.ExpectedConditions;
-//     browser.wait(EC.visibilityOf(element), 15000);
-//   });
-// });
+    await browser.get(url);
+    await waitForVisibilityOf(element, `Cannot find ${dataHook}`);
+    await scrollToElement(element);
+  });
+});
