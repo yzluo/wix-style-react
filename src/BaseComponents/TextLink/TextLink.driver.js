@@ -11,8 +11,10 @@ const textLinkDriverFactory = ({element, wrapper, component}) => {
     isDisabled: () => element.getAttribute('disabled') !== null,
     click: (event = {}) => ReactTestUtils.Simulate.click(element, event),
     getContent: () => textLinkLayout.textContent,
-    doesComponentHasClass: className => textLinkLayout.className.includes(className),
-    isDarkBackground: () => textLinkLayout.style._values.color === 'rgb(240, 244, 247)',
+    doesComponentHasClass: className =>
+      textLinkLayout.className.includes(className),
+    isDarkBackground: () =>
+      textLinkLayout.style._values.color === 'rgb(240, 244, 247)',
     isGreyScale: () => textLinkLayout.style._values.color === 'rgb(22, 45, 61)',
     getTheme: () => {
       const {color} = textLinkLayout.style._values;
@@ -24,15 +26,29 @@ const textLinkDriverFactory = ({element, wrapper, component}) => {
       return ThemeOptions.NORMAL.type;
     },
     hover: () => ReactTestUtils.Simulate.mouseEnter(textLinkLayout), // simulate hover on text link layout because events are not propagated
-    getLink: () => element.href,
+    getLink: () => element,
     getTarget: () => element.target,
     getRel: () => element.rel,
-    isUnderline: () => textLinkLayout.style._values['text-decoration'] === 'underline',
-    isLightBackground: () => textLinkLayout.style._values.color === 'rgb(56, 153, 236)',
-    getSize: () => textLinkLayout.classList.contains('t1_3') ? 'medium' : textLinkLayout.classList.contains('t3_3') ? 'small' : 'unknown',
+    isUnderline: () =>
+      textLinkLayout.style._values['text-decoration'] === 'underline',
+    isLightBackground: () =>
+      textLinkLayout.style._values.color === 'rgb(56, 153, 236)',
+    getSize: () =>
+      textLinkLayout.classList.contains('t1_3') ?
+        'medium' :
+        textLinkLayout.classList.contains('t3_3') ?
+          'small' :
+          'unknown',
     setProps: props => {
-      const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
-      ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);
+      const ClonedWithProps = React.cloneElement(
+        component,
+        Object.assign({}, component.props, props),
+        ...(component.props.children || [])
+      );
+      ReactDOM.render(
+        <div ref={r => (element = r)}>{ClonedWithProps}</div>,
+        wrapper
+      );
     }
   };
 };
