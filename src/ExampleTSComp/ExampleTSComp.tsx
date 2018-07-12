@@ -1,9 +1,11 @@
 import * as React from 'react';
+import WixComponent,{WixComponentProps} from '../BaseComponents/WixComponent';
 
-export interface Props {
+export interface Props extends WixComponentProps{
   name : string;
 }
-export class ExampleTSComp extends React.Component<Props,{}> {
+
+export class ExampleTSComp extends WixComponent<Props> {
   render() {
     return (
       <div>

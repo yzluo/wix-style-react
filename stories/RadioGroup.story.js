@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import RadioGroup from 'wix-style-react/RadioGroup';
 
 const exampleChildren = [

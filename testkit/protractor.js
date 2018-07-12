@@ -134,6 +134,8 @@ export const tooltipTestkitFactory = protractorTestkitFactoryCreator(tooltipDriv
 
 import formFieldDriverFactory from '../src/FormField/FormField.protractor.driver';
 export const formFieldTestkitFactory = protractorTestkitFactoryCreator(formFieldDriverFactory);
+import {exampleTSCompDriverFactory} from '../src/ExampleTSComp/ExampleTSComp.protractor.driver';
+export const exampleTSCompTestkitFactory = protractorTestkitFactoryCreator(exampleTSCompDriverFactory);
 
 // wix-ui-backoffice proxy
 

@@ -64,4 +64,6 @@ NOw it can find my tsx test.
 - protractor.conf
 - WixComponent -> TS
 
+- Add ExampleTSComp
+ ### Storybook static & HMR is working
 
