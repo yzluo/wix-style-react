@@ -1,11 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
+import * as ReactDOM from 'react-dom';
 
 const MOUSE_EVENTS_SUPPORTED = ['mouseup', 'touchend'];
 
-class WixComponent extends React.PureComponent {
+export interface WixComponentProps {
+  styles?: any;
+  dataHook?: string
+}
 
+class WixComponent<P extends WixComponentProps = WixComponentProps, S = {}> extends React.PureComponent<P,S> {
+  private styles: any;
+  private typography: any;
+  private _boundEvents: string[];
+
+  static propTypes = {
+    dataHook: PropTypes.string,
+    styles: PropTypes.string
+  };
+  
   constructor(params) {
     super(params);
     this._addDataHook = this._addDataHook.bind(this);
@@ -38,6 +51,9 @@ class WixComponent extends React.PureComponent {
     this.typography = this.props.styles || typography;
   }
 
+  onClickOutside(event: MouseEvent) {};
+
+  
   _onMouseEventsHandler(e) {
     if (!this.checkIfEventOnElements(e, this.componentElements())) {
       this.onClickOutside(e);
@@ -78,10 +94,5 @@ class WixComponent extends React.PureComponent {
     }
   }
 }
-
-WixComponent.propTypes = {
-  dataHook: PropTypes.string,
-  styles: PropTypes.string
-};
 
 export default WixComponent;

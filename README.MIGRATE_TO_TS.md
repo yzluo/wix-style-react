@@ -59,3 +59,9 @@ NOw it can find my tsx test.
 
 ### NOw my ts spec test works !
 
+
+## E2E test
+- protractor.conf
+- WixComponent -> TS
+
+
