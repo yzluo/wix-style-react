@@ -1,4 +1,5 @@
-import React, {Children} from 'react';
+import * as React from 'react';
+import {Children} from 'react'; // eslint-disable-line no-duplicate-imports
 import PropTypes from 'prop-types';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
 import classNames from 'classnames';

@@ -1,4 +1,5 @@
-import React, {Children} from 'react';
+import * as React from 'react';
+import {Children} from 'react'; // eslint-disable-line no-duplicate-imports
 
 import Label from '../../src/Label';
 import Input from '../../src/Input';

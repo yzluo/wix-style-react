@@ -1,4 +1,5 @@
-import React, {Children} from 'react';
+import * as React from 'react';
+import {Children} from 'react'; // eslint-disable-line no-duplicate-imports
 import {any, bool, node} from 'prop-types';
 import last from 'lodash/last';
 import WixComponent from '../../BaseComponents/WixComponent';

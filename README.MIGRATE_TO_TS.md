@@ -67,3 +67,7 @@ NOw it can find my tsx test.
 - Add ExampleTSComp
  ### Storybook static & HMR is working
 
+- Add tsconfig: esModuleInterop
+  - Refactor all `import React, {(.*)} from 'react' -> separate imports.
+
+### Now e2e tests seem to run, pushing ot see that all e2e run.

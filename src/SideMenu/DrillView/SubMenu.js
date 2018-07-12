@@ -1,5 +1,6 @@
 import SideMenuDrill from './index';
-import React, {Children} from 'react';
+import * as React from 'react';
+import {Children} from 'react'; // eslint-disable-line no-duplicate-imports
 import styles from './DrillView.scss';
 import Navigation from '../core/navigation';
 import PropTypes from 'prop-types';

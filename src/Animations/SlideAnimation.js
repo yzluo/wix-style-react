@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import * as React from 'react';
+import {Component} from 'react'; // eslint-disable-line no-duplicate-imports
 import {node, bool, oneOf, func} from 'prop-types';
 import {CSSTransition} from 'react-transition-group';
 import slideIn from './SlideInAnimation.scss';

@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import * as React from 'react';
+import {Component} from 'react'; // eslint-disable-line no-duplicate-imports
 import FloatingTabs from '../../../src/TPA/FloatingTabs';
 import FloatingTabItem from '../../../src/TPA/FloatingTabItem';
 import styles from './styles.scss';

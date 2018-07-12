@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import * as React from 'react';
+import {Component} from 'react'; // eslint-disable-line no-duplicate-imports
 import styles from './Grid.scss';
 import Card from '../Card';
 import classNames from 'classnames';

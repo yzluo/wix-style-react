@@ -1,4 +1,5 @@
-import React, {Children} from 'react';
+import * as React from 'react';
+import {Children} from 'react'; // eslint-disable-line no-duplicate-imports
 import {any} from 'prop-types';
 import WixComponent from '../../../src/BaseComponents/WixComponent';
 import styles from './FieldWithSelectionComposite.scss';

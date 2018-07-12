@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import * as React from 'react';
+import {Component} from 'react'; // eslint-disable-line no-duplicate-imports
 import {Tooltip, Button} from 'wix-style-react';
 import styles from './Example.scss';
 

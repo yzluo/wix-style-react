@@ -12,7 +12,8 @@
     "paths": {
         "*": [ "node_modules/@types/*", "*"]
     },
-    "allowJs": true
+    "allowJs": true,
+    "esModuleInterop": true
   },
   "include": [
     "./node_modules/wix-ui-core/dist/src/globals.d.ts",

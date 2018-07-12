@@ -1,4 +1,5 @@
-import React, {Children} from 'react';
+import * as React from 'react';
+import {Children} from 'react'; // eslint-disable-line no-duplicate-imports
 import * as PropTypes from 'prop-types';
 import WixComponent from '../../BaseComponents/WixComponent';
 import styles from './RangeInputWithLabelComposite.scss';

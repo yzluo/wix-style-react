@@ -1,4 +1,5 @@
-import React, {cloneElement} from 'react';
+import * as React from 'react';
+import {cloneElement} from 'react'; // eslint-disable-line no-duplicate-imports
 import PropTypes from 'prop-types';
 import WixComponent from '../BaseComponents/WixComponent';
 import ReactDOM from 'react-dom';

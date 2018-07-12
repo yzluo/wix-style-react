@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import * as React from 'react';
+import {Component} from 'react'; // eslint-disable-line no-duplicate-imports
 import DropdownLayout from 'wix-style-react/DropdownLayout';
 import ChevronDown from 'wix-style-react/new-icons/ChevronDown';
 import {Button} from 'wix-style-react/Backoffice';
