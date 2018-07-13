@@ -107,14 +107,14 @@ describe('Breadcrumbs', () => {
     describe('large size', () => {
       const size = 'large';
 
-      it('should have t1.1 appearance when onWhiteBackground style and t2 for active', () => {
+      it('should have t1.1 appearance and t2 for active when onWhiteBackground theme', () => {
         const theme = 'onWhiteBackground';
         createComponent({ onClick, items, theme, size, activeId });
         expect(driver.getLabelClassList(itemIndex)).toContain('t1_1');
         expect(driver.getLabelClassList(activeItemIndex)).toContain('t2');
       });
 
-      it('should have t1.1 appearance when onWhiteBackground style and t2 for active', () => {
+      it('should have t1.1 appearance and t2 for active when onGrayBackground theme', () => {
         const theme = 'onGrayBackground';
         createComponent({ onClick, items, theme, size, activeId });
         expect(driver.getLabelClassList(itemIndex)).toContain('t1_1');

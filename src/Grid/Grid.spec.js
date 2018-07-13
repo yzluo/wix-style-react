@@ -43,7 +43,7 @@ describe('Grid', () => {
       expect(element.childAt(0).hasClass('colMd12')).toEqual(true);
     });
 
-    it('should add col xl class when using xl attribute ', () => {
+    it('should add multiple col classes when using breakpoints attributes', () => {
       const element = mount(<Col sm="3" md="12" lg="1" xl="5" />);
       expect(element.childAt(0).hasClass('colXl5')).toEqual(true);
       expect(element.childAt(0).hasClass('colLg1')).toEqual(true);
@@ -113,7 +113,7 @@ describe('Grid', () => {
       expect(element.hasClass('test2')).toEqual(true);
     });
 
-    it('should pass className to columns element', () => {
+    it('should pass multiple classNames to columns element', () => {
       const element = mount(
         <Columns className={classNames('test1', 'test2')} />,
       );

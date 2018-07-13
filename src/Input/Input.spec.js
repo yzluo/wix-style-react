@@ -606,17 +606,17 @@ describe('Input', () => {
       expect(driver.getAriaControls()).toBe('id');
     });
 
-    it('should not have any aria controls buy default', () => {
+    it('should not have any aria controls by default', () => {
       const driver = createDriver(<Input />);
       expect(driver.getAriaControls()).toBeNull;
     });
 
-    it('should allow adding aria-controls', () => {
+    it('should allow adding aria-describedby', () => {
       const driver = createDriver(<Input ariaDescribedby="blabla" />);
       expect(driver.getAriaDescribedby()).toBe('blabla');
     });
 
-    it('should not have any aria controls buy default', () => {
+    it('should not have any aria-describedby by default', () => {
       const driver = createDriver(<Input />);
       expect(driver.getAriaDescribedby()).toBeNull;
     });

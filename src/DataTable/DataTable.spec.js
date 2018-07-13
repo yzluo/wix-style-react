@@ -444,7 +444,7 @@ describe('Table', () => {
       expect(_props.onSortClick).toBeCalledWith(props.columns[1], 1);
     });
 
-    it('should call on sort callback', () => {
+    it('should not call on sort callback when non-sortable column is clicked', () => {
       const _props = Object.assign({}, props, { onSortClick: jest.fn() });
       const driver = createDriver(<DataTable {..._props} />);
       driver.clickSort(2);
