@@ -94,6 +94,7 @@
     "highlight.js": "^9.8.0",
     "identity-obj-proxy": "^3.0.0",
     "import-path": "^1.0.0",
+    "protractor": "^5.4.1",
     "protractor-browser-logs": "^1.0.351",
     "query-string": "^6.1.0",
     "react": "^15.5.4",
@@ -107,7 +108,8 @@
     "sinon": "^1.17.6",
     "wait-for-cond": "^1.0.3",
     "wix-storybook-utils": "^2.0.0",
-    "yoshi": "^2.8.3"
+    "yoshi": "^3.16.1",
+    "yoshi-style-dependencies": "^3.16.0"
   },
   "peerDependencies": {
     "react": "^15.0.0",
@@ -169,21 +171,14 @@
   },
   "babel": {
     "presets": [
-      [
-        "es2015",
-        {
-          "modules": false
-        }
-      ],
-      "react",
-      "stage-2"
+      "yoshi"
     ],
     "plugins": [
       "transform-decorators-legacy"
     ]
   },
   "eslintConfig": {
-    "extends": "wix/react",
+    "extends": "yoshi",
     "env": {
       "jest": true
     },
