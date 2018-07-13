@@ -154,14 +154,10 @@
     ]
   },
   "babel": {
-    "presets": [
-      "es2015",
-      "react",
-      "stage-2"
-    ]
+    "presets": ["yoshi"]
   },
   "eslintConfig": {
-    "extends": "wix/react",
+    "extends": "yoshi",
     "env": {
       "jest": true
     },
