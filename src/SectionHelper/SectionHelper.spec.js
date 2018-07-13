@@ -76,7 +76,7 @@ describe('SectionHelper', () => {
   });
 
   describe('Themes', () => {
-    it('should support standard theme', () => {
+    it('should have standard theme by default', () => {
       const driver = createDriver(renderWithProps());
       expect(driver.isWarning()).toBeTruthy();
     });

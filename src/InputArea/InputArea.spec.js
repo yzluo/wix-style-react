@@ -42,15 +42,6 @@ describe('InputArea', () => {
     });
   });
 
-  describe('rows attribute', () => {
-    it('should pass down to the wrapped input', () => {
-      const rows = 5;
-
-      const driver = createDriver(<InputAreaForTesting rows={rows} />);
-      expect(driver.getRowsCount()).toEqual(rows);
-    });
-  });
-
   describe('maxHeight attribute', () => {
     it('should pass down to the wrapped input', () => {
       const maxHeight = '50px';
@@ -296,19 +287,19 @@ describe('InputArea', () => {
       expect(driver.getAriaControls()).toBe('id');
     });
 
-    it('should not have any aria controls buy default', () => {
+    it('should not have any aria controls by default', () => {
       const driver = createDriver(<InputAreaForTesting />);
       expect(driver.getAriaControls()).toBeNull;
     });
 
-    it('should allow adding aria-controls', () => {
+    it('should allow adding aria-describedby', () => {
       const driver = createDriver(
         <InputAreaForTesting ariaDescribedby="blabla" />,
       );
       expect(driver.getAriaDescribedby()).toBe('blabla');
     });
 
-    it('should not have any aria controls buy default', () => {
+    it('should not have any aria describedBy by default', () => {
       const driver = createDriver(<InputAreaForTesting />);
       expect(driver.getAriaDescribedby()).toBeNull;
     });
