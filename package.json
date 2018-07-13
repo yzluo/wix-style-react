@@ -82,6 +82,7 @@
     "highlight.js": "^9.8.0",
     "identity-obj-proxy": "^3.0.0",
     "import-path": "^1.0.0",
+    "protractor": "^5.3.2",
     "react": "^15.5.4",
     "react-docgen": "^2.15.0",
     "react-dom": "^15.5.4",
@@ -94,7 +95,8 @@
     "wait-for-cond": "^1.0.3",
     "wix-eventually": "^2.2.0",
     "wix-storybook-utils": "^2.0.0",
-    "yoshi": "^2.8.3"
+    "yoshi": "^3.0.0",
+    "yoshi-style-dependencies": "^3.0.0"
   },
   "peerDependencies": {
     "react": "^15.0.0",
