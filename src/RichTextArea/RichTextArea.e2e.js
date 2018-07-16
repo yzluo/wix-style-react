@@ -1,4 +1,5 @@
 import eyes from 'eyes.it';
+import times from 'lodash/times';
 import {richTextAreaTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
 import {settings} from '../../stories/RichTextArea/RichTextArea.story';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
@@ -11,7 +12,7 @@ describe('RichTextArea', () => {
   const storyUrl = getStoryUrl(settings.category, settings.storyName);
   const richTextAreaTestkit = richTextAreaTestkitFactory({dataHook: settings.dataHook});
 
-  const pressTab = times => browser.actions().sendKeys([...Array(times)].map(() => protractor.Key.TAB)).perform();
+  const pressTab = n => browser.actions().sendKeys(times(n, () => protractor.Key.TAB)).perform();
   const focusEditor = () => pressTab(EDITOR_TAB_ORDINAL);
 
   // TODO: We can change this to beforeAll (to make the test go faster),
