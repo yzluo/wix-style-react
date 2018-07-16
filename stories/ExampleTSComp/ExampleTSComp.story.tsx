@@ -3,13 +3,13 @@ import {ExampleTSComp} from '../../src/ExampleTSComp';
 import {storySettings} from './storySettings';
 
 export default {
-  category: '14. Internal',
-  storyName: '14.1 Typescript Test',
+  category: storySettings.kind,
+  storyName: storySettings.storyName,
 
   component: ExampleTSComp,
   componentPath: '../../src/ExampleTSComp',
   componentProps: {
-    'data-hook': storySettings.dataHook,
+    'dataHook': storySettings.dataHook,
     name: <span>erez</span>
   }
 

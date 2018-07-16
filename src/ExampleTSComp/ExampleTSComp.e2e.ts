@@ -17,7 +17,7 @@ describe('ExampleTSComp', () => {
     const driver = exampleTSCompTestkitFactory({dataHook});
     await waitForVisibilityOf(driver.element(), 'Cannot find ExampleTSComp');
     expect(await driver.element().isPresent()).toBeTruthy();
-    expect(await driver.element().textContent()).toBe('my name is erez');
+    expect(await driver.element().getText()).toBe('my name is erez');
   });
 
 

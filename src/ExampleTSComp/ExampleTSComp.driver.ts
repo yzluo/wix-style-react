@@ -5,7 +5,7 @@ export interface ExampleTSCompDriver extends BaseDriver{
 
 }
 
-export const exampleTsCompDriverFactory :DriverFactory<ExampleTSCompDriver>  =  ({wrapper, element, eventTrigger}) => {
+export const exampleTsCompDriverFactory :DriverFactory<ExampleTSCompDriver>  =  ({wrapper, element, eventTrigger}): ExampleTSCompDriver => {
   return {
     exists: () => !!element,
   }

@@ -1,5 +1,5 @@
 export const storySettings = {
-  kind: '14. Temp',
-  storyName: '14.1 Typescript Test',
+  kind: 'Internal',
+  storyName: 'Typescript Test',
   dataHook: 'storybook-example-ts-comp',
 };
