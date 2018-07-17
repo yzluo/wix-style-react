@@ -18,7 +18,7 @@
 .root {
   -st-extends: Text;
   -st-states: 
-    size(enum(small, medium)),
+    size(enum(small, medium, tiny)),
     secondary,
     skin(enum(standard, success, error, premium)),
     light,
@@ -41,19 +41,24 @@
   line-height: 18px;
 }
 
-.root:size(medium), .root:size(small) {
+.root:size(tiny), .root:size(tiny):secondary {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.root:size(medium), .root:size(small), .root:size(tiny) {
   color: value(primaryText);
 }
 
-.root:size(medium):light, .root:size(small):light {
+.root:size(medium):light, .root:size(small):light, .root:size(tiny):light {
   color: value(primaryLightText);
 }
 
-.root:size(medium):secondary, .root:size(small):secondary {
+.root:size(medium):secondary, .root:size(small):secondary, .root:size(tiny):secondary {
   color: value(secondaryText);
 }
 
-.root:size(medium):secondary:light, .root:size(small):secondary:light {
+.root:size(medium):secondary:light, .root:size(small):secondary:light, .root:size(tiny):secondary:light {
   color: value(secondaryLightText);
 }
 

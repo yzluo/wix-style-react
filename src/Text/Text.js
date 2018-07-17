@@ -5,7 +5,8 @@ import style from './Text.st.css';
 
 export const SIZES = {
   small: 'small',
-  medium: 'medium'
+  medium: 'medium',
+  tiny: 'tiny'
 };
 
 export const SKINS = {
