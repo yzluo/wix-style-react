@@ -1,20 +1,21 @@
 import * as React from 'react';
 import ToggleSwitch from '../../src/ToggleSwitch';
 import Dropdown from '../../src/Dropdown';
-import {Heading} from 'wix-ui-backoffice/Heading';
+import Heading from '../../src/Heading';
+import {SIZES, SKINS} from '../../src/Text/Text';
 import Input from '../../src/Input';
 import Text from '../../src/Text';
 
-const skinOptions = ['standard', 'error', 'success', 'premium'].map(value => ({id: value, value}));
-const sizeOptions = ['small', 'medium'].map(value => ({id: value, value}));
+const skinOptions = Object.keys(SKINS).map(value => ({id: value, value}));
+const sizeOptions = Object.keys(SIZES).map(value => ({id: value, value}));
 
 class ControlledTextExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      size: 'medium',
+      size: SIZES.medium,
       secondary: false,
-      skin: 'standard',
+      skin: SKINS.standard,
       light: false,
       bold: false,
       children: 'Some text',

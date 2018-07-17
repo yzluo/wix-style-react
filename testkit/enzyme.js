@@ -204,6 +204,9 @@ export const sectionHelperTestkitFactory = enzymeTestkitFactoryCreator(sectionHe
 import formFieldDriverFactory from '../src/FormField/FormField.driver';
 export const formFieldTestkitFactory = enzymeTestkitFactoryCreator(formFieldDriverFactory);
 
+import textDriverFactory from '../src/Text/Text.driver';
+export const textTestkitFactory = enzymeTestkitFactoryCreator(textDriverFactory);
+
 // wix-ui-backoffice proxy
 
 export {
@@ -211,7 +214,6 @@ export {
   stylableCounterBadgeTestkitFactory as counterBadgeTestkitFactory,
   headingTestkitFactory,
   toggleSwitchTestkitFactory,
-  textTestkitFactory,
   labelTestkitFactory,
   floatingHelperTestkitFactory,
   linearProgressBarTestkitFactory,

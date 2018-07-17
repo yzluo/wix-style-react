@@ -135,6 +135,9 @@ export const tooltipTestkitFactory = protractorTestkitFactoryCreator(tooltipDriv
 import formFieldDriverFactory from '../src/FormField/FormField.protractor.driver';
 export const formFieldTestkitFactory = protractorTestkitFactoryCreator(formFieldDriverFactory);
 
+import textDriverFactory from '../src/Text/Text.protractor.driver';
+export const textTestkitFactory = protractorTestkitFactoryCreator(textDriverFactory);
+
 // wix-ui-backoffice proxy
 
 export {
@@ -142,7 +145,6 @@ export {
   stylableCounterBadgeTestkitFactory as counterBadgeTestkitFactory,
   headingTestkitFactory,
   toggleSwitchTestkitFactory,
-  textTestkitFactory,
   labelTestkitFactory,
   floatingHelperTestkitFactory,
   linearProgressBarTestkitFactory,

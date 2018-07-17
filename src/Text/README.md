@@ -1,6 +1,6 @@
 # `<Text/>`
 
-General all purpose text component with Wix styling.
+General text component with Wix styling.
 
 ## Usage
 
@@ -15,8 +15,8 @@ General all purpose text component with Wix styling.
 ```js
 import Text from 'wix-style-react/Text';
 
-export default () =>
+const Component = () =>
   <div>
-    <Text>Text</Text>
+    <Text>Some Text</Text>
   </div>;
 ```
