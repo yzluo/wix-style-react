@@ -12,7 +12,7 @@
 
 :import {
   -st-from: "wix-ui-backoffice/dist/src/typography.st.css";
-  -st-named: fontLight, fontRoman;
+  -st-named: fontLight, fontRoman, fontMedium;
 }
 
 .root {
@@ -22,9 +22,8 @@
     secondary,
     skin(enum(standard, success, error, premium)),
     light,
+    weight(enum(thin, normal, bold)),
     bold;
-
-  font-family: value(fontLight);
 }
 
 .root:not(:ellipsis) {
@@ -80,6 +79,19 @@
   color: value(premium);
 }
 
+.root:weight(bold) {
+  font-family: value(fontMedium);
+}
+
+.root:weight(normal) {
+  font-family: value(fontRoman);
+}
+
+.root:weight(thin) {
+  font-family: value(fontLight);
+}
+
+/* Deprecated */
 .root:bold {
   font-family: value(fontRoman);
 }

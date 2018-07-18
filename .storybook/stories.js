@@ -8,7 +8,7 @@ import '../stories/Introduction';
 import '../stories/Composite'; // TODO: Move to introduction
 
 // 1. Foundations
-import '../stories/Text'; // 1.2 Text
+import '../stories/Text/index.story'; // 1.2 Text
 // import '../stories/Label/index.story.js'; // 1.2 + Text
 import '../stories/Label'; // 1.2 + Label
 import '../stories/Heading.story'; // 1.3 Heading

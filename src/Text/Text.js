@@ -2,11 +2,12 @@ import React from 'react';
 import {oneOf, bool} from 'prop-types';
 import {Text as CoreText} from 'wix-ui-backoffice/dist/src/components/core/CoreText';
 import style from './Text.st.css';
+import deprecationLog from '../utils/deprecationLog';
 
 export const SIZES = {
+  tiny: 'tiny',
   small: 'small',
-  medium: 'medium',
-  tiny: 'tiny'
+  medium: 'medium'
 };
 
 export const SKINS = {
@@ -16,7 +17,19 @@ export const SKINS = {
   premium: 'premium'
 };
 
-const Text = ({size, secondary, skin, light, bold, ...rest}) => {
+export const WEIGHTS = {
+  thin: 'thin',
+  normal: 'normal',
+  bold: 'bold'
+};
+
+const Text = ({size, secondary, skin, light, bold, weight, ...rest}) => {
+  if (bold !== undefined) {
+    deprecationLog('Text prop "bold" is deprecated, use "weight" prop instead');
+  } else {
+    bold = false;
+  }
+
   return (
     <CoreText
       {...rest}
@@ -27,6 +40,7 @@ const Text = ({size, secondary, skin, light, bold, ...rest}) => {
           secondary,
           skin,
           light: light && skin === SKINS.standard,
+          weight,
           bold
         },
         rest
@@ -52,6 +66,9 @@ Text.propTypes = {
   /** is the text has dark or light skin */
   light: bool,
 
+  /** font weight of the text */
+  weight: oneOf(Object.keys(WEIGHTS)),
+
   /** is the text bold */
   bold: bool
 };
@@ -61,7 +78,7 @@ Text.defaultProps = {
   secondary: false,
   skin: SKINS.standard,
   light: false,
-  bold: false
+  weight: WEIGHTS.normal
 };
 
 export default Text;

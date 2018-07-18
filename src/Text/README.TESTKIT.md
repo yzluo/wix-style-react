@@ -12,7 +12,6 @@
 | getTitle | -         | string         | returns the element title attribute |
 | getTagName | -         | string         | get the rendered tag name |
 | getText | -         | string         | get the rendered content |
-
 | getSize | -         | string         | returns the size of the text |
 | getSkin | -         | string         | returns the skin of the text |
 | isLight | -         | boolean         | check if the text is light |

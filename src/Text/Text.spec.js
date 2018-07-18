@@ -1,7 +1,7 @@
 import React from 'react';
 import textDriverFactory from './Text.driver';
 import Text from './';
-import {SIZES, SKINS} from './Text';
+import {SIZES, SKINS, WEIGHTS} from './Text';
 import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {isEnzymeTestkitExists} from 'wix-ui-test-utils/enzyme';
 import {isTestkitExists} from 'wix-ui-test-utils/vanilla';
@@ -22,6 +22,20 @@ describe('Text', () => {
       it(`should be ${size}`, () => {
         const wrapper = createDriver(<Text size={size}>Hello</Text>);
         expect(wrapper.getSize()).toBe(size);
+      });
+    });
+  });
+
+  describe('weight prop', () => {
+    it(`should be ${WEIGHTS.normal} by default`, () => {
+      const wrapper = createDriver(<Text>Hello</Text>);
+      expect(wrapper.getWeight()).toBe(WEIGHTS.normal);
+    });
+
+    Object.keys(WEIGHTS).forEach(weight => {
+      it(`should be ${weight}`, () => {
+        const wrapper = createDriver(<Text weight={weight}>Hello</Text>);
+        expect(wrapper.getWeight()).toBe(weight);
       });
     });
   });
@@ -68,18 +82,6 @@ describe('Text', () => {
         const wrapper = createDriver(<Text skin={skin} light>Hello</Text>);
         expect(wrapper.isLight()).toBe(false);
       });
-    });
-  });
-
-  describe('bold prop', () => {
-    it('should not be bold by default', () => {
-      const wrapper = createDriver(<Text>Hello</Text>);
-      expect(wrapper.isBold()).toBe(false);
-    });
-
-    it('should be bold', () => {
-      const wrapper = createDriver(<Text bold>Hello</Text>);
-      expect(wrapper.isBold()).toBe(true);
     });
   });
 
