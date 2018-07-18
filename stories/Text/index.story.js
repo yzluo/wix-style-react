@@ -14,14 +14,13 @@ export default {
 
   componentProps: {
     children: 'Some text',
-    forceHideTitle: false,
     light: false,
-    ellipsis: false,
     dataHook: 'storybook-text',
     size: SIZES.medium,
     secondary: false,
     skin: SKINS.standard,
-    weight: WEIGHTS.normal
+    weight: WEIGHTS.normal,
+    tagName: 'span'
   },
 
   examples: (

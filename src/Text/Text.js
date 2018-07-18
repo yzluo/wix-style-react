@@ -1,8 +1,9 @@
 import React from 'react';
-import {oneOf, bool} from 'prop-types';
-import {Text as CoreText} from 'wix-ui-backoffice/dist/src/components/core/CoreText';
+import {oneOf, bool, string, any} from 'prop-types';
 import style from './Text.st.css';
 import deprecationLog from '../utils/deprecationLog';
+import omit from 'lodash/omit';
+// import {withEllipsedTooltip} from '../';
 
 export const SIZES = {
   tiny: 'tiny',
@@ -23,7 +24,7 @@ export const WEIGHTS = {
   bold: 'bold'
 };
 
-const Text = ({size, secondary, skin, light, bold, weight, ...rest}) => {
+const Text = ({size, secondary, skin, light, bold, weight, tagName, children, ...rest}) => {
   if (bold !== undefined) {
     deprecationLog('Text prop "bold" is deprecated, use "weight" prop instead');
   } else {
@@ -31,31 +32,39 @@ const Text = ({size, secondary, skin, light, bold, weight, ...rest}) => {
   }
 
   return (
-    <CoreText
-      {...rest}
-      {...style(
-        'root',
-        {
-          size,
-          secondary,
-          skin,
-          light: light && skin === SKINS.standard,
-          weight,
-          bold
-        },
-        rest
-      )}
-      />
+    React.createElement(
+      tagName,
+      {
+        ...omit(rest, ['dataHook']),
+        ...style(
+          'root',
+          {
+            size,
+            secondary,
+            skin,
+            light: light && skin === SKINS.standard,
+            weight,
+            bold
+          },
+          rest
+        )
+      },
+      children
+    )
   );
 };
 
 Text.displayName = 'Text';
 
 Text.propTypes = {
-  ...CoreText.propTypes,
+  /** tag name that will be rendered */
+  tagName: string,
 
   /** font size of the text */
   size: oneOf(Object.keys(SIZES)),
+
+  /** any nodes to be rendered (usually text nodes) */
+  children: any,
 
   /** is the text type is secondary. Affects the font color */
   secondary: bool,
@@ -78,7 +87,8 @@ Text.defaultProps = {
   secondary: false,
   skin: SKINS.standard,
   light: false,
-  weight: WEIGHTS.normal
+  weight: WEIGHTS.normal,
+  tagName: 'span'
 };
 
 export default Text;

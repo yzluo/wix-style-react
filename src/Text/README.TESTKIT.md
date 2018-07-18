@@ -7,9 +7,6 @@
 | method   | arguments | returned value | description                              |
 | -------- | --------- | -------------- | ---------------------------------------- |
 | exists   | -         | boolean        | check if element exists          |
-| hasEllipsis | -         | boolean         | check if component has ellipsis |
-| hasTitleAttribute | -         | boolean         | check if element has title attribute |
-| getTitle | -         | string         | returns the element title attribute |
 | getTagName | -         | string         | get the rendered tag name |
 | getText | -         | string         | get the rendered content |
 | getSize | -         | string         | returns the size of the text |

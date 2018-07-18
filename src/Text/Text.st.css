@@ -1,9 +1,4 @@
 :import {
-  -st-from: "wix-ui-backoffice/dist/src/components/core/CoreText/Text.st.css";
-  -st-default: Text;
-}
-
-:import {
   -st-from: "wix-ui-backoffice/dist/src/palette.st.css";
   -st-named: 
     primaryText, secondaryText, primaryLightText, secondaryLightText,
@@ -16,7 +11,6 @@
 }
 
 .root {
-  -st-extends: Text;
   -st-states: 
     size(enum(small, medium, tiny)),
     secondary,
@@ -24,10 +18,6 @@
     light,
     weight(enum(thin, normal, bold)),
     bold;
-}
-
-.root:not(:ellipsis) {
-  white-space: pre-line;
 }
 
 .root:size(medium), .root:size(medium):secondary {
