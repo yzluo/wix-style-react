@@ -70,13 +70,14 @@ class EllipsedTooltip extends React.Component {
   }
 }
 
-export const withEllipsedTooltip = ({showTooltip} = {}) => Comp => props => {
-  EllipsedTooltip.displayName = getDisplayName(Comp);
-
-  return (
+export const withEllipsedTooltip = ({showTooltip} = {}) => Comp => {
+  const WrapperComponent = props => (
     <EllipsedTooltip
       component={React.createElement(Comp, props)}
       showTooltip={showTooltip}
       />
   );
+  WrapperComponent.displayName = getDisplayName(Comp);
+
+  return WrapperComponent;
 };
