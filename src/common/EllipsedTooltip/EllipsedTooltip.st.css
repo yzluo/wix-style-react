@@ -4,24 +4,12 @@
 }
 
 .root {
-  -st-states: ellipsis;
-
-  display: inline-block;
-  white-space: pre-line;
+  -st-states: text;
   width: 100%;
 }
 
-.root:ellipsis {
-  white-space: nowrap;
+.root:text {
+  display: inline-block;
   text-overflow: ellipsis;
   overflow: hidden;
-}
-
-.wrappingTooltip {
-  -st-extends: Tooltip;
-}
-
-.wrappingTooltip::manager {
-  width: 100%;
-  color: lior;
 }
