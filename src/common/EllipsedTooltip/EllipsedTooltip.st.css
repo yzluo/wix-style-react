@@ -1,15 +1,16 @@
-:import {
-  -st-from: "wix-ui-backoffice/dist/src/components/Tooltip/Tooltip.st.css";
-  -st-default: Tooltip;
-}
-
 .root {
-  -st-states: text;
-  width: 100%;
-}
+  -st-states: showTooltip;
 
-.root:text {
   display: inline-block;
   text-overflow: ellipsis;
   overflow: hidden;
+  width: 100%;
+}
+
+.root:showTooltip {
+  white-space: nowrap;
+}
+
+.root:not(:showTooltip) {
+  white-space: pre-line;
 }

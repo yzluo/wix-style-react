@@ -51,7 +51,7 @@ class EllipsedTooltip extends React.Component {
     return React.cloneElement(
       component,
       {
-        ...style('root', {text: true}, this.props),
+        ...style('root', {showTooltip: false}, this.props.component.props),
         forwardedRef: node => this.textNode = node
       }
     );
@@ -65,7 +65,7 @@ class EllipsedTooltip extends React.Component {
     return (
       <Tooltip
         content={this.props.component.props.children}
-        {...style('root')}
+        {...style('root', {showTooltip: true})}
         >
         {this.renderText()}
       </Tooltip>

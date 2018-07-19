@@ -43,7 +43,7 @@ export default {
         <EllipsisExample/>
       </CodeExample>
 
-      <CodeExample title="Ellipsis Example" code={H1TagNameExampleRaw}>
+      <CodeExample title="Custom TagName Example" code={H1TagNameExampleRaw}>
         <H1TagNameExample/>
       </CodeExample>
 
