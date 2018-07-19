@@ -45,27 +45,33 @@ class EllipsedTooltip extends React.Component {
     }, 30);
   };
 
-  renderText({ellipsis}) {
+  renderText() {
     const {component} = this.props;
 
     return React.cloneElement(
       component,
       {
-        ...style('root', {ellipsis}, this.props),
         forwardedRef: node => this.textNode = node
       }
     );
   }
 
-  render() {
-    if (!this.state.isEllipsisActive || !this.props.showTooltip) {
-      return this.renderText({ellipsis: false});
-    }
+  shouldShowTooltip() {
+    return this.state.isEllipsisActive && this.props.showTooltip;
+  }
 
+  render() {
     return (
-      <Tooltip content={this.props.component.props.children} className={style.wrappingTooltip}>
-        {this.renderText({ellipsis: true})}
-      </Tooltip>
+      <div {...style('root', {ellipsis: this.state.isEllipsisActive}, this.props)}>
+        {
+          this.shouldShowTooltip() ?
+            <Tooltip content={this.props.component.props.children} className={style.wrappingTooltip}>
+              {this.renderText()}
+            </Tooltip> :
+
+            this.renderText()
+        }
+      </div>
     );
   }
 }
