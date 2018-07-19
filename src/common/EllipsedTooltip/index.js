@@ -63,7 +63,7 @@ class EllipsedTooltip extends React.Component {
     }
 
     return (
-      <Tooltip content={this.props.component.props.children}>
+      <Tooltip content={this.props.component.props.children} className={style.wrappingTooltip}>
         {this.renderText({ellipsis: true})}
       </Tooltip>
     );
