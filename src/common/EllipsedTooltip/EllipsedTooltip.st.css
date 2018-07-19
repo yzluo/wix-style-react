@@ -1,0 +1,13 @@
+.root {
+  -st-states: ellipsis;
+
+  display: inline-block;
+  white-space: pre-line;
+  width: 100%;
+}
+
+.root:ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

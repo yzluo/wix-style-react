@@ -1,9 +1,9 @@
 import React from 'react';
-import {oneOf, bool, string, any} from 'prop-types';
+import {oneOf, bool, string, any, func} from 'prop-types';
 import style from './Text.st.css';
 import deprecationLog from '../utils/deprecationLog';
 import omit from 'lodash/omit';
-// import {withEllipsedTooltip} from '../';
+import {withEllipsedTooltip} from '../common/EllipsedTooltip';
 
 export const SIZES = {
   tiny: 'tiny',
@@ -24,7 +24,7 @@ export const WEIGHTS = {
   bold: 'bold'
 };
 
-const Text = ({size, secondary, skin, light, bold, weight, tagName, children, ...rest}) => {
+const Text = ({size, secondary, skin, light, bold, weight, tagName, children, forwardedRef, ...rest}) => {
   if (bold !== undefined) {
     deprecationLog('Text prop "bold" is deprecated, use "weight" prop instead');
   } else {
@@ -35,6 +35,7 @@ const Text = ({size, secondary, skin, light, bold, weight, tagName, children, ..
     React.createElement(
       tagName,
       {
+        ref: forwardedRef,
         ...omit(rest, ['dataHook']),
         ...style(
           'root',
@@ -79,7 +80,9 @@ Text.propTypes = {
   weight: oneOf(Object.keys(WEIGHTS)),
 
   /** is the text bold */
-  bold: bool
+  bold: bool,
+
+  forwardedRef: func
 };
 
 Text.defaultProps = {
@@ -91,4 +94,4 @@ Text.defaultProps = {
   tagName: 'span'
 };
 
-export default Text;
+export default withEllipsedTooltip({showTooltip: true})(Text);

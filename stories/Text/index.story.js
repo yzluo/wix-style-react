@@ -1,10 +1,17 @@
 import React from 'react';
-import CodeExample from 'wix-storybook-utils/CodeExample';
-import ControlledTextExampleTypography from './ExampleTextTypography';
-import ControlledTextExampleTypographyRaw from '!raw-loader!./ExampleTextTypography';
-import Heading from '../../src/Heading';
 import Text from 'wix-style-react/Text';
 import {SIZES, SKINS, WEIGHTS} from '../../src/Text/Text';
+
+import CodeExample from 'wix-storybook-utils/CodeExample';
+
+import TypographyExample from './ExampleTextTypography';
+import TypographyExampleRaw from '!raw-loader!./ExampleTextTypography';
+
+import MultilineExample from './ExampleMultiline';
+import MultilineExampleRaw from '!raw-loader!./ExampleMultiline';
+
+import EllipsisExample from './ExampleEllipsis';
+import EllipsisExampleRaw from '!raw-loader!./ExampleEllipsis';
 
 export default {
   category: '1. Foundation',
@@ -25,9 +32,16 @@ export default {
 
   examples: (
     <div>
-      <Heading>Typography Examples:</Heading>
-      <CodeExample title="Text" code={ControlledTextExampleTypographyRaw}>
-        <ControlledTextExampleTypography/>
+      <CodeExample title="Multiline Example" code={MultilineExampleRaw}>
+        <MultilineExample/>
+      </CodeExample>
+
+      <CodeExample title="Ellipsis Example" code={EllipsisExampleRaw}>
+        <EllipsisExample/>
+      </CodeExample>
+
+      <CodeExample title="Typography Examples" code={TypographyExampleRaw}>
+        <TypographyExample/>
       </CodeExample>
     </div>
   )
