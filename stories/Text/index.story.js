@@ -13,6 +13,9 @@ import MultilineExampleRaw from '!raw-loader!./ExampleMultiline';
 import EllipsisExample from './ExampleEllipsis';
 import EllipsisExampleRaw from '!raw-loader!./ExampleEllipsis';
 
+import H1TagNameExample from './ExampleH1TagName';
+import H1TagNameExampleRaw from '!raw-loader!./ExampleH1TagName';
+
 export default {
   category: '1. Foundation',
   storyName: '1.2 Text',
@@ -38,6 +41,10 @@ export default {
 
       <CodeExample title="Ellipsis Example" code={EllipsisExampleRaw}>
         <EllipsisExample/>
+      </CodeExample>
+
+      <CodeExample title="Ellipsis Example" code={H1TagNameExampleRaw}>
+        <H1TagNameExample/>
       </CodeExample>
 
       <CodeExample title="Typography Examples" code={TypographyExampleRaw}>
