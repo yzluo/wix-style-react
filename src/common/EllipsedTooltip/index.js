@@ -22,20 +22,24 @@ class EllipsedTooltip extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.updateEllipsesState);
-    this.updateEllipsesState();
+    if (this.props.component.props.ellipsis) {
+      window.addEventListener('resize', this.updateEllipsesState);
+      this.updateEllipsesState();
+    }
   }
 
   componentDidUpdate(prevProps) {
     // if props changed, then we want to re-check node for ellipsis state
     // and we can not do such check in render, because we want to check already rendered node
-    if (!shallowequal(prevProps, this.props)) {
+    if (this.props.component.props.ellipsis && !shallowequal(prevProps, this.props)) {
       this.updateEllipsesState();
     }
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateEllipsesState);
+    if (this.props.component.props.ellipsis) {
+      window.removeEventListener('resize', this.updateEllipsesState);
+    }
   }
 
   updateEllipsesState = () => {
@@ -58,7 +62,7 @@ class EllipsedTooltip extends React.Component {
   }
 
   render() {
-    if (!this.state.isEllipsisActive || !this.props.showTooltip) {
+    if (!this.props.component.props.ellipsis || !this.state.isEllipsisActive || !this.props.showTooltip) {
       return this.renderText();
     }
 

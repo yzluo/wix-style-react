@@ -30,7 +30,8 @@ export default {
     secondary: false,
     skin: SKINS.standard,
     weight: WEIGHTS.normal,
-    tagName: 'span'
+    tagName: 'span',
+    ellipsis: false
   },
 
   examples: (
