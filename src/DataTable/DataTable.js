@@ -12,6 +12,7 @@ import {Animator} from 'wix-animations';
 import InfoCircle from 'wix-ui-icons-common/InfoCircle';
 import Tooltip from '../Tooltip/Tooltip';
 import omit from 'lodash/omit';
+import stylable from './DataTable.st.css';
 
 export const DataTableHeader = props => (
   <div>
@@ -107,11 +108,12 @@ class DataTable extends WixComponent {
   renderTable = rowsToRender => {
     const style = {width: this.props.width};
     return (
-      <div>
+      <div {...stylable('root', {}, this.props)}>
         <table
           id={this.props.id} style={style}
           className={classNames(
             this.style.table,
+            stylable.table,
             {
               [this.style.showLastRowDivider]: this.props.showLastRowDivider
             }
@@ -465,7 +467,7 @@ DataTable.propTypes = {
   hideHeader: PropTypes.bool,
   /** A flag specifying weather to apply the new layout/design update. Default will change to true in the next major release (version 5.0.0) */
   newDesign: PropTypes.bool,
-    /** A flag specifying weather to show a divider after the last row */
+  /** A flag specifying weather to show a divider after the last row */
   showLastRowDivider: PropTypes.bool
 };
 DataTable.displayName = 'DataTable';

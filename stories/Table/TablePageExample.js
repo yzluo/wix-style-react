@@ -12,7 +12,6 @@ import {
 import Dropdown from 'wix-style-react/Dropdown';
 import Search from 'wix-style-react/Search';
 import Checkbox from 'wix-style-react/Checkbox';
-import Card from 'wix-style-react/Card';
 import Page from 'wix-style-react/Page';
 import Button from 'wix-style-react/Button';
 import {Edit, Duplicate, Upload} from 'wix-style-react/new-icons';
@@ -50,11 +49,10 @@ export class TablePageExample extends React.Component {
     ];
 
     return (
-      <Card>
-        <TableToolbar>
-          <ItemGroup position="start">
-            <Item>
-              <Label>
+      <TableToolbar>
+        <ItemGroup position="start">
+          <Item>
+            <Label>
             Product
             <span style={{width: '150px'}}>
               <Dropdown
@@ -66,10 +64,10 @@ export class TablePageExample extends React.Component {
                 roundInput
                 />
             </span>
-              </Label>
-            </Item>
-            <Item>
-              <Label>
+            </Label>
+          </Item>
+          <Item>
+            <Label>
             Color
             <span style={{width: '86px'}}>
               <Dropdown
@@ -79,21 +77,20 @@ export class TablePageExample extends React.Component {
                 roundInput
                 />
             </span>
-              </Label>
-            </Item>
-            <Item>
-              <Checkbox checked={this.state.inStock} onChange={e => this.setState({inStock: e.target.checked})}>
+            </Label>
+          </Item>
+          <Item>
+            <Checkbox checked={this.state.inStock} onChange={e => this.setState({inStock: e.target.checked})}>
                 In Stock only
               </Checkbox>
-            </Item>
-          </ItemGroup>
-          <ItemGroup position="end">
-            <Item>
-              {this.renderSearch(false)}
-            </Item>
-          </ItemGroup>
-        </TableToolbar>
-      </Card>
+          </Item>
+        </ItemGroup>
+        <ItemGroup position="end">
+          <Item>
+            {this.renderSearch(false)}
+          </Item>
+        </ItemGroup>
+      </TableToolbar>
     );
   }
 
@@ -176,12 +173,11 @@ export class TablePageExample extends React.Component {
           ]}
           onSelectionChange={selectedIds => console.log('Table.onSelectionChange(): selectedIds=', selectedIds)}
           showSelection
-          showLastRowDivider
           >
           <Page>
             <Page.Header title="My Table Title"/>
             <Page.FixedContent>
-              <Card>
+              <div>
                 <Table.ToolbarContainer>
                   { selectionContext => selectionContext.selectedCount === 0 ?
                       this.renderMainToolbar() :
@@ -189,12 +185,10 @@ export class TablePageExample extends React.Component {
                   }
                 </Table.ToolbarContainer>
                 <Table.Titlebar/>
-              </Card>
+              </div>
             </Page.FixedContent>
             <Page.Content>
-              <Card>
-                <Table.Content titleBarVisible={false}/>
-              </Card>
+              <Table.Content titleBarVisible={false}/>
             </Page.Content>
           </Page>
         </Table>

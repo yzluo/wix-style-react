@@ -1,0 +1,16 @@
+:import {
+  -st-from: "wix-ui-backoffice/dist/src/colors.st.css";
+  -st-named: D80;
+}
+
+:import {
+  -st-from: "../Table.st.css";
+  -st-named: borderRadius;
+}
+
+.root {
+  background: value(D80);
+  
+  border-top-left-radius: value(borderRadius);
+  border-top-right-radius: value(borderRadius);
+}

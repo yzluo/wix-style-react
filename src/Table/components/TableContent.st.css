@@ -1,0 +1,22 @@
+:import {
+  -st-from: "../../DataTable/DataTable.st.css";
+  -st-default: DataTable;
+}
+
+:import {
+  -st-from: "../Table.st.css";
+  -st-named: borderRadius;
+}
+
+.root {
+
+}
+
+.dataTable {
+  -st-extends: DataTable;
+}
+
+.dataTable::table {
+  border-bottom-left-radius: value(borderRadius);
+  border-bottom-right-radius: value(borderRadius);
+}
