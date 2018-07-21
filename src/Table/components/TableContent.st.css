@@ -9,14 +9,14 @@
 }
 
 .root {
-
+  -st-states: openEnded(boolean);
 }
 
 .dataTable {
   -st-extends: DataTable;
 }
 
-.dataTable::table {
+.root:not(:openEnded) .dataTable::table {
   border-bottom-left-radius: value(borderRadius);
   border-bottom-right-radius: value(borderRadius);
 }

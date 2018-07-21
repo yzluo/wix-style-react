@@ -6,9 +6,11 @@ import {TableContext} from '../TableContext';
 import {BulkSelectionConsumer} from '../BulkSelection';
 import style from './TableContent.st.css';
 
-export const TableContent = ({titleBarVisible}) => {
+export const TableContent = props => {
   // TODO: figure out if we need to put result of createColumns() on state, in order to avoid
   // redundant renders.
+
+  const {titleBarVisible} = props;
 
   return (
     <TableContext.Consumer>
@@ -39,7 +41,7 @@ export const TableContent = ({titleBarVisible}) => {
           );
 
           return (
-            <div {...style('root')}>
+            <div {...style('root', {openEnded: tableProps.openEnded}, props)}>
               {dataTable}
             </div>
           );

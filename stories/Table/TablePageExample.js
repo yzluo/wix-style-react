@@ -162,6 +162,7 @@ export class TablePageExample extends React.Component {
         >
         <Table
           withWrapper={false}
+          openEnded
           dataHook="story-table-example"
           data={this.getFilteredData()}
           itemsPerPage={20}

@@ -55,7 +55,8 @@ export function getDataTableProps(tableProps) {
           'newDesign',
           'hideHeader',
         ),
-    newDesign: true
+    newDesign: true,
+    showLastRowDivider: !!tableProps.openEnded
   };
 }
 
@@ -132,7 +133,8 @@ Table.defaultProps = {
     <Table.Content key="content"/>
   ],
   withWrapper: true,
-  showLastRowDivider: false
+  showLastRowDivider: false,
+  openEnded: false
 };
 
 Table.propTypes = {
@@ -220,7 +222,9 @@ Table.propTypes = {
   /**
    *  When false then Table would not create a `<div/>` wrapper around it's children.
    *  Useful when using `<Table/>` to wrap a `<Page/>` component, in that case we use the `<Table/>` only as a context provider and it doesn't render anything to the DOM by itself.*/
-  withWrapper: bool
+  withWrapper: bool,
+  /** Wether the bottom of the table looks line there are more rows */
+  openEnded: bool
 };
 
 // export default Table;
