@@ -1,16 +1,6 @@
 .root {
-  -st-states: showTooltip;
-
   display: inline-block;
   text-overflow: ellipsis;
   overflow: hidden;
   width: 100%;
-}
-
-.root:showTooltip {
-  white-space: nowrap;
-}
-
-.root:not(:showTooltip) {
-  white-space: pre-line;
 }

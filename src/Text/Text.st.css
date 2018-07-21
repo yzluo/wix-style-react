@@ -17,8 +17,7 @@
     skin(enum(standard, success, error, premium)),
     light,
     weight(enum(thin, normal, bold)),
-    bold,
-    ellipsis;
+    bold;
 
   white-space: pre-line;
 }
@@ -82,10 +81,6 @@
 
 .root:weight(thin) {
   font-family: value(fontLight);
-}
-
-.root:ellipsis {
-  white-space: nowrap
 }
 
 /* Deprecated */

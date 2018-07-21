@@ -3,7 +3,6 @@ import {oneOf, bool, string, any, func} from 'prop-types';
 import style from './Text.st.css';
 import deprecationLog from '../utils/deprecationLog';
 import omit from 'lodash/omit';
-import {withEllipsedTooltip} from '../common/EllipsedTooltip';
 
 export const SIZES = {
   tiny: 'tiny',
@@ -24,7 +23,7 @@ export const WEIGHTS = {
   bold: 'bold'
 };
 
-const Text = ({size, secondary, skin, light, bold, weight, tagName, children, forwardedRef, ellipsis, ...rest}) => {
+const Text = ({size, secondary, skin, light, bold, weight, tagName, children, forwardedRef, ...rest}) => {
   if (bold !== undefined) {
     deprecationLog('Text prop "bold" is deprecated, use "weight" prop instead');
   } else {
@@ -45,8 +44,7 @@ const Text = ({size, secondary, skin, light, bold, weight, tagName, children, fo
             skin,
             light: light && skin === SKINS.standard,
             weight,
-            bold,
-            ellipsis
+            bold
           },
           rest
         )
@@ -83,9 +81,6 @@ Text.propTypes = {
   /** is the text bold */
   bold: bool,
 
-  /** should the text get ellipsed with tooltip, or should it get broken into lines when it reaches the end of its container */
-  ellipsis: bool,
-
   forwardedRef: func
 };
 
@@ -95,8 +90,7 @@ Text.defaultProps = {
   skin: SKINS.standard,
   light: false,
   weight: WEIGHTS.normal,
-  tagName: 'span',
-  ellipsis: false
+  tagName: 'span'
 };
 
-export default withEllipsedTooltip({showTooltip: true})(Text);
+export default Text;

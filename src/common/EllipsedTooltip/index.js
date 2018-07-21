@@ -13,65 +13,58 @@ class EllipsedTooltip extends React.Component {
     showTooltip: bool
   };
 
-  static defaultProps = {
-    showTooltip: true
-  };
+  static defaultProps = {showTooltip: true};
 
-  state = {
-    isEllipsisActive: false
-  }
+  state = {isEllipsisActive: false};
 
   componentDidMount() {
-    if (this.props.component.props.ellipsis) {
-      window.addEventListener('resize', this.updateEllipsesState);
-      this.updateEllipsesState();
-    }
+    window.addEventListener('resize', this._updateEllipsisState);
+    this._updateEllipsisState();
   }
 
   componentDidUpdate(prevProps) {
     // if props changed, then we want to re-check node for ellipsis state
     // and we can not do such check in render, because we want to check already rendered node
-    if (this.props.component.props.ellipsis && !shallowequal(prevProps, this.props)) {
-      this.updateEllipsesState();
+    if (!shallowequal(prevProps, this.props)) {
+      this._updateEllipsisState();
     }
   }
 
   componentWillUnmount() {
-    if (this.props.component.props.ellipsis) {
-      window.removeEventListener('resize', this.updateEllipsesState);
-    }
+    window.removeEventListener('resize', this._updateEllipsisState);
   }
 
-  updateEllipsesState = () => {
+  _updateEllipsisState = () => {
     clearTimeout(this.ellipsesTimeout);
     this.ellipsesTimeout = setTimeout(() => {
       this.setState({isEllipsisActive: isEllipsisActive(this.textNode)});
     }, 30);
   };
 
-  renderText() {
+  _renderText() {
     const {component} = this.props;
 
     return React.cloneElement(
       component,
       {
-        ...style('root', {showTooltip: false}, this.props.component.props),
+        ...style('root', {}, this.props.component.props),
+        style: {whiteSpace: 'nowrap'},
         forwardedRef: node => this.textNode = node
       }
     );
   }
 
   render() {
-    if (!this.props.component.props.ellipsis || !this.state.isEllipsisActive || !this.props.showTooltip) {
-      return this.renderText();
+    if (!this.state.isEllipsisActive || !this.props.showTooltip) {
+      return this._renderText();
     }
 
     return (
       <Tooltip
         content={this.props.component.props.children}
-        {...style('root', {showTooltip: true})}
+        {...style('root')}
         >
-        {this.renderText()}
+        {this._renderText()}
       </Tooltip>
     );
   }
