@@ -1,11 +1,9 @@
 import React from 'react';
 import {node, bool} from 'prop-types';
 import shallowequal from 'shallowequal';
-import {Tooltip} from 'wix-ui-backoffice/Tooltip';
+import {Tooltip} from 'wix-ui-core/Tooltip';
 import style from './EllipsedTooltip.st.css';
 import {getDisplayName} from '../hocUtils';
-
-const isEllipsisActive = node => node && node.offsetWidth < node.scrollWidth;
 
 class EllipsedTooltip extends React.Component {
   static propTypes = {
@@ -18,7 +16,6 @@ class EllipsedTooltip extends React.Component {
   state = {isEllipsisActive: false};
 
   componentDidMount() {
-    window.addEventListener('resize', this._updateEllipsisState);
     this._updateEllipsisState();
   }
 
@@ -30,15 +27,10 @@ class EllipsedTooltip extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this._updateEllipsisState);
-  }
-
   _updateEllipsisState = () => {
-    clearTimeout(this.ellipsesTimeout);
-    this.ellipsesTimeout = setTimeout(() => {
-      this.setState({isEllipsisActive: isEllipsisActive(this.textNode)});
-    }, 30);
+    this.setState({
+      isEllipsisActive: this.textNode && this.textNode.offsetWidth < this.textNode.scrollWidth
+    });
   };
 
   _renderText() {
@@ -61,8 +53,10 @@ class EllipsedTooltip extends React.Component {
 
     return (
       <Tooltip
-        content={this.props.component.props.children}
         {...style('root')}
+        appendTo="scrollParent"
+        content={<div className={style.tooltipContent}>{this.props.component.props.children}</div>}
+        showArrow
         >
         {this._renderText()}
       </Tooltip>
@@ -77,6 +71,7 @@ export const withEllipsedTooltip = ({showTooltip} = {}) => Comp => {
       showTooltip={showTooltip}
       />
   );
+
   WrapperComponent.displayName = getDisplayName(Comp);
 
   return WrapperComponent;

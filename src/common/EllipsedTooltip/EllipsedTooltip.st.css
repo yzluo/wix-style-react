@@ -1,6 +1,16 @@
+:import {
+  -st-from: "wix-ui-backoffice/dist/src/components/Tooltip/Tooltip.st.css";
+  -st-default: Tooltip;
+  -st-named: tooltipContent;
+}
+
 .root {
   display: inline-block;
   text-overflow: ellipsis;
   overflow: hidden;
   width: 100%;
+
+  -st-mixin: Tooltip;
 }
+
+.root .tooltipContent {}
