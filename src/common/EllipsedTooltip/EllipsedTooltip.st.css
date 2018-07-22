@@ -4,13 +4,13 @@
   -st-named: tooltipContent;
 }
 
-.root {
-  display: inline-block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 100%;
+:import {
+  -st-from: "./core/EllipsedTooltip.st.css";
+  -st-default: CoreEllipsedTooltip;
+}
 
-  -st-mixin: Tooltip;
+.root {
+  -st-mixin: CoreEllipsedTooltip, Tooltip;
 }
 
 .root .tooltipContent {}
