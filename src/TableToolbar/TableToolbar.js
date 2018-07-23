@@ -2,6 +2,7 @@ import React from 'react';
 import {node} from 'prop-types';
 import typography from '../Typography/Typography.scss';
 import {Toolbar, ItemGroup, Item, Label, Divider} from './Toolbar';
+import style from './TableToolbar.st.css';
 
 export const Title = props => {
   return (
@@ -27,7 +28,11 @@ SelectedCount.propTypes = {
   children: node
 };
 
-export const TableToolbar = Toolbar;
+export const TableToolbar = props => (
+  <div {...style('root', {}, props)}>
+    <Toolbar {...props}/>
+  </div>
+);
 
 // Aliases for convenience
 TableToolbar.ItemGroup = ItemGroup;

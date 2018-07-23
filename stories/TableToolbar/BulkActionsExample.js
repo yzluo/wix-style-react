@@ -16,9 +16,7 @@ import {Edit, Duplicate, Upload} from 'wix-style-react/new-icons';
 export class BulkActionsExample extends React.Component {
   render() {
     return (
-      <Card>
-        <BulkActionsToolbar selectedCount={12}/>
-      </Card>
+      <BulkActionsToolbar selectedCount={12}/>
     );
   }
 }
