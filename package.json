@@ -164,6 +164,8 @@
       "jest": true
     },
     "rules": {
+      "react/forbid-foreign-prop-types": 0,
+      "import/no-unresolved": 0,
       "react/jsx-handler-names": 0,
       "react/no-find-dom-node": 0,
       "react/no-string-refs": 0,
