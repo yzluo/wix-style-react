@@ -9,16 +9,11 @@ import YearDropdown from './YearDropdown';
 import MonthDropdown from './MonthDropdown';
 import styles from './styles.scss';
 
-const caption = (text, dataHook) =>
-  <div
-    data-hook={dataHook}
-    className={styles.caption}
-    children={text}
-    />;
+const caption = (text, dataHook) => (
+  <div data-hook={dataHook} className={styles.caption} children={text} />
+);
 
-
-const getMonthName = (months, month) =>
-  months[month] || months[0];
+const getMonthName = (months, month) => months[month] || months[0];
 
 const DatePickerHead = ({
   date,
@@ -27,50 +22,43 @@ const DatePickerHead = ({
   onLeftArrowClick,
   onRightArrowClick,
   showMonthDropdown,
-  showYearDropdown
+  showYearDropdown,
 }) => {
   return (
-    <div
-      data-hook="datepicker-head"
-      className={styles.root}
-      >
-
+    <div data-hook="datepicker-head" className={styles.root}>
       <div
         className={classnames(styles.arrow, styles.arrowLeft)}
         data-hook="datepicker-left-arrow"
         onClick={onLeftArrowClick}
-        >
-        <ChevronLeft className={styles.arrowIcon}/>
+      >
+        <ChevronLeft className={styles.arrowIcon} />
       </div>
 
-      {showMonthDropdown ?
+      {showMonthDropdown ? (
         <MonthDropdown
           date={date}
           onChange={onChange}
           months={localeUtils.getMonths()}
-          /> :
-
+        />
+      ) : (
         caption(
           getMonthName(localeUtils.getMonths(), date.getMonth()),
-          'datepicker-month-caption'
+          'datepicker-month-caption',
         )
-      }
+      )}
 
-      { showYearDropdown ?
-        <YearDropdown
-          date={date}
-          onChange={onChange}
-          /> :
-
+      {showYearDropdown ? (
+        <YearDropdown date={date} onChange={onChange} />
+      ) : (
         caption(date.getFullYear(), 'datepicker-year-caption')
-      }
+      )}
 
       <div
         className={classnames(styles.arrow, styles.arrowRight)}
         data-hook="datepicker-right-arrow"
         onClick={onRightArrowClick}
-        >
-        <ChevronRight className={styles.arrowIcon}/>
+      >
+        <ChevronRight className={styles.arrowIcon} />
       </div>
     </div>
   );
@@ -83,8 +71,7 @@ DatePickerHead.propTypes = {
   onLeftArrowClick: PropTypes.func.isRequired,
   onRightArrowClick: PropTypes.func.isRequired,
   showMonthDropdown: PropTypes.bool,
-  showYearDropdown: PropTypes.bool
+  showYearDropdown: PropTypes.bool,
 };
-
 
 export default DatePickerHead;

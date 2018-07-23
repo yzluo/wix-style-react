@@ -8,16 +8,20 @@ const arrowDirectionToPlacement = {
   top: 'bottom',
   bottom: 'top',
   left: 'right',
-  right: 'left'
+  right: 'left',
 };
 
-const tooltipDriverFactory = ({element, wrapper}) => {
+const tooltipDriverFactory = ({ element, wrapper }) => {
   const bodyOrWrapper = {
-    querySelector: query => (document.body.querySelector(query) || (wrapper.querySelector && wrapper.querySelector(query))),
+    querySelector: query =>
+      document.body.querySelector(query) ||
+      (wrapper.querySelector && wrapper.querySelector(query)),
     querySelectorAll: query => {
       const documentResult = document.body.querySelectorAll(query);
-      return documentResult.length > 0 ? documentResult : (wrapper.querySelectorAll && wrapper.querySelectorAll(query));
-    }
+      return documentResult.length > 0
+        ? documentResult
+        : wrapper.querySelectorAll && wrapper.querySelectorAll(query);
+    },
   };
   const getTooltipContent = () => bodyOrWrapper.querySelector('.tooltip');
 
@@ -35,7 +39,9 @@ const tooltipDriverFactory = ({element, wrapper}) => {
     getTooltipWrapper: getTooltipContent,
     getChildren: () => element.innerHTML,
     getPlacement: () => {
-      const arrowDirection = last(bodyOrWrapper.querySelectorAll('.arrow')).className.split(' ')[1];
+      const arrowDirection = last(
+        bodyOrWrapper.querySelectorAll('.arrow'),
+      ).className.split(' ')[1];
       return arrowDirectionToPlacement[arrowDirection];
     },
     getContent: () => {
@@ -66,8 +72,13 @@ const tooltipDriverFactory = ({element, wrapper}) => {
       return values.padding;
     },
     setProps: props => {
-      ReactDOM.render(<div ref={r => element = r}><Tooltip {...props}/></div>, wrapper);
-    }
+      ReactDOM.render(
+        <div ref={r => (element = r)}>
+          <Tooltip {...props} />
+        </div>,
+        wrapper,
+      );
+    },
   };
 };
 

@@ -25,7 +25,7 @@ const LOCALES = {
   sv: 'Svenska',
   th: 'Thai',
   tr: 'Türkçe',
-  zh: 'Chinese'
+  zh: 'Chinese',
 };
 
 export default {
@@ -34,21 +34,21 @@ export default {
   componentPath: '../../src/LanguagePicker',
 
   componentProps: {
-    children: Object.keys(LOCALES).map(lang =>
+    children: Object.keys(LOCALES).map(lang => (
       <LanguagePicker.Option key={lang} languageKey={lang}>
         {LOCALES[lang]}
       </LanguagePicker.Option>
-    )
+    )),
   },
 
   exampleProps: {
-    onSelect: ({value}) => value
+    onSelect: ({ value }) => value,
   },
 
   // TODO: update e2e to use generated example and remove `examples` below
   examples: (
     <CodeExample title="Example" code={ExampleRaw}>
-      <Example/>
+      <Example />
     </CodeExample>
-  )
+  ),
 };

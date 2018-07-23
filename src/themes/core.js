@@ -17,14 +17,14 @@ export const button = {
   hover: {
     color: 'black',
     backgroundColor: 'grey',
-    borderColor: 'black'
+    borderColor: 'black',
   },
 
   disabled: {
     color: 'black',
     backgroundColor: 'grey',
-    borderColor: 'black'
-  }
+    borderColor: 'black',
+  },
 };
 
 export const input = {
@@ -33,6 +33,6 @@ export const input = {
   backgroundColor: 'transparent',
 
   hover: {
-    backgroundColor: 'transparent'
-  }
+    backgroundColor: 'transparent',
+  },
 };

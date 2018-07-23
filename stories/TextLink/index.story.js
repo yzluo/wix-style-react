@@ -18,18 +18,18 @@ export default {
   componentProps: {
     link: 'https://wix.com',
     underlineStyle: 'hover',
-    children: 'Click to visit wix.com'
+    children: 'Click to visit wix.com',
   },
 
   example: (
     <div>
       <CodeExample title="Standard" code={ExampleStandardRaw}>
-        <ExampleStandard/>
+        <ExampleStandard />
       </CodeExample>
 
       <CodeExample title="Dark" code={ExampleDarkRaw}>
-        <ExampleDark/>
+        <ExampleDark />
       </CodeExample>
     </div>
-  )
+  ),
 };

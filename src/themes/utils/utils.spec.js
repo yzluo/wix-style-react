@@ -1,4 +1,4 @@
-import {pxDivide} from './index';
+import { pxDivide } from './index';
 
 describe('themes utils', () => {
   describe('pxDivide', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
 import CodeExample from 'wix-storybook-utils/CodeExample';
 import Markdown from 'wix-storybook-utils/Markdown';
@@ -10,19 +10,17 @@ import ControlledTextExampleTypography from './ExampleTextTypography';
 import ControlledTextExampleTypographyRaw from '!raw-loader!./ExampleTextTypography';
 import Heading from '../../src/Heading';
 
-storiesOf('1. Foundation', module)
-  .add('1.2 Text', () => (
-    <div>
-      <Markdown source={Readme}/>
+storiesOf('1. Foundation', module).add('1.2 Text', () => (
+  <div>
+    <Markdown source={Readme} />
 
-      <CodeExample title="Text" code={ControlledTextExampleRaw}>
-        <ControlledTextExample/>
-      </CodeExample>
+    <CodeExample title="Text" code={ControlledTextExampleRaw}>
+      <ControlledTextExample />
+    </CodeExample>
 
-      <Heading>Typography Examples:</Heading>
-      <CodeExample title="Text" code={ControlledTextExampleTypographyRaw}>
-        <ControlledTextExampleTypography/>
-      </CodeExample>
-    </div>
-  ));
-
+    <Heading>Typography Examples:</Heading>
+    <CodeExample title="Text" code={ControlledTextExampleTypographyRaw}>
+      <ControlledTextExampleTypography />
+    </CodeExample>
+  </div>
+));

@@ -14,7 +14,7 @@ export const HELPER_APPEARANCE = {
   standard: styles.standard,
   danger: styles.danger,
   success: styles.success,
-  premium: styles.premium
+  premium: styles.premium,
 };
 
 /**
@@ -23,43 +23,51 @@ export const HELPER_APPEARANCE = {
 class SectionHelper extends WixComponent {
   render() {
     return (
-      <div className={classnames(styles.root, HELPER_APPEARANCE[this.props.appearance])}>
-        { this.props.onClose &&
-          <div className={classnames(styles.close, {[styles.closeWithTitle]: this.props.title})}>
+      <div
+        className={classnames(
+          styles.root,
+          HELPER_APPEARANCE[this.props.appearance],
+        )}
+      >
+        {this.props.onClose && (
+          <div
+            className={classnames(styles.close, {
+              [styles.closeWithTitle]: this.props.title,
+            })}
+          >
             <CloseButton
               dataHook="sectionhelper-close-btn"
               size="large"
               theme="close-dark"
               onClick={this.props.onClose}
-              />
+            />
           </div>
-        }
+        )}
 
-        { this.props.title &&
+        {this.props.title && (
           <div className={styles.title}>
             <Text dataHook="sectionhelper-title" appearance="T4">
               {this.props.title}
             </Text>
           </div>
-        }
+        )}
 
         <div className={styles.content}>
-          <Text appearance="T3">
-            { this.props.children }
-          </Text>
+          <Text appearance="T3">{this.props.children}</Text>
         </div>
 
-        { this.props.onAction && this.props.actionText &&
-          <div className={styles.action}>
-            <Button
-              height="small"
-              theme="outlined"
-              onClick={this.props.onAction}
-              dataHook="sectionhelper-action-btn"
-              children={this.props.actionText}
+        {this.props.onAction &&
+          this.props.actionText && (
+            <div className={styles.action}>
+              <Button
+                height="small"
+                theme="outlined"
+                onClick={this.props.onAction}
+                dataHook="sectionhelper-action-btn"
+                children={this.props.actionText}
               />
-          </div>
-        }
+            </div>
+          )}
       </div>
     );
   }
@@ -82,11 +90,11 @@ SectionHelper.propTypes = {
   actionText: PropTypes.string,
 
   /** Children to render */
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 SectionHelper.defaultProps = {
-  appearance: 'warning'
+  appearance: 'warning',
 };
 
 export default SectionHelper;

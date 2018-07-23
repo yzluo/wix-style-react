@@ -14,7 +14,7 @@ class InputWithTags extends React.Component {
     this.blur = this.blur.bind(this);
     this.select = this.select.bind(this);
 
-    this.state = {inputValue: '', inputHasFocus: false, hasHover: false};
+    this.state = { inputValue: '', inputHasFocus: false, hasHover: false };
   }
 
   componentDidMount() {
@@ -27,29 +27,39 @@ class InputWithTags extends React.Component {
   }
 
   handleInputFocus(e) {
-    !this.state.inputHasFocus && this.setState({inputHasFocus: true}, () => {
-      this.props.onFocus && this.props.onFocus(e);
-    });
+    !this.state.inputHasFocus &&
+      this.setState({ inputHasFocus: true }, () => {
+        this.props.onFocus && this.props.onFocus(e);
+      });
   }
 
   handleInputBlur(e) {
-    this.state.inputHasFocus && this.setState({inputHasFocus: false}, () => {
-      this.props.onBlur && this.props.onBlur(e);
-    });
+    this.state.inputHasFocus &&
+      this.setState({ inputHasFocus: false }, () => {
+        this.props.onBlur && this.props.onBlur(e);
+      });
   }
 
   handleHover() {
-    const {tags} = this.props;
+    const { tags } = this.props;
     if (!this.state.hasHover && tags.length === 0) {
-      this.setState({hasHover: true});
+      this.setState({ hasHover: true });
     } else {
-      this.setState({hasHover: false});
+      this.setState({ hasHover: false });
     }
   }
 
   render() {
-    const {tags, onRemoveTag, placeholder, error, disabled, delimiters, ...inputProps} = this.props;
-    const {inputHasFocus: hasFocus, hasHover} = this.state;
+    const {
+      tags,
+      onRemoveTag,
+      placeholder,
+      error,
+      disabled,
+      delimiters,
+      ...inputProps
+    } = this.props;
+    const { inputHasFocus: hasFocus, hasHover } = this.state;
 
     const className = classNames({
       [styles.tagsContainer]: true,
@@ -57,24 +67,31 @@ class InputWithTags extends React.Component {
       [styles.error]: error,
       [styles.hasFocus]: hasFocus,
       [styles.hasHover]: hasHover,
-      [styles.hasMaxHeight]: !isUndefined(this.props.maxHeight) || !isUndefined(this.props.maxNumRows)
+      [styles.hasMaxHeight]:
+        !isUndefined(this.props.maxHeight) ||
+        !isUndefined(this.props.maxNumRows),
     });
 
-    const desiredProps = omit([
-      'onManuallyInput',
-      'inputElement',
-      'closeOnSelect',
-      'predicate',
-      'menuArrow',
-      'onClickOutside',
-      'fixedHeader',
-      'fixedFooter',
-      'dataHook',
-      'onFocus',
-      'withSelection',
-      'onBlur',
-      'onInputClicked'], inputProps);
-    const fontSize = (desiredProps.size && desiredProps.size === 'small') ? '14px' : '16px';
+    const desiredProps = omit(
+      [
+        'onManuallyInput',
+        'inputElement',
+        'closeOnSelect',
+        'predicate',
+        'menuArrow',
+        'onClickOutside',
+        'fixedHeader',
+        'fixedFooter',
+        'dataHook',
+        'onFocus',
+        'withSelection',
+        'onBlur',
+        'onInputClicked',
+      ],
+      inputProps,
+    );
+    const fontSize =
+      desiredProps.size && desiredProps.size === 'small' ? '14px' : '16px';
 
     let rowMultiplier;
     if (tags.length && tags[0].size === 'large') {
@@ -82,26 +99,43 @@ class InputWithTags extends React.Component {
     } else {
       rowMultiplier = 35;
     }
-    const maxHeight = this.props.maxHeight || this.props.maxNumRows * rowMultiplier || 'initial';
+    const maxHeight =
+      this.props.maxHeight ||
+      this.props.maxNumRows * rowMultiplier ||
+      'initial';
 
     return (
       <div
         className={className}
-        style={{maxHeight}}
+        style={{ maxHeight }}
         onClick={() => this.handleClick()}
         onMouseOver={() => this.handleHover()}
         onMouseOut={() => this.handleHover()}
         data-hook={this.props.dataHook}
+      >
+        {tags.map(({ label, ...rest }) => (
+          <Tag
+            key={rest.id}
+            disabled={disabled}
+            onRemove={onRemoveTag}
+            {...rest}
+          >
+            {label}
+          </Tag>
+        ))}
+        <span
+          className={classNames(styles.input, {
+            [styles.emptyInput]: !tags.length,
+          })}
+          data-hook="inner-input-with-tags"
         >
-        {tags.map(({label, ...rest}) => <Tag key={rest.id} disabled={disabled} onRemove={onRemoveTag} {...rest}>{label}</Tag>)}
-        <span className={classNames(styles.input, {[styles.emptyInput]: !tags.length})} data-hook="inner-input-with-tags">
-          <div className={styles.hiddenDiv} style={{fontSize}}>
+          <div className={styles.hiddenDiv} style={{ fontSize }}>
             {this.state.inputValue}
           </div>
 
           <Input
             width={this.props.width}
-            ref={input => this.input = input}
+            ref={input => (this.input = input)}
             onFocus={() => this.handleInputFocus()}
             onBlur={() => this.handleInputBlur()}
             placeholder={tags.length === 0 ? placeholder : ''}
@@ -110,12 +144,12 @@ class InputWithTags extends React.Component {
             disabled={disabled}
             onChange={e => {
               if (!delimiters.includes(e.target.value)) {
-                this.setState({inputValue: e.target.value});
+                this.setState({ inputValue: e.target.value });
                 desiredProps.onChange && desiredProps.onChange(e);
               }
             }}
             withSelection
-            />
+          />
         </span>
       </div>
     );
@@ -135,7 +169,7 @@ class InputWithTags extends React.Component {
 
   clear() {
     this.setState({
-      inputValue: ''
+      inputValue: '',
     });
   }
 }
@@ -155,14 +189,14 @@ InputWithTags.propTypes = {
   disabled: PropTypes.bool,
   error: PropTypes.bool,
   delimiters: PropTypes.array,
-  width: PropTypes.string
+  width: PropTypes.string,
 };
 
 InputWithTags.defaultProps = {
   onRemoveTag: () => {},
   tags: [],
   placeholder: '',
-  delimiters: []
+  delimiters: [],
 };
 
 export default InputWithTags;

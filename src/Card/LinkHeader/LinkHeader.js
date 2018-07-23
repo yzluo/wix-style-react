@@ -1,39 +1,47 @@
 import React from 'react';
-import {bool, node, string} from 'prop-types';
+import { bool, node, string } from 'prop-types';
 import classNames from 'classnames';
 import styles from './LinkHeader.scss';
-import TextLink from '../../../src/Backoffice/TextLink';
-import WixComponent from '../../../src/BaseComponents/WixComponent';
+import TextLink from '../../Backoffice/TextLink';
+import WixComponent from '../../BaseComponents/WixComponent';
 
 class LinkHeader extends WixComponent {
-
   static propTypes = {
     title: node.isRequired,
     linkTitle: string.isRequired,
     linkTo: string.isRequired,
     subtitle: node,
     tooltip: node,
-    withoutDivider: bool
+    withoutDivider: bool,
   };
 
   static defaultProps = {
     subtitle: null,
     tooltip: null,
-    withoutDivider: false
+    withoutDivider: false,
   };
 
   render() {
-    const {title, subtitle, linkTitle, linkTo, withoutDivider, tooltip} = this.props;
+    const {
+      title,
+      subtitle,
+      linkTitle,
+      linkTo,
+      withoutDivider,
+      tooltip,
+    } = this.props;
 
     const headerClasses = classNames({
       [styles.headerOnlyTitle]: !subtitle,
       [styles.headerTitleSubtitle]: subtitle,
-      [styles.withDivider]: !withoutDivider
+      [styles.withDivider]: !withoutDivider,
     });
 
     const linkElement = (
       <div className={styles.link}>
-        <TextLink dataHook="link" link={linkTo}>{linkTitle}</TextLink>
+        <TextLink dataHook="link" link={linkTo}>
+          {linkTitle}
+        </TextLink>
       </div>
     );
 
@@ -43,9 +51,9 @@ class LinkHeader extends WixComponent {
       </div>
     );
 
-    const tooltipElement = tooltip ? (
-      React.cloneElement(tooltip, {}, linkElement)
-    ) : null;
+    const tooltipElement = tooltip
+      ? React.cloneElement(tooltip, {}, linkElement)
+      : null;
 
     const actionElement = tooltipElement ? tooltipElement : linkElement;
 

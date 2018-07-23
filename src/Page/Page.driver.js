@@ -1,8 +1,12 @@
-export default ({element}) => ({
+export default ({ element }) => ({
   exists: () => !!element,
-  backgroundImageExists: () => !!element.querySelector('[data-hook="page-background-image"]'),
-  gradientClassNameExists: () => !!element.querySelector('[data-hook="page-gradient-class-name"]'),
+  backgroundImageExists: () =>
+    !!element.querySelector('[data-hook="page-background-image"]'),
+  gradientClassNameExists: () =>
+    !!element.querySelector('[data-hook="page-gradient-class-name"]'),
   tailExists: () => !!element.querySelector('[data-hook="page-tail"]'),
-  gradientContainerHeight: () => element.querySelector('[data-hook="page-gradient-class-name"]').style.height,
-  getPageHtml: () => element.innerHTML
+  gradientContainerHeight: () =>
+    element.querySelector('[data-hook="page-gradient-class-name"]').style
+      .height,
+  getPageHtml: () => element.innerHTML,
 });

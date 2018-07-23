@@ -7,23 +7,35 @@ import WixComponent from '../BaseComponents/WixComponent';
 import Typography from '../Typography';
 
 /**
-  * A Tag component
-  */
+ * A Tag component
+ */
 class Tag extends WixComponent {
   render() {
-    const {id, children, thumb, removable, onClick, onRemove, size, wrap, disabled, theme, maxWidth} = this.props;
+    const {
+      id,
+      children,
+      thumb,
+      removable,
+      onClick,
+      onRemove,
+      size,
+      wrap,
+      disabled,
+      theme,
+      maxWidth,
+    } = this.props;
 
     const className = classNames({
       [styles.tag]: true,
       [styles.large]: size === 'large',
       [styles.tagWrap]: wrap,
       [styles.disabled]: disabled,
-      [styles[`${theme}Theme`]]: true
+      [styles[`${theme}Theme`]]: true,
     });
 
     const innerClassName = classNames({
       [styles.innerTagWrap]: wrap,
-      [Typography.t4]: true
+      [Typography.t4]: true,
     });
 
     const title = wrap ? children : '';
@@ -37,18 +49,23 @@ class Tag extends WixComponent {
         title={title}
         onClick={() => onClick(id)}
         style={{
-          maxWidth: `${maxWidth}px`
+          maxWidth: `${maxWidth}px`,
         }}
-        >
+      >
         {thumb && <span className={styles.thumb}>{thumb}</span>}
         <span className={innerClassName}>{children}</span>
-        {removable && !disabled && <a
-          className={styles.tagRemoveButton}
-          onClick={event => {
-            event.stopPropagation();
-            onRemove(id);
-          }}
-          ><CloseButton size="small" theme="close-standard"/></a>}
+        {removable &&
+          !disabled && (
+            <a
+              className={styles.tagRemoveButton}
+              onClick={event => {
+                event.stopPropagation();
+                onRemove(id);
+              }}
+            >
+              <CloseButton size="small" theme="close-standard" />
+            </a>
+          )}
       </span>
     );
   }
@@ -85,7 +102,7 @@ Tag.propTypes = {
   maxWidth: PropTypes.number,
 
   /** Whether to display ellipsis (...) for long content */
-  wrap: PropTypes.bool
+  wrap: PropTypes.bool,
 };
 
 Tag.defaultProps = {
@@ -93,7 +110,7 @@ Tag.defaultProps = {
   onRemove: () => {},
   size: 'small',
   removable: true,
-  theme: 'standard'
+  theme: 'standard',
 };
 
 export default Tag;

@@ -10,7 +10,7 @@ export default function animationPolyfills(window, global) {
   }
 
   if (!global.requestAnimationFrame) {
-    global.requestAnimationFrame = function (callback) {
+    global.requestAnimationFrame = function(callback) {
       const currTime = new Date().getTime();
       const timeToCall = Math.max(0, 16 - (currTime - lastTime));
       const id = window.setTimeout(() => {
@@ -22,7 +22,7 @@ export default function animationPolyfills(window, global) {
   }
 
   if (!window.cancelAnimationFrame) {
-    window.cancelAnimationFrame = function (id) {
+    window.cancelAnimationFrame = function(id) {
       clearTimeout(id);
     };
   }

@@ -1,12 +1,11 @@
 import React from 'react';
-import {bool, func, node, oneOf, string} from 'prop-types';
+import { bool, func, node, oneOf, string } from 'prop-types';
 import styles from './ButtonHeader.scss';
 import classNames from 'classnames';
-import Button from '../../../src/Backoffice/Button';
+import Button from '../../Backoffice/Button';
 import WixComponent from '../../BaseComponents/WixComponent';
 
 class ButtonHeader extends WixComponent {
-
   static propTypes = {
     withNewIcons: bool,
     title: node.isRequired,
@@ -16,12 +15,8 @@ class ButtonHeader extends WixComponent {
     buttonSuffix: node,
     subtitle: node,
     tooltip: node,
-    theme: oneOf([
-      'standard',
-      'fullblue',
-      'emptyblue'
-    ]),
-    withoutDivider: bool
+    theme: oneOf(['standard', 'fullblue', 'emptyblue']),
+    withoutDivider: bool,
   };
 
   static defaultProps = {
@@ -31,21 +26,31 @@ class ButtonHeader extends WixComponent {
     buttonPrefix: null,
     tooltip: null,
     theme: 'standard',
-    buttonSuffix: null
+    buttonSuffix: null,
   };
 
   render() {
-    const {title, subtitle, buttonOnClick, buttonTitle, buttonPrefix, buttonSuffix, withoutDivider, tooltip, theme} = this.props;
+    const {
+      title,
+      subtitle,
+      buttonOnClick,
+      buttonTitle,
+      buttonPrefix,
+      buttonSuffix,
+      withoutDivider,
+      tooltip,
+      theme,
+    } = this.props;
 
     const headerClasses = classNames({
       [styles.headerOnlyTitle]: !subtitle,
       [styles.headerTitleSubtitle]: subtitle,
-      [styles.withDivider]: !withoutDivider
+      [styles.withDivider]: !withoutDivider,
     });
 
     const buttonClass = classNames({
       [styles.button]: theme === 'standard',
-      [styles.buttonSmall]: theme !== 'standard'
+      [styles.buttonSmall]: theme !== 'standard',
     });
 
     const height = theme === 'standard' ? 'medium' : 'small';
@@ -75,15 +80,15 @@ class ButtonHeader extends WixComponent {
           prefixIcon={buttonPrefix}
           onClick={buttonOnClick}
           theme={buttonTheme}
-          >
+        >
           {buttonTitle}
         </Button>
       </div>
     );
 
-    const tooltipElement = tooltip ? (
-      React.cloneElement(tooltip, {}, buttonElement)
-    ) : null;
+    const tooltipElement = tooltip
+      ? React.cloneElement(tooltip, {}, buttonElement)
+      : null;
 
     const actionElement = tooltipElement ? tooltipElement : buttonElement;
 

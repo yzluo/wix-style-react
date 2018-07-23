@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import WixComponent from '../../BaseComponents/WixComponent';
-import TextLinkLayout from '../../BaseComponents/TextLinkLayout';
+import WixComponent from '../WixComponent';
+import TextLinkLayout from '../TextLinkLayout';
 
 export default class BaseTextLink extends WixComponent {
-
   static propTypes = {
     ...TextLinkLayout.propTypes,
     link: PropTypes.string,
@@ -15,7 +14,7 @@ export default class BaseTextLink extends WixComponent {
     ariaLabel: PropTypes.string,
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
   };
 
   static defaultProps = {
@@ -24,11 +23,11 @@ export default class BaseTextLink extends WixComponent {
     download: false,
     rel: null,
     target: null,
-    onClick: () => {}
+    onClick: () => {},
   };
 
   _handleOnClick = event => {
-    const {link, disabled} = this.props;
+    const { link, disabled } = this.props;
 
     if (!link || disabled) {
       event.preventDefault();
@@ -37,10 +36,20 @@ export default class BaseTextLink extends WixComponent {
     if (!disabled) {
       this.props.onClick(event);
     }
-  }
+  };
 
   render() {
-    const {ariaLabel, disabled, link, children, download, rel, target, onMouseEnter, onMouseLeave} = this.props;
+    const {
+      ariaLabel,
+      disabled,
+      link,
+      children,
+      download,
+      rel,
+      target,
+      onMouseEnter,
+      onMouseLeave,
+    } = this.props;
 
     const props = {
       download,
@@ -50,9 +59,9 @@ export default class BaseTextLink extends WixComponent {
       style: {
         textDecoration: 'inherit',
         tabIndex: 0,
-        display: 'inline-block'
+        display: 'inline-block',
       },
-      disabled
+      disabled,
     };
 
     if (ariaLabel) {
@@ -77,9 +86,7 @@ export default class BaseTextLink extends WixComponent {
 
     return (
       <a {...props}>
-        <TextLinkLayout {...this.props}>
-          {children}
-        </TextLinkLayout>
+        <TextLinkLayout {...this.props}>{children}</TextLinkLayout>
       </a>
     );
   }

@@ -1,13 +1,15 @@
 import React from 'react';
-import {node} from 'prop-types';
+import { node } from 'prop-types';
 import styles from './styles.scss';
 
-const Category = ({children}) => (
-  <div className={styles.categoryLabel} data-hook="menu-navigation-category">{children}</div>
+const Category = ({ children }) => (
+  <div className={styles.categoryLabel} data-hook="menu-navigation-category">
+    {children}
+  </div>
 );
 
 Category.propTypes = {
-  children: node
+  children: node,
 };
 
 export default Category;

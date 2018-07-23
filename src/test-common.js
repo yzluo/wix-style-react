@@ -1,7 +1,7 @@
 import omit from 'lodash/omit';
 
 // TODO: move to separate folders
-export {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
+export { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 
 // TODO: Protractor helper should be imported from './test/utils/protractor'
 export {
@@ -11,12 +11,12 @@ export {
   isFocused,
   scrollToElement,
   hasAttribute,
-  hasClass
+  hasClass,
 } from '../test/utils/protractor';
 
-export {enzymeTestkitFactoryCreator} from 'wix-ui-test-utils/enzyme';
-export {testkitFactoryCreator} from 'wix-ui-test-utils/vanilla';
-export {puppeteerTestkitFactoryCreator} from 'wix-ui-test-utils/puppeteer';
+export { enzymeTestkitFactoryCreator } from 'wix-ui-test-utils/enzyme';
+export { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
+export { puppeteerTestkitFactoryCreator } from 'wix-ui-test-utils/puppeteer';
 
 /**
  * Symbol for accessing driver methods which are internal
@@ -34,12 +34,14 @@ export function mergeDrivers(target, source) {
   // TODO: merge driver2's internal methods into driver1's internal methods.
   // TODO: make this a reduce that accepts a list of drivers.
   if (target[INTERNAL_DRIVER_SYMBOL]) {
-    throw new Error('mergeDrivers(): Merging into a driver with INTERNAL_DRIVER methods, is currently not supported yet.');
+    throw new Error(
+      'mergeDrivers(): Merging into a driver with INTERNAL_DRIVER methods, is currently not supported yet.',
+    );
   }
 
   return {
     ...target,
-    ...source
+    ...source,
   };
 }
 
@@ -52,7 +54,7 @@ export function flattenInternalDriver(driver) {
   if (driver[INTERNAL_DRIVER_SYMBOL]) {
     return {
       ...omit(driver, INTERNAL_DRIVER_SYMBOL),
-      ...driver[INTERNAL_DRIVER_SYMBOL]
+      ...driver[INTERNAL_DRIVER_SYMBOL],
     };
   } else {
     return driver;
@@ -66,4 +68,5 @@ export const resolveIn = timeout =>
     }, timeout);
   });
 
-export const findByHook = (element, hook) => element.querySelector(`[data-hook*="${hook}"]`);
+export const findByHook = (element, hook) =>
+  element.querySelector(`[data-hook*="${hook}"]`);

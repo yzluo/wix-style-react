@@ -1,15 +1,23 @@
 import eyes from 'eyes.it';
 
-import {tableTestkitFactory} from '../../testkit/protractor';
-import {createStoryUrl, waitForVisibilityOf, scrollToElement} from '../../test/utils/protractor';
-import {storySettings} from '../../stories/Table/storySettings';
+import { tableTestkitFactory } from '../../testkit/protractor';
+import {
+  createStoryUrl,
+  waitForVisibilityOf,
+  scrollToElement,
+} from '../../test/utils/protractor';
+import { storySettings } from '../../stories/Table/storySettings';
 
 describe('Table', () => {
-  const storyUrl = createStoryUrl({kind: storySettings.kind, story: storySettings.storyName, withExamples: false});
+  const storyUrl = createStoryUrl({
+    kind: storySettings.kind,
+    story: storySettings.storyName,
+    withExamples: false,
+  });
 
   const init = async () => {
     await browser.get(storyUrl);
-    const driver = tableTestkitFactory({dataHook: 'storybook-table'});
+    const driver = tableTestkitFactory({ dataHook: 'storybook-table' });
     await waitForVisibilityOf(driver.element, 'Can not find Table Component');
     return driver;
   };

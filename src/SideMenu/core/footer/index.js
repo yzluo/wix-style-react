@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.scss';
 
-const Footer = ({children}) =>
+const Footer = ({ children }) => (
   <div className={styles.footer} data-hook="menu-footer">
     {children}
-  </div>;
+  </div>
+);
 
 Footer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default Footer;
-

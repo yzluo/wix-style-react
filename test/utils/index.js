@@ -1,1 +1,1 @@
-export {isClassExists, makeControlled} from 'wix-ui-test-utils/react-helpers';
+export { isClassExists, makeControlled } from 'wix-ui-test-utils/react-helpers';

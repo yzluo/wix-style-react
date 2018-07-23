@@ -4,11 +4,13 @@ export default function applyPolyfills(window, global) {
 
   for (let x = 0; x < vendors.length && !global.requestAnimationFrame; ++x) {
     global.requestAnimationFrame = global[vendors[x] + 'RequestAnimationFrame'];
-    window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+    window.cancelAnimationFrame =
+      window[vendors[x] + 'CancelAnimationFrame'] ||
+      window[vendors[x] + 'CancelRequestAnimationFrame'];
   }
 
   if (!global.requestAnimationFrame) {
-    global.requestAnimationFrame = function (callback) {
+    global.requestAnimationFrame = function(callback) {
       const currTime = new Date().getTime();
       const timeToCall = Math.max(0, 16 - (currTime - lastTime));
       const id = window.setTimeout(() => {
@@ -20,7 +22,7 @@ export default function applyPolyfills(window, global) {
   }
 
   if (!window.cancelAnimationFrame) {
-    window.cancelAnimationFrame = function (id) {
+    window.cancelAnimationFrame = function(id) {
       clearTimeout(id);
     };
   }

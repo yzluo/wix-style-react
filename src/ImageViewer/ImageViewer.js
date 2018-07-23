@@ -11,9 +11,7 @@ import classNames from 'classnames';
 import AddItem from '../AddItem/AddItem';
 
 class ImageViewer extends WixComponent {
-
   render() {
-
     const {
       imageUrl,
       onAddImage,
@@ -21,7 +19,7 @@ class ImageViewer extends WixComponent {
       onRemoveImage,
       width,
       height,
-      error
+      error,
     } = this.props;
 
     const tooltipCommonProps = {
@@ -29,46 +27,72 @@ class ImageViewer extends WixComponent {
       hideDelay: 0,
       align: 'center',
       placement: 'top',
-      theme: 'dark'
+      theme: 'dark',
     };
-    const classes = classNames(style.container, {[style.hasLogo]: imageUrl, [style.hasError]: error});
+    const classes = classNames(style.container, {
+      [style.hasLogo]: imageUrl,
+      [style.hasError]: error,
+    });
     return (
-      <div className={classes} style={{width, height}} data-hook="image-container">
-        {!imageUrl &&
-        <AddItem data-hook="add-image" tooltipContent="Add Image" height={height} onClick={onAddImage}/>
-        }
-        {!!imageUrl &&
-        <div className={style.changeLogoContainer}>
-          <div className={style.imageLayout}>
-            <img data-hook="image-viewer-image" className={style.image} src={imageUrl}/>
-          </div>
-          <div className={style.imageBackground}>
-            <div className={style.buttons}>
-              <Tooltip content="Replace" {...tooltipCommonProps}>
-                <Button dataHook="update-image" onClick={onUpdateImage} theme="icon-whitesecondary">
-                  <Replace size="1.5em"/>
-                </Button >
-              </Tooltip>
-              <Tooltip content="Remove" {...tooltipCommonProps}>
-                <Button dataHook="remove-image" theme="icon-whitesecondary" onClick={onRemoveImage}>
-                  <Delete size="1.5em"/>
-                </Button>
-              </Tooltip>
+      <div
+        className={classes}
+        style={{ width, height }}
+        data-hook="image-container"
+      >
+        {!imageUrl && (
+          <AddItem
+            data-hook="add-image"
+            tooltipContent="Add Image"
+            height={height}
+            onClick={onAddImage}
+          />
+        )}
+        {!!imageUrl && (
+          <div className={style.changeLogoContainer}>
+            <div className={style.imageLayout}>
+              <img
+                data-hook="image-viewer-image"
+                className={style.image}
+                src={imageUrl}
+              />
+            </div>
+            <div className={style.imageBackground}>
+              <div className={style.buttons}>
+                <Tooltip content="Replace" {...tooltipCommonProps}>
+                  <Button
+                    dataHook="update-image"
+                    onClick={onUpdateImage}
+                    theme="icon-whitesecondary"
+                  >
+                    <Replace size="1.5em" />
+                  </Button>
+                </Tooltip>
+                <Tooltip content="Remove" {...tooltipCommonProps}>
+                  <Button
+                    dataHook="remove-image"
+                    theme="icon-whitesecondary"
+                    onClick={onRemoveImage}
+                  >
+                    <Delete size="1.5em" />
+                  </Button>
+                </Tooltip>
+              </div>
             </div>
           </div>
-        </div>
-        }
-        {!!error &&
-        <Tooltip
-          dataHook="error-tooltip"
-          disabled={!this.props.errorMessage}
-          placement={this.props.tooltipPlacement}
-          content={this.props.errorMessage}
-          {...tooltipCommonProps}
+        )}
+        {!!error && (
+          <Tooltip
+            dataHook="error-tooltip"
+            disabled={!this.props.errorMessage}
+            placement={this.props.tooltipPlacement}
+            content={this.props.errorMessage}
+            {...tooltipCommonProps}
           >
-          <div className={style.exclamation}><FormFieldError/></div>
-        </Tooltip>}
-
+            <div className={style.exclamation}>
+              <FormFieldError />
+            </div>
+          </Tooltip>
+        )}
       </div>
     );
   }
@@ -83,7 +107,7 @@ ImageViewer.propTypes = {
   onUpdateImage: PropTypes.func,
   onRemoveImage: PropTypes.func,
   width: PropTypes.number,
-  height: PropTypes.number
+  height: PropTypes.number,
 };
 
 export default ImageViewer;

@@ -6,24 +6,18 @@ import InfoCircle from 'wix-ui-icons-common/InfoCircle';
 
 import styles from '../FormField.scss';
 
-const InfoIcon = ({content}) =>
-  <div
-    className={styles.infoIcon}
-    data-hook="formfield-infoicon"
-    >
-    <Tooltip
-      content={content}
-      theme="dark"
-      dataHook="formfield-infotooltip"
-      >
+const InfoIcon = ({ content }) => (
+  <div className={styles.infoIcon} data-hook="formfield-infoicon">
+    <Tooltip content={content} theme="dark" dataHook="formfield-infotooltip">
       <div>
-        <InfoCircle size="24px"/>
+        <InfoCircle size="24px" />
       </div>
     </Tooltip>
-  </div>;
+  </div>
+);
 
 InfoIcon.propTypes = {
-  content: PropTypes.any.isRequired
+  content: PropTypes.any.isRequired,
 };
 
 export default InfoIcon;

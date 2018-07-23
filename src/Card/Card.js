@@ -1,5 +1,5 @@
 import React from 'react';
-import {bool, node} from 'prop-types';
+import { bool, node } from 'prop-types';
 import classNames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
 import styles from './Card.scss';
@@ -10,27 +10,22 @@ import ButtonHeader from './ButtonHeader';
 import CollapsedHeader from './CollapsedHeader';
 
 class Card extends WixComponent {
-
   static propTypes = {
     children: node,
-    stretchVertically: bool
+    stretchVertically: bool,
   };
   static defaultProps = {
     stretchVertically: false,
-    collapsStyle: 'none'
+    collapsStyle: 'none',
   };
 
   render() {
     const cssClasses = classNames({
       [styles.card]: true,
-      [styles.stretchVertically]: this.props.stretchVertically
+      [styles.stretchVertically]: this.props.stretchVertically,
     });
 
-    return (
-      <div className={cssClasses}>
-        {this.props.children}
-      </div>
-    );
+    return <div className={cssClasses}>{this.props.children}</div>;
   }
 }
 

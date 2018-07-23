@@ -1,9 +1,18 @@
-import {getStoryUrl, modalSelectorLayoutTestkitFactory, waitForVisibilityOf} from '../../testkit/protractor';
+import {
+  getStoryUrl,
+  modalSelectorLayoutTestkitFactory,
+  waitForVisibilityOf,
+} from '../../testkit/protractor';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 
 describe('ModalSelectorLayout', () => {
-  const storyUrl = getStoryUrl('11. Pickers and Selectors', '11.3 ModalSelectorLayout');
-  const modalSelectorLayoutDriver = modalSelectorLayoutTestkitFactory({dataHook: 'storybook-modal-selector-layout'});
+  const storyUrl = getStoryUrl(
+    '11. Pickers and Selectors',
+    '11.3 ModalSelectorLayout',
+  );
+  const modalSelectorLayoutDriver = modalSelectorLayoutTestkitFactory({
+    dataHook: 'storybook-modal-selector-layout',
+  });
 
   beforeAll(() => {
     browser.get(storyUrl);
@@ -14,12 +23,18 @@ describe('ModalSelectorLayout', () => {
   });
 
   it('should render defaults', () => {
-    autoExampleDriver.setProps({size: 'large', color: 'white', text: 'Wubba Lubba Dub Dub'});
+    autoExampleDriver.setProps({
+      size: 'large',
+      color: 'white',
+      text: 'Wubba Lubba Dub Dub',
+    });
 
-    waitForVisibilityOf(modalSelectorLayoutDriver.element(), 'Cannot find <ModalSelectorLayout/>')
-      .then(() => {
-        expect(modalSelectorLayoutDriver.element().isDisplayed()).toBe(true);
-        expect(modalSelectorLayoutDriver.getTitle()).toBe('Choose Your Items');
-      });
+    waitForVisibilityOf(
+      modalSelectorLayoutDriver.element(),
+      'Cannot find <ModalSelectorLayout/>',
+    ).then(() => {
+      expect(modalSelectorLayoutDriver.element().isDisplayed()).toBe(true);
+      expect(modalSelectorLayoutDriver.getTitle()).toBe('Choose Your Items');
+    });
   });
 });

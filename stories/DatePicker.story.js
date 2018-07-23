@@ -14,7 +14,7 @@ export default {
   componentPath: '../src/DatePicker',
 
   componentProps: setState => ({
-    onChange: value => setState({value}),
+    onChange: value => setState({ value }),
     dateFormat: 'YYYY/MM/DD',
     dataHook: 'storybook-datepicker',
     placeholderText: 'Select Date',
@@ -22,15 +22,15 @@ export default {
     shouldCloseOnSelect: true,
     showYearDropdown: false,
     showMonthDropdown: false,
-    locale: 'en'
+    locale: 'en',
   }),
 
   exampleProps: {
     onChange: date => format(date, 'YYYY/MM/DD'),
     value: [
-      {label: '2017/05/01', value: defaultValue},
-      {label: 'Today', value: today},
-      {label: 'Tomorrow', value: tomorrow}
-    ]
-  }
+      { label: '2017/05/01', value: defaultValue },
+      { label: 'Today', value: today },
+      { label: 'Tomorrow', value: tomorrow },
+    ],
+  },
 };

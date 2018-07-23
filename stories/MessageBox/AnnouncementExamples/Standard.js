@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import {MessageBoxMarketerialLayout} from 'wix-style-react/MessageBox';
+import { MessageBoxMarketerialLayout } from 'wix-style-react/MessageBox';
 
 export default () => (
   <MessageBoxMarketerialLayout
@@ -12,5 +12,5 @@ export default () => (
     primaryButtonLabel="Button"
     secondaryButtonLabel="Secondary action"
     dataHook="announcement-standard"
-    />
+  />
 );

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
-import {ThemeOptions} from '../TextLinkLayout/TextLinkLayout';
+import { ThemeOptions } from '../TextLinkLayout/TextLinkLayout';
 
-const textLinkDriverFactory = ({element, wrapper, component}) => {
+const textLinkDriverFactory = ({ element, wrapper, component }) => {
   const textLinkLayout = element ? element.children[0] : {};
 
   return {
@@ -11,11 +11,13 @@ const textLinkDriverFactory = ({element, wrapper, component}) => {
     isDisabled: () => element.getAttribute('disabled') !== null,
     click: (event = {}) => ReactTestUtils.Simulate.click(element, event),
     getContent: () => textLinkLayout.textContent,
-    doesComponentHasClass: className => textLinkLayout.className.includes(className),
-    isDarkBackground: () => textLinkLayout.style._values.color === 'rgb(240, 244, 247)',
+    doesComponentHasClass: className =>
+      textLinkLayout.className.includes(className),
+    isDarkBackground: () =>
+      textLinkLayout.style._values.color === 'rgb(240, 244, 247)',
     isGreyScale: () => textLinkLayout.style._values.color === 'rgb(22, 45, 61)',
     getTheme: () => {
-      const {color} = textLinkLayout.style._values;
+      const { color } = textLinkLayout.style._values;
       if (color === 'rgb(240, 244, 247)') {
         return ThemeOptions.DARK_BACKGROUND.type;
       } else if (color === 'rgb(22, 45, 61)') {
@@ -27,13 +29,27 @@ const textLinkDriverFactory = ({element, wrapper, component}) => {
     getLink: () => element.href,
     getTarget: () => element.target,
     getRel: () => element.rel,
-    isUnderline: () => textLinkLayout.style._values['text-decoration'] === 'underline',
-    isLightBackground: () => textLinkLayout.style._values.color === 'rgb(56, 153, 236)',
-    getSize: () => textLinkLayout.classList.contains('t1_3') ? 'medium' : textLinkLayout.classList.contains('t3_3') ? 'small' : 'unknown',
+    isUnderline: () =>
+      textLinkLayout.style._values['text-decoration'] === 'underline',
+    isLightBackground: () =>
+      textLinkLayout.style._values.color === 'rgb(56, 153, 236)',
+    getSize: () =>
+      textLinkLayout.classList.contains('t1_3')
+        ? 'medium'
+        : textLinkLayout.classList.contains('t3_3')
+          ? 'small'
+          : 'unknown',
     setProps: props => {
-      const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
-      ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);
-    }
+      const ClonedWithProps = React.cloneElement(
+        component,
+        Object.assign({}, component.props, props),
+        ...(component.props.children || []),
+      );
+      ReactDOM.render(
+        <div ref={r => (element = r)}>{ClonedWithProps}</div>,
+        wrapper,
+      );
+    },
   };
 };
 

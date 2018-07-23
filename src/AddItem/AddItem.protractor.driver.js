@@ -1,6 +1,6 @@
 const addItemDriverFactory = component => ({
   click: () => component.click(),
-  element: () => component
+  element: () => component,
 });
 
 export default addItemDriverFactory;

@@ -11,7 +11,7 @@ export default {
 
   componentProps: () => ({
     onClick: () => {},
-    examples: <Example/>,
-    dataHook: 'storybook-addItem'
-  })
+    examples: <Example />,
+    dataHook: 'storybook-addItem',
+  }),
 };

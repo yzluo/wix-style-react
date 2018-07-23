@@ -1,30 +1,29 @@
 import React from 'react';
-import {bool, node} from 'prop-types';
+import { bool, node } from 'prop-types';
 import classNames from 'classnames';
 import styles from './Header.scss';
 import WixComponent from '../../BaseComponents/WixComponent';
 
 class Header extends WixComponent {
-
   static propTypes = {
     title: node.isRequired,
     subtitle: node,
     withoutDivider: bool,
-    suffix: node
+    suffix: node,
   };
 
   static defaultProps = {
     subtitle: null,
     suffix: null,
-    withoutDivider: false
+    withoutDivider: false,
   };
 
   render() {
-    const {title, subtitle, withoutDivider, suffix} = this.props;
+    const { title, subtitle, withoutDivider, suffix } = this.props;
 
     const headerClasses = classNames({
       [styles.header]: true,
-      [styles.withDivider]: !withoutDivider
+      [styles.withDivider]: !withoutDivider,
     });
 
     const titleElement = (
@@ -40,9 +39,7 @@ class Header extends WixComponent {
     ) : null;
 
     const suffixElement = suffix ? (
-      <div data-hook="suffix">
-        {suffix}
-      </div>
+      <div data-hook="suffix">{suffix}</div>
     ) : null;
 
     return (

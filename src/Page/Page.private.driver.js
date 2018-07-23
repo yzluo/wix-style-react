@@ -1,14 +1,14 @@
-import {createDriverFactory} from '../test-common';
+import { createDriverFactory } from '../test-common';
 
 export class PagePrivateDriver {
-
-  constructor({element, eventTrigger}) {
+  constructor({ element, eventTrigger }) {
     this.element = element;
     this.eventTrigger = eventTrigger;
   }
 
   static fromJsxElement(jsxElement) {
-    const driverFactory = ({element, eventTrigger}) => new PagePrivateDriver({element, eventTrigger});
+    const driverFactory = ({ element, eventTrigger }) =>
+      new PagePrivateDriver({ element, eventTrigger });
     return createDriverFactory(driverFactory)(jsxElement);
   }
 
@@ -25,7 +25,7 @@ export class PagePrivateDriver {
   }
 
   wheelOnFixedContainer(amount) {
-    this.eventTrigger.wheel(this.fixedContainer, {deltaY: amount});
+    this.eventTrigger.wheel(this.fixedContainer, { deltaY: amount });
   }
 
   getScrollAmount() {

@@ -1,4 +1,5 @@
 import deprecationLog from './deprecationLog';
+
 const cachedConsoleWarn = global.console.warn;
 
 describe('deprecationLog', () => {

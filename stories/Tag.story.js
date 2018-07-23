@@ -7,10 +7,10 @@ export default {
   component: Tag,
   componentPath: '../src/Tag',
   componentProps: {
-    children: 'Hello World'
+    children: 'Hello World',
   },
   exampleProps: {
     onRemove: id => `ID: ${id} Removed!`,
-    onClick: id => `ID: ${id} Clicked!`
-  }
+    onClick: id => `ID: ${id} Clicked!`,
+  },
 };

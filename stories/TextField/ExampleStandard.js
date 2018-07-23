@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import TextFieldExample from './TextFieldTemplate';
@@ -10,9 +10,8 @@ import RadioGroup from '../../src/RadioGroup';
 import styles from './ExampleStandard.scss';
 
 class ExampleStandard extends Component {
-
   static propTypes = {
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
   };
 
   state = {
@@ -24,23 +23,24 @@ class ExampleStandard extends Component {
     suffixTicker: false,
     label: {
       appearance: 'T1.1',
-      children: 'First name'
+      children: 'First name',
     },
     input: {
       size: 'normal',
       placeholder: 'Please type in your first name...',
       disabled: false,
-      clearButton: false
+      clearButton: false,
     },
     required: false,
-    info: ''
+    info: '',
   };
 
   setComponentState(componentName, obj) {
     this.setState(prevState => {
-      prevState[componentName] = {...this.state[componentName], ...obj};
-      Object.keys(prevState[componentName])
-        .forEach(k => !prevState[componentName][k] && delete prevState[componentName][k]);
+      prevState[componentName] = { ...this.state[componentName], ...obj };
+      Object.keys(prevState[componentName]).forEach(
+        k => !prevState[componentName][k] && delete prevState[componentName][k],
+      );
       return prevState;
     });
   }
@@ -53,20 +53,21 @@ class ExampleStandard extends Component {
         this.setComponentState('input', {
           [name]: (
             <Input.Group>
-              <Input.Unit value={unit}/>
-              <Input.Ticker onUp={() => {}} onDown={() => {}}/>
+              <Input.Unit value={unit} />
+              <Input.Ticker onUp={() => {}} onDown={() => {}} />
             </Input.Group>
-          )});
+          ),
+        });
       } else if (unit) {
         this.setComponentState('input', {
-          [name]: <Input.Unit value={unit}/>
+          [name]: <Input.Unit value={unit} />,
         });
       } else if (ticker) {
         this.setComponentState('input', {
-          [name]: <Input.Ticker onUp={() => {}} onDown={() => {}}/>
+          [name]: <Input.Ticker onUp={() => {}} onDown={() => {}} />,
         });
       } else {
-        this.setComponentState('input', {[name]: null});
+        this.setComponentState('input', { [name]: null });
       }
     });
   }
@@ -81,13 +82,17 @@ class ExampleStandard extends Component {
               <Input
                 size="small"
                 value={this.state.label.children}
-                onChange={e => this.setComponentState('label', {children: e.target.value})}
-                />&nbsp;
+                onChange={e =>
+                  this.setComponentState('label', { children: e.target.value })
+                }
+              />&nbsp;
               <ToggleSwitch
                 size="small"
                 checked={this.state.withLabel}
-                onChange={() => this.setState({withLabel: !this.state.withLabel})}
-                />
+                onChange={() =>
+                  this.setState({ withLabel: !this.state.withLabel })
+                }
+              />
             </div>
           </div>
           <div className={styles.option}>
@@ -96,30 +101,44 @@ class ExampleStandard extends Component {
               <Input
                 size="small"
                 value={this.state.input.placeholder}
-                onChange={e => this.setComponentState('input', {placeholder: e.target.value})}
-                />
+                onChange={e =>
+                  this.setComponentState('input', {
+                    placeholder: e.target.value,
+                  })
+                }
+              />
             </div>
           </div>
 
           <div className={styles.option}>
             <div className={styles.flex}>
-              <div className={styles.paddRight}><Label>Required Field: </Label></div>
+              <div className={styles.paddRight}>
+                <Label>Required Field: </Label>
+              </div>
               <ToggleSwitch
                 size="small"
                 checked={this.state.required}
-                onChange={() => this.setState({required: !this.state.required})}
-                />
+                onChange={() =>
+                  this.setState({ required: !this.state.required })
+                }
+              />
             </div>
           </div>
 
           <div className={styles.option}>
             <div className={styles.flex}>
-              <div className={styles.paddRight}><Label>Clear Button: </Label></div>
+              <div className={styles.paddRight}>
+                <Label>Clear Button: </Label>
+              </div>
               <ToggleSwitch
                 size="small"
                 checked={this.state.input.clearButton}
-                onChange={() => this.setComponentState('input', {clearButton: !this.state.input.clearButton})}
-                />
+                onChange={() =>
+                  this.setComponentState('input', {
+                    clearButton: !this.state.input.clearButton,
+                  })
+                }
+              />
             </div>
           </div>
 
@@ -129,8 +148,8 @@ class ExampleStandard extends Component {
               <Input
                 size="small"
                 value={this.state.info}
-                onChange={e => this.setState({info: e.target.value})}
-                />
+                onChange={e => this.setState({ info: e.target.value })}
+              />
             </div>
           </div>
 
@@ -140,8 +159,8 @@ class ExampleStandard extends Component {
               <RadioGroup
                 display="horizontal"
                 value={this.state.input.size}
-                onChange={size => this.setComponentState('input', {size})}
-                >
+                onChange={size => this.setComponentState('input', { size })}
+              >
                 <RadioGroup.Radio value="small">Small</RadioGroup.Radio>
                 <RadioGroup.Radio value="normal">Normal</RadioGroup.Radio>
                 <RadioGroup.Radio value="large">Large</RadioGroup.Radio>
@@ -154,8 +173,8 @@ class ExampleStandard extends Component {
               <RadioGroup
                 display="horizontal"
                 value={this.state.input.type}
-                onChange={type => this.setComponentState('input', {type})}
-                >
+                onChange={type => this.setComponentState('input', { type })}
+              >
                 <RadioGroup.Radio value="">Text</RadioGroup.Radio>
                 <RadioGroup.Radio value="number">Number</RadioGroup.Radio>
               </RadioGroup>
@@ -168,15 +187,21 @@ class ExampleStandard extends Component {
                 <Input
                   size="small"
                   value={this.state.prefixUnit}
-                  onChange={e => this.updateAddons('prefix', {prefixUnit: e.target.value})}
-                  />
+                  onChange={e =>
+                    this.updateAddons('prefix', { prefixUnit: e.target.value })
+                  }
+                />
               </div>
               &nbsp;Unit&nbsp;
               <ToggleSwitch
                 size="small"
                 checked={this.state.prefixTicker}
-                onChange={() => this.updateAddons('prefix', {prefixTicker: !this.state.prefixTicker})}
-                />&nbsp;with ticker
+                onChange={() =>
+                  this.updateAddons('prefix', {
+                    prefixTicker: !this.state.prefixTicker,
+                  })
+                }
+              />&nbsp;with ticker
             </div>
           </div>
           <div className={styles.option}>
@@ -186,32 +211,43 @@ class ExampleStandard extends Component {
                 <Input
                   size="small"
                   value={this.state.suffixUnit}
-                  onChange={e => this.updateAddons('suffix', {suffixUnit: e.target.value})}
-                  />
+                  onChange={e =>
+                    this.updateAddons('suffix', { suffixUnit: e.target.value })
+                  }
+                />
               </div>
               &nbsp;Unit&nbsp;
               <ToggleSwitch
                 size="small"
                 checked={this.state.suffixTicker}
-                onChange={() => this.updateAddons('suffix', {suffixTicker: !this.state.suffixTicker})}
-                />&nbsp;with ticker
+                onChange={() =>
+                  this.updateAddons('suffix', {
+                    suffixTicker: !this.state.suffixTicker,
+                  })
+                }
+              />&nbsp;with ticker
             </div>
           </div>
 
           <div className={styles.option}>
             <div className={styles.flex}>
-              <div className={styles.paddRight}><Label>Enabled state: </Label></div>
+              <div className={styles.paddRight}>
+                <Label>Enabled state: </Label>
+              </div>
               <ToggleSwitch
                 size="small"
                 checked={!this.state.input.disabled}
-                onChange={() => this.setComponentState('input', {disabled: !this.state.input.disabled})}
-                />&nbsp;{this.state.input.disabled ? 'Disabled' : 'Enabled'}
+                onChange={() =>
+                  this.setComponentState('input', {
+                    disabled: !this.state.input.disabled,
+                  })
+                }
+              />&nbsp;{this.state.input.disabled ? 'Disabled' : 'Enabled'}
             </div>
           </div>
-
         </div>
         <div className={styles.output}>
-          <TextFieldExample {...this.state} onChange={this.props.onChange}/>
+          <TextFieldExample {...this.state} onChange={this.props.onChange} />
         </div>
       </form>
     );

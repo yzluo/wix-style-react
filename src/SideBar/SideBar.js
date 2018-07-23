@@ -5,20 +5,15 @@ import BottomBar from './BottomBar';
 import Menu from './Menu';
 
 class SideBar extends React.Component {
-
-  static displayName: 'SideBar'
+  static displayName: 'SideBar';
 
   render() {
-    return (
-      <div className={css.wrapper}>
-        {this.props.children}
-      </div>
-    );
+    return <div className={css.wrapper}>{this.props.children}</div>;
   }
 
   static propTypes = {
-    children: PropTypes.any
-  }
+    children: PropTypes.any,
+  };
 }
 
 SideBar.Menu = Menu;

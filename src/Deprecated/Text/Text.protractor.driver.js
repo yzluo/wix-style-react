@@ -1,4 +1,4 @@
 export default component => ({
   getText: () => component.getText(),
-  element: () => component
+  element: () => component,
 });

@@ -1,6 +1,13 @@
 import eyes from 'eyes.it';
-import {tooltipTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
-import {SHORT_CONTENT, LONG_CONTENT} from '../../stories/Tooltip/Composite/TooltipForEyesOnly';
+import {
+  tooltipTestkitFactory,
+  getStoryUrl,
+  waitForVisibilityOf,
+} from '../../testkit/protractor';
+import {
+  SHORT_CONTENT,
+  LONG_CONTENT,
+} from '../../stories/Tooltip/Composite/TooltipForEyesOnly';
 
 describe('Tooltip', () => {
   const storyUrl = getStoryUrl('7. Tooltips', '7.1. Tooltip');
@@ -12,24 +19,35 @@ describe('Tooltip', () => {
   });
 
   eyes.it('should see tooltip centered above element', () => {
-    const driver = tooltipTestkitFactory({dataHook});
+    const driver = tooltipTestkitFactory({ dataHook });
 
-    waitForVisibilityOf(driver.getTooltipContentElement(tooltipDataHook), 'Cannot find Tooltip content')
-      .then(() => {
-        expect(driver.getTooltipTextContent(tooltipDataHook)).toBe(SHORT_CONTENT);
-      });
+    waitForVisibilityOf(
+      driver.getTooltipContentElement(tooltipDataHook),
+      'Cannot find Tooltip content',
+    ).then(() => {
+      expect(driver.getTooltipTextContent(tooltipDataHook)).toBe(SHORT_CONTENT);
+    });
   });
 
-  eyes.it('should see tooltip centered above element with longer content', () => {
-    const driver = tooltipTestkitFactory({dataHook});
+  eyes.it(
+    'should see tooltip centered above element with longer content',
+    () => {
+      const driver = tooltipTestkitFactory({ dataHook });
 
-    waitForVisibilityOf(driver.getTooltipContentElement(tooltipDataHook), 'Cannot find Tooltip content')
-      .then(() => {
+      waitForVisibilityOf(
+        driver.getTooltipContentElement(tooltipDataHook),
+        'Cannot find Tooltip content',
+      ).then(() => {
         driver.clickButton();
-        waitForVisibilityOf(driver.getTooltipContentElement(tooltipDataHook), 'Cannot find Tooltip content')
-          .then(() => {
-            expect(driver.getTooltipTextContent(tooltipDataHook)).toBe(LONG_CONTENT);
-          });
+        waitForVisibilityOf(
+          driver.getTooltipContentElement(tooltipDataHook),
+          'Cannot find Tooltip content',
+        ).then(() => {
+          expect(driver.getTooltipTextContent(tooltipDataHook)).toBe(
+            LONG_CONTENT,
+          );
+        });
       });
-  });
+    },
+  );
 });

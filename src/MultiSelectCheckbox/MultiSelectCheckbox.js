@@ -5,19 +5,23 @@ import Input from '../Input';
 import Checkbox from '../Checkbox/Checkbox';
 import styles from './MultiSelectCheckbox.scss';
 
-const OPEN_DROPDOWN_CHARS = [13/*Enter*/, 40/*ArrowDown*/, 32/*Spacebar*/];
+const OPEN_DROPDOWN_CHARS = [13 /*Enter*/, 40 /*ArrowDown*/, 32 /*Spacebar*/];
 
 class MultiSelectCheckbox extends InputWithOptions {
-
   wrapOptionsWithCheckbox(options) {
-    const newOptions = options.map(option => ({...option, value: this.wrapWithCheckBox(option, this.isSelected(option))}));
+    const newOptions = options.map(option => ({
+      ...option,
+      value: this.wrapWithCheckBox(option, this.isSelected(option)),
+    }));
     return newOptions;
   }
 
   wrapWithCheckBox(option, isSelected) {
-    return (<Checkbox checked={isSelected} disabled={option.disabled}>
-      {option.value}
-    </Checkbox>);
+    return (
+      <Checkbox checked={isSelected} disabled={option.disabled}>
+        {option.value}
+      </Checkbox>
+    );
   }
 
   isSelected(option) {
@@ -28,12 +32,15 @@ class MultiSelectCheckbox extends InputWithOptions {
     return {
       options: this.wrapOptionsWithCheckbox(this.props.options),
       closeOnSelect: false,
-      selectedHighlight: false
+      selectedHighlight: false,
     };
   }
 
   selectedOptionsToText() {
-    const selectedOptionsText = this.props.selectedOptions.map(selectedOption => this.props.options.find(option => option.id === selectedOption))
+    const selectedOptionsText = this.props.selectedOptions
+      .map(selectedOption =>
+        this.props.options.find(option => option.id === selectedOption),
+      )
       .filter(selectedOption => selectedOption)
       .map(this.props.valueParser)
       .join(this.props.delimiter);
@@ -42,8 +49,8 @@ class MultiSelectCheckbox extends InputWithOptions {
 
   inputAdditionalProps() {
     return {
-      inputElement: <Input textOverflow="ellipsis" readOnly/>,
-      value: this.selectedOptionsToText()
+      inputElement: <Input textOverflow="ellipsis" readOnly />,
+      value: this.selectedOptionsToText(),
     };
   }
 
@@ -68,7 +75,10 @@ class MultiSelectCheckbox extends InputWithOptions {
   }
 
   _onKeyDown(event) {
-    if (!this.dropdownLayout._onKeyDown(event) && OPEN_DROPDOWN_CHARS.indexOf(event.keyCode) !== -1) {
+    if (
+      !this.dropdownLayout._onKeyDown(event) &&
+      OPEN_DROPDOWN_CHARS.indexOf(event.keyCode) !== -1
+    ) {
       event.preventDefault();
       this.showOptions();
     }
@@ -79,12 +89,11 @@ class MultiSelectCheckbox extends InputWithOptions {
       return;
     }
     this._focused = true;
-    this.setState({isEditing: false});
+    this.setState({ isEditing: false });
     if (this.props.onFocus) {
       this.props.onFocus(e);
     }
   }
-
 }
 
 MultiSelectCheckbox.propTypes = {
@@ -103,14 +112,14 @@ MultiSelectCheckbox.propTypes = {
   onDeselect: PropTypes.func,
 
   /** delimiter between the selected options that will be displayed in the input. */
-  delimiter: PropTypes.string
+  delimiter: PropTypes.string,
 };
 
 MultiSelectCheckbox.defaultProps = {
   ...InputWithOptions.defaultProps,
   delimiter: ', ',
   selectedOptions: [],
-  closeOnSelect: false
+  closeOnSelect: false,
 };
 
 export default MultiSelectCheckbox;

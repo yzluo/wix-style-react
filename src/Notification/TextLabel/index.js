@@ -2,17 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Text from '../../Deprecated/Text';
 
-const TextLabel = ({children}) =>
-  <Text
-    ellipsis
-    appearance="T1.2"
-    dataHook="notification-label"
-    >
+const TextLabel = ({ children }) => (
+  <Text ellipsis appearance="T1.2" dataHook="notification-label">
     {children}
-  </Text>;
+  </Text>
+);
 
 TextLabel.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 TextLabel.displayName = 'Notification.TextLabel';

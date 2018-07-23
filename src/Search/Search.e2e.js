@@ -3,13 +3,13 @@ import eyes from 'eyes.it';
 import {
   searchTestkitFactory,
   getStoryUrl,
-  waitForVisibilityOf
+  waitForVisibilityOf,
 } from '../../testkit/protractor';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 
 describe('Search', () => {
   const storyUrl = getStoryUrl('3. Inputs', '3.9 Search');
-  const driver = searchTestkitFactory({dataHook: 'storybook-search'});
+  const driver = searchTestkitFactory({ dataHook: 'storybook-search' });
 
   beforeAll(() => {
     browser.get(storyUrl);
@@ -39,12 +39,15 @@ describe('Search', () => {
     expect(driver.getText()).toBe('The quick');
   });
 
-  eyes.it('should clear input and show all search options after clear button click', () => {
-    driver.clickOnInput();
-    driver.enterText('fox');
-    expect(driver.hasClearButton()).toBe(true);
-    driver.clickClear();
-    expect(driver.getSearchDropdown().isDisplayed()).toBe(false);
-    expect(driver.getText()).toBe('');
-  });
+  eyes.it(
+    'should clear input and show all search options after clear button click',
+    () => {
+      driver.clickOnInput();
+      driver.enterText('fox');
+      expect(driver.hasClearButton()).toBe(true);
+      driver.clickClear();
+      expect(driver.getSearchDropdown().isDisplayed()).toBe(false);
+      expect(driver.getText()).toBe('');
+    },
+  );
 });

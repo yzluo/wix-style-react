@@ -1,12 +1,12 @@
 import React from 'react';
-import {bool} from 'prop-types';
+import { bool } from 'prop-types';
 import DataTable from '../../DataTable';
-import {getDataTableProps, createColumns} from '../Table';
-import {TableContext} from '../TableContext';
+import { getDataTableProps, createColumns } from '../Table';
+import { TableContext } from '../TableContext';
 
-import {BulkSelectionConsumer} from '../BulkSelection';
+import { BulkSelectionConsumer } from '../BulkSelection';
 
-export const TableContent = ({titleBarVisible}) => {
+export const TableContent = ({ titleBarVisible }) => {
   //TODO: figure out if we need to put result of createColumns() on state, in order to avoid
   // redundant renders.
   return (
@@ -15,26 +15,25 @@ export const TableContent = ({titleBarVisible}) => {
         const dataTableProps = {
           ...getDataTableProps(tableProps),
           dataHook: 'table-content',
-          hideHeader: !titleBarVisible
+          hideHeader: !titleBarVisible,
         };
 
         if (tableProps.showSelection) {
           return (
-            <BulkSelectionConsumer consumerCompName="Table.Content" providerCompName="Table">
+            <BulkSelectionConsumer
+              consumerCompName="Table.Content"
+              providerCompName="Table"
+            >
               {bulkSelectionContext => (
                 <DataTable
                   {...dataTableProps}
-                  columns={createColumns({tableProps, bulkSelectionContext})}
-                  />
+                  columns={createColumns({ tableProps, bulkSelectionContext })}
+                />
               )}
             </BulkSelectionConsumer>
           );
         } else {
-          return (
-            <DataTable
-              {...dataTableProps}
-              />
-          );
+          return <DataTable {...dataTableProps} />;
         }
       }}
     </TableContext.Consumer>
@@ -42,8 +41,8 @@ export const TableContent = ({titleBarVisible}) => {
 };
 TableContent.displayName = 'Table.Content';
 TableContent.propTypes = {
-  titleBarVisible: bool
+  titleBarVisible: bool,
 };
 TableContent.defaultProps = {
-  titleBarVisible: true
+  titleBarVisible: true,
 };

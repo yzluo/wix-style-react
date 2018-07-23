@@ -1,22 +1,18 @@
 import React from 'react';
 import Page from './Page';
 import pageDriverFactory from './Page.driver';
-import {PagePrivateDriver} from './Page.private.driver';
-import {createDriverFactory} from '../test-common';
+import { PagePrivateDriver } from './Page.private.driver';
+import { createDriverFactory } from '../test-common';
 
-const Content = () => (
-  <div>content</div>
-);
+const Content = () => <div>content</div>;
 
-const Tail = () => (
-  <div>tail</div>
-);
+const Tail = () => <div>tail</div>;
 
 const renderPageWithProps = (props = {}) => (
   <Page {...props}>
-    <Page.Header title="title"/>
+    <Page.Header title="title" />
     <Page.Content>
-      <Content/>
+      <Content />
     </Page.Content>
   </Page>
 );
@@ -31,7 +27,9 @@ describe('Page', () => {
 
   describe('backgroundImage', () => {
     it('should initialize component with background image', () => {
-      const driver = createDriver(renderPageWithProps({backgroundImageUrl: '/some/image'}));
+      const driver = createDriver(
+        renderPageWithProps({ backgroundImageUrl: '/some/image' }),
+      );
       expect(driver.backgroundImageExists()).toBeTruthy();
     });
 
@@ -43,7 +41,9 @@ describe('Page', () => {
 
   describe('gradientClassName', () => {
     it('should initialize component with gradient class name', () => {
-      const driver = createDriver(renderPageWithProps({gradientClassName: 'class'}));
+      const driver = createDriver(
+        renderPageWithProps({ gradientClassName: 'class' }),
+      );
       expect(driver.gradientClassNameExists()).toBeTruthy();
     });
 
@@ -55,7 +55,9 @@ describe('Page', () => {
 
   describe('gradient size', () => {
     it('should be 39px by default', () => {
-      const driver = createDriver(renderPageWithProps({gradientClassName: 'class'}));
+      const driver = createDriver(
+        renderPageWithProps({ gradientClassName: 'class' }),
+      );
       expect(driver.gradientContainerHeight()).toBe('39px');
     });
 
@@ -65,16 +67,18 @@ describe('Page', () => {
     });
 
     it('should be zero when Tail exist and gradientCoverTail is false', () => {
-      const props = {gradientClassName: 'class', gradientCoverTail: false};
-      const driver = createDriver(<Page {...props}>
-        <Page.Header/>
-        <Page.Tail>
-          <Tail/>
-        </Page.Tail>
-        <Page.Content>
-          <Content/>
-        </Page.Content>
-      </Page>);
+      const props = { gradientClassName: 'class', gradientCoverTail: false };
+      const driver = createDriver(
+        <Page {...props}>
+          <Page.Header />
+          <Page.Tail>
+            <Tail />
+          </Page.Tail>
+          <Page.Content>
+            <Content />
+          </Page.Content>
+        </Page>,
+      );
       expect(driver.gradientContainerHeight()).toBe('0px');
     });
   });
@@ -83,14 +87,14 @@ describe('Page', () => {
     it('should attach a tail component', () => {
       const driver = createDriver(
         <Page>
-          <Page.Header title="title"/>
+          <Page.Header title="title" />
           <Page.Tail>
-            <Tail/>
+            <Tail />
           </Page.Tail>
           <Page.Content>
-            <Content/>
+            <Content />
           </Page.Content>
-        </Page>
+        </Page>,
       );
 
       expect(driver.tailExists()).toBeTruthy();
@@ -105,11 +109,11 @@ describe('Page', () => {
     it('should scroll ScrollableContent when getting wheel event on Header', () => {
       const driver = PagePrivateDriver.fromJsxElement(
         <Page>
-          <Page.Header title="title"/>
+          <Page.Header title="title" />
           <Page.Content>
-            <Content/>
+            <Content />
           </Page.Content>
-        </Page>
+        </Page>,
       );
       expect(driver.getScrollAmount()).toBe(0);
       driver.wheelOnFixedContainer(10);
@@ -119,7 +123,7 @@ describe('Page', () => {
 
   describe('Prop Validation', () => {
     let React;
-    const stub = console.error = jest.fn();
+    const stub = (console.error = jest.fn());
     const createDriver = createDriverFactory(pageDriverFactory);
     const prefixWarning = 'Warning: Failed prop type: ';
     const suffixWarning = '\n    in Page';
@@ -136,44 +140,48 @@ describe('Page', () => {
     it('should not initialize without a PageContent component', () => {
       const page = (
         <Page>
-          <Page.Header title="title"/>
-          <div/>
+          <Page.Header title="title" />
+          <div />
         </Page>
       );
 
       createDriver(page);
-      expect(stub).toHaveBeenCalledWith(`${prefixWarning}Page: Invalid Prop children, must contain Page.Content${suffixWarning}`);
+      expect(stub).toHaveBeenCalledWith(
+        `${prefixWarning}Page: Invalid Prop children, must contain Page.Content${suffixWarning}`,
+      );
     });
 
     it('should not initialize without a PageHeader component', () => {
       const page = (
         <Page>
           <Page.Content>
-            <div/>
+            <div />
           </Page.Content>
-          <div/>
+          <div />
         </Page>
       );
 
       createDriver(page);
-      expect(stub).toHaveBeenCalledWith(`${prefixWarning}Page: Invalid Prop children, must contain Page.Header${suffixWarning}`);
+      expect(stub).toHaveBeenCalledWith(
+        `${prefixWarning}Page: Invalid Prop children, must contain Page.Header${suffixWarning}`,
+      );
     });
 
     it('should not initialize component with an unknown type', () => {
       const page = (
         <Page>
-          <Page.Header title="title"/>
+          <Page.Header title="title" />
           <Page.Content>
-            <div/>
+            <div />
           </Page.Content>
           <div>Unwanted child</div>
         </Page>
       );
 
       createDriver(page);
-      expect(stub).toHaveBeenCalledWith(`${prefixWarning}Page: Invalid Prop children, unknown child div${suffixWarning}`);
+      expect(stub).toHaveBeenCalledWith(
+        `${prefixWarning}Page: Invalid Prop children, unknown child div${suffixWarning}`,
+      );
     });
   });
 });
-
-

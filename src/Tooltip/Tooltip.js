@@ -1,17 +1,18 @@
-import React, {cloneElement} from 'react';
+import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import WixComponent from '../BaseComponents/WixComponent';
 import ReactDOM from 'react-dom';
 import TooltipContent from './TooltipContent';
 import position from './TooltipPosition';
 import styles from './TooltipContent.scss';
-import {TooltipContainerStrategy} from './TooltipContainerStrategy';
+import { TooltipContainerStrategy } from './TooltipContainerStrategy';
 import throttle from 'lodash/throttle';
 
 const renderSubtreeIntoContainer = ReactDOM.unstable_renderSubtreeIntoContainer;
 
 //maintain a 60fps rendering
-const createAThrottledOptimizedFunction = cb => () => window.requestAnimationFrame(throttle(cb, 16));
+const createAThrottledOptimizedFunction = cb => () =>
+  window.requestAnimationFrame(throttle(cb, 16));
 
 /** A Tooltip component */
 class Tooltip extends WixComponent {
@@ -27,8 +28,22 @@ class Tooltip extends WixComponent {
     theme: PropTypes.oneOf(['light', 'dark', 'error']),
     showDelay: PropTypes.number,
     hideDelay: PropTypes.number,
-    showTrigger: PropTypes.oneOf(['custom', 'mouseenter', 'mouseleave', 'click', 'focus', 'blur']),
-    hideTrigger: PropTypes.oneOf(['custom', 'mouseenter', 'mouseleave', 'click', 'focus', 'blur']),
+    showTrigger: PropTypes.oneOf([
+      'custom',
+      'mouseenter',
+      'mouseleave',
+      'click',
+      'focus',
+      'blur',
+    ]),
+    hideTrigger: PropTypes.oneOf([
+      'custom',
+      'mouseenter',
+      'mouseleave',
+      'click',
+      'focus',
+      'blur',
+    ]),
     active: PropTypes.bool,
     bounce: PropTypes.bool,
     disabled: PropTypes.bool,
@@ -80,7 +95,7 @@ class Tooltip extends WixComponent {
      */
     moveBy: PropTypes.shape({
       x: PropTypes.number,
-      y: PropTypes.number
+      y: PropTypes.number,
     }),
 
     /**
@@ -100,7 +115,7 @@ class Tooltip extends WixComponent {
     shouldUpdatePosition: PropTypes.bool,
 
     /** Show Tooltip Immediately - with no delay and no animation */
-    showImmediately: PropTypes.bool
+    showImmediately: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -124,7 +139,7 @@ class Tooltip extends WixComponent {
     textAlign: 'left',
     relative: false,
     shouldUpdatePosition: false,
-    showImmediately: false
+    showImmediately: false,
   };
 
   _childNode = null;
@@ -139,10 +154,14 @@ class Tooltip extends WixComponent {
     super(props);
     this.state = {
       visible: false,
-      hidden: true
+      hidden: true,
     };
 
-    this._tooltipContainerStrategy = new TooltipContainerStrategy(props.appendTo, props.appendToParent, props.appendByPredicate);
+    this._tooltipContainerStrategy = new TooltipContainerStrategy(
+      props.appendTo,
+      props.appendToParent,
+      props.appendByPredicate,
+    );
   }
 
   componentElements() {
@@ -180,8 +199,12 @@ class Tooltip extends WixComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    super.componentWillReceiveProps && super.componentWillReceiveProps(nextProps);
-    if (nextProps.active !== this.props.active || nextProps.disabled !== this.props.disabled) {
+    super.componentWillReceiveProps &&
+      super.componentWillReceiveProps(nextProps);
+    if (
+      nextProps.active !== this.props.active ||
+      nextProps.disabled !== this.props.disabled
+    ) {
       if (this.state.visible && this.props.hideTrigger === 'custom') {
         if (!nextProps.active || nextProps.disabled) {
           this.hide(nextProps);
@@ -197,7 +220,12 @@ class Tooltip extends WixComponent {
 
   renderTooltipIntoContainer = () => {
     if (this._mountNode && this.state.visible) {
-      const arrowPlacement = {top: 'bottom', left: 'right', right: 'left', bottom: 'top'};
+      const arrowPlacement = {
+        top: 'bottom',
+        left: 'right',
+        right: 'left',
+        bottom: 'top',
+      };
       const position = this.props.relative ? 'relative' : 'absolute';
       const tooltip = (
         <TooltipContent
@@ -214,7 +242,7 @@ class Tooltip extends WixComponent {
           theme={this.props.theme}
           bounce={this.props.bounce}
           arrowPlacement={arrowPlacement[this.props.placement]}
-          style={{zIndex: this.props.zIndex, position}}
+          style={{ zIndex: this.props.zIndex, position }}
           padding={this.props.padding}
           arrowStyle={this.state.arrowStyle}
           maxWidth={this.props.maxWidth}
@@ -223,9 +251,10 @@ class Tooltip extends WixComponent {
           textAlign={this.props.textAlign}
           lineHeight={this.props.lineHeight}
           color={this.props.color}
-          >
+        >
           {this.props.content}
-        </TooltipContent>);
+        </TooltipContent>
+      );
 
       renderSubtreeIntoContainer(this, tooltip, this._mountNode);
 
@@ -235,21 +264,38 @@ class Tooltip extends WixComponent {
         });
       }
     }
-  }
+  };
 
   render() {
-    const child = Array.isArray(this.props.children) ? this.props.children[0] : this.props.children;
+    const child = Array.isArray(this.props.children)
+      ? this.props.children[0]
+      : this.props.children;
     if (child) {
       return cloneElement(child, {
-        ref: ref => this._childNode = ReactDOM.findDOMNode(ref),
-        onClick: this._chainCallbacks(child.props ? child.props.onClick : null, this._onClick),
-        onMouseEnter: this._chainCallbacks(child.props ? child.props.onMouseEnter : null, this._onMouseEnter),
-        onMouseLeave: this._chainCallbacks(child.props ? child.props.onMouseLeave : null, this._onMouseLeave),
-        onFocus: this._chainCallbacks(child.props ? child.props.onFocus : null, this._onFocus),
-        onBlur: this._chainCallbacks(child.props ? child.props.onBlur : null, this._onBlur)
+        ref: ref => (this._childNode = ReactDOM.findDOMNode(ref)),
+        onClick: this._chainCallbacks(
+          child.props ? child.props.onClick : null,
+          this._onClick,
+        ),
+        onMouseEnter: this._chainCallbacks(
+          child.props ? child.props.onMouseEnter : null,
+          this._onMouseEnter,
+        ),
+        onMouseLeave: this._chainCallbacks(
+          child.props ? child.props.onMouseLeave : null,
+          this._onMouseLeave,
+        ),
+        onFocus: this._chainCallbacks(
+          child.props ? child.props.onFocus : null,
+          this._onFocus,
+        ),
+        onBlur: this._chainCallbacks(
+          child.props ? child.props.onBlur : null,
+          this._onBlur,
+        ),
       });
     } else {
-      return (<div/>);
+      return <div />;
     }
   }
 
@@ -275,7 +321,7 @@ class Tooltip extends WixComponent {
     if (this._unmounted) {
       return;
     }
-    this.setState({hidden: false});
+    this.setState({ hidden: false });
     if (this._hideTimeout) {
       clearTimeout(this._hideTimeout);
       this._hideTimeout = null;
@@ -293,14 +339,19 @@ class Tooltip extends WixComponent {
           props.onShow();
         }
 
-        this.setState({visible: true}, () => {
+        this.setState({ visible: true }, () => {
           if (!this._mountNode) {
             this._mountNode = document.createElement('div');
             const container = this._getContainer();
             if (container) {
               container.appendChild(this._mountNode);
-              this._containerScrollHandler = createAThrottledOptimizedFunction(() => this._updatePosition(this.tooltipContent));
-              container.addEventListener('scroll', this._containerScrollHandler);
+              this._containerScrollHandler = createAThrottledOptimizedFunction(
+                () => this._updatePosition(this.tooltipContent),
+              );
+              container.addEventListener(
+                'scroll',
+                this._containerScrollHandler,
+              );
             }
           }
           this._showTimeout = null;
@@ -322,7 +373,7 @@ class Tooltip extends WixComponent {
   };
 
   hide = (props = this.props) => {
-    this.setState({hidden: true});
+    this.setState({ hidden: true });
 
     if (this._showTimeout) {
       clearTimeout(this._showTimeout);
@@ -341,13 +392,16 @@ class Tooltip extends WixComponent {
           const container = this._getContainer();
           if (container) {
             container.removeChild(this._mountNode);
-            container.removeEventListener('scroll', this._containerScrollHandler);
+            container.removeEventListener(
+              'scroll',
+              this._containerScrollHandler,
+            );
           }
           this._mountNode = null;
         }
         this._hideTimeout = null;
         if (!this._unmounted) {
-          this.setState({visible: false});
+          this.setState({ visible: false });
         }
       };
 
@@ -391,19 +445,21 @@ class Tooltip extends WixComponent {
     if (!ref || !tooltipNode) {
       return {
         top: -1,
-        left: -1
+        left: -1,
       };
     }
-    return this._adjustPosition(position(
-      this._getRect(this._childNode),
-      this._getRect(tooltipNode),
-      {
-        placement: this.props.placement,
-        alignment: this.props.alignment,
-        margin: 10
-      },
-      this.props.relative
-    ));
+    return this._adjustPosition(
+      position(
+        this._getRect(this._childNode),
+        this._getRect(tooltipNode),
+        {
+          placement: this.props.placement,
+          alignment: this.props.alignment,
+          margin: 10,
+        },
+        this.props.relative,
+      ),
+    );
   }
 
   _updatePosition(ref) {
@@ -420,12 +476,16 @@ class Tooltip extends WixComponent {
         tooltipNode.style.left = `${style.left}px`;
       }
 
-      const arrowStyles = this._adjustArrowPosition(this.props.placement, this.props.moveArrowTo);
+      const arrowStyles = this._adjustArrowPosition(
+        this.props.placement,
+        this.props.moveArrowTo,
+      );
       if (Object.keys(arrowStyles).length) {
         const arrow = tooltipNode.querySelector(`.${styles.arrow}`);
-        arrow && Object.keys(arrowStyles).forEach(key => {
-          arrow.style[key] = arrowStyles[key];
-        });
+        arrow &&
+          Object.keys(arrowStyles).forEach(key => {
+            arrow.style[key] = arrowStyles[key];
+          });
       }
     }
   }
@@ -435,9 +495,13 @@ class Tooltip extends WixComponent {
       const isPositive = moveTo > 0;
       const pixels = isPositive ? moveTo : -moveTo;
       if (['top', 'bottom'].includes(placement)) {
-        return isPositive ? {left: `${pixels}px`} : {left: 'auto', right: `${pixels}px`};
+        return isPositive
+          ? { left: `${pixels}px` }
+          : { left: 'auto', right: `${pixels}px` };
       }
-      return isPositive ? {top: `${pixels}px`} : {top: 'auto', bottom: `${pixels}px`};
+      return isPositive
+        ? { top: `${pixels}px` }
+        : { top: 'auto', bottom: `${pixels}px` };
     }
     return {};
   }
@@ -449,7 +513,7 @@ class Tooltip extends WixComponent {
         left: el.offsetLeft,
         top: el.offsetTop,
         width: el.offsetWidth,
-        height: el.offsetHeight
+        height: el.offsetHeight,
       };
     }
 
@@ -461,22 +525,22 @@ class Tooltip extends WixComponent {
         left: selfRect.left - containerRect.left + container.scrollLeft,
         top: selfRect.top - containerRect.top + container.scrollTop,
         width: selfRect.width,
-        height: selfRect.height
+        height: selfRect.height,
       };
     }
     return el.getBoundingClientRect();
   }
 
   _adjustPosition(originalPosition) {
-    let {x = 0, y = 0} = this.props.moveBy || {};
+    let { x = 0, y = 0 } = this.props.moveBy || {};
     // TODO: Once thoroughly tested, and converted to using offsetX props, we could remove this one.
     if (!this.props.appendToParent) {
-      x += (window.scrollX || 0);
-      y += (window.scrollY || 0);
+      x += window.scrollX || 0;
+      y += window.scrollY || 0;
     }
     return {
       left: originalPosition.left + x,
-      top: originalPosition.top + y
+      top: originalPosition.top + y,
     };
   }
 

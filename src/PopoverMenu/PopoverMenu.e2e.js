@@ -1,6 +1,6 @@
 import {
   POPOVER_MENU_DATA_HOOK,
-  POPOVER_MENU_ITEM_DATA_HOOK
+  POPOVER_MENU_ITEM_DATA_HOOK,
 } from '../../stories/Tooltip/Composite/PopoverMenuTemplate.helpers';
 
 const EC = protractor.ExpectedConditions;
@@ -8,7 +8,7 @@ const EC = protractor.ExpectedConditions;
 import {
   popoverMenuTestkitFactory,
   getStoryUrl,
-  waitForVisibilityOf
+  waitForVisibilityOf,
 } from '../../testkit/protractor';
 
 describe('PopoverMenu', () => {
@@ -16,16 +16,23 @@ describe('PopoverMenu', () => {
   let driver;
 
   beforeEach(() => {
-    driver = popoverMenuTestkitFactory({dataHook: POPOVER_MENU_DATA_HOOK})
-      .init.menuItemDataHook(POPOVER_MENU_ITEM_DATA_HOOK);
+    driver = popoverMenuTestkitFactory({
+      dataHook: POPOVER_MENU_DATA_HOOK,
+    }).init.menuItemDataHook(POPOVER_MENU_ITEM_DATA_HOOK);
     browser.get(storyUrl);
   });
 
   it('should show popover menu', () => {
-    waitForVisibilityOf(driver.element(), 'Can not find PopoverMenu trigger element').then(() => {
+    waitForVisibilityOf(
+      driver.element(),
+      'Can not find PopoverMenu trigger element',
+    ).then(() => {
       driver.click();
 
-      waitForVisibilityOf(driver.menu.element(), 'Can not find PopoverMenu menu');
+      waitForVisibilityOf(
+        driver.menu.element(),
+        'Can not find PopoverMenu menu',
+      );
     });
   });
 

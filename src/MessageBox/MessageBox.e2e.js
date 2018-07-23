@@ -1,5 +1,9 @@
 import eyes from 'eyes.it';
-import {createStoryUrl, waitForVisibilityOf, scrollToElement} from '../../test/utils/protractor';
+import {
+  createStoryUrl,
+  waitForVisibilityOf,
+  scrollToElement,
+} from '../../test/utils/protractor';
 
 const byDataHook = dataHook => $(`[data-hook="${dataHook}"]`);
 
@@ -18,7 +22,10 @@ describe('MessageBox', () => {
     const scrollable = 'alert-scrollable';
 
     eyes.it('should not break design', async () => {
-      const storyUrl = createStoryUrl({kind: '9. Modals', story: '9.1 Alert'});
+      const storyUrl = createStoryUrl({
+        kind: '9. Modals',
+        story: '9.1 Alert',
+      });
       await browser.get(storyUrl);
       await verifyItem(standard);
       await verifyItem(secondary);
@@ -32,7 +39,10 @@ describe('MessageBox', () => {
     const secondary = 'destructive-alert-secondary';
 
     eyes.it('should not break design', async () => {
-      const storyUrl = createStoryUrl({kind: '9. Modals', story: '9.2 Destructive Alert'});
+      const storyUrl = createStoryUrl({
+        kind: '9. Modals',
+        story: '9.2 Destructive Alert',
+      });
       await browser.get(storyUrl);
       await verifyItem(standard);
       await verifyItem(secondary);
@@ -41,7 +51,10 @@ describe('MessageBox', () => {
 
   describe('Announcement', () => {
     eyes.it('should not break design', async () => {
-      const storyUrl = createStoryUrl({kind: '9. Modals', story: '9.4 Announcement'});
+      const storyUrl = createStoryUrl({
+        kind: '9. Modals',
+        story: '9.4 Announcement',
+      });
       const standard = 'announcement-standard';
       await browser.get(storyUrl);
       await verifyItem(standard);

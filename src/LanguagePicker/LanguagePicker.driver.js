@@ -1,1 +1,1 @@
-export {default} from '../IconWithOptions/IconWithOptions.driver';
+export { default } from '../IconWithOptions/IconWithOptions.driver';

@@ -1,1 +1,1 @@
-export {default} from '../IconWithOptions/IconWithOptions.protractor.driver';
+export { default } from '../IconWithOptions/IconWithOptions.protractor.driver';

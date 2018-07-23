@@ -4,7 +4,6 @@ import WixComponent from '../../BaseComponents/WixComponent';
 import BaseTextLink from '../../BaseComponents/TextLink';
 
 export default class TextLink extends WixComponent {
-
   static propTypes = {
     ...BaseTextLink.propTypes,
     link: PropTypes.string,
@@ -12,7 +11,7 @@ export default class TextLink extends WixComponent {
     download: PropTypes.bool,
     rel: PropTypes.string,
     target: PropTypes.string,
-    ariaLabel: PropTypes.string
+    ariaLabel: PropTypes.string,
   };
 
   static defaultProps = {
@@ -20,12 +19,10 @@ export default class TextLink extends WixComponent {
     disabled: false,
     download: false,
     rel: null,
-    target: null
+    target: null,
   };
 
   render() {
-    return (
-      <BaseTextLink {...this.props}/>
-    );
+    return <BaseTextLink {...this.props} />;
   }
 }

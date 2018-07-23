@@ -5,13 +5,11 @@ import Text from '../../Deprecated/Text';
 
 class ExtraText extends WixComponent {
   static propTypes = {
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
   };
 
   render() {
-    return (
-      <Text appearance="T1.1">{this.props.text}</Text>
-    );
+    return <Text appearance="T1.1">{this.props.text}</Text>;
   }
 }
 

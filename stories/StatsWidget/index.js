@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
 import AutoDocs from 'wix-storybook-utils/AutoDocs';
 import TabbedView from 'wix-storybook-utils/TabbedView';
@@ -25,33 +25,42 @@ import ExampleStatsWidgetWithFilterWithNoBorderRaw from '!raw-loader!./ExampleSt
 
 import ReadmeTestkit from '../../src/StatsWidget/README.TESTKIT.md';
 
+storiesOf('2. Layout', module).add('2.6 StatsWidget', () => (
+  <TabbedView tabs={['Usage', 'Testkit']}>
+    <div>
+      <AutoDocs source={StatsWidgetSource} />
 
-storiesOf('2. Layout', module)
-  .add('2.6 StatsWidget', () => (
-    <TabbedView tabs={['Usage', 'Testkit']}>
-      <div>
+      <h1>Usage examples</h1>
 
-        <AutoDocs source={StatsWidgetSource}/>
+      <CodeExample title="Stats widget" code={ExampleStatsWidgetStandardRaw}>
+        <ExampleStatsWidgetStandard />
+      </CodeExample>
+      <CodeExample
+        title="Stats widget example with percents"
+        code={ExampleStatsWidgetWithPercentsRaw}
+      >
+        <ExampleStatsWidgetWithPercents />
+      </CodeExample>
+      <CodeExample
+        title="Stats widget example with filter"
+        code={ExampleStatsWidgetWithFilterWithNoBorderRaw}
+      >
+        <ExampleStatsWidgetWithFilterWithNoBorder />
+      </CodeExample>
+      <CodeExample
+        title="Stats widget example with multiple filters"
+        code={ExampleStatsWidgetWithFiltersRaw}
+      >
+        <ExampleStatsWidgetWithFilters />
+      </CodeExample>
+      <CodeExample
+        title="Stats widget example with empty state"
+        code={ExampleStatsWidgetEmptyStateRaw}
+      >
+        <ExampleStatsWidgetEmptyState />
+      </CodeExample>
+    </div>
 
-        <h1>Usage examples</h1>
-
-        <CodeExample title="Stats widget" code={ExampleStatsWidgetStandardRaw}>
-          <ExampleStatsWidgetStandard/>
-        </CodeExample>
-        <CodeExample title="Stats widget example with percents" code={ExampleStatsWidgetWithPercentsRaw}>
-          <ExampleStatsWidgetWithPercents/>
-        </CodeExample>
-        <CodeExample title="Stats widget example with filter" code={ExampleStatsWidgetWithFilterWithNoBorderRaw}>
-          <ExampleStatsWidgetWithFilterWithNoBorder/>
-        </CodeExample>
-        <CodeExample title="Stats widget example with multiple filters" code={ExampleStatsWidgetWithFiltersRaw}>
-          <ExampleStatsWidgetWithFilters/>
-        </CodeExample>
-        <CodeExample title="Stats widget example with empty state" code={ExampleStatsWidgetEmptyStateRaw}>
-          <ExampleStatsWidgetEmptyState/>
-        </CodeExample>
-      </div>
-
-      <Markdown source={ReadmeTestkit}/>
-    </TabbedView>
-  ));
+    <Markdown source={ReadmeTestkit} />
+  </TabbedView>
+));

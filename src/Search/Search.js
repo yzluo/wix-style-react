@@ -17,13 +17,13 @@ export default class Search extends WixComponent {
   static propTypes = {
     ...InputWithOptions.propTypes,
     placeholder: PropTypes.string,
-    expandable: PropTypes.bool
+    expandable: PropTypes.bool,
   };
 
   static defaultProps = {
     ...InputWithOptions.defaultProps,
     placeholder: 'Search',
-    expandable: false
+    expandable: false,
   };
 
   constructor(props) {
@@ -33,7 +33,7 @@ export default class Search extends WixComponent {
 
     this.state = {
       inputValue: initialValue,
-      collapsed: props.expandable && initialValue === '' && !props.autoFocus
+      collapsed: props.expandable && initialValue === '' && !props.autoFocus,
     };
   }
 
@@ -42,16 +42,15 @@ export default class Search extends WixComponent {
   }
 
   get _filteredOptions() {
-    const {
-      options,
-      value
-    } = this.props;
+    const { options, value } = this.props;
 
     const searchText = this._isControlled ? value : this.state.inputValue;
 
-    return options.filter(option => (searchText && searchText.length) ?
-      new RegExp(searchText.trim(), 'i').test(option.value) :
-      true
+    return options.filter(
+      option =>
+        searchText && searchText.length
+          ? new RegExp(searchText.trim(), 'i').test(option.value)
+          : true,
     );
   }
 
@@ -60,19 +59,17 @@ export default class Search extends WixComponent {
       this.props.onChange(e);
     } else {
       this.setState({
-        inputValue: e.target.value
+        inputValue: e.target.value,
       });
     }
   };
 
   _onClear = () => {
-    const {
-      onClear
-    } = this.props;
+    const { onClear } = this.props;
 
     if (!this.state.collapsed && this.props.expandable) {
       this.setState({
-        collapsed: true
+        collapsed: true,
       });
     }
 
@@ -92,16 +89,14 @@ export default class Search extends WixComponent {
   };
 
   _onBlur = () => {
-    const {
-      onBlur
-    } = this.props;
+    const { onBlur } = this.props;
 
     if (!this.state.collapsed && this.props.expandable) {
       const value = this._currentValue();
 
       if (value === '') {
         this.setState({
-          collapsed: true
+          collapsed: true,
         });
       }
     }
@@ -112,7 +107,7 @@ export default class Search extends WixComponent {
   _onWrapperClick = () => {
     if (this.props.expandable && this.state.collapsed) {
       this.refs.searchInput.input.focus();
-      this.setState({collapsed: false});
+      this.setState({ collapsed: false });
     }
   };
 
@@ -132,16 +127,24 @@ export default class Search extends WixComponent {
     const wrapperClasses = classNames({
       [styles.expandableStyles]: this.props.expandable,
       [styles.collapsed]: this.state.collapsed && this.props.expandable,
-      [styles.expanded]: !this.state.collapsed && this.props.expandable
+      [styles.expanded]: !this.state.collapsed && this.props.expandable,
     });
 
     return (
-      <div className={wrapperClasses} onClick={this._onWrapperClick} onMouseDown={this._onWrapperMouseDown}>
+      <div
+        className={wrapperClasses}
+        onClick={this._onWrapperClick}
+        onMouseDown={this._onWrapperMouseDown}
+      >
         <InputWithOptions
           {...this.props}
           ref="searchInput"
           roundInput
-          prefix={<div className={styles.leftIcon}><SearchIcon/></div>}
+          prefix={
+            <div className={styles.leftIcon}>
+              <SearchIcon />
+            </div>
+          }
           menuArrow={false}
           clearButton
           closeOnSelect
@@ -151,7 +154,7 @@ export default class Search extends WixComponent {
           onChange={this._onChange}
           onBlur={this._onBlur}
           highlight
-          />
+        />
       </div>
     );
   }

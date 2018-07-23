@@ -11,45 +11,63 @@ const ID = 'formFieldId';
 
 const placeholder = 'Default text goes here...';
 const childrenExamples = [
-  {label: 'Input',
-    value: <Input placeholder={placeholder} id={ID}/>
+  {
+    label: 'Input',
+    value: <Input placeholder={placeholder} id={ID} />,
   },
 
-  {label: 'Input with char counter',
+  {
+    label: 'Input with char counter',
     // eslint-disable-next-line react/prop-types
-    value: ({setCharactersLeft}) =>
+    value: ({ setCharactersLeft }) => (
       <Input
         placeholder={placeholder}
         onChange={e => setCharactersLeft(50 - e.target.value.length)}
         id={ID}
-        />
+      />
+    ),
   },
 
-  {label: 'InputArea',
-    value: <InputArea placeholder={placeholder} id={ID}/>
+  {
+    label: 'InputArea',
+    value: <InputArea placeholder={placeholder} id={ID} />,
   },
 
-  {label: 'InputArea with char counter',
+  {
+    label: 'InputArea with char counter',
     // eslint-disable-next-line react/prop-types
-    value: ({setCharactersLeft}) =>
+    value: ({ setCharactersLeft }) => (
       <InputArea
         placeholder={placeholder}
         id={ID}
         onChange={e => setCharactersLeft(50 - e.target.value.length)}
-        />
+      />
+    ),
   },
 
-  {label: 'RichTextArea',
-    value: <RichTextArea placeholder={placeholder}/>
+  {
+    label: 'RichTextArea',
+    value: <RichTextArea placeholder={placeholder} />,
   },
 
-  {label: 'DatePicker',
-    value: <DatePicker value={new Date()}/>
+  {
+    label: 'DatePicker',
+    value: <DatePicker value={new Date()} />,
   },
 
-  {label: 'Dropdown',
-    value: <Dropdown placeholder="Select dominant hand" options={[{id: 0, value: 'Left'}, {id: 1, value: 'Right'}, {id: 2, value: 'Ambidextrous'}]}/>
-  }
+  {
+    label: 'Dropdown',
+    value: (
+      <Dropdown
+        placeholder="Select dominant hand"
+        options={[
+          { id: 0, value: 'Left' },
+          { id: 1, value: 'Right' },
+          { id: 2, value: 'Ambidextrous' },
+        ]}
+      />
+    ),
+  },
 ];
 
 export default {
@@ -64,10 +82,10 @@ export default {
     label: 'This is an input:',
     required: true,
     infoContent: 'I help you to fill info',
-    id: 'formFieldId'
+    id: 'formFieldId',
   },
 
   exampleProps: {
-    children: childrenExamples
-  }
+    children: childrenExamples,
+  },
 };

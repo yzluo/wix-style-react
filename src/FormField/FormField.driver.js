@@ -1,16 +1,15 @@
-import {resolveIn} from '../test-common';
-import {tooltipTestkitFactory} from '../../testkit';
+import { resolveIn } from '../test-common';
+import { tooltipTestkitFactory } from '../../testkit';
 
 const findByHook = (element, hook) =>
   element.querySelector(`[data-hook*="${hook}"]`);
 
-const getInfoIcon = element =>
-  findByHook(element, 'formfield-infoicon');
+const getInfoIcon = element => findByHook(element, 'formfield-infoicon');
 
 const getCharactersCounter = element =>
   findByHook(element, 'formfield-counter');
 
-const formFieldDriver = ({element}) => ({
+const formFieldDriver = ({ element }) => ({
   exists: () => !!element,
   element: () => element,
   getChildren: () => findByHook(element, 'formfield-children'),
@@ -31,13 +30,12 @@ const formFieldDriver = ({element}) => ({
   getInfoContent: () => {
     const tooltipDriver = tooltipTestkitFactory({
       wrapper: getInfoIcon(element),
-      dataHook: 'formfield-infotooltip'
+      dataHook: 'formfield-infotooltip',
     });
 
     tooltipDriver.mouseEnter();
-    return resolveIn(500)
-      .then(() => tooltipDriver.getContent());
-  }
+    return resolveIn(500).then(() => tooltipDriver.getContent());
+  },
 });
 
 export default formFieldDriver;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import Markdown from 'wix-storybook-utils/Markdown';
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
@@ -18,28 +18,28 @@ import ExampleSideMenuDrillRaw from '!raw-loader!./ExampleSideMenuDrill';
 storiesOf('6. Navigation', module)
   .add('6.1 SideMenuDrill', () => (
     <div>
-      <Markdown source={SideMenuDrillReadme}/>
+      <Markdown source={SideMenuDrillReadme} />
 
       <h1>Usage examples</h1>
 
       <CodeExample title="SideMenu Example" code={ExampleSideMenuDrillRaw}>
-        <ExampleSideMenuDrill/>
+        <ExampleSideMenuDrill />
       </CodeExample>
     </div>
   ))
 
   .add('6.1 + SideMenu', () => (
     <div>
-      <Markdown source={Readme}/>
+      <Markdown source={Readme} />
 
       <h1>Usage examples</h1>
 
       <CodeExample title="Standard" code={ExampleStandardRaw}>
-        <ExampleStandard/>
+        <ExampleStandard />
       </CodeExample>
 
       <CodeExample title="Sub Menu" code={ExampleSubMenuRaw}>
-        <ExampleSubMenu/>
+        <ExampleSubMenu />
       </CodeExample>
     </div>
   ));

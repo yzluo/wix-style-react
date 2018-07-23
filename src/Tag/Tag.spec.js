@@ -1,14 +1,16 @@
 import React from 'react';
 import Tag from './Tag';
 import tagDriverFactory from './Tag.driver';
-import {createDriverFactory} from '../test-common';
-import {tagTestkitFactory} from '../../testkit';
-import {tagTestkitFactory as enzymeTagTestkitFactory} from '../../testkit/enzyme';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
-import {mount} from 'enzyme';
+import { createDriverFactory } from '../test-common';
+import { tagTestkitFactory } from '../../testkit';
+import { tagTestkitFactory as enzymeTagTestkitFactory } from '../../testkit/enzyme';
+import {
+  isTestkitExists,
+  isEnzymeTestkitExists,
+} from '../../testkit/test-common';
+import { mount } from 'enzyme';
 
 describe('Tag', () => {
-
   const createDriver = createDriverFactory(tagDriverFactory);
   const id = 'myId';
   const label = 'Hey';
@@ -21,7 +23,11 @@ describe('Tag', () => {
   });
 
   it('should have a large size', () => {
-    const driver = createDriver(<Tag id={id} size="large">{label}</Tag>);
+    const driver = createDriver(
+      <Tag id={id} size="large">
+        {label}
+      </Tag>,
+    );
     expect(driver.isLarge()).toBeTruthy();
   });
 
@@ -36,22 +42,38 @@ describe('Tag', () => {
   });
 
   it('should not be removable', () => {
-    const driver = createDriver(<Tag id={id} removable={false}>{label}</Tag>);
+    const driver = createDriver(
+      <Tag id={id} removable={false}>
+        {label}
+      </Tag>,
+    );
     expect(driver.isRemovable()).toBeFalsy();
   });
 
   it('should have not remove button if disabled is true', () => {
-    const driver = createDriver(<Tag id={id} disabled>{label}</Tag>);
+    const driver = createDriver(
+      <Tag id={id} disabled>
+        {label}
+      </Tag>,
+    );
     expect(driver.isRemovable()).toBeFalsy();
   });
 
   it('should have disabled class if disabled is true', () => {
-    const driver = createDriver(<Tag id={id} disabled>{label}</Tag>);
+    const driver = createDriver(
+      <Tag id={id} disabled>
+        {label}
+      </Tag>,
+    );
     expect(driver.isDisabled()).toBeTruthy();
   });
 
   it('should call onRemove function on remove', () => {
-    const driver = createDriver(<Tag id={id} onRemove={onRemove} onClick={onClick}>{label}</Tag>);
+    const driver = createDriver(
+      <Tag id={id} onRemove={onRemove} onClick={onClick}>
+        {label}
+      </Tag>,
+    );
 
     driver.removeTag();
     expect(onRemove).toBeCalledWith(id);
@@ -59,7 +81,11 @@ describe('Tag', () => {
   });
 
   it('should call onClick function on click', () => {
-    const driver = createDriver(<Tag id={id} onClick={onClick}>{label}</Tag>);
+    const driver = createDriver(
+      <Tag id={id} onClick={onClick}>
+        {label}
+      </Tag>,
+    );
 
     driver.click();
     expect(onClick).toBeCalledWith(id);
@@ -71,13 +97,21 @@ describe('Tag', () => {
   });
 
   it('should display thumb', () => {
-    const driver = createDriver(<Tag id={id} thumb={<span>Ho</span>}>{label}</Tag>);
+    const driver = createDriver(
+      <Tag id={id} thumb={<span>Ho</span>}>
+        {label}
+      </Tag>,
+    );
     expect(driver.isThumbExists()).toBeTruthy();
   });
 
   it('should wrap label text', () => {
     const longLabel = 'Very very very very very very very very long label';
-    const driver = createDriver(<Tag id={id} wrap>{longLabel}</Tag>);
+    const driver = createDriver(
+      <Tag id={id} wrap>
+        {longLabel}
+      </Tag>,
+    );
 
     expect(driver.getTitle()).toBe(longLabel);
     expect(driver.getLabel()).toBe(longLabel);
@@ -91,12 +125,20 @@ describe('Tag', () => {
     });
 
     it('should have warning theme', () => {
-      const driver = createDriver(<Tag id={id} theme="warning">a</Tag>);
+      const driver = createDriver(
+        <Tag id={id} theme="warning">
+          a
+        </Tag>,
+      );
       expect(driver.isWarningTheme()).toBe(true);
     });
 
     it('should have error theme', () => {
-      const driver = createDriver(<Tag id={id} theme="error">a</Tag>);
+      const driver = createDriver(
+        <Tag id={id} theme="error">
+          a
+        </Tag>,
+      );
       expect(driver.isErrorTheme()).toBe(true);
     });
   });
@@ -104,14 +146,22 @@ describe('Tag', () => {
   describe('testkit', () => {
     it('should exist', () => {
       const id = 'hello';
-      expect(isTestkitExists(<Tag id={id}>a</Tag>, tagTestkitFactory)).toBe(true);
+      expect(isTestkitExists(<Tag id={id}>a</Tag>, tagTestkitFactory)).toBe(
+        true,
+      );
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
       const id = 'hello';
-      expect(isEnzymeTestkitExists(<Tag id={id}>a</Tag>, enzymeTagTestkitFactory, mount)).toBe(true);
+      expect(
+        isEnzymeTestkitExists(
+          <Tag id={id}>a</Tag>,
+          enzymeTagTestkitFactory,
+          mount,
+        ),
+      ).toBe(true);
     });
   });
 });

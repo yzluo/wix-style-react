@@ -1,11 +1,11 @@
 import React from 'react';
-import {bool, node} from 'prop-types';
-import {children, optional, once} from '../Composite';
+import { bool, node } from 'prop-types';
+import { children, optional, once } from '../Composite';
 import Label from '../Label';
 import Dropdown from '../Dropdown';
 import InputAreaWithLabelComposite from '../Composite/InputAreaWithLabelComposite/InputAreaWithLabelComposite';
 
-const DropdownComposite = ({children, ...props}) => (
+const DropdownComposite = ({ children, ...props }) => (
   <InputAreaWithLabelComposite {...props}>
     {children}
   </InputAreaWithLabelComposite>
@@ -16,7 +16,7 @@ DropdownComposite.propTypes = {
   required: bool,
   appendToParent: bool,
   info: node,
-  tooltip: node
+  tooltip: node,
 };
 
 DropdownComposite.displayName = 'DropdownComposite';

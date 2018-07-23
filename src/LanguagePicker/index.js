@@ -1,1 +1,1 @@
-export {default} from './LanguagePicker.js';
+export { default } from './LanguagePicker.js';

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
@@ -7,18 +7,17 @@ import Input from '../../src/Input';
 import Label from '../../src/Label';
 
 export default class Form extends Component {
-
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     withLabel: PropTypes.bool,
     label: PropTypes.object,
     input: PropTypes.object,
     required: PropTypes.bool,
-    info: PropTypes.string
+    info: PropTypes.string,
   };
 
   state = {
-    value: ''
+    value: '',
   };
 
   componentDidUpdate(props) {
@@ -32,13 +31,15 @@ export default class Form extends Component {
   getComponent() {
     return (
       <TextField required={this.props.required} info={this.props.info}>
-        {this.props.withLabel ? <Label for="firstName" {...this.props.label}/> : null}
+        {this.props.withLabel ? (
+          <Label for="firstName" {...this.props.label} />
+        ) : null}
         <Input
           id="firstName"
           {...this.props.input}
           value={this.state.value}
-          onChange={e => this.setState({value: e.target.value})}
-          />
+          onChange={e => this.setState({ value: e.target.value })}
+        />
       </TextField>
     );
   }

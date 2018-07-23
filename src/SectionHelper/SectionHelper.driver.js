@@ -1,23 +1,26 @@
-import {testkitFactoryCreator} from '../test-common';
+import { testkitFactoryCreator } from '../test-common';
 import buttonDriverFactory from '../Backoffice/Button/Button.driver';
 
 const buttonTestkitFactory = testkitFactoryCreator(buttonDriverFactory);
 
-const sectionHelperDriverFactory = ({element}) => {
+const sectionHelperDriverFactory = ({ element }) => {
   const classExists = className => element.classList.contains(className);
-  const actionButtonDriver = () => buttonTestkitFactory({
-    wrapper: element,
-    dataHook: 'sectionhelper-action-btn'
-  });
+  const actionButtonDriver = () =>
+    buttonTestkitFactory({
+      wrapper: element,
+      dataHook: 'sectionhelper-action-btn',
+    });
 
-  const closeButtonDriver = () => buttonTestkitFactory({
-    wrapper: element,
-    dataHook: 'sectionhelper-close-btn'
-  });
+  const closeButtonDriver = () =>
+    buttonTestkitFactory({
+      wrapper: element,
+      dataHook: 'sectionhelper-close-btn',
+    });
 
   return {
     exists: () => !!element,
-    titleText: () => element.querySelector('[data-hook="sectionhelper-title"]').textContent,
+    titleText: () =>
+      element.querySelector('[data-hook="sectionhelper-title"]').textContent,
     actionText: () => actionButtonDriver().getButtonTextContent(),
     clickAction: () => actionButtonDriver().click(),
     clickClose: () => closeButtonDriver().click(),
@@ -26,7 +29,7 @@ const sectionHelperDriverFactory = ({element}) => {
     isStandard: () => classExists('standard'),
     isDanger: () => classExists('danger'),
     isSuccess: () => classExists('success'),
-    isPremium: () => classExists('premium')
+    isPremium: () => classExists('premium'),
   };
 };
 

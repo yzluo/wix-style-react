@@ -1,2 +1,3 @@
-import {Badge} from 'wix-ui-backoffice/Badge';
+import { Badge } from 'wix-ui-backoffice/Badge';
+
 export default Badge;

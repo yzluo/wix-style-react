@@ -4,7 +4,7 @@ import Heading from 'wix-style-react/Heading';
 // wix-ui-backoffice/src/components/Heading/Heading.tsx:34
 // const StyledText = withStylable<CoreTextProps, Props>(
 // issue https://github.com/wix/react-autodocs-utils/issues/5
-const propify = value => ({label: value.toString(), value});
+const propify = value => ({ label: value.toString(), value });
 const bools = [false, true].map(propify);
 
 export default {
@@ -17,12 +17,12 @@ export default {
     children: 'Hey there, good looking',
     forceHideTitle: false,
     light: false,
-    ellipsis: false
+    ellipsis: false,
   },
 
   exampleProps: {
     appearance: ['H1', 'H2', 'H3', 'H4'],
     forceHideTitle: bools,
-    ellipsis: bools
-  }
+    ellipsis: bools,
+  },
 };

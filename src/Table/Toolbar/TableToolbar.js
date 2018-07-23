@@ -1,30 +1,22 @@
 import React from 'react';
-import {node} from 'prop-types';
+import { node } from 'prop-types';
 import typography from '../../Typography/Typography.scss';
-import {Toolbar, ItemGroup, Item, Label, Divider} from './Toolbar';
+import { Toolbar, ItemGroup, Item, Label, Divider } from './Toolbar';
 
 export const Title = props => {
-  return (
-    <span className={typography.h2}>
-      {props.children}
-    </span>
-  );
+  return <span className={typography.h2}>{props.children}</span>;
 };
 Title.displayName = 'TableToolbar.Title';
 Title.propTypes = {
-  children: node
+  children: node,
 };
 
 export const SelectedCount = props => {
-  return (
-    <span className={typography.t2}>
-      {props.children}
-    </span>
-  );
+  return <span className={typography.t2}>{props.children}</span>;
 };
 SelectedCount.displayName = 'TableToolbar.SelectedCount';
 SelectedCount.propTypes = {
-  children: node
+  children: node,
 };
 
 export const TableToolbar = Toolbar;

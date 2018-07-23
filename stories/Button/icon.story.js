@@ -4,8 +4,7 @@ import Button from 'wix-style-react/Button';
 
 import * as Icons from 'wix-style-react/new-icons';
 
-const icons = Object.values(Icons)
-  .map(icon => React.createElement(icon));
+const icons = Object.values(Icons).map(icon => React.createElement(icon));
 
 export default {
   category: '5. Buttons',
@@ -16,13 +15,13 @@ export default {
   componentProps: {
     withNewIcons: true,
     theme: 'icon-standard',
-    children: <Icons.X/>
+    children: <Icons.X />,
   },
 
   exampleProps: {
     onClick: () => 'Clicked!',
     onMouseEnter: () => 'Mouse Enter!',
     onMouseLeave: () => 'Mouse Leave!',
-    children: icons
-  }
+    children: icons,
+  },
 };

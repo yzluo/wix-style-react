@@ -1,33 +1,48 @@
 /* global describe it expect */
 
 import React from 'react';
-import {mount} from 'enzyme';
+import { mount } from 'enzyme';
 
 import Label from 'wix-style-react/Label';
-import {createDriverFactory} from '../test-common';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
-import {formFieldTestkitFactory} from '../../testkit';
-import {formFieldTestkitFactory as enzymeFormFieldTestkitFactory} from '../../testkit/enzyme';
+import { createDriverFactory } from '../test-common';
+import {
+  isTestkitExists,
+  isEnzymeTestkitExists,
+} from '../../testkit/test-common';
+import { formFieldTestkitFactory } from '../../testkit';
+import { formFieldTestkitFactory as enzymeFormFieldTestkitFactory } from '../../testkit/enzyme';
 import formFieldDriverFactory from './FormField.driver';
 
-import FormField from './';
+import FormField from '.';
 
 const createDriver = createDriverFactory(formFieldDriverFactory);
 
 describe('FormField', () => {
   it('should have correct displayName', () => {
-    const wrapper = mount(<FormField><div/></FormField>);
+    const wrapper = mount(
+      <FormField>
+        <div />
+      </FormField>,
+    );
     expect(wrapper.name()).toEqual('FormField');
   });
 
   describe('`label` prop', () => {
     it('should render contents', () => {
-      const driver = createDriver(<FormField label="hello label"><div/></FormField>);
+      const driver = createDriver(
+        <FormField label="hello label">
+          <div />
+        </FormField>,
+      );
       expect(driver.getLabel().innerHTML).toMatch(/hello label/);
     });
 
     it('should not render div when `label` is undefined', () => {
-      const driver = createDriver(<FormField><div/></FormField>);
+      const driver = createDriver(
+        <FormField>
+          <div />
+        </FormField>,
+      );
       expect(driver.getLabel()).toEqual(null);
     });
   });
@@ -35,21 +50,37 @@ describe('FormField', () => {
   describe('required', () => {
     describe('given `label` and `required` props', () => {
       it('should render as required', () => {
-        const driver = createDriver(<FormField label="hello" required><div/></FormField>);
+        const driver = createDriver(
+          <FormField label="hello" required>
+            <div />
+          </FormField>,
+        );
         expect(driver.isRequired()).toEqual(true);
       });
     });
 
     describe('given only `required` prop', () => {
       it('should render it inline', () => {
-        const driver = createDriver(<FormField required><div/></FormField>);
+        const driver = createDriver(
+          <FormField required>
+            <div />
+          </FormField>,
+        );
         expect(driver.isRequired()).toEqual(true);
-        expect(!!driver.element().querySelector('[data-hook="formfield-inline-suffixes"]')).toEqual(true);
+        expect(
+          !!driver
+            .element()
+            .querySelector('[data-hook="formfield-inline-suffixes"]'),
+        ).toEqual(true);
       });
     });
 
     it('should not render when `required` prop', () => {
-      const driver = createDriver(<FormField><div/></FormField>);
+      const driver = createDriver(
+        <FormField>
+          <div />
+        </FormField>,
+      );
       expect(driver.isRequired()).toEqual(false);
     });
   });
@@ -61,7 +92,11 @@ describe('FormField', () => {
 
     describe('given `label`', () => {
       it('should display value of `infoContent` prop in tooltip', async () => {
-        const driver = createDriver(<FormField infoContent="hello from tooltip"><div/></FormField>);
+        const driver = createDriver(
+          <FormField infoContent="hello from tooltip">
+            <div />
+          </FormField>,
+        );
 
         expect(await driver.getInfoContent()).toBe('hello from tooltip');
       });
@@ -69,8 +104,16 @@ describe('FormField', () => {
 
     describe('given only `infoContent` prop', () => {
       it('should render it inline', async () => {
-        const driver = createDriver(<FormField infoContent="hey there"><div/></FormField>);
-        expect(!!driver.element().querySelector('[data-hook="formfield-inline-suffixes"]')).toEqual(true);
+        const driver = createDriver(
+          <FormField infoContent="hey there">
+            <div />
+          </FormField>,
+        );
+        expect(
+          !!driver
+            .element()
+            .querySelector('[data-hook="formfield-inline-suffixes"]'),
+        ).toEqual(true);
         expect(await driver.getInfoContent()).toBe('hey there');
       });
     });
@@ -82,7 +125,7 @@ describe('FormField', () => {
         this.props.onMount(); // eslint-disable-line react/prop-types
       }
       render() {
-        return <div/>;
+        return <div />;
       }
     }
 
@@ -93,18 +136,20 @@ describe('FormField', () => {
     describe('when function', () => {
       it('should receive setCharactersLeft', () => {
         const children = jest.fn();
-        createDriver(<FormField children={children}/>);
-        expect(typeof children.mock.calls[0][0].setCharactersLeft).toBe('function');
+        createDriver(<FormField children={children} />);
+        expect(typeof children.mock.calls[0][0].setCharactersLeft).toBe(
+          'function',
+        );
       });
 
       describe('with `label` prop', () => {
         it('should display counter when `setCharactersLeft` called', () => {
           const driver = createDriver(
             <FormField label="hello">
-              {({setCharactersLeft}) =>
-                <Children onMount={() => setCharactersLeft(87987)}/>
-              }
-            </FormField>
+              {({ setCharactersLeft }) => (
+                <Children onMount={() => setCharactersLeft(87987)} />
+              )}
+            </FormField>,
           );
 
           expect(driver.getLengthLeft()).toBe(87987);
@@ -113,8 +158,10 @@ describe('FormField', () => {
         it('should display different color when lengtLeft < 0', () => {
           const driver = createDriver(
             <FormField label="hello">
-              {({setCharactersLeft}) => <Children onMount={() => setCharactersLeft(-1)}/>}
-            </FormField>
+              {({ setCharactersLeft }) => (
+                <Children onMount={() => setCharactersLeft(-1)} />
+              )}
+            </FormField>,
           );
 
           expect(driver.isLengthExceeded()).toBe(true);
@@ -123,8 +170,10 @@ describe('FormField', () => {
         it('should display 0 when lengtLeft === 0', () => {
           const driver = createDriver(
             <FormField label="hello">
-              {({setCharactersLeft}) => <Children onMount={() => setCharactersLeft(0)}/>}
-            </FormField>
+              {({ setCharactersLeft }) => (
+                <Children onMount={() => setCharactersLeft(0)} />
+              )}
+            </FormField>,
           );
 
           expect(driver.getLengthLeft()).toBe(0);
@@ -135,8 +184,10 @@ describe('FormField', () => {
         it('should not display counter', () => {
           const driver = createDriver(
             <FormField>
-              {({setCharactersLeft}) => <Children onMount={() => setCharactersLeft(123456)}/>}
-            </FormField>
+              {({ setCharactersLeft }) => (
+                <Children onMount={() => setCharactersLeft(123456)} />
+              )}
+            </FormField>,
           );
           expect(driver.getLengthLeft()).toEqual(null);
         });
@@ -146,7 +197,11 @@ describe('FormField', () => {
 
   describe('`id` prop', () => {
     it('should be added to label as `htmlFor` prop', () => {
-      const wrapper = mount(<FormField id="five" label="hello"><div/></FormField>);
+      const wrapper = mount(
+        <FormField id="five" label="hello">
+          <div />
+        </FormField>,
+      );
       const label = wrapper.find(Label);
       expect(label.prop('for')).toEqual('five');
     });
@@ -154,11 +209,26 @@ describe('FormField', () => {
 
   describe('testkits', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<FormField><div/></FormField>, formFieldTestkitFactory)).toBe(true);
+      expect(
+        isTestkitExists(
+          <FormField>
+            <div />
+          </FormField>,
+          formFieldTestkitFactory,
+        ),
+      ).toBe(true);
     });
 
     it('should exist for enzyme', () => {
-      expect(isEnzymeTestkitExists(<FormField><div/></FormField>, enzymeFormFieldTestkitFactory, mount)).toBe(true);
+      expect(
+        isEnzymeTestkitExists(
+          <FormField>
+            <div />
+          </FormField>,
+          enzymeFormFieldTestkitFactory,
+          mount,
+        ),
+      ).toBe(true);
     });
   });
 });

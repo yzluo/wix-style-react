@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.scss';
 
-const Link = ({children, icon, ...rest}) =>
+const Link = ({ children, icon, ...rest }) => (
   <a className={styles.link} {...rest}>
-    { icon && <div className={styles.linkIcon}>{icon}</div> }
+    {icon && <div className={styles.linkIcon}>{icon}</div>}
     {children}
-  </a>;
+  </a>
+);
 
 Link.propTypes = {
   children: PropTypes.node,
-  icon: PropTypes.node
+  icon: PropTypes.node,
 };
 
 export default Link;
-

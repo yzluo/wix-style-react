@@ -1,10 +1,15 @@
 import eyes from 'eyes.it';
-import {datePickerTestkitFactory, getStoryUrl} from '../../testkit/protractor';
+import {
+  datePickerTestkitFactory,
+  getStoryUrl,
+} from '../../testkit/protractor';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 
 describe('DatePicker', () => {
   const storyUrl = getStoryUrl('3. Inputs', '3.6 DatePicker');
-  const {inputDriver, calendarDriver} = datePickerTestkitFactory({dataHook: 'storybook-datepicker'});
+  const { inputDriver, calendarDriver } = datePickerTestkitFactory({
+    dataHook: 'storybook-datepicker',
+  });
 
   beforeAll(() => {
     browser.get(storyUrl);
@@ -15,32 +20,39 @@ describe('DatePicker', () => {
   });
 
   eyes.it('should not open calendar when disabled', () => {
-    autoExampleDriver.setProps({disabled: true});
+    autoExampleDriver.setProps({ disabled: true });
     inputDriver.click();
 
     expect(calendarDriver.exists()).toBe(false);
   });
 
-  eyes.it('should not close calendar on selecting date with click when shouldCloseOnSelect prop set to false', () => {
-    autoExampleDriver.setProps({shouldCloseOnSelect: false});
-    inputDriver.click();
+  eyes.it(
+    'should not close calendar on selecting date with click when shouldCloseOnSelect prop set to false',
+    () => {
+      autoExampleDriver.setProps({ shouldCloseOnSelect: false });
+      inputDriver.click();
 
-    calendarDriver.clickOnNthAvailableDay(10);
+      calendarDriver.clickOnNthAvailableDay(10);
 
-    expect(calendarDriver.exists()).toBe(true);
-    expect(calendarDriver.isVisible()).toBe(true);
-  });
+      expect(calendarDriver.exists()).toBe(true);
+      expect(calendarDriver.isVisible()).toBe(true);
+    },
+  );
 
   describe('default', () => {
     eyes.it('should show inputDriver', () => {
       expect(inputDriver.isVisible()).toBe(true);
     });
 
-    eyes.it('should open calendar when click on inputDriver', () => {
-      inputDriver.click();
-      expect(calendarDriver.exists()).toBe(true);
-      expect(calendarDriver.isVisible()).toBe(true);
-    }, {version: '<Input/> - On text click - select all'});
+    eyes.it(
+      'should open calendar when click on inputDriver',
+      () => {
+        inputDriver.click();
+        expect(calendarDriver.exists()).toBe(true);
+        expect(calendarDriver.isVisible()).toBe(true);
+      },
+      { version: '<Input/> - On text click - select all' },
+    );
 
     eyes.it('should close calendar on selecting date with click', () => {
       inputDriver.click();
@@ -48,13 +60,17 @@ describe('DatePicker', () => {
       expect(calendarDriver.exists()).toBe(false);
     });
 
-    eyes.it('should close calendar on Escape key', () => {
-      inputDriver.click();
-      expect(calendarDriver.exists()).toBe(true);
+    eyes.it(
+      'should close calendar on Escape key',
+      () => {
+        inputDriver.click();
+        expect(calendarDriver.exists()).toBe(true);
 
-      inputDriver.pressEscKey();
-      expect(calendarDriver.exists()).toBe(false);
-    }, {version: '<Input/> - On text click - select all'});
+        inputDriver.pressEscKey();
+        expect(calendarDriver.exists()).toBe(false);
+      },
+      { version: '<Input/> - On text click - select all' },
+    );
 
     eyes.it('should close calendar on Tab key', () => {
       inputDriver.click();
@@ -64,16 +80,20 @@ describe('DatePicker', () => {
       expect(calendarDriver.exists()).toBe(false);
     });
 
-    eyes.it('should not change date', () => {
-      autoExampleDriver.setProps({value: new Date('2017/05/01')});
-      inputDriver.click();
-      inputDriver.pressEnterKey();
+    eyes.it(
+      'should not change date',
+      () => {
+        autoExampleDriver.setProps({ value: new Date('2017/05/01') });
+        inputDriver.click();
+        inputDriver.pressEnterKey();
 
-      expect(inputDriver.getValue()).toBe('2017/05/01');
-    }, {version: '<Input/> - On text click - select all'});
+        expect(inputDriver.getValue()).toBe('2017/05/01');
+      },
+      { version: '<Input/> - On text click - select all' },
+    );
 
     eyes.it('should select next day date', () => {
-      autoExampleDriver.setProps({value: new Date('2017/05/01')});
+      autoExampleDriver.setProps({ value: new Date('2017/05/01') });
       inputDriver.click();
       inputDriver.pressArrowRightKey();
       inputDriver.pressEnterKey();
@@ -87,9 +107,8 @@ describe('DatePicker', () => {
       autoExampleDriver.setProps({
         showYearDropdown: true,
         showMonthDropdown: true,
-        value: new Date('2017/05/01')
-      })
-    );
+        value: new Date('2017/05/01'),
+      }));
 
     eyes.it('should be scrolled to current year', () => {
       inputDriver.click();

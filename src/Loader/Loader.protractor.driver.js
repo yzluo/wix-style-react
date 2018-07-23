@@ -1,6 +1,6 @@
 import css from './Loader.scss';
 import textDriverFactory from '../Deprecated/Text/Text.protractor.driver';
-import {protractorTestkitFactoryCreator} from '../test-common';
+import { protractorTestkitFactoryCreator } from '../test-common';
 
 const textTestkitFactory = protractorTestkitFactoryCreator(textDriverFactory);
 
@@ -11,7 +11,7 @@ const hasClass = (element, styles, cls) => {
 };
 
 const loaderDriverFactory = component => {
-  const textDriver = textTestkitFactory({dataHook: 'loader-text'});
+  const textDriver = textTestkitFactory({ dataHook: 'loader-text' });
 
   return {
     element: () => component,
@@ -19,12 +19,15 @@ const loaderDriverFactory = component => {
     isSmall: () => hasClass(component, css, 'small'),
     isMedium: () => hasClass(component, css, 'medium'),
     isLarge: () => hasClass(component, css, 'large'),
-    getColor: () => hasClass(component, css, 'blue').then(hasClass => hasClass ? 'blue' : 'white'),
+    getColor: () =>
+      hasClass(component, css, 'blue').then(
+        hasClass => (hasClass ? 'blue' : 'white'),
+      ),
     hasText: () => textDriver.element().isPresent(),
     getText: () => textDriver.getText(),
     isError: () => hasClass(component, css, 'error'),
     isSuccess: () => hasClass(component, css, 'success'),
-    isLoading: () => hasClass(component, css, 'loading')
+    isLoading: () => hasClass(component, css, 'loading'),
   };
 };
 

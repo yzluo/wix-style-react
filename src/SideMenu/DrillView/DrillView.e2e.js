@@ -1,4 +1,8 @@
-import {drillViewTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../../testkit/protractor';
+import {
+  drillViewTestkitFactory,
+  getStoryUrl,
+  waitForVisibilityOf,
+} from '../../../testkit/protractor';
 import eyes from 'eyes.it';
 
 describe('DrillView', () => {
@@ -6,7 +10,7 @@ describe('DrillView', () => {
 
   eyes.it('should clear transition classes', async () => {
     const dataHook = 'side-menu';
-    const driver = drillViewTestkitFactory({dataHook});
+    const driver = drillViewTestkitFactory({ dataHook });
 
     await browser.get(storyUrl);
     await waitForVisibilityOf(driver.element(), 'Cannot find DrillView');
@@ -16,12 +20,14 @@ describe('DrillView', () => {
 
     await driver.clickBackLink();
     await browser.wait(async () => await driver.hasSingleDrillViewPanel());
-    await browser.wait(async () => await driver.hasNoTransitionClassesInDrillView());
+    await browser.wait(
+      async () => await driver.hasNoTransitionClassesInDrillView(),
+    );
   });
 
   eyes.it('should show arrow on hover', async () => {
     const dataHook = 'side-menu';
-    const driver = drillViewTestkitFactory({dataHook});
+    const driver = drillViewTestkitFactory({ dataHook });
 
     await browser.get(storyUrl);
     await waitForVisibilityOf(driver.element(), 'Cannot find DrillView');

@@ -1,16 +1,26 @@
 import eyes from 'eyes.it';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
-import {dropdownTestkitFactory, waitForVisibilityOf} from '../../testkit/protractor';
-import {createStoryUrl} from '../../test/utils/protractor';
-import {storySettings} from '../../stories/Dropdown/storySettings';
+import {
+  dropdownTestkitFactory,
+  waitForVisibilityOf,
+} from '../../testkit/protractor';
+import { createStoryUrl } from '../../test/utils/protractor';
+import { storySettings } from '../../stories/Dropdown/storySettings';
 
 describe('Dropdown', () => {
-  const autoExampleUrl = createStoryUrl({kind: storySettings.kind, story: storySettings.storyName, withExamples: false});
+  const autoExampleUrl = createStoryUrl({
+    kind: storySettings.kind,
+    story: storySettings.storyName,
+    withExamples: false,
+  });
 
   eyes.it('should choose different dropdown items', async () => {
-    const storyUrl = createStoryUrl({kind: storySettings.kind, story: storySettings.storyName});
+    const storyUrl = createStoryUrl({
+      kind: storySettings.kind,
+      story: storySettings.storyName,
+    });
     const dataHook = 'story-dropdown-controlled';
-    const driver = dropdownTestkitFactory({dataHook});
+    const driver = dropdownTestkitFactory({ dataHook });
 
     await browser.get(storyUrl);
 
@@ -25,7 +35,7 @@ describe('Dropdown', () => {
     await driver.getDropdownItem(2).click();
     expect(await driver.getInput().getAttribute('value')).toBe('Option 3');
 
-        //choose a disabled option
+    //choose a disabled option
     await driver.click();
     await driver.getDropdownItem(3).click();
     expect(await driver.getInput().getAttribute('value')).toBe('Option 3');
@@ -34,7 +44,7 @@ describe('Dropdown', () => {
   eyes.it('should display focused and with options shown', async () => {
     const dataHook = 'story-dropdown';
     await browser.get(autoExampleUrl);
-    const driver = dropdownTestkitFactory({dataHook});
+    const driver = dropdownTestkitFactory({ dataHook });
     await waitForVisibilityOf(driver.element(), 'Cannot find Dropdown');
     expect(await driver.isOptionsShown()).toBeFalsy();
     await driver.getInput().click();
@@ -44,12 +54,14 @@ describe('Dropdown', () => {
   eyes.it('should display options with divider', async () => {
     const dataHook = 'story-dropdown';
     await browser.get(autoExampleUrl);
-    await autoExampleDriver.setProps({options: [
-      {id: 1, value: 'op 1'},
-      {id: -99, value: '-'},
-      {id: 2, value: 'op 2'}
-    ]});
-    const driver = dropdownTestkitFactory({dataHook});
+    await autoExampleDriver.setProps({
+      options: [
+        { id: 1, value: 'op 1' },
+        { id: -99, value: '-' },
+        { id: 2, value: 'op 2' },
+      ],
+    });
+    const driver = dropdownTestkitFactory({ dataHook });
     await waitForVisibilityOf(driver.element(), 'Cannot find Dropdown');
     expect(await driver.isOptionsShown()).toBeFalsy();
     await driver.getInput().click();

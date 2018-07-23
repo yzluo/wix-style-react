@@ -5,23 +5,24 @@ import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import Card from 'wix-style-react/Card';
 
-import {storySettings} from '../storySettings';
-import {storiesOf} from '@storybook/react';
+import { storySettings } from '../storySettings';
+import { storiesOf } from '@storybook/react';
 
-import {MainExample} from './MainExample';
+import { MainExample } from './MainExample';
 import MainExampleRaw from '!raw-loader!./MainExample';
 
-import {BulkActionsExample} from './BulkActionsExample';
+import { BulkActionsExample } from './BulkActionsExample';
 import BulkActionsExampleRaw from '!raw-loader!./BulkActionsExample';
 
 import Readme from './README.md';
 
 import s from './Toolbar.story.scss';
 
-storiesOf(storySettings.kind, module)
-  .add(storySettings.storyName + ' -> TableToolbar', () => (
+storiesOf(storySettings.kind, module).add(
+  storySettings.storyName + ' -> TableToolbar',
+  () => (
     <div>
-      <Markdown source={Readme}/>
+      <Markdown source={Readme} />
       <div>
         <Markdown
           source={`
@@ -35,11 +36,11 @@ It may include (by convention) the following UI components:
   - DateRange
   - Checkbox
         `}
-          />
+        />
         <div className={s.example}>
           <CodeExample title="Typical Main Toolbar" code={MainExampleRaw}>
             <Card>
-              <MainExample/>
+              <MainExample />
             </Card>
           </CodeExample>
         </div>
@@ -58,14 +59,18 @@ It may include (by convention) the following UI component:
    - Button with Prefix
  - A collapsed Search input box (\`<Search expandable/>\`)
         `}
-          />
+        />
         <div className={s.example}>
-          <CodeExample title="Typical BulkActions Toolbar" code={BulkActionsExampleRaw}>
+          <CodeExample
+            title="Typical BulkActions Toolbar"
+            code={BulkActionsExampleRaw}
+          >
             <Card>
-              <BulkActionsExample/>
+              <BulkActionsExample />
             </Card>
           </CodeExample>
         </div>
       </div>
     </div>
-  ));
+  ),
+);

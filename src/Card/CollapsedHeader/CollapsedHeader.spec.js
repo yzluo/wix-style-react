@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import collapsedHeaderDriverFactory from './CollapsedHeader.driver';
-import {createDriverFactory} from '../../test-common';
+import { createDriverFactory } from '../../test-common';
 import CollapsedHeader from './CollapsedHeader';
-import {collapsedHeaderTestkitFactory} from '../../../testkit';
-import {collapsedHeaderTestkitFactory as enzymeCollapsedHeaderTestkitFactory} from '../../../testkit/enzyme';
-import {mount} from 'enzyme';
+import { collapsedHeaderTestkitFactory } from '../../../testkit';
+import { collapsedHeaderTestkitFactory as enzymeCollapsedHeaderTestkitFactory } from '../../../testkit/enzyme';
+import { mount } from 'enzyme';
 
 import animationPolyfills from './AnimationPolyfill';
 
@@ -19,8 +19,8 @@ describe('CollapsedHeader', () => {
   it('should have a title', () => {
     const driver = createDriver(
       <CollapsedHeader title="Header Title">
-        <div/>
-      </CollapsedHeader>
+        <div />
+      </CollapsedHeader>,
     );
     expect(driver.title()).toBe('Header Title');
   });
@@ -28,14 +28,16 @@ describe('CollapsedHeader', () => {
   it('should have a subtitle', () => {
     const driver = createDriver(
       <CollapsedHeader title="Header Title" subtitle="Header Subtitle">
-        <div/>
-      </CollapsedHeader>
+        <div />
+      </CollapsedHeader>,
     );
     expect(driver.subtitle()).toBe('Header Subtitle');
   });
 
   it('should show content', () => {
-    const driver = createDriver(<CollapsedHeader title="Header Title">{content}</CollapsedHeader>);
+    const driver = createDriver(
+      <CollapsedHeader title="Header Title">{content}</CollapsedHeader>,
+    );
 
     expect(driver.findByDatahook('content').innerHTML).toBe('Some Content');
   });
@@ -44,7 +46,7 @@ describe('CollapsedHeader', () => {
     const driver = createDriver(
       <CollapsedHeader collapsed title="Header Title">
         {content}
-      </CollapsedHeader>
+      </CollapsedHeader>,
     );
 
     expect(driver.findByDatahook(dataHook)).toBe(null);
@@ -53,9 +55,12 @@ describe('CollapsedHeader', () => {
   it('should call with collapse status', () => {
     const onCollapsedChange = jest.fn();
     const driver = createDriver(
-      <CollapsedHeader title="Header Title" onCollapsedChange={onCollapsedChange}>
+      <CollapsedHeader
+        title="Header Title"
+        onCollapsedChange={onCollapsedChange}
+      >
         {content}
-      </CollapsedHeader>
+      </CollapsedHeader>,
     );
 
     driver.click();
@@ -66,7 +71,9 @@ describe('CollapsedHeader', () => {
   });
 
   it('should hide content on collapse', () => {
-    const driver = createDriver(<CollapsedHeader title="Header Title">{content}</CollapsedHeader>);
+    const driver = createDriver(
+      <CollapsedHeader title="Header Title">{content}</CollapsedHeader>,
+    );
 
     driver.click();
 
@@ -77,7 +84,7 @@ describe('CollapsedHeader', () => {
     const driver = createDriver(
       <CollapsedHeader collapsed title="Header Title">
         {content}
-      </CollapsedHeader>
+      </CollapsedHeader>,
     );
 
     driver.click();
@@ -89,9 +96,13 @@ describe('CollapsedHeader', () => {
     it('should call with collapsed status', () => {
       const onCollapsedChange = jest.fn();
       const driver = createDriver(
-        <CollapsedHeader title="Header Title" controlled onCollapsedChange={onCollapsedChange}>
+        <CollapsedHeader
+          title="Header Title"
+          controlled
+          onCollapsedChange={onCollapsedChange}
+        >
           {content}
-        </CollapsedHeader>
+        </CollapsedHeader>,
       );
 
       driver.click();
@@ -100,9 +111,13 @@ describe('CollapsedHeader', () => {
 
     it('should not hide content when controlled', () => {
       const driver = createDriver(
-        <CollapsedHeader title="Header Title" controlled onCollapsedChange={jest.fn()}>
+        <CollapsedHeader
+          title="Header Title"
+          controlled
+          onCollapsedChange={jest.fn()}
+        >
           {content}
-        </CollapsedHeader>
+        </CollapsedHeader>,
       );
 
       driver.click();
@@ -119,13 +134,20 @@ describe('testkit', () => {
     const wrapper = div.appendChild(
       ReactTestUtils.renderIntoDocument(
         <div>
-          <CollapsedHeader title="Header Title" subtitle="Header Subtitle" dataHook={dataHook}>
-            <div/>
+          <CollapsedHeader
+            title="Header Title"
+            subtitle="Header Subtitle"
+            dataHook={dataHook}
+          >
+            <div />
           </CollapsedHeader>
-        </div>
-      )
+        </div>,
+      ),
     );
-    const collapsedHeaderTestkit = collapsedHeaderTestkitFactory({wrapper, dataHook});
+    const collapsedHeaderTestkit = collapsedHeaderTestkitFactory({
+      wrapper,
+      dataHook,
+    });
     expect(collapsedHeaderTestkit.exists()).toBeTruthy();
   });
 });
@@ -134,11 +156,18 @@ describe('enzyme testkit', () => {
   it('should exist', () => {
     const dataHook = 'myDataHook';
     const wrapper = mount(
-      <CollapsedHeader title="Header Title" subtitle="Header Subtitle" dataHook={dataHook}>
-        <div/>
-      </CollapsedHeader>
+      <CollapsedHeader
+        title="Header Title"
+        subtitle="Header Subtitle"
+        dataHook={dataHook}
+      >
+        <div />
+      </CollapsedHeader>,
     );
-    const collapsedDriverTestkit = enzymeCollapsedHeaderTestkitFactory({wrapper, dataHook});
+    const collapsedDriverTestkit = enzymeCollapsedHeaderTestkitFactory({
+      wrapper,
+      dataHook,
+    });
     expect(collapsedDriverTestkit.exists()).toBeTruthy();
   });
 });

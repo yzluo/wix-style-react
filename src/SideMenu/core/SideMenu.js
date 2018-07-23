@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './styles.scss';
 import classNames from 'classnames';
-import {node, bool} from 'prop-types';
+import { node, bool } from 'prop-types';
 
-const SideMenu = ({children, inFlex}) => {
+const SideMenu = ({ children, inFlex }) => {
   const rootStyles = classNames({
     [styles.root]: true,
-    [styles.inFlex]: inFlex
+    [styles.inFlex]: inFlex,
   });
 
   return (
@@ -17,12 +17,12 @@ const SideMenu = ({children, inFlex}) => {
 };
 
 SideMenu.defaultProps = {
-  inFlex: false
+  inFlex: false,
 };
 
 SideMenu.propTypes = {
   inFlex: bool,
-  children: node
+  children: node,
 };
 
 export default SideMenu;

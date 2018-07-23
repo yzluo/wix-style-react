@@ -9,47 +9,65 @@ import Button from '../Backoffice/Button';
 import * as styles from './MessageBoxMarketerialLayout.scss';
 
 class MessageBoxMarketerialLayout extends WixComponent {
-
   render() {
-    const {title, content, primaryButtonLabel, secondaryButtonLabel, onPrimaryButtonClick, onSecondaryButtonClick, imageUrl, onClose, theme, imageComponent} = this.props;
+    const {
+      title,
+      content,
+      primaryButtonLabel,
+      secondaryButtonLabel,
+      onPrimaryButtonClick,
+      onSecondaryButtonClick,
+      imageUrl,
+      onClose,
+      theme,
+      imageComponent,
+    } = this.props;
 
     const headerClasses = classNames({
       [styles.header]: true,
-      [styles[`header-${theme}`]]: true
+      [styles[`header-${theme}`]]: true,
     });
 
     return (
       <div className={styles.root}>
         <div className={headerClasses}>
           <div className={styles.close}>
-            <CloseButton dataHook="close-button" onClick={onClose}/>
+            <CloseButton dataHook="close-button" onClick={onClose} />
           </div>
-          { imageComponent ?
-            <div className={styles.headerImageComponent}>{imageComponent}</div> :
+          {imageComponent ? (
+            <div className={styles.headerImageComponent}>{imageComponent}</div>
+          ) : (
             <div className={styles.headerImage}>
-              <img src={imageUrl} data-hook="header-image"/>
+              <img src={imageUrl} data-hook="header-image" />
             </div>
-          }
+          )}
         </div>
         <div className={styles.title} data-hook="message-box-title">
           {title}
         </div>
-        <div className={styles.content}>
-          {content}
-        </div>
+        <div className={styles.content}>{content}</div>
         <div className={styles.buttonsContainer}>
-          { primaryButtonLabel ?
+          {primaryButtonLabel ? (
             <div className={styles.primaryButtonContainer}>
-              <Button theme={`full${theme}`} onClick={onPrimaryButtonClick} dataHook="primary-button">{primaryButtonLabel}</Button>
-            </div> : null
-          }
-          { secondaryButtonLabel ?
+              <Button
+                theme={`full${theme}`}
+                onClick={onPrimaryButtonClick}
+                dataHook="primary-button"
+              >
+                {primaryButtonLabel}
+              </Button>
+            </div>
+          ) : null}
+          {secondaryButtonLabel ? (
             <div className={styles.secondaryButtonContainer}>
-              <span onClick={onSecondaryButtonClick} data-hook="secondary-button">
+              <span
+                onClick={onSecondaryButtonClick}
+                data-hook="secondary-button"
+              >
                 {secondaryButtonLabel}
               </span>
-            </div> : null
-          }
+            </div>
+          ) : null}
         </div>
       </div>
     );
@@ -66,14 +84,11 @@ MessageBoxMarketerialLayout.propTypes = {
   imageUrl: PropTypes.string,
   onClose: PropTypes.func.isRequired,
   imageComponent: PropTypes.node,
-  theme: PropTypes.oneOf([
-    'blue',
-    'purple'
-  ])
+  theme: PropTypes.oneOf(['blue', 'purple']),
 };
 
 MessageBoxMarketerialLayout.defaultProps = {
-  theme: 'blue'
+  theme: 'blue',
 };
 
 export default MessageBoxMarketerialLayout;

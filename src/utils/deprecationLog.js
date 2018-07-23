@@ -1,4 +1,4 @@
-let deprecationLog = function () {};
+let deprecationLog = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
   const printWarning = msg => {

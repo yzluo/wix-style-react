@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, Card} from '../../src/Grid';
+import { Container, Row, Col, Card } from '../../src/Grid';
 import styles from './ExampleGrid.scss';
 
 import TextField from '../../src/TextField';
@@ -12,7 +12,7 @@ function renderStandardInput() {
   return (
     <TextField>
       <Label for="textField">Text Field</Label>
-      <Input id="textField" placeholder="Default text goes"/>
+      <Input id="textField" placeholder="Default text goes" />
     </TextField>
   );
 }
@@ -41,7 +41,7 @@ export default () => {
                     title="Card with collapsed header"
                     subtitle="and subtitle"
                     toggleStyle="button"
-                    >
+                  >
                     <Card.Content>
                       <Row>
                         <Col span={6}>{renderStandardInput()}</Col>
@@ -58,7 +58,7 @@ export default () => {
                     title="Card with collapsed header"
                     subtitle="and subtitle, no divider"
                     withoutDivider
-                    >
+                  >
                     <Card.Content>
                       <Row>
                         <Col span={12}>{renderStandardInput()}</Col>
@@ -68,7 +68,7 @@ export default () => {
                 </Card>
               </Col>
             </Row>
-            <ControlledExample/>
+            <ControlledExample />
           </Col>
         </Row>
       </Container>
@@ -79,16 +79,16 @@ export default () => {
 class ControlledExample extends React.Component {
   state = {
     collapsed: false,
-    toggled: false
+    toggled: false,
   };
 
   onCollapsedChange() {
-    this.setState({toggled: true});
-    setTimeout(() => this.setState({toggled: false}), 500);
+    this.setState({ toggled: true });
+    setTimeout(() => this.setState({ toggled: false }), 500);
   }
 
   render() {
-    const {collapsed} = this.state;
+    const { collapsed } = this.state;
     return (
       <Row>
         <Col span={8}>
@@ -98,7 +98,7 @@ class ControlledExample extends React.Component {
               controlled
               title="Card with controlled collapsed header"
               onCollapsedChange={() => this.onCollapsedChange()}
-              >
+            >
               <Card.Content>
                 <Row>
                   <Col span={12}>{renderStandardInput()}</Col>
@@ -111,15 +111,19 @@ class ControlledExample extends React.Component {
           <Row>
             <Col span={6}>
               <Button
-                onClick={() => this.setState(({collapsed}) => ({collapsed: !collapsed}))}
+                onClick={() =>
+                  this.setState(({ collapsed }) => ({ collapsed: !collapsed }))
+                }
                 height="large"
                 theme={collapsed ? 'fullred' : 'fullblue'}
-                >
+              >
                 {collapsed ? 'Collapsed' : 'Open'}
               </Button>
             </Col>
             <Col span={2}>
-              <Badge skin={this.state.toggled ? 'success' : 'standard'}>Toggled</Badge>
+              <Badge skin={this.state.toggled ? 'success' : 'standard'}>
+                Toggled
+              </Badge>
             </Col>
           </Row>
         </Col>

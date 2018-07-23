@@ -1,6 +1,6 @@
 import React from 'react';
 import textDriverFactory from './Text.driver';
-import {createDriverFactory} from '../../test-common';
+import { createDriverFactory } from '../../test-common';
 
 import Text from './Text';
 import styles from './styles.scss';
@@ -23,11 +23,11 @@ describe('Component: Text', () => {
         ['H2', 'h3'],
         ['H2.1', 'h3'],
         ['H3', 'h4'],
-        ['H4', 'h5']
+        ['H4', 'h5'],
       ];
 
       appearancesAndTypes.map(([appearance, type]) => {
-        const driver = createDriver(<Text appearance={appearance}/>);
+        const driver = createDriver(<Text appearance={appearance} />);
         return expect(driver.getType()).toBe(type);
       });
     });
@@ -39,12 +39,14 @@ describe('Component: Text', () => {
         ['H2', typography.h2],
         ['H2.1', typography.h2_1],
         ['H3', typography.h3],
-        ['H4', typography.h4]
+        ['H4', typography.h4],
       ];
 
       appearancesAndClassNames.map(([appearance, className]) => {
-        const driver = createDriver(<Text appearance={appearance}/>);
-        return expect(driver.getClassName()).toEqual(`${className} ${styles.headingDefaults}`);
+        const driver = createDriver(<Text appearance={appearance} />);
+        return expect(driver.getClassName()).toEqual(
+          `${className} ${styles.headingDefaults}`,
+        );
       });
     });
   });
@@ -52,13 +54,28 @@ describe('Component: Text', () => {
   describe('when `appearance` prop is a T', () => {
     it('should render span', () => {
       [
-        'T1', 'T1.1', 'T1.2', 'T1.3', 'T1.4',
-        'T2', 'T2.1', 'T2.2', 'T2.3',
-        'T3', 'T3.1', 'T3.2', 'T3.3', 'T3.4',
-        'T4', 'T4.1', 'T4.2', 'T4.3',
-        'T5', 'T5.1'
+        'T1',
+        'T1.1',
+        'T1.2',
+        'T1.3',
+        'T1.4',
+        'T2',
+        'T2.1',
+        'T2.2',
+        'T2.3',
+        'T3',
+        'T3.1',
+        'T3.2',
+        'T3.3',
+        'T3.4',
+        'T4',
+        'T4.1',
+        'T4.2',
+        'T4.3',
+        'T5',
+        'T5.1',
       ].map(appearance => {
-        const driver = createDriver(<Text appearance={appearance}/>);
+        const driver = createDriver(<Text appearance={appearance} />);
         return expect(driver.getType()).toBe('span');
       });
     });
@@ -81,12 +98,20 @@ describe('Component: Text', () => {
     });
 
     it('should not have title attribute when given ellipsis and forceHideTitle props', () => {
-      const driver = createDriver(<Text ellipsis forceHideTitle>zombo</Text>);
+      const driver = createDriver(
+        <Text ellipsis forceHideTitle>
+          zombo
+        </Text>,
+      );
       expect(driver.getTitle()).toBe('');
     });
 
     it('should not have title attribute when given ellipsis prop but none string children', () => {
-      const driver = createDriver(<Text ellipsis><span>zombo</span></Text>);
+      const driver = createDriver(
+        <Text ellipsis>
+          <span>zombo</span>
+        </Text>,
+      );
       expect(driver.getTitle()).toBe('');
     });
 

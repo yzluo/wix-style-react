@@ -1,11 +1,13 @@
 import ReactTestUtils from 'react-dom/test-utils';
 
-const popoverMenuDriverFactory = ({element}) => {
+const popoverMenuDriverFactory = ({ element }) => {
   let menuItemDataHook;
   // before accessing menu methods one need to init driver with menu-item data hook
   const protect = fn => (...args) => {
     if (!menuItemDataHook) {
-      throw new Error('Before accessing menu fields init menu item data hook with "driver.given.menuItemDataHook(\'myDataHook\')" command');
+      throw new Error(
+        'Before accessing menu fields init menu item data hook with "driver.given.menuItemDataHook(\'myDataHook\')" command',
+      );
     }
 
     return fn(...args);
@@ -13,8 +15,10 @@ const popoverMenuDriverFactory = ({element}) => {
 
   const itemsArray = () => [
     ...document.body.querySelectorAll(
-      menuItemDataHook.split(' ').reduce((q, hook) => q + `[data-hook~="${hook}"]`, '')
-    )
+      menuItemDataHook
+        .split(' ')
+        .reduce((q, hook) => q + `[data-hook~="${hook}"]`, ''),
+    ),
   ];
 
   const driver = {
@@ -26,15 +30,23 @@ const popoverMenuDriverFactory = ({element}) => {
         menuItemDataHook = dataHook;
 
         return driver;
-      }
+      },
     },
 
     menu: {
       isShown: protect(() => itemsArray().length > 0),
       itemsLength: protect(() => itemsArray().length),
-      itemContentAt: protect(index => itemsArray()[index].querySelector('[data-hook="menu-item-text"]').innerHTML),
-      clickItemAt: protect(index => ReactTestUtils.Simulate.click(itemsArray()[index].querySelector('button')))
-    }
+      itemContentAt: protect(
+        index =>
+          itemsArray()[index].querySelector('[data-hook="menu-item-text"]')
+            .innerHTML,
+      ),
+      clickItemAt: protect(index =>
+        ReactTestUtils.Simulate.click(
+          itemsArray()[index].querySelector('button'),
+        ),
+      ),
+    },
   };
 
   return driver;

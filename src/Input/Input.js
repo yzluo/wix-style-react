@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import omit from 'lodash/omit';
@@ -6,7 +6,7 @@ import omit from 'lodash/omit';
 import Ticker from './Ticker';
 import Unit from './Unit';
 import Group from './Group';
-import InputSuffix, {getVisibleSuffixCount} from './InputSuffix';
+import InputSuffix, { getVisibleSuffixCount } from './InputSuffix';
 
 import styles from './Input.scss';
 
@@ -17,14 +17,11 @@ class Input extends Component {
   static Group = Group;
 
   state = {
-    focus: false
+    focus: false,
   };
 
   componentDidMount() {
-    const {
-      autoFocus,
-      value
-    } = this.props;
+    const { autoFocus, value } = this.props;
 
     if (autoFocus) {
       this._onFocus();
@@ -73,7 +70,7 @@ class Input extends Component {
       tooltipPlacement,
       onTooltipShow,
       autocomplete,
-      required
+      required,
     } = this.props;
 
     const onIconClicked = e => {
@@ -84,25 +81,40 @@ class Input extends Component {
       }
     };
 
-    const isClearButtonVisible = (!!clearButton || !!onClear) && !!value && !error && !disabled;
+    const isClearButtonVisible =
+      (!!clearButton || !!onClear) && !!value && !error && !disabled;
 
     const visibleSuffixCount = getVisibleSuffixCount({
-      error, disabled, help, magnifyingGlass, isClearButtonVisible, menuArrow, unit, suffix
+      error,
+      disabled,
+      help,
+      magnifyingGlass,
+      isClearButtonVisible,
+      menuArrow,
+      unit,
+      suffix,
     });
 
     const inputClassNames = classNames(styles.input, {
       [styles.withPrefix]: !!prefix,
       [styles.withSuffix]: visibleSuffixCount,
-      [styles.withSuffixes]: visibleSuffixCount > 1
+      [styles.withSuffixes]: visibleSuffixCount > 1,
     });
 
     const ariaAttribute = {};
-    Object.keys(this.props).filter(key => key.startsWith('aria')).map(key => ariaAttribute['aria-' + key.substr(4).toLowerCase()] = this.props[key]);
+    Object.keys(this.props)
+      .filter(key => key.startsWith('aria'))
+      .map(
+        key =>
+          (ariaAttribute['aria-' + key.substr(4).toLowerCase()] = this.props[
+            key
+          ]),
+      );
 
     const inputElement = (
       <input
-        style={{textOverflow}}
-        ref={input => this.input = input}
+        style={{ textOverflow }}
+        ref={input => (this.input = input)}
         className={inputClassNames}
         id={id}
         name={name}
@@ -129,34 +141,45 @@ class Input extends Component {
         onCompositionEnd={() => this.onCompositionChange(false)}
         {...ariaAttribute}
         {...omit(props, 'className')}
-        />);
+      />
+    );
 
     //needs additional wrapper with class .prefixSuffixWrapper to fix inputs with prefix in ie11
     //https://github.com/wix/wix-style-react/issues/1693
     //https://github.com/wix/wix-style-react/issues/1691
-    return (<div className={styles.inputWrapper}>
-      {prefix && <div className={styles.prefixSuffixWrapper}><div className={styles.prefix}>{prefix}</div></div>}
+    return (
+      <div className={styles.inputWrapper}>
+        {prefix && (
+          <div className={styles.prefixSuffixWrapper}>
+            <div className={styles.prefix}>{prefix}</div>
+          </div>
+        )}
 
-      { inputElement }
-      { visibleSuffixCount > 0 && <div className={styles.prefixSuffixWrapper}><InputSuffix
-        error={error}
-        errorMessage={errorMessage}
-        theme={theme}
-        disabled={disabled}
-        help={help}
-        helpMessage={helpMessage}
-        onIconClicked={onIconClicked}
-        magnifyingGlass={magnifyingGlass}
-        isClearButtonVisible={isClearButtonVisible}
-        onClear={this._onClear}
-        menuArrow={menuArrow}
-        unit={unit}
-        focused={this.state.focus}
-        suffix={suffix}
-        tooltipPlacement={tooltipPlacement}
-        onTooltipShow={onTooltipShow}
-        /></div> }
-    </div>);
+        {inputElement}
+        {visibleSuffixCount > 0 && (
+          <div className={styles.prefixSuffixWrapper}>
+            <InputSuffix
+              error={error}
+              errorMessage={errorMessage}
+              theme={theme}
+              disabled={disabled}
+              help={help}
+              helpMessage={helpMessage}
+              onIconClicked={onIconClicked}
+              magnifyingGlass={magnifyingGlass}
+              isClearButtonVisible={isClearButtonVisible}
+              onClear={this._onClear}
+              menuArrow={menuArrow}
+              unit={unit}
+              focused={this.state.focus}
+              suffix={suffix}
+              tooltipPlacement={tooltipPlacement}
+              onTooltipShow={onTooltipShow}
+            />
+          </div>
+        )}
+      </div>
+    );
   }
 
   focus = () => {
@@ -173,7 +196,7 @@ class Input extends Component {
   };
 
   _onFocus = e => {
-    this.setState({focus: true});
+    this.setState({ focus: true });
     this.props.onFocus && this.props.onFocus(e);
 
     if (this.props.autoSelect) {
@@ -185,7 +208,7 @@ class Input extends Component {
   };
 
   _onBlur = e => {
-    this.setState({focus: false});
+    this.setState({ focus: false });
     if (this.props.onBlur) {
       this.props.onBlur(e);
     }
@@ -210,29 +233,27 @@ class Input extends Component {
   };
 
   _onChange = e => {
-    if (this.props.type === 'number' && !(/^[\d.,\-+]*$/.test(e.target.value))) {
+    if (this.props.type === 'number' && !/^[\d.,\-+]*$/.test(e.target.value)) {
       return;
     }
 
     this.props.onChange && this.props.onChange(e);
-  }
+  };
 
   _onClear = e => {
-    const {
-      onClear
-    } = this.props;
+    const { onClear } = this.props;
 
     this.input.value = '';
 
     e.target = {
       ...e.target,
-      value: ''
+      value: '',
     };
     this._onChange(e);
     this.focus();
 
     onClear && onClear();
-  }
+  };
 }
 
 Input.displayName = 'Input';
@@ -247,13 +268,15 @@ Input.defaultProps = {
   textOverflow: 'clip',
   maxLength: 524288,
   withSelection: false,
-  clearButton: false
+  clearButton: false,
 };
 
 const borderRadiusValidator = (props, propName) => {
   const value = props[propName];
   if (typeof value === 'string') {
-    throw new Error('Passing a string (for className) is deprecated. Use new className prop.');
+    throw new Error(
+      'Passing a string (for className) is deprecated. Use new className prop.',
+    );
   } else if (typeof value === 'undefined' || typeof value === 'boolean') {
     return null;
   } else {
@@ -382,7 +405,15 @@ Input.propTypes = {
   textOverflow: PropTypes.string,
 
   /** The theme of the input */
-  theme: PropTypes.oneOf(['normal', 'tags', 'paneltitle', 'material', 'amaterial', 'flat', 'flatdark']),
+  theme: PropTypes.oneOf([
+    'normal',
+    'tags',
+    'paneltitle',
+    'material',
+    'amaterial',
+    'flat',
+    'flatdark',
+  ]),
 
   /** The material design style floating label for input (supported only for amaterial theme for now) */
   title: PropTypes.string,
@@ -395,7 +426,7 @@ Input.propTypes = {
   /** Inputs value */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   withSelection: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
 };
 
 export default Input;
