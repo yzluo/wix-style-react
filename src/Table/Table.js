@@ -2,14 +2,35 @@ import React from 'react';
 import {string, number, arrayOf, oneOfType, func, bool, any, object, node, oneOf, shape, array} from 'prop-types';
 import omit from 'lodash/omit';
 import defaultTo from 'lodash/defaultTo';
+import classNames from 'classnames';
 
+import styles from './Table.scss';
 import DataTable from '../DataTable';
 import WixComponent from '../BaseComponents/WixComponent';
 import Checkbox from '../Checkbox';
 import {TableContext} from './TableContext';
 import {BulkSelection, BulkSelectionState} from './BulkSelection';
-import {TableToolbarToggler, TableToolbarContainer, TableTitleBar, TableContent} from './components';
+import {TableToolbarToggler, TableToolbarContainer, TableTitleBar, TableContent, TableActionColumn} from './components';
 import Tooltip from '../Tooltip/Tooltip';
+
+const hasActionColumn = ({primaryRowAction, secondaryRowActions}) =>
+  !!(primaryRowAction || secondaryRowActions);
+
+function createActionColumn(tableProps) {
+  return {
+    title: '',
+    width: '40%',
+    render: (rowData, rowNum) => {
+      return (
+        <TableActionColumn
+          {...tableProps}
+          rowData={rowData}
+          rowNum={rowNum}
+          />
+      );
+    }
+  };
+}
 
 export function createColumns({tableProps, bulkSelectionContext}) {
   const createCheckboxColumn = (
@@ -41,11 +62,27 @@ export function createColumns({tableProps, bulkSelectionContext}) {
     };
   };
 
-  return tableProps.showSelection ? [createCheckboxColumn(bulkSelectionContext), ...tableProps.columns] : tableProps.columns;
+  const tableColumns = hasActionColumn(tableProps) ?
+    tableProps.columns.concat(createActionColumn(tableProps)) :
+    tableProps.columns;
+
+  return tableProps.showSelection ? [createCheckboxColumn(bulkSelectionContext), ...tableColumns] : tableColumns;
 }
 
 
 export function getDataTableProps(tableProps) {
+
+  const onRowClick = (...params) => {
+    const {primaryRowAction, onRowClick} = tableProps;
+
+    // Give priority to the primary action
+    if (primaryRowAction) {
+      primaryRowAction.onActionTrigger(...params);
+    } else if (onRowClick) {
+      onRowClick(...params);
+    }
+  };
+
   return {
     ...omit(tableProps,
           'showSelection',
@@ -54,8 +91,14 @@ export function getDataTableProps(tableProps) {
           'dataHook',
           'newDesign',
           'hideHeader',
+          'onRowClick'
         ),
-    newDesign: true
+    newDesign: true,
+    onRowClick,
+    rowClass: classNames(tableProps.rowClass, {
+      [styles.rowHover]: !!tableProps.primaryRowAction,
+      [styles.hasActionColumn]: hasActionColumn(tableProps)
+    })
   };
 }
 
@@ -126,6 +169,7 @@ Table.displayName = 'Table';
 
 Table.defaultProps = {
   ...DataTable.defaultProps,
+  ...TableActionColumn.defaultProps,
   showSelection: false,
   children:
   [

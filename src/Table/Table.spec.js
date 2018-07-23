@@ -323,6 +323,72 @@ describe('Table', () => {
     });
   });
 
+  describe('Action column', () => {
+    const primaryActionProps = (actionTrigger = () => {}) => ({
+      primaryRowAction: {
+        name: 'primary action',
+        theme: 'whiteblue',
+        onActionTrigger: actionTrigger
+      }
+    });
+
+    it('should display the action column for primary action', () => {
+      const driver = createDriver(<Table {...defaultProps} {...primaryActionProps()}/>);
+      expect(driver.getRowActionColumn(1)).toBeTruthy();
+    });
+
+    it('should have a placeholder when there\'s only a primary action', () => {
+      const driver = createDriver(<Table {...defaultProps} {...primaryActionProps()}/>);
+      expect(driver.getPrimaryActionPlaceholder(1)).toBeTruthy();
+    });
+
+    it('should display the primary action button', () => {
+      const onPrimaryActionTrigger = jest.fn();
+
+      const driver = createDriver(
+        <Table
+          {...defaultProps}
+          {...primaryActionProps(onPrimaryActionTrigger)}
+          />
+      );
+
+      expect(driver.getPrimaryActionButtonDriver(0).exists()).toBeTruthy();
+      expect(driver.getPrimaryActionButtonDriver(0).getButtonTextContent()).toEqual('primary action');
+    });
+
+    it('should trigger the primary action on primary button click', () => {
+      const onPrimaryActionTrigger = jest.fn();
+
+      const driver = createDriver(
+        <Table
+          {...defaultProps}
+          {...primaryActionProps(onPrimaryActionTrigger)}
+          />
+      );
+
+      driver.clickPrimaryActionButton(0);
+      expect(onPrimaryActionTrigger).toHaveBeenCalledTimes(1);
+      expect(onPrimaryActionTrigger).toHaveBeenCalledWith({id: ID_1, a: 'value 1', b: 'value 2'}, 0);
+    });
+
+    it('should trigger the primary action on row click and ignore onRowClick', () => {
+      const onPrimaryActionTrigger = jest.fn();
+      const onRowClick = jest.fn();
+
+      const driver = createDriver(
+        <Table
+          {...defaultProps}
+          {...primaryActionProps(onPrimaryActionTrigger)}
+          onRowClick={onRowClick}
+          />
+      );
+
+      driver.clickRow(1);
+      expect(onPrimaryActionTrigger).toHaveBeenCalledWith({id: ID_2, a: 'value 3', b: 'value 4'}, 1);
+      expect(onRowClick).not.toHaveBeenCalled();
+    });
+  });
+
   describe('testkit', () => {
     it('should exist', () => {
       const div = document.createElement('div');

@@ -1,0 +1,43 @@
+@import '../common.scss';
+
+/* === Backgground color on hover === */
+
+tr.rowHover {
+  cursor: pointer;
+}
+
+tr.rowHover:hover {
+  background-color: $B50;
+}
+
+/* === Action Column === */
+
+tr.hasActionColumn .actionsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 36px;
+}
+
+tr.hasActionColumn .actionsContainer button {
+  margin: 0 6px;
+  transition-property: background, border;
+}
+
+// Primary action
+tr.hasActionColumn .primaryActionContainer {
+  visibility: hidden;
+}
+
+tr.hasActionColumn:hover .primaryActionContainer {
+  visibility: visible;
+}
+
+// Primary action placeholder
+tr.hasActionColumn:hover .primaryActionPlaceholder {
+  display: none;
+}
+
+tr.hasActionColumn .primaryActionPlaceholder {
+  display: inline-block;
+}

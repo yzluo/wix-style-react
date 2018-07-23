@@ -28,6 +28,7 @@ const dataTableDriverFactory = ({element, wrapper, component}) => {
   const getSortableTitleArrowDesc = index => element.querySelector(`th [data-hook="${index}_title"]  [data-hook="sort_arrow_dec"]`);
 
   return {
+    getRow,
     getRowsCount,
     getRowsWithClassCount: className => {
       return isDisplayingNothing ? 0 :

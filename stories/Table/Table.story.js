@@ -11,6 +11,9 @@ import TableExampleRaw from '!raw-loader!./TableExample';
 import {TablePageExample} from './TablePageExample';
 import TablePageExampleRaw from '!raw-loader!./TablePageExample';
 
+import {TableActionColumnExample} from './TableActionColumnExample';
+import TableActionColumnExampleRaw from '!raw-loader!./TableActionColumnExample';
+
 const data = [
   {firstName: 'Meghan', lastName: 'Bishop'},
   {firstName: 'Sara', lastName: 'Porter'},
@@ -68,6 +71,11 @@ export default {
         <div className={s.example}>
           <CodeExample title="Table in a Page (Fixed Header)" code={TablePageExampleRaw}>
             <TablePageExample/>
+          </CodeExample>
+        </div>
+        <div className={s.example}>
+          <CodeExample title="Table with Action Column" code={TableActionColumnExampleRaw}>
+            <TableActionColumnExample/>
           </CodeExample>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import dataTableDriverFactory from '../DataTable/DataTable.driver';
 import checkboxDriverFactory from '../Checkbox/Checkbox.driver';
+import buttonDriverFactory from '../Backoffice/Button/Button.driver.js';
 
 const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
   const dataTableDriver = dataTableDriverFactory({element, wrapper, component});
@@ -25,6 +26,13 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
     const checkboxDriver = getBulkSelectionCheckboxDriver();
     return !checkboxDriver.isChecked() && !checkboxDriver.isIndeterminate();
   };
+
+  const getRowActionColumn = index => dataTableDriver.getRow(index).querySelector('td [data-hook="table-action-column"]');
+  const getPrimaryActionPlaceholder = index => getRowActionColumn(index).querySelector('[data-hook="table-action-column-primary-placeholder"]');
+  const getPrimaryActionButtonDriver = index => buttonDriverFactory({
+    element: getRowActionColumn(index).querySelector('[data-hook="table-action-column-primary-action"] button'),
+    eventTrigger
+  });
 
   return {
     ...dataTableDriver,
@@ -52,7 +60,15 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
       }
     },
     /** Get title-bar (column titles) */
-    getTitlebar
+    getTitlebar,
+    /** Get the action-clumn element */
+    getRowActionColumn,
+    /** Get the primary action placeholder element */
+    getPrimaryActionPlaceholder,
+    /** Get the driver of the primary action button from the action column */
+    getPrimaryActionButtonDriver,
+    /** Click the primary action button from the action column */
+    clickPrimaryActionButton: index => getPrimaryActionButtonDriver(index).click()
   };
 };
 
