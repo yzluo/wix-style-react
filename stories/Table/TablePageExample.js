@@ -7,7 +7,7 @@ import {
   Label,
   SelectedCount,
   Divider
-} from 'wix-style-react/Table/Toolbar';
+} from 'wix-style-react/TableToolbar';
 
 import Dropdown from 'wix-style-react/Dropdown';
 import Search from 'wix-style-react/Search';

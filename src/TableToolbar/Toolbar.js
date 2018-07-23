@@ -2,7 +2,7 @@ import React from 'react';
 import {any, oneOf} from 'prop-types';
 import classNames from 'classnames';
 import s from './Toolbar.scss';
-import OriginaLabel from '../../Label';
+import OriginaLabel from '../Label';
 
 export const Toolbar = props => {
   return (

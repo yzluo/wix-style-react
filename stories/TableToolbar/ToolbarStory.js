@@ -5,7 +5,7 @@ import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import Card from 'wix-style-react/Card';
 
-import {storySettings} from '../storySettings';
+import {storySettings} from '../Table/storySettings';
 import {storiesOf} from '@storybook/react';
 
 import {MainExample} from './MainExample';

@@ -6,7 +6,7 @@ import {
   Item,
   SelectedCount,
   Divider
-} from 'wix-style-react/Table/Toolbar';
+} from 'wix-style-react/TableToolbar';
 
 import Card from 'wix-style-react/Card';
 import Search from 'wix-style-react/Search';

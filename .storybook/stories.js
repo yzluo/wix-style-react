@@ -117,8 +117,8 @@ import '../stories/Highlighter.story.js'; // Highlighter
 import '../stories/FormField.story.js'; // FormField
 
 // 13. Work in progress
-import '../stories/Table'; // 13.1 Table Card
-import '../stories/Table/Toolbar/ToolbarStory.js'; // 13.2 TableToolbar
+import '../stories/Table'; // 10.1 Table
+import '../stories/TableToolbar/ToolbarStory.js'; // 10.1 Table -> TableToolbar
 
 // TPA
 import '../stories/TPA/Button';

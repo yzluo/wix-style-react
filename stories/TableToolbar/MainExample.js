@@ -1,12 +1,11 @@
 import React from 'react';
-
 import {
   TableToolbar,
   ItemGroup,
   Item,
   Label,
   Title
-} from 'wix-style-react/Table/Toolbar';
+} from 'wix-style-react/TableToolbar';
 
 import Card from 'wix-style-react/Card';
 import Search from 'wix-style-react/Search';

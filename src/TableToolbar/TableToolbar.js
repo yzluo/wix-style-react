@@ -1,6 +1,6 @@
 import React from 'react';
 import {node} from 'prop-types';
-import typography from '../../Typography/Typography.scss';
+import typography from '../Typography/Typography.scss';
 import {Toolbar, ItemGroup, Item, Label, Divider} from './Toolbar';
 
 export const Title = props => {
