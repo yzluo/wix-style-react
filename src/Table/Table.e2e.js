@@ -7,10 +7,11 @@ import {storySettings} from '../../stories/Table/storySettings';
 describe('Table', () => {
   const storyUrl = createStoryUrl({kind: storySettings.kind, story: storySettings.storyName, withExamples: true});
 
-  const init = async () => {
+  const init = async (dataHook = 'storybook-table') => {
     await browser.get(storyUrl);
-    const driver = tableTestkitFactory({dataHook: 'storybook-table'});
+    const driver = tableTestkitFactory({dataHook});
     await waitForVisibilityOf(driver.element, 'Can not find Table Component');
+    await scrollToElement(driver.element);
     return driver;
   };
 
@@ -26,32 +27,46 @@ describe('Table', () => {
   });
 
   describe('Action column', () => {
-    const createActionColumnDriver = async () => {
-      await browser.get(storyUrl);
-      const driver = tableTestkitFactory({dataHook: 'story-table-action-column-example'});
-      await waitForVisibilityOf(driver.element, 'Can not find Table Component');
-      await scrollToElement(driver.element);
-      return driver;
-    };
+    describe('Primary action only', () => {
+      const createDriver = () => init('story-table-action-column-primary-example');
 
-    eyes.it('should show a primary action placeholder and hide it on row hover', async () => {
-      const driver = await createActionColumnDriver();
+      eyes.it('should show a primary action placeholder and hide it on row hover', async () => {
+        const driver = await createDriver();
 
-      expect(driver.getPrimaryActionPlaceholder(0).isDisplayed()).toBe(true);
-      expect(driver.getPrimaryActionButton(0).isDisplayed()).toBe(false);
+        expect(driver.getPrimaryActionPlaceholder(0).isDisplayed()).toBe(true);
+        expect(driver.getPrimaryActionButton(0).isDisplayed()).toBe(false);
 
-      driver.hoverRow(0);
+        driver.hoverRow(0);
 
-      expect(driver.getPrimaryActionPlaceholder(0).isDisplayed()).toBe(false);
-      expect(driver.getPrimaryActionButton(0).isDisplayed()).toBe(true);
+        expect(driver.getPrimaryActionPlaceholder(0).isDisplayed()).toBe(false);
+        expect(driver.getPrimaryActionButton(0).isDisplayed()).toBe(true);
+      });
+
+      it('should change background color on hover', async () => {
+        const driver = await createDriver();
+
+        expect(driver.getRow(0).getCssValue('background-color')).toEqual('rgba(0, 0, 0, 0)');
+        driver.hoverRow(0);
+        expect(driver.getRow(0).getCssValue('background-color')).not.toEqual('rgba(0, 0, 0, 0)');
+      });
     });
 
-    it('should change background color on hover', async () => {
-      const driver = await createActionColumnDriver();
+    describe('Primary and secondary actions', () => {
+      const createDriver = () => init('story-table-action-column-primary-secondary-example');
 
-      expect(driver.getRow(0).getCssValue('background-color')).toEqual('rgba(0, 0, 0, 0)');
-      driver.hoverRow(0);
-      expect(driver.getRow(0).getCssValue('background-color')).not.toEqual('rgba(0, 0, 0, 0)');
+      eyes.it('should always show the PopoverMenu, and show the primary and secondary actions only on hover', async () => {
+        const driver = await createDriver();
+
+        expect(driver.getPrimaryActionButton(0).isDisplayed()).toBe(false);
+        expect(driver.getVisibleSecondaryActionsWrapper(0).isDisplayed()).toBe(false);
+        expect(driver.getSecondaryActionsPopoverMenu(0).isDisplayed()).toBe(true);
+
+        driver.hoverRow(0);
+
+        expect(driver.getPrimaryActionButton(0).isDisplayed()).toBe(true);
+        expect(driver.getVisibleSecondaryActionsWrapper(0).isDisplayed()).toBe(true);
+        expect(driver.getSecondaryActionsPopoverMenu(0).isDisplayed()).toBe(true);
+      });
     });
   });
 });

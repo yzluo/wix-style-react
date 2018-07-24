@@ -11,8 +11,11 @@ import TableExampleRaw from '!raw-loader!./TableExample';
 import {TablePageExample} from './TablePageExample';
 import TablePageExampleRaw from '!raw-loader!./TablePageExample';
 
-import {TableActionColumnExample} from './TableActionColumnExample';
-import TableActionColumnExampleRaw from '!raw-loader!./TableActionColumnExample';
+import {TableActionColumnPrimaryExample} from './TableActionColumnPrimaryExample';
+import TableActionColumnPrimaryExampleRaw from '!raw-loader!./TableActionColumnPrimaryExample';
+
+import {TableActionColumnPrimarySecondaryExample} from './TableActionColumnPrimarySecondaryExample';
+import TableActionColumnPrimarySecondaryExampleRaw from '!raw-loader!./TableActionColumnPrimarySecondaryExample';
 
 const data = [
   {firstName: 'Meghan', lastName: 'Bishop'},
@@ -74,8 +77,13 @@ export default {
           </CodeExample>
         </div>
         <div className={s.example}>
-          <CodeExample title="Table with Action Column" code={TableActionColumnExampleRaw}>
-            <TableActionColumnExample/>
+          <CodeExample title="Table with Action Column (Primary Action Only)" code={TableActionColumnPrimaryExampleRaw}>
+            <TableActionColumnPrimaryExample/>
+          </CodeExample>
+        </div>
+        <div className={s.example}>
+          <CodeExample title="Table with Action Column (Primary and Secondary Actions)" code={TableActionColumnPrimarySecondaryExampleRaw}>
+            <TableActionColumnPrimarySecondaryExample/>
           </CodeExample>
         </div>
       </div>

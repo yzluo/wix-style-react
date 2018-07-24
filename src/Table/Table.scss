@@ -33,6 +33,19 @@ tr.hasActionColumn:hover .primaryActionContainer {
   visibility: visible;
 }
 
+// Secondary actions
+tr.hasActionColumn .secondaryActionsContainer .visibleSecondaryActions,
+tr.hasActionColumn .secondaryActionsContainer .popoverMenuContainer {
+  visibility: hidden;
+}
+
+tr.hasActionColumn .secondaryActionsContainer.alwaysShowSecondaryActions .visibleSecondaryActions,
+tr.hasActionColumn .secondaryActionsContainer.alwaysShowPopoverMenu .popoverMenuContainer,
+tr.hasActionColumn:hover .secondaryActionsContainer .popoverMenuContainer,
+tr.hasActionColumn:hover .secondaryActionsContainer .visibleSecondaryActions {
+  visibility: visible;
+}
+
 // Primary action placeholder
 tr.hasActionColumn:hover .primaryActionPlaceholder {
   display: none;

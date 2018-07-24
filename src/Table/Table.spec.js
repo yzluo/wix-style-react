@@ -332,6 +332,25 @@ describe('Table', () => {
       }
     });
 
+    const secondaryActionsProps = (actionTriggers = []) => {
+      const createAction = n => ({
+        name: `Action ${n}`,
+        icon: <span>{`Icon ${n}`}</span>, // simulate the icon as <span> elements
+        onActionTrigger: actionTriggers[n] || (() => {})
+      });
+
+      return {
+        secondaryRowActions: Array(4).fill().map((val, idx) => createAction(idx)),
+        visibleSecondaryActions: 2
+      };
+    };
+
+    beforeEach(() => {
+      // The action column uses <Tooltip/> and <PopoverMenu/> under the hood,
+      // which renders straight into document.body, this we need to clear it.
+      document.body.innerHTML = '';
+    });
+
     it('should display the action column for primary action', () => {
       const driver = createDriver(<Table {...defaultProps} {...primaryActionProps()}/>);
       expect(driver.getRowActionColumn(1)).toBeTruthy();
@@ -387,6 +406,100 @@ describe('Table', () => {
       expect(onPrimaryActionTrigger).toHaveBeenCalledWith({id: ID_2, a: 'value 3', b: 'value 4'}, 1);
       expect(onRowClick).not.toHaveBeenCalled();
     });
+
+    it('should display the action column for secondary actions', () => {
+      const driver = createDriver(<Table {...defaultProps} {...secondaryActionsProps()}/>);
+      expect(driver.getRowActionColumn(1)).toBeTruthy();
+    });
+
+    it('should not have a primary action placeholder when there are also secondary actions', () => {
+      const driver = createDriver(
+        <Table
+          {...defaultProps}
+          {...primaryActionProps()}
+          {...secondaryActionsProps()}
+          />
+      );
+
+      expect(driver.getPrimaryActionPlaceholder(1)).toBeFalsy();
+    });
+
+    it('should put visible secondary actions in the cell', async () => {
+      const driver = createDriver(
+        <Table
+          {...defaultProps}
+          {...primaryActionProps()}
+          {...secondaryActionsProps()}
+          />
+      );
+
+      expect(driver.getVisibleSecondaryActionsCount(0)).toEqual(2);
+
+      expect(driver.getVisibleSecondaryActionButtonDriver(0, 0).getButtonTextContent()).toEqual('Icon 0');
+      expect(driver.getVisibleSecondaryActionButtonDriver(0, 1).getButtonTextContent()).toEqual('Icon 1');
+
+      const tooltipDriver1 = driver.getVisibleSecondaryActionTooltipDriver(0, 0);
+      const tooltipDriver2 = driver.getVisibleSecondaryActionTooltipDriver(0, 1);
+
+      tooltipDriver1.mouseEnter();
+      await resolveIn(300);
+      expect(tooltipDriver1.getContent()).toEqual('Action 0');
+      tooltipDriver1.mouseLeave();
+
+      tooltipDriver2.mouseEnter();
+      await resolveIn(300);
+      expect(tooltipDriver2.getContent()).toEqual('Action 1');
+      tooltipDriver2.mouseLeave();
+    });
+
+    it('should put hidden secondary action in a PopoverMenu', async () => {
+      const driver = createDriver(
+        <Table
+          {...defaultProps}
+          {...primaryActionProps()}
+          {...secondaryActionsProps()}
+          />
+      );
+
+      const popoverMenuDriver = driver.getSecondaryActionsPopoverMenuDriver(0);
+
+      expect(popoverMenuDriver.exists()).toEqual(true);
+
+      popoverMenuDriver.click();
+      await resolveIn(30);
+
+      expect(popoverMenuDriver.menu.itemsLength()).toEqual(2);
+      expect(popoverMenuDriver.menu.itemContentAt(0)).toEqual('Action 2');
+      expect(popoverMenuDriver.menu.itemContentAt(1)).toEqual('Action 3');
+    });
+
+    it('should trigger secondary action on click', async () => {
+      const actionTriggers = Array(4).fill().map(() => jest.fn());
+
+      const driver = createDriver(
+        <Table
+          {...defaultProps}
+          {...primaryActionProps()}
+          {...secondaryActionsProps(actionTriggers)}
+          />
+      );
+
+      driver.clickVisibleSecondaryAction(0, 0);
+      driver.clickVisibleSecondaryAction(0, 1);
+
+      driver.clickPopoverMenu(0);
+      await resolveIn(30);
+      driver.clickHiddenSecondaryAction(0, 0);
+
+      driver.clickPopoverMenu(0);
+      await resolveIn(30);
+      driver.clickHiddenSecondaryAction(0, 1);
+
+      actionTriggers.forEach(actionTrigger => {
+        expect(actionTrigger).toHaveBeenCalledTimes(1);
+        expect(actionTrigger).toHaveBeenCalledWith({id: ID_1, a: 'value 1', b: 'value 2'}, 0);
+      });
+    });
   });
 
   describe('testkit', () => {
@@ -413,3 +526,11 @@ describe('Table', () => {
     });
   });
 });
+
+function resolveIn(timeout) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve({});
+    }, timeout);
+  });
+}

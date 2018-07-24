@@ -18,13 +18,13 @@ const baseData = [
   {name: 'Red Slippers', SKU: '444555', price: '$14.00', inventory: 'Out of stock'}
 ];
 
-export class TableActionColumnExample extends React.Component {
+export class TableActionColumnPrimarySecondaryExample extends React.Component {
 
   render() {
     return (
       <Card>
         <Table
-          dataHook="story-table-action-column-example"
+          dataHook="story-table-action-column-primary-secondary-example"
           data={baseData}
           itemsPerPage={20}
           columns={[

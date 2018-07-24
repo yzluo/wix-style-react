@@ -9,6 +9,8 @@ const tableDriverFactory = component => ({
   getRow: index => rowByIndex(component, index),
   getPrimaryActionPlaceholder: index => rowByIndex(component, index).$('[data-hook="table-action-column-primary-placeholder"]'),
   getPrimaryActionButton: index => rowByIndex(component, index).$('[data-hook="table-action-column-primary-action"]'),
+  getVisibleSecondaryActionsWrapper: index => rowByIndex(component, index).$('[data-hook="table-action-column-visible-secondary-actions"]'),
+  getSecondaryActionsPopoverMenu: index => rowByIndex(component, index).$('[data-hook="table-action-column-popover-menu"]'),
 
   hoverRow: index => browser.actions().mouseMove(rowByIndex(component, index)).perform()
 });

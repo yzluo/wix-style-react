@@ -254,7 +254,7 @@ class Tooltip extends WixComponent {
   }
 
   _chainCallbacks = (first, second) => {
-    return args => {
+    return (...args) => {
       if (first) {
         first.apply(this, args);
       }
@@ -375,8 +375,9 @@ class Tooltip extends WixComponent {
     this._hideOrShow('focus');
   }
 
-  _onClick() {
+  _onClick(event) {
     this._hideOrShow('click');
+    event.stopPropagation();
   }
 
   _onMouseEnter() {
