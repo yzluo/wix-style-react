@@ -5,7 +5,7 @@ import {tooltipTestkitFactory} from 'wix-ui-core/dist/src/testkit/protractor';
 import {textTestkitFactory} from '../../testkit/protractor';
 import {SIZES, SKINS, WEIGHTS} from './Text';
 
-fdescribe('Text', () => {
+describe('Text', () => {
   const storyUrl = getStoryUrl('1. Foundation', '1.2 Text');
 
   beforeEach(() => browser.get(storyUrl));
