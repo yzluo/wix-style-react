@@ -13,4 +13,5 @@
   -st-mixin: CoreEllipsedTooltip, Tooltip;
 }
 
+/* This is needed in oreder to apply the backoffice tooltip styles of this class */
 .root .tooltipContent {}

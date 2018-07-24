@@ -23,7 +23,7 @@ export const WEIGHTS = {
   bold: 'bold'
 };
 
-const Text = ({size, secondary, skin, light, bold, weight, tagName, children, forwardedRef, ...rest}) => {
+const Text = ({size, secondary, skin, light, bold, weight, tagName, children, ...rest}) => {
   if (bold !== undefined) {
     deprecationLog('Text prop "bold" is deprecated, use "weight" prop instead');
   } else {
@@ -34,7 +34,6 @@ const Text = ({size, secondary, skin, light, bold, weight, tagName, children, fo
     React.createElement(
       tagName,
       {
-        ref: forwardedRef,
         ...omit(rest, ['dataHook']),
         ...style(
           'root',
@@ -79,9 +78,7 @@ Text.propTypes = {
   weight: oneOf(Object.keys(WEIGHTS)),
 
   /** is the text bold */
-  bold: bool,
-
-  forwardedRef: func
+  bold: bool
 };
 
 Text.defaultProps = {
