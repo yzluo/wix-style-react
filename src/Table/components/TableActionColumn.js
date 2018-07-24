@@ -102,7 +102,7 @@ export const TableActionColumn = props => {
 
       {renderSecondaryActions(props)}
 
-      {(props.primaryRowAction && !props.secondaryRowActions) && (
+      {(props.primaryRowAction && !(props.secondaryRowActions || []).length) && (
         <span className={styles.primaryActionPlaceholder} data-hook="table-action-column-primary-placeholder">
           <Button theme="icon-white" withNewIcons >
             <ChevronRight/>
@@ -119,30 +119,30 @@ TableActionColumn.propTypes = {
   rowData: PropTypes.object.isRequired,
   rowNum: PropTypes.number.isRequired,
 
-  /** documentation for primaryRowAction */
+  /** An object containing the primary action properties: `name` is the action name (the text of the button), `theme` is the button theme (can be `whiteblue` or `fullblue`), `onActionTrigger` is the callback function for the action, whose signature is `onActionTrigger(rowData, rowNum)`. */
   primaryRowAction: PropTypes.shape({
     name: PropTypes.string.isRequired,
     theme: PropTypes.oneOf(['whiteblue', 'fullblue']),
     onActionTrigger: PropTypes.func.isRequired
   }),
 
-  /** documentation for secondaryRowActions */
+  /** An array containing the secondary actions: `name` is the action name (will be shown in the tooltip), `icon` is the icon component for the action, `onActionTrigger` is the callback function for the action, whose signature is `onActionTrigger(rowData, rowNum)`. */
   secondaryRowActions: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     icon: PropTypes.node.isRequired,
     onActionTrigger: PropTypes.func.isRequired
   })),
 
-  /** documentation for visibleSecondaryActions */
+  /** The number of secondary actions to show outside the PopoverMenu */
   visibleSecondaryActions: PropTypes.number,
 
-  /** documentation for alwaysShowSecondaryActions */
+  /** Whether to show the secondary action also when not hovering the row */
   alwaysShowSecondaryActions: PropTypes.bool
 };
 
 TableActionColumn.defaultProps = {
   primaryRowAction: null,
-  secondaryRowActions: null,
+  secondaryRowActions: [],
   visibleSecondaryActions: 0,
   alwaysShowSecondaryActions: false
 };

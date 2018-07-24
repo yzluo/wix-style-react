@@ -79,7 +79,7 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
     },
     /** Get title-bar (column titles) */
     getTitlebar,
-    /** Get the action-clumn element */
+    /** Get the action-column element */
     getRowActionColumn,
     /** Get the primary action placeholder element */
     getPrimaryActionPlaceholder,
@@ -87,7 +87,7 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
     getPrimaryActionButtonDriver,
     /** Click the primary action button from the action column */
     clickPrimaryActionButton: index => getPrimaryActionButtonDriver(index).click(),
-    /** Get the number of the visible secondary action */
+    /** Get the number of the visible secondary actions */
     getVisibleSecondaryActionsCount: index => getVisibleSecondaryActionsWrapper(index).childElementCount,
     /** Get the driver of a specific visible secondary action <Tooltip/> */
     getVisibleSecondaryActionTooltipDriver,

@@ -14,7 +14,7 @@ import {TableToolbarToggler, TableToolbarContainer, TableTitleBar, TableContent,
 import Tooltip from '../Tooltip/Tooltip';
 
 const hasActionColumn = ({primaryRowAction, secondaryRowActions}) =>
-  !!(primaryRowAction || secondaryRowActions);
+  !!(primaryRowAction || (secondaryRowActions && secondaryRowActions.length));
 
 function createActionColumn(tableProps) {
   return {
@@ -264,7 +264,29 @@ Table.propTypes = {
   /**
    *  When false then Table would not create a `<div/>` wrapper around it's children.
    *  Useful when using `<Table/>` to wrap a `<Page/>` component, in that case we use the `<Table/>` only as a context provider and it doesn't render anything to the DOM by itself.*/
-  withWrapper: bool
+  withWrapper: bool,
+
+  // Action Column props (taken from <TableActionColumn/>)
+
+  /** An object containing the primary action properties: `name` is the action name (the text of the button), `theme` is the button theme (can be `whiteblue` or `fullblue`), `onActionTrigger` is the callback function for the action, whose signature is `onActionTrigger(rowData, rowNum)`. */
+  primaryRowAction: shape({
+    name: string.isRequired,
+    theme: oneOf(['whiteblue', 'fullblue']),
+    onActionTrigger: func.isRequired
+  }),
+
+  /** An array containing the secondary actions: `name` is the action name (will be shown in the tooltip), `icon` is the icon component for the action, `onActionTrigger` is the callback function for the action, whose signature is `onActionTrigger(rowData, rowNum)`. */
+  secondaryRowActions: arrayOf(shape({
+    name: string.isRequired,
+    icon: node.isRequired,
+    onActionTrigger: func.isRequired
+  })),
+
+  /** The number of secondary actions to show outside the PopoverMenu */
+  visibleSecondaryActions: number,
+
+  /** Whether to show the secondary action also when not hovering the row */
+  alwaysShowSecondaryActions: bool
 };
 
 // export default Table;
