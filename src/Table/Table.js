@@ -19,7 +19,7 @@ const hasActionColumn = ({primaryRowAction, secondaryRowActions}) =>
 function createActionColumn(tableProps) {
   return {
     title: '',
-    width: '40%',
+    width: tableProps.actionColumnWidth,
     render: (rowData, rowNum) => {
       return (
         <TableActionColumn
@@ -176,7 +176,8 @@ Table.defaultProps = {
     <Table.Content key="content"/>
   ],
   withWrapper: true,
-  showLastRowDivider: false
+  showLastRowDivider: false,
+  actionColumnWidth: '40%'
 };
 
 Table.propTypes = {
@@ -286,7 +287,10 @@ Table.propTypes = {
   visibleSecondaryActions: number,
 
   /** Whether to show the secondary action also when not hovering the row */
-  alwaysShowSecondaryActions: bool
+  alwaysShowSecondaryActions: bool,
+
+  /** The width of the action column (could be specified in pixel or in percentages) */
+  actionColumnWidth: string
 };
 
 // export default Table;
