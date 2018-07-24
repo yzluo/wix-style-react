@@ -1,5 +1,5 @@
 import React from 'react';
-import {oneOf, bool, string, any, func} from 'prop-types';
+import {oneOf, bool, string, any} from 'prop-types';
 import style from './Text.st.css';
 import deprecationLog from '../utils/deprecationLog';
 import omit from 'lodash/omit';

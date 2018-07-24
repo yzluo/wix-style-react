@@ -1,10 +1,11 @@
 import eyes from 'eyes.it';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import {getStoryUrl, waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
-import {popoverTestkitFactory} from 'wix-ui-core/dist/src/testkit/protractor';
+import {tooltipTestkitFactory} from 'wix-ui-core/dist/src/testkit/protractor';
 import {textTestkitFactory} from '../../testkit/protractor';
+import {SIZES, SKINS, WEIGHTS} from './Text';
 
-describe('Text', () => {
+fdescribe('Text', () => {
   const storyUrl = getStoryUrl('1. Foundation', '1.2 Text');
 
   beforeEach(() => browser.get(storyUrl));
@@ -18,149 +19,72 @@ describe('Text', () => {
       .then(() => expect(driver.getText()).toBe('Some text'));
   });
 
-  describe('Light prop', () => {
-    eyes.it('should display "light" text', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({light: true});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-    });
+  eyes.it('light prop', async () => {
+    const dataHook = 'storybook-text';
+    const driver = textTestkitFactory({dataHook});
 
-    eyes.it('should display default text', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({light: false});
+    await waitForVisibilityOf(driver.element(), 'Cannot find Text');
+    await eyes.checkWindow('dark');
+
+    await autoExampleDriver.setProps({light: true});
+    await waitForVisibilityOf(driver.element(), 'Cannot find Text');
+    await eyes.checkWindow('light');
+  });
+
+  eyes.it('size prop', async () => {
+    const dataHook = 'storybook-text';
+    const driver = textTestkitFactory({dataHook});
+
+    Object.keys(SIZES).forEach(async size => {
+      await autoExampleDriver.setProps({size});
       await waitForVisibilityOf(driver.element(), 'Cannot find Text');
+      await eyes.checkWindow(size);
     });
   });
 
-  describe('Size prop', () => {
-    eyes.it('should display "tiny" text', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({size: 'tiny'});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-    });
+  eyes.it('skin prop', async () => {
+    const dataHook = 'storybook-text';
+    const driver = textTestkitFactory({dataHook});
 
-    eyes.it('should display "small" text', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({size: 'small'});
+    Object.keys(SKINS).forEach(async skin => {
+      await autoExampleDriver.setProps({skin});
       await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-    });
-
-    eyes.it('should display "medium" text', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({size: 'medium'});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
+      await eyes.checkWindow(skin);
     });
   });
 
-  describe('Skin prop', () => {
-    eyes.it('should display "standard" skin', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({skin: 'standard'});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-    });
-
-    eyes.it('should display "error" skin', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({skin: 'error'});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-    });
-
-    eyes.it('should display "success" skin', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({skin: 'success'});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-    });
-
-    eyes.it('should display "premium" skin', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({skin: 'premium'});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-    });
-  });
-
-  describe('Weight prop', () => {
+  describe('weight prop', () => {
     eyes.it('should display "standard" weight', async () => {
       const dataHook = 'storybook-text';
       const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({weight: 'thin'});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-    });
 
-    eyes.it('should display "error" weight', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({weight: 'normal'});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-    });
-
-    eyes.it('should display "success" weight', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({weight: 'bold'});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
+      Object.keys(WEIGHTS).forEach(async weight => {
+        await autoExampleDriver.setProps({weight});
+        await waitForVisibilityOf(driver.element(), 'Cannot find Text');
+        await eyes.checkWindow(weight);
+      });
     });
   });
 
-  describe('TagName prop', () => {
-    eyes.it('should be span by default', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-      expect(driver.getTagName()).toBe('span');
-    });
-
-    eyes.it('should have h1 tag name', async () => {
-      const dataHook = 'storybook-text-h1';
-      const driver = textTestkitFactory({dataHook});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-      expect(driver.getTagName()).toBe('h1');
-    });
-  });
-
-  describe('Bold prop', () => {
-    eyes.it('should be bold', async () => {
-      const dataHook = 'storybook-text';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({bold: true});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-    });
-
-    eyes.it('should not be bold', async () => {
-      const dataHook = 'storybook-text-h1';
-      const driver = textTestkitFactory({dataHook});
-      await autoExampleDriver.setProps({bold: false});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-    });
-  });
-
-  describe('With tooltip', () => {
+  describe('with tooltip', () => {
     eyes.it('should not show tooltip on hover when text is not truncated with ellipses', async () => {
       const dataHook = 'storybook-text';
       const driver = textTestkitFactory({dataHook});
-      const popoverDriver = popoverTestkitFactory({dataHook});
+      const tooltipDriver = tooltipTestkitFactory({dataHook});
       await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-      expect(popoverDriver.isContentElementExists()).toBeFalsy();
-      await popoverDriver.mouseEnter();
-      expect(popoverDriver.isContentElementExists()).toBeFalsy();
+      expect(tooltipDriver.isContentElementExists()).toBeFalsy();
+      await tooltipDriver.mouseEnter();
+      expect(tooltipDriver.isContentElementExists()).toBeFalsy();
     });
 
     eyes.it('should show tooltip on hover when text is truncated with ellipses', async () => {
       const dataHook = 'text-with-ellipses';
       const driver = textTestkitFactory({dataHook});
-      const popoverDriver = popoverTestkitFactory({dataHook});
+      const tooltipDriver = tooltipTestkitFactory({dataHook});
       await waitForVisibilityOf(driver.element(), 'Cannot find Text');
-      expect(popoverDriver.isContentElementExists()).toBeFalsy();
-      await popoverDriver.mouseEnter();
-      expect(popoverDriver.isContentElementExists()).toBeTruthy();
+      expect(tooltipDriver.isContentElementExists()).toBeFalsy();
+      await tooltipDriver.mouseEnter();
+      expect(tooltipDriver.isContentElementExists()).toBeTruthy();
     });
   });
 });
