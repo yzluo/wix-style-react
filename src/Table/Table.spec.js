@@ -500,6 +500,36 @@ describe('Table', () => {
         expect(actionTrigger).toHaveBeenCalledWith({id: ID_1, a: 'value 1', b: 'value 2'}, 0);
       });
     });
+
+    it('should allow to change the number of visible secondary actions', async () => {
+      const driver = createDriver(
+        <Table
+          {...defaultProps}
+          {...primaryActionProps()}
+          {...secondaryActionsProps()}
+          visibleSecondaryActions={3}
+          />
+      );
+
+      expect(driver.getVisibleSecondaryActionsCount(0)).toEqual(3);
+
+      driver.clickPopoverMenu(0);
+      await resolveIn(30);
+      expect(driver.getHiddenSecondaryActionsCount(0)).toEqual(1);
+    });
+
+    it('should allow to change the width of the action column', () => {
+      const driver = createDriver(
+        <Table
+          {...defaultProps}
+          {...primaryActionProps()}
+          {...secondaryActionsProps()}
+          actionColumnWidth="300px"
+          />
+      );
+
+      expect(driver.getHeaderCellWidth(defaultProps.columns.length + 1)).toEqual('300px');
+    });
   });
 
   describe('testkit', () => {

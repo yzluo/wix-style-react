@@ -40,6 +40,7 @@
 | getPrimaryActionButtonDriver | (index) | ButtonDriver | Get the driver of the primary action `<Button/>` from the action column |
 | clickPrimaryActionButton | (index) | - | Click the primary action button from the action column |
 | getVisibleSecondaryActionsCount | (index) | number | Get the number of the visible secondary actions |
+| getHiddenSecondaryActionsCount | (index) | number | Get the number of the hidden secondary actions (in the `<PopoverMenu/>`) |
 | getVisibleSecondaryActionTooltipDriver | (rowIndex, actionIndex) | TooltipDriver | Get the driver of a specific visible secondary action `<Tooltip/>` |
 | getVisibleSecondaryActionButtonDriver | (rowIndex, actionIndex) | ButtonDriver | Get the driver of a specific visible secondary action `<Button/>` |
 | getSecondaryActionsPopoverMenuDriver | (rowIndex) | PopoverMenuDriver | Get the driver of the hidden secondary action `<PopoverMenu/>` |

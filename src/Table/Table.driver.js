@@ -89,6 +89,8 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
     clickPrimaryActionButton: index => getPrimaryActionButtonDriver(index).click(),
     /** Get the number of the visible secondary actions */
     getVisibleSecondaryActionsCount: index => getVisibleSecondaryActionsWrapper(index).childElementCount,
+    /** Get the number of hidden secondary actions (in the <PopoverMenu/>) */
+    getHiddenSecondaryActionsCount: index => getSecondaryActionsPopoverMenuDriver(index).menu.itemsLength(),
     /** Get the driver of a specific visible secondary action <Tooltip/> */
     getVisibleSecondaryActionTooltipDriver,
     /** Get the driver of a specific visible secondary action <Button/> */
