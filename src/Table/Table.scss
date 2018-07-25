@@ -54,3 +54,9 @@ tr.hasActionColumn:hover .primaryActionPlaceholder {
 tr.hasActionColumn .primaryActionPlaceholder {
   display: inline-block;
 }
+
+:global(.rtl) {
+  tr.hasActionColumn .primaryActionPlaceholder svg {
+    transform: scaleX(-1);
+  }
+}
