@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import CloseButton from '../CloseButton';
-import DropDownArrow from './../../new-icons/system/DropDownArrow';
-import Search from './../../new-icons/Search';
+import DropDownArrow from '../new-icons/system/DropDownArrow';
+import Search from '../new-icons/Search';
 import ThemedInputErrorSuffix from './ThemedInputErrorSuffix';
 import ThemedInputHelpSuffix from './ThemedInputHelpSuffix';
 

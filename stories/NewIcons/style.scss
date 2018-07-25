@@ -18,6 +18,10 @@
   margin-left: 10px;
 }
 
+.customIconColorDuplicate {
+  color: red;
+}
+
 :global(.rtl) {
   .single-icon-view svg {
     transform: scaleX(-1);

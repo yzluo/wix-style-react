@@ -30,7 +30,6 @@ $gap: 6px;
 }
 
 .errorIcon {
-    color: #f2564d;
     margin: $gap;
 
     background-color: $paletteR1;
@@ -40,7 +39,7 @@ $gap: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: $D80;
 
     > svg {
       width: 10px;
@@ -70,7 +69,7 @@ $gap: 6px;
     font-size: 14px;
     line-height: 1.3;
     @include Placeholder($GR60);
-    color: #7a92a5;
+    color: $D40;
 }
 
 .hasError > .inputArea {
@@ -120,9 +119,9 @@ $gap: 6px;
         @include ThemeError($borderColor: $paletteR1);
     }
     &-paneltitle {
-        @include ThemeDefault($color: white, $borderColor: #c1e4fe, $backgroundColor: rgba(22,45,61,0.6));
+        @include ThemeDefault($color: white, $borderColor: $B30, $backgroundColor: rgba(22,45,61,0.6));
         @include ThemeHover($backgroundColor: rgba(22,45,61,0.4));
-        @include ThemeFocusPanelTile($borderColor: #4eb7f5, $boxShadow: inset 0 0 5px 0 rgba(56,153,236,0.6));
+        @include ThemeFocusPanelTile($borderColor: $B20, $boxShadow: inset 0 0 5px 0 rgba(56,153,236,0.6));
         @include ThemeError($borderColor: $paletteR1);
     }
     &-amaterial {

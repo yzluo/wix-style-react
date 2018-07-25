@@ -1,6 +1,6 @@
 # Icons
 
-> SVG Icon base type. The list of existing icons can be found [here](https://wix-wix-style-react.surge.sh/?selectedKind=6.%20Common&selectedStory=6.5%20Icons&full=0&down=0&left=1&panelRight=0) 
+> SVG Icon base type. The list of existing icons can be found [here](https://wix-wix-style-react.surge.sh/?selectedKind=6.%20Common&selectedStory=6.5%20Icons&full=0&down=0&left=1&panelRight=0)
 
 ## Properties
 
@@ -24,8 +24,7 @@ export const MyComponent =  () => (
 
 ## Adding a new Icon
 
-* Add the new SVG file to the src/Icons/raw folder. Use a descriptive name since it'll be used as the React component name.
-* Run `npm run build`
-* You can now import your icon by name from the `wix-style-react/dist/src/Icons` folder!
+Read [Adding new icon](https://wix-wix-style-react.surge.sh/?selectedKind=Introduction&selectedStory=Contribution&full=0&addons=0&stories=1&panelRight=0) section in contribution guide
 
-**Notice that during `npm run build` the SVG files go through various optimizations hence it is recommended to validate the outcome of the icons in storybook (`npm start` and navigate to Icons)!** 
+--------
+**Notice that during `npm run build` the SVG files go through various optimizations hence it is recommended to validate the outcome of the icons in storybook (`npm start` and navigate to Icons)!**

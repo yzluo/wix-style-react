@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Tooltip from '../Tooltip';
 import InputHelpSuffix from './InputHelpSuffix';
 
-import InfoCircle from '../../new-icons/InfoCircle';
+import InfoCircle from '../new-icons/InfoCircle';
 import styles from './Input.scss';
 
 const placementToMoveBy = {

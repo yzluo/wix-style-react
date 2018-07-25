@@ -1,25 +1,42 @@
 @import '../common';
+@import '../mixins';
+
+$minimum-modal-margin: 48px;
 
 .content {
-    box-shadow: $Shadow40;
-    border-radius: 8px;
-    background-color: white;
-    width: 600px;
+  box-shadow: $Shadow40;
+  border-radius: 8px;
+  background-color: white;
+  width: 600px;
+}
+
+.fullscreen-content {
+  height: calc(100% - #{$minimum-modal-margin * 2});
+  width: calc(100% - #{$minimum-modal-margin * 2});
+  max-width: 1254px; // Hard-coded according design: The modal cannot be wider than 1254px
+  display: flex;
+  flex-direction: column;
 }
 
 .body {
-    @include FontLight();
-    color     : $paletteD2;
-    font-size : 16px;
-    line-height: 24px;
-    padding   : 36px 30px 42px 30px;
+  @include FontLight();
+  color: $paletteD2;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 36px 30px 42px 30px;
+  box-sizing: border-box;
 }
 
+.fullscreen-body {
+  margin-bottom: auto;
+  overflow: auto;
+}
+
+.scrollable {
+  @include default-scroll-bar;
+  overflow-y: auto;
+}
 
 .no-padding {
-    padding: 0;
-}
-
-.with-padding {
-    padding: 36px 30px 42px 30px;
+  padding: 0;
 }

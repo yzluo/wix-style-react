@@ -1,3 +1,5 @@
+@import '../common.scss';
+
 @mixin sticky {
   position: absolute;
   left: 0;
@@ -35,7 +37,7 @@
   margin-top: -6px;
   margin-left: -6px;
   position: absolute;
-  border: solid 1px #162d3d;
+  border: solid 1px $D10;
   background: #fff;
   opacity: .7;
   cursor: pointer;

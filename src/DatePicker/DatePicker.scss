@@ -89,7 +89,7 @@ $dayHoverColor: $B50;
       }
 
       &--keyboard-selected:not(.DayPicker-Day--selected) {
-        border: 3px solid #aadbfc;
+        border: 3px solid $F00;
       }
 
       &--outside,

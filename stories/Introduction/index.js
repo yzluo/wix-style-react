@@ -9,6 +9,7 @@ import Contribution from '../../docs/CONTRIBUTING.md';
 import AddingStory from '../../docs/adding-story.md';
 import TPA from '../../src/TPA/README.md';
 import UsageWithoutYoshiReadme from '../../docs/usage-without-yoshi.md';
+import AutodocsDocs from 'wix-storybook-utils/docs/usage.md';
 
 storiesOf('Introduction', module)
   .add('Getting started', () => <Markdown source={Readme}/>)
@@ -16,4 +17,9 @@ storiesOf('Introduction', module)
   .add('Contribution', () => <Markdown source={Contribution}/>)
   .add('TPA', () => <Markdown source={TPA}/>)
   .add('Usage Without Yoshi', () => <Markdown source={UsageWithoutYoshiReadme}/>)
-  .add('Documenting components (AutoDocs)', () => <Markdown source={AddingStory}/>);
+  .add('Documenting components (AutoDocs)', () =>
+    <div>
+      <Markdown source={AddingStory}/>
+      <Markdown source={AutodocsDocs}/>
+    </div>
+);

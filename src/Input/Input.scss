@@ -131,9 +131,9 @@ $material-gap: 8px;
     @include ThemeDisableHover($borderColor: $GR20);
   }
   &-paneltitle {
-    @include ThemeDefault($color: white, $borderColor: #c1e4fe, $backgroundColor: rgba(22,45,61,0.6));
+    @include ThemeDefault($color: white, $borderColor: $B30, $backgroundColor: rgba(22,45,61,0.6));
     @include ThemeHover($backgroundColor: rgba(22,45,61,0.4));
-    @include ThemeFocusPanelTile($borderColor: #4eb7f5, $boxShadow: inset 0 0 5px 0 rgba(56,153,236,0.6));
+    @include ThemeFocusPanelTile($borderColor: $B20, $boxShadow: inset 0 0 5px 0 rgba(56,153,236,0.6));
     @include ThemeError($borderColor: $paletteR1);
     @include ThemeDisable($color: white, $borderColor: $GR40, $backgroundColor: rgba(22,45,61,0.6));
   }
@@ -203,7 +203,7 @@ $material-gap: 8px;
       .bar {
         &:before, &:after {
           height: 2px;
-          background-color: #3899ec;
+          background-color: $B10;
         }
       }
       label {
