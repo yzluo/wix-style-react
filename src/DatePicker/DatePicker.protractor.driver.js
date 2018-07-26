@@ -34,6 +34,7 @@ const datePickerDriverFactory = component => {
       exists: () => getCalendar().isPresent(),
       isYearInViewPort: year => browser.wait(EC.visibilityOf(getYear(year)), 5000),
       isVisible: () => getCalendar().isDisplayed(),
+      isFocused: () => getKeyboardSelectedDay().isPresent(),
       clickOnNthAvailableDay: (n = 0) => getNthAvailableDay(n).click(),
       openYearDropdownOptions: () => getYearDropdown().click(),
       clickOnNthYear: (n = 1) => getNthYear(n).click(),

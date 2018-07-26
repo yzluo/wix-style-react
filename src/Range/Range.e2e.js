@@ -26,8 +26,8 @@ const rangeTestkitE2EFactory = rangeDriver => {
       clickLast: () => inputDriverLast().click()
     },
     dateType: {
-      isFocusedFirst: () => datePickerDriverFirst().inputDriver.isFocused(),
-      isFocusedLast: () => datePickerDriverLast().inputDriver.isFocused(),
+      isFocusedFirst: () => datePickerDriverFirst().calendarDriver.isFocused(),
+      isFocusedLast: () => datePickerDriverLast().calendarDriver.isFocused(),
       clickFirst: () => datePickerDriverFirst().inputDriver.click(),
       clickLast: () => datePickerDriverLast().inputDriver.click()
     }
@@ -85,7 +85,6 @@ describe('Range', () => {
     eyes.it('should show focused styles for last item', async () => {
       expect(driver.isFocusedLast()).toBe(false);
       await driver.clickLast();
-      await driver.clickLast(); // TODO: temporary :)
       expect(driver.isFocusedLast()).toBe(true);
     });
   });

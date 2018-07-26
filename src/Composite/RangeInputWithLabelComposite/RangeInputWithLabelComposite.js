@@ -61,16 +61,16 @@ class RangeInputWithLabelComposite extends WixComponent {
       className: (rangeType === 'DatePicker') ? styles.firstDate : styles.firstinput,
       noRightBorderRadius: true,
       onKeyDown: e => this._doKeyDown(e),
-      onFocus: e => this._handleFocusFirst(e),
-      onBlur: e => this._handleBlurFirst(e)
+      onFocus: e => (rangeType !== 'DatePicker') && this._handleFocusFirst(e),
+      onBlur: e => (rangeType !== 'DatePicker') && this._handleBlurFirst(e)
     };
 
     const additionalLastInputProps = {
       className: (rangeType === 'DatePicker') ? styles.lastDate : styles.lastinput,
       noLeftBorderRadius: true,
       onKeyDown: e => this._doKeyDown(e),
-      onFocus: e => this._handleFocusLast(e),
-      onBlur: e => this._handleBlurLast(e)
+      onFocus: e => (rangeType !== 'DatePicker') && this._handleFocusLast(e),
+      onBlur: e => (rangeType !== 'DatePicker') && this._handleBlurLast(e)
     };
 
     const inputWrapperClassNames = classNames({
