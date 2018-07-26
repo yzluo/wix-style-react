@@ -15,21 +15,6 @@ import Input from '../Input';
 
 import styles from './DatePicker.scss';
 
-/**
- * DatePicker component
- *
- * ### Keyboard support
- * * `Left`: Move to the previous day.
- * * `Right`: Move to the next day.
- * * `Up`: Move to the previous week.
- * * `Down`: Move to the next week.
- * * `PgUp`: Move to the previous month.
- * * `PgDn`: Move to the next month.
- * * `Home`: Move to the previous year.
- * * `End`: Move to the next year.
- * * `Enter`/`Esc`/`Tab`: close the calendar. (`Enter` & `Esc` calls `preventDefault`)
- *
- */
 export default class DatePicker extends WixComponent {
   static displayName = 'DatePicker';
 
@@ -203,7 +188,6 @@ export default class DatePicker extends WixComponent {
         <div
           ref={ref => (this.calendarRef = ref)}
           data-hook={calendarDataHook}
-          className={styles.calendarRoot}
           >
           <Calendar {...calendarProps}/>
         </div>

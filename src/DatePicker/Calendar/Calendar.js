@@ -4,11 +4,28 @@ import DayPicker from 'react-day-picker/DayPicker';
 import addMonths from 'date-fns/add_months';
 import parse from 'date-fns/parse';
 import startOfMonth from 'date-fns/start_of_month';
+import addYears from 'date-fns/add_years';
 
 import WixComponent from '../../BaseComponents/WixComponent';
 import localeUtilsFactory from '../LocaleUtils';
 import DatePickerHead from '../DatePickerHead';
+import styles from './Calendar.scss';
 
+/**
+ * Calendar component
+ *
+ * ### Keyboard support
+ * * `Left`: Move to the previous day.
+ * * `Right`: Move to the next day.
+ * * `Up`: Move to the previous week.
+ * * `Down`: Move to the next week.
+ * * `PgUp`: Move to the previous month.
+ * * `PgDn`: Move to the next month.
+ * * `Home`: Move to the previous year.
+ * * `End`: Move to the next year.
+ * * `Enter`/`Esc`/`Tab`: close the calendar. (`Enter` & `Esc` calls `preventDefault`)
+ *
+ */
 export default class Calendar extends WixComponent {
   static displayName = 'Calendar';
 
@@ -27,14 +44,16 @@ export default class Calendar extends WixComponent {
       isYearPickerOpen: false,
       month: props.value
     };
+
+    this.dayPickerEl = null;
   }
 
   // TODO: Change to getDerivedStateFromProps with React ^16.0.0
   componentWillReceiveProps(nextProps) {
-    this.setState({month: nextProps.value});
+    this.setState({month: nextProps.value || new Date()});
   }
 
-  _setMonth = month => this.setState({month});
+  _setMonth = (month, callback) => this.setState({month}, callback);
 
   _handleDayClick = (value, modifiers = {}) => {
     this.props.onChange(value, modifiers);
@@ -66,7 +85,6 @@ export default class Calendar extends WixComponent {
           onChange: this._setMonth,
 
           onLeftArrowClick: () => this._setMonth(startOfMonth(addMonths(month, -1))),
-
           onRightArrowClick: () => this._setMonth(startOfMonth(addMonths(month, 1)))
         }}
         />
@@ -84,6 +102,7 @@ export default class Calendar extends WixComponent {
       locale: typeof locale === 'string' ? locale : '',
       fixedWeeks: true,
       onKeyDown: this._handleKeyDown,
+      onDayKeyDown: this._handleDayKeyDown,
       onDayClick: this._handleDayClick,
       localeUtils,
       navbarElement: () => null,
@@ -91,11 +110,31 @@ export default class Calendar extends WixComponent {
     };
   };
 
+  _focusCalendarDay = day => {
+    if (this.dayPickerEl) {
+      const currentDateIndex = day.getDate() - 1;
+      const dayElements = this.dayPickerEl.querySelectorAll('.DayPicker-Day:not(.DayPicker-Day--outside)');
+
+      if (dayElements && dayElements.length) {
+        dayElements[currentDateIndex].focus();
+      }
+    }
+  };
+
   _handleKeyDown = event => {
     const keyHandler = this.keyHandlers[event.keyCode];
 
     keyHandler && keyHandler();
   };
+
+  _handleDayKeyDown = (day, modifiers, event) => {
+    const dayKeyModifier = this.dayKeyHandlerModifiers[event.keyCode];
+
+    if (dayKeyModifier) {
+      event.preventDefault();
+      this._setMonth(dayKeyModifier(day), () => this._focusCalendarDay(day));
+    }
+  }
 
   keyHandlers = {
     // escape
@@ -105,14 +144,40 @@ export default class Calendar extends WixComponent {
     9: this.props.onClose
   };
 
-  _focusSelectedDay = dayPickerRef => {
-    dayPickerRef && dayPickerRef.dayPicker.querySelector('.DayPicker-Day--selected').focus();
+  dayKeyHandlerModifiers = {
+    // page up
+    33: value => addMonths(value, -1),
+
+    // page down
+    34: value => addMonths(value, 1),
+
+    // end
+    35: value => addYears(value, 1),
+
+    // home
+    36: value => addYears(value, -1)
+  };
+
+  _initPickerRefAndFocusSelectedDay = dayPickerRef => {
+    if (dayPickerRef) {
+      this.dayPickerEl = dayPickerRef.dayPicker;
+      this._focusCalendarDay(this.props.value || new Date());
+    }
   }
 
   render() {
     const {visible} = this.props;
 
-    return <div>{visible && <DayPicker ref={this._focusSelectedDay} {...this._createDayPickerProps()}/>}</div>;
+    return (
+      <div className={styles.root}>
+        {visible &&
+          <DayPicker
+            ref={this._initPickerRefAndFocusSelectedDay}
+            {...this._createDayPickerProps()}
+            />
+        }
+      </div>
+    );
   }
 }
 
