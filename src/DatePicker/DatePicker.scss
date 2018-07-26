@@ -6,7 +6,7 @@ $dayHoverColor: $B50;
 $calendarWidth: 300px;
 $dayBadgeSize: 36px;
 $boxShadowWidth: 3px;
-$hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
+$keyboardFocusBoxShadow: 0 0 0 $boxShadowWidth $F00;
 
 @mixin todayShadow($additionalShadow: false) {
   $boxShadow: 0 0 0 $boxShadowWidth $rootBackgroundColor inset;
@@ -81,7 +81,7 @@ $hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
 
       &:focus {
         outline: none;
-        box-shadow: $hoverBoxShadow;
+        box-shadow: $keyboardFocusBoxShadow;
       }
 
       &--today:not(.DayPicker-Day--selected) {
@@ -90,7 +90,7 @@ $hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
         z-index: 0;
 
         &:focus {
-          @include todayShadow($hoverBoxShadow);
+          @include todayShadow($keyboardFocusBoxShadow);
         }
       }
 
