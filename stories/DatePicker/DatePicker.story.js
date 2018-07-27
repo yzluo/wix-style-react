@@ -1,6 +1,11 @@
+import React from 'react';
 import DatePicker from 'wix-style-react/DatePicker';
 
+import RangedDatePicker from './ExampleRange';
+import RangedDatePickerRaw from '!raw-loader!./ExampleRange';
+
 import format from 'date-fns/format';
+import CodeExample from 'wix-storybook-utils/CodeExample';
 
 const defaultValue = new Date('2017/05/01');
 const today = new Date();
@@ -11,7 +16,7 @@ export default {
   category: '3. Inputs',
   storyName: '3.6 DatePicker',
   component: DatePicker,
-  componentPath: '../src/DatePicker',
+  componentPath: '../../src/DatePicker',
 
   componentProps: setState => ({
     onChange: value => setState({value}),
@@ -32,5 +37,10 @@ export default {
       {label: 'Today', value: today},
       {label: 'Tomorrow', value: tomorrow}
     ]
-  }
+  },
+  examples: (
+    <CodeExample title="Range" code={RangedDatePickerRaw}>
+      <RangedDatePicker/>
+    </CodeExample>
+  )
 };

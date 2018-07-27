@@ -5,6 +5,8 @@ import addMonths from 'date-fns/add_months';
 import parse from 'date-fns/parse';
 import startOfMonth from 'date-fns/start_of_month';
 import addYears from 'date-fns/add_years';
+import isWithinRange from 'date-fns/is_within_range';
+import isSameDay from 'date-fns/is_same_day';
 
 import WixComponent from '../../BaseComponents/WixComponent';
 import localeUtilsFactory from '../LocaleUtils';
@@ -45,17 +47,22 @@ export default class Calendar extends WixComponent {
     };
 
     this.dayPickerEl = null;
+
+    if (props.value && props.range) {
+      console.warn('[Calendar] can\'t use value and range props in the same time. Please use only one of them in single component');
+    }
   }
 
   // TODO: Change to getDerivedStateFromProps with React ^16.0.0
   componentWillReceiveProps(nextProps) {
-    this.setState({month: nextProps.value || new Date()});
+    this.setState({month: nextProps.value || nextProps.range.from || new Date()});
   }
 
   _setMonth = (month, callback) => this.setState({month}, callback);
 
   _handleDayClick = (value, modifiers = {}) => {
     this.props.onChange(value, modifiers);
+    !this.props.range && this.props.shouldCloseOnSelect && this.props.onClose();
   };
 
   _createDayPickerProps = () => {
@@ -66,11 +73,18 @@ export default class Calendar extends WixComponent {
       filterDate,
       excludePastDates,
       value: propsValue,
+      range,
       rtl
     } = this.props;
 
     const month = this.state.month || propsValue;
     const localeUtils = localeUtilsFactory(locale);
+    const dayPickerSelectedDays = propsValue ? parse(propsValue) : [range.from, range];
+    const rangeModifiers = {
+      selectedInRange: day => isWithinRange(day, range.from, range.to),
+      from: day => isSameDay(range.from, day),
+      to: day => isSameDay(range.to, day)
+    };
 
     const captionElement = (
       <DatePickerHead
@@ -93,7 +107,7 @@ export default class Calendar extends WixComponent {
 
       initialMonth: month,
       initialYear: month,
-      selectedDays: parse(propsValue),
+      selectedDays: dayPickerSelectedDays,
       month,
       year: month,
       firstDayOfWeek: 1,
@@ -104,7 +118,8 @@ export default class Calendar extends WixComponent {
       onDayClick: this._handleDayClick,
       localeUtils,
       navbarElement: () => null,
-      captionElement
+      captionElement,
+      modifiers: range && range.to && range.from ? rangeModifiers : {}
     };
   };
 
@@ -200,6 +215,12 @@ Calendar.propTypes = {
 
   /** The selected date */
   value: PropTypes.object,
+
+  /** The object with start and end dates if calendar has range of values */
+  range: PropTypes.shape({
+    from: PropTypes.object,
+    to: PropTypes.object
+  }),
 
   /** Display a selectable yearDropdown */
   showYearDropdown: PropTypes.bool,

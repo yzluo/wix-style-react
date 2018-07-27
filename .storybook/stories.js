@@ -37,7 +37,7 @@ import '../stories/RichTextAreaComposite'; // 3.2b RichTextAreaComposite
 import '../stories/RichTextArea/RichTextArea.story.js' // 3.2b + RichTextArea
 import '../stories/FieldWithSelectionComposite'; // 3.3 Field With Selection
 import '../stories/TimeInput.story.js'; // 3.4 TimeInput
-import '../stories/DatePicker.story.js'; // 3.6 DatePicker
+import '../stories/DatePicker/DatePicker.story.js'; // 3.6 DatePicker
 import '../stories/Range'; // 3.7 Range
 import '../stories/MultiSelect'; // 3.8 Tags
 import '../stories/MultiSelectComposite'; // 3.8 + MultiSelectComposite

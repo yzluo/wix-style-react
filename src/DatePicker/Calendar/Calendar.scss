@@ -17,6 +17,32 @@ $keyboardFocusBoxShadow: 0 0 0 $boxShadowWidth $F00;
   }
 }
 
+@mixin selectedRangeEdge($left: 0, $right: 0) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    left: $left;
+    right: $right;
+    z-index: -1;
+    background-color: $B50;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $B10;
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  &:focus::after {
+    box-shadow: $keyboardFocusBoxShadow;
+  }
+}
+
 .root {
   z-index: 1;
 }
@@ -71,13 +97,14 @@ $keyboardFocusBoxShadow: 0 0 0 $boxShadowWidth $F00;
       height: $dayBadgeSize;
       border-radius: 50%;
       cursor: pointer;
-      transition: all 100ms linear;
       color: $D10;
       z-index: 1;
 
       &:focus {
         outline: none;
         box-shadow: $keyboardFocusBoxShadow;
+        z-index: 10;
+        transition: box-shadow 100ms linear;
       }
 
       &--today:not(.DayPicker-Day--selected) {
@@ -86,6 +113,7 @@ $keyboardFocusBoxShadow: 0 0 0 $boxShadowWidth $F00;
         z-index: 0;
 
         &:focus {
+          z-index: 1;
           @include todayShadow($keyboardFocusBoxShadow);
         }
       }
@@ -95,7 +123,7 @@ $keyboardFocusBoxShadow: 0 0 0 $boxShadowWidth $F00;
         box-shadow: none;
       }
 
-      &--selected {
+      &--selected:not(&--selectedInRange), &--from, &--to {
         background-color: $B10;
         color: $D80;
         &:hover {
@@ -107,6 +135,34 @@ $keyboardFocusBoxShadow: 0 0 0 $boxShadowWidth $F00;
       &--disabled {
         pointer-events: none;
         color: $D55;
+      }
+
+      &--from:not(&--to) {
+        @include selectedRangeEdge($left: 50%);
+      }
+      &--to:not(&--from) {
+        @include selectedRangeEdge($right: 50%);
+      }
+
+      &--selectedInRange:not(&--from):not(&--to) {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+          background-color: $B50;
+          border-radius: 0;
+        }
+        &:focus::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          box-shadow: $keyboardFocusBoxShadow;
+        }
       }
     }
   }
