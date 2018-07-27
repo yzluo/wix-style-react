@@ -5,16 +5,17 @@ import classnames from 'classnames';
 import ChevronLeftLarge from 'wix-ui-icons-common/ChevronLeftLarge';
 import ChevronRightLarge from 'wix-ui-icons-common/ChevronRightLarge';
 
+import Text from '../../Text';
 import YearDropdown from './YearDropdown';
 import MonthDropdown from './MonthDropdown';
 import styles from './styles.scss';
 
 const caption = (text, dataHook) =>
-  <div
+  <Text
     data-hook={dataHook}
     className={styles.caption}
-    children={text}
-    />;
+    bold
+    >{text}</Text>;
 
 
 const getMonthName = (months, month) =>

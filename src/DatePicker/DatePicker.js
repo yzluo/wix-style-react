@@ -19,6 +19,7 @@ export default class DatePicker extends WixComponent {
   static displayName = 'DatePicker';
 
   static defaultProps = {
+    shouldCloseOnSelect: true,
     locale: 'en',
     dateFormat: 'MM/DD/YYYY',
     filterDate: () => true,
@@ -75,10 +76,8 @@ export default class DatePicker extends WixComponent {
        2. After calendar is closed, on next event loop(after focus is fired)  make isDateInputFocusable: focusable
        to allow user to press tab in future and open Calendar
     */
-    setTimeout(() => this.makeInputFocusable());
+    setTimeout(() => this.setState({isDateInputFocusable: true}));
   }
-
-  makeInputFocusable = () => this.setState({isDateInputFocusable: true});
 
   _saveNewValue = (value, modifiers = {}) => {
     if (modifiers.disabled) {
@@ -95,6 +94,7 @@ export default class DatePicker extends WixComponent {
       ].reduce((value, [datePart, setter]) => setter(value, datePart), this.props.value);
 
       this.setState({value: newValue}, () => this.props.onChange(newValue));
+      this.props.shouldCloseOnSelect && this.closeCalendar();
     }
   };
 
@@ -135,8 +135,7 @@ export default class DatePicker extends WixComponent {
       showYearDropdown,
       filterDate,
       excludePastDates,
-      rtl,
-      shouldCloseOnSelect
+      rtl
     } = this.props;
 
     const {isOpen, value} = this.state;
@@ -172,8 +171,7 @@ export default class DatePicker extends WixComponent {
       onChange: this._saveNewValue,
       onClose: this.closeCalendar,
       value,
-      visible: isOpen,
-      shouldCloseOnSelect
+      visible: isOpen
     };
 
     return (
@@ -259,6 +257,9 @@ DatePicker.propTypes = {
 
   /** will display message when hovering error icon **/
   errorMessage: PropTypes.node,
+
+  /** should the calendar close on day selection */
+  shouldCloseOnSelect: PropTypes.bool,
 
   /** set desired width of DatePicker input */
   width: PropTypes.number

@@ -32,7 +32,6 @@ export default class Calendar extends WixComponent {
   static defaultProps = {
     locale: 'en',
     filterDate: () => true,
-    shouldCloseOnSelect: true,
     rtl: false
   };
 
@@ -57,7 +56,6 @@ export default class Calendar extends WixComponent {
 
   _handleDayClick = (value, modifiers = {}) => {
     this.props.onChange(value, modifiers);
-    this.props.shouldCloseOnSelect && this.props.onClose();
   };
 
   _createDayPickerProps = () => {
@@ -208,9 +206,6 @@ Calendar.propTypes = {
 
   /** Display a selectable monthDropdown */
   showMonthDropdown: PropTypes.bool,
-
-  /** should the calendar close on day selection */
-  shouldCloseOnSelect: PropTypes.bool,
 
   /** DatePicker instance locale */
   locale: PropTypes.oneOfType([
