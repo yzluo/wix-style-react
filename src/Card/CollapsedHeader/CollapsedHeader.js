@@ -6,8 +6,8 @@ import Switch from '../../../src/ToggleSwitch';
 import WixComponent from '../../../src/BaseComponents/WixComponent';
 import Collapse from 'react-collapse';
 import Button from '../../../src/Button';
-import ChevronDown from '../../../new-icons/ChevronDown';
-import ChevronUp from '../../../new-icons/ChevronUp';
+import ChevronDown from '../../new-icons/ChevronDown';
+import ChevronUp from '../../new-icons/ChevronUp';
 
 class CollapsedHeader extends WixComponent {
   static propTypes = {

@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import InputErrorSuffix from './InputErrorSuffix';
 import Tooltip from '../Tooltip';
 
-import FormFieldErrorFilled from '../../new-icons/system/FormFieldErrorFilled';
+import FormFieldErrorFilled from '../new-icons/system/FormFieldErrorFilled';
 
 import styles from './Input.scss';
 

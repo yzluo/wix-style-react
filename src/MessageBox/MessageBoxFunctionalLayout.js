@@ -26,18 +26,53 @@ class MessageBoxFunctionalLayout extends WixComponent {
       disableConfirmation,
       disableCancel,
       width,
-      noBodyPadding
+      noBodyPadding,
+      maxHeight,
+      fullscreen
     } = this.props;
 
+
+    const messageBoxBodyClassNames = classNames(
+      styles.body,
+      {
+        [styles.scrollable]: typeof maxHeight !== 'undefined',
+        [styles.noPadding]: noBodyPadding,
+        [styles.fullscreenBody]: fullscreen
+      }
+    );
+    const messageBoxBodyStyle = {
+      maxHeight
+    };
+
+    const contentClassName = classNames(
+      styles.content,
+      {
+        [styles.fullscreenContent]: fullscreen
+      }
+    );
+
     return (
-      <div className={styles.content} style={{width}}>
+      <div className={contentClassName} style={{width}}>
         <HeaderLayout title={title} onCancel={onClose ? onClose : onCancel} theme={theme} closeButton={closeButton}/>
-        <div className={classNames(styles.body, noBodyPadding ? styles.noPadding : styles.withPadding)} data-hook="message-box-body">
+        <div
+          data-hook="message-box-body"
+          className={messageBoxBodyClassNames}
+          style={messageBoxBodyStyle}
+          >
           {children}
         </div>
         {
-          !hideFooter ?
-            <FooterLayout bottomChildren={footerBottomChildren} enableCancel={!disableCancel} enableOk={!disableConfirmation} buttonsHeight={buttonsHeight} confirmText={confirmText} cancelText={cancelText} onCancel={onCancel} onOk={onOk} theme={theme}/> : null
+          !hideFooter ? <FooterLayout
+            bottomChildren={footerBottomChildren}
+            enableCancel={!disableCancel}
+            enableOk={!disableConfirmation}
+            buttonsHeight={buttonsHeight}
+            confirmText={confirmText}
+            cancelText={cancelText}
+            onCancel={onCancel}
+            onOk={onOk}
+            theme={theme}
+            /> : null
         }
       </div>
     );
@@ -55,20 +90,22 @@ MessageBoxFunctionalLayout.propTypes = {
   width: PropTypes.string,
   title: PropTypes.node,
   children: PropTypes.any,
+  maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   buttonsHeight: PropTypes.string,
   closeButton: PropTypes.bool,
   disableCancel: PropTypes.bool,
   disableConfirmation: PropTypes.bool,
   noBodyPadding: PropTypes.bool,
-  footerBottomChildren: PropTypes.node
+  footerBottomChildren: PropTypes.node,
+  fullscreen: PropTypes.bool
 };
 
 MessageBoxFunctionalLayout.defaultProps = {
   buttonsHeight: 'small',
   disableCancel: false,
   disableConfirmation: false,
-  width: '600px',
-  noBodyPadding: false
+  noBodyPadding: false,
+  fullscreen: false
 };
 
 export default MessageBoxFunctionalLayout;
