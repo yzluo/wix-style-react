@@ -1,17 +1,8 @@
 :import {
   -st-from: "wix-ui-backoffice/dist/src/components/Tooltip/Tooltip.st.css";
   -st-default: Tooltip;
-  -st-named: tooltipContent;
-}
-
-:import {
-  -st-from: "wix-ui-core/dist/src/hocs/EllipsedTooltip/EllipsedTooltip.st.css";
-  -st-default: CoreEllipsedTooltip;
 }
 
 .root {
-  -st-mixin: CoreEllipsedTooltip;
+  -st-mixin: Tooltip;
 }
-
-/* This is needed in oreder to apply the backoffice tooltip styles of this class */
-.root .tooltipContent {}
