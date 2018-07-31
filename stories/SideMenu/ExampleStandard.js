@@ -1,10 +1,8 @@
 import React from 'react';
 
-import {
-  SideMenu,
-  Button,
-  Tooltip
-} from 'wix-style-react';
+import SideMenu from 'wix-style-react/SideMenu';
+import Button from 'wix-style-react/Button';
+import Tooltip from 'wix-style-react/Tooltip';
 import Edit from 'wix-style-react/new-icons/Edit';
 import ChatIcon from 'wix-style-react/new-icons/Chat';
 import ExternalLink from 'wix-style-react/new-icons/ExternalLink';

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import {Tooltip, Button} from 'wix-style-react';
+import Tooltip from 'wix-style-react/Tooltip';
+import Button from 'wix-style-react/Button';
 import TooltipForEyesOnly from './TooltipForEyesOnly';
 
 export class Template extends Component {

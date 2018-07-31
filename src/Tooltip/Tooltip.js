@@ -228,7 +228,6 @@ class Tooltip extends WixComponent {
         </TooltipContent>);
 
       renderSubtreeIntoContainer(this, tooltip, this._mountNode);
-
       if (this.props.shouldUpdatePosition) {
         setTimeout(() => {
           this._updatePosition(this.tooltipContent);
@@ -308,14 +307,17 @@ class Tooltip extends WixComponent {
           this.renderTooltipIntoContainer();
           let fw = 0;
           let sw = 0;
-          do {
-            const tooltipNode = ReactDOM.findDOMNode(this.tooltipContent);
-            if (tooltipNode) {
-              fw = this._getRect(tooltipNode).width;
-              this._updatePosition(this.tooltipContent);
-              sw = this._getRect(tooltipNode).width;
-            }
-          } while (!props.appendToParent && fw !== sw);
+          // we need to set tooltip position after render of tooltip into container, on next event loop
+          setTimeout(() => {
+            do {
+              const tooltipNode = ReactDOM.findDOMNode(this.tooltipContent);
+              if (tooltipNode) {
+                fw = this._getRect(tooltipNode).width;
+                this._updatePosition(this.tooltipContent);
+                sw = this._getRect(tooltipNode).width;
+              }
+            } while (!props.appendToParent && fw !== sw);
+          });
         });
       }, delay);
     }

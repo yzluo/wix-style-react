@@ -4,10 +4,44 @@ import HeaderLayout from './HeaderLayout';
 import FooterLayout from './FooterLayout';
 import WixComponent from '../BaseComponents/WixComponent';
 import classNames from 'classnames';
+import throttle from 'lodash/throttle';
 
 import styles from './MessageBoxFunctionalLayout.scss';
 
 class MessageBoxFunctionalLayout extends WixComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hasScroll: false,
+      scrolledToBottom: false
+    };
+    this.messageBoxRef = null;
+  }
+
+  componentWillUnmount() {
+    if (this.state.hasScroll) {
+      this.messageBoxRef.removeEventListener('scroll', this._handleMessageBoxScroll);
+    }
+  }
+
+  _initializeMessageBoxRef = el => {
+    if (el && el.scrollHeight > el.clientHeight) {
+      this.setState({hasScroll: true});
+
+      this.messageBoxRef = el;
+      this.messageBoxRef.addEventListener('scroll', this._handleMessageBoxScroll);
+    }
+  };
+
+  _handleMessageBoxScroll = throttle(() => {
+    const scrolledToBottom =
+      this.messageBoxRef.scrollTop + this.messageBoxRef.clientHeight === this.messageBoxRef.scrollHeight;
+
+    if (scrolledToBottom !== this.state.scrolledToBottom) {
+      this.setState({scrolledToBottom});
+    }
+  }, 16);
 
   render() {
     const {
@@ -30,6 +64,7 @@ class MessageBoxFunctionalLayout extends WixComponent {
       maxHeight,
       fullscreen
     } = this.props;
+    const {hasScroll, scrolledToBottom} = this.state;
 
 
     const messageBoxBodyClassNames = classNames(
@@ -37,7 +72,9 @@ class MessageBoxFunctionalLayout extends WixComponent {
       {
         [styles.scrollable]: typeof maxHeight !== 'undefined',
         [styles.noPadding]: noBodyPadding,
-        [styles.fullscreenBody]: fullscreen
+        [styles.fullscreenBody]: fullscreen,
+        [styles.noFooter]: hideFooter,
+        [styles.footerBorder]: hasScroll && !scrolledToBottom
       }
     );
     const messageBoxBodyStyle = {
@@ -58,6 +95,7 @@ class MessageBoxFunctionalLayout extends WixComponent {
           data-hook="message-box-body"
           className={messageBoxBodyClassNames}
           style={messageBoxBodyStyle}
+          ref={this._initializeMessageBoxRef}
           >
           {children}
         </div>

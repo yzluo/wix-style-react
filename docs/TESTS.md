@@ -1,6 +1,6 @@
 # Testing
 
-> For component library to be stable, it must be testable and tested.
+> For component library to be stable, it must be testable and tested
 
 We use [jest](https://facebook.github.io/jest/) for unit and [protractor](http://www.protractortest.org/#/) for end-to-end tests.
 

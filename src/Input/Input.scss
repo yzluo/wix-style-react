@@ -67,6 +67,7 @@ $material-gap: 8px;
   flex-grow: 0;
   min-width: 0;
   user-select: none !important;
+  height: 100%;
 }
 
 .prefix,
@@ -88,6 +89,7 @@ $material-gap: 8px;
   //https://github.com/wix/wix-style-react/issues/1693
   //https://github.com/wix/wix-style-react/issues/1691
   display: block;
+  margin-right: 6px;
 }
 
 .roundInput {
@@ -344,6 +346,11 @@ $material-gap: 8px;
     &:first-child .unit-separator { margin-right: $double-gap; margin-left: $gap; }
     &:last-child .unit { padding-left: $double-gap; padding-right: $gap; }
   }
+
+  .prefixSuffixWrapper {
+    margin-right: 0;
+    margin-left: 6px;
+  }
 }
 
 // RTL layout based on a property passed directly to the component.
@@ -371,9 +378,6 @@ $material-gap: 8px;
 
 .exclamation {
   margin: 0 $gap;
-  background-color: $paletteR1;
-  width: 20px;
-  height: 20px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -385,8 +389,9 @@ $material-gap: 8px;
   }
 
   > svg {
-    width: 10px;
-    height: 10px;
+    color: $paletteR1;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -460,4 +465,11 @@ $material-gap: 8px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.loaderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 $gap;
 }

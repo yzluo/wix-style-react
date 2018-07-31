@@ -1,5 +1,5 @@
 import React from 'react';
-import {SideMenu} from 'wix-style-react';
+import SideMenu from 'wix-style-react/SideMenu';
 import InfoCircle from 'wix-style-react/new-icons/InfoCircle';
 import Chat from 'wix-style-react/new-icons/Chat';
 

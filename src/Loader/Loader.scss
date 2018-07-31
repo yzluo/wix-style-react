@@ -28,16 +28,25 @@
     transform: translate(-50%, -50%);
 
     svg {
-      height: 15px;
-      width: 20px;
+      height: 14px;
+      width: 19px;
     }
   }
 
-  &.small, &.tiny {
+  &.tiny {
     .statusIndicator {
       svg {
-        height: 9px;
-        width: 12px;
+        height: 8px;
+        width: 10px;
+      }
+    }
+  }
+
+  &.small{
+    .statusIndicator {
+      svg {
+        height: 8px;
+        width: 11px;
       }
     }
   }
@@ -67,6 +76,9 @@
 
   .text {
     margin-top: 18px;
+    max-width: 150px;
+    word-wrap: break-word;
+    text-align: center;
   }
 
   &.success {

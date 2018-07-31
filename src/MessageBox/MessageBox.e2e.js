@@ -1,6 +1,6 @@
 import eyes from 'eyes.it';
 import {createStoryUrl, waitForVisibilityOf, scrollToElement} from '../../test/utils/protractor';
-import {buttonTestkitFactory} from '../../testkit/protractor';
+import {buttonTestkitFactory, messageBoxFunctionalLayoutTestkitFactory} from '../../testkit/protractor';
 
 const byDataHook = dataHook => $(`[data-hook="${dataHook}"]`);
 
@@ -25,6 +25,24 @@ describe('MessageBox', () => {
       await verifyItem(secondary);
       await verifyItem(footnote);
       await verifyItem(scrollable);
+    });
+
+    eyes.it('should show footer border for scrollable modal and hide the border when scroll is on the bottom', async () => {
+      const storyUrl = createStoryUrl({kind: '9. Modals', story: '9.1 Alert'});
+      await browser.get(storyUrl);
+      await verifyItem(scrollable);
+
+      const driver = messageBoxFunctionalLayoutTestkitFactory({dataHook: scrollable});
+      const SMALL_SCROLL_OFFSET = 50;
+      const MAX_SCROLL_OFFSET = 500;
+
+      expect(await driver.toHaveFooterBorder()).toBe(true);
+
+      await (driver.scrollBodyDown(SMALL_SCROLL_OFFSET));
+      expect(await driver.toHaveFooterBorder()).toBe(true);
+
+      await (driver.scrollBodyDown(MAX_SCROLL_OFFSET));
+      expect(await driver.toHaveFooterBorder()).toBe(false);
     });
   });
 

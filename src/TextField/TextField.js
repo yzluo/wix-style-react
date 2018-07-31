@@ -14,6 +14,10 @@ TextField.propTypes = {
   children: children(optional(Label), once(Input))
 };
 
+TextField.defaultProps = {
+  appendToParent: false
+};
+
 TextField.displayName = 'TextField';
 
 export default TextField;

@@ -23,8 +23,12 @@ $minimum-modal-margin: 48px;
   color: $paletteD2;
   font-size: 16px;
   line-height: 24px;
-  padding: 36px 30px 42px 30px;
+  padding: 36px 30px 12px 30px;
   box-sizing: border-box;
+
+  &.no-padding {
+    padding: 0;
+  }
 }
 
 .fullscreen-body {
@@ -35,8 +39,12 @@ $minimum-modal-margin: 48px;
 .scrollable {
   @include default-scroll-bar;
   overflow-y: auto;
+
+  &.footer-border:not(.no-footer) {
+    border-bottom: 1px solid $D60;
+  }
 }
 
-.no-padding {
-  padding: 0;
+.no-footer {
+  padding-bottom: 42px;
 }

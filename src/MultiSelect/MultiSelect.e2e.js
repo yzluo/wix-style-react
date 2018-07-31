@@ -20,7 +20,7 @@ describe('MultiSelect', () => {
   });
 
   eyes.it('should break to new line when needed', () => {
-    const ELEMENT_HEIGHT_SINGLE_LINE = 36;
+    const ELEMENT_HEIGHT_MULTILINE = 66;
 
     waitForVisibilityOf(driver.element(), 'Cannot find <MultiSelect/>')
       .then(() => {
@@ -29,7 +29,7 @@ describe('MultiSelect', () => {
         }
         return driver.getHeight();
       }).then(height => {
-        expect(height).toBe(ELEMENT_HEIGHT_SINGLE_LINE);
+        expect(height).toBe(ELEMENT_HEIGHT_MULTILINE);
       });
   }, {version: '<Input/> - On text click - select all'});
 });
