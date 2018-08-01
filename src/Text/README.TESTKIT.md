@@ -22,7 +22,7 @@
 | -------- | --------- | -------------- | ---------------------------------------- |
 | element  | -         | element        | returns the driver element               |
 | getText  | -         | string        | returns the component text               |
-=======
+
 # Text component
 
 ## Text TestKit API
