@@ -1,16 +1,16 @@
-import s from './Page.scss';
+
 import React from 'react';
-import WixComponent from '../BaseComponents/WixComponent';
-import PageHeader from '../PageHeader';
-import Content from './Content';
-import Tail from './Tail';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {ResizeSensor} from 'css-element-queries';
 
-const SCROLL_TOP_THRESHOLD = 20;
-const SHORT_SCROLL_TOP_THRESHOLD = 3;
-const TAIL_TOP_PADDING_PX = 24;
+import s from './Page.scss';
+import WixComponent from '../BaseComponents/WixComponent';
+import PageHeader from '../PageHeader';
+import Content from './Content';
+import Tail from './Tail';
+import {SCROLL_TOP_THRESHOLD, SHORT_SCROLL_TOP_THRESHOLD, TAIL_TOP_PADDING_PX} from './constants';
+
 /**
  * A page container which contains a header and scrollable content
  *

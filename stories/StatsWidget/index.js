@@ -27,7 +27,7 @@ import ReadmeTestkit from '../../src/StatsWidget/README.TESTKIT.md';
 
 
 storiesOf('2. Layout', module)
-  .add('2.6 StatsWidget', () => (
+  .add('2.7 StatsWidget', () => (
     <TabbedView tabs={['Usage', 'Testkit']}>
       <div>
 

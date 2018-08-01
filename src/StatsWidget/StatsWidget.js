@@ -3,10 +3,36 @@ import PropTypes from 'prop-types';
 import {Card} from '../Grid';
 import WixComponent from '../BaseComponents/WixComponent';
 import styles from './StatsWidget.scss';
-import Text from '../Deprecated/Text';
-import classnames from 'classnames';
+import Heading from '../Heading';
 import SortByArrowUp from '../new-icons/system/SortByArrowUp';
+import SortByArrowDown from '../new-icons/system/SortByArrowDown';
 import ButtonWithOptions from '../ButtonWithOptions';
+import Badge from '../Badge';
+
+function renderTrend(percent) {
+  const badgeProps = {
+    icon: null,
+    skin: null,
+    dataHook: 'percent-value',
+    type: 'transparent'
+  };
+
+  //TODO - the data-class is just a hack in order not to break the testkit function that exposes it
+  if (percent > 0) {
+    badgeProps.prefixIcon = <SortByArrowUp data-hook="percent-icon" data-class="isPositive"/>;
+    badgeProps.skin = 'success';
+  } else if (percent < 0) {
+    badgeProps.prefixIcon = <SortByArrowDown data-hook="percent-icon" data-class="isNegative"/>;
+    badgeProps.skin = 'danger';
+  } else {
+    badgeProps.prefixIcon = null;
+    badgeProps.skin = 'neutral';
+  }
+
+  return (
+    <Badge {...badgeProps}>{Math.abs(percent)}%</Badge>
+  );
+}
 
 /**
  * Component for app widget in Business Manager
@@ -35,27 +61,13 @@ class StatsWidget extends WixComponent {
     emptyState: PropTypes.node
   };
 
-  _renderPercentage(percent) {
-    return (
-      <Text appearance="H3">
-        <div
-          className={classnames(styles.percents, {[styles.isNegative]: percent < 0}, {[styles.isPositive]: percent > 0})}
-          data-hook="percent-wrapper"
-          >
-          <span className={classnames(styles.percentArrow)}><SortByArrowUp/></span>
-          <span data-hook="percent-value">{Math.abs(percent)}%</span>
-        </div>
-      </Text>
-    );
-  }
-
   _renderColumn(statistics, index) {
     return (<div className={styles.statsColumn} key={index} data-hook="statistics-item">
-      <Text dataHook="statistics-item-title" appearance="H1">{statistics.title}</Text>
-      <Text dataHook="statistics-item-subtitle" appearance="H3">
+      <Heading dataHook="statistics-item-title">{statistics.title}</Heading>
+      <Heading dataHook="statistics-item-subtitle" appearance="H3">
         {statistics.subtitle}
-      </Text>
-      {typeof (statistics.percent) === 'number' && this._renderPercentage(statistics.percent)}
+      </Heading>
+      {typeof (statistics.percent) === 'number' && renderTrend(statistics.percent)}
     </div>);
   }
 

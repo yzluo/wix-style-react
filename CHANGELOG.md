@@ -13,13 +13,18 @@ Types of changes:
 1. **Breaking** for breaking changes
 
 ## Next
+### Changed
+`<StatsWidget/>` - refactor old Text to new Heading and Badge [#2065](https://github.com/wix/wix-style-react/pull/2065)
+
+## 4.14.0 - 2018-08-01
+### Fixed
+- `<Button/>` - Fix focusable button in disabled state [#2054](https://github.com/wix/wix-style-react/pull/2054)
 
 ### Added
-
-- `<Input />` - Added `status` and `statusMessage` props, added loader suffix [#1784](https://github.com/wix/wix-style-react/pull/1784)
+- `<Input/>` - Added `status` and `statusMessage` props, added loader suffix [#1784](https://github.com/wix/wix-style-react/pull/1784)
+- new Testkit drivers for `Text`, `Heading` `Table`, `FormField` and fixed `Input` [#2060](https://github.com/wix/wix-style-react/pull/2060) [#2061](https://github.com/wix/wix-style-react/pull/2061) [#2062](https://github.com/wix/wix-style-react/pull/2062) [#2064](https://github.com/wix/wix-style-react/pull/2064)
 
 ### Changed
-
 - `<TextField/>` - Default info tooltip to not use `appendToParent: false` [#2035](https://github.com/wix/wix-style-react/pull/2035)
 - `<Loader/>` - styling updates according to the UX guidelines [#2045](https://github.com/wix/wix-style-react/pull/2045)
 

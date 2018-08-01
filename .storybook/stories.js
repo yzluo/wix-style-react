@@ -24,7 +24,7 @@ import '../stories/ScrollBar'; // 1.8 ScrollBar
 import '../stories/Page/index.story.js'; // 2.5 Page
 import '../stories/PageHeader/index.story.js'; // 2.5 + PageHeader
 import '../stories/Page/FullPageExample.js'; // 2.5 + Page Example
-import '../stories/StatsWidget'; // 2.6 StatsWidget
+import '../stories/StatsWidget'; // 2.7 StatsWidget
 import '../stories/Grid';
 import '../stories/Card';
 
