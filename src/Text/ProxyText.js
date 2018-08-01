@@ -3,7 +3,7 @@ import {bool} from 'prop-types';
 import {createHOC} from 'wix-ui-core/dist/src/createHOC';
 import Text from './Text';
 import {withEllipsedTooltip} from 'wix-ui-core/hocs';
-import ellipsedStyle from './EllipsedTooltip.st.css';
+import ellipsedStyle from '../common/EllipsedTooltip/EllipsedTooltip.st.css';
 
 const EllipsedText = withEllipsedTooltip({showTooltip: true})(Text);
 
