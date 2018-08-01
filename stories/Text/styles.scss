@@ -26,12 +26,18 @@
   }
 }
 
-.boundedLeft {
-  width: 400px;
+.comp {
+  width: 650px;
+  display: inline-block;
+  font-size: 18px;
+}
+
+.fonts {
+  width: 300px;
   display: inline-block;
 }
 
-.boundedRight {
+.legacy {
   width: 90px;
   display: inline-block;
 }
