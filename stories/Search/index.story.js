@@ -59,7 +59,6 @@ export default {
 
   examples: (
     <div>
-      <h1>Examples</h1>
       <CodeExample title="Expandable" code={ExpandableExampleRaw}>
         <ExpandableSearchExample/>
       </CodeExample>

@@ -2,10 +2,38 @@
 
 .input {
   min-width: 30px;
+  flex-grow:1;
+}
+
+// Override <Input>'s default focus style
+.input div {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.input div:hover {
+  background-color: transparent !important;
 }
 
 .emptyInput {
   width: 100%;
+}
+
+.readOnly, .readOnly input {
+  cursor: pointer;
+}
+
+.readOnly {
+  position: relative;
+  padding-right: 55px;
+}
+
+.inputSuffix {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 34px;
+  box-sizing: border-box;
 }
 
 .hiddenDiv {
@@ -27,23 +55,17 @@
   color: $D30;
   font-size: 16px;
   overflow-y: hidden;
+  box-sizing: border-box;
 }
 
 .hasMaxHeight {
   overflow-y: auto;
 }
 
-// Override <Input>'s default focus style
-.tagsContainer div {
-  border-color: transparent !important;
-}
-
-.tagsContainer div:hover {
-  background-color: transparent !important;
-}
-
 .error {
   border-color: $paletteR1;
+  position: relative;
+  padding-right: 55px;
 }
 
 .disabled {

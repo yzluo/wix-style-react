@@ -8,6 +8,7 @@ import WixComponent from '../../BaseComponents/WixComponent';
 class ButtonHeader extends WixComponent {
 
   static propTypes = {
+    withNewIcons: bool,
     title: node.isRequired,
     buttonTitle: string.isRequired,
     buttonOnClick: func.isRequired,
@@ -24,6 +25,7 @@ class ButtonHeader extends WixComponent {
   };
 
   static defaultProps = {
+    withNewIcons: false,
     subtitle: null,
     withoutDivider: false,
     buttonPrefix: null,
@@ -66,6 +68,7 @@ class ButtonHeader extends WixComponent {
     const buttonElement = (
       <div className={buttonClass}>
         <Button
+          withNewIcons={this.props.withNewIcons}
           dataHook="button"
           height={height}
           suffixIcon={buttonSuffix}

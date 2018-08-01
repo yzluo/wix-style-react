@@ -1,7 +1,7 @@
 {
   "name": "wix-style-react",
   "description": "wix-style-react",
-  "version": "4.9.0",
+  "version": "4.13.0",
   "main": "./dist/src/index.js",
   "files": [
     "dist",
@@ -10,6 +10,7 @@
     ".babelrc",
     "testkit",
     "new-icons",
+    "*.scss",
     "*.js"
   ],
   "bin": {
@@ -24,7 +25,8 @@
     "pretest:e2e": "./scripts/ensure-dist.sh",
     "test:e2e": "concurrently 'npm run test:e2e-only' 'node scripts/e2e-server.js' --names 'protractor,e2e-server' --success first --kill-others",
     "test:e2e-only": "NODE_ENV=production yoshi test --protractor",
-    "build": "npm run lint && svg2react-icon && npm run proxy-wix-ui-icons && yoshi build && build-storybook && npm run export-components",
+    "copy-public-styles": "cp src/mixins.scss mixins.scss && cp src/colors.scss colors.scss",
+    "build": "npm run lint && svg2react-icon && npm run proxy-wix-ui-icons && npm run copy-public-styles && yoshi build && build-storybook && npm run export-components",
     "pr-postbuild": "npx teamcity-surge-autorelease@^1.0.0 --dist=storybook-static",
     "storybook": "start-storybook -p 6006",
     "postpublish": "npx teamcity-surge-autorelease@^1.0.0 --dist=storybook-static",
@@ -60,8 +62,8 @@
   },
   "homepage": "https://github.com/wix/wix-style-react#readme",
   "devDependencies": {
-    "@storybook/addon-options": "4.0.0-alpha.9",
-    "@storybook/react": "4.0.0-alpha.9",
+    "@storybook/addon-options": "^4.0.0-alpha.9",
+    "@storybook/react": "^4.0.0-alpha.9",
     "@types/react": "^15.5.4",
     "autosuggest-highlight": "^3.1.0",
     "babel-polyfill": "^6.23.0",
@@ -131,8 +133,8 @@
     "react-transition-group": "^2.2.1",
     "slate": "^0.20.3",
     "wix-animations": "^1.0.141",
-    "wix-ui-backoffice": "1.0.274",
-    "wix-ui-icons-common": "2.0.3",
+    "wix-ui-backoffice": "1.0.280",
+    "wix-ui-icons-common": "2.0.5",
     "wix-ui-test-utils": "^1.0.0"
   },
   "jest": {

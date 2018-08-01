@@ -368,6 +368,11 @@ const runInputWithOptionsTest = driverFactory => {
       expect(inputDriver.getRequired()).toBeTruthy();
     });
 
+    it('should support a divider option', () => {
+      const {dropdownLayoutDriver} = createDriver(<InputWithOptions options={options}/>);
+      expect(dropdownLayoutDriver.isOptionADivider(4)).toBeTruthy();
+    });
+
     describe('onKeyDown', () => {
       it('should bahave normal when external onKeyDown passed', () => {
         const {driver, dropdownLayoutDriver} = createDriver(

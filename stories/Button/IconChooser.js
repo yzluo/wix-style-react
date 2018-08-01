@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import * as Icons from 'wix-style-react/Icons';
+import * as Icons from 'wix-style-react/new-icons';
 import Dropdown from 'wix-style-react/Dropdown';
 
 class IconChooser extends Component {
   render() {
     const options = Object.keys(Icons).map(name => {
-      return {id: name, value: <div style={{paddingLeft: '10px'}}>{React.createElement(Icons[name])} - {name}</div>};
+      return {id: name, value: <div style={{display: 'flex', paddingLeft: '10px'}}>{React.createElement(Icons[name])} - {name}</div>};
     });
     return (
       <Dropdown

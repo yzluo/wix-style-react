@@ -34,11 +34,11 @@ class EditableSelector extends WixComponent {
   };
 
   addNewRow = () => {
-    this.setState({addingNewRow: true});
+    this.setState({addingNewRow: true, editingRow: false});
   };
 
   editItem = index => {
-    this.setState({editingRow: index});
+    this.setState({editingRow: index, addingNewRow: false});
   };
 
   deleteItem = index => {
@@ -108,9 +108,16 @@ class EditableSelector extends WixComponent {
                 <ButtonWithOptions.Button onClick={() => this.deleteItem(index)} dataHook="delete-item" type="button" height="small" theme="icon-greybackground">
                   <Delete/>
                 </ButtonWithOptions.Button>
-                <ButtonWithOptions.Button onClick={() => this.editItem(index)} dataHook="edit-item" height="small" theme="fullblue">
-                  {editButtonText}
-                </ButtonWithOptions.Button>
+                <div className={styles.editRow}>
+                  <ButtonWithOptions.Button
+                    onClick={() => this.editItem(index)}
+                    dataHook="edit-item"
+                    height="small"
+                    theme="fullblue"
+                    >
+                    {editButtonText}
+                  </ButtonWithOptions.Button>
+                </div>
               </div>
             </div>
           )}

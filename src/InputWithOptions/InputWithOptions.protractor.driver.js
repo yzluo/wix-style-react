@@ -10,7 +10,9 @@ const driverFactory = component => {
     click: () => component.click(),
     getInput: () => input,
     isFocused: () => isFocused(input),
-    element: () => component
+    element: () => component,
+    /** Check wether the options dropdown is open */
+    isOptionsShown: () => dropdownLayoutDriver.getDropdown().isDisplayed()
   };
 };
 

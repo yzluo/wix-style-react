@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import WixComponent from '../BaseComponents/WixComponent';
 import Input from '../Input';
 import omit from 'omit';
-import DropdownLayout from '../DropdownLayout/DropdownLayout';
+import DropdownLayout, {DIVIDER_OPTION_VALUE} from '../DropdownLayout/DropdownLayout';
 import Highlighter from '../Highlighter/Highlighter';
 import {chainEventHandlers} from '../utils/ChainEventHandlers';
 
@@ -90,7 +90,7 @@ class InputWithOptions extends WixComponent {
       options.map(option => {
         return {
           ...option,
-          value: (
+          value: option.value === DIVIDER_OPTION_VALUE ? option.value : (
             <Highlighter match={this.state.inputValue} dataHook={`highlighter-${option.id}`}>
               {option.value}
             </Highlighter>
@@ -284,6 +284,7 @@ InputWithOptions.propTypes = {
   inputElement: PropTypes.element,
   closeOnSelect: PropTypes.bool,
   onManuallyInput: PropTypes.func,
+  /** Function that receives an option, and should return the value to be displayed. By default returns `option.value`. */
   valueParser: PropTypes.func,
   dropdownWidth: PropTypes.string,
   dropdownOffsetLeft: PropTypes.string,

@@ -15,7 +15,7 @@ import Checkbox from 'wix-style-react/Checkbox';
 import Card from 'wix-style-react/Card';
 import Page from 'wix-style-react/Page';
 import Button from 'wix-style-react/Button';
-import {PenOutline, Duplicate2, Export} from 'wix-style-react/Icons';
+import {Edit, Duplicate, Upload} from 'wix-style-react/new-icons';
 import Highlighter from '../../src/Highlighter/Highlighter';
 
 const createDataSet = setIndex => [
@@ -108,7 +108,8 @@ export class TablePageExample extends React.Component {
         <ItemGroup position="end">
           <Item layout="button">
             <Button
-              theme="whiteblueprimary" prefixIcon={<Export/>}
+              withNewIcons
+              theme="whiteblueprimary" prefixIcon={<Upload/>}
               onClick={() => window.alert(`Exporting selectedIds=${props.getSelectedIds()}`)}
               >
             Export
@@ -116,7 +117,8 @@ export class TablePageExample extends React.Component {
           </Item>
           <Item layout="button">
             <Button
-              theme="whiteblueprimary" prefixIcon={<Duplicate2/>}
+              withNewIcons
+              theme="whiteblueprimary" prefixIcon={<Duplicate/>}
               onClick={() => window.alert(`Duplicating selectedIds=${props.getSelectedIds()}`)}
               >
             Duplicate
@@ -124,7 +126,8 @@ export class TablePageExample extends React.Component {
           </Item>
           <Item layout="button">
             <Button
-              theme="whiteblueprimary" prefixIcon={<PenOutline/>}
+              withNewIcons
+              theme="whiteblueprimary" prefixIcon={<Edit/>}
               onClick={() => window.alert(`Editing selectedIds=${props.getSelectedIds()}`)}
               >
             Edit

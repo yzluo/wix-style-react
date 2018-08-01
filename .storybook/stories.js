@@ -11,18 +11,22 @@ import '../stories/Composite'; // TODO: Move to introduction
 import '../stories/Text'; // 1.2 Text
 // import '../stories/Label/index.story.js'; // 1.2 + Text
 import '../stories/Label'; // 1.2 + Label
-import '../stories/Heading'; // 1.3 Heading
-import '../stories/Icons'; // 1.4 Icons
+import '../stories/Heading.story'; // 1.3 Heading
+import '../stories/Icons'; // 1.4 Icons - deprecated
+import '../stories/NewIcons'; // 1.4 Icons
+
 import '../stories/Loader.story.js'; // 1.5 Loader
 import '../stories/LinearProgressBar.story.js'; // 1.6 LinearProgressBar
 import '../stories/CircularProgressBar.story.js'; // 1.7 LinearProgressBar
+import '../stories/ScrollBar'; // 1.8 ScrollBar
 
 // 2. Layout
 import '../stories/Page/index.story.js'; // 2.5 Page
 import '../stories/PageHeader/index.story.js'; // 2.5 + PageHeader
 import '../stories/Page/FullPageExample.js'; // 2.5 + Page Example
 import '../stories/StatsWidget'; // 2.6 StatsWidget
-import '../stories/GridWithCardLayout'; // Grid & Card
+import '../stories/Grid';
+import '../stories/Card';
 
 
 // 3. Inputs
@@ -45,7 +49,7 @@ import '../stories/GoogleAddressInput'; // 3.11 GoogleAddressInput
 import '../stories/AddItem/addItem.story.js'; // 3.12 AddItem
 
 // 4. Selection
-import '../stories/Dropdown'; // 4.1 Dropdown
+import '../stories/Dropdown/Dropdown.story.js'; // 4.1 Dropdown
 import '../stories/AutoComplete'; // 4.1 + AutoComplete
 import '../stories/AutoCompleteComposite'; // 4.1 + AutoCompleteComposite
 import '../stories/InputWithOptions'; // 4.1 + InputWithOptions
@@ -108,8 +112,9 @@ import '../stories/ColorPicker.story.js'; // 11.5 Color Picker
 // 12. Other
 import '../stories/Badge'; // 12.1 Badge
 import '../stories/CounterBadge'; //12.3 CounterBadge
-import '../stories/Highlighter.story.js'; // 12.4 Highlighter
+import '../stories/FullTextView.story.js'; //12.4 FullTextView
 import '../stories/Tag.story.js'; // 12.5 Tag
+import '../stories/Highlighter.story.js'; // Highlighter
 import '../stories/FormField.story.js'; // FormField
 
 // 13. Work in progress
@@ -127,5 +132,5 @@ import '../stories/TPA/Label';
 import '../stories/LanguagePicker/index.story.js';
 import '../stories/SideBar';
 
-// Tests 
+// Tests
 import '../stories/Page/PageTestStories.js'; // Tests/2.5 + Page/

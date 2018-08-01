@@ -14,7 +14,7 @@ import Card from 'wix-style-react/Card';
 import Search from 'wix-style-react/Search';
 import Dropdown from 'wix-style-react/Dropdown';
 import Button from 'wix-style-react/Button';
-import {PenOutline, Duplicate2, Export} from 'wix-style-react/Icons';
+import {Edit, Duplicate, Upload} from 'wix-style-react/new-icons';
 
 const baseData = [
   {name: 'Apple Towels', SKU: '111222', price: '$2.00', inventory: 'In stock'},
@@ -109,7 +109,8 @@ const BulkActionsToolbar = props => (
     <ItemGroup position="end">
       <Item layout="button">
         <Button
-          theme="whiteblueprimary" prefixIcon={<Export/>}
+          withNewIcons
+          theme="whiteblueprimary" prefixIcon={<Upload/>}
           onClick={() => window.alert(`Exporting selectedIds=${props.getSelectedIds()}`)}
           >
           Export
@@ -117,7 +118,8 @@ const BulkActionsToolbar = props => (
       </Item>
       <Item layout="button">
         <Button
-          theme="whiteblueprimary" prefixIcon={<Duplicate2/>}
+          withNewIcons
+          theme="whiteblueprimary" prefixIcon={<Duplicate/>}
           onClick={() => window.alert(`Duplicating selectedIds=${props.getSelectedIds()}`)}
           >
           Duplicate
@@ -125,7 +127,8 @@ const BulkActionsToolbar = props => (
       </Item>
       <Item layout="button">
         <Button
-          theme="whiteblueprimary" prefixIcon={<PenOutline/>}
+          withNewIcons
+          theme="whiteblueprimary" prefixIcon={<Edit/>}
           onClick={() => window.alert(`Editing selectedIds=${props.getSelectedIds()}`)}
           >
           Edit

@@ -1,3 +1,5 @@
+@import '../../src/common.scss';
+
 .inverted {
   background-color: #c8c8c8;
   code {
@@ -20,6 +22,6 @@
 
   code {
     background-color: rgba(0,0,0,0.05);
-    color: #162d3d;
+    color: $D10;
   }
 }

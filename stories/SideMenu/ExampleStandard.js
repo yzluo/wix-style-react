@@ -1,16 +1,11 @@
 import React from 'react';
 
-import {
-  SideMenu,
-  Button,
-  Tooltip
-} from 'wix-style-react';
-
-import {
-  PenOutline,
-  Chat as ChatIcon,
-  Preview
-} from 'wix-style-react/Icons';
+import SideMenu from 'wix-style-react/SideMenu';
+import Button from 'wix-style-react/Button';
+import Tooltip from 'wix-style-react/Tooltip';
+import Edit from 'wix-style-react/new-icons/Edit';
+import ChatIcon from 'wix-style-react/new-icons/Chat';
+import ExternalLink from 'wix-style-react/new-icons/ExternalLink';
 
 export default () =>
   <div style={{width: 220, height: 700}}>
@@ -24,9 +19,9 @@ export default () =>
             dataHook="site-name-tooltip"
             maxWidth="250"
             >
-            <div>
-              <span style={{marginRight: '5px', fontSize: '20px'}}>wix-style-react</span>
-              <Preview size={12}/>
+            <div style={{display: 'flex'}}>
+              <span style={{fontSize: '20px'}}>wix-style-react</span>
+              <ExternalLink/>
             </div>
           </Tooltip>
           <div style={{marginTop: '5px', fontSize: '13px'}}>Role: Owner</div>
@@ -90,7 +85,7 @@ export default () =>
         <SideMenu.FooterLink
           href="https://support.wix.com/"
           target="_blank"
-          icon={<PenOutline size="1em"/>}
+          icon={<Edit/>}
           >
           Edit
         </SideMenu.FooterLink>
@@ -98,7 +93,7 @@ export default () =>
         <SideMenu.FooterTinyLink
           href="https://support.wix.com/en/article/wix-seo-wiz-suggestions-and-feedback"
           target="_blank"
-          icon={<div style={{marginTop: 2}}><ChatIcon size="1em"/></div>}
+          icon={<div style={{marginTop: 2}}><ChatIcon/></div>}
           tooltip="Hey, come talk to me!"
           onClick={() => console.log('clicked on tiny link yay!')}
           />

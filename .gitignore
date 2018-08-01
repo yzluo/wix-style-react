@@ -29,3 +29,8 @@ package-lock.json
 /new-icons/
 /src/new-icons/system
 /src/new-icons/*.js
+
+mixins.scss
+colors.scss
+!src/mixins.scss
+!src/colors.scss

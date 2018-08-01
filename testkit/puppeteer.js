@@ -6,3 +6,6 @@ export const inputTestkitFactory = puppeteerTestkitFactoryCreator(inputDriverFac
 
 import buttonDriverFactory from '../src/Backoffice/Button/Button.puppeteer.driver';
 export const buttonTestkitFactory = puppeteerTestkitFactoryCreator(buttonDriverFactory);
+
+import formFieldDriverFactory from '../src/FormField/FormField.puppeteer.driver';
+export const formFieldTestkitFactory = puppeteerTestkitFactoryCreator(formFieldDriverFactory);

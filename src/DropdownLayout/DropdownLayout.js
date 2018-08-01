@@ -13,6 +13,7 @@ const modulu = (n, m) => {
 };
 
 const NOT_HOVERED_INDEX = -1;
+export const DIVIDER_OPTION_VALUE = '-';
 
 class DropdownLayout extends WixComponent {
 
@@ -52,8 +53,18 @@ class DropdownLayout extends WixComponent {
   }
 
   isLegalOption(option) {
-    return typeof option === 'object' && typeof option.id !== 'undefined' && trim(option.id).length > 0 &&
-        (typeof option.value !== 'undefined') && (React.isValidElement(option.value) || (typeof option.value === 'string' && trim(option.value).length > 0));
+    if (typeof option !== 'object' || typeof option.value === 'undefined') {
+      return false;
+    }
+
+    if (option.value === DIVIDER_OPTION_VALUE) {
+      return true;
+    }
+
+    return typeof option.id !== 'undefined' && trim(option.id).length > 0 && (
+      React.isValidElement(option.value) ||
+      (typeof option.value === 'string' && trim(option.value).length > 0)
+    );
   }
 
   onClickOutside(event) {
@@ -207,8 +218,8 @@ class DropdownLayout extends WixComponent {
 
   renderOption({option, idx}) {
     const {value, id, disabled, title, overrideStyle, linkTo} = option;
-    if (value === '-') {
-      return this.renderDivider(idx, `dropdown-item-${id}`);
+    if (value === DIVIDER_OPTION_VALUE) {
+      return this.renderDivider(idx, `dropdown-item-${id || idx}`);
     }
 
     const content = this.renderItem({
@@ -304,20 +315,30 @@ DropdownLayout.propTypes = {
   dropDirectionUp: PropTypes.bool,
   focusOnSelectedOption: PropTypes.bool,
   onClose: PropTypes.func,
+  /** Callback function called whenever the user selects a different option in the list */
   onSelect: PropTypes.func,
   visible: PropTypes.bool,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number
-    ]).isRequired,
-    value: PropTypes.oneOfType([
-      PropTypes.node,
-      PropTypes.string
-    ]).isRequired,
-    disabled: PropTypes.bool,
-    overrideStyle: PropTypes.bool
-  })),
+  /** Array of objects. Objects must have an Id and can can include value and node. If value is '-', a divider will be rendered instead  (dividers do not require and id). */
+  options: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.shape({
+      id: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+      ]).isRequired,
+      value: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.string
+      ]).isRequired,
+      disabled: PropTypes.bool,
+      overrideStyle: PropTypes.bool
+    }),
+
+    // A divider option without an id
+    PropTypes.shape({
+      value: PropTypes.oneOf([DIVIDER_OPTION_VALUE])
+    })
+  ])),
+  /** The id of the selected option in the list  */
   selectedId: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
@@ -325,7 +346,9 @@ DropdownLayout.propTypes = {
   tabIndex: PropTypes.number,
   theme: PropTypes.string,
   onClickOutside: PropTypes.func,
+  /** A fixed header to the list */
   fixedHeader: PropTypes.node,
+  /** A fixed footer to the list */
   fixedFooter: PropTypes.node,
   maxHeightPixels: PropTypes.number,
   minWidthPixels: PropTypes.number,

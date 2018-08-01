@@ -29,7 +29,7 @@ const messageBoxFunctionalLayoutDriverFactory = ({element, wrapper, component}) 
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
       ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);
     },
-    toHaveBodyPadding: () => body().classList.contains(`${styles.withPadding}`)
+    toHaveBodyPadding: () => !body().classList.contains(`${styles.noPadding}`)
   };
 };
 

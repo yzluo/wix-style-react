@@ -5,8 +5,7 @@ import classNames from 'classnames';
 import InputErrorSuffix from './InputErrorSuffix';
 import Tooltip from '../Tooltip';
 
-import Error from '../Icons/dist/components/Error';
-
+import FormFieldErrorFilled from '../new-icons/system/FormFieldErrorFilled';
 
 import styles from './Input.scss';
 
@@ -33,7 +32,7 @@ const AmaterialErrorSuffix = ({focused, error, errorMessage, placement, onShow})
     textAlign="left"
     onShow={onShow}
     >
-    <div className={classNames(styles.errorIcon, styles.suffix)}><Error size="1.5em"/></div>
+    <div className={classNames(styles.errorIcon, styles.suffix)}><FormFieldErrorFilled size="1.5em"/></div>
   </Tooltip>;
 
 AmaterialErrorSuffix.propTypes = {

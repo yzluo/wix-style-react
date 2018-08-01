@@ -8,6 +8,7 @@ import Text from '../Deprecated/Text';
 import Tooltip from '../Tooltip';
 import FormFieldError from '../new-icons/system/FormFieldError';
 import FormFieldErrorSmall from '../new-icons/system/FormFieldErrorSmall';
+import ToggleOn from '../new-icons/system/ToggleOn';
 import CircleLoaderCheck from '../new-icons/system/CircleLoaderCheck';
 import CircleLoaderCheckSmall from '../new-icons/system/CircleLoaderCheckSmall';
 
@@ -29,7 +30,12 @@ const arcsAngles = {
     dark: 180
   }
 };
-const strokeWidth = 4;
+const strokeWidths = {
+  tiny: 3,
+  small: 4,
+  medium: 4,
+  large: 4
+};
 const sizesInPx = {
   tiny: 18,
   small: 30,
@@ -40,14 +46,14 @@ const sizesInPx = {
 const FULL_CIRCLE_ANGLE = 359;
 
 const sizeToSuccessIcon = {
-  tiny: <CircleLoaderCheckSmall/>,
+  tiny: <ToggleOn/>,
   small: <CircleLoaderCheckSmall/>,
   medium: <CircleLoaderCheck/>,
   large: <CircleLoaderCheck/>
 };
 
 const sizeToErrorIcon = {
-  tiny: <FormFieldErrorSmall/>,
+  tiny: <FormFieldError/>,
   small: <FormFieldErrorSmall/>,
   medium: <FormFieldError/>,
   large: <FormFieldError/>
@@ -89,6 +95,8 @@ export default class Loader extends WixComponent {
     const shouldShowText = size !== 'tiny';
     const successIcon = sizeToSuccessIcon[size];
     const errorIcon = sizeToErrorIcon[size];
+    const strokeWidth = strokeWidths[size];
+
     const loader = (
       <div
         className={css.arcsContainer}

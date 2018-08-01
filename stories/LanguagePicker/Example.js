@@ -1,5 +1,5 @@
 import React from 'react';
-import {LanguagePicker} from 'wix-style-react';
+import LanguagePicker from 'wix-style-react/LanguagePicker';
 
 const languageLocaleMap = {
   en: 'English',

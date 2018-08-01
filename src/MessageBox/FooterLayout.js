@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Backoffice/Button';
 import * as styles from './FooterLayout.scss';
-import classNames from 'classnames';
 
 const FooterLayout = ({
   bottomChildren,
@@ -14,14 +13,10 @@ const FooterLayout = ({
   confirmText,
   buttonsHeight,
   enableOk,
-  enableCancel,
-  withTopPadding
+  enableCancel
 }) =>
   <div>
-    <div
-      className={classNames(styles.footer, {[styles.withTopPadding]: withTopPadding})}
-      data-hook="message-box-footer"
-      >
+    <div className={styles.footer} data-hook="message-box-footer">
       {children}
 
       <div className={styles.footerbuttons}>
@@ -66,16 +61,14 @@ FooterLayout.propTypes = {
   theme: PropTypes.string,
   buttonsHeight: PropTypes.string,
   children: PropTypes.any,
-  bottomChildren: PropTypes.node,
-  withTopPadding: PropTypes.bool
+  bottomChildren: PropTypes.node
 };
 
 FooterLayout.defaultProps = {
   theme: 'blue',
   buttonsHeight: 'small',
   enableOk: true,
-  enableCancel: true,
-  withTopPadding: false
+  enableCancel: true
 };
 
 export default FooterLayout;

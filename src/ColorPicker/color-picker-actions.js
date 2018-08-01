@@ -12,7 +12,7 @@ const ColorPickerActions = ({onCancel, onConfirm}) =>
     <Button height="small" theme="icon-standardsecondary" onClick={onCancel}>
       <X/>
     </Button>
-    <Button height="small" theme="icon-standard" onClick={onConfirm}>
+    <Button dataHook="color-picker-confirm-button" height="small" theme="icon-standard" onClick={onConfirm}>
       <Check/>
     </Button>
   </div>;

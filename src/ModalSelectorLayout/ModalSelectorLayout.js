@@ -335,10 +335,7 @@ export default class ModalSelectorLayout extends WixComponent {
     items.filter(({disabled}) => !disabled);
 
   _renderFooter = () => {
-    const {
-      isLoaded,
-      selectedItems
-    } = this.state;
+    const {selectedItems} = this.state;
 
     const {
       onCancel,
@@ -352,7 +349,6 @@ export default class ModalSelectorLayout extends WixComponent {
 
     return (
       <FooterLayout
-        withTopPadding={isLoaded}
         onCancel={onCancel}
         onOk={() => onOk(multiple ? enabledItems : enabledItems[0])}
         cancelText={cancelButtonText}

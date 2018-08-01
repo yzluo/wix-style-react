@@ -91,17 +91,18 @@ export default class ColorPicker extends WixComponent {
   componentWillReceiveProps(props) {
     const color = safeColor(props.value);
     if (color && !equal(color, this.state.current)) {
-      this.setState({current: color, previous: color});
+      this.setState({current: color});
     }
   }
 
   change(color) {
-    this.setState({current: color, previous: this.state.current}, () => {
+    this.setState({current: color}, () => {
       this.props.onChange(color);
     });
   }
 
   confirm() {
+    this.setState({previous: this.state.current});
     this.props.onConfirm(this.state.current);
   }
 

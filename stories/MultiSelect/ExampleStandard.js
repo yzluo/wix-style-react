@@ -14,6 +14,7 @@ export const options = [
   {value: 'California5', id: 'California5'},
   {value: 'California6', id: 'California6'},
   {value: 'California7', id: 'California7'},
+  {id: 'Divider', value: '-'},
   {value: 'Two words', id: 'Two words'}
 ];
 

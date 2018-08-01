@@ -10,13 +10,16 @@ const editableSelectorDriverFactory = ({element, wrapper, component}) => {
   const editButtonAt = index => element.querySelectorAll('[data-hook="edit-item"]')[index];
   const deleteButtonAt = index => element.querySelectorAll('[data-hook="delete-item"]').item(index);
   const editableRowDriver = () => editableRowDriverFactory({element: element.querySelector('[data-hook="edit-row-wrapper"]'), wrapper: element});
+  const isEditRowActive = () => !!element.querySelectorAll('[data-hook="edit-row-wrapper"]').length;
 
   return {
     items: () => {
       return [...element.querySelectorAll('[data-hook="editable-selector-item"]')].map(selector => selectorDriverFactory({element: selector}));
     },
     exists: () => !!element,
-    isEditing: () => !!element.querySelectorAll('[data-hook="edit-row-wrapper"]').length,
+    isEditing: () => isEditRowActive(),
+    isEditingRow: () => isEditRowActive() && editableRowDriver().getText(),
+    isAddingRow: () => isEditRowActive() && !editableRowDriver().getText(),
     newRowButton,
     deleteButtonAt,
     editButtonAt,
@@ -31,6 +34,8 @@ const editableSelectorDriverFactory = ({element, wrapper, component}) => {
     deleteRow: index => {
       ReactTestUtils.Simulate.click(deleteButtonAt(index));
     },
+    startAdding: () => ReactTestUtils.Simulate.click(newRowButton()),
+    startEditing: index => ReactTestUtils.Simulate.click(editButtonAt(index)),
     clickApprove: () => editableRowDriver().clickApprove(),
     clickCancel: () => editableRowDriver().clickCancel(),
     title: () => element.querySelector('[data-hook="editable-selector-title"] > span').textContent,

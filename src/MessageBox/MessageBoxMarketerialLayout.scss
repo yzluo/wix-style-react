@@ -1,4 +1,5 @@
 @import '../common';
+
 .root {
   box-shadow: $Shadow40;
   width: 600px;
@@ -57,7 +58,7 @@ $headerImageHeight: 185px;
   font-size: 36px;
   line-height: 1.33;
   text-align: center;
-  color: #162d3d;
+  color: $D10;
 }
 
 .content {

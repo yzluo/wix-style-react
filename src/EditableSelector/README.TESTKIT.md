@@ -11,7 +11,9 @@
 | newRowButton | - | element | get the new row button |
 | deleteButtonAt | int | element | get the delete button for item at index |
 | getEditButtonAt | int | element | get the edit button for item at index  |
-| isEditing | - | bool | true if edit row is active |
+| isEditing | - | bool | true if row is in edit or add mode |
+| isEditingRow | - | bool | true if row is in edit mode |
+| isAddingRow | - | bool | true if row is in add mode |
 | clickApprove | - | - | trigger a click on edit row approve button |
 | clickCancel | - | - | trigger a click on edit row cancel button |
 | toggleItem | int | - | toggle the selected state of item at index |

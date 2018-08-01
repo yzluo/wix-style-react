@@ -38,7 +38,7 @@ class EditableRow extends WixComponent {
   render() {
     return (
       <div data-hook="edit-row-wrapper" className={styles.editableRowContainer}>
-        <div className={styles.editableRowInput}>
+        <div className={styles.editableRowInputWrap}>
           <Input
             ref={input => this.input = input}
             className={styles.editableRowInput}

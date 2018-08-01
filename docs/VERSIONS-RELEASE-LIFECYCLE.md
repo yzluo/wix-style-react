@@ -157,4 +157,4 @@ We deploy our storybook by using [teamcity-surge-autorelease](https://github.com
 **Forgetting to pass --ver flag will `override` our master storybook!**
 
 ## Eyes 
-(TBD)
+In order to add support for eyes branches which will allow us to run eyes with respect to the current branch, [read this](https://github.com/wix-incubator/applitools-demo/blob/master/README.md#applitools-demo).

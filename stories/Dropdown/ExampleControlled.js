@@ -30,7 +30,7 @@ class ControlledDropdown extends React.Component {
   render() {
     return (
       <Dropdown
-        dataHook="story-dropdown"
+        dataHook="story-dropdown-controlled"
         options={options}
         onSelect={this.onSelect}
         placeholder={'Choose an option'}

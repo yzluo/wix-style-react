@@ -4,20 +4,10 @@
 
 ## Properties
 
-| propName | propType | defaultValue | isRequired | description |
-|----------|----------|--------------|------------|-------------|
-| options | array of option | [] | - | Array of objects. Objects must have an Id and can can include *value* and *node*. If value is '-', a divider will be rendered instead. |
-| onSelect | func | - | - | Callback function called whenever the user selects a different option in the list |
-| selectedId | string/number | - | - | The id of the selected option in the list |
-| placeholder | string | '' | - | Shown when no option is selected |
-| disabled | bool | false | - |  when set to true this component is disabled |
-| valueParser | func | option => option.value | - | function that extracts the value from an option |
-| fixedHeader | node | - | - | A fixed header to the list |
-| fixedFooter | node | - | - | A fixed footer to the list |
-| ***All of the InputWithOptions Props are also available for this component*** | | | | |
+> See API tab.
+> API tab may not be complete. Props should include all props of `InputWithOptions`, which includes all props of `Input` and `DropdownLayout`.
 
-
-## Option
+## Option (an item in the `options` prop)
 
 | propName | propType | defaultValue | isRequired | description |
 |----------|----------|--------------|------------|-------------|

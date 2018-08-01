@@ -34,7 +34,7 @@ describe('ColorPicker', () => {
       expect(color(driver.historyPreviousColor()).hex()).toBe(value);
     });
 
-    it('should update previous color', () => {
+    it('should not update previous color after current color change but not confirm', () => {
       const onChange = jest.fn();
       const onCancel = jest.fn();
       const onConfirm = jest.fn();
@@ -52,8 +52,23 @@ describe('ColorPicker', () => {
       const value = '#00FF00';
       createComponent({value, onChange, onCancel, onConfirm, showHistory: true});
       driver.selectBlackColor();
+      expect(color(driver.historyCurrentColor()).hex()).toBe('#000000');
+      expect(color(driver.historyPreviousColor()).hex()).toBe(value);
       driver.clickOnPreviousColor();
       expect(color(driver.historyCurrentColor()).hex()).toBe(value);
+    });
+
+    it('should update previous color after confirm click', () => {
+      const onChange = jest.fn();
+      const onCancel = jest.fn();
+      const onConfirm = jest.fn();
+      const value = '#00FF00';
+      createComponent({value, onChange, onCancel, onConfirm, showHistory: true});
+      driver.selectBlackColor();
+      expect(color(driver.historyCurrentColor()).hex()).toBe('#000000');
+      expect(color(driver.historyPreviousColor()).hex()).toBe(value);
+      driver.confirm();
+      expect(color(driver.historyCurrentColor()).hex()).toBe('#000000');
       expect(color(driver.historyPreviousColor()).hex()).toBe('#000000');
     });
   });

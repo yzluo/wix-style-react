@@ -59,7 +59,6 @@ export default {
   codeExample: false,
   examples: (
     <div>
-      <h1>Examples</h1>
       <div className={s.examples}>
         <div className={s.example}>
           <CodeExample title="Typical (With Toolbar)" code={TableExampleRaw}>

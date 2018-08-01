@@ -256,7 +256,7 @@ export default class DatePicker extends WixComponent {
       year: value,
       firstDayOfWeek: 1,
       locale: typeof locale === 'string' ? locale : '',
-      showOutsideDays: true,
+      fixedWeeks: true,
       modifiers: value ? {'keyboard-selected': value} : {},
       onKeyDown: this._handleKeyDown,
       onDayClick: this._saveNewValue,

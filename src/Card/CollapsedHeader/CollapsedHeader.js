@@ -6,8 +6,8 @@ import Switch from '../../../src/ToggleSwitch';
 import WixComponent from '../../../src/BaseComponents/WixComponent';
 import Collapse from 'react-collapse';
 import Button from '../../../src/Button';
-import ArrowDownThin from '../../../src/Icons/dist/components/ArrowDownThin';
-import ArrowUpThin from '../../../src/Icons/dist/components/ArrowUpThin';
+import ChevronDown from '../../new-icons/ChevronDown';
+import ChevronUp from '../../new-icons/ChevronUp';
 
 class CollapsedHeader extends WixComponent {
   static propTypes = {
@@ -78,6 +78,11 @@ class CollapsedHeader extends WixComponent {
       [styles.withDivider]: !withoutDivider
     });
 
+    const headerClassesWithoutDivider = classNames({
+      [styles.headerOnlyTitle]: !subtitle,
+      [styles.headerTitleSubtitle]: subtitle
+    });
+
     const switchElement = (
       <div className={styles.collapsedSwitch} onClick={this.stopPropagation}>
         <Switch
@@ -91,9 +96,10 @@ class CollapsedHeader extends WixComponent {
     const buttonElement = (
       <div className={styles.button} onClick={this.stopPropagation}>
         <Button
+          withNewIcons
           dataHook="button"
           height="medium"
-          prefixIcon={this.state.isCollapsed ? <ArrowDownThin/> : <ArrowUpThin/>}
+          prefixIcon={this.state.isCollapsed ? <ChevronDown/> : <ChevronUp/>}
           onClick={this.onToggleChange}
           theme="whiteblueprimary"
           type="button"
@@ -116,10 +122,11 @@ class CollapsedHeader extends WixComponent {
     ) : null;
 
     const toggleElement = this.props.toggleStyle === 'switch' ? switchElement : buttonElement;
+    const switchHeader = this.state.isCollapsed ? headerClassesWithoutDivider : headerClasses;
 
     return (
       <div>
-        <div className={headerClasses} onClick={this.onToggleChange}>
+        <div className={switchHeader} onClick={this.onToggleChange}>
           <div>
             {titleElement}
             {subtitleElement}

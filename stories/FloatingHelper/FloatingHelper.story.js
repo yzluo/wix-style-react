@@ -91,8 +91,6 @@ export default {
 
   examples: (
     <div>
-      <h1>Examples</h1>
-
       <p style={{fontSize: 20}}>The content property should receive a {`<FloatingHelper.Content>`} element.
         <br/>See story:
         <br/>

@@ -1,6 +1,8 @@
 import {configure, storiesOf} from '@storybook/react';
 import {setOptions} from '@storybook/addon-options';
 
+import {version} from '../package.json';
+
 function loadStories() {
   if (global.self === global.top) {
     require('./e2e-styles.scss');
@@ -14,7 +16,7 @@ configure(loadStories, module);
 
 setOptions({
   showDownPanel: false,
-  name: 'wix-style-react',
+  name: `wix-style-react v${version}`,
   url: 'https://github.com/wix/wix-style-react',
   sidebarAnimations: true
 });

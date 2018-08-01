@@ -3,14 +3,9 @@
 $iconSize: 22px;
 
 .leftIcon {
-  margin: 0 5px 0 5px;
+  display: flex;
+  margin: 0 5px 0 6px;
   color: $B10;
-
-  & > svg {
-    display: block;
-    width: $iconSize;
-    height: $iconSize;
-  }
 }
 
 .expandableStyles {

@@ -16,7 +16,8 @@ describe('DropdownLayout', () => {
     {id: 2, value: 'Option 3', disabled: true},
     {id: 3, value: 'Option 4'},
     {id: 'divider1', value: '-'},
-    {id: 'element1', value: <span style={{color: 'brown'}}>Option 4</span>}
+    {id: 'element1', value: <span style={{color: 'brown'}}>Option 4</span>},
+    {value: '-'}
   ];
 
   it('should have be invisible and drop down by default', () => {
@@ -82,11 +83,14 @@ describe('DropdownLayout', () => {
 
   it('should have options', () => {
     const driver = createDriver(<DropdownLayout visible options={options}/>);
-    expect(driver.optionsLength()).toBe(6);
+    expect(driver.optionsLength()).toBe(7);
     expect(driver.optionContentAt(0)).toBe('Option 1');
     expect(driver.isOptionADivider(4)).toBeTruthy();
     expect(driver.optionByHook('dropdown-item-divider1').isDivider()).toBeTruthy();
     expect(driver.optionContentAt(5)).toBe('Option 4');
+
+    expect(driver.isOptionADivider(6)).toBeTruthy();
+    expect(driver.optionByHook('dropdown-item-6').isDivider()).toBeTruthy();
   });
 
   it('should not hover any option by default', () => {
@@ -376,7 +380,7 @@ describe('DropdownLayout', () => {
       const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(<div><DropdownLayout dataHook={dataHook} options={options}/></div>));
       const dropdownLayoutTestkit = dropdownLayoutTestkitFactory({wrapper, dataHook});
       expect(dropdownLayoutTestkit.exists()).toBeTruthy();
-      expect(dropdownLayoutTestkit.optionsLength()).toBe(6);
+      expect(dropdownLayoutTestkit.optionsLength()).toBe(7);
     });
   });
 
@@ -386,7 +390,7 @@ describe('DropdownLayout', () => {
       const wrapper = mount(<DropdownLayout dataHook={dataHook} options={options}/>);
       const dropdownLayoutTestkit = enzymeDropdownLayoutTestkitFactory({wrapper, dataHook});
       expect(dropdownLayoutTestkit.exists()).toBeTruthy();
-      expect(dropdownLayoutTestkit.optionsLength()).toBe(6);
+      expect(dropdownLayoutTestkit.optionsLength()).toBe(7);
     });
   });
 });
