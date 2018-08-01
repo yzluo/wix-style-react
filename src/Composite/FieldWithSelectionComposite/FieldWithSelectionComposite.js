@@ -92,8 +92,18 @@ class FieldWithSelectionComposite extends WixComponent {
     const label = children.length === 3 ? (
       <div className={styles.label}>
         {children[0]}
-        { this.props.required || this.props.info || this.props.tooltip ?
-          <FieldLabelAttributes required={this.props.required} info={this.props.info} tooltip={this.props.tooltip}/> : null }</div>) : null;
+        {
+          this.props.required || this.props.info || this.props.tooltip ? (
+            <FieldLabelAttributes
+              required={this.props.required}
+              info={this.props.info}
+              tooltip={this.props.tooltip}
+              appendToParent={this.props.appendToParent}
+              />
+          ) : null
+        }
+      </div>
+    ) : null;
     const textInput = this._getTextInput();
     const originalSelectionInput = label ? children[2] : children[1];
     const inputsWrapperClassNames = {[styles.inputs]: true};
@@ -129,6 +139,10 @@ class FieldWithSelectionComposite extends WixComponent {
 
 FieldWithSelectionComposite.propTypes = {
   children: any
+};
+
+FieldWithSelectionComposite.defaultProps = {
+  appendToParent: false
 };
 
 FieldWithSelectionComposite.displayName = 'FieldWithSelectionComposite';

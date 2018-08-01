@@ -138,6 +138,9 @@ export const formFieldTestkitFactory = protractorTestkitFactoryCreator(formField
 import textDriverFactory from '../src/Text/Text.protractor.driver';
 export const textTestkitFactory = protractorTestkitFactoryCreator(textDriverFactory);
 
+import messageBoxFunctionalLayoutDriverFactory from '../src/MessageBox/MessageBoxFunctionalLayout.protractor.driver';
+export const messageBoxFunctionalLayoutTestkitFactory = protractorTestkitFactoryCreator(messageBoxFunctionalLayoutDriverFactory);
+
 // wix-ui-backoffice proxy
 
 export {

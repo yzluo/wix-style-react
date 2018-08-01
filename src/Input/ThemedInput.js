@@ -16,6 +16,8 @@ class ThemedInput extends Input {
       rtl,
       disabled,
       error,
+      errorMessage,
+      status,
       forceHover,
       forceFocus,
       roundInput,
@@ -26,10 +28,17 @@ class ThemedInput extends Input {
       withSelection
     } = this.props;
 
+    let hasError = status === Input.StatusError;
+
+    // Check for deprecated fields and use them if provided
+    if (error || errorMessage) {
+      hasError = true;
+    }
+
     const classes = {
       [styles.rtl]: !!rtl,
       [styles.disabled]: disabled,
-      [styles.hasError]: !!error,
+      [styles.hasError]: hasError,
       [styles.hasHover]: forceHover,
       [styles.hasFocus]: forceFocus || this.state.focus,
       [styles.roundInput]: roundInput,

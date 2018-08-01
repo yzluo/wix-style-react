@@ -13,6 +13,10 @@ import ExampleWithLimitedNumRows from './ExampleWithLimitedNumRows';
 import ExampleWithLimitedNumRowsRaw from '!raw-loader!./ExampleWithLimitedNumRows';
 import ExampleWithoutOptions from './ExampleWithoutOptions';
 import ExampleWithoutOptionsRaw from '!raw-loader!./ExampleWithoutOptions';
+import ExampleReadOnly from './ExampleReadOnly';
+import ExampleReadOnlyRaw from '!raw-loader!./ExampleReadOnly';
+import ExampleReadOnlyWithError from './ExampleReadOnlyWithError';
+import ExampleReadOnlyWithErrorRaw from '!raw-loader!./ExampleReadOnlyWithError';
 
 storiesOf('3. Inputs', module)
   .add('3.8 Tags', () => (
@@ -20,16 +24,35 @@ storiesOf('3. Inputs', module)
       <div>
         <Markdown source={Readme}/>
         <h1>Usage examples</h1>
+
         <CodeExample title="Standard" code={ExampleStandardRaw}>
-          <ExampleStandard/>
+          <div style={{maxWidth: 720}}>
+            <ExampleStandard/>
+          </div>
         </CodeExample>
 
         <CodeExample title="Limited num rows" code={ExampleWithLimitedNumRowsRaw}>
-          <ExampleWithLimitedNumRows/>
+          <div style={{maxWidth: 720}}>
+            <ExampleWithLimitedNumRows/>
+          </div>
+        </CodeExample>
+
+        <CodeExample title="Read Only with Arrow" code={ExampleReadOnlyRaw}>
+          <div style={{maxWidth: 720}}>
+            <ExampleReadOnly/>
+          </div>
+        </CodeExample>
+
+        <CodeExample title="Read Only with Error message" code={ExampleReadOnlyWithErrorRaw}>
+          <div style={{maxWidth: 720}}>
+            <ExampleReadOnlyWithError/>
+          </div>
         </CodeExample>
 
         <CodeExample title="Without options & with Error" code={ExampleWithoutOptionsRaw}>
-          <ExampleWithoutOptions/>
+          <div style={{maxWidth: 720}}>
+            <ExampleWithoutOptions/>
+          </div>
         </CodeExample>
       </div>
 

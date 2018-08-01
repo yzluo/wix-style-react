@@ -51,9 +51,18 @@ class RangeInputWithLabelComposite extends WixComponent {
     const label = children.length === 3 ? (
       <div className={styles.label}>
         {children[0]}
-        { this.props.required || this.props.info || this.props.tooltip ?
-          <FieldLabelAttributes required={this.props.required} info={this.props.info} tooltip={this.props.tooltip}/> : null }
-      </div>) : null;
+        {
+          this.props.required || this.props.info || this.props.tooltip ? (
+            <FieldLabelAttributes
+              required={this.props.required}
+              info={this.props.info}
+              tooltip={this.props.tooltip}
+              appendToParent={this.props.appendToParent}
+              />
+          ) : null
+        }
+      </div>
+    ) : null;
     const firstInput = children.length === 3 ? children[1] : children[0];
     const lastInput = children.length === 3 ? children[2] : children[1];
 
@@ -94,6 +103,10 @@ RangeInputWithLabelComposite.propTypes = {
   children: PropTypes.any,
   required: PropTypes.bool,
   info: PropTypes.string
+};
+
+RangeInputWithLabelComposite.defaultProps = {
+  appendToParent: false
 };
 
 RangeInputWithLabelComposite.displayName = 'RangeInputWithLabelComposite';

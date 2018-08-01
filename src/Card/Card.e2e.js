@@ -5,7 +5,7 @@ describe('Card and Grid', () => {
   const byDataHook = dataHook => $(`[data-hook="${dataHook}"]`);
 
   eyes.it('should not break design', async () => {
-    const dataHook = 'card-example-outside-a-grid';
+    const dataHook = 'card-example-basic';
     const element = byDataHook(dataHook);
     const url = createStoryUrl({kind: '2. Layout', story: 'Card'});
 

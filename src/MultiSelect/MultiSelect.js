@@ -14,7 +14,9 @@ class MultiSelect extends InputWithOptions {
     this.state = {pasteDetected: false};
 
     if (props.maxHeight) {
-      console.warn('MultiSelect: maxHeight is deprecated, please use maxNumRows instead. maxHeight will not be supported starting from 03/12/2017');
+      console.warn(
+        'MultiSelect: maxHeight is deprecated, please use maxNumRows instead. maxHeight will not be supported starting from 03/12/2017'
+      );
     }
   }
 
@@ -52,7 +54,13 @@ class MultiSelect extends InputWithOptions {
 
   inputAdditionalProps() {
     return {
-      inputElement: <InputWithTags maxHeight={this.props.maxHeight} maxNumRows={this.props.maxNumRows}/>,
+      inputElement: (
+        <InputWithTags
+          maxHeight={this.props.maxHeight}
+          maxNumRows={this.props.maxNumRows}
+          mode={this.props.mode}
+          />
+      ),
       onKeyDown: this.onKeyDown,
       delimiters: this.props.delimiters,
       onPaste: this.onPaste
@@ -70,21 +78,24 @@ class MultiSelect extends InputWithOptions {
     } else {
       const delimitersRegexp = new RegExp(this.props.delimiters.join('|'), 'g');
       const value = event.target.value.replace(delimitersRegexp, ',');
-      const tags = value.split(',').map(str => str.trim()).filter(str => str);
+      const tags = value
+        .split(',')
+        .map(str => str.trim())
+        .filter(str => str);
 
       this.clearInput();
       this.setState({pasteDetected: false});
 
-      const suggestedOptions = tags
-        .map(tag => {
-          const tagObj = this.getUnselectedOptions().find(element => this.props.valueParser(element).toLowerCase() === tag.toLowerCase());
-          return tagObj ? tagObj : {id: uniqueId('customOption_'), value: tag, theme: 'error'};
-        });
+      const suggestedOptions = tags.map(tag => {
+        const tagObj = this.getUnselectedOptions().find(
+          element => this.props.valueParser(element).toLowerCase() === tag.toLowerCase()
+        );
+        return tagObj ? tagObj : {id: uniqueId('customOption_'), value: tag, theme: 'error'};
+      });
 
       this.onSelect(suggestedOptions);
     }
   }
-
 
   _onSelect(option) {
     this.onSelect([option]);
@@ -126,7 +137,11 @@ class MultiSelect extends InputWithOptions {
   onKeyDown(event) {
     const {tags, value, onRemoveTag} = this.props;
 
-    if (tags.length > 0 && (event.key === 'Delete' || event.key === 'Backspace') && value.length === 0) {
+    if (
+      tags.length > 0 &&
+      (event.key === 'Delete' || event.key === 'Backspace') &&
+      value.length === 0
+    ) {
       onRemoveTag(last(tags).id);
     }
 
@@ -162,7 +177,10 @@ class MultiSelect extends InputWithOptions {
     }
 
     if (this.props.onManuallyInput) {
-      this.props.onManuallyInput(inputValue, this.optionToTag({id: uniqueId('customOption_'), value: inputValue}));
+      this.props.onManuallyInput(
+        inputValue,
+        this.optionToTag({id: uniqueId('customOption_'), value: inputValue})
+      );
     }
 
     this.clearInput();
@@ -182,7 +200,10 @@ MultiSelect.propTypes = {
   tags: PropTypes.array,
   maxHeight: PropTypes.string,
   maxNumRows: PropTypes.number,
-  delimiters: PropTypes.array
+  delimiters: PropTypes.array,
+  mode: PropTypes.string,
+  error: PropTypes.bool,
+  errorMessage: PropTypes.string
 };
 
 MultiSelect.defaultProps = {

@@ -1,85 +1,70 @@
 import React from 'react';
-import {Container, Row, Col, Card} from '../../src/Grid';
+import {Container, Row, Col, Card} from 'wix-style-react/Grid';
 import styles from './ExampleGrid.scss';
 
-import TextField from '../../src/TextField';
-import Input from '../../src/Input';
-import Label from '../../src/Label';
-
-function renderStandardInput() {
-  return (
-    <TextField>
-      <Label
-        for="textField"
-        >
-        Text Field
-      </Label>
-      <Input
-        id="textField"
-        placeholder="Default text goes"
-        />
-    </TextField>
-  );
-}
-
 export default () =>
-  <div data-hook="card-example" className={styles.exampleContainer}>
+  <div className={styles.exampleContainer}>
     <Container>
       <Row>
         <Col span={8}>
           <Card>
-            <Card.Header withoutDivider subtitle="subtitle" title="Header without Divider"/>
+            <Card.Header subtitle="Card Subtitle" title="Card Header"/>
+
             <Card.Content>
               <Row>
                 <Col span={4}>
-                  {renderStandardInput()}
+                  {text('<Col span={4}/>')}
                 </Col>
                 <Col span={4}>
-                  {renderStandardInput()}
+                  {text('<Col span={4}/>')}
                 </Col>
                 <Col span={4}>
-                  {renderStandardInput()}
+                  {text('<Col span={4}/>')}
                 </Col>
               </Row>
+
               <Row>
                 <Col span={6}>
-                  {renderStandardInput()}
+                  {text('<Col span={6}/>')}
                 </Col>
               </Row>
+
               <Row>
                 <Col span={6}>
-                  {renderStandardInput()}
+                  {text('<Col span={6}/>')}
                 </Col>
                 <Col span={3}>
-                  {renderStandardInput()}
+                  {text('<Col span={3}/>')}
                 </Col>
                 <Col span={3}>
-                  {renderStandardInput()}
+                  {text('<Col span={3}/>')}
                 </Col>
               </Row>
             </Card.Content>
           </Card>
         </Col>
+
         <Col span={4}>
           <Card>
             <Card.Header title="Side Card"/>
+
             <Card.Content>
               <Row>
                 <Col span={12}>
-                  {renderStandardInput()}
+                  {text('<Col span={12}/>')}
                 </Col>
               </Row>
               <Row>
                 <Col span={6}>
-                  {renderStandardInput()}
+                  {text('<Col span={6}/>')}
                 </Col>
                 <Col span={6}>
-                  {renderStandardInput()}
+                  {text('<Col span={6}/>')}
                 </Col>
               </Row>
               <Row>
                 <Col span={12}>
-                  {renderStandardInput()}
+                  {text('<Col span={12}/>')}
                 </Col>
               </Row>
             </Card.Content>
@@ -90,17 +75,18 @@ export default () =>
       <Row>
         <Col span={12}>
           <Card>
-            <Card.Header title="Main card" subtitle="Subtitle"/>
+            <Card.Header title="Full width Card"/>
+
             <Card.Content>
               <Row>
                 <Col span={4}>
-                  {renderStandardInput()}
+                  {text('<Col span={4}/>')}
                 </Col>
                 <Col span={4}>
-                  {renderStandardInput()}
+                  {text('<Col span={4}/>')}
                 </Col>
                 <Col span={4}>
-                  {renderStandardInput()}
+                  {text('<Col span={4}/>')}
                 </Col>
               </Row>
             </Card.Content>
@@ -109,3 +95,19 @@ export default () =>
       </Row>
     </Container>
   </div>;
+
+function text(text) {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'rgba(0,0,0,.1)',
+        width: '100%',
+        height: '50px'
+      }}
+      children={text}
+      />
+  );
+}

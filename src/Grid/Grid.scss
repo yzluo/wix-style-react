@@ -29,57 +29,57 @@ $grid-row-margin-bottom: 30px;
 
 .raw-container,
 .wixContainer {
-	min-width: $main-container-min-width;
-	max-width: $main-container-max-width;
+  min-width: $main-container-min-width;
+  max-width: $main-container-max-width;
 }
 
 .raw-container {
-	.row:last-child {
-		margin-bottom: 0;
-	}
+  .row:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .flex-container {
-	display: flex;
+  display: flex;
 }
 
 .wixContainer {
-	>div>span:last-child .row:last-child {
-		margin-bottom: 0;
-	}
+  > div > span:last-child .row:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .stretch_vertically_row {
-	display: flex;
+  display: flex;
 }
 
 .stretch_vertically_row > [class*='col-'] {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 @mixin rtl-float-grid-columns($class) {
-	$list: "";
+  $list: "";
 
-	@for $i from (1) through $grid-columns {
-		$list: "#{$list}:global(.rtl) .col-#{$class}-#{$i}, .rtl.col-#{$class}-#{$i}, .rtl .col-#{$class}-#{$i}, ";
-	}
+  @for $i from (1) through $grid-columns {
+    $list: "#{$list}:global(.rtl) .col-#{$class}-#{$i}, .rtl.col-#{$class}-#{$i}, .rtl .col-#{$class}-#{$i}, ";
+  }
 
-	#{$list} {
-		float: right;
-	}
+  #{$list} {
+    float: right;
+  }
 }
 
 @include rtl-float-grid-columns(xs);
 
 @media (min-width: $screen-sm-min) {
-	@include rtl-float-grid-columns(sm);
+  @include rtl-float-grid-columns(sm);
 }
 
 @media (min-width: $screen-md-min) {
-	@include rtl-float-grid-columns(md);
+  @include rtl-float-grid-columns(md);
 }
 
 @media (min-width: $screen-lg-min) {
-	@include rtl-float-grid-columns(lg);
+  @include rtl-float-grid-columns(lg);
 }
