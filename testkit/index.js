@@ -207,12 +207,14 @@ export const sectionHelperTestkitFactory = testkitFactoryCreator(sectionHelperDr
 import formFieldDriverFactory from '../src/FormField/FormField.driver';
 export const formFieldTestkitFactory = testkitFactoryCreator(formFieldDriverFactory);
 
+import headingDriverFactory from '../src/Heading/Heading.driver';
+export const headingTestkitFactory = testkitFactoryCreator(headingDriverFactory);
+
 // wix-ui-backoffice proxy
 
 export {
   badgeTestkitFactory,
   stylableCounterBadgeTestkitFactory as counterBadgeTestkitFactory,
-  headingTestkitFactory,
   toggleSwitchTestkitFactory,
   textTestkitFactory,
   labelTestkitFactory,

@@ -138,12 +138,14 @@ export const formFieldTestkitFactory = protractorTestkitFactoryCreator(formField
 import messageBoxFunctionalLayoutDriverFactory from '../src/MessageBox/MessageBoxFunctionalLayout.protractor.driver';
 export const messageBoxFunctionalLayoutTestkitFactory = protractorTestkitFactoryCreator(messageBoxFunctionalLayoutDriverFactory);
 
+import headingDriverFactory from '../src/Heading/Heading.protractor.driver';
+export const headingTestkitFactory = protractorTestkitFactoryCreator(headingDriverFactory);
+
 // wix-ui-backoffice proxy
 
 export {
   badgeTestkitFactory,
   stylableCounterBadgeTestkitFactory as counterBadgeTestkitFactory,
-  headingTestkitFactory,
   toggleSwitchTestkitFactory,
   textTestkitFactory,
   labelTestkitFactory,
