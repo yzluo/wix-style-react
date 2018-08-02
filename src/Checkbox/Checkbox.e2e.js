@@ -7,7 +7,7 @@ import {runFocusTests} from '../common/Focusable/FocusableTestsE2E';
 
 const NO_DESCRIPTION = '';
 
-fdescribe('Checkbox', () => {
+describe('Checkbox', () => {
   const storyUrl = getStoryUrl('4. Selection', '4.2 Checkbox');
   const checkboxDriver = checkboxTestkitFactory({dataHook: 'storybook-checkbox'});
 
