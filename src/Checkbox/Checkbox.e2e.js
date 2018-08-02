@@ -16,16 +16,13 @@ describe('Checkbox', () => {
     const waitForCheckbox = () => waitForVisibilityOf(checkboxDriver.element(), 'Cannot find Checkbox');
     const clickTab = () => browser.actions().sendKeys(protractor.Key.TAB).perform();
 
-    beforeEach(async () => {
-      // TODO: We do browser.get() before EACH test in order to reset the focus.
-      // implmement a generic solution in AutoExampleDriver that will do
-      // propper reset of the focus, so we don't have to get the page,
-      // and thus the test will run faster.
+    beforeAll(async () => {
       await browser.get(storyUrl);
-
-      // No need for reset as long as we do browser.get() before each test.
-      // await autoExampleDriver.reset();
       await waitForCheckbox();
+    });
+
+    beforeEach(async () => {
+      await autoExampleDriver.remount();
     });
 
     eyes.it('should have default props', async () => {
@@ -42,6 +39,7 @@ describe('Checkbox', () => {
     });
 
     eyes.it('should show focused styles', async () => {
+
       expect(checkboxDriver.isFocused()).toBe(false);
       await clickTab();
       expect(checkboxDriver.isFocused()).toBe(true);
@@ -73,6 +71,7 @@ describe('Checkbox', () => {
 
       eyes.it('should be disabled', async () => {
         expect(checkboxDriver.isDisabled()).toBe(true);
+        expect(checkboxDriver.isFocused()).toBe(false);
       });
 
       eyes.it('should not be focusable', async () => {

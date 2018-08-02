@@ -1,5 +1,4 @@
-import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
-import {flattenInternalDriver} from '../../../test/utils/private-drivers';
+import {waitForVisibilityOf, flattenInternalDriver} from '../../test-common';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 
 /**
@@ -68,6 +67,9 @@ function runFocusTestsImpl(driver, storyUrl) {
     beforeAll(async () => {
       await browser.get(storyUrl);
       await waitForVisibilityOf(driver.element(), 'Cannot find element');
+    });
+    beforeEach(async () => {
+      autoExampleDriver.remount();
     });
 
     beforeEach(() => autoExampleDriver.remount());
