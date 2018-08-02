@@ -70,7 +70,6 @@ describe('Checkbox', () => {
 
       eyes.it('should be disabled', async () => {
         expect(checkboxDriver.isDisabled()).toBe(true);
-        expect(checkboxDriver.isFocused()).toBe(false);
       });
 
       eyes.it('should not be focusable', async () => {
