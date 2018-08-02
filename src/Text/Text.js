@@ -20,7 +20,8 @@ export const SKINS = {
 export const WEIGHTS = {
   thin: 'thin',
   normal: 'normal',
-  bold: 'bold'
+  bold: 'bold',
+  'x-bold': 'x-bold'
 };
 
 const Text = ({size, secondary, skin, light, bold, weight, tagName, children, ...rest}) => {

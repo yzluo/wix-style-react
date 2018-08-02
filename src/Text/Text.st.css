@@ -7,7 +7,7 @@
 
 :import {
   -st-from: "wix-ui-backoffice/dist/src/typography.st.css";
-  -st-named: fontLight, fontRoman, fontMedium;
+  -st-named: fontLight, fontRoman, fontMedium, fontBold;
 }
 
 .root {
@@ -16,7 +16,7 @@
     secondary,
     skin(enum(standard, success, error, premium)),
     light,
-    weight(enum(thin, normal, bold)),
+    weight(enum(thin, normal, bold, x-bold)),
     bold;
 
   white-space: pre-line;
@@ -69,6 +69,10 @@
 .root:skin(premium):light,
 .root:skin(premium):secondary {
   color: value(premium);
+}
+
+.root:weight(x-bold) {
+  font-family: value(fontBold);
 }
 
 .root:weight(bold) {

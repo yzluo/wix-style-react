@@ -49,24 +49,6 @@ export default () =>
         <span className={s.fonts}><Text size="small" secondary light weight="thin">Helvetica_45 / 14px / 18px</Text></span>
         <span className={s.legacy}><Text skin="premium"> (T3.4)</Text></span>
       </li>
-
-      <li><h4>Tiny Text</h4></li>
-      <li>
-        <span className={s.comp}>{'<Text weight="thin" size="tiny" secondary={false} light={false}/>'}</span>
-        <span className={s.fonts}><Text size="tiny" weight="thin">Helvetica_45 / 12px / 15px</Text></span>
-      </li>
-      <li>
-        <span className={s.comp}>{'<Text weight="thin" size="tiny" secondary={true} light={false}/>'}</span>
-        <span className={s.fonts}><Text size="tiny" secondary weight="thin">Helvetica_45 / 12px / 15px</Text></span>
-      </li>
-      <li className={s.inverted}>
-        <span className={s.comp}>{'<Text weight="thin" size="tiny" secondary={false} light={true}/>'}</span>
-        <span className={s.fonts}><Text size="tiny" light weight="thin">Helvetica_45 / 12px / 15px</Text></span>
-      </li>
-      <li>
-        <span className={s.comp}>{'<Text weight="thin" size="tiny" secondary={true} light={true}/>'}</span>
-        <span className={s.fonts}><Text size="tiny" secondary light weight="thin">Helvetica_45 / 12px / 15px</Text></span>
-      </li>
     </ul>
 
 
@@ -187,6 +169,28 @@ export default () =>
       <li>
         <span className={s.comp}>{'<Text weight="bold" size="tiny" secondary={true} light={true}/>'}</span>
         <span className={s.fonts}><Text size="tiny" secondary light weight="bold">Helvetica_65 / 12px / 15px</Text></span>
+      </li>
+    </ul>
+
+
+    <h3>Extra Bold Text</h3>
+    <ul className={`ltr ${s.root}`}>
+      <li><h4>Tiny Text</h4></li>
+      <li>
+        <span className={s.comp}>{'<Text weight="x-bold" size="tiny" secondary={false} light={false}/>'}</span>
+        <span className={s.fonts}><Text size="tiny" weight="x-bold">Helvetica_75 / 12px / 15px</Text></span>
+      </li>
+      <li>
+        <span className={s.comp}>{'<Text weight="x-bold" size="tiny" secondary={true} light={false}/>'}</span>
+        <span className={s.fonts}><Text size="tiny" secondary weight="x-bold">Helvetica_75 / 12px / 15px</Text></span>
+      </li>
+      <li className={s.inverted}>
+        <span className={s.comp}>{'<Text weight="x-bold" size="tiny" secondary={false} light={true}/>'}</span>
+        <span className={s.fonts}><Text size="tiny" light weight="x-bold">Helvetica_75 / 12px / 15px</Text></span>
+      </li>
+      <li>
+        <span className={s.comp}>{'<Text weight="x-bold" size="tiny" secondary={true} light={true}/>'}</span>
+        <span className={s.fonts}><Text size="tiny" secondary light weight="x-bold">Helvetica_75 / 12px / 15px</Text></span>
       </li>
     </ul>
   </div>;
