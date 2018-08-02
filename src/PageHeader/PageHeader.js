@@ -5,7 +5,8 @@ import WixComponent from '../BaseComponents/WixComponent';
 import classNames from 'classnames';
 import ChevronLeft from 'wix-ui-icons-common/ChevronLeft';
 import Breadcrumbs from '../Breadcrumbs';
-import Text from '../Deprecated/Text';
+import Text from '../Text';
+import Heading from '../Heading';
 import {Animator} from 'wix-animations';
 import Button from '../Button';
 
@@ -104,13 +105,13 @@ export default class PageHeader extends WixComponent {
               {
                 title && animateComponent(!minimized, !breadcrumbsExists,
                   <div className={classNames(s.title, {[s.minimized]: minimized})} data-hook="page-header-title">
-                    <Text appearance={isDarkTheme(hasBackgroundImage, minimized) ? 'H1.1' : 'H1'}>{getTitle(title, minimized)}</Text>
+                    <Heading light={isDarkTheme(hasBackgroundImage, minimized)}>{getTitle(title, minimized)}</Heading>
                   </div>)
               }
               {
                 subtitle && animateComponent(!minimized, !breadcrumbsExists,
                   <div className={classNames({[s.minimized]: minimized})} data-hook="page-header-subtitle">
-                    <Text appearance={isDarkTheme(hasBackgroundImage, minimized) ? 'T1.2' : 'T1.1'}>{subtitle}</Text>
+                    <Text light={isDarkTheme(hasBackgroundImage, minimized)} secondary={!isDarkTheme(hasBackgroundImage, minimized)}>{subtitle}</Text>
                   </div>)
               }
             </div>

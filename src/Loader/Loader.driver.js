@@ -1,19 +1,16 @@
 import {isClassExists} from '../../test/utils';
-import {findByHook, resolveIn, testkitFactoryCreator} from '../test-common';
-import textDriverFactory from '../Deprecated/Text/Text.driver';
+import {findByHook, resolveIn} from '../test-common';
 import tooltipDriverFactory from '../Tooltip/Tooltip.driver';
 
-const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
+const getTextElement = element => element.querySelector(`[data-hook="loader-text"]`);
 
 const loaderDriverFactory = ({element}) => {
-  const textDriver = element && textTestkitFactory({wrapper: element, dataHook: 'loader-text'});
-
   return {
     component: () => element,
     exists: () => !!element,
     getColor: () => isClassExists(element, 'blue') ? 'blue' : 'white',
-    getText: () => textDriver.getText(),
-    hasText: () => textDriver.exists(),
+    getText: () => getTextElement(element).innerHTML,
+    hasText: () => !!getTextElement(element),
     isLarge: () => isClassExists(element, 'large'),
     isMedium: () => isClassExists(element, 'medium'),
     isSmall: () => isClassExists(element, 'small'),

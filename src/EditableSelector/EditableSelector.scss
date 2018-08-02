@@ -29,16 +29,6 @@ $rows-margin: 6px;
   line-height: 34px;
 }
 
-.newRowText {
-  display: inline-flex;
-}
-
-.newRowButton {
-  cursor: pointer;
-  display: inline-block;
-  margin-top: 12px;
-}
-
 .optionMenu {
   margin-left: auto;
   visibility: hidden;
@@ -49,8 +39,14 @@ $rows-margin: 6px;
   }
 }
 
-.text {
-  margin-left: 6px;
+.newRowButton {
+  margin-top: 12px;
+  .textLinkWithPrefix {
+    display: flex;
+    .icon {
+      margin-right: 6px;
+    }
+  }
 }
 
 // EditableRow //
