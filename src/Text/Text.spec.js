@@ -27,9 +27,9 @@ describe('Text', () => {
   });
 
   describe('weight prop', () => {
-    it(`should be ${WEIGHTS.normal} by default`, () => {
+    it(`should be ${WEIGHTS.thin} by default`, () => {
       const wrapper = createDriver(<Text>Hello</Text>);
-      expect(wrapper.getWeight()).toBe(WEIGHTS.normal);
+      expect(wrapper.getWeight()).toBe(WEIGHTS.thin);
     });
 
     Object.keys(WEIGHTS).forEach(weight => {

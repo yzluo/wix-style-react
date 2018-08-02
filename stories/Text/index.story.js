@@ -29,7 +29,7 @@ export default {
     size: SIZES.medium,
     secondary: false,
     skin: SKINS.standard,
-    weight: WEIGHTS.normal,
+    weight: WEIGHTS.thin,
     tagName: 'span',
     ellipsis: false
   },
