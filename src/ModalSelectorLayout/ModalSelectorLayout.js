@@ -138,7 +138,7 @@ export default class ModalSelectorLayout extends WixComponent {
     height: '100%',
     emptyState: DEFAULT_EMPTY,
     noResultsFoundStateFactory: searchValue =>
-      <div className={css.defaultNoResultsFoundStateWrapper}><Text appearance="T1">No items matched your search {`"${searchValue}"`}</Text></div>,
+      <div className={css.defaultNoResultsFoundStateWrapper}><Text>No items matched your search {`"${searchValue}"`}</Text></div>,
     selectAllText: 'Select All',
     deselectAllText: 'Deselect All'
   };
@@ -182,7 +182,7 @@ export default class ModalSelectorLayout extends WixComponent {
           <div className={css.subheaderWrapper}>
             {subtitle &&
               <div className={css.subtitleWrapper}>
-                <Text appearance="T1" dataHook={dataHooks.subtitle}>{subtitle}</Text>
+                <Text dataHook={dataHooks.subtitle}>{subtitle}</Text>
               </div>
             }
 
@@ -279,7 +279,7 @@ export default class ModalSelectorLayout extends WixComponent {
               image={item.image}
               title={item.title}
               subtitle={item.subtitle}
-              extraNode={item.extraNode ? item.extraNode : <Text appearance="T1.1">{item.extraText}</Text>}
+              extraNode={item.extraNode ? item.extraNode : <Text secondary>{item.extraText}</Text>}
               isSelected={isSelected(item)}
               isDisabled={item.disabled}
               onToggle={() => !item.disabled && onToggle(item)}
@@ -399,7 +399,7 @@ export default class ModalSelectorLayout extends WixComponent {
         onChange={onChange}
         indeterminate={indeterminate}
         >
-        <Text appearance="T2">
+        <Text weight="normal">
           {` ${text} (${number})`}
         </Text>
       </Checkbox>

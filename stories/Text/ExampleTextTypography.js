@@ -9,44 +9,44 @@ export default () =>
       <li><h4>Medium Text</h4></li>
       <li>
         <span className={s.comp}>{'<Text weight="thin" size="medium" secondary={false} light={false}/>'}</span>
-        <span className={s.fonts}><Text weight="thin">Helvetica_45 / 16px / 24px</Text></span>
+        <span className={s.fonts}><Text>Helvetica_45 / 16px / 24px</Text></span>
         <span className={s.legacy}><Text skin="premium"> (T1)</Text></span>
       </li>
       <li>
         <span className={s.comp}>{'<Text weight="thin" size="medium" secondary={true} light={false}/>'}</span>
-        <span className={s.fonts}><Text secondary weight="thin">Helvetica_45 / 16px / 24px</Text></span>
+        <span className={s.fonts}><Text secondary>Helvetica_45 / 16px / 24px</Text></span>
         <span className={s.legacy}><Text skin="premium"> (T1.1)</Text></span>
       </li>
       <li className={s.inverted}>
         <span className={s.comp}>{'<Text weight="thin" size="medium" secondary={false} light={true}/>'}</span>
-        <span className={s.fonts}><Text light weight="thin">Helvetica_45 / 16px / 24px</Text></span>
+        <span className={s.fonts}><Text light>Helvetica_45 / 16px / 24px</Text></span>
         <span className={s.legacy}><Text skin="premium"> (T1.2)</Text></span>
       </li>
       <li>
         <span className={s.comp}>{'<Text weight="thin" size="medium" secondary={true} light={true}/>'}</span>
-        <span className={s.fonts}><Text secondary light weight="thin">Helvetica_45 / 16px / 24px</Text></span>
+        <span className={s.fonts}><Text secondary light>Helvetica_45 / 16px / 24px</Text></span>
         <span className={s.legacy}><Text skin="premium"> (T1.4)</Text></span>
       </li>
 
       <li><h4>Small Text</h4></li>
       <li>
         <span className={s.comp}>{'<Text weight="thin" size="small" secondary={false} light={false}/>'}</span>
-        <span className={s.fonts}><Text size="small" weight="thin">Helvetica_45 / 14px / 18px</Text></span>
+        <span className={s.fonts}><Text size="small">Helvetica_45 / 14px / 18px</Text></span>
         <span className={s.legacy}><Text skin="premium"> (T3)</Text></span>
       </li>
       <li>
         <span className={s.comp}>{'<Text weight="thin" size="small" secondary={true} light={false}/>'}</span>
-        <span className={s.fonts}><Text size="small" secondary weight="thin">Helvetica_45 / 14px / 18px</Text></span>
+        <span className={s.fonts}><Text size="small" secondary>Helvetica_45 / 14px / 18px</Text></span>
         <span className={s.legacy}><Text skin="premium"> (T3.1)</Text></span>
       </li>
       <li className={s.inverted}>
         <span className={s.comp}>{'<Text weight="thin" size="small" secondary={false} light={true}/>'}</span>
-        <span className={s.fonts}><Text size="small" light weight="thin">Helvetica_45 / 14px / 18px</Text></span>
+        <span className={s.fonts}><Text size="small" light>Helvetica_45 / 14px / 18px</Text></span>
         <span className={s.legacy}><Text skin="premium"> (T3.2)</Text></span>
       </li>
       <li>
         <span className={s.comp}>{'<Text weight="thin" size="small" secondary={true} light={true}/>'}</span>
-        <span className={s.fonts}><Text size="small" secondary light weight="thin">Helvetica_45 / 14px / 18px</Text></span>
+        <span className={s.fonts}><Text size="small" secondary light>Helvetica_45 / 14px / 18px</Text></span>
         <span className={s.legacy}><Text skin="premium"> (T3.4)</Text></span>
       </li>
     </ul>
