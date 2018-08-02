@@ -37,7 +37,7 @@ class SectionHelper extends WixComponent {
 
         { this.props.title &&
           <div className={styles.title}>
-            <Text dataHook="sectionhelper-title" size="small" bold>
+            <Text dataHook="sectionhelper-title" size="small" weight="normal">
               {this.props.title}
             </Text>
           </div>

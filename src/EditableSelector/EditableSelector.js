@@ -92,7 +92,7 @@ class EditableSelector extends WixComponent {
     options = options || [];
     return (
       <div>
-        {title && <div className={styles.title} data-hook="editable-selector-title"><Text bold>{title}</Text></div>}
+        {title && <div className={styles.title} data-hook="editable-selector-title"><Text weight="normal">{title}</Text></div>}
         <div>
           {options.map((option, index) =>
             this.state.editingRow === index ? this.renderInput(option.title, index) :

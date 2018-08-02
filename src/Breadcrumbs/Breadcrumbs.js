@@ -55,7 +55,7 @@ class Breadcrumbs extends WixComponent {
     const isSmallSize = size === 'medium';
 
     return {
-      bold: isActive,
+      weight: isActive ? 'normal' : 'thin',
       light: isDarkBackground,
       size: isSmallSize ? 'small' : 'medium'
     };
