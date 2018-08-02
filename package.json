@@ -133,7 +133,7 @@
     "react-transition-group": "^2.2.1",
     "slate": "^0.20.3",
     "wix-animations": "^1.0.141",
-    "wix-ui-backoffice": "1.0.285",
+    "wix-ui-backoffice": "1.0.288",
     "wix-ui-icons-common": "2.0.6",
     "wix-ui-test-utils": "^1.0.0"
   },
