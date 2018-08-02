@@ -4,7 +4,7 @@ import styles from './ExampleStatsWidget.scss';
 import {Container} from '../../src/Grid';
 import Text from '../../src/Text';
 
-const emptyState = <div style={{textAlign: 'center'}}><Text appearance="T1.1">No tickets sold yet. Check back later to see your sales</Text></div>;
+const emptyState = <div style={{textAlign: 'center'}}><Text secondary>No tickets sold yet. Check back later to see your sales</Text></div>;
 
 export default () =>
   <Container>

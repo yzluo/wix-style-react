@@ -29,9 +29,9 @@ class ControlledToggleSwitchExample extends React.Component {
           <Heading appearance="H2">skin: </Heading> <Autocomplete options={skinOptions} onSelect={({value}) => this.setState({skin: value})} initialSelectedId={this.state.skin}/><br/><br/>
           <Heading appearance="H2">checked: </Heading> <ToggleSwitch size="small" checked={this.state.checked} onChange={() => this.setState({checked: !this.state.checked})}/><br/><br/>
           <Heading appearance="H2">disabled: </Heading> <ToggleSwitch size="small" checked={this.state.disabled} onChange={() => this.setState({disabled: !this.state.disabled})}/><br/><br/>
-          <Heading appearance="H2">tabIndex: </Heading> <Text bold>Tab Index</Text><br/><br/>
-          <Heading appearance="H2">onChange: </Heading> <Text bold>Callback function when User changes the value of the component</Text><br/><br/>
-          <Heading appearance="H2">id: </Heading> <Text bold>The ID attribute to put on the toggle</Text><br/><br/>
+          <Heading appearance="H2">tabIndex: </Heading> <Text weight="normal">Tab Index</Text><br/><br/>
+          <Heading appearance="H2">onChange: </Heading> <Text weight="normal">Callback function when User changes the value of the component</Text><br/><br/>
+          <Heading appearance="H2">id: </Heading> <Text weight="normal">The ID attribute to put on the toggle</Text><br/><br/>
         </div>
         <div>
           <Heading> Preview </Heading><br/><br/><br/><br/><br/><br/><br/><br/><br/>
