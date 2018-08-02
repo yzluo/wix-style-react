@@ -8,7 +8,7 @@ import FooterLayout from '../MessageBox/FooterLayout';
 import Selector from '../Selector/Selector';
 import Search from '../Search/Search';
 import InfiniteScroll from '../DataTable/InfiniteScroll';
-import Text from '../Deprecated/Text';
+import Text from '../Text';
 import {dataHooks} from './ModalSelectorLayout.helpers';
 import Checkbox from '../Checkbox';
 
@@ -17,7 +17,7 @@ import css from './ModalSelectorLayout.scss';
 
 const DEFAULT_EMPTY = (
   <div className={css.defaultEmptyStateWrapper}>
-    <Text appearance="T1">
+    <Text>
       {'You don\'t have any items'}
     </Text>
   </div>

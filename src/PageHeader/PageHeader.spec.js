@@ -137,25 +137,6 @@ describe('PageHeader', () => {
     expect(driver.isBackButtonExists()).toBeFalsy();
   });
 
-  it('should set a dark theme when displaying a background image', () => {
-    const pageHeader = (<PageHeader
-      title={title}
-      subtitle={subtitle}
-      hasBackgroundImage
-      breadcrumbs={breadcrumbs}
-      actionsBar={actionsBar}
-      showBackButton
-      onBackClicked={onBackClicked}
-      />);
-
-    const driver = createDriver(pageHeader);
-
-    expect(driver.isTitleDarkTheme()).toBeTruthy();
-    expect(driver.isSubtitleDarkTheme()).toBeTruthy();
-    expect(driver.isBackButtonDarkTheme()).toBeTruthy();
-    expect(driver.isBreadcrumbsDarkTheme()).toBeTruthy();
-  });
-
   describe('should initialize component with render props title', () => {
 
     const altTitle = 'This is a different title';

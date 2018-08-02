@@ -3,7 +3,7 @@ import {arrayOf, func, oneOf, oneOfType, node, number, shape, string, any, bool}
 import styles from './Breadcrumbs.scss';
 import classnames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
-import Text from '../Deprecated/Text';
+import Text from '../Text';
 import BreadcrumbsPathFactory from './BreadcrumbsPathFactory';
 import BreadcrumbsChevronRight from 'wix-ui-icons-common/system/BreadcrumbsChevronRight';
 
@@ -46,36 +46,24 @@ class Breadcrumbs extends WixComponent {
   };
 
   handleBreadcrumbClick = item =>
-    this.props.onClick && this.props.onClick(item)
+    this.props.onClick && this.props.onClick(item);
 
   getValueAppearance(isActive) {
     const {theme, size} = this.props;
 
     const isDarkBackground = theme === 'onDarkBackground';
-    const isMediumSize = size === 'medium';
+    const isSmallSize = size === 'medium';
 
-    if (isActive) {
-      if (isMediumSize) {
-        return isDarkBackground ? 'T4.2' : 'T4';
-      } else {
-        return isDarkBackground ? 'T2.2' : 'T2';
-      }
-    }
-
-    if (isMediumSize) {
-      return isDarkBackground ? 'T3.2' : 'T3.1';
-    } else {
-      return isDarkBackground ? 'T1.2' : 'T1.1';
-    }
+    return {
+      bold: isActive,
+      light: isDarkBackground,
+      size: isSmallSize ? 'small' : 'medium'
+    };
   }
 
   createItem({item, isActive, onClick}) {
     const breadcrumbValue = value =>
-      <Text
-        dataHook="breadcrumbs-item"
-        appearance={this.getValueAppearance(isActive)}
-        children={value}
-        />;
+      <Text dataHook="breadcrumbs-item" {...this.getValueAppearance(isActive)}>{value}</Text>;
 
     const defaultBreadcrumb = () =>
       <button

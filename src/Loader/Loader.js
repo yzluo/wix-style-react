@@ -4,13 +4,13 @@ import classNames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
 import Arc from './Arc';
 import css from './Loader.scss';
-import Text from '../Deprecated/Text';
 import Tooltip from '../Tooltip';
 import FormFieldError from '../new-icons/system/FormFieldError';
 import FormFieldErrorSmall from '../new-icons/system/FormFieldErrorSmall';
 import ToggleOn from '../new-icons/system/ToggleOn';
 import CircleLoaderCheck from '../new-icons/system/CircleLoaderCheck';
 import CircleLoaderCheckSmall from '../new-icons/system/CircleLoaderCheckSmall';
+import Typography from '../Typography';
 
 const arcsAngles = {
   tiny: {
@@ -138,7 +138,7 @@ export default class Loader extends WixComponent {
         {
           shouldShowText && text &&
           <div className={css.text}>
-            <Text appearance="T5" dataHook="loader-text">{this.props.text}</Text>
+            <span className={Typography.t5} data-hook="loader-text">{this.props.text}</span>
           </div>
         }
       </div>

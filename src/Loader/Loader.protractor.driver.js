@@ -1,8 +1,4 @@
 import css from './Loader.scss';
-import textDriverFactory from '../Deprecated/Text/Text.protractor.driver';
-import {protractorTestkitFactoryCreator} from '../test-common';
-
-const textTestkitFactory = protractorTestkitFactoryCreator(textDriverFactory);
 
 const hasClass = (element, styles, cls) => {
   return element
@@ -10,9 +6,9 @@ const hasClass = (element, styles, cls) => {
     .then(classes => classes.split(' ').some(c => c.includes(styles[cls])));
 };
 
-const loaderDriverFactory = component => {
-  const textDriver = textTestkitFactory({dataHook: 'loader-text'});
+const getLoaderTextElement = component => component.$(`[data-hook="loader-text"]`);
 
+const loaderDriverFactory = component => {
   return {
     element: () => component,
     isTiny: () => hasClass(component, css, 'tiny'),
@@ -20,8 +16,8 @@ const loaderDriverFactory = component => {
     isMedium: () => hasClass(component, css, 'medium'),
     isLarge: () => hasClass(component, css, 'large'),
     getColor: () => hasClass(component, css, 'blue').then(hasClass => hasClass ? 'blue' : 'white'),
-    hasText: () => textDriver.element().isPresent(),
-    getText: () => textDriver.getText(),
+    hasText: () => getLoaderTextElement(component).isPresent(),
+    getText: () => getLoaderTextElement(component).getText(),
     isError: () => hasClass(component, css, 'error'),
     isSuccess: () => hasClass(component, css, 'success'),
     isLoading: () => hasClass(component, css, 'loading')

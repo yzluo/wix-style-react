@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WixComponent from '../BaseComponents/WixComponent';
 import Selector from '../Selector';
-import Text from '../Deprecated/Text';
+import Text from '../Text';
 import ButtonWithOptions from '../ButtonWithOptions/ButtonWithOptions';
 import EditableRow from './EditableRow/EditableRow';
 import styles from './EditableSelector.scss';
 import Add from '../new-icons/Add';
 import Delete from '../new-icons/Delete';
+import TextLink from '../TextLink';
 
 class EditableSelector extends WixComponent {
   static propTypes = {
@@ -91,7 +92,7 @@ class EditableSelector extends WixComponent {
     options = options || [];
     return (
       <div>
-        {title && <div className={styles.title} data-hook="editable-selector-title"><Text appearance="T2">{title}</Text></div>}
+        {title && <div className={styles.title} data-hook="editable-selector-title"><Text bold>{title}</Text></div>}
         <div>
           {options.map((option, index) =>
             this.state.editingRow === index ? this.renderInput(option.title, index) :
@@ -123,13 +124,13 @@ class EditableSelector extends WixComponent {
           )}
         </div>
         {this.state.addingNewRow && this.renderInput()}
-        <div className={styles.newRowButton} onClick={() => this.addNewRow()} data-hook="new-row-button">
-          <Text appearance="T1.3">
-            <span className={styles.newRowText}>
-              <Add/>
-              <span data-hook="new-row-button-text" className={styles.text}>{newRowLabel}</span>
+        <div className={styles.newRowButton}>
+          <TextLink underlineStyle="never" onClick={() => this.addNewRow()} dataHook="new-row-button">
+            <span className={styles.textLinkWithPrefix}>
+              <Add className={styles.icon}/>
+              <span className={styles.text} data-hook="new-row-button-text">{newRowLabel}</span>
             </span>
-          </Text>
+          </TextLink>
         </div>
       </div>
     );

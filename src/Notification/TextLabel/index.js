@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Text from '../../Deprecated/Text';
+import Text from '../../Text';
 
 const TextLabel = ({children}) =>
   <Text
     ellipsis
-    appearance="T1.2"
+    light
     dataHook="notification-label"
     >
     {children}

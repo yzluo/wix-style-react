@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import WixComponent from '../BaseComponents/WixComponent';
-import Text from '../Deprecated/Text';
+import Text from '../Text';
 import Button from '../Button';
 import CloseButton from '../CloseButton';
 
@@ -37,14 +37,14 @@ class SectionHelper extends WixComponent {
 
         { this.props.title &&
           <div className={styles.title}>
-            <Text dataHook="sectionhelper-title" appearance="T4">
+            <Text dataHook="sectionhelper-title" size="small" bold>
               {this.props.title}
             </Text>
           </div>
         }
 
         <div className={styles.content}>
-          <Text appearance="T3">
+          <Text size="small">
             { this.props.children }
           </Text>
         </div>

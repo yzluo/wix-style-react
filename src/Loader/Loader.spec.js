@@ -56,7 +56,7 @@ describe('Loader', () => {
       const textElement = <div>{text}</div>;
       const driver = createDriver(<Loader text={textElement}/>);
       expect(driver.hasText()).toEqual(true);
-      expect(driver.getText()).toEqual(text);
+      expect(driver.getText()).toMatch(text);
     });
 
     it('should not show text next to tiny loader', () => {

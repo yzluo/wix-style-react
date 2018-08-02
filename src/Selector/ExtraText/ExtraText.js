@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import WixComponent from '../../BaseComponents/WixComponent';
-import Text from '../../Deprecated/Text';
+import Text from '../../Text';
 
 class ExtraText extends WixComponent {
   static propTypes = {
@@ -10,7 +10,7 @@ class ExtraText extends WixComponent {
 
   render() {
     return (
-      <Text appearance="T1.1">{this.props.text}</Text>
+      <Text secondary>{this.props.text}</Text>
     );
   }
 }

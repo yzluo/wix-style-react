@@ -16,7 +16,6 @@ export {
 
 export {enzymeTestkitFactoryCreator} from 'wix-ui-test-utils/enzyme';
 export {testkitFactoryCreator} from 'wix-ui-test-utils/vanilla';
-export {puppeteerTestkitFactoryCreator} from 'wix-ui-test-utils/puppeteer';
 
 export {findByHook, resolveIn} from './test-common-vanilla';
 
