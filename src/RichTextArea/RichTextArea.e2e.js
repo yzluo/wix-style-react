@@ -143,6 +143,8 @@ describe('RichTextArea', () => {
       await autoExampleDriver.setProps({error: true});
     });
 
+    afterEach(async () => await autoExampleDriver.remount());
+
     eyes.it('should show focus styles for editor', async () => {
       expect(await richTextAreaTestkit.isEditorFocused()).toBe(false);
       await focusEditor();
