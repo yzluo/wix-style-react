@@ -23,7 +23,10 @@ describe('RichTextArea', () => {
     await waitForVisibilityOf(richTextAreaTestkit.element());
   });
 
-  afterEach(async () => await autoExampleDriver.remount());
+  afterEach(async () => {
+    await autoExampleDriver.reset();
+    await autoExampleDriver.remount();
+  });
 
   eyes.it('should render default props', async () => {
     expect(richTextAreaTestkit.isEditorFocused()).toBe(false, 'isEditorFocused');
