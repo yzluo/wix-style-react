@@ -6,7 +6,7 @@ import {runFocusTests} from '../../common/Focusable/FocusableTestsE2E';
 
 const NO_DESCRIPTION = '';
 
-describe('Backoffice Button', () => {
+fdescribe('Backoffice Button', () => {
   const storyUrl = getStoryUrl('5. Buttons', '5.1 Standard');
   const driver = buttonTestkitFactory({dataHook: 'storybook-button'});
 
@@ -19,7 +19,6 @@ describe('Backoffice Button', () => {
     });
 
     afterEach(async () => {
-      await autoExampleDriver.reset();
       await autoExampleDriver.remount();
     });
 
