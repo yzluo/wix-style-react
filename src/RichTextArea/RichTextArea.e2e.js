@@ -20,8 +20,6 @@ describe('RichTextArea', () => {
 
   beforeEach(async () => {
     await waitForVisibilityOf(richTextAreaTestkit.element());
-    await autoExampleDriver.reset();
-    await autoExampleDriver.remount();
   });
 
   afterEach(async () => {
