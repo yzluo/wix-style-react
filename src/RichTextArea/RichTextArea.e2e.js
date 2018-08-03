@@ -13,6 +13,7 @@ describe('RichTextArea', () => {
 
   const pressTab = times => browser.actions().sendKeys([...Array(times)].map(() => protractor.Key.TAB)).perform();
   const focusEditor = () => pressTab(EDITOR_TAB_ORDINAL);
+  const mouseDown = () => browser.actions().mouseMove({x: 0, y: 0});
 
   beforeAll(() => {
     browser.get(storyUrl);
@@ -144,6 +145,7 @@ describe('RichTextArea', () => {
       expect(await richTextAreaTestkit.isEditorFocused()).toBe(false);
       await focusEditor();
       expect(await richTextAreaTestkit.isEditorFocused()).toBe(true);
+      mouseDown();
     });
 
     eyes.it('should show focus styles for each button', async () => {
@@ -153,6 +155,7 @@ describe('RichTextArea', () => {
         expect(await richTextAreaTestkit.isButtonFocused(index)).toBe(false);
         await pressTab(1);
         expect(await richTextAreaTestkit.isButtonFocused(index)).toBe(true);
+        mouseDown();
         await eyes.checkWindow(`Button ${type}`);
       }
     });
