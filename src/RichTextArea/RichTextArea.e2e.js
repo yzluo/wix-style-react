@@ -14,15 +14,15 @@ describe('RichTextArea', () => {
   const pressTab = times => browser.actions().sendKeys([...Array(times)].map(() => protractor.Key.TAB)).perform();
   const focusEditor = () => pressTab(EDITOR_TAB_ORDINAL);
 
-  // TODO: We can change this to beforeAll (to make the test go faster),
-  // after we have a way to reset the focus before Each test.
-  beforeEach(() => {
+  beforeAll(() => {
     browser.get(storyUrl);
   });
 
   beforeEach(async () => {
     await waitForVisibilityOf(richTextAreaTestkit.element());
   });
+
+  afterEach(async () => await autoExampleDriver.remount());
 
   eyes.it('should render default props', async () => {
     expect(richTextAreaTestkit.isEditorFocused()).toBe(false, 'isEditorFocused');
