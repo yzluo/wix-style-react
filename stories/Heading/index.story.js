@@ -29,7 +29,7 @@ export default {
         <EllipsisExample/>
       </CodeExample>
 
-      <CodeExample title="Ellipsis Example" code={TypographyExampleRaw}>
+      <CodeExample title="Typography Example" code={TypographyExampleRaw}>
         <TypographyExample/>
       </CodeExample>
     </div>
