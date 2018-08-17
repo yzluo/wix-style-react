@@ -83,6 +83,7 @@
     "highlight.js": "^9.8.0",
     "identity-obj-proxy": "^3.0.0",
     "import-path": "^1.0.0",
+    "protractor-browser-logs": "^1.0.351",
     "react": "^15.5.4",
     "react-docgen": "^2.15.0",
     "react-dom": "^15.5.4",

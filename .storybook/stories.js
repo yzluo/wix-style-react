@@ -136,3 +136,4 @@ import '../stories/SideBar';
 
 // Tests
 import '../stories/Page/PageTestStories.js'; // Tests/2.5 + Page/
+import '../stories/Tooltip/Composite/PopoverMenuRegressionTest.js'; // Tests/7.3. Popover Menu/
