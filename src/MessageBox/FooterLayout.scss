@@ -20,6 +20,8 @@
 
 .footerbuttons {
   margin-left: auto;
+  flex-shrink: 0;
+  padding-left: 24px;
 }
 
 .footerbuttons > :first-of-type:not(:last-of-type) {
