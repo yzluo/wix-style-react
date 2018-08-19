@@ -1,0 +1,29 @@
+$HEADER_HEIGHT: 54px;
+$SIDE_WIDTH: 222px;
+
+.main {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.header {
+  height: $HEADER_HEIGHT;
+  background: #c1e4fe; //TODO - temp until we will have a component
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  .content {
+    flex: 1;
+
+    //TODO - This is for the page component but it looks
+    height: calc(100vh - #{$HEADER_HEIGHT});
+    min-height: 0;
+    display: flex;
+  }
+  .nav {
+    flex: 0 0 $SIDE_WIDTH;
+  }
+}
