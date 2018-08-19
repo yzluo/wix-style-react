@@ -73,7 +73,8 @@ class MessageBoxFunctionalLayout extends WixComponent {
     const messageBoxBodyClassNames = classNames(
       styles.body,
       {
-        [styles.scrollable]: typeof maxHeight !== 'undefined',
+        [styles.scrollable]: typeof maxHeight !== 'undefined' && !image,
+        [styles.messageWithImage]: image,
         [styles.noPadding]: noBodyPadding,
         [styles.fullscreenBody]: fullscreen,
         [styles.noFooter]: hideFooter,
@@ -99,6 +100,12 @@ class MessageBoxFunctionalLayout extends WixComponent {
       }
     );
 
+    const messageClassName = classNames(
+      {
+        [styles.scrollable]: typeof maxHeight !== 'undefined' && image
+      }
+    );
+
     return (
       <div className={contentClassName} style={{width}}>
         <HeaderLayout
@@ -113,13 +120,8 @@ class MessageBoxFunctionalLayout extends WixComponent {
           style={messageBoxBodyStyle}
           ref={this._initializeMessageBoxRef}
           >
-          {image ?
-            <div className={styles.messageWithImage}>
-              <div className={imageClassName} children={image}/>
-              {children}
-            </div> :
-            children
-          }
+          {image && <div className={imageClassName} children={image}/>}
+          <div className={messageClassName} children={children}/>
         </div>
         {!hideFooter ? (
           <FooterLayout
