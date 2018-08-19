@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import WixComponent from '../BaseComponents/WixComponent';
 import classNames from 'classnames';
 import CloseButton from '../CloseButton';
-import FooterLayout from './FooterLayout';
 
 import Button from '../Backoffice/Button';
 
