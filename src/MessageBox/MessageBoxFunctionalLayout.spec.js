@@ -55,7 +55,8 @@ describe('MessageBox', () => {
 
     it(`should trigger the 'onOk' action upon clicking the confirmation button`, () => {
       const props = {
-        onOk: sinon.spy()
+        onOk: sinon.spy(),
+        confirmText: 'confirm'
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
       driver.clickOnConfirmationButton();
@@ -70,6 +71,17 @@ describe('MessageBox', () => {
       const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
       driver.clickOnCancellationButton();
       expect(props.onCancel.calledOnce).toBeTruthy();
+    });
+
+    it('should render side actions', () => {
+      const dataHook = 'side-actions';
+      const props = {
+        sideActions: <div data-hook={dataHook}/>
+      };
+
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+
+      expect(driver.getChildBySelector(`[data-hook="${dataHook}"]`)).not.toBeNull();
     });
   });
 

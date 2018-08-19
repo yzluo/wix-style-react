@@ -21,6 +21,9 @@ import ScrollableAlertRaw from '!raw-loader!./AlertExamples/Scrollable';
 import EmptyStateAlert from './AlertExamples/EmptyState';
 import EmptyStateAlertRaw from '!raw-loader!./AlertExamples/EmptyState';
 
+import ActionsAlert from './AlertExamples/Actions';
+import ActionsAlertRaw from '!raw-loader!./AlertExamples/Actions';
+
 const introduction = `# Alert (\`<MessageBoxFunctionalLayout/>\`)
 Components to be used within \`wix-style-react/Modal\`:
 `;
@@ -53,6 +56,11 @@ export default () => (
           title="With EmptyState"
           code={EmptyStateAlertRaw}
           children={<EmptyStateAlert/>}
+          />
+        <CodeExample
+          title="With Actions"
+          code={ActionsAlertRaw}
+          children={<ActionsAlert/>}
           />
         <CodeExample
           title="Scrollable"

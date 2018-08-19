@@ -13,14 +13,15 @@ const FooterLayout = ({
   confirmText,
   buttonsHeight,
   enableOk,
-  enableCancel
-}) =>
+  enableCancel,
+  sideActions
+}) => (
   <div>
     <div className={styles.footer} data-hook="message-box-footer">
+      {sideActions && <div className={styles.footeractions} children={sideActions}/>}
       {children}
-
       <div className={styles.footerbuttons}>
-        {cancelText &&
+        {cancelText && (
           <Button
             disabled={!enableCancel}
             height={buttonsHeight}
@@ -29,27 +30,29 @@ const FooterLayout = ({
             dataHook="cancellation-button"
             children={cancelText}
             />
-        }
-
-        <Button
-          disabled={!enableOk}
-          height={buttonsHeight}
-          theme={'full' + theme}
-          onClick={onOk}
-          dataHook="confirmation-button"
-          children={confirmText}
-          />
+        )}
+        {confirmText && (
+          <Button
+            disabled={!enableOk}
+            height={buttonsHeight}
+            theme={'full' + theme}
+            onClick={onOk}
+            dataHook="confirmation-button"
+            children={confirmText}
+            />
+        )}
       </div>
     </div>
 
-    {bottomChildren &&
+    {bottomChildren && (
       <div
         data-hook="footer-layout-bottom-children"
         className={styles.bottomChildren}
         children={bottomChildren}
         />
-    }
-  </div>;
+    )}
+  </div>
+);
 
 FooterLayout.propTypes = {
   confirmText: PropTypes.node,
@@ -61,7 +64,8 @@ FooterLayout.propTypes = {
   theme: PropTypes.string,
   buttonsHeight: PropTypes.string,
   children: PropTypes.any,
-  bottomChildren: PropTypes.node
+  bottomChildren: PropTypes.node,
+  sideActions: PropTypes.node
 };
 
 FooterLayout.defaultProps = {
