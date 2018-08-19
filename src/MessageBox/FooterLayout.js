@@ -18,7 +18,7 @@ const FooterLayout = ({
 }) => (
   <div>
     <div className={styles.footer} data-hook="message-box-footer">
-      {sideActions && <div className={styles.footeractions} children={sideActions}/>}
+      {sideActions}
       {children}
       <div className={styles.footerbuttons}>
         {cancelText && (
