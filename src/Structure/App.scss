@@ -18,7 +18,7 @@ $SIDE_WIDTH: 222px;
   .content {
     flex: 1;
 
-    //TODO - This is for the page component but it looks
+    //TODO - This is for the page component but maybe it can be done differently
     height: calc(100vh - #{$HEADER_HEIGHT});
     min-height: 0;
     display: flex;
