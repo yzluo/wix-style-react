@@ -69,7 +69,7 @@ class MessageBoxMarketerialLayout extends WixComponent {
             data-hook="footer-layout-bottom-children"
             className={styles.bottomChildren}
             children={footerBottomChildren}
-          /> : null}
+            /> : null}
       </div>
     );
   }
