@@ -211,6 +211,14 @@ describe('MessageBox', () => {
       </MessageBoxFunctionalLayout>);
       expect(zeroPaddingDriver.toHaveBodyPadding()).toBeFalsy();
     });
+
+    it('should render the passed image', () => {
+      const props = {
+        image: (<div data-hook="inner-div"/>)
+      };
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      expect(driver.getChildBySelector('[data-hook="inner-div"]')).not.toBeNull();
+    });
   });
 
   describe('testkit', () => {

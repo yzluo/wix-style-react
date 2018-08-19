@@ -64,7 +64,8 @@ class MessageBoxFunctionalLayout extends WixComponent {
       maxHeight,
       fullscreen,
       withEmptyState,
-      sideActions
+      sideActions,
+      image
     } = this.props;
     const {hasScroll, scrolledToBottom} = this.state;
 
@@ -91,6 +92,13 @@ class MessageBoxFunctionalLayout extends WixComponent {
       }
     );
 
+    const imageClassName = classNames(
+      styles.image,
+      {
+        [styles.withFooterAction]: sideActions
+      }
+    );
+
     return (
       <div className={contentClassName} style={{width}}>
         <HeaderLayout
@@ -105,7 +113,13 @@ class MessageBoxFunctionalLayout extends WixComponent {
           style={messageBoxBodyStyle}
           ref={this._initializeMessageBoxRef}
           >
-          {children}
+          {image ?
+            <div className={styles.messageWithImage}>
+              <div className={imageClassName} children={image}/>
+              {children}
+            </div> :
+            children
+          }
         </div>
         {!hideFooter ? (
           <FooterLayout
@@ -146,7 +160,8 @@ MessageBoxFunctionalLayout.propTypes = {
   footerBottomChildren: PropTypes.node,
   fullscreen: PropTypes.bool,
   withEmptyState: PropTypes.bool,
-  sideActions: PropTypes.node
+  sideActions: PropTypes.node,
+  image: PropTypes.node
 };
 
 MessageBoxFunctionalLayout.defaultProps = {

@@ -17,6 +17,7 @@ describe('MessageBox', () => {
     const standard = 'alert-standard';
     const secondary = 'alert-secondary';
     const footnote = 'alert-footnote';
+    const image = 'alert-image';
     const emptyState = 'alert-empty-state';
     const scrollable = 'alert-scrollable';
 
@@ -28,6 +29,7 @@ describe('MessageBox', () => {
       await verifyItem(footnote);
       await verifyItem(emptyState);
       await verifyItem(scrollable);
+      await verifyItem(image);
     });
 
     eyes.it('should show footer border for scrollable modal and hide the border when scroll is on the bottom', async () => {
@@ -75,8 +77,10 @@ describe('MessageBox', () => {
     eyes.it('should not break design', async () => {
       const storyUrl = createStoryUrl({kind: '9. Modals', story: '9.4 Announcement'});
       const standard = 'announcement-standard';
+      const crossTheme = 'announcement-primary-theme';
       await browser.get(storyUrl);
       await verifyItem(standard);
+      await verifyItem(crossTheme);
     });
   });
 });

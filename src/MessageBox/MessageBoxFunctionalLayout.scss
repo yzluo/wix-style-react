@@ -35,6 +35,21 @@ $minimum-modal-margin: 48px;
   }
 }
 
+.message-with-image {
+  display: flex;
+
+  .image {
+    display: inline-block;
+    margin: -12px 30px -42px 0;
+    width: 126px;
+    height: 126px;
+
+    &.withFooterAction {
+      margin-bottom: -18px;
+    }
+  }
+}
+
 .fullscreen-body {
   margin-bottom: auto;
   overflow: auto;

@@ -18,6 +18,7 @@ const messageBoxMarketerialLayoutDriverFactory = ({element, wrapper, component})
     closeMessageBox: () => ReactTestUtils.Simulate.click(closeButton()),
     getTitle: () => element.querySelector('[data-hook="message-box-title"]').textContent,
     getContentBySelector: selector => element.querySelector(selector),
+    getChildBySelector: selector => element.querySelector(selector),
     getImageSrc: () => element.querySelector('[data-hook="header-image"]').src,
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));

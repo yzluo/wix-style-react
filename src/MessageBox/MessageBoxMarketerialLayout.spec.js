@@ -25,6 +25,15 @@ describe('MessageBoxMarketerialLayout', () => {
       expect(driver.getPrimaryButtonText()).toBe(props.primaryButtonLabel);
     });
 
+    it('should display the primary button with custom them', () => {
+      const props = Object.assign({}, requiredProps, {
+        primaryButtonLabel: 'primaryButtonLabel',
+        primaryButtonTheme: 'purple'
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+      expect(driver.getPrimaryButton().className).toContain('fullpurple');
+    });
+
     it('should not display the primary button if primary button label was not passed', () => {
       const props = Object.assign({}, requiredProps, {
       });
@@ -126,7 +135,38 @@ describe('MessageBoxMarketerialLayout', () => {
       const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
       expect(driver.getPrimaryButton().className).toContain('fullpurple');
     });
+  });
 
+  describe('footer children', () => {
+    it(`should render the passed footer content`, () => {
+      const props = Object.assign({}, requiredProps, {
+        footerBottomChildren: (<div data-hook="inner-div"/>)
+      });
+
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+
+      expect(driver.getChildBySelector('[data-hook="inner-div"]')).not.toBeNull();
+      expect(driver.getChildBySelector('[data-hook="footer-layout-bottom-children"]')).not.toBeNull();
+    });
+
+    it(`should not render secondary button when footer content passed`, () => {
+      const props = Object.assign({}, requiredProps, {
+        footerBottomChildren: (<div data-hook="inner-div"/>)
+      });
+
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+
+      expect(driver.getSecondaryButton()).toBeNull();
+    });
+
+    it(`should not render footer's wrapper div when footer content isn't passed`, () => {
+      const props = Object.assign({}, requiredProps, {
+      });
+
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+
+      expect(driver.getChildBySelector('[data-hook="footer-layout-bottom-children"]')).toBeNull();
+    });
   });
 
   describe('testkit', () => {
