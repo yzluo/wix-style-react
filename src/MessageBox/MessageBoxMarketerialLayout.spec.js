@@ -145,8 +145,8 @@ describe('MessageBoxMarketerialLayout', () => {
 
       const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
 
-      expect(driver.getChildBySelector('[data-hook="inner-div"]')).not.toBeNull();
-      expect(driver.getChildBySelector('[data-hook="footer-layout-bottom-children"]')).not.toBeNull();
+      expect(driver.getContentBySelector('[data-hook="inner-div"]')).not.toBeNull();
+      expect(driver.getContentBySelector('[data-hook="footer-layout-bottom-children"]')).not.toBeNull();
     });
 
     it(`should not render secondary button when footer content passed`, () => {
@@ -165,7 +165,7 @@ describe('MessageBoxMarketerialLayout', () => {
 
       const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
 
-      expect(driver.getChildBySelector('[data-hook="footer-layout-bottom-children"]')).toBeNull();
+      expect(driver.getContentBySelector('[data-hook="footer-layout-bottom-children"]')).toBeNull();
     });
   });
 

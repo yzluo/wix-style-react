@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {MessageBoxMarketerialLayout} from 'wix-style-react/MessageBox';
-import Text from 'wix-style-react/Text';
-import TextLink from 'wix-style-react/TextLink';
 
 export default () => (
   <MessageBoxMarketerialLayout
@@ -13,13 +11,6 @@ export default () => (
     theme="blue"
     primaryButtonLabel="Button"
     primaryButtonTheme="purple"
-    secondaryButtonLabel="Secondary action"
     dataHook="announcement-primary-theme"
-    footerBottomChildren={(
-      <div>
-        <Text size="small">By sending an invite, you agree to the </Text>
-        <TextLink size="small">Wix Terms of Use.</TextLink>
-      </div>
-    )}
     />
 );

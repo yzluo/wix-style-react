@@ -18,6 +18,9 @@ import FootNoteAlertRaw from '!raw-loader!./AlertExamples/FootNote';
 import Image from './AlertExamples/Image';
 import ImageRaw from '!raw-loader!./AlertExamples/Image';
 
+import ImageWithSideAction from './AlertExamples/ImageWithSideAction';
+import ImageWithSideActionRaw from '!raw-loader!./AlertExamples/ImageWithSideAction';
+
 import ScrollableAlert from './AlertExamples/Scrollable';
 import ScrollableAlertRaw from '!raw-loader!./AlertExamples/Scrollable';
 
@@ -69,6 +72,11 @@ export default () => (
           title="With Actions"
           code={ActionsAlertRaw}
           children={<ActionsAlert/>}
+          />
+        <CodeExample
+          title="With Image And Actions"
+          code={ImageWithSideActionRaw}
+          children={<ImageWithSideAction/>}
           />
         <CodeExample
           title="Scrollable"

@@ -69,12 +69,10 @@ class MessageBoxFunctionalLayout extends WixComponent {
     } = this.props;
     const {hasScroll, scrolledToBottom} = this.state;
 
-
     const messageBoxBodyClassNames = classNames(
       styles.body,
       {
-        [styles.scrollable]: typeof maxHeight !== 'undefined' && !image,
-        [styles.messageWithImage]: image,
+        [styles.scrollable]: typeof maxHeight !== 'undefined',
         [styles.noPadding]: noBodyPadding,
         [styles.fullscreenBody]: fullscreen,
         [styles.noFooter]: hideFooter,
@@ -82,6 +80,7 @@ class MessageBoxFunctionalLayout extends WixComponent {
         [styles.withEmptyState]: withEmptyState
       }
     );
+
     const messageBoxBodyStyle = {
       maxHeight
     };
@@ -96,13 +95,8 @@ class MessageBoxFunctionalLayout extends WixComponent {
     const imageClassName = classNames(
       styles.image,
       {
-        [styles.withFooterAction]: sideActions
-      }
-    );
-
-    const messageClassName = classNames(
-      {
-        [styles.scrollable]: typeof maxHeight !== 'undefined' && image
+        [styles.withFooterAction]: sideActions,
+        [styles.noPadding]: noBodyPadding
       }
     );
 
@@ -114,15 +108,27 @@ class MessageBoxFunctionalLayout extends WixComponent {
           theme={theme}
           closeButton={closeButton}
           />
-        <div
-          data-hook="message-box-body"
-          className={messageBoxBodyClassNames}
-          style={messageBoxBodyStyle}
-          ref={this._initializeMessageBoxRef}
-          >
-          {image && <div className={imageClassName} children={image}/>}
-          <div className={messageClassName} children={children}/>
-        </div>
+        {image && !withEmptyState ?
+          <div className={styles.messageWithImage}>
+            <div className={imageClassName} children={image}/>
+            <div
+              data-hook="message-box-body"
+              className={messageBoxBodyClassNames}
+              style={messageBoxBodyStyle}
+              ref={this._initializeMessageBoxRef}
+              >
+              {children}
+            </div>
+          </div> :
+          <div
+            data-hook="message-box-body"
+            className={messageBoxBodyClassNames}
+            style={messageBoxBodyStyle}
+            ref={this._initializeMessageBoxRef}
+            >
+            {children}
+          </div>
+        }
         {!hideFooter ? (
           <FooterLayout
             bottomChildren={footerBottomChildren}

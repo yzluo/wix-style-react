@@ -37,3 +37,5 @@
 | width| string | '600px' | - | Set the message box width |
 | noBodyPadding| bool | false | - | Should the body of the layout will have surrounding padding |
 | withEmptyState | bool | false | - | Is the body contains an `<EmptyState/>` component |
+| sideActions | Node | - | - | Content to appear on the other side of the actions buttons |
+| image | Node | - | - | Content to appear along side the children (fixed widt/height 126px/126px) |

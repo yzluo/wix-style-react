@@ -9,8 +9,12 @@ import CodeExample from 'wix-storybook-utils/CodeExample';
 import AnnouncementStandard from './AnnouncementExamples/Standard';
 import AnnouncementStandardRaw from '!raw-loader!./AnnouncementExamples/Standard';
 
-import AnnouncementCrossTheme from './AnnouncementExamples/CrossTheme';
-import AnnouncementCrossThemeRaw from '!raw-loader!./AnnouncementExamples/CrossTheme';
+import PremiumAction from './AnnouncementExamples/PremiumAction';
+import PremiumActionRaw from '!raw-loader!./AnnouncementExamples/PremiumAction';
+
+
+import Footnote from './AnnouncementExamples/Footnote';
+import FootnoteRaw from '!raw-loader!./AnnouncementExamples/Footnote';
 
 const introduction = `# Announcement (\`<MessageBoxMarketerialLayout/>\`)
 Components to be used within \`wix-style-react/Modal\`:
@@ -31,9 +35,14 @@ export default () => (
           children={<AnnouncementStandard/>}
           />
         <CodeExample
-          title="Cross Theme"
-          code={AnnouncementCrossThemeRaw}
-          children={<AnnouncementCrossTheme/>}
+          title="Premium Action"
+          code={PremiumActionRaw}
+          children={<PremiumAction/>}
+          />
+        <CodeExample
+          title="Footnote"
+          code={FootnoteRaw}
+          children={<Footnote/>}
           />
       </div>
     </div>

@@ -5,11 +5,12 @@ import Checkbox from 'wix-style-react/Checkbox';
 
 export default () => (
   <MessageBoxFunctionalLayout
-    title="Message With Actions"
-    confirmText="Confirm"
-    cancelText="Cancel"
+    title="Interuption Message"
+    confirmText="Main"
+    cancelText="Secondary"
     theme="blue"
-    dataHook="alert-actions"
+    dataHook="alert-image-actions"
+    image={<img src="https://picsum.photos/126/126?blur&image=0"/>}
     sideActions={<Checkbox>{`Please don't show me this again.`}</Checkbox>}
     >
     This is a generic message. No harm done, but really needed to interrupt you.
