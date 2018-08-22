@@ -2,6 +2,7 @@
 import React from 'react';
 import {MessageBoxFunctionalLayout} from 'wix-style-react/MessageBox';
 import Checkbox from 'wix-style-react/Checkbox';
+import Text from 'wix-style-react/Text';
 
 export default () => (
   <MessageBoxFunctionalLayout
@@ -10,7 +11,7 @@ export default () => (
     cancelText="Cancel"
     theme="blue"
     dataHook="alert-actions"
-    sideActions={<Checkbox>{`Please don't show me this again.`}</Checkbox>}
+    sideActions={<Checkbox><Text style={{color: '$D10'}}>Please don't show me this again.</Text></Checkbox>}
     >
     This is a generic message. No harm done, but really needed to interrupt you.
   </MessageBoxFunctionalLayout>
