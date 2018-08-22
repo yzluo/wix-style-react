@@ -59,14 +59,19 @@ export default () => (
           children={<FootNoteAlert/>}
           />
         <CodeExample
-          title="With image"
-          code={ImageRaw}
-          children={<Image/>}
-          />
-        <CodeExample
           title="With EmptyState"
           code={EmptyStateAlertRaw}
           children={<EmptyStateAlert/>}
+          />
+        <CodeExample
+          title="Scrollable"
+          code={ScrollableAlertRaw}
+          children={<ScrollableAlert/>}
+          />
+        <CodeExample
+          title="With image"
+          code={ImageRaw}
+          children={<Image/>}
           />
         <CodeExample
           title="With Actions"
@@ -77,11 +82,6 @@ export default () => (
           title="With Image And Actions"
           code={ImageWithSideActionRaw}
           children={<ImageWithSideAction/>}
-          />
-        <CodeExample
-          title="Scrollable"
-          code={ScrollableAlertRaw}
-          children={<ScrollableAlert/>}
           />
       </div>
     </div>

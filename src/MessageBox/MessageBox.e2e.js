@@ -17,9 +17,9 @@ describe('MessageBox', () => {
     const standard = 'alert-standard';
     const secondary = 'alert-secondary';
     const footnote = 'alert-footnote';
-    const image = 'alert-image';
     const emptyState = 'alert-empty-state';
     const scrollable = 'alert-scrollable';
+    const image = 'alert-image';
     const actions = 'alert-actions';
     const imageWithActions = 'alert-image-actions';
 
