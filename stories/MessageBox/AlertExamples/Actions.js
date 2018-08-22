@@ -11,7 +11,7 @@ export default () => (
     cancelText="Cancel"
     theme="blue"
     dataHook="alert-actions"
-    sideActions={<Checkbox><Text style={{color: '$D10'}}>Please don't show me this again.</Text></Checkbox>}
+    sideActions={<Checkbox><Text style={{color: '$D10'}}>{`Please don't show me this again.`}</Text></Checkbox>}
     >
     This is a generic message. No harm done, but really needed to interrupt you.
   </MessageBoxFunctionalLayout>

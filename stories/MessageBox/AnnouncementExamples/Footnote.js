@@ -16,8 +16,8 @@ export default () => (
     dataHook="announcement-footnote"
     footerBottomChildren={(
       <div>
-        <Text size="small" secondary={true}>By sending an invite, you agree to the </Text>
-        <TextLink size="small" secondary={true} >Wix Terms of Use.</TextLink>
+        <Text size="small" secondary>By sending an invite, you agree to the </Text>
+        <TextLink size="small" secondary >Wix Terms of Use.</TextLink>
       </div>
     )}
     />
