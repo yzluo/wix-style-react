@@ -116,6 +116,7 @@ import '../stories/Badge'; // 12.1 Badge
 import '../stories/CounterBadge'; //12.3 CounterBadge
 import '../stories/FullTextView.story.js'; //12.4 FullTextView
 import '../stories/Tag.story.js'; // 12.5 Tag
+import '../stories/Avatar.story.js'; // 12.6 Avatar
 import '../stories/Highlighter.story.js'; // Highlighter
 
 // Components section, WIP and similar

@@ -1,0 +1,191 @@
+:import {
+  -st-from: "wix-ui-backoffice/dist/src/colors.st.css";
+  -st-named:
+          B20, G20, GR20, R20, O20, D80, B40;
+}
+
+.gradient {
+  background-image: linear-gradient(225deg, value(color1), value(color2));
+}
+
+.root {
+  -st-states: 
+    size(enum(tiny, xxSmall, xSmall, small, medium, large, xLarge, xxLarge)),
+    state(enum(initials, image, placeholder, custom)),
+    color(enum(blue, green, gray, red, orange, custom));
+
+  white-space: pre-line;
+  border-radius: 50%;
+  text-align: center;
+  text-transform: uppercase;
+  overflow: hidden;
+  background-size: cover;
+}
+
+.root:state(placeholder) {
+  background-color: value(B40);
+}
+
+.root:state(image) {
+  background-color: value(B20);
+}
+
+.root:size(tiny), .placeholder:size(tiny) {
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+}
+
+.root:size(xxSmall), .placeholder:size(xxSmall) {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.root:size(xSmall), .placeholder:size(xSmall) {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.root:size(small), .placeholder:size(small) {
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+}
+
+.root:size(medium), .placeholder:size(medium) {
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+}
+
+.root:size(large), .placeholder:size(large) {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+}
+
+.root:size(xLarge), .placeholder:size(xLarge) {
+  width: 72px;
+  height: 72px;
+  line-height: 72px;
+}
+
+.root:size(xxLarge), .placeholder:size(xxLarge) {
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+}
+
+.root:size(xSmall), .root:size(small) {
+  color: value(D80);
+}
+
+:vars {
+  color1: #389aec;
+  color2: #4ebcf5;
+}
+
+.root:color(blue):not(:state(placeholder)) {
+  -st-mixin: gradient(color1 #389aec, color2 #4ebcf5);
+  background-color: value(B20);
+}
+
+.root:color(green):not(:state(placeholder)) {
+  -st-mixin: gradient(color1 #4eb968, color2 #5bca90);
+  background-color: value(G20);
+}
+
+.root:color(gray):not(:state(placeholder)) {
+  -st-mixin: gradient(color1 #6f819d 4%, color2 #829bb0);
+  background-color: value(GR20);
+}
+
+.root:color(red):not(:state(placeholder)) {
+  -st-mixin: gradient(color1 #ee6a51, color2 #ff6686);
+  background-color: value(R20);
+}
+
+.root:color(orange):not(:state(placeholder)) {
+  -st-mixin: gradient(color1 #fb6b33, color2 #ffaf48);
+  background-color: value(O20);
+}
+
+.initials {
+  -st-states:
+    size(enum(tiny, xxSmall, xSmall, small, medium, large, xLarge, xxLarge));
+
+  display: block;
+
+}
+
+.initials:size(xSmall), .initials:size(small) {
+  font-size: 10px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.8;
+  letter-spacing: 1.2px;
+}
+
+.initials:size(xSmall) {
+  padding: 6px 0;
+}
+
+.initials:size(small) {
+  padding: 9px 0;
+  margin: 0 3px;
+  overflow: hidden;
+}
+
+.initials:size(medium) {
+  padding: 15px 0;
+}
+
+.initials:size(large) {
+  padding: 21px 0;
+  margin: 0 6px;
+  overflow: hidden;
+}
+
+.initials:size(xLarge) {
+  padding: 24px 0;
+}
+
+.initials:size(xxLarge) {
+  padding: 33px 0;
+  margin: 0 12px;
+  overflow: hidden;
+}
+
+/*the prefer way but the svg outline is colored*/
+.placeholder {
+  -st-states:
+    size(enum(tiny, xxSmall, xSmall, small, medium, large, xLarge, xxLarge));
+
+  margin-top: 17%;
+  color: #b1d9f7;
+}
+
+/*not the good way to do it*/
+.placeholder {
+  height: 100%;
+}
+
+.placeholder-head, .placeholder-body {
+  background-color: #b1d9f7;
+  border-radius: 50%;
+}
+
+.placeholder-head {
+  width: 46%;
+  height: 46%;
+  margin: 25% auto 0;
+}
+
+.placeholder-body {
+  width: 70%;
+  height: 70%;
+  margin: -5% auto 0;
+}
