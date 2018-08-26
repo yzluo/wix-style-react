@@ -12,7 +12,7 @@ const avatarDriverFactory = ({element}) => {
     getSize: () => stylableDOMUtil.getStyleState(element, 'size'),
     getColor: () => stylableDOMUtil.getStyleState(element, 'color'),
     getState: () => stylableDOMUtil.getStyleState(element, 'state'),
-    getCustomColor: () => element.style.background || element.style,
+    getCustomColor: () => element.style.backgroundColor || element.style.backgroundImage,
     getImageUrl: () => element.style.backgroundImage,
     isPlaceholder: () => !!findByHook(element, 'placeholder')
   };
