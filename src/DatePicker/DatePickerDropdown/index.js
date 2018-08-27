@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import DropdownLayout from '../../DropdownLayout';
-import Text from '../../Deprecated/Text';
+import Text from '../../Text';
 import ChevronDown from '../../new-icons/ChevronDown';
 import styles from './styles.scss';
 
@@ -17,25 +17,35 @@ export default class DropdownPicker extends React.Component {
 
   constructor(props) {
     super(props);
+    this.stopAllEventsThatCanOpenModalInSameEventLoop = false;
     this.state = {
       isOpen: false
     };
   }
 
-  onClose = () =>
+  onClose = () => {
     this.setState({
       isOpen: false
     });
+    this.stopAllEventsThatCanOpenModalInSameEventLoop = true;
+    setTimeout(() => {
+      // for next event loop we allow them
+      this.stopAllEventsThatCanOpenModalInSameEventLoop = false;
+    });
+  }
 
   onSelect = data => {
     this.props.onChange(data);
     this.onClose();
   }
 
-  toggleDropdown = () =>
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+  toggleDropdown = () => {
+    if (!this.stopAllEventsThatCanOpenModalInSameEventLoop) {
+      this.setState({
+        isOpen: !this.state.isOpen
+      });
+    }
+  }
 
   render() {
     const {
@@ -56,12 +66,7 @@ export default class DropdownPicker extends React.Component {
           className={styles.button}
           onClick={this.toggleDropdown}
           >
-          <Text
-            appearance="T1.2"
-            dataHook={`${dataHook}-button`}
-            children={caption}
-            />
-
+          <Text dataHook={`${dataHook}-button`}>{caption}</Text>
           <div className={styles.icon}>
             <ChevronDown/>
           </div>

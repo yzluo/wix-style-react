@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
-import {testkitFactoryCreator} from '../test-common';
+import {testkitFactoryCreator} from 'wix-ui-test-utils/vanilla';
 import {isClassExists} from '../../test/utils';
-import textDriverFactory from '../Deprecated/Text/Text.driver';
+import textDriverFactory from '../Text/Text.driver';
 
 const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 

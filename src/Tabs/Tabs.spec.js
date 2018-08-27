@@ -2,7 +2,7 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import {mount} from 'enzyme';
 
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import tabsDriverFactory from './Tabs.driver';
 import Tabs from './Tabs';
 import {tabsTestkitFactory} from '../../testkit';

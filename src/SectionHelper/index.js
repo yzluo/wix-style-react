@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import WixComponent from '../BaseComponents/WixComponent';
-import Text from '../Deprecated/Text';
+import Text from '../Text';
 import Button from '../Button';
 import CloseButton from '../CloseButton';
 
@@ -22,48 +22,52 @@ export const HELPER_APPEARANCE = {
  */
 class SectionHelper extends WixComponent {
   render() {
+    const {showCloseButton, onClose} = this.props;
+
     return (
       <div className={classnames(styles.root, HELPER_APPEARANCE[this.props.appearance])}>
-        { this.props.onClose &&
-          <div className={classnames(styles.close, {[styles.closeWithTitle]: this.props.title})}>
-            <CloseButton
-              dataHook="sectionhelper-close-btn"
-              size="large"
-              theme="close-dark"
-              onClick={this.props.onClose}
-              />
-          </div>
+        {showCloseButton && onClose &&
+        <div className={classnames(styles.close, {[styles.closeWithTitle]: this.props.title})}>
+          <CloseButton
+            dataHook="sectionhelper-close-btn"
+            size="large"
+            theme="close-dark"
+            onClick={this.props.onClose}
+            />
+        </div>
         }
 
-        { this.props.title &&
-          <div className={styles.title}>
-            <Text dataHook="sectionhelper-title" appearance="T4">
-              {this.props.title}
-            </Text>
-          </div>
+        {this.props.title &&
+        <div className={styles.title}>
+          <Text dataHook="sectionhelper-title" size="small" weight="normal">
+            {this.props.title}
+          </Text>
+        </div>
         }
 
         <div className={styles.content}>
-          <Text appearance="T3">
-            { this.props.children }
+          <Text size="small">
+            {this.props.children}
           </Text>
         </div>
 
-        { this.props.onAction && this.props.actionText &&
-          <div className={styles.action}>
-            <Button
-              height="small"
-              theme="outlined"
-              onClick={this.props.onAction}
-              dataHook="sectionhelper-action-btn"
-              children={this.props.actionText}
-              />
-          </div>
+        {this.props.onAction && this.props.actionText &&
+        <div className={styles.action}>
+          <Button
+            height="small"
+            theme="outlined"
+            onClick={this.props.onAction}
+            dataHook="sectionhelper-action-btn"
+            children={this.props.actionText}
+            />
+        </div>
         }
       </div>
     );
   }
 }
+
+SectionHelper.displayName = 'SectionHelper';
 
 SectionHelper.propTypes = {
   /** Sets the look and feel of the component */
@@ -71,6 +75,9 @@ SectionHelper.propTypes = {
 
   /** Adds text as the title */
   title: PropTypes.node,
+
+  /** decide if to show the close button */
+  showCloseButton: PropTypes.bool,
 
   /** When provided, will make a close button appear and invoke it upon click */
   onClose: PropTypes.func,
@@ -86,6 +93,7 @@ SectionHelper.propTypes = {
 };
 
 SectionHelper.defaultProps = {
+  showCloseButton: true,
   appearance: 'warning'
 };
 

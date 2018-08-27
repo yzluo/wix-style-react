@@ -2,7 +2,7 @@ import React from 'react';
 import sinon from 'sinon';
 import ReactTestUtils from 'react-dom/test-utils';
 import editableRowDriverFactory from './EditableRow.driver';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {editableRowTestkitFactory} from '../../../testkit';
 import EditableRow from './EditableRow';
 import {editableRowTestkitFactory as enzymeEditableRowTestkitFactory} from '../../../testkit/enzyme';

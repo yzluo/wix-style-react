@@ -1,4 +1,5 @@
-import {isFocused, hasAttribute, INTERNAL_DRIVER_SYMBOL} from '../../test-common';
+import {INTERNAL_DRIVER_SYMBOL} from '../../../test/utils/private-drivers';
+import {hasAttribute, isFocused} from '../../../test/utils/protractor-helpers';
 
 const focusableDriverFactory = ({rootElement, clickableElements, nativeFocusableElement}) => {
   if (!rootElement || !clickableElements || !nativeFocusableElement) {

@@ -1,5 +1,7 @@
 import eyes from 'eyes.it';
-import {editableSelectorTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
+import {editableSelectorTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
 
 describe('EditableSelector', () => {
   const storyUrl = getStoryUrl('11. Pickers and Selectors', '11.2 EditableSelector');

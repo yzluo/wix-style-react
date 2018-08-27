@@ -1,11 +1,12 @@
 import eyes from 'eyes.it';
 
 import {tableTestkitFactory} from '../../testkit/protractor';
-import {createStoryUrl, waitForVisibilityOf, scrollToElement} from '../../test/utils/protractor';
+import {waitForVisibilityOf, scrollToElement} from 'wix-ui-test-utils/protractor';
+import {createStoryUrl} from '../../test/utils/storybook-helpers';
 import {storySettings} from '../../stories/Table/storySettings';
 
 describe('Table', () => {
-  const storyUrl = createStoryUrl({kind: storySettings.kind, story: storySettings.storyName, withExamples: true});
+  const storyUrl = createStoryUrl({kind: storySettings.kind, story: storySettings.storyName});
 
   const init = async (dataHook = 'storybook-table') => {
     await browser.get(storyUrl);
@@ -23,7 +24,11 @@ describe('Table', () => {
   eyes.it('should display table only', async () => {
     const driver = await init();
     await scrollToElement(driver.element);
-    // need snapshot only
+  });
+
+  eyes.it('should render with an EmptyState', async () => {
+    const driver = await init('story-table-empty-state-example');
+    await scrollToElement(driver.element);
   });
 
   describe('Action column', () => {

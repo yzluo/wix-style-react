@@ -48,7 +48,7 @@ const options = [
 
 export default () =>
   <div>
-    <div className="ltr" style={style}>
+    <div style={style}>
       30 options<br/>
       <DropdownLayout
         visible

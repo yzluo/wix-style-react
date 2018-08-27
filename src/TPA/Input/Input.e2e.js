@@ -1,5 +1,7 @@
 import eyes from 'eyes.it';
-import {tpaInputTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../../testkit/protractor';
+import {tpaInputTestkitFactory} from '../../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../../test/utils/storybook-helpers';
 
 describe('TPA Input', () => {
   const storyUrl = getStoryUrl('TPA', 'Input');

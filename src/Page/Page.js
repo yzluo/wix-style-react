@@ -1,16 +1,16 @@
-import s from './Page.scss';
+
 import React from 'react';
-import WixComponent from '../BaseComponents/WixComponent';
-import PageHeader from '../PageHeader';
-import Content from './Content';
-import Tail from './Tail';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {ResizeSensor} from 'css-element-queries';
 
-const SCROLL_TOP_THRESHOLD = 20;
-const SHORT_SCROLL_TOP_THRESHOLD = 3;
-const TAIL_TOP_PADDING_PX = 24;
+import s from './Page.scss';
+import WixComponent from '../BaseComponents/WixComponent';
+import PageHeader from '../PageHeader';
+import Content from './Content';
+import Tail from './Tail';
+import {SCROLL_TOP_THRESHOLD, SHORT_SCROLL_TOP_THRESHOLD, TAIL_TOP_PADDING_PX} from './constants';
+
 /**
  * A page container which contains a header and scrollable content
  *
@@ -344,10 +344,10 @@ Page.propTypes = {
     }
 
     if (
-      children[key].type !== Page.Header &&
-      children[key].type !== Page.Content &&
-      children[key].type !== Page.FixedContent &&
-      children[key].type !== Page.Tail
+      children[key].type.displayName !== Page.Header.displayName &&
+      children[key].type.displayName !== Page.Content.displayName &&
+      children[key].type.displayName !== Page.FixedContent.displayName &&
+      children[key].type.displayName !== Page.Tail.displayName
     ) {
       return new Error(`Page: Invalid Prop children, unknown child ${children[key].type}`);
     }
@@ -356,20 +356,20 @@ Page.propTypes = {
 
 function getChildrenObject(children) {
   return React.Children.toArray(children).reduce((acc, child) => {
-    switch (child.type) {
-      case Page.Header : {
+    switch (child.type.displayName) {
+      case 'Page.Header' : {
         acc.PageHeader = child;
         break;
       }
-      case Page.Content : {
+      case 'Page.Content' : {
         acc.PageContent = child;
         break;
       }
-      case Page.FixedContent : {
+      case 'Page.FixedContent' : {
         acc.PageFixedContent = child;
         break;
       }
-      case Page.Tail : {
+      case 'Page.Tail' : {
         acc.PageTail = child;
         break;
       }

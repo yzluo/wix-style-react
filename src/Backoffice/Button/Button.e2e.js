@@ -1,7 +1,9 @@
-import eyes from 'eyes.it';
-import {buttonTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../../testkit/protractor';
-import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import React from 'react';
+import eyes from 'eyes.it';
+import {buttonTestkitFactory} from '../../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../../test/utils/storybook-helpers';
+import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import {runFocusTests} from '../../common/Focusable/FocusableTestsE2E';
 
 const NO_DESCRIPTION = '';

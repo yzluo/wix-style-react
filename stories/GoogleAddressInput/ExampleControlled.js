@@ -47,8 +47,6 @@ class ControlledGoogleAddressInput extends Component {
 }
 
 export default () =>
-  <div>
-    <div style={style} className="ltr">
-      <ControlledGoogleAddressInput/>
-    </div>
+  <div style={style}>
+    <ControlledGoogleAddressInput/>
   </div>;

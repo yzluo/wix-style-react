@@ -18,7 +18,7 @@ class CommandsExample extends React.Component {
     };
 
     return (
-      <div className="ltr">
+      <div>
         <div style={{width: '400px'}}>
           <Input theme={this.props.theme} ref="inputtest"/>
         </div>

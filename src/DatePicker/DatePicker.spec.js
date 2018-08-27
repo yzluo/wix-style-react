@@ -3,14 +3,13 @@ import ReactTestUtils from 'react-dom/test-utils';
 import {mount} from 'enzyme';
 import isSameDay from 'date-fns/is_same_day';
 
-import {createDriverFactory} from '../test-common';
-import applyPolyfills from './Polyfills';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {datePickerTestkitFactory} from '../../testkit/index';
 import {datePickerTestkitFactory as enzymeDatePickerTestkitFactory} from '../../testkit/enzyme';
 import datePickerDriverFactory from './DatePicker.driver';
 import Input from '../Input';
 import DatePicker from './DatePicker';
-import '../utils/RangePolyfill.js';
+import {rangePolyfill, requestAnimationFramePolyfill} from '../../testkit/polyfills';
 
 import isLocale from 'date-fns/locale/is';
 
@@ -19,7 +18,10 @@ const noop = () => {};
 describe('DatePicker', () => {
   const createDriver = createDriverFactory(datePickerDriverFactory);
 
-  applyPolyfills(window, global);
+  beforeAll(() => {
+    rangePolyfill.install();
+    requestAnimationFramePolyfill.install();
+  });
 
   describe('date picker input', () => {
     it('should exist', () => {
@@ -85,16 +87,6 @@ describe('DatePicker', () => {
     });
 
     describe('should close', () => {
-      it('on select date with Enter key', () => {
-        const value = new Date(2017, 5, 2);
-        const {inputDriver, calendarDriver} = createDriver(<DatePicker value={value} onChange={noop}/>);
-
-        inputDriver.trigger('click');
-        inputDriver.trigger('keyDown', {key: 'ArrowRight', keyCode: 39});
-        inputDriver.trigger('keyDown', {key: 'Enter', keyCode: 13});
-
-        expect(calendarDriver.isVisible()).toBe(false);
-      });
 
       it('on select date with click', () => {
         const {inputDriver, calendarDriver} = createDriver(<DatePicker onChange={noop}/>);
@@ -109,7 +101,7 @@ describe('DatePicker', () => {
         const {inputDriver, calendarDriver} = createDriver(<DatePicker onChange={noop}/>);
 
         inputDriver.trigger('click');
-        inputDriver.trigger('keyDown', {key: 'Escape', keyCode: 27});
+        calendarDriver.triggerKeyDown({key: 'Escape', keyCode: 27});
 
         expect(calendarDriver.isVisible()).toBe(false);
       });
@@ -119,7 +111,7 @@ describe('DatePicker', () => {
         const {inputDriver, calendarDriver} = createDriver(<DatePicker onChange={noop}/>);
 
         inputDriver.trigger('click');
-        inputDriver.trigger('keyDown', {key: 'Tab', keyCode: 9, preventDefault});
+        calendarDriver.triggerKeyDown({key: 'Tab', keyCode: 9, preventDefault});
 
         expect(preventDefault.mock.calls.length).toBe(0);
         expect(calendarDriver.isVisible()).toBe(false);
@@ -370,6 +362,12 @@ describe('DatePicker', () => {
         expect(calendarDriver.isVisible()).toBe(true);
       });
 
+      it('should hide the focus visually on the current element from the user', () => {
+        const {calendarDriver} = createDriver(<DatePicker onChange={noop}/>);
+        calendarDriver.open();
+        expect(calendarDriver.isFocusedDayVisuallyUnfocused()).toBeTruthy();
+      });
+
       it('should close calendar using ref', () => {
         const {calendarDriver} = createDriver(<DatePicker onChange={noop}/>);
 
@@ -382,34 +380,32 @@ describe('DatePicker', () => {
     });
 
     describe('keyboard navigation', () => {
-      it('should navigate days correctly with keyboard - LTR mode', () => {
+      it('should navigate days correctly with keyboard - LTR mode', done => {
         const date = new Date(2018, 1, 5);
         const {calendarDriver} = createDriver(<DatePicker onChange={noop} value={date}/>);
 
         calendarDriver.open();
         expect(calendarDriver.getFocusedDay()).toEqual('5');
-
         calendarDriver.pressLeftArrow();
-        expect(calendarDriver.getFocusedDay()).toEqual('4');
-
-        calendarDriver.pressRightArrow();
-        calendarDriver.pressRightArrow();
-        expect(calendarDriver.getFocusedDay()).toEqual('6');
+        // we need setTimeout because pressLeftArrow trigger async actions
+        setTimeout(() => {
+          expect(calendarDriver.getFocusedDay()).toEqual('4');
+          done();
+        });
       });
 
-      it('should navigate days correctly with keyboard - RTL mode', () => {
+      it('should navigate days correctly with keyboard - RTL mode(same as with LTR)', done => {
         const date = new Date(2018, 1, 5);
         const {calendarDriver} = createDriver(<DatePicker onChange={noop} rtl value={date}/>);
 
         calendarDriver.open();
         expect(calendarDriver.getFocusedDay()).toEqual('5');
-
         calendarDriver.pressLeftArrow();
-        expect(calendarDriver.getFocusedDay()).toEqual('6');
-
-        calendarDriver.pressRightArrow();
-        calendarDriver.pressRightArrow();
-        expect(calendarDriver.getFocusedDay()).toEqual('4');
+        // we need setTimeout because pressLeftArrow trigger async actions
+        setTimeout(() => {
+          expect(calendarDriver.getFocusedDay()).toEqual('4');
+          done();
+        });
       });
 
       it('should not update input value while navigating the calendar', () => {
@@ -423,7 +419,7 @@ describe('DatePicker', () => {
         expect(inputDriver.getValue()).toEqual('02/05/2018');
       });
 
-      it('should keep selected day unchanged when navigating with keyboard', () => {
+      it('should keep selected day unchanged when navigating with keyboard', done => {
         const date = new Date(2018, 1, 5);
         const {calendarDriver} = createDriver(<DatePicker onChange={noop} value={date}/>);
 
@@ -433,9 +429,22 @@ describe('DatePicker', () => {
         expect(calendarDriver.getFocusedDay()).toEqual('5');
 
         calendarDriver.pressLeftArrow();
+        setTimeout(() => {
+          expect(calendarDriver.getSelectedDay()).toEqual('5');
+          expect(calendarDriver.getFocusedDay()).toEqual('4');
+          done();
+        });
+      });
 
-        expect(calendarDriver.getSelectedDay()).toEqual('5');
-        expect(calendarDriver.getFocusedDay()).toEqual('4');
+      it('should remove unfocused class from the selected day while navigating the calendar', () => {
+        const date = new Date(2018, 1, 5);
+        const {calendarDriver} = createDriver(<DatePicker onChange={noop} value={date}/>);
+
+        calendarDriver.open();
+        expect(calendarDriver.isFocusedDayVisuallyUnfocused()).toBeTruthy();
+
+        calendarDriver.pressLeftArrow();
+        expect(calendarDriver.containsVisuallyUnfocusedDay()).toBeFalsy();
       });
     });
   });
@@ -662,7 +671,6 @@ describe('DatePicker', () => {
     });
   });
 
-
   describe('testkit', () => {
     it('should exist', () => {
       const div = document.createElement('div');
@@ -695,6 +703,14 @@ describe('DatePicker', () => {
       expect(driver.exists()).toBe(true);
       expect(inputDriver.exists()).toBe(true);
       expect(calendarDriver.isVisible()).toBe(false);
+    });
+  });
+
+  describe('two months layout', () => {
+    it('should switch to 2 months layout if we set twoMonths prop to true', () => {
+      const {inputDriver, calendarDriver} = createDriver(<DatePicker twoMonths onChange={noop}/>);
+      inputDriver.trigger('click');
+      expect(calendarDriver.isTwoMonthsLayout()).toBeTruthy();
     });
   });
 });

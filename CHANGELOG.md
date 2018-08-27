@@ -12,6 +12,119 @@ Types of changes:
 1. **Security** in case of vulnerabilities.
 1. **Breaking** for breaking changes
 
+## next
+### Added
+- `<MessageBox/>` - add footer actions and image support [#2141](https://github.com/wix/wix-style-react/pull/2141)
+- `<SectionHelper/>` - explicitly decide to show or hide close button [#2148](https://github.com/wix/wix-style-react/pull/2148)
+
+## 4.19.0 - 2018-08-26
+### Fixed
+- `<Tooltip/>` - Fix issue of self unmounting tooltip [#2133](https://github.com/wix/wix-style-react/pull/2133)
+- `<Page/>` - Use displayName rather than reference for prop validation [#2154](https://github.com/wix/wix-style-react/pull/2154)
+
+
+### Changed
+- Tests: Update docs how to use polyfills for `Tooltip`, `CollapsedHeader`, `DatePicker` and `Range` [#2139](https://github.com/wix/wix-style-react/pull/2139)
+
+## 4.18.0 - 2018-08-11
+### Added
+- `<EmptyState/>` - add a new component [#2074](https://github.com/wix/wix-style-react/pull/2074)
+  - `<Table.EmptyState/>` - add support for EmptyState inside a `<Table/>` [#2116](https://github.com/wix/wix-style-react/pull/2116)
+  - `<Card.EmptyState/>` - add support for EmptyState inside a `<Crad/>` [#2117](https://github.com/wix/wix-style-react/pull/2117)
+  - `<EmptyState/>` - make `section` the default theme [#2129](https://github.com/wix/wix-style-react/pull/2129)
+  - `<EmptyState/>` - add links to component examples in the story [#2131](https://github.com/wix/wix-style-react/pull/2131)
+- `<TextLink/>` - support ellipsis with tooltip [#2108](https://github.com/wix/wix-style-react/pull/2108)
+
+### Fixed
+- `<Input/>` - when `type="number"` prevent characters to be typed in Firefox, Safari & Edge [#2100](https://github.com/wix/wix-style-react/pull/2100)
+- `<Table/>` - fix column info tooltip position and fix `<FormField/>` icon [#2119](https://github.com/wix/wix-style-react/pull/2119)
+- `<RadioGroup/>` - fix css to support nested `<RadioGroup.Radio/>` [#2128](https://github.com/wix/wix-style-react/pull/2128)
+- `<Page/>` - fix rendering issues with `react-hot-loader` [#2134](https://github.com/wix/wix-style-react/pull/2134)
+
+## 4.17.0 - 2018-08-08
+### Added
+- `<TextLink/>` - support prefix and suffix icons [#2088](https://github.com/wix/wix-style-react/pull/2088)
+- `<Container/>` - add `fluid` prop to disable min/max width [#2082](https://github.com/wix/wix-style-react/pull/2082)
+- `<ImageViewer/>` - allow to specify tooltip content [#2081](https://github.com/wix/wix-style-react/pull/2081)
+- `<FormField/>` - add `infoTooltipProps` prop to allow full control of into tooltip [#2099](https://github.com/wix/wix-style-react/pull/2099)
+
+### Changed
+- `<TextLink/>` - refactored folder structure and updated protractor testkit [#2088](https://github.com/wix/wix-style-react/pull/2088)
+- `<Container/>` - add `className` prop [#2102](https://github.com/wix/wix-style-react/pull/2102)
+- `<InputArea/>` - pass event for on focus handler [#2084](https://github.com/wix/wix-style-react/pull/2084)
+- `<DatePicker>` - new design for 1 month layout [#2030](https://github.com/wix/wix-style-react/pull/2030)
+
+### Fixed
+- `<FormField/>` - update counter color and typography to the same as for placeholder [#2083](https://github.com/wix/wix-style-react/pull/2083)
+- `<Table/>` - fix `TableToolbar` import path [#2023](https://github.com/wix/wix-style-react/pull/2023)
+
+## 4.16.0 - 2018-08-05
+### Deprecated
+- `<Text/>` - Deprecated `bold` prop in favor `weight` prop which can be `thin`, `normal` or `bold`. [#2073](https://github.com/wix/wix-style-react/pull/2073)
+
+### Added 
+- `<Text/>` - Show Tooltip when ellipsis is active [#2073](https://github.com/wix/wix-style-react/pull/2073)
+- `<Text/>` - Extend `size` prop to have also `size="tiny"`. [#2073](https://github.com/wix/wix-style-react/pull/2073)
+- `<Heading/>` - Show Tooltip when ellipsis is active [#2068](https://github.com/wix/wix-style-react/pull/2068)
+
+### Fixed
+- `<Loader/>` - fix testkit to return textContent instead of innerHTML [#2076](https://github.com/wix/wix-style-react/pull/2076)
+- `<SideMenu/>` - fix the back link icon size to 14px [#2080](https://github.com/wix/wix-style-react/pull/2080)
+
+### Changed
+- Refactor testkits to import only their relevant technology [#2085](https://github.com/wix/wix-style-react/pull/2085)
+
+
+## 4.15.0 - 2018-08-02
+### Changed
+
+- Refactor deprecated text to new `<Text/>` and `<Heading/>` components [#2037](https://github.com/wix/wix-style-react/pull/2037)
+
+### Fixed
+
+- `<Input/>` - fix error indication bug
+
+## 4.14.1 - 2018-08-02
+### Changed
+- `<StatsWidget/>` - refactor old Text to new Heading and Badge [#2065](https://github.com/wix/wix-style-react/pull/2065)
+
+### Fixed
+- fixed puppeteer driver imports
+
+### Added
+ - `<Icons/>` - Update wix-ui-icons-common version to handle new icons(ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Crop, Mobile, PauseFilled, PlayFilled, StatusAlerFilled, StatusCompletetFilled, StopFilled, ZoomIn, ZoomOut) [#2067](https://github.com/wix/wix-style-react/pull/2067)
+
+## 4.14.0 - 2018-08-01
+### Fixed
+- `<Button/>` - Fix focusable button in disabled state [#2054](https://github.com/wix/wix-style-react/pull/2054)
+
+### Added
+- `<Input/>` - Added `status` and `statusMessage` props, added loader suffix [#1784](https://github.com/wix/wix-style-react/pull/1784)
+- new Testkit drivers for `Text`, `Heading` `Table`, `FormField` and fixed `Input` [#2060](https://github.com/wix/wix-style-react/pull/2060) [#2061](https://github.com/wix/wix-style-react/pull/2061) [#2062](https://github.com/wix/wix-style-react/pull/2062) [#2064](https://github.com/wix/wix-style-react/pull/2064)
+
+### Changed
+- `<TextField/>` - Default info tooltip to not use `appendToParent: false` [#2035](https://github.com/wix/wix-style-react/pull/2035)
+- `<Loader/>` - styling updates according to the UX guidelines [#2045](https://github.com/wix/wix-style-react/pull/2045)
+
+## 4.13.0 - 2018-07-30
+### Fixed
+- `<Tooltip/>` - Fix react 16 regression [#2047](https://github.com/wix/wix-style-react/pull/2047)
+
+### Changed
+- `<Notification/>` - set notification height to always be 48px https://github.com/wix/wix-style-react/pull/2036
+
+### Added
+- `<MultiSelect/>` - add error indication and message, readonly styles [#2041](https://github.com/wix/wix-style-react/pull/2041)
+
+## 4.12.0 - 2018-07-26
+### Added
+- `<MessageBoxFunctionalLayout/>` - Add fullscreen prop according to design [#2026](https://github.com/wix/wix-style-react/pull/2026)
+- `<MessageBoxFunctionalLayout/>` - Add footer border for scrollable content [#2027](https://github.com/wix/wix-style-react/pull/2027)
+- `<DropdownLayout/>` - Allowing passing a divider option without an id [#2005](https://github.com/wix/wix-style-react/pull/2005)
+
+### Changed
+- `<SideMenuDrill/>` - create a standalone import path [#2040](https://github.com/wix/wix-style-react/pull/2040)
+
 ## 4.11.1 - 2018-07-22
 ### Changed
 - `<Page/>` - Allow scrolling with mouse over header [#2015](https://github.com/wix/wix-style-react/pull/2015)

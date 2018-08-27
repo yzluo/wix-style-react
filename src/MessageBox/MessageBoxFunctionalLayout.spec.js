@@ -1,9 +1,9 @@
 import React from 'react';
 import MessageBoxFunctionalLayout from './MessageBoxFunctionalLayout';
 import MessageBoxFunctionalLayoutFactory from './MessageBoxFunctionalLayout.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import sinon from 'sinon';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
 import {messageBoxFunctionalLayoutTestkitFactory} from '../../testkit';
 import {messageBoxFunctionalLayoutTestkitFactory as enzymeMessageBoxTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
@@ -55,7 +55,8 @@ describe('MessageBox', () => {
 
     it(`should trigger the 'onOk' action upon clicking the confirmation button`, () => {
       const props = {
-        onOk: sinon.spy()
+        onOk: sinon.spy(),
+        confirmText: 'confirm'
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
       driver.clickOnConfirmationButton();
@@ -70,6 +71,17 @@ describe('MessageBox', () => {
       const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
       driver.clickOnCancellationButton();
       expect(props.onCancel.calledOnce).toBeTruthy();
+    });
+
+    it('should render side actions', () => {
+      const dataHook = 'side-actions';
+      const props = {
+        sideActions: <div data-hook={dataHook}/>
+      };
+
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+
+      expect(driver.getChildBySelector(`[data-hook="${dataHook}"]`)).not.toBeNull();
     });
   });
 
@@ -198,6 +210,14 @@ describe('MessageBox', () => {
         <div>Content</div>
       </MessageBoxFunctionalLayout>);
       expect(zeroPaddingDriver.toHaveBodyPadding()).toBeFalsy();
+    });
+
+    it('should render the passed image', () => {
+      const props = {
+        image: (<div data-hook="inner-div"/>)
+      };
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      expect(driver.getChildBySelector('[data-hook="inner-div"]')).not.toBeNull();
     });
   });
 

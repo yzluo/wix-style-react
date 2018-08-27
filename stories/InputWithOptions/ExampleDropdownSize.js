@@ -18,14 +18,14 @@ const options = [
 
 export default () =>
   <div>
-    <div style={style} className="ltr">
+    <div style={style}>
       Bigger width
       <InputWithOptions
         dropdownWidth="500px"
         options={options}
         />
     </div>
-    <div style={style} className="ltr">
+    <div style={style}>
       With offset<InputWithOptions dropdownWidth="500px" dropdownOffsetLeft="-150px" options={options}/>
     </div>
   </div>;

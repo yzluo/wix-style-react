@@ -6,10 +6,15 @@
 
 ### Polyfills
 
-Tooltip driver might need polyfills, two polyfills are supported via the library
+Since the tests won't be ran in a browser environment, the `<Tooltip/>` component might need some
+polyfills. You can use them as follows:
+
 ```javascript
-import 'wix-style-react/dist/src/Tooltip/RangePolyfill.js';
-import 'wix-style-react/dist/src/Tooltip/CancelAnimationPolyfill.js';
+import {rangePolyfill} from 'wix-style-react/dist/testkit/polyfills';
+
+beforeAll(() => {
+  rangePolyfill.install();
+});
 ```
 
 ### Enzyme / ReactTestUtils
@@ -28,6 +33,13 @@ import 'wix-style-react/dist/src/Tooltip/CancelAnimationPolyfill.js';
 | getChildren | - | element | return the tooltip children | 
 | getPlacement | - | string | return the tooltip placement | 
 | getContent | - | element | return the tooltip content | 
+
+### Puppeteer
+
+| method | arguments | returned value | description |
+|--------|-----------|----------------|-------------|
+| element | - | element | returns the element |
+| getTooltipTextContent | number | string | get the tooltip context text |
 
 ## Usage Example
 
@@ -71,4 +83,23 @@ import 'wix-style-react/dist/src/Tooltip/CancelAnimationPolyfill.js';
   testkit.mouseEnter();
   expect(testkit.isShown()).toBeFalsy();
   return waitFor.assert(() => expect(testkit.isShown()).toBeTruthy());
+```
+
+```javascript
+/*******************
+   puppeteer example
+  *******************/
+
+  import puppeteer from 'puppeteer';
+  import {tooltipTestkitFactory} from 'wix-style-react/dist/testkit/puppeteer';
+
+  //puppeteer setup
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+
+  //Create an element testkit via the data-hook attribute
+  const testkit = await tooltipTestkitFactory({dataHook: 'myDataHook', page});
+  await page.goto(appUrl); //Your application url
+
+  expect(await testkit.getTooltipTextContent()).to.equal('my test');
 ```

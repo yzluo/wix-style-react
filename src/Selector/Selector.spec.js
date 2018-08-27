@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import selectorDriverFactory from './Selector.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {selectorTestkitFactory} from '../../testkit';
 import Selector from './Selector';
 import {selectorTestkitFactory as enzymeSelectorTestkitFactory} from '../../testkit/enzyme';

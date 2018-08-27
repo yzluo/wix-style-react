@@ -2,7 +2,7 @@ import dataTableDriverFactory from './DataTable.driver';
 import React from 'react';
 import DataTable from './DataTable';
 import ReactTestUtils from 'react-dom/test-utils';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {dataTableTestkitFactory} from '../../testkit';
 import {dataTableTestkitFactory as enzymeDataTableTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

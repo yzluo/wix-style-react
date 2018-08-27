@@ -66,7 +66,7 @@ class ExampleStandard extends Component {
             </div>
           </div>
         </div>
-        <div className={`ltr ${styles.output}`}>
+        <div className={styles.output}>
           <GoogleAddressInputWithLabelExample {...this.state} onChange={this.props.onChange}/>
         </div>
       </from>

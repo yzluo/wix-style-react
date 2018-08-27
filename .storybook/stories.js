@@ -8,10 +8,9 @@ import '../stories/Introduction';
 import '../stories/Composite'; // TODO: Move to introduction
 
 // 1. Foundations
-import '../stories/Text'; // 1.2 Text
-// import '../stories/Label/index.story.js'; // 1.2 + Text
-import '../stories/Label'; // 1.2 + Label
-import '../stories/Heading.story'; // 1.3 Heading
+import '../stories/Text/index.story'; // 1.2 Text
+import '../stories/Label.story.js'; // 1.2 + Label
+import '../stories/Heading/index.story'; // 1.3 Heading
 import '../stories/Icons'; // 1.4 Icons - deprecated
 import '../stories/NewIcons'; // 1.4 Icons
 
@@ -24,8 +23,10 @@ import '../stories/ScrollBar'; // 1.8 ScrollBar
 import '../stories/Page/index.story.js'; // 2.5 Page
 import '../stories/PageHeader/index.story.js'; // 2.5 + PageHeader
 import '../stories/Page/FullPageExample.js'; // 2.5 + Page Example
-import '../stories/StatsWidget'; // 2.6 StatsWidget
-import '../stories/GridWithCardLayout'; // Grid & Card
+import '../stories/EmptyState/EmptyState.story'; // 2.6 EmptyState
+import '../stories/StatsWidget'; // 2.7 StatsWidget
+import '../stories/Grid';
+import '../stories/Card';
 
 
 // 3. Inputs
@@ -42,7 +43,7 @@ import '../stories/Range'; // 3.7 Range
 import '../stories/MultiSelect'; // 3.8 Tags
 import '../stories/MultiSelectComposite'; // 3.8 + MultiSelectComposite
 import '../stories/Search/index.story'; // 3.9 Search
-import '../stories/ImageViewer'; // 3.10 ImageViewer
+import '../stories/ImageViewer/index.story'; // 3.10 ImageViewer
 import '../stories/FilePicker'; // 3.10 + FilePicker
 import '../stories/GoogleAddressInput'; // 3.11 GoogleAddressInput
 import '../stories/AddItem/addItem.story.js'; // 3.12 AddItem
@@ -58,7 +59,7 @@ import '../stories/DropdownComposite'; // 4.1 + DropdownComposite
 import '../stories/MultiSelectCheckbox/index.story.js'; // 4.1 + MultiSelectCheckbox
 import '../stories/Checkbox.story.js'; // 4.2 Checkbox
 import '../stories/RadioGroup.story.js'; // 4.3 RadioGroup
-import '../stories/ToggleSwitch'; // 4.4 ToggleSwitch
+import '../stories/ToggleSwitch.story'; // 4.4 ToggleSwitch
 import '../stories/Slider'; // 4.7 Slider
 import '../stories/GoogleAddressInputWithLabel'; // 4.8 Google address input
 
@@ -91,7 +92,7 @@ import '../stories/Tooltip/Composite/CompositeStory';
 import '../stories/Notification';
 import '../stories/FloatingHelper/FloatingHelper.story.js'; // 8.6 FloatingHelper
 import '../stories/FloatingHelperContent/FloatingHelperContent.story.js'; // 8.6 + FloatingHelper.Content
-import '../stories/SectionHelper.story.js'; // 8.7 SectionHelper
+import '../stories/SectionHelper/SectionHelper.story.js'; // 8.7 SectionHelper
 
 
 // 9. Modals
@@ -101,6 +102,8 @@ import '../stories/EndorseContentLayout';
 
 // 10. Tables
 import '../stories/DataTable'; // 10.1 DataTable
+import '../stories/Table'; // 10.1 Table
+import '../stories/TableToolbar/ToolbarStory.js'; // 10.1 Table -> TableToolbar
 
 // 11. Pickers and Selectors
 import '../stories/DropdownLayout'; // 11.1 DropdownLayout
@@ -114,11 +117,11 @@ import '../stories/CounterBadge'; //12.3 CounterBadge
 import '../stories/FullTextView.story.js'; //12.4 FullTextView
 import '../stories/Tag.story.js'; // 12.5 Tag
 import '../stories/Highlighter.story.js'; // Highlighter
-import '../stories/FormField.story.js'; // FormField
 
-// 13. Work in progress
-import '../stories/Table'; // 13.1 Table Card
-import '../stories/Table/Toolbar/ToolbarStory.js'; // 13.2 TableToolbar
+// Components section, WIP and similar
+import '../stories/FormField.story.js';
+import '../stories/Layout/index.story.js';
+import '../stories/Layout';
 
 // TPA
 import '../stories/TPA/Button';
@@ -133,3 +136,4 @@ import '../stories/SideBar';
 
 // Tests
 import '../stories/Page/PageTestStories.js'; // Tests/2.5 + Page/
+import '../stories/Tooltip/Composite/PopoverMenuRegressionTest.js'; // Tests/7.3. Popover Menu/

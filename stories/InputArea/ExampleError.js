@@ -10,6 +10,6 @@ const style = {
 
 export default () =>
   <div>
-    <div className="ltr" style={style}>Left to right<InputArea error errorMessage="Error"/></div>
+    <div style={style}>Left to right<InputArea error errorMessage="Error"/></div>
     <div className="rtl" style={style}>Right to left<InputArea rtl error/></div>
   </div>;

@@ -1,9 +1,14 @@
+import React from 'react';
+import CodeExample from 'wix-storybook-utils/CodeExample';
 import Page from 'wix-style-react/Page';
 import Breadcrumbs from './Breadcrumbs';
 import {storybookConfig} from './storybookConfig';
 
 import {header, tail, fixedContent, content} from './PageChildren';
 import './Page.scss';
+
+import ExampleEmptyState from './ExampleEmptyState';
+import ExampleEmptyStateRaw from '!raw-loader!./ExampleEmptyState';
 
 export default {
   category: storybookConfig.category,
@@ -45,5 +50,11 @@ export default {
         value: 'https://static.wixstatic.com/media/f0548921c53940ec803dfb1c203e96fe.jpg/v1/fill/w_400,h_100/f0548921c53940ec803dfb1c203e96fe.jpg'
       }
     ]
-  }
+  },
+
+  examples: (
+    <CodeExample title="Page with and EmptyState" code={ExampleEmptyStateRaw}>
+      <ExampleEmptyState/>
+    </CodeExample>
+  )
 };

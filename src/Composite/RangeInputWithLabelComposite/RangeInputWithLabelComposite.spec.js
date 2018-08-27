@@ -3,7 +3,7 @@ import RangeInputWithLabelComposite from './RangeInputWithLabelComposite';
 import Label from '../../Label';
 import Input from '../../Input';
 import rangeCompositeDriverFactory from './RangeWithLabelComposite.driver';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import Tooltip from '../../Tooltip/Tooltip';
 
 describe('RangeInputWithLabelComposite', () => {

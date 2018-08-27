@@ -1,13 +1,14 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import {isTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists} from '../../test/utils/testkit-sanity';
 import notificationDriverFactory from './Notification.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {notificationTestkitFactory} from '../../testkit';
 import {notificationTestkitFactory as enzymeNotificationTestkitFactory, buttonTestkitFactory as enzymeButtonTestkitFactory} from '../../testkit/enzyme';
 
 import Notification from './Notification';
 import Button from '../../src/Button';
+import TextLink from '../TextLink';
 
 const renderNotificationWithProps = (props = {}) => (
   <Notification {...props}>
@@ -317,7 +318,7 @@ describe('Notification', () => {
         </Notification.ActionButton>
       );
 
-      expect(component.find('TextLink').length).toEqual(1);
+      expect(component.find(TextLink).length).toEqual(1);
     });
   });
 });

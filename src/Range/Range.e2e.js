@@ -1,5 +1,7 @@
 import eyes from 'eyes.it';
-import {rangeTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
+import {rangeTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
 import settings from '../../stories/Range/StorySettings';
 import inputDriver from '../Input/Input.protractor.driver';
 import datePickerDriver from '../DatePicker/DatePicker.protractor.driver';
@@ -76,17 +78,16 @@ describe('Range', () => {
       expect(driver.isFocusedLast()).toBe(false, 'isFocusedLast');
     });
 
-    eyes.it('should show focused styles for first item', async () => {
+    eyes.it('should not show focused styles for first item', async () => {
       expect(driver.isFocusedFirst()).toBe(false);
       await driver.clickFirst();
-      expect(driver.isFocusedFirst()).toBe(true);
+      expect(driver.isFocusedFirst()).toBe(false);
     }, {version: '<Input/>-On text click - select all'});
 
-    eyes.it('should show focused styles for last item', async () => {
+    eyes.it('should not show focused styles for last item', async () => {
       expect(driver.isFocusedLast()).toBe(false);
       await driver.clickLast();
-      await driver.clickLast(); // TODO: temporary :)
-      expect(driver.isFocusedLast()).toBe(true);
+      expect(driver.isFocusedLast()).toBe(false);
     });
   });
 });

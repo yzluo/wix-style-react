@@ -6,7 +6,7 @@
 
 `wix-style-react` is a collection of [React](https://facebook.github.io/react/) components that conform to Wix Style created by Wix UX guild.
 
-#### [Demo](https://wix-wix-style-react.surge.sh/) | [Source](https://github.com/wix/wix-style-react)
+#### [Demo](https://wix-wix-style-react.surge.sh/) | [Source](https://github.com/wix/wix-style-react) | [Playground](https://codesandbox.io/s/mymk2zn1mp)
 
 ## Setup
 
@@ -35,7 +35,6 @@ const MyComponent = () =>
     ```html
     <link rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
     ```
-* Ensure `<body>` has either `ltr` or `rtl` class applied to it (depending on displayed language);
 
 ## Tips
 

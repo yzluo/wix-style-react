@@ -1,5 +1,7 @@
 import eyes from 'eyes.it';
-import {autoCompleteTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
+import {autoCompleteTestkitFactory} from '../../testkit/protractor';
 
 describe('AutoComplete', () => {
   const storyUrl = getStoryUrl('4. Selection', '4.1 + AutoComplete');

@@ -1,31 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Popper from 'popper.js';
-
-import DayPicker from 'react-day-picker/DayPicker';
-
-import addDays from 'date-fns/add_days';
-import subDays from 'date-fns/sub_days';
-import addMonths from 'date-fns/add_months';
-import subMonths from 'date-fns/sub_months';
-import addYears from 'date-fns/add_years';
-import subYears from 'date-fns/sub_years';
-import parse from 'date-fns/parse';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
 import isSameDay from 'date-fns/is_same_day';
-import startOfMonth from 'date-fns/start_of_month';
 import setYear from 'date-fns/set_year';
 import setMonth from 'date-fns/set_month';
 import setDate from 'date-fns/set_date';
 
 import WixComponent from '../BaseComponents/WixComponent';
 import CalendarIcon from '../new-icons/Date';
-import localeUtilsFactory, {formatDate} from './LocaleUtils';
+import {formatDate} from './LocaleUtils';
+import Calendar from './Calendar';
+import Input from '../Input';
 
 import styles from './DatePicker.scss';
-import arrowStyles from './arrow.scss';
-import Input from '../Input';
-import DatePickerHead from './DatePickerHead';
 
 /**
  * DatePicker component
@@ -45,94 +33,10 @@ import DatePickerHead from './DatePickerHead';
 export default class DatePicker extends WixComponent {
   static displayName = 'DatePicker';
 
-  static propTypes = {
-    /** Can provide Input with your custom props. If you don't need a custom input element, and only want to pass props to the Input, then use inputProps prop. I think this is not in use outside of WSR, and can be deprecated. */
-    customInput: PropTypes.node,
-
-    /** Properties appended to the default Input component or the custom Input component. */
-    inputProps: PropTypes.object,
-
-    /** Custom date format */
-    dateFormat: PropTypes.string,
-
-    /** DatePicker instance locale */
-    locale: PropTypes.oneOfType([
-      PropTypes.oneOf([
-        'en',
-        'es',
-        'pt',
-        'fr',
-        'de',
-        'pl',
-        'it',
-        'ru',
-        'ja',
-        'ko',
-        'tr',
-        'sv',
-        'no',
-        'nl',
-        'da']),
-      PropTypes.shape({
-        distanceInWords: PropTypes.object,
-        format: PropTypes.object
-      })
-    ]),
-
-    /** Is the DatePicker disabled */
-    disabled: PropTypes.bool,
-
-    /** Past dates are unselectable */
-    excludePastDates: PropTypes.bool,
-
-    /** Only the truthy dates are selectable */
-    filterDate: PropTypes.func,
-
-    /** dataHook for the DatePicker's Input */
-    inputDataHook: PropTypes.string,
-
-    /** calendarDataHook for the DatePicker's calendar view */
-    calendarDataHook: PropTypes.string,
-
-    /** Called upon every value change */
-    onChange: PropTypes.func.isRequired,
-
-    /** placeholder of the Input */
-    placeholderText: PropTypes.string,
-
-    /** RTL mode */
-    rtl: PropTypes.bool,
-
-    /** Display a selectable yearDropdown */
-    showYearDropdown: PropTypes.bool,
-
-    /** Display a selectable monthDropdown */
-    showMonthDropdown: PropTypes.bool,
-
-    /** The selected date */
-    value: PropTypes.object,
-
-    /** should the calendar close on day selection */
-    shouldCloseOnSelect: PropTypes.bool,
-
-    /** controls the whether the calendar will be visible or not */
-    isOpen: PropTypes.bool,
-
-    /** will show exclamation icon when true **/
-    error: PropTypes.bool,
-
-    /** will display message when hovering error icon **/
-    errorMessage: PropTypes.node,
-
-    /** set desired width of DatePicker input */
-    width: PropTypes.number
-  };
-
   static defaultProps = {
     locale: 'en',
     dateFormat: 'MM/DD/YYYY',
     filterDate: () => true,
-    shouldCloseOnSelect: true,
     rtl: false,
     width: 150
   };
@@ -141,23 +45,17 @@ export default class DatePicker extends WixComponent {
     super(props);
 
     this.state = {
-      isMonthPickerOpen: false,
-      isYearPickerOpen: false,
-      value: props.value,
-      isOpen: props.isOpen || false
+      isOpen: props.isOpen || false,
+      isDateInputFocusable: !props.isOpen
     };
   }
 
   componentDidMount() {
     super.componentDidMount();
 
-    this._popper = new Popper(
-      this.inputRef,
-      this.calendarRef,
-      {
-        placement: 'top-start'
-      }
-    );
+    this._popper = new Popper(this.inputRef, this.calendarRef, {
+      placement: 'top-start'
+    });
   }
 
   componentWillUnmount() {
@@ -170,21 +68,32 @@ export default class DatePicker extends WixComponent {
       this.setState(
         {
           isOpen: true,
+          isDateInputFocusable: false,
           value: this.props.value || new Date()
         },
         () => this._popper.scheduleUpdate()
       );
     }
+  };
+
+  closeCalendar = () => {
+    this.setState({isOpen: false});
+    /*
+      to fix case when user press tab in opened Calendar and:
+        1. Calendar become closed
+        2. Focus triggered
+        3. openCalendar triggered by focus
+        4. Calendar become visible
+        5. Looks like nothing happen
+      We need to do such steps:
+       1. Close calendar(with isDateInputFocusable: false)
+       2. After calendar is closed, on next event loop(after focus is fired)  make isDateInputFocusable: focusable
+       to allow user to press tab in future and open Calendar
+    */
+    setTimeout(() => this.makeInputFocusable());
   }
 
-  closeCalendar = () =>
-    this.setState({value: this.state.value, isOpen: false});
-
-  _setValue = value =>
-    this.setState(
-      {value},
-      this._popper.scheduleUpdate
-    );
+  makeInputFocusable = () => this.setState({isDateInputFocusable: true});
 
   _saveNewValue = (value, modifiers = {}) => {
     if (modifiers.disabled) {
@@ -198,143 +107,33 @@ export default class DatePicker extends WixComponent {
         [value.getFullYear(), setYear],
         [value.getMonth(), setMonth],
         [value.getDate(), setDate]
-      ].reduce(
-        (value, [datePart, setter]) => setter(value, datePart),
-        this.props.value
-      );
+      ].reduce((value, [datePart, setter]) => setter(value, datePart), this.props.value);
 
       this.setState({value: newValue}, () => this.props.onChange(newValue));
     }
-
-    this.props.shouldCloseOnSelect && this.closeCalendar();
-  }
-
-  _createDayPickerProps = () => {
-    const {
-      locale,
-      showMonthDropdown,
-      showYearDropdown,
-      filterDate,
-      excludePastDates,
-      value: propsValue,
-      rtl
-    } = this.props;
-
-    const {value} = this.state;
-
-    const localeUtils = localeUtilsFactory(locale);
-
-    const captionElement = (
-      <DatePickerHead
-        {...{
-          date: value,
-          showYearDropdown,
-          showMonthDropdown,
-          localeUtils,
-          rtl,
-          onChange: this._setValue,
-
-          onLeftArrowClick: () =>
-            this._setValue(startOfMonth(addMonths(value, -1))),
-
-          onRightArrowClick: () =>
-            this._setValue(startOfMonth(addMonths(value, 1)))
-        }}
-        />
-    );
-
-    return {
-      disabledDays:
-        excludePastDates ?
-          [{before: new Date()}] : // todo adjust with tz
-          date => !filterDate(date),
-
-      initialMonth: value,
-      initialYear: value,
-      selectedDays: parse(propsValue),
-      month: value,
-      year: value,
-      firstDayOfWeek: 1,
-      locale: typeof locale === 'string' ? locale : '',
-      fixedWeeks: true,
-      modifiers: value ? {'keyboard-selected': value} : {},
-      onKeyDown: this._handleKeyDown,
-      onDayClick: this._saveNewValue,
-      localeUtils,
-      canChangeMonth: false, // this disables `navbarElement`, whereas `navbarElement: null` doesn't
-      captionElement
-    };
-  }
+  };
 
   _handleKeyDown = event => {
-    const keyHandler = this.keyHandlers[event.keyCode];
-
-    if (keyHandler) {
-      // TODO: dirty for now
-      // tab key should move focus so can't preventDefault
-      if (event.keyCode !== 9) {
-        event.preventDefault();
-      }
-
-      if (!this.state.isOpen) {
-        this.openCalendar();
-      }
-
-      keyHandler(this.state.value);
+    // TODO: dirty for now
+    // tab key should move focus so can't preventDefault
+    if (event.keyCode !== 9) {
+      event.preventDefault();
     }
-  }
 
-  keyHandlers = {
-    // enter
-    13: value => this._saveNewValue(value),
+    if (!this.state.isOpen) {
+      this.openCalendar();
+    }
 
-    // escape
-    27: this.closeCalendar,
-
-    // page up
-    33: value =>
-      this._setValue(subMonths(value, 1)),
-
-    // page down
-    34: value =>
-      this._setValue(addMonths(value, 1)),
-
-    // end
-    35: value =>
-      this._setValue(addYears(value, 1)),
-
-    // home
-    36: value =>
-      this._setValue(subYears(value, 1)),
-
-    // left arrow
-    37: value =>
-      this._setValue(subDays(value, this.props.rtl ? -1 : 1)),
-
-    // up arrow
-    38: value =>
-      this._setValue(subDays(value, 7)),
-
-    // right arrow
-    39: value =>
-      this._setValue(addDays(value, this.props.rtl ? -1 : 1)),
-
-    // down arrow
-    40: value =>
-      this._setValue(addDays(value, 7)),
-
-    // tab
-    9: this.closeCalendar
+    // keyHandler(this.state.value);
   };
 
   onClickOutside() {
     this.closeCalendar();
   }
 
-  render() {
+  _renderInput = () => {
     const {
       inputDataHook,
-      calendarDataHook,
       dateFormat,
       locale,
       disabled,
@@ -344,11 +143,8 @@ export default class DatePicker extends WixComponent {
       error,
       errorMessage,
       customInput,
-      width,
       inputProps
     } = this.props;
-
-    const {isOpen} = this.state;
 
     const _inputProps = {
       dataHook: inputDataHook,
@@ -357,35 +153,143 @@ export default class DatePicker extends WixComponent {
       disabled,
       readOnly,
       placeholder: placeholderText,
-      prefix: <span className={styles.icon}><CalendarIcon/></span>,
+      prefix: (
+        <span className={styles.icon}>
+          <CalendarIcon/>
+        </span>
+      ),
       onFocus: this.openCalendar,
       onKeyDown: this._handleKeyDown,
+      tabIndex: this.state.isDateInputFocusable ? 1 : -1,
       error,
       errorMessage,
+      autoSelect: false,
       ...(customInput ? customInput.props : {}),
       ...inputProps
     };
 
+    return React.cloneElement(customInput || <Input/>, _inputProps);
+  };
+
+  _setInputRef = ref => this.inputRef = ref;
+
+  _setCalendarRef = ref => this.calendarRef = ref;
+
+  render() {
+    const {
+      showMonthDropdown,
+      showYearDropdown,
+      filterDate,
+      excludePastDates,
+      rtl,
+      shouldCloseOnSelect,
+      width,
+      calendarDataHook,
+      twoMonths,
+      locale
+    } = this.props;
+
+    const {isOpen, value} = this.state;
+
+    const calendarProps = {
+      locale,
+      showMonthDropdown,
+      showYearDropdown,
+      filterDate,
+      excludePastDates,
+      rtl,
+      onChange: this._saveNewValue,
+      onClose: this.closeCalendar,
+      value,
+      shouldCloseOnSelect,
+      twoMonths
+    };
+
     return (
       <div style={{width}} className={styles.root}>
-        <div ref={ref => this.inputRef = ref}>
-          {React.cloneElement(customInput || <Input/>, _inputProps)}
+        <div ref={this._setInputRef}>
+          <DayPickerInput
+            component={this._renderInput}
+            keepFocus={false}
+            />
         </div>
 
         <div
-          ref={ref => this.calendarRef = ref}
+          ref={this._setCalendarRef}
           data-hook={calendarDataHook}
-          className={classNames(
-            styles.calendarRoot,
-            {
-              [arrowStyles.root]: isOpen
-            }
-          )}
+          className={styles.calendarRoot}
           >
-
-          {isOpen && <DayPicker {...this._createDayPickerProps()}/>}
+          {isOpen && <Calendar {...calendarProps}/>}
         </div>
       </div>
     );
   }
 }
+
+DatePicker.propTypes = {
+  ...Calendar.propTypes,
+
+  /** Can provide Input with your custom props. If you don't need a custom input element, and only want to pass props to the Input, then use inputProps prop. I think this is not in use outside of WSR, and can be deprecated. */
+  customInput: PropTypes.node,
+
+  /** Properties appended to the default Input component or the custom Input component. */
+  inputProps: PropTypes.object,
+
+  /** Custom date format */
+  dateFormat: PropTypes.string,
+
+  /** DatePicker instance locale */
+  locale: PropTypes.oneOfType([
+    PropTypes.oneOf([
+      'en',
+      'es',
+      'pt',
+      'fr',
+      'de',
+      'pl',
+      'it',
+      'ru',
+      'ja',
+      'ko',
+      'tr',
+      'sv',
+      'no',
+      'nl',
+      'da'
+    ]),
+    PropTypes.shape({
+      distanceInWords: PropTypes.object,
+      format: PropTypes.object
+    })
+  ]),
+
+  /** Is the DatePicker disabled */
+  disabled: PropTypes.bool,
+
+  /** dataHook for the DatePicker's Input */
+  inputDataHook: PropTypes.string,
+
+  /** calendarDataHook for the DatePicker's calendar view */
+  calendarDataHook: PropTypes.string,
+
+  /** placeholder of the Input */
+  placeholderText: PropTypes.string,
+
+  /** RTL mode */
+  rtl: PropTypes.bool,
+
+  /** The selected date */
+  value: PropTypes.object,
+
+  /** controls the whether the calendar will be visible or not */
+  isOpen: PropTypes.bool,
+
+  /** will show exclamation icon when true **/
+  error: PropTypes.bool,
+
+  /** will display message when hovering error icon **/
+  errorMessage: PropTypes.node,
+
+  /** set desired width of DatePicker input */
+  width: PropTypes.number
+};

@@ -1,4 +1,5 @@
-import {hasAttribute, mergeDrivers} from '../../test-common';
+import {mergeDrivers} from '../../../test/utils/private-drivers';
+import {hasAttribute} from '../../../test/utils/protractor-helpers';
 import focusableDriverFactory from '../../common/Focusable/Focusable.protractor.driver';
 
 const buttonDriverFactory = element => {

@@ -1,5 +1,6 @@
 # Text Migration Guide
 
+## Migration to version 3
 Instead of having one Text component which can render `<span>`, `<div>`, `<h1>`, ..., `<h4>`, we have seperated the Text into 2 seperated components:
 
 1. `<Text>`
@@ -99,3 +100,16 @@ We used to have `H0` - `H4`, which got mapped under the hood to html `h1` - `h5`
 `<Text appearance="H3">` -> `<Heading appearance="H3">`
 
 `<Text appearance="H4">` -> `<Heading appearance="H4">`
+
+
+## Migration to version 4
+###<Text/>
+
+The `bold` prop is deprecated in favor of `weight`:
+
+`<Text bold="false">` -> `<Heading weight="thin">`
+
+`<Text bold="true">` -> `<Heading weight="normal">`
+
+### Testkit Deprecated methods:
+`isBold` --> `getWeight`

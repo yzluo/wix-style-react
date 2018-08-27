@@ -1,0 +1,68 @@
+@import '../common.scss';
+
+<<<<<<< HEAD
+/* === Backgground color on hover === */
+
+tr.rowHover {
+  cursor: pointer;
+}
+
+tr.rowHover:hover {
+  background-color: $B50;
+}
+
+/* === Action Column === */
+
+tr.hasActionColumn .actionsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 36px;
+}
+
+tr.hasActionColumn .actionsContainer button {
+  margin: 0 6px;
+  transition-property: background, border;
+}
+
+// Primary action
+tr.hasActionColumn .primaryActionContainer {
+  visibility: hidden;
+}
+
+tr.hasActionColumn:hover .primaryActionContainer {
+  visibility: visible;
+}
+
+// Secondary actions
+tr.hasActionColumn .secondaryActionsContainer .visibleSecondaryActions,
+tr.hasActionColumn .secondaryActionsContainer .popoverMenuContainer {
+  visibility: hidden;
+}
+
+tr.hasActionColumn .secondaryActionsContainer.alwaysShowSecondaryActions .visibleSecondaryActions,
+tr.hasActionColumn .secondaryActionsContainer.alwaysShowPopoverMenu .popoverMenuContainer,
+tr.hasActionColumn:hover .secondaryActionsContainer .popoverMenuContainer,
+tr.hasActionColumn:hover .secondaryActionsContainer .visibleSecondaryActions {
+  visibility: visible;
+}
+
+// Primary action placeholder
+tr.hasActionColumn:hover .primaryActionPlaceholder {
+  display: none;
+}
+
+tr.hasActionColumn .primaryActionPlaceholder {
+  display: inline-block;
+}
+
+:global(.rtl) {
+  tr.hasActionColumn .primaryActionPlaceholder svg {
+    transform: scaleX(-1);
+  }
+=======
+.emptyStateContainer {
+  padding: 42px;
+  border-top: 1px solid $D60;
+>>>>>>> c77b6120d52b3b6bffce44960513eb7a4d069ddc
+}

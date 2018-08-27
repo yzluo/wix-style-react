@@ -1,5 +1,5 @@
 import React from 'react';
-import {LanguagePicker} from 'wix-style-react';
+import LanguagePicker from 'wix-style-react/LanguagePicker';
 
 const languageLocaleMap = {
   en: 'English',
@@ -53,7 +53,7 @@ export default class Example extends React.Component {
 
   render() {
     return (
-      <div style={{display: 'flex', alignItems: 'center', marginLeft: '30px'}} className="ltr">
+      <div style={{display: 'flex', alignItems: 'center', marginLeft: '30px'}}>
         <LanguagePicker dataHook="story-languagePicker" selectedId={this.state.languageKey} onSelect={({id}) => this.setState({languageKey: id})}>
           {Object.keys(languageLocaleMap).map(languageKey =>
             <LanguagePicker.Option key={languageKey} languageKey={languageKey}>

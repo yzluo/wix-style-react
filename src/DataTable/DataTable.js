@@ -11,6 +11,7 @@ import SortByArrowDown from '../new-icons/system/SortByArrowDown';
 import {Animator} from 'wix-animations';
 import InfoCircle from 'wix-ui-icons-common/InfoCircle';
 import Tooltip from '../Tooltip/Tooltip';
+import InfoIcon from '../common/InfoIcon';
 import omit from 'lodash/omit';
 
 export const DataTableHeader = props => (
@@ -289,17 +290,24 @@ class TableHeader extends Component {
     if (tooltipProps === undefined) {
       return null;
     }
-    const _tooltipProps = Object.assign({theme: 'dark'}, tooltipProps, {
-      dataHook: `${colNum}_info_tooltip`,
-      moveBy: {x: 2.5, y: -7}
-    });
-    return (
-      <Tooltip {..._tooltipProps}>
-        <span className={this.style.infoTooltipWrapper}>
-          <InfoCircle className={this.style.infoIcon} size={24}/>
-        </span>
-      </Tooltip>
-    );
+
+    if (this.props.newDesign) {
+      return (
+        <InfoIcon tooltipProps={tooltipProps} dataHook={`${colNum}_info_tooltip`} className={this.style.infoTooltipWrapper}/>
+      );
+    } else {
+      const _tooltipProps = Object.assign({theme: 'dark'}, tooltipProps, {
+        dataHook: `${colNum}_info_tooltip`,
+        moveBy: {x: 2.5, y: -7}
+      });
+      return (
+        <Tooltip {..._tooltipProps}>
+          <span className={this.style.infoTooltipWrapper}>
+            <InfoCircle className={this.style.infoIcon} size={24}/>
+          </span>
+        </Tooltip>
+      );
+    }
   };
 
   renderHeaderCell = (column, colNum) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import autoCompleteDriverFactory from './AutoComplete.driver';
 import AutoComplete from './AutoComplete';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {autoCompleteTestkitFactory} from '../../testkit';
 import {autoCompleteTestkitFactory as enzymeAutoCompleteTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

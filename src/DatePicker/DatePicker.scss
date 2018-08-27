@@ -1,13 +1,20 @@
 @import '../common.scss';
 
-$rootPadding: 18px;
+$rootPadding: 24px;
 $rootBackgroundColor: $D80;
 $dayHoverColor: $B50;
+$calendarWidth: 300px;
+$dayBadgeSize: 36px;
+$boxShadowWidth: 3px;
+$hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
 
-@mixin todayBackground($width) {
-  box-shadow:
-    0 0 0 $width $rootBackgroundColor inset,
-    0 0 0 100px $D70 inset;
+@mixin todayShadow($additionalShadow: false) {
+  $boxShadow: 0 0 0 $boxShadowWidth $rootBackgroundColor inset;
+  @if $additionalShadow {
+    box-shadow: $boxShadow, $additionalShadow;
+  } @else {
+    box-shadow: $boxShadow;
+  }
 }
 
 .root {
@@ -20,7 +27,7 @@ $dayHoverColor: $B50;
 
 :global {
   .DayPicker {
-    min-width: 333px;
+    min-width: $calendarWidth;
     box-shadow: $Shadow30;
     @include FontLight;
     font-size: 14px;
@@ -45,13 +52,13 @@ $dayHoverColor: $B50;
     }
 
     &-Body {
-      padding: 0 $rootPadding 18px;
+      padding: 0 $rootPadding $rootPadding;
     }
 
     &-Weekday {
       width: 17px;
       padding: 18px 0 12px;
-      color: $D40;
+      color: $D10;
     }
 
     &-Week {
@@ -64,38 +71,63 @@ $dayHoverColor: $B50;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
+      width: $dayBadgeSize;
+      height: $dayBadgeSize;
       border-radius: 50%;
       cursor: pointer;
+      color: $D10;
+      z-index: 1;
 
-      &:hover:not(.DayPicker-Day--today):not(.DayPicker-Day--selected) {
+      &:focus {
+        outline: none;
+        box-shadow: $hoverBoxShadow;
+      }
+
+      &.DayPicker-Day--unfocused, &:focus:hover {
+        box-shadow: none;
+      }
+
+      &--today:not(.DayPicker-Day--selected):not(:hover) {
+        background-color: $D70;
+        @include todayShadow();
+        z-index: 0;
+
+        &:focus {
+          @include todayShadow($hoverBoxShadow);
+        }
+      }
+
+      &:hover {
         background-color: $B50;
-      }
-
-      &--today:not(.DayPicker-Day--selected) {
-       background-color: $D70;
-       color: $D40;
-       @include todayBackground(6px);
-      }
-
-      &--today.DayPicker-Day--keyboard-selected:not(.DayPicker-Day--selected) {
-        @include todayBackground(3px);
       }
 
       &--selected {
         background-color: $B10;
         color: $D80;
-      }
-
-      &--keyboard-selected:not(.DayPicker-Day--selected) {
-        border: 3px solid $F00;
+        &:hover {
+          background-color: $B20;
+        }
       }
 
       &--outside,
       &--disabled {
         pointer-events: none;
-        color: $D60;
+        color: $D55;
+      }
+    }
+
+    &--TwoMonths {
+      .DayPicker-Months {
+        display: flex;
+
+        .DayPicker-Month:first-child .DayPicker-Nav--Right,
+        .DayPicker-Month:last-child .DayPicker-Nav--Left {
+          visibility: hidden;
+        }
+      }
+
+      .DayPicker-Day--outside {
+        visibility: hidden;
       }
     }
   }

@@ -8,7 +8,7 @@ import {
   Title,
   SelectedCount,
   Divider
-} from 'wix-style-react/Table/Toolbar';
+} from 'wix-style-react/TableToolbar';
 
 import Card from 'wix-style-react/Card';
 import Search from 'wix-style-react/Search';
@@ -33,7 +33,7 @@ export class TableExample extends React.Component {
           data={baseData}
           itemsPerPage={20}
           columns={[
-              {title: 'Name', render: row => <span>{row.name}</span>, width: '30%', minWidth: '150px'},
+              {title: 'Name', render: row => <span>{row.name}</span>, width: '30%', minWidth: '150px', infoTooltip: {content: 'This is the name column'}},
               {title: 'SKU', render: row => <span>{row.SKU}</span>, width: '20%', minWidth: '100px'},
               {title: 'Price', render: row => <span>{row.price}</span>, width: '20%', minWidth: '100px'},
               {title: 'Inventory', render: row => <span>{row.inventory}</span>, width: '20%', minWidth: '100px'}

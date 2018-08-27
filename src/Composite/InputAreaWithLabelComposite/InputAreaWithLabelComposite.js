@@ -55,7 +55,7 @@ InputAreaWithLabelComposite.propTypes = {
 };
 
 InputAreaWithLabelComposite.defaultProps = {
-  appendToParent: true
+  appendToParent: false
 };
 
 InputAreaWithLabelComposite.displayName = 'InputAreaWithLabelComposite';

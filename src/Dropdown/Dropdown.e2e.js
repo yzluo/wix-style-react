@@ -1,7 +1,8 @@
 import eyes from 'eyes.it';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
-import {dropdownTestkitFactory, waitForVisibilityOf} from '../../testkit/protractor';
-import {createStoryUrl} from '../../test/utils/protractor';
+import {dropdownTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {createStoryUrl} from '../../test/utils/storybook-helpers';
 import {storySettings} from '../../stories/Dropdown/storySettings';
 
 describe('Dropdown', () => {

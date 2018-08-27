@@ -1,43 +1,43 @@
 import React from 'react';
 import {bool, node} from 'prop-types';
 import classNames from 'classnames';
-import WixComponent from '../BaseComponents/WixComponent';
-import styles from './Card.scss';
+
 import Content from './Content';
 import Header from './Header';
 import LinkHeader from './LinkHeader';
 import ButtonHeader from './ButtonHeader';
 import CollapsedHeader from './CollapsedHeader';
+import EmptyState from './EmptyState';
 
-class Card extends WixComponent {
+import styles from './Card.scss';
 
-  static propTypes = {
-    children: node,
-    stretchVertically: bool
-  };
-  static defaultProps = {
-    stretchVertically: false,
-    collapsStyle: 'none'
-  };
+const Card = ({stretchVertically, children}) =>
+  <div
+    className={classNames(
+      styles.card,
+      {
+        [styles.stretchVertically]: stretchVertically
+      }
+    )}
+    children={children}
+    />;
 
-  render() {
-    const cssClasses = classNames({
-      [styles.card]: true,
-      [styles.stretchVertically]: this.props.stretchVertically
-    });
+Card.displayName = 'Card';
 
-    return (
-      <div className={cssClasses}>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+Card.propTypes = {
+  children: node,
+  stretchVertically: bool
+};
+
+Card.defaultProps = {
+  stretchVertically: false
+};
 
 Card.Content = Content;
 Card.Header = Header;
 Card.LinkHeader = LinkHeader;
 Card.ButtonHeader = ButtonHeader;
 Card.CollapsedHeader = CollapsedHeader;
+Card.EmptyState = EmptyState;
 
 export default Card;

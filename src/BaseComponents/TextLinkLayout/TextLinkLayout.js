@@ -1,7 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import typography from '../../Typography';
 import WixComponent from '../../BaseComponents/WixComponent';
+import styles from './TextLinkLayout.scss';
+import Text from '../../Text';
+
+const ICON_SIZES = {
+  small: '18px',
+  medium: '24px'
+};
+
+const addIcon = (className, icon, size = 'medium') => (
+  icon ?
+    <div className={className} data-hook={className === styles.prefix ? 'prefix-icon' : 'suffix-icon'}>
+      {React.cloneElement(icon, {size: ICON_SIZES[size]})}
+    </div> :
+    null
+);
 
 export const ThemeOptions = {
   NORMAL: {type: 'normal', color: {hover: '#4eb7f5', normal: '#3899ec'}},
@@ -19,7 +33,10 @@ export default class TextLinkLayout extends WixComponent {
     theme: PropTypes.oneOf(['normal', 'darkBackground', 'greyScale']),
     size: PropTypes.oneOf(['small', 'medium']),
     display: PropTypes.oneOf(['block', 'inline-block']),
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    prefixIcon: PropTypes.node,
+    suffixIcon: PropTypes.node,
+    ellipsis: PropTypes.bool
   };
 
   static defaultProps = {
@@ -28,7 +45,8 @@ export default class TextLinkLayout extends WixComponent {
     theme: ThemeOptions.NORMAL.type,
     size: 'medium',
     display: 'block',
-    disabled: false
+    disabled: false,
+    ellipsis: false
   };
 
   constructor(props) {
@@ -71,31 +89,51 @@ export default class TextLinkLayout extends WixComponent {
     }
   }
 
-
   render() {
     const {isHover} = this.state;
-    const {underlineStyle, size, children, display, disabled} = this.props;
-    const color = this.getColor();
-
-    const style = {
-      color,
+    const {
+      underlineStyle,
+      size,
+      children,
       display,
+      disabled,
+      prefixIcon,
+      suffixIcon,
+      ellipsis
+    } = this.props;
+
+    const color = this.getColor();
+    const displayStyle = (prefixIcon || suffixIcon) ? 'flex' : display;
+
+    const containerStyles = {
+      color,
+      display: displayStyle,
       background: 'none',
-      cursor: disabled ? 'default' : 'pointer',
-      textDecoration: ((underlineStyle === 'hover' && isHover && !disabled) || underlineStyle === 'always') ? 'underline' : 'none'
+      cursor: disabled ? 'default' : 'pointer'
     };
 
-    const className = size === 'medium' ? typography.t1_3 : typography.t3_3;
+    const textStyles = {
+      color,
+      textDecoration: ((underlineStyle === 'hover' && isHover && !disabled) || underlineStyle === 'always') ? 'underline' : 'none'
+    };
 
     return (
       <div
         role="link"
-        className={className}
-        style={style}
+        style={containerStyles}
         onMouseLeave={() => this.setHover(false)}
         onMouseEnter={() => this.setHover(true)}
         >
-        {children}
+        {addIcon(styles.prefix, prefixIcon, size)}
+        <Text
+          ellipsis={ellipsis}
+          style={textStyles}
+          size={size}
+          data-hook="text-element"
+          >
+          {children}
+        </Text>
+        {addIcon(styles.suffix, suffixIcon, size)}
       </div>
     );
   }

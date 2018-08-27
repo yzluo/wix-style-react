@@ -1,10 +1,11 @@
 import React from 'react';
-import {createDriverFactory, resolveIn} from '../test-common';
+import {resolveIn} from '../../test/utils';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {addItemTestkitFactory} from '../../testkit';
 import {addItemTestkitFactory as enzymeAddItemTestkitFactory} from '../../testkit/enzyme';
 import AddItem from './AddItem';
 import addItemDriverFactory from './AddItem.driver';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
 import {mount, shallow} from 'enzyme';
 
 describe('AddItem', () => {

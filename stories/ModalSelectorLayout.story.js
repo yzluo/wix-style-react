@@ -3,7 +3,7 @@ import times from 'lodash/times';
 
 import ModalSelectorLayout from 'wix-style-react/ModalSelectorLayout';
 import Button from 'wix-style-react/Button';
-import Text from '../src/Deprecated/Text';
+import Text from '../src/Text';
 
 const ITEMS = times(50, i => ({
   id: i,
@@ -64,7 +64,7 @@ export default {
       },
       {
         label: 'BOLD title',
-        value: <Text key={0} appearance="T2">BOLD title</Text>
+        value: <Text key={0} bold>BOLD title</Text>
       }
     ],
 

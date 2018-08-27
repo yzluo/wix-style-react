@@ -1,6 +1,4 @@
-
-import {mouseEnter} from 'wix-ui-test-utils/protractor';
-import {isFocused} from '../test-common';
+import {mouseEnter, isFocused} from 'wix-ui-test-utils/protractor';
 
 const toggleSwitchDriverFactory = component => ({
   element: () => component,

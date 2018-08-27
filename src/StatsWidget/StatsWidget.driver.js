@@ -1,46 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import dropdownLayoutDriver from '../ButtonWithOptions/ButtonWithOptions.driver';
 import headerDriverFactory from '../Card/Header/Header.driver';
+import {findByHook} from '../../test/utils';
 
-const byHook = (wrapper, hook) => wrapper.querySelector(`[data-hook="${hook}"]`);
+const statsWidgetDriverFactory = ({element}) => {
+  const getStatistic = index => findByHook(element, 'stats-widget-content-wrapper').childNodes[index];
 
-const statsWidgetDriverFactory = ({element, wrapper, component}) => {
-  const getStatistic = index => byHook(element, 'stats-widget-content-wrapper').childNodes[index];
-
-  const headerElement = byHook(element, 'stats-widget-title');
+  const headerElement = findByHook(element, 'stats-widget-title');
 
   const headerDriver = headerDriverFactory({wrapper: element, element: headerElement});
 
-  const driver = {
+  return {
     exists: () => !!element,
 
     titleText: () => headerDriver.title(),
 
-    isStatisticsContentExists: () => !!byHook(element, 'stats-widget-content-wrapper'),
+    isStatisticsContentExists: () => !!findByHook(element, 'stats-widget-content-wrapper'),
 
-    isEmptyStateExists: () => !!byHook(element, 'stats-widget-empty-state'),
+    isEmptyStateExists: () => !!findByHook(element, 'stats-widget-empty-state'),
 
-    getStatisticTitle: index => byHook(getStatistic(index), 'statistics-item-title').textContent,
+    getStatisticTitle: index => findByHook(getStatistic(index), 'statistics-item-title').textContent,
 
-    getStatisticSubTitle: index => byHook(getStatistic(index), 'statistics-item-subtitle').textContent,
+    getStatisticSubTitle: index => findByHook(getStatistic(index), 'statistics-item-subtitle').textContent,
 
-    getStatisticPercentValue: index => byHook(getStatistic(index), 'percent-value').textContent,
+    getStatisticPercentValue: index => findByHook(getStatistic(index), 'percent-value').textContent,
 
-    getStatisticPercentClass: index => byHook(getStatistic(index), 'percent-wrapper').className,
-
-    getFilterDriver: dataHook => {
-      const optionElement = byHook(element, dataHook);
-      return dropdownLayoutDriver({wrapper: element, element: optionElement});
+    getStatisticPercentClass: index => {
+      const percentIcon = findByHook(getStatistic(index), 'percent-icon');
+      return (percentIcon && percentIcon.getAttribute('data-class')) || '';
     },
 
-    setProps: props => {
-      const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
-      ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);
+    getFilterDriver: dataHook => {
+      const optionElement = findByHook(element, dataHook);
+      return dropdownLayoutDriver({wrapper: element, element: optionElement});
     }
   };
-
-  return driver;
 };
 
 export default statsWidgetDriverFactory;

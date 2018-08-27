@@ -4,14 +4,22 @@ import Range from './Range';
 import Input from '../Input';
 import Label from '../Label';
 import DatePicker from '../DatePicker';
-import '../utils/RangePolyfill.js';
-
+import {rangePolyfill} from '../../testkit/polyfills';
 
 import {rangeTestkitFactory} from '../../testkit';
 import {rangeTestkitFactory as enzymeRangeTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
 
 describe('Range', () => {
+
+  beforeEach(() => {
+    rangePolyfill.install();
+  });
+
+  afterEach(() => {
+    rangePolyfill.uninstall();
+  });
+
   describe('testkit', () => {
     it('should exist', () => {
       const div = document.createElement('div');

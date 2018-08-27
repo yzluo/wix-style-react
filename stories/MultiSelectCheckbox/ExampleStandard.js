@@ -40,16 +40,14 @@ class ExampleStandard extends React.Component {
 
   render() {
     return (
-      <div className="ltr">
-        <div className={styles.main}>
-          <MultiSelectCheckbox
-            options={this.state.options}
-            selectedOptions={this.state.selectedOptions}
-            onSelect={this.handleOnSelect}
-            onDeselect={this.handleOnDeselect}
-            valueParser={valueParser}
-            />
-        </div>
+      <div className={styles.main}>
+        <MultiSelectCheckbox
+          options={this.state.options}
+          selectedOptions={this.state.selectedOptions}
+          onSelect={this.handleOnSelect}
+          onDeselect={this.handleOnDeselect}
+          valueParser={valueParser}
+          />
       </div>
     );
   }

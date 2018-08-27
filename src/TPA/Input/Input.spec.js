@@ -3,7 +3,7 @@ import ReactTestUtils from 'react-dom/test-utils';
 import Input from './Input';
 import {tpaInputTestkitFactory as inputTestkitFactory} from '../../../testkit';
 import {tpaInputTestkitFactory as enzymeInputTestkitFactory} from '../../../testkit/enzyme';
-import {isEnzymeTestkitExists} from '../../../testkit/test-common';
+import {isEnzymeTestkitExists} from '../../../test/utils/testkit-sanity';
 import {mount} from 'enzyme';
 
 describe('Input', () => {

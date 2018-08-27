@@ -1,5 +1,7 @@
 import eyes from 'eyes.it';
-import {iconWithOptionsTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
+import {iconWithOptionsTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
 
 describe('IconWithOptions', () => {
   const storyUrl = getStoryUrl('4. Selection', '4.1 + IconWithOptions');

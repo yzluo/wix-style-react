@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {tickerTestkitFactory} from '../Input/Ticker/testkit/Ticker';
 import ReactTestUtils from 'react-dom/test-utils';
 import styles from './TimeInput.scss';
-import {testkitFactoryCreator} from '../test-common';
+import {testkitFactoryCreator} from 'wix-ui-test-utils/vanilla';
 import inputDriverFactory from '../Input/Input.driver';
 
 const inputTestkitFactory = testkitFactoryCreator(inputDriverFactory);

@@ -1,7 +1,7 @@
 import React from 'react';
 import IconWithOptions from '../IconWithOptions';
 import IconWithOptionsDriverFactory from './IconWithOptions.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {iconWithOptionsTestkitFactory} from '../../testkit';
 import {iconWithOptionsTestkitFactory as enzymeIconWithOptionsTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

@@ -1,6 +1,7 @@
 import eyes from 'eyes.it';
 import {inputAreaTestkitFactory} from '../../testkit/protractor';
-import {createStoryUrl, waitForVisibilityOf} from '../../test/utils/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {createStoryUrl} from '../../test/utils/storybook-helpers';
 
 describe('input area page', () => {
   // const storyUrl = getStoryUrl('3. Inputs', '3.2 + InputArea');

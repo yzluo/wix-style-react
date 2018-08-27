@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioGroup/RadioButton/RadioButton';
-import Text from '../Deprecated/Text';
+import Text from '../Text';
 import styles from './Selector.scss';
 import ExtraText from './ExtraText';
 import ProgressBar from './ProgressBar';
@@ -76,7 +76,6 @@ class Selector extends WixComponent {
 
         <div className={styles.titles}>
           <Text
-            appearance="T1"
             dataHook="selector-title"
             ellipsis
             children={title}
@@ -84,7 +83,8 @@ class Selector extends WixComponent {
 
           {subtitle &&
             <Text
-              appearance="T3.1"
+              size="small"
+              secondary
               dataHook="selector-subtitle"
               ellipsis
               children={subtitle}

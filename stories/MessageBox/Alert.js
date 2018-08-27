@@ -15,8 +15,20 @@ import SecondaryAlertRaw from '!raw-loader!./AlertExamples/Secondary';
 import FootNoteAlert from './AlertExamples/FootNote';
 import FootNoteAlertRaw from '!raw-loader!./AlertExamples/FootNote';
 
+import Image from './AlertExamples/Image';
+import ImageRaw from '!raw-loader!./AlertExamples/Image';
+
+import ImageWithSideAction from './AlertExamples/ImageWithSideAction';
+import ImageWithSideActionRaw from '!raw-loader!./AlertExamples/ImageWithSideAction';
+
 import ScrollableAlert from './AlertExamples/Scrollable';
 import ScrollableAlertRaw from '!raw-loader!./AlertExamples/Scrollable';
+
+import EmptyStateAlert from './AlertExamples/EmptyState';
+import EmptyStateAlertRaw from '!raw-loader!./AlertExamples/EmptyState';
+
+import ActionsAlert from './AlertExamples/Actions';
+import ActionsAlertRaw from '!raw-loader!./AlertExamples/Actions';
 
 const introduction = `# Alert (\`<MessageBoxFunctionalLayout/>\`)
 Components to be used within \`wix-style-react/Modal\`:
@@ -47,9 +59,29 @@ export default () => (
           children={<FootNoteAlert/>}
           />
         <CodeExample
+          title="With EmptyState"
+          code={EmptyStateAlertRaw}
+          children={<EmptyStateAlert/>}
+          />
+        <CodeExample
           title="Scrollable"
           code={ScrollableAlertRaw}
           children={<ScrollableAlert/>}
+          />
+        <CodeExample
+          title="With image"
+          code={ImageRaw}
+          children={<Image/>}
+          />
+        <CodeExample
+          title="With Actions"
+          code={ActionsAlertRaw}
+          children={<ActionsAlert/>}
+          />
+        <CodeExample
+          title="With Image And Actions"
+          code={ImageWithSideActionRaw}
+          children={<ImageWithSideAction/>}
           />
       </div>
     </div>

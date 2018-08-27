@@ -1,4 +1,4 @@
-import {isFocused} from '../test-common';
+import {isFocused} from 'wix-ui-test-utils/protractor';
 
 const inputDriverFactory = component => {
   const input = component.$('input');

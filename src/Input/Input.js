@@ -16,6 +16,9 @@ class Input extends Component {
   static Unit = Unit;
   static Group = Group;
 
+  static StatusError = 'error';
+  static StatusLoading = 'loading';
+
   state = {
     focus: false
   };
@@ -64,16 +67,18 @@ class Input extends Component {
       prefix,
       suffix,
       type,
-      errorMessage,
       maxLength,
       textOverflow,
       theme,
       disabled,
-      error,
+      status,
+      statusMessage,
       tooltipPlacement,
       onTooltipShow,
       autocomplete,
-      required
+      required,
+      error,
+      errorMessage
     } = this.props;
 
     const onIconClicked = e => {
@@ -84,10 +89,21 @@ class Input extends Component {
       }
     };
 
-    const isClearButtonVisible = (!!clearButton || !!onClear) && !!value && !error && !disabled;
+    let suffixStatus = status;
+    let suffixStatusMessage = statusMessage && statusMessage !== '' ? statusMessage : '';
+
+    // Check for deprecated fields and use them if provided
+    if (error) {
+      suffixStatus = Input.StatusError;
+      suffixStatusMessage = errorMessage;
+    }
+
+    const hasErrors = suffixStatus === Input.StatusError;
+
+    const isClearButtonVisible = (!!clearButton || !!onClear) && !!value && !hasErrors && !disabled;
 
     const visibleSuffixCount = getVisibleSuffixCount({
-      error, disabled, help, magnifyingGlass, isClearButtonVisible, menuArrow, unit, suffix
+      status: suffixStatus, statusMessage: suffixStatusMessage, disabled, help, magnifyingGlass, isClearButtonVisible, menuArrow, unit, suffix
     });
 
     const inputClassNames = classNames(styles.input, {
@@ -110,6 +126,7 @@ class Input extends Component {
         defaultValue={defaultValue}
         value={value}
         onChange={this._onChange}
+        onKeyPress={this._onKeyPress}
         maxLength={maxLength}
         onFocus={this._onFocus}
         onBlur={this._onBlur}
@@ -139,8 +156,8 @@ class Input extends Component {
 
       { inputElement }
       { visibleSuffixCount > 0 && <div className={styles.prefixSuffixWrapper}><InputSuffix
-        error={error}
-        errorMessage={errorMessage}
+        status={suffixStatus}
+        statusMessage={suffixStatusMessage}
         theme={theme}
         disabled={disabled}
         help={help}
@@ -209,12 +226,20 @@ class Input extends Component {
     }
   };
 
+  _isInvalidNumber = value => this.props.type === 'number' && !(/^[\d.,\-+]*$/.test(value));
+
   _onChange = e => {
-    if (this.props.type === 'number' && !(/^[\d.,\-+]*$/.test(e.target.value))) {
+    if (this._isInvalidNumber(e.target.value)) {
       return;
     }
 
     this.props.onChange && this.props.onChange(e);
+  }
+
+  _onKeyPress = e => {
+    if (this._isInvalidNumber(e.key)) {
+      e.preventDefault();
+    }
   }
 
   _onClear = e => {
@@ -241,6 +266,7 @@ Input.defaultProps = {
   autoSelect: true,
   size: 'normal',
   theme: 'normal',
+  statusMessage: '',
   errorMessage: '',
   helpMessage: '',
   roundInput: false,
@@ -284,11 +310,24 @@ Input.propTypes = {
   /** when set to true this component is disabled */
   disabled: PropTypes.bool,
 
-  /** Is input value erroneous */
+  /** Input status - use to display an status indication for the user. for example: 'error' or 'loading' */
+  status: PropTypes.oneOf([Input.StatusError, Input.StatusLoading]),
+
+  /** The status (error/loading) message to display when hovering the status icon, if not given or empty there will be no tooltip */
+  statusMessage: PropTypes.node,
+
+  /** Is input has errors
+   * @deprecated
+   * @see status
+   */
   error: PropTypes.bool,
 
-  /** The error message to display when hovering the error icon, if not given or empty there will be no tooltip */
+  /** Error message to display
+   * @deprecated
+   * @see statusMessage
+   */
   errorMessage: PropTypes.node,
+
   forceFocus: PropTypes.bool,
   forceHover: PropTypes.bool,
 

@@ -1,3 +1,5 @@
 {
-  "depmonkey_ignore": true
+  "depmonkey_ignore": true,
+  "pr_env_params" : {"APPLITOOLS_GITHUB_FT": "true"},
+  "env_params" : {"APPLITOOLS_GITHUB_FT": "true"}
 }

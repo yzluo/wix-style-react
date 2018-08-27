@@ -1,4 +1,4 @@
-import {isFocused} from '../test-common';
+import {isFocused} from 'wix-ui-test-utils/protractor';
 import buttonDriverFactory from './RichTextAreaButton.protractor.driver';
 
 export const BUTTON_TYPES = ['bold', 'italic', 'underline', 'link', 'unordered-list', 'ordered-list'];

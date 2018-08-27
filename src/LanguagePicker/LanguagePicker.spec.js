@@ -2,7 +2,7 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import languagePickerDriverFactory from './LanguagePicker.driver';
 import LanguagePicker from './LanguagePicker';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {languagePickerTestkitFactory} from '../../testkit';
 import {languagePickerTestkitFactory as enzymeLanguagePickerTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

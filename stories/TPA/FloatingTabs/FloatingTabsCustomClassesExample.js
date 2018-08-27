@@ -18,7 +18,7 @@ class FloatingTabsCustomClassesExample extends Component {
   render() {
     return (
       <div>
-        <div className="ltr" style={style}>
+        <div style={style}>
           Floating Tabs<br/>
           <div>
             <FloatingTabs activeId={this.state.id} onChange={id => this.handleTabChange(id)} contentClassName={styles.contentStyle} tabClassName={styles.tabStyle} activeTabClassName={styles.activeTab}>

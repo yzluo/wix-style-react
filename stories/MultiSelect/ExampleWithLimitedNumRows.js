@@ -45,22 +45,20 @@ class ExampleWithLimitedNumRows extends React.Component {
 
   render() {
     return (
-      <div className="ltr">
-        <div className={styles.main}>
-          <MultiSelect
-            dataHook="multi-select"
-            tags={this.state.tags}
-            maxNumRows={2}
-            onSelect={this.handleOnSelect}
-            onRemoveTag={this.handleOnRemoveTag}
-            onChange={this.handleOnChange}
-            onManuallyInput={() => console.log('NOW')}
-            options={this.state.options}
-            value={this.state.inputValue}
-            predicate={this.predicate}
-            valueParser={valueParser}
-            />
-        </div>
+      <div className={styles.main}>
+        <MultiSelect
+          dataHook="multi-select"
+          tags={this.state.tags}
+          maxNumRows={2}
+          onSelect={this.handleOnSelect}
+          onRemoveTag={this.handleOnRemoveTag}
+          onChange={this.handleOnChange}
+          onManuallyInput={() => console.log('NOW')}
+          options={this.state.options}
+          value={this.state.inputValue}
+          predicate={this.predicate}
+          valueParser={valueParser}
+          />
       </div>
     );
   }

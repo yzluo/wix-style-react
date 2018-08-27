@@ -1,10 +1,10 @@
 import React from 'react';
 import TimePicker from './TimeInput';
 import timeInputDriverFactory from './TimeInput.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import moment from 'moment';
 import sinon from 'sinon';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
 import {timeInputTestkitFactory} from '../../testkit';
 import {timeInputTestkitFactory as enzymeTimeInputTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

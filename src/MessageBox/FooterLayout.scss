@@ -1,29 +1,19 @@
 @import '../common.scss';
+@import './MessageBoxCommon.scss';
 
 .footer {
-  padding: 0 30px 30px;
+  padding: 30px;
   display: flex;
   align-items: center;
-
-  &.withTopPadding {
-    padding-top: 30px;
-  }
-}
-
-.bottomChildren{
-  min-height: 42px;
-  border-radius: 0 0 8px 8px;
-  background-color: $D70;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 30px 14px 30px;
-  margin-top: -12px;
-  box-sizing: border-box;
 }
 
 .footerbuttons {
   margin-left: auto;
+  flex-shrink: 0;
+
+   &.withSideActions {
+     padding-left: 24px;
+   }
 }
 
 .footerbuttons > :first-of-type:not(:last-of-type) {

@@ -1,3 +1,7 @@
+import deprecationLog from '../../utils/deprecationLog';
+
+deprecationLog(`Using "Card/CollapsedHeader/AnimationPolyfill.js" is deprecated. Please use the newer polyfills in "testkit/polyfills"`);
+
 export default function animationPolyfills(window, global) {
   let lastTime = 0;
   const vendors = ['ms', 'moz', 'webkit', 'o'];

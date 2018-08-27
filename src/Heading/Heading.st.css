@@ -1,0 +1,66 @@
+:import {
+  -st-from: "wix-ui-backoffice/dist/src/palette.st.css";
+  -st-named: headingText, subheadingText, lightHeadingText, lightSubheadingText;
+}
+
+:import {
+  -st-from: "wix-ui-backoffice/dist/src/typography.st.css";
+  -st-named: fontThin, fontLight;
+}
+  
+.root {
+  -st-states: appearance(enum(H1, H2, H3, H4)), light;
+}
+
+.root:appearance(H1) {
+  font-family: value(fontThin);
+  font-size: 36px;
+  line-height: 48px;
+  color: value(headingText);
+}
+
+.root:appearance(H1):light {
+  color: value(lightHeadingText);
+}
+
+.root:appearance(H2) {
+  font-family: value(fontLight);
+  font-size: 20px;
+  line-height: 24px;
+  color: value(headingText);
+}
+
+.root:appearance(H2):light {
+  color: value(lightHeadingText);
+}
+
+.root:appearance(H3) {
+  font-family: value(fontLight);
+  font-size: 13px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: value(subheadingText);
+}
+
+.root:appearance(H3):light {
+  color: value(lightSubheadingText);
+}
+
+.root:appearance(H4) {
+  font-family: value(fontLight);
+  font-size: 10px;
+  line-height: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: value(subheadingText);
+}
+
+.root:appearance(H4):light {
+  color: value(lightSubheadingText);
+}
+
+.root {
+  font-weight: normal;
+  margin: 0;
+}

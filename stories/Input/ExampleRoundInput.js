@@ -18,7 +18,7 @@ const defaultProps = {
 };
 
 const Example = ({theme}) =>
-  <div className="ltr">
+  <div>
     <div style={style}>
       Small
       <Input theme={theme} {...defaultProps} size="small" roundInput/>

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import dropdownDriverFactory from './Dropdown.driver';
 import Dropdown from './Dropdown';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {dropdownTestkitFactory} from '../../testkit';
 import {dropdownTestkitFactory as enzymeDropdownTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

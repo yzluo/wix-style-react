@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import ChevronLeft from 'wix-ui-icons-common/ChevronLeft';
-import ChevronRight from 'wix-ui-icons-common/ChevronRight';
+import ChevronLeftLarge from 'wix-ui-icons-common/ChevronLeftLarge';
+import ChevronRightLarge from 'wix-ui-icons-common/ChevronRightLarge';
 
 import YearDropdown from './YearDropdown';
 import MonthDropdown from './MonthDropdown';
@@ -29,18 +29,19 @@ const DatePickerHead = ({
   showMonthDropdown,
   showYearDropdown
 }) => {
+  // We use global DayPicker-Nav--Left(--Right) class for consistency.
+  // All styles of the DayPicker component are global and kept in ../DatePicker.scss
   return (
     <div
       data-hook="datepicker-head"
       className={styles.root}
       >
-
       <div
-        className={classnames(styles.arrow, styles.arrowLeft)}
+        className={classnames(styles.arrow, styles.arrowLeft, 'DayPicker-Nav--Left')}
         data-hook="datepicker-left-arrow"
         onClick={onLeftArrowClick}
         >
-        <ChevronLeft className={styles.arrowIcon}/>
+        <ChevronLeftLarge className={styles.arrowIcon}/>
       </div>
 
       {showMonthDropdown ?
@@ -66,11 +67,11 @@ const DatePickerHead = ({
       }
 
       <div
-        className={classnames(styles.arrow, styles.arrowRight)}
+        className={classnames(styles.arrow, styles.arrowRight, 'DayPicker-Nav--Right')}
         data-hook="datepicker-right-arrow"
         onClick={onRightArrowClick}
         >
-        <ChevronRight className={styles.arrowIcon}/>
+        <ChevronRightLarge className={styles.arrowIcon}/>
       </div>
     </div>
   );

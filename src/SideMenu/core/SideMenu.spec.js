@@ -1,5 +1,5 @@
 import React from 'react';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import sideMenuDriverFactory from './SideMenu.driver';
 import SideMenu from '../index';
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import Tag from './Tag';
 import tagDriverFactory from './Tag.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {tagTestkitFactory} from '../../testkit';
 import {tagTestkitFactory as enzymeTagTestkitFactory} from '../../testkit/enzyme';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
 import {mount} from 'enzyme';
 
 describe('Tag', () => {

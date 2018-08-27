@@ -1,5 +1,7 @@
 import eyes from 'eyes.it';
-import {dataTableTestkitFactory, getStoryUrl, waitForVisibilityOf, scrollToElement} from '../../testkit/protractor';
+import {dataTableTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf, scrollToElement} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
 
 describe('Data Table', () => {
   const storyUrl = getStoryUrl('10. Tables', '10.1 DataTable (Legacy)');

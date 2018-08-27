@@ -1,4 +1,4 @@
-import {isFocused} from '../test-common';
+import {isFocused} from 'wix-ui-test-utils/protractor';
 import buttonDriverFactory from './RadioButton/RadioButton.protractor.driver';
 
 const radioGroupDriverFactory = component => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import Slider from './Slider';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import sliderDriverFactory from './Slider.driver';
 import {sliderTestkitFactory} from '../../testkit';
 import {sliderTestkitFactory as enzymeSliderTestkitFactory} from '../../testkit/enzyme';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
 import {mount} from 'enzyme';
 
 describe('Slider', () => {

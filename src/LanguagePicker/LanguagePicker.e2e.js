@@ -1,5 +1,7 @@
 import eyes from 'eyes.it';
-import {languagePickerTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
+import {languagePickerTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
 
 describe('LanguagePicker', () => {
   const storyUrl = getStoryUrl('Deprecated', 'LanguagePicker');

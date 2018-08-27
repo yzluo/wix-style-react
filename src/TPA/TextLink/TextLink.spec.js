@@ -1,10 +1,10 @@
 import React from 'react';
 import textLinkDriverFactory from './TextLink.driver';
 import TextLink from './TextLink';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {tpaTextLinkTestkitFactory as textLinkTestkitFactory} from '../../../testkit';
 import {tpaTextLinkTestkitFactory as enzymeTextLinkTestkitFactory} from '../../../testkit/enzyme';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../../test/utils/testkit-sanity';
 import {mount} from 'enzyme';
 
 describe('TextLink', () => {

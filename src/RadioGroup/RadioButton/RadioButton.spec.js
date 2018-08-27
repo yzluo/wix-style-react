@@ -1,9 +1,9 @@
 import React from 'react';
 import RadioButton from './RadioButton';
 import radioButtonDriverFactory from './RadioButton.driver';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {radioButtonTestkitFactory} from '../../../testkit';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../../test/utils/testkit-sanity';
 import {radioButtonTestkitFactory as enzymeRadioButtonTestkitFactory} from '../../../testkit/enzyme';
 import {mount} from 'enzyme';
 

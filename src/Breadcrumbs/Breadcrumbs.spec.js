@@ -2,7 +2,7 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import {mount} from 'enzyme';
 
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {breadcrumbsTestkitFactory} from '../../testkit';
 import {breadcrumbsTestkitFactory as enzymeBreadcrumbsTestkitFactory} from '../../testkit/enzyme';
 import breadcrumbsDriverFactory from './Breadcrumbs.driver';
@@ -72,62 +72,6 @@ describe('Breadcrumbs', () => {
   it('should return null if not exists active id', () => {
     createComponent({onClick, items});
     expect(driver.getActiveItemId()).toBe(null);
-  });
-
-  describe('label appearance', () => {
-    const itemIndex = 0;
-    const activeItemIndex = 1;
-    const activeId = items[activeItemIndex].id;
-
-    describe('medium size', () => {
-      const size = 'medium';
-
-      it('should have t3.1 appearance when onWhiteBackground style and t4 for active', () => {
-        const theme = 'onWhiteBackground';
-        createComponent({onClick, items, theme, size, activeId});
-        expect(driver.getLabelClassList(itemIndex)).toContain('t3_1');
-        expect(driver.getLabelClassList(activeItemIndex)).toContain('t4');
-      });
-
-      it('should have t3.1 appearance when onGrayBackground style and t4 for active', () => {
-        const theme = 'onGrayBackground';
-        createComponent({onClick, items, theme, size, activeId});
-        expect(driver.getLabelClassList(itemIndex)).toContain('t3_1');
-        expect(driver.getLabelClassList(activeItemIndex)).toContain('t4');
-      });
-
-      it('should have t3.2 appearance when onDarkBackground style and t4.2 for active', () => {
-        const theme = 'onDarkBackground';
-        createComponent({onClick, items, theme, size, activeId});
-        expect(driver.getLabelClassList(itemIndex)).toContain('t3_2');
-        expect(driver.getLabelClassList(activeItemIndex)).toContain('t4_2');
-      });
-    });
-
-    describe('large size', () => {
-      const size = 'large';
-
-      it('should have t1.1 appearance when onWhiteBackground style and t2 for active', () => {
-        const theme = 'onWhiteBackground';
-        createComponent({onClick, items, theme, size, activeId});
-        expect(driver.getLabelClassList(itemIndex)).toContain('t1_1');
-        expect(driver.getLabelClassList(activeItemIndex)).toContain('t2');
-      });
-
-      it('should have t1.1 appearance when onWhiteBackground style and t2 for active', () => {
-        const theme = 'onGrayBackground';
-        createComponent({onClick, items, theme, size, activeId});
-        expect(driver.getLabelClassList(itemIndex)).toContain('t1_1');
-        expect(driver.getLabelClassList(activeItemIndex)).toContain('t2');
-      });
-
-      it('should have t1.2 appearance when onDarkBackground style and t2.2 for active', () => {
-        const theme = 'onDarkBackground';
-        createComponent({onClick, items, theme, size, activeId});
-        expect(driver.getLabelClassList(itemIndex)).toContain('t1_2');
-        expect(driver.getLabelClassList(activeItemIndex)).toContain('t2_2');
-      });
-    });
   });
 
   describe('item with link attribute', () => {

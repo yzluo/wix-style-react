@@ -1,4 +1,5 @@
-import {waitForVisibilityOf, flattenInternalDriver} from '../../test-common';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {flattenInternalDriver} from '../../../test/utils/private-drivers';
 
 /**
  * IMPORTANT !!!

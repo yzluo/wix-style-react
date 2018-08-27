@@ -1,9 +1,9 @@
 import React from 'react';
 import MessageBoxMarketerialLayout from './MessageBoxMarketerialLayout';
 import MessageBoxMarketerialLayoutFactory from './MessageBoxMarketerialLayout.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import sinon from 'sinon';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
 import {messageBoxMarketerialLayoutTestkitFactory} from '../../testkit';
 import {messageBoxMarketerialLayoutTestkitFactory as enzymeMessageBoxTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
@@ -23,6 +23,15 @@ describe('MessageBoxMarketerialLayout', () => {
       });
       const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
       expect(driver.getPrimaryButtonText()).toBe(props.primaryButtonLabel);
+    });
+
+    it('should display the primary button with custom them', () => {
+      const props = Object.assign({}, requiredProps, {
+        primaryButtonLabel: 'primaryButtonLabel',
+        primaryButtonTheme: 'purple'
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+      expect(driver.getPrimaryButton().className).toContain('fullpurple');
     });
 
     it('should not display the primary button if primary button label was not passed', () => {
@@ -126,7 +135,38 @@ describe('MessageBoxMarketerialLayout', () => {
       const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
       expect(driver.getPrimaryButton().className).toContain('fullpurple');
     });
+  });
 
+  describe('footer children', () => {
+    it(`should render the passed footer content`, () => {
+      const props = Object.assign({}, requiredProps, {
+        footerBottomChildren: (<div data-hook="inner-div"/>)
+      });
+
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+
+      expect(driver.getContentBySelector('[data-hook="inner-div"]')).not.toBeNull();
+      expect(driver.getContentBySelector('[data-hook="footer-layout-bottom-children"]')).not.toBeNull();
+    });
+
+    it(`should not render secondary button when footer content passed`, () => {
+      const props = Object.assign({}, requiredProps, {
+        footerBottomChildren: (<div data-hook="inner-div"/>)
+      });
+
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+
+      expect(driver.getSecondaryButton()).toBeNull();
+    });
+
+    it(`should not render footer's wrapper div when footer content isn't passed`, () => {
+      const props = Object.assign({}, requiredProps, {
+      });
+
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+
+      expect(driver.getContentBySelector('[data-hook="footer-layout-bottom-children"]')).toBeNull();
+    });
   });
 
   describe('testkit', () => {

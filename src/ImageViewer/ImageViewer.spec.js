@@ -1,14 +1,13 @@
 import React from 'react';
 import ImageViewer from './ImageViewer';
 import ImageViewerDriverFactory from './ImageViewer.driver';
-import {createDriverFactory, resolveIn} from '../test-common';
-import {imageViewerTestkitFactory, tooltipTestkitFactory} from '../../testkit';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
+import {imageViewerTestkitFactory} from '../../testkit';
 import {imageViewerTestkitFactory as enzymeImageViewerTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
 import ReactTestUtils from 'react-dom/test-utils';
 
 describe('ImageViewer', () => {
-
   const createDriver = createDriverFactory(ImageViewerDriverFactory);
   let props, driver;
   const IMAGE_URL = 'some-image-url.png';
@@ -50,7 +49,6 @@ describe('ImageViewer', () => {
       driver.clickAdd();
       expect(addImage).toBeCalled();
     });
-
   });
 
   it('should not display image if not exists', () => {
@@ -90,10 +88,9 @@ describe('ImageViewer', () => {
       expect(driver.getContainerStyles()).toEqual(null);
     });
   });
+
   describe('hide or show add image', () => {
-
     it('should not display AddItem component if image exists', () => {
-
       props = {
         imageUrl: IMAGE_URL
       };
@@ -103,7 +100,6 @@ describe('ImageViewer', () => {
     });
 
     it('should display AddItem component if image dosnt exists', () => {
-
       props = {
         imageUrl: ''
       };
@@ -111,45 +107,80 @@ describe('ImageViewer', () => {
       driver = createDriver(<ImageViewer {...props}/>);
       expect(driver.isAddItemVisible()).toBeTruthy();
     });
-
   });
 
+  describe('tooltips', () => {
+    const tooltipProps = {
+      relative: true,
+      appendToParent: true,
+      showDelay: 0
+    };
 
-  describe('Error state', () => {
-
-    it('should not display error icon by defualt', () => {
-
-      props = {
+    describe('add image', () => {
+      const props = {
         imageUrl: '',
-        width: 300,
-        height: 300
+        tooltipProps,
+        addImageInfo: 'add image info'
       };
 
-      driver = createDriver(<ImageViewer {...props}/>);
-      expect(driver.isErrorVisible()).toBeFalsy();
+      it('should display provided tooltip content', async () => {
+        const driver = createDriver(<ImageViewer {...props}/>);
+        expect(await driver.getAddTooltipContent()).toEqual(props.addImageInfo);
+      });
     });
 
-    it('should display error icon on error with the correct message', () => {
-
-      props = {
-        imageUrl: '',
-        width: 300,
-        height: 300,
-        error: true,
-        errorMessage: 'Oh My God!'
+    describe('update image', () => {
+      const props = {
+        imageUrl: IMAGE_URL,
+        tooltipProps,
+        updateImageInfo: 'update image info'
       };
 
-      driver = createDriver(<ImageViewer {...props}/>);
-      const wrapper = driver.getElement();
-      const errorTooltipDriver = tooltipTestkitFactory({wrapper, dataHook: 'error-tooltip'});
-      errorTooltipDriver.mouseEnter();
-      return resolveIn(50)
-        .then(() => {
-          expect(errorTooltipDriver.isShown()).toBeTruthy();
-          expect(errorTooltipDriver.getContent()).toEqual(props.errorMessage);
-        });
+      it('should display provided tooltip content', async () => {
+        const driver = createDriver(<ImageViewer {...props}/>);
+        expect(await driver.getUpdateTooltipContent()).toEqual(props.updateImageInfo);
+      });
     });
 
+    describe('remove image', () => {
+      const props = {
+        imageUrl: IMAGE_URL,
+        tooltipProps,
+        removeImageInfo: 'remove image info'
+      };
+
+      it('should display provided tooltip content', async () => {
+        const driver = createDriver(<ImageViewer {...props}/>);
+        expect(await driver.getRemoveTooltipContent()).toEqual(props.removeImageInfo);
+      });
+    });
+
+    describe('error state', () => {
+      it('should not display error icon by defualt', () => {
+        props = {
+          imageUrl: '',
+          width: 300,
+          height: 300
+        };
+
+        driver = createDriver(<ImageViewer {...props}/>);
+        expect(driver.isErrorVisible()).toBeFalsy();
+      });
+
+      it('should display error icon on error with the correct message', async () => {
+        props = {
+          imageUrl: '',
+          width: 300,
+          height: 300,
+          error: true,
+          errorMessage: 'error message',
+          tooltipProps
+        };
+
+        driver = createDriver(<ImageViewer {...props}/>);
+        expect(await driver.getErrorTooltipContent()).toEqual(props.errorMessage);
+      });
+    });
   });
 
   describe('testkit', () => {
@@ -170,5 +201,4 @@ describe('ImageViewer', () => {
       expect(imageViewerTestkit.exists()).toBeTruthy();
     });
   });
-
 });

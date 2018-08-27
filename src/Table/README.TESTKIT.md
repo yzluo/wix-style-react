@@ -62,6 +62,13 @@
 | getSecondaryActionsPopoverMenu | (index) | element | Get the secondary actions popover menu element |
 | hoverRow | (index) | element | Hover a specific row with the mouse |
 
+### Puppeteer
+
+| method | arguments | returned value | description |
+|--------|-----------|----------------|-------------|
+| element | - | element | returns the element |
+| getCellTextValue | number, number | string | get value of the cell |
+
 ## Usage Example
 
 > Unit Testing Example
@@ -118,4 +125,23 @@
       expect(await testkit.element().isPresent()).toBeTruthy();
     });
   });
+```
+
+```javascript
+/*******************
+   Puppeteer example
+  *******************/
+
+  import puppeteer from 'puppeteer';
+  import {tableTestkitFactory} from 'wix-style-react/dist/testkit/puppeteer';
+
+  //puppeteer setup
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+
+  //Create an element testkit via the data-hook attribute
+  const testkit = await tableTestkitFactory({dataHook: 'myDataHook', page});
+  await page.goto(appUrl); //Your application url
+
+  expect(await testkit.getCellValue(2, 3)).to.equal('my test');
 ```

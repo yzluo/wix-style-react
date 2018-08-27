@@ -45,7 +45,7 @@ class ExampleStandard extends React.Component {
 
   render() {
     return (
-      <div className="ltr">
+      <div>
         <div className={styles.main}>
           <MultiSelect
             tags={this.state.tags}

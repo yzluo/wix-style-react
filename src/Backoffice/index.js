@@ -1,4 +1,4 @@
-import TextLink from './TextLink';
+import TextLink from '../TextLink';
 import Button from './Button';
 import Tooltip from './Tooltip';
 

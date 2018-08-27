@@ -33,7 +33,7 @@ class ControlledInputArea extends Component {
 }
 
 export default () =>
-  <div className="ltr" style={style}>
+  <div style={style}>
     <span>This shows an error for &quot;Starwars&quot;</span>
     <ControlledInputArea/>
   </div>;

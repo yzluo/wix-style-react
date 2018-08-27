@@ -1,7 +1,9 @@
 import 'regenerator-runtime/runtime';
-import {protractorTestkitFactoryCreator} from '../src/test-common';
 /*eslint no-duplicate-imports: 0*/
-export {getStoryUrl, waitForVisibilityOf, scrollToElement} from '../src/test-common';
+import {protractorTestkitFactoryCreator} from 'wix-ui-test-utils/protractor';
+
+// here for historical reasons, should probably deprecate it
+export {waitForVisibilityOf, scrollToElement} from 'wix-ui-test-utils/protractor';
 
 import inputDriverFactory from '../src/Input/Input.protractor.driver';
 export const inputTestkitFactory = protractorTestkitFactoryCreator(inputDriverFactory);
@@ -87,6 +89,9 @@ export const imageViewerTestkitFactory = protractorTestkitFactoryCreator(imageVi
 import tpaTextLinkDriverFactory from '../src/TPA/TextLink/TextLink.protractor.driver';
 export const tpaTextLinkTestkitFactory = protractorTestkitFactoryCreator(tpaTextLinkDriverFactory);
 
+import textLinkDriverFactory from '../src/TextLink/TextLink.protractor.driver';
+export const textLinkTestkitFactory = protractorTestkitFactoryCreator(textLinkDriverFactory);
+
 import popoverMenuDriverFactory from '../src/PopoverMenu/PopoverMenu.protractor.driver';
 export const popoverMenuTestkitFactory = protractorTestkitFactoryCreator(popoverMenuDriverFactory);
 
@@ -135,14 +140,27 @@ export const tooltipTestkitFactory = protractorTestkitFactoryCreator(tooltipDriv
 import formFieldDriverFactory from '../src/FormField/FormField.protractor.driver';
 export const formFieldTestkitFactory = protractorTestkitFactoryCreator(formFieldDriverFactory);
 
+import emptyStateDriverFactory from '../src/EmptyState/EmptyState.protractor.driver';
+export const emptyStateTestkitFactory = protractorTestkitFactoryCreator(emptyStateDriverFactory);
+
+import textDriverFactory from '../src/Text/Text.protractor.driver';
+export const textTestkitFactory = protractorTestkitFactoryCreator(textDriverFactory);
+
+import messageBoxFunctionalLayoutDriverFactory from '../src/MessageBox/MessageBoxFunctionalLayout.protractor.driver';
+export const messageBoxFunctionalLayoutTestkitFactory = protractorTestkitFactoryCreator(messageBoxFunctionalLayoutDriverFactory);
+
+import headingDriverFactory from '../src/Heading/Heading.protractor.driver';
+export const headingTestkitFactory = protractorTestkitFactoryCreator(headingDriverFactory);
+
+import sectionHelperDriverFactory from '../src/SectionHelper/SectionHelper.protractor.driver';
+export const sectionHelperTestkitFactory = protractorTestkitFactoryCreator(sectionHelperDriverFactory);
+
 // wix-ui-backoffice proxy
 
 export {
   badgeTestkitFactory,
   stylableCounterBadgeTestkitFactory as counterBadgeTestkitFactory,
-  headingTestkitFactory,
   toggleSwitchTestkitFactory,
-  textTestkitFactory,
   labelTestkitFactory,
   floatingHelperTestkitFactory,
   linearProgressBarTestkitFactory,

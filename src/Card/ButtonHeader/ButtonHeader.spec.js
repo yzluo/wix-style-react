@@ -5,7 +5,7 @@ import sinon from 'sinon';
 
 import {buttonHeaderTestkitFactory, buttonTestkitFactory} from '../../../testkit';
 import {buttonHeaderTestkitFactory as enzymeButtonHeaderTestkitFactory} from '../../../testkit/enzyme';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 
 import ButtonHeader from './ButtonHeader';
 import buttonHeaderDriverFactory from './ButtonHeader.driver';

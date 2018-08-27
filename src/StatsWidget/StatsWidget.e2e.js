@@ -1,8 +1,10 @@
 import eyes from 'eyes.it';
-import {statsWidgetTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
+import {statsWidgetTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
 
 describe('StatsWidget', () => {
-  const storyUrl = getStoryUrl('2. Layout', '2.6 StatsWidget');
+  const storyUrl = getStoryUrl('2. Layout', '2.7 StatsWidget');
   const dataHook = 'standard-stats-widget';
 
   eyes.it('should show proper amount of statistics', () => {

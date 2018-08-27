@@ -11,7 +11,20 @@ import * as styles from './MessageBoxMarketerialLayout.scss';
 class MessageBoxMarketerialLayout extends WixComponent {
 
   render() {
-    const {title, content, primaryButtonLabel, secondaryButtonLabel, onPrimaryButtonClick, onSecondaryButtonClick, imageUrl, onClose, theme, imageComponent} = this.props;
+    const {
+      title,
+      content,
+      primaryButtonLabel,
+      secondaryButtonLabel,
+      onPrimaryButtonClick,
+      onSecondaryButtonClick,
+      imageUrl,
+      onClose,
+      theme,
+      primaryButtonTheme,
+      imageComponent,
+      footerBottomChildren
+    } = this.props;
 
     const headerClasses = classNames({
       [styles.header]: true,
@@ -40,10 +53,10 @@ class MessageBoxMarketerialLayout extends WixComponent {
         <div className={styles.buttonsContainer}>
           { primaryButtonLabel ?
             <div className={styles.primaryButtonContainer}>
-              <Button theme={`full${theme}`} onClick={onPrimaryButtonClick} dataHook="primary-button">{primaryButtonLabel}</Button>
+              <Button theme={`full${primaryButtonTheme || theme}`} onClick={onPrimaryButtonClick} dataHook="primary-button">{primaryButtonLabel}</Button>
             </div> : null
           }
-          { secondaryButtonLabel ?
+          { secondaryButtonLabel && !footerBottomChildren ?
             <div className={styles.secondaryButtonContainer}>
               <span onClick={onSecondaryButtonClick} data-hook="secondary-button">
                 {secondaryButtonLabel}
@@ -51,6 +64,12 @@ class MessageBoxMarketerialLayout extends WixComponent {
             </div> : null
           }
         </div>
+        {footerBottomChildren ?
+          <div
+            data-hook="footer-layout-bottom-children"
+            className={styles.bottomChildren}
+            children={footerBottomChildren}
+            /> : null}
       </div>
     );
   }
@@ -66,7 +85,12 @@ MessageBoxMarketerialLayout.propTypes = {
   imageUrl: PropTypes.string,
   onClose: PropTypes.func.isRequired,
   imageComponent: PropTypes.node,
+  footerBottomChildren: PropTypes.node,
   theme: PropTypes.oneOf([
+    'blue',
+    'purple'
+  ]),
+  primaryButtonTheme: PropTypes.oneOf([
     'blue',
     'purple'
   ])

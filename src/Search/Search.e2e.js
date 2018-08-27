@@ -1,10 +1,7 @@
 import eyes from 'eyes.it';
-
-import {
-  searchTestkitFactory,
-  getStoryUrl,
-  waitForVisibilityOf
-} from '../../testkit/protractor';
+import {searchTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 
 describe('Search', () => {

@@ -32,7 +32,7 @@ class ControlledInput extends Component {
 }
 
 const Example = ({theme}) =>
-  <div className="ltr" style={style}>
+  <div style={style}>
     <span>Shows clear button</span>
     <ControlledInput theme={theme} clearButton/>
   </div>;

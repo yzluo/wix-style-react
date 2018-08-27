@@ -1,6 +1,8 @@
 import eyes from 'eyes.it';
-import {getStoryUrl, loaderTestkitFactory, waitForVisibilityOf} from '../../testkit/protractor';
-import {disableCSSAnimation} from '../../test/utils/protractor.js';
+import {loaderTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
+import {disableCSSAnimation} from '../../test/utils/protractor-helpers';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import {ExpectedConditions as EC} from 'protractor';
 

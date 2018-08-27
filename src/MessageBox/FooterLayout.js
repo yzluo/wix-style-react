@@ -15,46 +15,53 @@ const FooterLayout = ({
   buttonsHeight,
   enableOk,
   enableCancel,
-  withTopPadding
-}) =>
-  <div>
-    <div
-      className={classNames(styles.footer, {[styles.withTopPadding]: withTopPadding})}
-      data-hook="message-box-footer"
-      >
-      {children}
-
-      <div className={styles.footerbuttons}>
-        {cancelText &&
-          <Button
-            disabled={!enableCancel}
-            height={buttonsHeight}
-            theme={'empty' + theme}
-            onClick={onCancel}
-            dataHook="cancellation-button"
-            children={cancelText}
-            />
-        }
-
-        <Button
-          disabled={!enableOk}
-          height={buttonsHeight}
-          theme={'full' + theme}
-          onClick={onOk}
-          dataHook="confirmation-button"
-          children={confirmText}
-          />
-      </div>
-    </div>
-
-    {bottomChildren &&
-      <div
-        data-hook="footer-layout-bottom-children"
-        className={styles.bottomChildren}
-        children={bottomChildren}
-        />
+  sideActions
+}) => {
+  const footerButtonsClassNames = classNames(
+    styles.footerbuttons,
+    {
+      [styles.withSideActions]: sideActions && (cancelText || confirmText)
     }
-  </div>;
+  );
+  return (
+    <div>
+      <div className={styles.footer} data-hook="message-box-footer">
+        {sideActions}
+        {children}
+        <div className={footerButtonsClassNames}>
+          {cancelText && (
+            <Button
+              disabled={!enableCancel}
+              height={buttonsHeight}
+              theme={'empty' + theme}
+              onClick={onCancel}
+              dataHook="cancellation-button"
+              children={cancelText}
+              />
+          )}
+          {confirmText && (
+            <Button
+              disabled={!enableOk}
+              height={buttonsHeight}
+              theme={'full' + theme}
+              onClick={onOk}
+              dataHook="confirmation-button"
+              children={confirmText}
+              />
+          )}
+        </div>
+      </div>
+
+      {bottomChildren && (
+        <div
+          data-hook="footer-layout-bottom-children"
+          className={styles.bottomChildren}
+          children={bottomChildren}
+          />
+      )}
+    </div>
+  );
+};
 
 FooterLayout.propTypes = {
   confirmText: PropTypes.node,
@@ -67,15 +74,14 @@ FooterLayout.propTypes = {
   buttonsHeight: PropTypes.string,
   children: PropTypes.any,
   bottomChildren: PropTypes.node,
-  withTopPadding: PropTypes.bool
+  sideActions: PropTypes.node
 };
 
 FooterLayout.defaultProps = {
   theme: 'blue',
   buttonsHeight: 'small',
   enableOk: true,
-  enableCancel: true,
-  withTopPadding: false
+  enableCancel: true
 };
 
 export default FooterLayout;

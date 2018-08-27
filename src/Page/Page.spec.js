@@ -2,7 +2,7 @@ import React from 'react';
 import Page from './Page';
 import pageDriverFactory from './Page.driver';
 import {PagePrivateDriver} from './Page.private.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 
 const Content = () => (
   <div>content</div>

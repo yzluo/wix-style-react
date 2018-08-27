@@ -1,9 +1,11 @@
 import eyes from 'eyes.it';
-import {richTextAreaTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
+import {richTextAreaTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
 import {settings} from '../../stories/RichTextArea/RichTextArea.story';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import {BUTTON_TYPES} from './RichTextArea.protractor.driver';
-import {flattenInternalDriver} from '../test-common';
+import {flattenInternalDriver} from '../../test/utils/private-drivers';
 
 const EDITOR_TAB_ORDINAL = 7;
 

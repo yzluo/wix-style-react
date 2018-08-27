@@ -3,7 +3,7 @@ import React from 'react';
 import {Table} from './Table';
 import DataTable from '../DataTable';
 import ReactTestUtils from 'react-dom/test-utils';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {tableTestkitFactory} from '../../testkit';
 import {tableTestkitFactory as enzymeTableTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

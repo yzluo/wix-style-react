@@ -1,11 +1,12 @@
 import React from 'react';
 import inputAreaDriverFactory from './InputArea.driver';
 import InputArea from './InputArea';
-import {createDriverFactory, resolveIn} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
+import {resolveIn} from '../../test/utils';
 import {inputAreaTestkitFactory, tooltipTestkitFactory} from '../../testkit';
 import {inputAreaTestkitFactory as enzymeInputAreaTestkitFactory} from '../../testkit/enzyme';
 import sinon from 'sinon';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
 import {mount} from 'enzyme';
 
 describe('InputArea', () => {

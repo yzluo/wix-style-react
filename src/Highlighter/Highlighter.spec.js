@@ -1,8 +1,8 @@
 import React from 'react';
 import Highlighter from './Highlighter';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import highlighterDriverFactory from './Highlighter.driver';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
 import {highlighterTestkitFactory} from '../../testkit/index';
 import {highlighterTestkitFactory as enzymeHighlighterTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

@@ -1,4 +1,5 @@
 @import '../common';
+@import './MessageBoxCommon.scss';
 
 .root {
   box-shadow: $Shadow40;
@@ -117,4 +118,8 @@ $headerImageHeight: 185px;
 
 .fixedFooter {
   flex-shrink: 0;
+}
+
+.bottomChildren {
+  margin-top: -28px;
 }

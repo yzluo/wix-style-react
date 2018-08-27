@@ -2,7 +2,7 @@ import React from 'react';
 import sinon from 'sinon';
 import ReactTestUtils from 'react-dom/test-utils';
 import editableSelectorDriverFactory from './EditableSelector.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {editableSelectorTestkitFactory} from '../../testkit';
 import EditableSelector from './EditableSelector';
 import {editableSelectorTestkitFactory as enzymeEditableSelectorTestkitFactory} from '../../testkit/enzyme';

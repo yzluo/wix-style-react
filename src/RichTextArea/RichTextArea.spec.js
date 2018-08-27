@@ -1,5 +1,5 @@
 import React from 'react';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import richTextAreaDriverFactory from './RichTextArea.driver';
 import RichTextArea, {makeHrefAbsolute} from './RichTextArea';
 

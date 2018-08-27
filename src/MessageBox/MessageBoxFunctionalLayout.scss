@@ -1,6 +1,8 @@
 @import '../common';
 @import '../mixins';
 
+$minimum-modal-margin: 48px;
+
 .content {
   box-shadow: $Shadow40;
   border-radius: 8px;
@@ -8,20 +10,69 @@
   width: 600px;
 }
 
+.fullscreen-content {
+  height: calc(100% - #{$minimum-modal-margin * 2});
+  width: calc(100% - #{$minimum-modal-margin * 2});
+  max-width: 1254px; // Hard-coded according design: The modal cannot be wider than 1254px
+  display: flex;
+  flex-direction: column;
+}
+
 .body {
   @include FontLight();
   color: $paletteD2;
   font-size: 16px;
   line-height: 24px;
-  padding: 36px 30px 42px 30px;
+  padding: 36px 30px 12px;
   box-sizing: border-box;
+
+  &.no-padding {
+    padding: 0;
+  }
+
+  &.withEmptyState {
+    padding: 42px 20px;
+  }
+}
+
+.message-with-image {
+  display: flex;
+
+  .image {
+    display: inline-block;
+    margin: 24px 0 -30px 30px;
+    width: 126px;
+    height: 126px;
+
+    &.withFooterAction {
+      margin-bottom: -6px;
+    }
+
+    &.no-padding {
+      margin: 0;
+    }
+  }
+}
+
+.message {
+  padding-top: 36px;
+  padding-bottom: 12px;
+}
+
+.fullscreen-body {
+  margin-bottom: auto;
+  overflow: auto;
 }
 
 .scrollable {
   @include default-scroll-bar;
   overflow-y: auto;
+
+  &.footer-border:not(.no-footer) {
+    border-bottom: 1px solid $D60;
+  }
 }
 
-.no-padding {
-  padding: 0;
+.no-footer {
+  padding-bottom: 42px;
 }

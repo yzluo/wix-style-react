@@ -1,4 +1,4 @@
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 
 export class PagePrivateDriver {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import linkHeaderDriverFactory from './LinkHeader.driver';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import LinkHeader from './LinkHeader';
 import {linkHeaderTestkitFactory, textLinkTestkitFactory} from '../../../testkit';
 import {linkHeaderTestkitFactory as enzymeButtonHeaderTestkitFactory} from '../../../testkit/enzyme';

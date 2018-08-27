@@ -49,6 +49,6 @@ class Example extends React.Component {
 }
 
 export default () =>
-  <div className="ltr" style={style}>
+  <div style={style}>
     <Example/>
   </div>;

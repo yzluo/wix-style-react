@@ -6,10 +6,15 @@
 
 ### Polyfills
 
-Tooltip driver might need polyfills, two polyfills are supported via the library
+Since the tests won't be ran in a browser environment, the `<Tooltip/>` component might need some
+polyfills. You can use them as follows:
+
 ```javascript
-import 'wix-style-react/dist/src/Backoffice/Tooltip/RangePolyfill.js';
-import 'wix-style-react/dist/src/Backoffice/Tooltip/CancelAnimationPolyfill.js';
+import {rangePolyfill} from 'wix-style-react/dist/testkit/polyfills';
+
+beforeAll(() => {
+  rangePolyfill.install();
+});
 ```
 
 ### Enzyme / ReactTestUtils

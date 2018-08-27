@@ -1,6 +1,6 @@
 import React from 'react';
 import fieldLabelAttributesDriverFactory from './FieldLabelAttributes.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import FieldLabelAttributes from './FieldLabelAttributes';
 import Tooltip from '../Tooltip';
 

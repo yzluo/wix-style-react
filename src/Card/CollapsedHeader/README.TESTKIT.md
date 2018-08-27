@@ -14,6 +14,19 @@ animationPolyFill(window, global);
 
 ## CollapsedHeader TestKit API
 
+### Polyfills
+
+Since the tests won't be ran in a browser environment, the `<Card.CollapsedHeader/>` component might
+need some polyfills. You can use them as follows:
+
+```javascript
+import {requestAnimationFramePolyfill} from 'wix-style-react/dist/testkit/polyfills';
+
+beforeAll(() => {
+  requestAnimationFramePolyfill.install();
+});
+```
+
 ## Unit testing
 
 ### driver
@@ -21,7 +34,7 @@ animationPolyFill(window, global);
 | method         | arguments | returned value | description                       |
 | -------------- | --------- | -------------- | --------------------------------- |
 | exists         | -         | bool           | checks if element does exist      |
-| title          |           | -              | string                            | returns title inner html |
+| title          | -         | string         | returns title inner html          |
 | subtitle       | -         | string         | returns subtitle inner html       |
 | element        | -         | element        | returns header element            |
 | click          | -         | -              | clicks the header                 |

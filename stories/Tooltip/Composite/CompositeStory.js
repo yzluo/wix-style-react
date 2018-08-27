@@ -26,6 +26,8 @@ import ExampleMove from '../Core/ExampleMove';
 import ExampleMoveRaw from '!raw-loader!../Core/ExampleMove';
 import TooltipSource from '!raw-loader!wix-style-react/Tooltip/Tooltip';
 
+import ExamplePopoverEmptyState from './ExamplePopoverEmptyState';
+import ExamplePopoverEmptyStateRaw from '!raw-loader!./ExamplePopoverEmptyState';
 
 storiesOf('7. Tooltips', module)
   .add('7.1. Tooltip', () => (
@@ -71,6 +73,10 @@ storiesOf('7. Tooltips', module)
       <InteractiveCodeExample title="Customize a <Tooltip/>">
         <ExamplePopover/>
       </InteractiveCodeExample>
+
+      <CodeExample title="Popover with EmptyState" code={ExamplePopoverEmptyStateRaw}>
+        <ExamplePopoverEmptyState/>
+      </CodeExample>
     </div>
   ))
 

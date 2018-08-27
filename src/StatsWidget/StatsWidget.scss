@@ -18,29 +18,4 @@
       border-right: none;
     }
   }
-
-  .percents {
-    .percent-arrow {
-      display: none;
-      font-size: 11px;
-      margin-right: 6px;
-    }
-
-    &.isNegative {
-      color: $R20;
-
-      .percent-arrow {
-        transform: rotateX(180deg);
-        display: inline-block;
-      }
-    }
-
-    &.isPositive {
-      color: $G20;
-
-      .percent-arrow {
-        display: inline-block;
-      }
-    }
-  }
 }

@@ -68,6 +68,7 @@ export default {
   },
 
   exampleProps: {
-    children: childrenExamples
+    children: childrenExamples,
+    infoTooltipProps: [{label: 'placement left', value: {placement: 'left'}}]
   }
 };

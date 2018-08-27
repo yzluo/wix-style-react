@@ -122,7 +122,7 @@ class RadioButton extends WixComponent {
             className={styles.radioButtonWrapper}
             data-hook="radiobutton-radio"
             >
-            <div className={styles.radio}/>
+            <div className={classnames(styles.radio, {[styles.radioButtonChecked]: checked})}/>
           </div>
 
           { children &&

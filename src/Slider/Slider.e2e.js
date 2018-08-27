@@ -1,5 +1,7 @@
-import {sliderTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
 import eyes from 'eyes.it';
+import {sliderTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
 
 describe('Slider', () => {
   const storyUrl = getStoryUrl('4. Selection', '4.7 Slider');

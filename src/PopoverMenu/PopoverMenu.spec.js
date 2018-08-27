@@ -4,11 +4,11 @@ import waitForCond from 'wait-for-cond';
 import popoverMenuDriverFactory from './PopoverMenu.driver';
 import PopoverMenu from './PopoverMenu';
 import PopoverMenuItem from '../PopoverMenuItem/PopoverMenuItem';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {
   isTestkitExists,
   isEnzymeTestkitExists
-} from '../../testkit/test-common';
+} from '../../test/utils/testkit-sanity';
 import {popoverMenuTestkitFactory} from '../../testkit';
 import {popoverMenuTestkitFactory as enzymePopoverMenuTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

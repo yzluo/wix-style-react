@@ -23,7 +23,7 @@ const rtlOptions = [
 
 export default () =>
   <div>
-    <div style={style} className="ltr">
+    <div style={style}>
       Left to right
       <AutoComplete
         options={options}
@@ -32,10 +32,10 @@ export default () =>
     <div style={style} className="rtl">
       Right to left<AutoComplete options={rtlOptions}/>
     </div>
-    <div style={style} className="ltr">
+    <div style={style}>
       Disabled<AutoComplete disabled options={rtlOptions}/>
     </div>
-    <div style={style} className="ltr">
+    <div style={style}>
       Error<AutoComplete error errorMessage="This is an error message" options={rtlOptions}/>
     </div>
   </div>;

@@ -1,41 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Delete from 'wix-ui-icons-common/Delete';
+import Replace from 'wix-ui-icons-common/Replace';
+import FormFieldError from 'wix-ui-icons-common/system/FormFieldError';
+import classNames from 'classnames';
+import omit from 'omit';
+
 import style from './ImageViewer.scss';
 import Tooltip from '../Tooltip';
 import Button from '../Button';
-import Delete from 'wix-ui-icons-common/Delete';
-import Replace from 'wix-ui-icons-common/Replace';
 import WixComponent from '../BaseComponents/WixComponent';
-import FormFieldError from 'wix-ui-icons-common/system/FormFieldError';
-import classNames from 'classnames';
 import AddItem from '../AddItem/AddItem';
 
+const DEFAULT_TOOLTIP_PROPS = {
+  showDelay: 0,
+  hideDelay: 0,
+  align: 'center',
+  placement: 'top',
+  theme: 'dark'
+};
+
 class ImageViewer extends WixComponent {
-
   render() {
-
     const {
       imageUrl,
       onAddImage,
       onUpdateImage,
       onRemoveImage,
+      addImageInfo,
+      updateImageInfo,
+      removeImageInfo,
       width,
       height,
-      error
+      error,
+      errorMessage,
+      tooltipPlacement
     } = this.props;
-
-    const tooltipCommonProps = {
-      showDelay: 0,
-      hideDelay: 0,
-      align: 'center',
-      placement: 'top',
-      theme: 'dark'
-    };
     const classes = classNames(style.container, {[style.hasLogo]: imageUrl, [style.hasError]: error});
+    const tooltipProps = {
+      ...DEFAULT_TOOLTIP_PROPS,
+      ...this.props.tooltipProps
+    };
+
     return (
-      <div className={classes} style={{width, height}} data-hook="image-container">
+      <div className={classes} style={{width, height}}>
         {!imageUrl &&
-        <AddItem data-hook="add-image" tooltipContent="Add Image" height={height} onClick={onAddImage}/>
+        <AddItem data-hook="add-image" height={height} onClick={onAddImage} tooltipProps={{...tooltipProps, content: addImageInfo}}/>
         }
         {!!imageUrl &&
         <div className={style.changeLogoContainer}>
@@ -44,13 +54,13 @@ class ImageViewer extends WixComponent {
           </div>
           <div className={style.imageBackground}>
             <div className={style.buttons}>
-              <Tooltip content="Replace" {...tooltipCommonProps}>
-                <Button dataHook="update-image" onClick={onUpdateImage} theme="icon-whitesecondary">
+              <Tooltip dataHook="update-image" {...tooltipProps} content={updateImageInfo}>
+                <Button onClick={onUpdateImage} theme="icon-whitesecondary">
                   <Replace size="1.5em"/>
                 </Button >
               </Tooltip>
-              <Tooltip content="Remove" {...tooltipCommonProps}>
-                <Button dataHook="remove-image" theme="icon-whitesecondary" onClick={onRemoveImage}>
+              <Tooltip dataHook="remove-image" {...tooltipProps} content={removeImageInfo}>
+                <Button theme="icon-whitesecondary" onClick={onRemoveImage}>
                   <Delete size="1.5em"/>
                 </Button>
               </Tooltip>
@@ -61,10 +71,10 @@ class ImageViewer extends WixComponent {
         {!!error &&
         <Tooltip
           dataHook="error-tooltip"
-          disabled={!this.props.errorMessage}
-          placement={this.props.tooltipPlacement}
-          content={this.props.errorMessage}
-          {...tooltipCommonProps}
+          disabled={!errorMessage}
+          content={errorMessage}
+          {...tooltipProps}
+          placement={tooltipPlacement || tooltipProps.placement}
           >
           <div className={style.exclamation}><FormFieldError/></div>
         </Tooltip>}
@@ -74,16 +84,42 @@ class ImageViewer extends WixComponent {
   }
 }
 
+ImageViewer.defaultProps = {
+  addImageInfo: 'Add Image',
+  updateImageInfo: 'Update',
+  removeImageInfo: 'Remove'
+};
+
 ImageViewer.propTypes = {
+  /** Image url, blank for not uploaded */
   imageUrl: PropTypes.string,
+  /** Show error icon */
   error: PropTypes.bool,
+  /** Error tooltip message */
   errorMessage: PropTypes.string,
+  /** Error tooltip placement
+   * @deprecated
+   * @see tooltipProps
+   */
   tooltipPlacement: PropTypes.string,
+  /** Tooltip props, common for all tooltips */
+  tooltipProps: PropTypes.shape(omit(['content'], Tooltip.propTypes)),
+  /** Add image click handler */
   onAddImage: PropTypes.func,
+  /** Update image click handler */
   onUpdateImage: PropTypes.func,
+  /** Remove image click handler */
   onRemoveImage: PropTypes.func,
-  width: PropTypes.number,
-  height: PropTypes.number
+  /** Add image tooltip */
+  addImageInfo: PropTypes.string,
+  /** Update image tooltip */
+  updateImageInfo: PropTypes.string,
+  /** Remove image tooltip */
+  removeImageInfo: PropTypes.string,
+  /** Element width */
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /** Element height */
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default ImageViewer;

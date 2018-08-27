@@ -18,6 +18,9 @@ import TableActionColumnPrimaryExampleRaw from '!raw-loader!./TableActionColumnP
 import {TableActionColumnPrimarySecondaryExample} from './TableActionColumnPrimarySecondaryExample';
 import TableActionColumnPrimarySecondaryExampleRaw from '!raw-loader!./TableActionColumnPrimarySecondaryExample';
 
+import {TableEmptyStateExample} from './TableEmptyStateExample';
+import TableEmptyStateExampleRaw from '!raw-loader!./TableEmptyStateExample';
+
 const data = [
   {firstName: 'Meghan', lastName: 'Bishop'},
   {firstName: 'Sara', lastName: 'Porter'},
@@ -116,6 +119,10 @@ export default {
         <div className={s.example}>
           <CodeExample title="Table with Action Column (Primary and Secondary Actions)" code={TableActionColumnPrimarySecondaryExampleRaw}>
             <TableActionColumnPrimarySecondaryExample/>
+        </div>
+        <div className={s.example}>
+          <CodeExample title="Table with EmptyState" code={TableEmptyStateExampleRaw}>
+            <TableEmptyStateExample/>
           </CodeExample>
         </div>
       </div>

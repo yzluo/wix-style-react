@@ -1,4 +1,6 @@
-import {multiSelectCheckboxTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
+import {multiSelectCheckboxTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
 import eyes from 'eyes.it';
 
 describe('MultiSelectCheckbox', () => {

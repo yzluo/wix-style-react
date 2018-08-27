@@ -1,4 +1,6 @@
-import {getStoryUrl, modalSelectorLayoutTestkitFactory, waitForVisibilityOf} from '../../testkit/protractor';
+import {modalSelectorLayoutTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 
 describe('ModalSelectorLayout', () => {

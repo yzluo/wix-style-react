@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
-import Tooltip from './Tooltip';
+import eventually from 'wix-eventually';
 import last from 'lodash/last';
+
+import Tooltip from './Tooltip';
 
 const arrowDirectionToPlacement = {
   top: 'bottom',
@@ -20,14 +22,24 @@ const tooltipDriverFactory = ({element, wrapper}) => {
     }
   };
   const getTooltipContent = () => bodyOrWrapper.querySelector('.tooltip');
+  const mouseEnter = () => ReactTestUtils.Simulate.mouseEnter(element);
+  const mouseLeave = () => ReactTestUtils.Simulate.mouseLeave(element);
+  const isShown = () => !!bodyOrWrapper.querySelector('.tooltip');
+  const getContent = () => {
+    let content = getTooltipContent();
+    while (content.children.length > 0) {
+      content = content.children[0];
+    }
+    return content.innerHTML;
+  };
 
   return {
-    isShown: () => !!bodyOrWrapper.querySelector('.tooltip'),
+    isShown,
     focus: () => ReactTestUtils.Simulate.focus(element),
     blur: () => ReactTestUtils.Simulate.blur(element),
     click: () => ReactTestUtils.Simulate.click(element),
-    mouseEnter: () => ReactTestUtils.Simulate.mouseEnter(element),
-    mouseLeave: () => ReactTestUtils.Simulate.mouseLeave(element),
+    mouseEnter,
+    mouseLeave,
     hasErrorTheme: () => !!bodyOrWrapper.querySelector('.error'),
     hasDarkTheme: () => !!bodyOrWrapper.querySelector('.dark'),
     hasLightTheme: () => !!bodyOrWrapper.querySelector('.light'),
@@ -38,12 +50,20 @@ const tooltipDriverFactory = ({element, wrapper}) => {
       const arrowDirection = last(bodyOrWrapper.querySelectorAll('.arrow')).className.split(' ')[1];
       return arrowDirectionToPlacement[arrowDirection];
     },
-    getContent: () => {
-      let content = getTooltipContent();
-      while (content.children.length > 0) {
-        content = content.children[0];
-      }
-      return content.innerHTML;
+    getContent,
+    hoverAndGetContent: ({timeout = 1000, interval = 50} = {}) => {
+      mouseEnter();
+      return eventually(() => {
+        if (!isShown()) {
+          throw 'Tooltip not visible';
+        }
+        const content = getContent();
+        mouseLeave();
+        return content;
+      }, {
+        timeout,
+        interval
+      });
     },
     getMaxWidth: () => {
       const content = getTooltipContent();

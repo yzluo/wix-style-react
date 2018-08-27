@@ -13,22 +13,22 @@ function Example() {
   return (
     <div>
 
-      <div className="ltr" style={style}>
+      <div style={style}>
         Fill<br/>
         <Button theme="fill">Fill</Button>
       </div>
 
-      <div className="ltr" style={style}>
+      <div style={style}>
         Outline<br/>
         <Button theme="outline">Outline</Button>
       </div>
 
-      <div className="ltr" style={style}>
+      <div style={style}>
         Fill (Disabled)<br/>
         <Button theme="fill" disabled>Fill (Disabled)</Button>
       </div>
 
-      <div className="ltr" style={style}>
+      <div style={style}>
         Custom<br/>
         <Button className={styles.customButton}>Custom</Button>
       </div>

@@ -165,6 +165,7 @@ class Tooltip extends WixComponent {
   componentWillUnmount() {
     super.componentWillUnmount && super.componentWillUnmount();
     this._unmounted = true;
+    this._removeNode();
     this._getContainer() && this.hide();
 
     if (this._showInterval) {
@@ -228,7 +229,6 @@ class Tooltip extends WixComponent {
         </TooltipContent>);
 
       renderSubtreeIntoContainer(this, tooltip, this._mountNode);
-
       if (this.props.shouldUpdatePosition) {
         setTimeout(() => {
           this._updatePosition(this.tooltipContent);
@@ -308,14 +308,17 @@ class Tooltip extends WixComponent {
           this.renderTooltipIntoContainer();
           let fw = 0;
           let sw = 0;
-          do {
-            const tooltipNode = ReactDOM.findDOMNode(this.tooltipContent);
-            if (tooltipNode) {
-              fw = this._getRect(tooltipNode).width;
-              this._updatePosition(this.tooltipContent);
-              sw = this._getRect(tooltipNode).width;
-            }
-          } while (!props.appendToParent && fw !== sw);
+          // we need to set tooltip position after render of tooltip into container, on next event loop
+          setTimeout(() => {
+            do {
+              const tooltipNode = ReactDOM.findDOMNode(this.tooltipContent);
+              if (tooltipNode) {
+                fw = this._getRect(tooltipNode).width;
+                this._updatePosition(this.tooltipContent);
+                sw = this._getRect(tooltipNode).width;
+              }
+            } while (!props.appendToParent && fw !== sw);
+          });
         });
       }, delay);
     }
@@ -335,18 +338,11 @@ class Tooltip extends WixComponent {
 
     if (this.state.visible) {
       const hideLazy = () => {
-        if (this._mountNode) {
-          ReactDOM.unmountComponentAtNode(this._mountNode);
-          props.onHide && props.onHide();
-          const container = this._getContainer();
-          if (container) {
-            container.removeChild(this._mountNode);
-            container.removeEventListener('scroll', this._containerScrollHandler);
-          }
-          this._mountNode = null;
-        }
+        props.onHide && props.onHide();
+
         this._hideTimeout = null;
         if (!this._unmounted) {
+          this._removeNode();
           this.setState({visible: false});
         }
       };
@@ -358,6 +354,19 @@ class Tooltip extends WixComponent {
       this._hideTimeout = setTimeout(hideLazy, props.hideDelay);
     }
   };
+
+  _removeNode() {
+    if (this._mountNode) {
+      ReactDOM.unmountComponentAtNode(this._mountNode);
+
+      const container = this._getContainer();
+      if (container) {
+        container.removeChild(this._mountNode);
+        container.removeEventListener('scroll', this._containerScrollHandler);
+      }
+      this._mountNode = null;
+    }
+  }
 
   _hideOrShow(event) {
     if (this.props.hideTrigger === event && !this.state.hidden) {

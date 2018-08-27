@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import headerDriverFactory from './Header.driver';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import Header from './Header';
 import {headerTestkitFactory} from '../../../testkit';
 import {headerTestkitFactory as enzymeHeaderTestkitFactory} from '../../../testkit/enzyme';

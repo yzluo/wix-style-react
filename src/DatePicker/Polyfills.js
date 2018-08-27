@@ -1,3 +1,7 @@
+import deprecationLog from '../../utils/deprecationLog';
+
+deprecationLog(`Using "DataPicker/Polyfills.js" is deprecated. Please use the newer polyfills in "testkit/polyfills"`);
+
 export default function applyPolyfills(window, global) {
   let lastTime = 0;
   const vendors = ['ms', 'moz', 'webkit', 'o'];

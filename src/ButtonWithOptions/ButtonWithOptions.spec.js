@@ -2,7 +2,7 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import buttonWithOptionsDriverFactory from './ButtonWithOptions.driver';
 import ButtonWithOptions from './ButtonWithOptions';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {buttonWithOptionsTestkitFactory} from '../../testkit';
 import {buttonWithOptionsTestkitFactory as enzymeButtonWithOptionsTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

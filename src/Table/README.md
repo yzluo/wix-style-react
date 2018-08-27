@@ -69,4 +69,18 @@ You can render `<Table.Content/>` anywhere inside a `<Table/>` (not necessarily 
 |----------|----------|--------------|------------|-------------|
 | titleBarVisible | boolean | true | false | wether to display the column's title bar (`<thead>`) or not. (defaults to  `true`) |
 
+### `<Table.TitleBar/>`
+
+The `<Table/>` title bar (or "header"). Can be useful when setting `titleBarVisible` to `true`, so
+you can render the title bar independently. See the "Table in a Page" example for example usage.
+
+### `<Table.EmptyState/>`
+
+An `<EmptyState>` for usage within a table. See the "Table in a Page" example for example usage.
+
+#### Props
+
+Accepts the same props as `<EmptyState/>`. See the API tab in the `<EmptyState/>` story for a full
+list of valid props.
+
 ## Playground

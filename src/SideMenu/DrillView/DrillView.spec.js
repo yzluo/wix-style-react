@@ -1,7 +1,7 @@
 import React from 'react';
 import SideMenu from '../index';
 import SideMenuDrill from './index';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import drillViewDriverFactory from './DrillView.driver';
 
 describe('DrillView', () => {

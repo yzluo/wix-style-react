@@ -110,10 +110,8 @@ $radioButtonDisabledShadow: $B50 0 0 0 1px;
   margin: 2px;
 }
 
-.checked:not(.disabled):not(:active) {
-  .radio:after {
-    background-color: $B10;
-  }
+.checked:not(.disabled) .radioButtonChecked:after {
+  background-color: $B10;
 }
 
 .radio:active:after {

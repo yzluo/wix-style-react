@@ -71,7 +71,16 @@ class ControlledModal extends Component {
                 onOk={closeModalWithDatePicker}
                 onCancel={closeModalWithDatePicker}
                 >
-                <DatePicker/>
+                <Container fluid>
+                  <Row>
+                    <Col span={3}>
+                      Insert Date
+                    </Col>
+                    <Col span={9}>
+                      <DatePicker/>
+                    </Col>
+                  </Row>
+                </Container>
               </MessageBoxFunctionalLayout>
             </Modal>
           </Col>

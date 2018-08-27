@@ -3,11 +3,11 @@ import sinon from 'sinon';
 
 import inputDriverFactory from './Input.driver';
 import Input from '.';
-import {createDriverFactory, resolveIn} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {inputTestkitFactory, tooltipTestkitFactory} from '../../testkit';
 import {inputTestkitFactory as enzymeInputTestkitFactory} from '../../testkit/enzyme';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
-import {makeControlled} from '../../test/utils';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
+import {makeControlled, resolveIn} from '../../test/utils';
 import {mount} from 'enzyme';
 
 describe('Input', () => {
@@ -16,7 +16,7 @@ describe('Input', () => {
 
   describe('test tooltip', () => {
 
-    it('should dispaly the error tooltip on hover', () => {
+    it('should display the error tooltip on hover', () => {
       const driver = createDriver(<Input error errorMessage="I'm the error message"/>);
       const dataHook = driver.getTooltipDataHook();
       const wrapper = driver.getTooltipElement();
@@ -144,19 +144,43 @@ describe('Input', () => {
     });
   });
 
-  describe('type attribute', () => {
-    it('should set the type attribute', () => {
+  describe('`type` prop', () => {
+    it('should set type attribute', () => {
       const driver = createDriver(<Input type="number"/>);
       expect(driver.getType()).toBe('number');
     });
+
+    describe('when "number"', () => {
+      it('should prevent onChange to be called with non numeric values', () => {
+        const onChange = jest.fn();
+        const driver = createDriver(<Input type="number" onChange={onChange} value="2"/>);
+        driver.trigger('change', {target: {value: 'a'}});
+        driver.trigger('keyPress', {target: {key: 'l'}});
+        expect(driver.getValue()).toEqual('2');
+        expect(onChange).not.toHaveBeenCalled();
+      });
+    });
   });
 
-  describe('error attribute', () => {
-    it('should display an error icon if error is true', () => {
+  describe('status attribute', () => {
+    it('deprecated - should display an error icon if error is true', () => {
       const driver = createDriver(<Input error/>);
 
       expect(driver.hasExclamation()).toBeTruthy();
       expect(driver.hasError()).toBeTruthy();
+    });
+
+    it('should display an error icon if status is error', () => {
+      const driver = createDriver(<Input status={'error'}/>);
+
+      expect(driver.hasExclamation()).toBeTruthy();
+      expect(driver.hasError()).toBeTruthy();
+    });
+
+    it('should display a loader icon if status is loading', () => {
+      const driver = createDriver(<Input status={'loading'}/>);
+
+      expect(driver.hasLoader()).toBeTruthy();
     });
   });
 

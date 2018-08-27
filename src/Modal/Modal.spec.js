@@ -1,9 +1,9 @@
 import React from 'react';
 import Modal from './Modal';
 import ModalFactory from './Modal.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import sinon from 'sinon';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
 import {modalTestkitFactory} from '../../testkit';
 import {modalTestkitFactory as enzymeMessageBoxTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

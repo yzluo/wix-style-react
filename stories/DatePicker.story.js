@@ -22,7 +22,8 @@ export default {
     shouldCloseOnSelect: true,
     showYearDropdown: false,
     showMonthDropdown: false,
-    locale: 'en'
+    locale: 'en',
+    twoMonths: false
   }),
 
   exampleProps: {

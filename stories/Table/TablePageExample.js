@@ -7,7 +7,7 @@ import {
   Label,
   SelectedCount,
   Divider
-} from 'wix-style-react/Table/Toolbar';
+} from 'wix-style-react/TableToolbar';
 
 import Dropdown from 'wix-style-react/Dropdown';
 import Search from 'wix-style-react/Search';
@@ -15,8 +15,12 @@ import Checkbox from 'wix-style-react/Checkbox';
 import Card from 'wix-style-react/Card';
 import Page from 'wix-style-react/Page';
 import Button from 'wix-style-react/Button';
+import TextLink from 'wix-style-react/TextLink';
+import Text from 'wix-style-react/Text';
 import {Edit, Duplicate, Upload} from 'wix-style-react/new-icons';
-import Highlighter from '../../src/Highlighter/Highlighter';
+import Highlighter from 'wix-style-react/Highlighter';
+
+import ImagePlaceholder from '../assets/ImagePlaceholder';
 
 const createDataSet = setIndex => [
   {id: `${setIndex}-1`, name: `Apple Towels ${setIndex}`, SKU: '111222', price: '$2.00', inventory: 'In stock', collectionId: 1},
@@ -34,6 +38,15 @@ export class TablePageExample extends React.Component {
     filterId: 0,
     searchTerm: '',
     inStock: false
+  }
+
+  clearSearch() {
+    this.setState({
+      collectionId: 0,
+      filterId: 0,
+      searchTerm: '',
+      inStock: false
+    });
   }
 
   renderMainToolbar() {
@@ -153,6 +166,8 @@ export class TablePageExample extends React.Component {
   }
 
   render() {
+    const tableData = this.getFilteredData();
+
     return (
       <div
         style={{
@@ -166,7 +181,7 @@ export class TablePageExample extends React.Component {
         <Table
           withWrapper={false}
           dataHook="story-table-example"
-          data={this.getFilteredData()}
+          data={tableData}
           itemsPerPage={20}
           columns={[
               {title: 'Name', render: row => <Highlighter match={this.state.searchTerm}>{row.name}</Highlighter>, width: '30%', minWidth: '150px'},
@@ -188,7 +203,28 @@ export class TablePageExample extends React.Component {
                       this.renderBulkActionsToolbar(selectionContext)
                   }
                 </Table.ToolbarContainer>
-                <Table.Titlebar/>
+                {tableData.length ? (
+                  <Table.Titlebar/>
+                ) : (
+                  <Table.EmptyState
+                    image={<ImagePlaceholder/>}
+                    subtitle={this.state.searchTerm ? (
+                      <Text>
+                        There are no search results for <Text weight="normal">{`"${this.state.searchTerm}"`}</Text>
+                        <br/>
+                        Try search by other cryteria
+                      </Text>
+                    ) : (
+                      <Text>
+                        There are no results matching your filters
+                        <br/>
+                        Try search by other cryteria
+                      </Text>
+                    )}
+                    >
+                    <TextLink onClick={() => this.clearSearch()}>Clear the search</TextLink>
+                  </Table.EmptyState>
+                )}
               </Card>
             </Page.FixedContent>
             <Page.Content>

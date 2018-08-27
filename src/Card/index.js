@@ -1,3 +1,1 @@
-import card from './Card';
-
-export default card;
+export {default} from './Card';

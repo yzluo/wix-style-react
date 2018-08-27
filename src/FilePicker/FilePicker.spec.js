@@ -1,10 +1,10 @@
 import React from 'react';
 import FilePicker from './FilePicker';
 import filePickerDriverFactory from './FilePicker.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {filePickerTestkitFactory} from '../../testkit';
 import {filePickerTestkitFactory as enzymeFilePickerTestkitFactory} from '../../testkit/enzyme';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
 import {mount} from 'enzyme';
 
 describe('FilePicker', () => {

@@ -1,3 +1,7 @@
+import deprecationLog from '../../utils/deprecationLog';
+
+deprecationLog(`Using "RangePolyfill.js" is deprecated. Please use the newer polyfills in "testkit/polyfills"`);
+
 if (!document.createRange) {
   document.createRange = () => {
 

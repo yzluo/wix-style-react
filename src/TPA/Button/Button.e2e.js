@@ -1,5 +1,7 @@
 import eyes from 'eyes.it';
-import {tpaButtonTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../../testkit/protractor';
+import {tpaButtonTestkitFactory} from '../../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../../test/utils/storybook-helpers';
 
 describe('TPA Button', () => {
   const storyUrl = getStoryUrl('TPA', 'Button');

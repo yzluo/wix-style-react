@@ -1,8 +1,8 @@
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import statsWidgetDriverFactory from './StatsWidget.driver';
 import StatsWidget from './StatsWidget';
 import ButtonWithOptions from '../../src/ButtonWithOptions';
-import {isEnzymeTestkitExists, isTestkitExists} from '../../testkit/test-common';
+import {isEnzymeTestkitExists, isTestkitExists} from '../../test/utils/testkit-sanity';
 import {statsWidgetTestkitFactory} from '../../testkit';
 import {statsWidgetTestkitFactory as enzymeStatsWidgetTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

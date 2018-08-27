@@ -1,6 +1,8 @@
 import eyes from 'eyes.it';
 import path from 'path';
-import {filePickerTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
+import {filePickerTestkitFactory} from '../../testkit/protractor';
+import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {getStoryUrl} from '../../test/utils/storybook-helpers';
 
 describe('FilePicker', () => {
   const storyUrl = getStoryUrl('3. Inputs', '3.10 + FilePicker');

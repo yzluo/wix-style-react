@@ -4,7 +4,7 @@ import {mount} from 'enzyme';
 
 import inputWithOptionsDriverFactory from './InputWithOptions.driver';
 import InputWithOptions from './InputWithOptions';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {makeControlled} from '../../test/utils';
 import {inputWithOptionsTestkitFactory} from '../../testkit';
 import {inputWithOptionsTestkitFactory as enzymeInputWithOptionsTestkitFactory} from '../../testkit/enzyme';

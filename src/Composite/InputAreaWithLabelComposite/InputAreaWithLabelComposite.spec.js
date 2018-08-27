@@ -7,7 +7,7 @@ import AutoComplete from '../../AutoComplete';
 import textAreaDriverFactory from '../../TextArea/TextArea.driver';
 import textFieldDriverFactory from '../../TextField/TextField.driver';
 import autoCompleteCompositeDriverFactory from '../../AutoCompleteComposite/AutoCompleteComposite.driver';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import Tooltip from '../../Tooltip/Tooltip';
 
 describe('InputAreaWithLabelComposite', () => {

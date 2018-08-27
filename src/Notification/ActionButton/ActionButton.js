@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../Backoffice/Button';
-import TextLink from '../../Backoffice/TextLink';
+import TextLink from '../../TextLink';
 
 const ActionButton = ({children, onClick, type, link}) => {
   const commonProps = {

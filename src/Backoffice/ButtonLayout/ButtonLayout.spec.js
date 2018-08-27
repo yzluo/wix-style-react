@@ -1,6 +1,6 @@
 import React from 'react';
 import ButtonLayout from './ButtonLayout';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import buttonDriverFactory from './ButtonLayout.driver';
 
 const someDivWithLayout = (props = {}) => (

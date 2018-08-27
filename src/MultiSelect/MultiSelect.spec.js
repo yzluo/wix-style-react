@@ -2,7 +2,7 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import multiSelectDriverFactory from './MultiSelect.driver';
 import MultiSelect from './MultiSelect';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {multiSelectTestkitFactory} from '../../testkit';
 import {multiSelectTestkitFactory as enzymeMultiSelectTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
@@ -134,6 +134,21 @@ describe('MultiSelect', () => {
     const placeholder = 'myPlaceholder';
     const {inputDriver} = createDriver(<MultiSelect options={options} placeholder={placeholder}/>);
     expect(inputDriver.getPlaceholder()).toBe(placeholder);
+  });
+
+  it('should render readonly input on select mode', () => {
+    const {inputDriver} = createDriver(<MultiSelect options={options} mode="select"/>);
+    expect(inputDriver.getReadOnly()).toBeTruthy();
+  });
+
+  it('should render arrow on select mode', () => {
+    const {inputDriver} = createDriver(<MultiSelect options={options} mode="select"/>);
+    expect(inputDriver.hasMenuArrow()).toBeTruthy();
+  });
+
+  it('should render input wrapper with error', () => {
+    const {driver} = createDriver(<MultiSelect error options={options}/>);
+    expect(driver.inputWrapperHasError()).toBeTruthy();
   });
 
   it('should not display a placeholder if there are any tags', () => {

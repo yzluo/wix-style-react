@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Tooltip, Button} from 'wix-style-react';
+import Tooltip from 'wix-style-react/Tooltip';
+import Button from 'wix-style-react/Button';
 
 export const SHORT_CONTENT = 'Hello World';
 export const LONG_CONTENT = 'Hello World, Hello World, Hello World, Hello World';

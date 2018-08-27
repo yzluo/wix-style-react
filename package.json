@@ -1,7 +1,7 @@
 {
   "name": "wix-style-react",
   "description": "wix-style-react",
-  "version": "4.11.1",
+  "version": "4.19.0",
   "main": "./dist/src/index.js",
   "files": [
     "dist",
@@ -62,8 +62,10 @@
   },
   "homepage": "https://github.com/wix/wix-style-react#readme",
   "devDependencies": {
-    "@storybook/addon-options": "4.0.0-alpha.9",
-    "@storybook/react": "4.0.0-alpha.9",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addon-options": "4.0.0-alpha.14",
+    "@storybook/react": "4.0.0-alpha.14",
+    "@stylable/dom-test-kit": "^0.1.0",
     "@types/react": "^15.5.4",
     "autosuggest-highlight": "^3.1.0",
     "babel-polyfill": "^6.23.0",
@@ -82,6 +84,7 @@
     "highlight.js": "^9.8.0",
     "identity-obj-proxy": "^3.0.0",
     "import-path": "^1.0.0",
+    "protractor-browser-logs": "^1.0.351",
     "react": "^15.5.4",
     "react-docgen": "^2.15.0",
     "react-dom": "^15.5.4",
@@ -92,7 +95,6 @@
     "sinon": "^1.17.6",
     "svg2react-icon": "^1.0.0",
     "wait-for-cond": "^1.0.3",
-    "wix-eventually": "^2.2.0",
     "wix-storybook-utils": "^2.0.0",
     "yoshi": "^2.8.3"
   },
@@ -133,8 +135,9 @@
     "react-transition-group": "^2.2.1",
     "slate": "^0.20.3",
     "wix-animations": "^1.0.141",
-    "wix-ui-backoffice": "1.0.280",
-    "wix-ui-icons-common": "2.0.5",
+    "wix-eventually": "^2.2.0",
+    "wix-ui-backoffice": "^1.0.299",
+    "wix-ui-icons-common": "2.0.6",
     "wix-ui-test-utils": "^1.0.0"
   },
   "jest": {

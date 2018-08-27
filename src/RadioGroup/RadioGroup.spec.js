@@ -1,9 +1,9 @@
 import React from 'react';
 import RadioGroup from './RadioGroup';
 import radioGroupDriverFactory from './RadioGroup.driver';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {radioGroupTestkitFactory} from '../../testkit';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
 import {radioGroupTestkitFactory as enzymeRadioGroupTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
 

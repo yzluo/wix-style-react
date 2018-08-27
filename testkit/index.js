@@ -1,4 +1,4 @@
-import {testkitFactoryCreator} from '../src/test-common';
+import {testkitFactoryCreator} from 'wix-ui-test-utils/vanilla';
 
 import inputDriverFactory from '../src/Input/Input.driver';
 export const inputTestkitFactory = testkitFactoryCreator(inputDriverFactory);
@@ -60,7 +60,7 @@ export const checkboxTestkitFactory = testkitFactoryCreator(checkboxDriverFactor
 import buttonDriverFactory from '../src/Backoffice/Button/Button.driver';
 export const buttonTestkitFactory = testkitFactoryCreator(buttonDriverFactory);
 
-import textLinkDriverFactory from '../src/BaseComponents/TextLink/TextLink.driver';
+import textLinkDriverFactory from '../src/TextLink/TextLink.driver';
 export const textLinkTestkitFactory = testkitFactoryCreator(textLinkDriverFactory);
 
 import textLinkLayoutDriverFactory from '../src/BaseComponents/TextLinkLayout/TextLinkLayout.driver';
@@ -207,14 +207,21 @@ export const sectionHelperTestkitFactory = testkitFactoryCreator(sectionHelperDr
 import formFieldDriverFactory from '../src/FormField/FormField.driver';
 export const formFieldTestkitFactory = testkitFactoryCreator(formFieldDriverFactory);
 
+import emptyStateDriverFactory from '../src/EmptyState/EmptyState.driver';
+export const emptyStateTestkitFactory = testkitFactoryCreator(emptyStateDriverFactory);
+
+import headingDriverFactory from '../src/Heading/Heading.driver';
+export const headingTestkitFactory = testkitFactoryCreator(headingDriverFactory);
+
+import textDriverFactory from '../src/Text/Text.driver';
+export const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
+
 // wix-ui-backoffice proxy
 
 export {
   badgeTestkitFactory,
   stylableCounterBadgeTestkitFactory as counterBadgeTestkitFactory,
-  headingTestkitFactory,
   toggleSwitchTestkitFactory,
-  textTestkitFactory,
   labelTestkitFactory,
   floatingHelperTestkitFactory,
   linearProgressBarTestkitFactory,

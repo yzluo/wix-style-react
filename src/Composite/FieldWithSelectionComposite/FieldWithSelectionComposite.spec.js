@@ -5,7 +5,7 @@ import Input from '../../Input';
 import InputArea from '../../InputArea';
 import Checkbox from '../../Checkbox';
 import FieldWithSelectionCompositeDriverFactory from './FieldWithSelectionComposite.driver';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import Tooltip from '../../Tooltip/Tooltip';
 
 describe('FieldWithSelectionComposite', () => {

@@ -4,9 +4,9 @@ import times from 'lodash/times';
 
 import {modalSelectorLayoutTestkitFactory as enzymeModalSelectorLayoutTestkitFactory} from '../../testkit/enzyme';
 import {modalSelectorLayoutTestkitFactory} from '../../testkit';
-import {isEnzymeTestkitExists, isTestkitExists} from '../../testkit/test-common';
+import {isEnzymeTestkitExists, isTestkitExists} from '../../test/utils/testkit-sanity';
 import ModalSelectorLayout from './ModalSelectorLayout';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import modalSelectorLayoutDriverFactory from './ModalSelectorLayout.driver';
 
 // TODO: remove this hack

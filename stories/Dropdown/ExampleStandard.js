@@ -27,7 +27,7 @@ const rtlOptions = [
 export default () =>
   <div>
     <div>
-      <div className="ltr" style={style}>
+      <div style={style}>
         <div>Left to right</div>
         <Dropdown selectedId={1} options={options}/>
       </div>
@@ -35,31 +35,31 @@ export default () =>
         <div>Right to left</div>
         <Dropdown options={rtlOptions}/>
       </div>
-      <div className="ltr" style={style}>
+      <div style={style}>
         <div>Drop direction up</div>
         <Dropdown options={options} dropDirectionUp/>
       </div>
     </div>
     <div>
-      <div className="ltr" style={style}>
+      <div style={style}>
         <div>Small</div>
         <Dropdown options={options} dropDirectionUp size="small"/>
       </div>
-      <div className="ltr" style={style}>
+      <div style={style}>
         <div>Default</div>
         <Dropdown options={options} dropDirectionUp/>
       </div>
-      <div className="ltr" style={style}>
+      <div style={style}>
         <div>Large</div>
         <Dropdown options={options} dropDirectionUp size="large"/>
       </div>
     </div>
     <div>
-      <div className="ltr" style={style}>
+      <div style={style}>
         <div>With prefix</div>
         <Dropdown options={options} dropDirectionUp prefix={<Input.Unit>$</Input.Unit>}/>
       </div>
-      <div className="ltr" style={style}>
+      <div style={style}>
         <div>With suffix</div>
         <Dropdown options={options} dropDirectionUp suffix={<Input.Unit>%</Input.Unit>}/>
       </div>
@@ -69,21 +69,21 @@ export default () =>
       </div>
     </div>
     <div>
-      <div className="ltr" style={style}>
+      <div style={style}>
         <div>With error</div>
         <Dropdown selectedId={1} options={options} error errorMessage="Somthing is wrong"/>
       </div>
-      <div className="ltr" style={style}>
+      <div style={style}>
         <div>Round</div>
         <Dropdown roundInput selectedId={1} options={options}/>
       </div>
     </div>
     <div>
-      <div className="ltr" style={style}>
+      <div style={style}>
         <div>No left border radius</div>
         <Dropdown selectedId={1} options={options} noLeftBorderRadius/>
       </div>
-      <div className="ltr" style={style}>
+      <div style={style}>
         <div>No right border radius</div>
         <Dropdown selectedId={1} options={options} noRightBorderRadius/>
       </div>

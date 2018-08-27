@@ -2,11 +2,11 @@ import React from 'react';
 
 import searchDriverFactory from './Search.driver';
 import Search from './Search';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {
   isTestkitExists,
   isEnzymeTestkitExists
-} from '../../testkit/test-common';
+} from '../../test/utils/testkit-sanity';
 import {searchTestkitFactory} from '../../testkit';
 import {searchTestkitFactory as enzymeSearchTestkitFactory} from '../../testkit/enzyme';
 import {runInputWithOptionsTest} from '../InputWithOptions/InputWithOptions.spec';

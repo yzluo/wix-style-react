@@ -2,7 +2,7 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import multiSelectCheckboxDriverFactory from './MultiSelectCheckbox.driver';
 import MultiSelectCheckbox from './MultiSelectCheckbox';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {multiSelectCheckboxTestkitFactory} from '../../testkit';
 import {multiSelectCheckboxTestkitFactory as enzymeMultiSelectCheckboxTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';

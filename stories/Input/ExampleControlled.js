@@ -33,7 +33,7 @@ class ControlledInput extends Component {
 }
 
 const Example = ({theme}) =>
-  <div className="ltr" style={style}>
+  <div style={style}>
     <span>This shows an error for &quot;Starwars&quot;</span>
     <ControlledInput theme={theme}/>
   </div>;
