@@ -119,6 +119,7 @@ export default {
         <div className={s.example}>
           <CodeExample title="Table with Action Column (Primary and Secondary Actions)" code={TableActionColumnPrimarySecondaryExampleRaw}>
             <TableActionColumnPrimarySecondaryExample/>
+          </CodeExample>
         </div>
         <div className={s.example}>
           <CodeExample title="Table with EmptyState" code={TableEmptyStateExampleRaw}>

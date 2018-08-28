@@ -10,27 +10,15 @@ import WixComponent from '../BaseComponents/WixComponent';
 import Checkbox from '../Checkbox';
 import {TableContext} from './TableContext';
 import {BulkSelection, BulkSelectionState} from './BulkSelection';
-import {TableToolbarToggler, TableToolbarContainer, TableTitleBar, TableContent, TableEmptyState, TableActionColumn} from './components';
 import Tooltip from '../Tooltip/Tooltip';
-
-const hasActionColumn = ({primaryRowAction, secondaryRowActions}) =>
-  !!(primaryRowAction || (secondaryRowActions && secondaryRowActions.length));
-
-function createActionColumn(tableProps) {
-  return {
-    title: '',
-    width: tableProps.actionColumnWidth,
-    render: (rowData, rowNum) => {
-      return (
-        <TableActionColumn
-          {...tableProps}
-          rowData={rowData}
-          rowNum={rowNum}
-          />
-      );
-    }
-  };
-}
+import {
+  TableToolbarToggler,
+  TableToolbarContainer,
+  TableTitleBar,
+  TableContent,
+  TableEmptyState,
+  TableActionCell
+} from './components';
 
 export function createColumns({tableProps, bulkSelectionContext}) {
   const createCheckboxColumn = (
@@ -62,26 +50,13 @@ export function createColumns({tableProps, bulkSelectionContext}) {
     };
   };
 
-  const tableColumns = hasActionColumn(tableProps) ?
-    tableProps.columns.concat(createActionColumn(tableProps)) :
+  return tableProps.showSelection ?
+    [createCheckboxColumn(bulkSelectionContext), ...tableProps.columns] :
     tableProps.columns;
-
-  return tableProps.showSelection ? [createCheckboxColumn(bulkSelectionContext), ...tableColumns] : tableColumns;
 }
 
 
 export function getDataTableProps(tableProps) {
-
-  const onRowClick = (...params) => {
-    const {primaryRowAction, onRowClick} = tableProps;
-
-    // Give priority to the primary action
-    if (primaryRowAction) {
-      primaryRowAction.onActionTrigger(...params);
-    } else if (onRowClick) {
-      onRowClick(...params);
-    }
-  };
 
   return {
     ...omit(tableProps,
@@ -91,13 +66,10 @@ export function getDataTableProps(tableProps) {
           'dataHook',
           'newDesign',
           'hideHeader',
-          'onRowClick'
         ),
     newDesign: true,
-    onRowClick,
     rowClass: classNames(tableProps.rowClass, {
-      [styles.rowHover]: !!tableProps.primaryRowAction,
-      [styles.hasActionColumn]: hasActionColumn(tableProps)
+      [styles.rowHover]: !!tableProps.onRowClick
     })
   };
 }
@@ -114,6 +86,7 @@ export class Table extends WixComponent {
   static Titlebar = TableTitleBar;
   static Content = TableContent;
   static EmptyState = TableEmptyState;
+  static ActionCell = TableActionCell;
 
   static ToggledToolbar = TableToolbarToggler;
 
@@ -170,15 +143,13 @@ Table.displayName = 'Table';
 
 Table.defaultProps = {
   ...DataTable.defaultProps,
-  ...TableActionColumn.defaultProps,
   showSelection: false,
   children:
   [
     <Table.Content key="content"/>
   ],
   withWrapper: true,
-  showLastRowDivider: false,
-  actionColumnWidth: '40%'
+  showLastRowDivider: false
 };
 
 Table.propTypes = {
@@ -266,32 +237,7 @@ Table.propTypes = {
   /**
    *  When false then Table would not create a `<div/>` wrapper around it's children.
    *  Useful when using `<Table/>` to wrap a `<Page/>` component, in that case we use the `<Table/>` only as a context provider and it doesn't render anything to the DOM by itself.*/
-  withWrapper: bool,
-
-  // Action Column props (taken from <TableActionColumn/>)
-
-  /** An object containing the primary action properties: `name` is the action name (the text of the button), `theme` is the button theme (can be `whiteblue` or `fullblue`), `onActionTrigger` is the callback function for the action, whose signature is `onActionTrigger(rowData, rowNum)`. */
-  primaryRowAction: shape({
-    name: string.isRequired,
-    theme: oneOf(['whiteblue', 'fullblue']),
-    onActionTrigger: func.isRequired
-  }),
-
-  /** An array containing the secondary actions: `name` is the action name (will be shown in the tooltip), `icon` is the icon component for the action, `onActionTrigger` is the callback function for the action, whose signature is `onActionTrigger(rowData, rowNum)`. */
-  secondaryRowActions: arrayOf(shape({
-    name: string.isRequired,
-    icon: node.isRequired,
-    onActionTrigger: func.isRequired
-  })),
-
-  /** The number of secondary actions to show outside the PopoverMenu */
-  visibleSecondaryActions: number,
-
-  /** Whether to show the secondary action also when not hovering the row */
-  alwaysShowSecondaryActions: bool,
-
-  /** The width of the action column (could be specified in pixel or in percentages) */
-  actionColumnWidth: string
+  withWrapper: bool
 };
 
 // export default Table;

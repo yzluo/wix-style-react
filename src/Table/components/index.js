@@ -1,5 +1,5 @@
 export * from './TableToolbarContainer';
 export * from './TableTitleBar';
 export * from './TableContent';
-export * from './TableActionColumn';
+export * from './TableActionCell';
 export * from './TableEmptyState';

@@ -325,7 +325,7 @@ describe('Table', () => {
 
   describe('Action column', () => {
     const primaryActionProps = (actionTrigger = () => {}) => ({
-      primaryRowAction: {
+      primaryAction: {
         name: 'primary action',
         theme: 'whiteblue',
         onActionTrigger: actionTrigger
@@ -340,10 +340,23 @@ describe('Table', () => {
       });
 
       return {
-        secondaryRowActions: Array(4).fill().map((val, idx) => createAction(idx)),
+        secondaryActions: Array(4).fill().map((val, idx) => createAction(idx)),
         visibleSecondaryActions: 2
       };
     };
+
+    const createActionCellProps = props => ({
+      ...defaultProps,
+      onRowClick: props.primaryAction && props.primaryAction.onActionTrigger,
+      columns: [
+        ...defaultProps.columns,
+        {
+          title: '',
+          width: '40%',
+          render: () => <Table.ActionCell {...props}/>
+        }
+      ]
+    });
 
     beforeEach(() => {
       // The action column uses <Tooltip/> and <PopoverMenu/> under the hood,
@@ -352,12 +365,12 @@ describe('Table', () => {
     });
 
     it('should display the action column for primary action', () => {
-      const driver = createDriver(<Table {...defaultProps} {...primaryActionProps()}/>);
-      expect(driver.getRowActionColumn(1)).toBeTruthy();
+      const driver = createDriver(<Table {...createActionCellProps(primaryActionProps())}/>);
+      expect(driver.getRowActionCell(1)).toBeTruthy();
     });
 
     it('should have a placeholder when there\'s only a primary action', () => {
-      const driver = createDriver(<Table {...defaultProps} {...primaryActionProps()}/>);
+      const driver = createDriver(<Table {...createActionCellProps(primaryActionProps())}/>);
       expect(driver.getPrimaryActionPlaceholder(1)).toBeTruthy();
     });
 
@@ -366,8 +379,9 @@ describe('Table', () => {
 
       const driver = createDriver(
         <Table
-          {...defaultProps}
-          {...primaryActionProps(onPrimaryActionTrigger)}
+          {...createActionCellProps(
+            primaryActionProps(onPrimaryActionTrigger)
+          )}
           />
       );
 
@@ -380,44 +394,28 @@ describe('Table', () => {
 
       const driver = createDriver(
         <Table
-          {...defaultProps}
-          {...primaryActionProps(onPrimaryActionTrigger)}
+          {...createActionCellProps(
+            primaryActionProps(onPrimaryActionTrigger)
+          )}
           />
       );
 
       driver.clickPrimaryActionButton(0);
       expect(onPrimaryActionTrigger).toHaveBeenCalledTimes(1);
-      expect(onPrimaryActionTrigger).toHaveBeenCalledWith({id: ID_1, a: 'value 1', b: 'value 2'}, 0);
-    });
-
-    it('should trigger the primary action on row click and ignore onRowClick', () => {
-      const onPrimaryActionTrigger = jest.fn();
-      const onRowClick = jest.fn();
-
-      const driver = createDriver(
-        <Table
-          {...defaultProps}
-          {...primaryActionProps(onPrimaryActionTrigger)}
-          onRowClick={onRowClick}
-          />
-      );
-
-      driver.clickRow(1);
-      expect(onPrimaryActionTrigger).toHaveBeenCalledWith({id: ID_2, a: 'value 3', b: 'value 4'}, 1);
-      expect(onRowClick).not.toHaveBeenCalled();
     });
 
     it('should display the action column for secondary actions', () => {
-      const driver = createDriver(<Table {...defaultProps} {...secondaryActionsProps()}/>);
-      expect(driver.getRowActionColumn(1)).toBeTruthy();
+      const driver = createDriver(<Table {...createActionCellProps(secondaryActionsProps())}/>);
+      expect(driver.getRowActionCell(1)).toBeTruthy();
     });
 
     it('should not have a primary action placeholder when there are also secondary actions', () => {
       const driver = createDriver(
         <Table
-          {...defaultProps}
-          {...primaryActionProps()}
-          {...secondaryActionsProps()}
+          {...createActionCellProps({
+            ...primaryActionProps(),
+            ...secondaryActionsProps()
+          })}
           />
       );
 
@@ -427,19 +425,20 @@ describe('Table', () => {
     it('should put visible secondary actions in the cell', async () => {
       const driver = createDriver(
         <Table
-          {...defaultProps}
-          {...primaryActionProps()}
-          {...secondaryActionsProps()}
+          {...createActionCellProps({
+            ...primaryActionProps(),
+            ...secondaryActionsProps()
+          })}
           />
       );
 
-      expect(driver.getVisibleSecondaryActionsCount(0)).toEqual(2);
+      expect(driver.getVisibleActionsCount(0)).toEqual(2);
 
-      expect(driver.getVisibleSecondaryActionButtonDriver(0, 0).getButtonTextContent()).toEqual('Icon 0');
-      expect(driver.getVisibleSecondaryActionButtonDriver(0, 1).getButtonTextContent()).toEqual('Icon 1');
+      expect(driver.getVisibleActionButtonDriver(0, 0).getButtonTextContent()).toEqual('Icon 0');
+      expect(driver.getVisibleActionButtonDriver(0, 1).getButtonTextContent()).toEqual('Icon 1');
 
-      const tooltipDriver1 = driver.getVisibleSecondaryActionTooltipDriver(0, 0);
-      const tooltipDriver2 = driver.getVisibleSecondaryActionTooltipDriver(0, 1);
+      const tooltipDriver1 = driver.getVisibleActionTooltipDriver(0, 0);
+      const tooltipDriver2 = driver.getVisibleActionTooltipDriver(0, 1);
 
       tooltipDriver1.mouseEnter();
       await resolveIn(300);
@@ -455,13 +454,14 @@ describe('Table', () => {
     it('should put hidden secondary action in a PopoverMenu', async () => {
       const driver = createDriver(
         <Table
-          {...defaultProps}
-          {...primaryActionProps()}
-          {...secondaryActionsProps()}
+          {...createActionCellProps({
+            ...primaryActionProps(),
+            ...secondaryActionsProps()
+          })}
           />
       );
 
-      const popoverMenuDriver = driver.getSecondaryActionsPopoverMenuDriver(0);
+      const popoverMenuDriver = driver.getHiddenActionsPopoverMenuDriver(0);
 
       expect(popoverMenuDriver.exists()).toEqual(true);
 
@@ -478,57 +478,45 @@ describe('Table', () => {
 
       const driver = createDriver(
         <Table
-          {...defaultProps}
-          {...primaryActionProps()}
-          {...secondaryActionsProps(actionTriggers)}
+          {...createActionCellProps({
+            ...primaryActionProps(),
+            ...secondaryActionsProps(actionTriggers)
+          })}
           />
       );
 
-      driver.clickVisibleSecondaryAction(0, 0);
-      driver.clickVisibleSecondaryAction(0, 1);
+      driver.clickVisibleAction(0, 0);
+      driver.clickVisibleAction(0, 1);
 
       driver.clickPopoverMenu(0);
       await resolveIn(30);
-      driver.clickHiddenSecondaryAction(0, 0);
+      driver.clickHiddenAction(0, 0);
 
       driver.clickPopoverMenu(0);
       await resolveIn(30);
-      driver.clickHiddenSecondaryAction(0, 1);
+      driver.clickHiddenAction(0, 1);
 
       actionTriggers.forEach(actionTrigger => {
         expect(actionTrigger).toHaveBeenCalledTimes(1);
-        expect(actionTrigger).toHaveBeenCalledWith({id: ID_1, a: 'value 1', b: 'value 2'}, 0);
       });
     });
 
     it('should allow to change the number of visible secondary actions', async () => {
       const driver = createDriver(
         <Table
-          {...defaultProps}
-          {...primaryActionProps()}
-          {...secondaryActionsProps()}
-          visibleSecondaryActions={3}
+          {...createActionCellProps({
+            ...primaryActionProps(),
+            ...secondaryActionsProps(),
+            visibleSecondaryActions: 3
+          })}
           />
       );
 
-      expect(driver.getVisibleSecondaryActionsCount(0)).toEqual(3);
+      expect(driver.getVisibleActionsCount(0)).toEqual(3);
 
       driver.clickPopoverMenu(0);
       await resolveIn(30);
-      expect(driver.getHiddenSecondaryActionsCount(0)).toEqual(1);
-    });
-
-    it('should allow to change the width of the action column', () => {
-      const driver = createDriver(
-        <Table
-          {...defaultProps}
-          {...primaryActionProps()}
-          {...secondaryActionsProps()}
-          actionColumnWidth="300px"
-          />
-      );
-
-      expect(driver.getHeaderCellWidth(defaultProps.columns.length + 1)).toEqual('300px');
+      expect(driver.getHiddenActionsCount(0)).toEqual(1);
     });
   });
 

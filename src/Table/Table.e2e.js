@@ -63,14 +63,14 @@ describe('Table', () => {
         const driver = await createDriver();
 
         expect(driver.getPrimaryActionButton(0).isDisplayed()).toBe(false);
-        expect(driver.getVisibleSecondaryActionsWrapper(0).isDisplayed()).toBe(false);
-        expect(driver.getSecondaryActionsPopoverMenu(0).isDisplayed()).toBe(true);
+        expect(driver.getVisibleActionsWrapper(0).isDisplayed()).toBe(false);
+        expect(driver.getHiddenActionsPopoverMenu(0).isDisplayed()).toBe(true);
 
         driver.hoverRow(0);
 
         expect(driver.getPrimaryActionButton(0).isDisplayed()).toBe(true);
-        expect(driver.getVisibleSecondaryActionsWrapper(0).isDisplayed()).toBe(true);
-        expect(driver.getSecondaryActionsPopoverMenu(0).isDisplayed()).toBe(true);
+        expect(driver.getVisibleActionsWrapper(0).isDisplayed()).toBe(true);
+        expect(driver.getHiddenActionsPopoverMenu(0).isDisplayed()).toBe(true);
       });
     });
   });

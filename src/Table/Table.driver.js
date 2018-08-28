@@ -29,28 +29,32 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
     return !checkboxDriver.isChecked() && !checkboxDriver.isIndeterminate();
   };
 
-  const getRowActionColumn = index => dataTableDriver.getRow(index).querySelector('td [data-hook="table-action-column"]');
-  const getPrimaryActionPlaceholder = index => getRowActionColumn(index).querySelector('[data-hook="table-action-column-primary-placeholder"]');
-  const getVisibleSecondaryActionsWrapper = index => getRowActionColumn(index).querySelector('[data-hook="table-action-column-visible-secondary-actions"]');
+  const getRowActionCell = index => dataTableDriver.getRow(index).querySelector('td [data-hook="table-action-cell"]');
+  const getPrimaryActionPlaceholder = index => getRowActionCell(index).querySelector('[data-hook="table-action-cell-placeholder"]');
+  const getVisibleActionsWrapper = index => getRowActionCell(index).querySelector('[data-hook="table-action-cell-visible-actions"]');
 
   const getPrimaryActionButtonDriver = index => buttonDriverFactory({
-    element: getRowActionColumn(index).querySelector('[data-hook="table-action-column-primary-action"] button'),
+    element: getRowActionCell(index).querySelector('[data-hook="table-action-cell-primary-action"] button'),
     eventTrigger
   });
 
-  const getVisibleSecondaryActionTooltipDriver = (rowIndex, actionIndex) => tooltipDriverFactory({
-    element: getVisibleSecondaryActionsWrapper(rowIndex).querySelectorAll('[data-hook="table-action-column-secondary-action-tooltip"]')[actionIndex]
+  const getVisibleActionTooltipDriver = (rowIndex, actionIndex) => tooltipDriverFactory({
+    element: getVisibleActionsWrapper(rowIndex)
+      .querySelectorAll('[data-hook="table-action-cell-visible-action-tooltip"]')[actionIndex]
   });
 
-  const getVisibleSecondaryActionButtonDriver = (rowIndex, actionIndex) => buttonDriverFactory({
-    element: getVisibleSecondaryActionsWrapper(rowIndex).querySelectorAll('button')[actionIndex],
-    eventTrigger
+  const getVisibleActionButtonDriver = (rowIndex, actionIndex) => buttonDriverFactory({
+    eventTrigger,
+    element: getVisibleActionsWrapper(rowIndex)
+      .querySelectorAll('button')[actionIndex]
   });
 
-  const getSecondaryActionsPopoverMenuDriver = index => popoverMenuDriverFactory({
-    element: getRowActionColumn(index).querySelector('[data-hook="table-action-column-popover-menu"]'),
-    eventTrigger
-  }).init.menuItemDataHook('table-action-column-popover-menu-item');
+  const getHiddenActionsPopoverMenuDriver = index => popoverMenuDriverFactory({
+    eventTrigger,
+    element: getRowActionCell(index)
+      .querySelector('[data-hook="table-action-cell-popover-menu"]')
+  }).init.menuItemDataHook('table-action-cell-popover-menu-item')
+    .init.parentElement(getRowActionCell(index));
 
   return {
     ...dataTableDriver,
@@ -80,7 +84,7 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
     /** Get title-bar (column titles) */
     getTitlebar,
     /** Get the action-column element */
-    getRowActionColumn,
+    getRowActionCell,
     /** Get the primary action placeholder element */
     getPrimaryActionPlaceholder,
     /** Get the driver of the primary action <Button/> from the action column */
@@ -88,21 +92,21 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
     /** Click the primary action button from the action column */
     clickPrimaryActionButton: index => getPrimaryActionButtonDriver(index).click(),
     /** Get the number of the visible secondary actions */
-    getVisibleSecondaryActionsCount: index => getVisibleSecondaryActionsWrapper(index).childElementCount,
+    getVisibleActionsCount: index => getVisibleActionsWrapper(index).childElementCount,
     /** Get the number of hidden secondary actions (in the <PopoverMenu/>) */
-    getHiddenSecondaryActionsCount: index => getSecondaryActionsPopoverMenuDriver(index).menu.itemsLength(),
+    getHiddenActionsCount: index => getHiddenActionsPopoverMenuDriver(index).menu.itemsLength(),
     /** Get the driver of a specific visible secondary action <Tooltip/> */
-    getVisibleSecondaryActionTooltipDriver,
+    getVisibleActionTooltipDriver,
     /** Get the driver of a specific visible secondary action <Button/> */
-    getVisibleSecondaryActionButtonDriver,
+    getVisibleActionButtonDriver,
     /** Get the driver of the hidden secondary action <PopoverMenu/> */
-    getSecondaryActionsPopoverMenuDriver,
+    getHiddenActionsPopoverMenuDriver,
     /** Click an a visible secondary action */
-    clickVisibleSecondaryAction: (rowIndex, actionIndex) => getVisibleSecondaryActionButtonDriver(rowIndex, actionIndex).click(),
+    clickVisibleAction: (rowIndex, actionIndex) => getVisibleActionButtonDriver(rowIndex, actionIndex).click(),
     /** Click on the hidden secondary actions <PopoverMenu/> */
-    clickPopoverMenu: rowIndex => getSecondaryActionsPopoverMenuDriver(rowIndex).click(),
+    clickPopoverMenu: rowIndex => getHiddenActionsPopoverMenuDriver(rowIndex).click(),
     /** Click on a hidden secondary action (requires the <PopoverMenu/> to be open) */
-    clickHiddenSecondaryAction: (rowIndex, actionIndex) => getSecondaryActionsPopoverMenuDriver(rowIndex).menu.clickItemAt(actionIndex)
+    clickHiddenAction: (rowIndex, actionIndex) => getHiddenActionsPopoverMenuDriver(rowIndex).menu.clickItemAt(actionIndex)
   };
 };
 

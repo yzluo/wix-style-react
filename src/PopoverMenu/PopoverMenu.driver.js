@@ -2,6 +2,8 @@ import ReactTestUtils from 'react-dom/test-utils';
 
 const popoverMenuDriverFactory = ({element}) => {
   let menuItemDataHook;
+  let parentElement = document.body;
+
   // before accessing menu methods one need to init driver with menu-item data hook
   const protect = fn => (...args) => {
     if (!menuItemDataHook) {
@@ -12,7 +14,7 @@ const popoverMenuDriverFactory = ({element}) => {
   };
 
   const itemsArray = () => [
-    ...document.body.querySelectorAll(
+    ...parentElement.querySelectorAll(
       menuItemDataHook.split(' ').reduce((q, hook) => q + `[data-hook~="${hook}"]`, '')
     )
   ];
@@ -24,7 +26,10 @@ const popoverMenuDriverFactory = ({element}) => {
     init: {
       menuItemDataHook: dataHook => {
         menuItemDataHook = dataHook;
-
+        return driver;
+      },
+      parentElement: element => {
+        parentElement = element;
         return driver;
       }
     },

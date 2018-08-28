@@ -17,6 +17,8 @@ const baseData = [
   {name: 'Red Slippers', SKU: '444555', price: '$14.00', inventory: 'Out of stock'}
 ];
 
+const primaryAction = rowData => window.alert(`Editing ${rowData.name}`);
+
 export class TableActionColumnPrimaryExample extends React.Component {
 
   render() {
@@ -26,18 +28,27 @@ export class TableActionColumnPrimaryExample extends React.Component {
           dataHook="story-table-action-column-primary-example"
           data={baseData}
           itemsPerPage={20}
-          columns={[
-              {title: 'Name', render: row => <span>{row.name}</span>, width: '30%', minWidth: '150px'},
-              {title: 'SKU', render: row => <span>{row.SKU}</span>, width: '20%', minWidth: '100px'},
-              {title: 'Price', render: row => <span>{row.price}</span>, width: '20%', minWidth: '100px'},
-              {title: 'Inventory', render: row => <span>{row.inventory}</span>, width: '20%', minWidth: '100px'}
-          ]}
           showSelection
-          primaryRowAction={{
-            name: 'Edit',
-            theme: 'whiteblue',
-            onActionTrigger: rowData => window.alert(`Editing ${rowData.name}`)
-          }}
+          onRowClick={primaryAction}
+          columns={[
+            {title: 'Name', render: row => <span>{row.name}</span>, width: '30%', minWidth: '150px'},
+            {title: 'SKU', render: row => <span>{row.SKU}</span>, width: '20%', minWidth: '100px'},
+            {title: 'Price', render: row => <span>{row.price}</span>, width: '20%', minWidth: '100px'},
+            {title: 'Inventory', render: row => <span>{row.inventory}</span>, width: '20%', minWidth: '100px'},
+            {
+              title: '',
+              width: '40%',
+              render: rowData => (
+                <Table.ActionCell
+                  primaryAction={{
+                    name: 'Edit',
+                    theme: 'whiteblue',
+                    onActionTrigger: () => primaryAction(rowData)
+                  }}
+                  />
+              )
+            }
+          ]}
           >
           <Table.ToolbarContainer>
             { selectionContext =>
