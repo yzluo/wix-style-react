@@ -1,3 +1,4 @@
+import '../../test/protractor-register';
 import eyes from 'eyes.it';
 import {loaderTestkitFactory} from '../../testkit/protractor';
 import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
