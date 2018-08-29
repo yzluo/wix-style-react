@@ -1,9 +1,11 @@
-# `<TableActionCell/>` component
+# `<TableActionCell/>`
 
 ## Enzyme/ReactTestUtils TestKit API
 
 | method | arguments | returned value | description |
 |--------|-----------|----------------|-------------|
+| element | - | element | Get the element |
+| exists | - | bool | Whether the element exists |
 | getPrimaryActionPlaceholder | (index) | element | Get the primary action placeholder element |
 | getPrimaryActionButtonDriver | (index) | ButtonDriver | Get the driver of the primary action `<Button/>` from the action column |
 | clickPrimaryActionButton | (index) | - | Click the primary action button from the action column |
@@ -24,3 +26,22 @@
 | getPrimaryActionButton | (index) | element | Get the primary action button element |
 | getVisibleActionsWrapper | (index) | element | Get the visible secondary actions wrapper element |
 | getHiddenActionsPopoverMenu | (index) | element | Get the secondary actions popover menu element |
+
+## Usage example
+
+Since the `<TableActionCell/>` is meant to be used with `<Table/>`, it is recommended to use the
+`<Table/>`'s testkit in order to access the `<TableActionCell/>`'s driver.
+
+For example:
+
+```javascript
+import React from 'react';
+import {tableTestkitFactory} from 'wix-style-react/dist/testkit';
+
+// ...
+
+const testkit = tableTestkitFactory({wrapper, dataHook});
+const tableActionCellTestkit = testkit.getRowActionCellDriver(0);
+```
+
+A similar approach can be used with the Protractor TestKit.

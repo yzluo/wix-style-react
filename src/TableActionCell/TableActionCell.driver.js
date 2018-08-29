@@ -30,7 +30,9 @@ const tableActionCellDriverFactory = ({element}) => {
       .init.parentElement(element);
 
   return {
+    /** Get the element */
     element: () => element,
+    /** Whether the element exists */
     exists: () => !!element,
     /** Get the primary action placeholder element */
     getPrimaryActionPlaceholder,
