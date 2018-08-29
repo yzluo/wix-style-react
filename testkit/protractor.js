@@ -35,6 +35,9 @@ export const dataTableTestkitFactory = protractorTestkitFactoryCreator(dataTable
 import tableDriverFactory from '../src/Table/Table.protractor.driver';
 export const tableTestkitFactory = protractorTestkitFactoryCreator(tableDriverFactory);
 
+import tableActionCellDriverFactory from '../src/TableActionCell/TableActionCell.protractor.driver';
+export const tableActionCellTestkitFactory = protractorTestkitFactoryCreator(tableActionCellDriverFactory);
+
 import breadcrumbsDriverFactory from '../src/Breadcrumbs/Breadcrumbs.protractor.driver';
 export const breadcrumbsTestkitFactory = protractorTestkitFactoryCreator(breadcrumbsDriverFactory);
 

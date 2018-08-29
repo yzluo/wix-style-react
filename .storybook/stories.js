@@ -104,6 +104,7 @@ import '../stories/EndorseContentLayout';
 import '../stories/DataTable'; // 10.1 DataTable
 import '../stories/Table'; // 10.1 Table
 import '../stories/TableToolbar/ToolbarStory.js'; // 10.1 Table -> TableToolbar
+import '../stories/TableActionCell/TableActionCell.story'; // 10.1 Table -> TableActionCell
 
 // 11. Pickers and Selectors
 import '../stories/DropdownLayout'; // 11.1 DropdownLayout

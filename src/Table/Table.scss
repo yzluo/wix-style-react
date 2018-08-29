@@ -1,14 +1,12 @@
 @import '../common.scss';
 
 /* === Empty state === */
-
 .emptyStateContainer {
   padding: 42px;
   border-top: 1px solid $D60;
 }
 
 /* === Backgground color on hover === */
-
 tr.rowHover {
   cursor: pointer;
 }
@@ -17,42 +15,3 @@ tr.rowHover:hover {
   background-color: $B50;
 }
 
-/* === Action cell === */
-
-tr .actionsContainer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 36px;
-  position: relative;
-}
-
-tr .actionsContainer button {
-  margin: 0 6px;
-  transition-property: background, border;
-}
-
-tr .actionsContainer .hoverSlot.onHover,
-tr:hover .actionsContainer .hoverSlot.notOnHover {
-  visibility: hidden;
-}
-
-tr:hover .actionsContainer .hoverSlot.onHover,
-tr .actionsContainer .hoverSlot.notOnHover {
-  visibility: visible;
-}
-
-// Primary action placeholder
-tr .actionsContainer .placeholderIcon {
-  display: inline-block;
-}
-
-tr:hover .actionsContainer .placeholderIcon {
-  display: none;
-}
-
-:global(.rtl) {
-  tr.hasActionColumn .primaryActionPlaceholder svg {
-    transform: scaleX(-1);
-  }
-}

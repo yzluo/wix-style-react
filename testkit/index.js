@@ -72,6 +72,9 @@ export const dataTableTestkitFactory = testkitFactoryCreator(dataTableDriverFact
 import tableDriverFactory from '../src/Table/Table.driver';
 export const tableTestkitFactory = testkitFactoryCreator(tableDriverFactory);
 
+import tableActionCellDriverFactory from '../src/TableActionCell/TableActionCell.driver';
+export const tableActionCellTestkitFactory = testkitFactoryCreator(tableActionCellDriverFactory);
+
 import textAreaDriverFactory from '../src/TextArea/TextArea.driver';
 export const textAreaTestkitFactory = testkitFactoryCreator(textAreaDriverFactory);
 

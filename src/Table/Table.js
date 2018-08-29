@@ -16,8 +16,7 @@ import {
   TableToolbarContainer,
   TableTitleBar,
   TableContent,
-  TableEmptyState,
-  TableActionCell
+  TableEmptyState
 } from './components';
 
 export function createColumns({tableProps, bulkSelectionContext}) {
@@ -86,7 +85,6 @@ export class Table extends WixComponent {
   static Titlebar = TableTitleBar;
   static Content = TableContent;
   static EmptyState = TableEmptyState;
-  static ActionCell = TableActionCell;
 
   static ToggledToolbar = TableToolbarToggler;
 

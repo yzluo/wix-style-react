@@ -69,6 +69,9 @@ export const dataTableTestkitFactory = enzymeTestkitFactoryCreator(dataTableDriv
 import tableDriverFactory from '../src/Table/Table.driver';
 export const tableTestkitFactory = enzymeTestkitFactoryCreator(tableDriverFactory);
 
+import tableActionCellDriverFactory from '../src/TableActionCell/TableActionCell.driver';
+export const tableActionCellTestkitFactory = enzymeTestkitFactoryCreator(tableActionCellDriverFactory);
+
 import textAreaDriverFactory from '../src/TextArea/TextArea.driver';
 export const textAreaTestkitFactory = enzymeTestkitFactoryCreator(textAreaDriverFactory);
 

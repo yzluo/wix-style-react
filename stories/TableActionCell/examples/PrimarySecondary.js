@@ -8,7 +8,9 @@ import {
   SelectedCount
 } from 'wix-style-react/Table/Toolbar';
 
+import TableActionCell from 'wix-style-react/TableActionCell';
 import Card from 'wix-style-react/Card';
+import {Star, Download, Duplicate, Print} from 'wix-style-react/new-icons';
 
 const baseData = [
   {name: 'Apple Towels', SKU: '111222', price: '$2.00', inventory: 'In stock'},
@@ -19,13 +21,13 @@ const baseData = [
 
 const primaryAction = rowData => window.alert(`Editing ${rowData.name}`);
 
-export class TableActionColumnPrimaryExample extends React.Component {
+export class PrimarySecondaryExample extends React.Component {
 
   render() {
     return (
       <Card>
         <Table
-          dataHook="story-table-action-column-primary-example"
+          dataHook="story-primary-secondary-example"
           data={baseData}
           itemsPerPage={20}
           showSelection
@@ -39,12 +41,20 @@ export class TableActionColumnPrimaryExample extends React.Component {
               title: '',
               width: '40%',
               render: rowData => (
-                <Table.ActionCell
+                <TableActionCell
                   primaryAction={{
                     name: 'Edit',
-                    theme: 'whiteblue',
+                    theme: 'fullblue',
                     onActionTrigger: () => primaryAction(rowData)
                   }}
+                  secondaryActions={[
+                    {name: 'Star', icon: <Star/>, onActionTrigger: () => window.alert(`Starring ${rowData.name}`)},
+                    {name: 'Download', icon: <Download/>, onActionTrigger: () => window.alert(`Downloading ${rowData.name}`)},
+                    {name: 'Duplicate', icon: <Duplicate/>, onActionTrigger: () => window.alert(`Duplicating ${(rowData.name)}`)},
+                    {name: 'Print', icon: <Print/>, onActionTrigger: () => window.alert(`Printing ${rowData.name}`)}
+                  ]}
+                  visibleSecondaryActions={2}
+                  alwaysShowSecondaryActions={false}
                   />
               )
             }

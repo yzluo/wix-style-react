@@ -15,3 +15,13 @@
   min-width: 874;
   max-width: 1234px;
 }
+
+.previewWrapper {
+  display: block;
+  padding: 16px;
+  background-color: white;
+}
+
+.previewWrapper:hover {
+  background-color: $B50;
+}

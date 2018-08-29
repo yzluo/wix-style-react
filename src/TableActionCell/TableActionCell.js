@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import styles from '../Table.scss';
-import Tooltip from '../../Tooltip/Tooltip';
-import Button from '../../Button';
-import PopoverMenu from '../../PopoverMenu';
-import PopoverMenuItem from '../../PopoverMenuItem';
-import ChevronRight from '../../new-icons/ChevronRight';
+import styles from './TableActionCell.scss';
+import Tooltip from '../Tooltip/Tooltip';
+import Button from '../Button';
+import PopoverMenu from '../PopoverMenu';
+import PopoverMenuItem from '../PopoverMenuItem';
+import ChevronRight from '../new-icons/ChevronRight';
 
 /* eslint-disable react/prop-types */
 function renderPrimaryAction({name, theme, onActionTrigger}) {
@@ -84,7 +84,7 @@ HoverSlot.propTypes = {
   children: PropTypes.node
 };
 
-export const TableActionCell = ({
+const TableActionCell = ({
   primaryAction,
   secondaryActions,
   visibleSecondaryActions,
@@ -125,7 +125,7 @@ export const TableActionCell = ({
   );
 };
 
-TableActionCell.displayName = 'Table.ActionCell';
+TableActionCell.displayName = 'TableActionCell';
 
 TableActionCell.propTypes = {
   dataHook: PropTypes.string,
@@ -167,3 +167,5 @@ TableActionCell.defaultProps = {
   visibleSecondaryActions: 0,
   alwaysShowSecondaryActions: false
 };
+
+export default TableActionCell;

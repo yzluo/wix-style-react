@@ -35,18 +35,7 @@
 |isRowSelected | index : number | boolean | Is row selected by index |
 |getBulkSelectionState | - | string | Get bulk seleciton state. Possible value 'ALL', 'SOME', 'NONE. |
 |getTitlebar | - | element | Get title-bar (column titles) |
-| getRowActionColumn | (index) | element | Returns the cell for the action column of the given row |
-| getPrimaryActionPlaceholder | (index) | element | Get the primary action placeholder element |
-| getPrimaryActionButtonDriver | (index) | ButtonDriver | Get the driver of the primary action `<Button/>` from the action column |
-| clickPrimaryActionButton | (index) | - | Click the primary action button from the action column |
-| getVisibleSecondaryActionsCount | (index) | number | Get the number of the visible secondary actions |
-| getHiddenSecondaryActionsCount | (index) | number | Get the number of the hidden secondary actions (in the `<PopoverMenu/>`) |
-| getVisibleSecondaryActionTooltipDriver | (rowIndex, actionIndex) | TooltipDriver | Get the driver of a specific visible secondary action `<Tooltip/>` |
-| getVisibleSecondaryActionButtonDriver | (rowIndex, actionIndex) | ButtonDriver | Get the driver of a specific visible secondary action `<Button/>` |
-| getSecondaryActionsPopoverMenuDriver | (rowIndex) | PopoverMenuDriver | Get the driver of the hidden secondary action `<PopoverMenu/>` |
-| clickVisibleSecondaryAction | (rowIndex, actionIndex) | - | Click an a visible secondary action |
-| clickPopoverMenu | (rowIndex) | - | Click on the hidden secondary actions `<PopoverMenu/>` |
-| clickHiddenSecondaryAction | (rowIndex, actionIndex) | - | Click on a hidden secondary action (requires the `<PopoverMenu/>` to be open) |
+| getRowActionCellDriver | index | `TableActionCellDriver` | Get the action cell driver |
 
 ## Protractor TestKit API
 
@@ -56,11 +45,8 @@
 | getRowTextByIndex | number | string | get row index <number> text |
 | element | - | element | get the actual element |
 | getRow | (index) | element | Get a row element |
-| getPrimaryActionPlaceholder | (index) | element | Get the primary action placeholder element |
-| getPrimaryActionButton | (index) | element | Get the primary action button element |
-| getVisibleSecondaryActionsWrapper | (index) | element | Get the visible secondary actions wrapper element |
-| getSecondaryActionsPopoverMenu | (index) | element | Get the secondary actions popover menu element |
 | hoverRow | (index) | element | Hover a specific row with the mouse |
+| getRowActionCellDriver | index | `TableActionCellDriver` | Get the action cell driver |
 
 ### Puppeteer
 
