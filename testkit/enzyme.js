@@ -33,9 +33,6 @@ export const inputWithOptionsTestkitFactory = enzymeTestkitFactoryCreator(inputW
 import buttonWithOptionsDriverFactory from '../src/ButtonWithOptions/ButtonWithOptions.driver';
 export const buttonWithOptionsTestkitFactory = enzymeTestkitFactoryCreator(buttonWithOptionsDriverFactory);
 
-import languagePickerDriverFactory from '../src/LanguagePicker/LanguagePicker.driver';
-export const languagePickerTestkitFactory = enzymeTestkitFactoryCreator(languagePickerDriverFactory);
-
 import autoCompleteDriverFactory from '../src/AutoComplete/AutoComplete.driver';
 export const autoCompleteTestkitFactory = enzymeTestkitFactoryCreator(autoCompleteDriverFactory);
 
@@ -174,6 +171,9 @@ export const fieldLabelAttributesTestkitFactory = enzymeTestkitFactoryCreator(fi
 import popoverMenuDriverFactory from '../src/PopoverMenu/PopoverMenu.driver';
 export const popoverMenuTestkitFactory = enzymeTestkitFactoryCreator(popoverMenuDriverFactory);
 
+import calendarDriverFactory from '../src/Calendar/Calendar.driver';
+export const calendarTestkitFactory = enzymeTestkitFactoryCreator(calendarDriverFactory);
+
 import datePickerFactory from '../src/DatePicker/DatePicker.driver';
 export const datePickerTestkitFactory = enzymeTestkitFactoryCreator(datePickerFactory);
 
@@ -215,6 +215,9 @@ export const headingTestkitFactory = enzymeTestkitFactoryCreator(headingDriverFa
 
 import textDriverFactory from '../src/Text/Text.driver';
 export const textTestkitFactory = enzymeTestkitFactoryCreator(textDriverFactory);
+
+import draggableDriverFactory from '../src/DragAndDrop/Draggable/Draggable.driver';
+export const draggableTestkitFactory = enzymeTestkitFactoryCreator(draggableDriverFactory);
 
 // wix-ui-backoffice proxy
 

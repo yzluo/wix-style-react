@@ -83,14 +83,4 @@ Compound components:
   > * When `controlled` is true, `collapsed` will change only via `collapsed` prop.
 </details>
 
-<details>
-  <summary>`Card.EmptyState`</summary>
-
-  > An `<EmptyState>` for usage within a `<Card/>`. See the "Card with an EmptyState" example for
-  > example usage.
-
-  Accepts the same props as `<EmptyState/>`. See the API tab in the `<EmptyState/>` story for a full
-  list of valid props.
-</details>
-
 ---

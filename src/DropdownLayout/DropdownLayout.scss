@@ -112,10 +112,9 @@ a[data-hook=link-item] {
 }
 
 .title {
-  @extend .h4;
+  @extend .h6;
   background: $D70;
   color: $D20;
-  font-size: 10px;
 }
 
 :global(.rtl) .option {

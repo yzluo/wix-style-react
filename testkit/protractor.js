@@ -53,9 +53,6 @@ export const dropdownTestkitFactory = protractorTestkitFactoryCreator(dropdownDr
 import buttonWithOptionsDriverFactory from '../src/ButtonWithOptions/ButtonWithOptions.protractor.driver';
 export const buttonWithOptionsTestkitFactory = protractorTestkitFactoryCreator(buttonWithOptionsDriverFactory);
 
-import languagePickerDriverFactory from '../src/LanguagePicker/LanguagePicker.protractor.driver';
-export const languagePickerTestkitFactory = protractorTestkitFactoryCreator(languagePickerDriverFactory);
-
 import filePickerDriverFactory from '../src/FilePicker/FilePicker.protractor.driver';
 export const filePickerTestkitFactory = protractorTestkitFactoryCreator(filePickerDriverFactory);
 
@@ -103,6 +100,9 @@ export const multiSelectTestkitFactory = protractorTestkitFactoryCreator(multiSe
 
 import multiSelectCheckboxDriverFactory from '../src/MultiSelectCheckbox/MultiSelectCheckbox.protractor.driver';
 export const multiSelectCheckboxTestkitFactory = protractorTestkitFactoryCreator(multiSelectCheckboxDriverFactory);
+
+import calendarDriverFactory from '../src/Calendar/Calendar.protractor.driver';
+export const calendarTestkitFactory = protractorTestkitFactoryCreator(calendarDriverFactory);
 
 import datePickerDriverFactory from '../src/DatePicker/DatePicker.protractor.driver';
 export const datePickerTestkitFactory = protractorTestkitFactoryCreator(datePickerDriverFactory);

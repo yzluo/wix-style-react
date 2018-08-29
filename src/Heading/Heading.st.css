@@ -1,63 +1,73 @@
 :import {
-  -st-from: "wix-ui-backoffice/dist/src/palette.st.css";
-  -st-named: headingText, subheadingText, lightHeadingText, lightSubheadingText;
+  -st-from: "wix-ui-backoffice/dist/src/colors.st.css";
+  -st-named: D10, D20, D50, WHITE
 }
 
 :import {
   -st-from: "wix-ui-backoffice/dist/src/typography.st.css";
-  -st-named: fontThin, fontLight;
+  -st-named: fontRoman, fontMedium;
 }
-  
+
 .root {
-  -st-states: appearance(enum(H1, H2, H3, H4)), light;
+  -st-states: appearance(enum(H1, H2, H3, H4, H5, H6)), light(boolean);
 }
 
 .root:appearance(H1) {
-  font-family: value(fontThin);
+  font-family: value(fontMedium);
   font-size: 36px;
   line-height: 48px;
-  color: value(headingText);
-}
-
-.root:appearance(H1):light {
-  color: value(lightHeadingText);
+  color: value(D10);
 }
 
 .root:appearance(H2) {
-  font-family: value(fontLight);
-  font-size: 20px;
-  line-height: 24px;
-  color: value(headingText);
-}
-
-.root:appearance(H2):light {
-  color: value(lightHeadingText);
+  font-family: value(fontMedium);
+  font-size: 28px;
+  line-height: 42px;
+  color: value(D10);
 }
 
 .root:appearance(H3) {
-  font-family: value(fontLight);
-  font-size: 13px;
+  font-family: value(fontRoman);
+  font-size: 20px;
   line-height: 24px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: value(subheadingText);
-}
-
-.root:appearance(H3):light {
-  color: value(lightSubheadingText);
+  color: value(D10);
 }
 
 .root:appearance(H4) {
-  font-family: value(fontLight);
-  font-size: 10px;
-  line-height: 18px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: value(subheadingText);
+  font-family: value(fontRoman);
+  font-size: 18px;
+  line-height: 24px;
+  color: value(D10);
 }
 
+.root:appearance(H5) {
+  font-family: value(fontMedium);
+  font-size: 12px;
+  line-height: 24px;
+  color: value(D20);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.root:appearance(H6) {
+  font-family: value(fontMedium);
+  font-size: 10px;
+  line-height: 18px;
+  color: value(D10);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.root:appearance(H1):light,
+.root:appearance(H2):light,
+.root:appearance(H3):light,
 .root:appearance(H4):light {
-  color: value(lightSubheadingText);
+  color: value(WHITE);
+}
+
+.root:appearance(H5):light,
+.root:appearance(H6):light {
+  color: value(D50);
 }
 
 .root {

@@ -106,6 +106,17 @@ describe('DatePicker', () => {
         expect(calendarDriver.isVisible()).toBe(false);
       });
 
+      it('on press "Escape" key and call onClose callback', () => {
+        const onClose = jest.fn();
+        const {inputDriver, calendarDriver} = createDriver(<DatePicker onChange={noop} onClose={onClose}/>);
+
+        inputDriver.trigger('click');
+        calendarDriver.triggerKeyDown({key: 'Escape', keyCode: 27});
+
+        expect(calendarDriver.isVisible()).toBe(false);
+        expect(onClose).toBeCalled();
+      });
+
       it('on press "Tab" key', () => {
         const preventDefault = jest.fn();
         const {inputDriver, calendarDriver} = createDriver(<DatePicker onChange={noop}/>);
@@ -309,11 +320,11 @@ describe('DatePicker', () => {
 
     describe('given date in far future', () => {
       it('should not fail', () => {
-        const {calendarDriver} = createDriver(
+        const {calendarDriver, driver} = createDriver(
           <DatePicker value={new Date('2055/01/01')} onChange={noop} showYearDropdown/>
         );
 
-        calendarDriver.open();
+        driver.open();
 
         const yearDropdownDriver = calendarDriver.getYearDropdownDriver();
         const years = yearDropdownDriver.optionsContent().map(n => parseInt(n, 10));
@@ -357,21 +368,21 @@ describe('DatePicker', () => {
 
     describe('When trigger open and close', () => {
       it('should open calendar using ref', () => {
-        const {calendarDriver} = createDriver(<DatePicker onChange={noop}/>);
-        calendarDriver.open();
+        const {calendarDriver, driver} = createDriver(<DatePicker onChange={noop}/>);
+        driver.open();
         expect(calendarDriver.isVisible()).toBe(true);
       });
 
       it('should hide the focus visually on the current element from the user', () => {
-        const {calendarDriver} = createDriver(<DatePicker onChange={noop}/>);
-        calendarDriver.open();
+        const {calendarDriver, driver} = createDriver(<DatePicker onChange={noop}/>);
+        driver.open();
         expect(calendarDriver.isFocusedDayVisuallyUnfocused()).toBeTruthy();
       });
 
       it('should close calendar using ref', () => {
-        const {calendarDriver} = createDriver(<DatePicker onChange={noop}/>);
+        const {calendarDriver, driver} = createDriver(<DatePicker onChange={noop}/>);
 
-        calendarDriver.open();
+        driver.open();
         expect(calendarDriver.isVisible()).toBe(true);
 
         calendarDriver.close();
@@ -382,9 +393,9 @@ describe('DatePicker', () => {
     describe('keyboard navigation', () => {
       it('should navigate days correctly with keyboard - LTR mode', done => {
         const date = new Date(2018, 1, 5);
-        const {calendarDriver} = createDriver(<DatePicker onChange={noop} value={date}/>);
+        const {calendarDriver, driver} = createDriver(<DatePicker onChange={noop} value={date}/>);
 
-        calendarDriver.open();
+        driver.open();
         expect(calendarDriver.getFocusedDay()).toEqual('5');
         calendarDriver.pressLeftArrow();
         // we need setTimeout because pressLeftArrow trigger async actions
@@ -396,9 +407,9 @@ describe('DatePicker', () => {
 
       it('should navigate days correctly with keyboard - RTL mode(same as with LTR)', done => {
         const date = new Date(2018, 1, 5);
-        const {calendarDriver} = createDriver(<DatePicker onChange={noop} rtl value={date}/>);
+        const {calendarDriver, driver} = createDriver(<DatePicker onChange={noop} rtl value={date}/>);
 
-        calendarDriver.open();
+        driver.open();
         expect(calendarDriver.getFocusedDay()).toEqual('5');
         calendarDriver.pressLeftArrow();
         // we need setTimeout because pressLeftArrow trigger async actions
@@ -410,9 +421,9 @@ describe('DatePicker', () => {
 
       it('should not update input value while navigating the calendar', () => {
         const date = new Date(2018, 1, 5);
-        const {calendarDriver, inputDriver} = createDriver(<DatePicker onChange={noop} value={date}/>);
+        const {calendarDriver, inputDriver, driver} = createDriver(<DatePicker onChange={noop} value={date}/>);
 
-        calendarDriver.open();
+        driver.open();
         expect(inputDriver.getValue()).toEqual('02/05/2018');
 
         calendarDriver.pressLeftArrow();
@@ -421,9 +432,9 @@ describe('DatePicker', () => {
 
       it('should keep selected day unchanged when navigating with keyboard', done => {
         const date = new Date(2018, 1, 5);
-        const {calendarDriver} = createDriver(<DatePicker onChange={noop} value={date}/>);
+        const {calendarDriver, driver} = createDriver(<DatePicker onChange={noop} value={date}/>);
 
-        calendarDriver.open();
+        driver.open();
 
         expect(calendarDriver.getSelectedDay()).toEqual('5');
         expect(calendarDriver.getFocusedDay()).toEqual('5');
@@ -438,9 +449,9 @@ describe('DatePicker', () => {
 
       it('should remove unfocused class from the selected day while navigating the calendar', () => {
         const date = new Date(2018, 1, 5);
-        const {calendarDriver} = createDriver(<DatePicker onChange={noop} value={date}/>);
+        const {calendarDriver, driver} = createDriver(<DatePicker onChange={noop} value={date}/>);
 
-        calendarDriver.open();
+        driver.open();
         expect(calendarDriver.isFocusedDayVisuallyUnfocused()).toBeTruthy();
 
         calendarDriver.pressLeftArrow();
@@ -543,8 +554,8 @@ describe('DatePicker', () => {
     it('should not adjust time of given value', () => {
       const onChange = jest.fn();
       const value = new Date('2017/01/01 12:34:56.000Z');
-      const {calendarDriver} = createDriver(<DatePicker value={value} onChange={onChange}/>);
-      calendarDriver.open();
+      const {calendarDriver, driver} = createDriver(<DatePicker value={value} onChange={onChange}/>);
+      driver.open();
       calendarDriver.clickOnNthDay(1);
       expect(onChange.mock.calls[0][0]).toEqual(new Date('2017-01-02T12:34:56.000Z'));
     });

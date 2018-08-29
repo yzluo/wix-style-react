@@ -9,8 +9,8 @@ import setDate from 'date-fns/set_date';
 
 import WixComponent from '../BaseComponents/WixComponent';
 import CalendarIcon from '../new-icons/Date';
-import {formatDate} from './LocaleUtils';
-import Calendar from './Calendar';
+import {formatDate} from '../LocaleUtils';
+import Calendar from '../Calendar';
 import Input from '../Input';
 
 import styles from './DatePicker.scss';
@@ -45,6 +45,7 @@ export default class DatePicker extends WixComponent {
     super(props);
 
     this.state = {
+      value: props.value || new Date(),
       isOpen: props.isOpen || false,
       isDateInputFocusable: !props.isOpen
     };
@@ -77,7 +78,11 @@ export default class DatePicker extends WixComponent {
   };
 
   closeCalendar = () => {
-    this.setState({isOpen: false});
+    this.setState({isOpen: false}, () => {
+      if (this.props.onClose) {
+        this.props.onClose();
+      }
+    });
     /*
       to fix case when user press tab in opened Calendar and:
         1. Calendar become closed
@@ -91,7 +96,7 @@ export default class DatePicker extends WixComponent {
        to allow user to press tab in future and open Calendar
     */
     setTimeout(() => this.makeInputFocusable());
-  }
+  };
 
   makeInputFocusable = () => this.setState({isDateInputFocusable: true});
 
@@ -171,9 +176,9 @@ export default class DatePicker extends WixComponent {
     return React.cloneElement(customInput || <Input/>, _inputProps);
   };
 
-  _setInputRef = ref => this.inputRef = ref;
+  _setInputRef = ref => (this.inputRef = ref);
 
-  _setCalendarRef = ref => this.calendarRef = ref;
+  _setCalendarRef = ref => (this.calendarRef = ref);
 
   render() {
     const {
@@ -208,10 +213,7 @@ export default class DatePicker extends WixComponent {
     return (
       <div style={{width}} className={styles.root}>
         <div ref={this._setInputRef}>
-          <DayPickerInput
-            component={this._renderInput}
-            keepFocus={false}
-            />
+          <DayPickerInput component={this._renderInput} keepFocus={false}/>
         </div>
 
         <div

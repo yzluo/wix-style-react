@@ -10,7 +10,15 @@ export default () =>
       <Card.Header title="Simple Card"/>
 
       <Card.Content>
-        <FormField label="Please type your joke below">
+        <FormField label="Type your joke below">
+          <Input/>
+        </FormField>
+      </Card.Content>
+
+      <Card.Divider/>
+
+      <Card.Content>
+        <FormField label="Type your tragedy below">
           <Input/>
         </FormField>
       </Card.Content>

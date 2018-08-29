@@ -40,7 +40,7 @@ const EmptyState = ({
           {theme === 'section' ? (
             <Text weight="normal">{title}</Text>
           ) : (
-            <Heading appearance="H2">{title}</Heading>
+            <Heading appearance="H3">{title}</Heading>
           )}
         </div>
       )}

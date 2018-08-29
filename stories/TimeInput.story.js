@@ -7,6 +7,8 @@ export default {
   component: TimeInput,
   componentPath: '../src/TimeInput', // TODO: move folder to TimePicker to align with component name
 
+  exampleImport: `import TimePicker from 'wix-style-react/TimeInput';`,
+
   componentProps: {
     dashesWhenDisabled: false,
     disabled: false

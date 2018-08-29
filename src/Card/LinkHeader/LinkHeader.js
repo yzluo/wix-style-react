@@ -1,68 +1,42 @@
 import React from 'react';
-import {bool, node, string} from 'prop-types';
-import classNames from 'classnames';
-import styles from './LinkHeader.scss';
+import {node, string} from 'prop-types';
 import TextLink from '../../TextLink';
 import WixComponent from '../../../src/BaseComponents/WixComponent';
+import Header from '../Header';
 
 class LinkHeader extends WixComponent {
+  static displayName = 'Card.LinkHeader';
 
   static propTypes = {
-    title: node.isRequired,
+    ...Header.propTypes,
     linkTitle: string.isRequired,
     linkTo: string.isRequired,
-    subtitle: node,
-    tooltip: node,
-    withoutDivider: bool
+    tooltip: node
   };
 
   static defaultProps = {
-    subtitle: null,
-    tooltip: null,
-    withoutDivider: false
+    tooltip: null
   };
 
   render() {
     const {title, subtitle, linkTitle, linkTo, withoutDivider, tooltip} = this.props;
 
-    const headerClasses = classNames({
-      [styles.headerOnlyTitle]: !subtitle,
-      [styles.headerTitleSubtitle]: subtitle,
-      [styles.withDivider]: !withoutDivider
-    });
+    const linkElement =
+      (<div>
+        <TextLink dataHook="link" link={linkTo} children={linkTitle}/>
+      </div>);
 
-    const linkElement = (
-      <div className={styles.link}>
-        <TextLink dataHook="link" link={linkTo}>{linkTitle}</TextLink>
-      </div>
-    );
-
-    const titleElement = (
-      <div data-hook="title" className={styles.title}>
-        {title}
-      </div>
-    );
-
-    const tooltipElement = tooltip ? (
-      React.cloneElement(tooltip, {}, linkElement)
-    ) : null;
-
-    const actionElement = tooltipElement ? tooltipElement : linkElement;
-
-    const subtitleElement = subtitle ? (
-      <div data-hook="subtitle" className={styles.subtitle}>
-        {this.props.subtitle}
-      </div>
-    ) : null;
+    const tooltipElement = tooltip ?
+      React.cloneElement(tooltip, {}, linkElement) :
+      null;
 
     return (
-      <div className={headerClasses}>
-        <div>
-          {titleElement}
-          {subtitleElement}
-        </div>
-        {actionElement}
-      </div>
+      <Header
+        title={title}
+        subtitle={subtitle}
+        suffix={tooltipElement ? tooltipElement : linkElement}
+        withoutDivider={withoutDivider}
+        />
     );
   }
 }

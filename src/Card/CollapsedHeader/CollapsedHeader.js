@@ -1,19 +1,18 @@
 import React from 'react';
 import {bool, node, oneOf, func, string} from 'prop-types';
-import classNames from 'classnames';
-import styles from './CollapsedHeader.scss';
-import Switch from '../../../src/ToggleSwitch';
-import WixComponent from '../../../src/BaseComponents/WixComponent';
 import Collapse from 'react-collapse';
+
+import ToggleSwitch from '../../../src/ToggleSwitch';
+import WixComponent from '../../../src/BaseComponents/WixComponent';
+import Header from '../Header';
 import Button from '../../../src/Button';
 import ChevronDown from '../../new-icons/ChevronDown';
 import ChevronUp from '../../new-icons/ChevronUp';
 
 class CollapsedHeader extends WixComponent {
+  static displayName = 'Card.CollapsedHeader';
   static propTypes = {
-    title: node.isRequired,
-    subtitle: node,
-    withoutDivider: bool,
+    ...Header.propTypes,
     children: node,
     toggleStyle: oneOf(['switch', 'button']),
     collapsed: bool,
@@ -24,10 +23,8 @@ class CollapsedHeader extends WixComponent {
   };
 
   static defaultProps = {
-    subtitle: null,
     collapsed: false,
     toggleStyle: 'switch',
-    withoutDivider: false,
     buttonCollapseText: 'Less',
     buttonExpandText: 'More',
     controlled: false
@@ -69,71 +66,56 @@ class CollapsedHeader extends WixComponent {
     }
   };
 
+  _toggleSwitchElement = () =>
+    <div onClick={this.stopPropagation}>
+      <ToggleSwitch
+        dataHook="switch"
+        onChange={this.onToggleChange}
+        checked={!this.state.isCollapsed}
+        />
+    </div>;
+
+  _buttonElement = () =>
+    <div onClick={this.stopPropagation}>
+      <Button
+        withNewIcons
+        dataHook="button"
+        height="medium"
+        prefixIcon={this.state.isCollapsed ? <ChevronDown/> : <ChevronUp/>}
+        onClick={this.onToggleChange}
+        theme="whiteblueprimary"
+        type="button"
+        >
+        {this.state.isCollapsed ? this.props.buttonExpandText : this.props.buttonCollapseText}
+      </Button>
+    </div>;
+
   render() {
-    const {title, subtitle, withoutDivider, buttonCollapseText, buttonExpandText} = this.props;
+    const {
+      title,
+      subtitle,
+      children,
+      withoutDivider,
+      toggleStyle
+    } = this.props;
 
-    const headerClasses = classNames({
-      [styles.headerOnlyTitle]: !subtitle,
-      [styles.headerTitleSubtitle]: subtitle,
-      [styles.withDivider]: !withoutDivider
-    });
-
-    const headerClassesWithoutDivider = classNames({
-      [styles.headerOnlyTitle]: !subtitle,
-      [styles.headerTitleSubtitle]: subtitle
-    });
-
-    const switchElement = (
-      <div className={styles.collapsedSwitch} onClick={this.stopPropagation}>
-        <Switch
-          dataHook="switch"
-          onChange={this.onToggleChange}
-          checked={!this.state.isCollapsed}
-          />
-      </div>
-    );
-
-    const buttonElement = (
-      <div className={styles.button} onClick={this.stopPropagation}>
-        <Button
-          withNewIcons
-          dataHook="button"
-          height="medium"
-          prefixIcon={this.state.isCollapsed ? <ChevronDown/> : <ChevronUp/>}
-          onClick={this.onToggleChange}
-          theme="whiteblueprimary"
-          type="button"
-          >
-          {this.state.isCollapsed ? buttonExpandText : buttonCollapseText}
-        </Button>
-      </div>
-    );
-
-    const titleElement = (
-      <div data-hook="title" className={styles.title}>
-        {title}
-      </div>
-    );
-
-    const subtitleElement = subtitle ? (
-      <div data-hook="subtitle" className={styles.subtitle}>
-        {this.props.subtitle}
-      </div>
-    ) : null;
-
-    const toggleElement = this.props.toggleStyle === 'switch' ? switchElement : buttonElement;
-    const switchHeader = this.state.isCollapsed ? headerClassesWithoutDivider : headerClasses;
+    const {isCollapsed} = this.state;
 
     return (
       <div>
-        <div className={switchHeader} onClick={this.onToggleChange}>
-          <div>
-            {titleElement}
-            {subtitleElement}
-          </div>
-          {toggleElement}
+        <div onClick={this.onToggleChange}>
+          <Header
+            title={title}
+            subtitle={subtitle}
+            suffix={toggleStyle === 'switch' ? this._toggleSwitchElement() : this._buttonElement()}
+            withoutDivider={withoutDivider || isCollapsed}
+            />
         </div>
-        <Collapse isOpened={!this.state.isCollapsed}>{this.props.children}</Collapse>
+
+        <Collapse
+          isOpened={!isCollapsed}
+          children={children}
+          />
       </div>
     );
   }

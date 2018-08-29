@@ -1,9 +1,7 @@
-@import '../../Grid/Grid.scss';
+.root {
+  padding: 24px 30px 30px;
+}
 
-$content-padding: 24px 30px 30px;
-
-.content {
-  @extend .container;
-  box-sizing: border-box;
-  padding: $content-padding;
+.emptyStateContent {
+  padding: 42px;
 }

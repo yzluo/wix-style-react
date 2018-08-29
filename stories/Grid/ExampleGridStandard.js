@@ -1,5 +1,6 @@
 import React from 'react';
-import {Container, Row, Col, Card} from 'wix-style-react/Grid';
+import {Container, Row, Col} from 'wix-style-react/Grid';
+import Card from 'wix-style-react/Card';
 import styles from './ExampleGrid.scss';
 
 export default () =>

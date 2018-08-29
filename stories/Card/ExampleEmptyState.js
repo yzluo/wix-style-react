@@ -4,6 +4,7 @@ import Card from 'wix-style-react/Card';
 import {Container, Row, Col} from 'wix-style-react/Grid';
 import {Add} from 'wix-style-react/new-icons';
 import TextLink from 'wix-style-react/TextLink';
+import EmptyState from 'wix-style-react/EmptyState';
 
 import ImagePlaceholder from '../assets/ImagePlaceholder';
 
@@ -22,14 +23,14 @@ export default () =>
               buttonPrefix={<Add/>}
               />
 
-            <Card.EmptyState
-              theme="section"
-              title="You don't have any images yet"
-              subtitle="Start by adding new images to your album"
-              image={<ImagePlaceholder/>}
-              >
-              <TextLink prefixIcon={<Add/>}>Add image</TextLink>
-            </Card.EmptyState>
+            <Card.Content>
+              <EmptyState
+                title="You don't have any images yet"
+                subtitle="Start by adding new images to your album"
+                image={<ImagePlaceholder/>}
+                children={<TextLink prefixIcon={<Add/>}>Add image</TextLink>}
+                />
+            </Card.Content>
           </Card>
         </Col>
 

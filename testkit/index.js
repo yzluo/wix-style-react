@@ -36,9 +36,6 @@ export const pageTestkitFactory = testkitFactoryCreator(pageDriverFactory);
 import pageHeaderDriverFactory from '../src/PageHeader/PageHeader.driver';
 export const pageHeaderTestkitFactory = testkitFactoryCreator(pageHeaderDriverFactory);
 
-import languagePickerDriverFactory from '../src/LanguagePicker/LanguagePicker.driver';
-export const languagePickerTestkitFactory = testkitFactoryCreator(languagePickerDriverFactory);
-
 import autoCompleteDriverFactory from '../src/AutoComplete/AutoComplete.driver';
 export const autoCompleteTestkitFactory = testkitFactoryCreator(autoCompleteDriverFactory);
 
@@ -176,6 +173,9 @@ export const fieldLabelAttributesTestkitFactory = testkitFactoryCreator(fieldLab
 
 import popoverMenuDriverFactory from '../src/PopoverMenu/PopoverMenu.driver';
 export const popoverMenuTestkitFactory = testkitFactoryCreator(popoverMenuDriverFactory);
+
+import calendarDriverFactory from '../src/Calendar/Calendar.driver';
+export const calendarTestkitFactory = testkitFactoryCreator(calendarDriverFactory);
 
 import datePickerDriverFactory from '../src/DatePicker/DatePicker.driver';
 export const datePickerTestkitFactory = testkitFactoryCreator(datePickerDriverFactory);

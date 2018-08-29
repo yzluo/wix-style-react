@@ -109,7 +109,6 @@ const BulkActionsToolbar = props => (
     <ItemGroup position="end">
       <Item layout="button">
         <Button
-          withNewIcons
           theme="whiteblueprimary" prefixIcon={<Upload/>}
           onClick={() => window.alert(`Exporting selectedIds=${props.getSelectedIds()}`)}
           >
@@ -118,7 +117,6 @@ const BulkActionsToolbar = props => (
       </Item>
       <Item layout="button">
         <Button
-          withNewIcons
           theme="whiteblueprimary" prefixIcon={<Duplicate/>}
           onClick={() => window.alert(`Duplicating selectedIds=${props.getSelectedIds()}`)}
           >
@@ -127,7 +125,6 @@ const BulkActionsToolbar = props => (
       </Item>
       <Item layout="button">
         <Button
-          withNewIcons
           theme="whiteblueprimary" prefixIcon={<Edit/>}
           onClick={() => window.alert(`Editing selectedIds=${props.getSelectedIds()}`)}
           >

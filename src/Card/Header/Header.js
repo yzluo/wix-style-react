@@ -1,16 +1,31 @@
 import React from 'react';
 import {bool, node} from 'prop-types';
-import classNames from 'classnames';
+
+import Divider from '../Divider';
 import styles from './Header.scss';
 import WixComponent from '../../BaseComponents/WixComponent';
+import Heading from '../../Heading';
+import Text from '../../Text';
+
+const isString = a => typeof a === 'string';
 
 class Header extends WixComponent {
+  static displayName = 'Card.Header';
 
   static propTypes = {
+    /** required card title */
     title: node.isRequired,
+
+    /** any string to be rendered below title */
     subtitle: node,
-    withoutDivider: bool,
-    suffix: node
+
+    suffix: node,
+
+    /** define whether header border on the bottom is visible
+     * deprecated! use <Card.Divider/> instead
+     * @deprecated
+    * */
+    withoutDivider: bool
   };
 
   static defaultProps = {
@@ -22,36 +37,40 @@ class Header extends WixComponent {
   render() {
     const {title, subtitle, withoutDivider, suffix} = this.props;
 
-    const headerClasses = classNames({
-      [styles.header]: true,
-      [styles.withDivider]: !withoutDivider
-    });
-
-    const titleElement = (
-      <div data-hook="title" className={styles.title}>
-        <span>{title}</span>
-      </div>
-    );
-
-    const subtitleElement = subtitle ? (
-      <div data-hook="subtitle" className={styles.subtitle}>
-        {subtitle}
-      </div>
-    ) : null;
-
-    const suffixElement = suffix ? (
-      <div data-hook="suffix">
-        {suffix}
-      </div>
-    ) : null;
-
     return (
-      <div className={headerClasses}>
-        <div className={styles.container}>
-          {titleElement}
-          {subtitleElement}
+      <div>
+        <div className={styles.wrapper}>
+          <div>
+            { isString(title) ?
+              <Heading
+                dataHook="title"
+                appearance="H3"
+                children={title}
+                /> :
+                title
+            }
+
+            {subtitle &&
+              isString(subtitle) ?
+                <Text
+                  dataHook="subtitle"
+                  children={subtitle}
+                  secondary
+                  /> :
+                subtitle
+            }
+          </div>
+
+          { suffix &&
+            <div
+              data-hook="suffix"
+              className={styles.suffix}
+              children={suffix}
+              />
+          }
         </div>
-        {suffixElement}
+
+        { !withoutDivider && <Divider/> }
       </div>
     );
   }

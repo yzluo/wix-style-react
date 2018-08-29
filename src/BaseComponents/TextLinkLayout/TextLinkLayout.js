@@ -104,7 +104,6 @@ export default class TextLinkLayout extends WixComponent {
 
     const color = this.getColor();
     const displayStyle = (prefixIcon || suffixIcon) ? 'flex' : display;
-
     const containerStyles = {
       color,
       display: displayStyle,

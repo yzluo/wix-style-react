@@ -12,12 +12,6 @@ class MultiSelect extends InputWithOptions {
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onPaste = this.onPaste.bind(this);
     this.state = {pasteDetected: false};
-
-    if (props.maxHeight) {
-      console.warn(
-        'MultiSelect: maxHeight is deprecated, please use maxNumRows instead. maxHeight will not be supported starting from 03/12/2017'
-      );
-    }
   }
 
   hideOptions() {
@@ -56,7 +50,6 @@ class MultiSelect extends InputWithOptions {
     return {
       inputElement: (
         <InputWithTags
-          maxHeight={this.props.maxHeight}
           maxNumRows={this.props.maxNumRows}
           mode={this.props.mode}
           />
@@ -198,7 +191,6 @@ MultiSelect.propTypes = {
   ...InputWithOptions.propTypes,
   predicate: PropTypes.func,
   tags: PropTypes.array,
-  maxHeight: PropTypes.string,
   maxNumRows: PropTypes.number,
   delimiters: PropTypes.array,
   mode: PropTypes.string,

@@ -6,6 +6,8 @@ import {Container, Row, Col} from 'wix-style-react/Grid';
 import FormField from 'wix-style-react/FormField';
 import Input from 'wix-style-react/Input';
 import Tooltip from 'wix-style-react/Tooltip';
+import Button from 'wix-style-react/Button';
+import TextLink from 'wix-style-react/TextLink';
 
 export default () =>
   <div style={{background: '#F0F4F7', padding: 30}}>
@@ -13,12 +15,9 @@ export default () =>
       <Row>
         <Col span={6}>
           <Card>
-            <Card.ButtonHeader
-              withNewIcons
+            <Card.Header
               title="Card header"
-              buttonOnClick={() => alert('Clicked!')}
-              theme="fullblue"
-              buttonTitle="Click Me!"
+              suffix={<Button onClick={() => alert('Clicked')} height="small" theme="fullblue">Click Me!</Button>}
               />
 
             <Card.Content>
@@ -29,12 +28,16 @@ export default () =>
 
         <Col span={6}>
           <Card>
-            <Card.LinkHeader
-              tooltip={<Tooltip placement="top" alignment="center" content="And a tooltip!"/>}
+            <Card.Header
               title="Card header"
-              linkTo="http://www.wix.com/"
-              linkTitle="Link to Wix"
               subtitle="Subtitle"
+              suffix={
+                <Tooltip placement="top" alignment="center" content="And a tooltip!">
+                  <div>
+                    <TextLink link="http://www.wix.com/">Link to Wix</TextLink>
+                  </div>
+                </Tooltip>
+              }
               />
 
             <Card.Content>
@@ -47,12 +50,17 @@ export default () =>
       <Row>
         <Col>
           <Card>
-            <Card.ButtonHeader
+            <Card.Header
               withoutDivider
               title="Card header without no content"
-              buttonOnClick={() => alert('Clicked!')}
-              buttonTitle="Click Me!"
-              theme="fullblue"
+              suffix={
+                <Button
+                  onClick={() => alert('Clicked!')}
+                  children="Click Me!"
+                  height="small"
+                  theme="fullblue"
+                  />
+              }
               />
           </Card>
         </Col>

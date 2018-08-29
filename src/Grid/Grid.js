@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import styles from './Grid.scss';
-import Card from '../Card';
 
 const containerProps = {
   children: PropTypes.node,
@@ -134,7 +133,7 @@ class Col extends Component {
 
     const columnClasses = classNames(
       className,
-      styles.column,
+      styles.col,
       {
         [styles.rtl]: rtl,
         [styles[`colXs${span}`]]: this.isLegalCol(span),
@@ -167,6 +166,5 @@ export {
   Columns as Row,
   AutoAdjustedColumns,
   AutoAdjustedColumns as AutoAdjustedRow,
-  Col,
-  Card // TODO: next major version should remove this export. Card is available from wix-style-react/Card
+  Col
 };

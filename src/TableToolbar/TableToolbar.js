@@ -1,13 +1,14 @@
 import React from 'react';
 import {node} from 'prop-types';
-import typography from '../Typography/Typography.scss';
 import {Toolbar, ItemGroup, Item, Label, Divider} from './Toolbar';
+import Heading from '../Heading';
+import Text from '../Text';
 
 export const Title = props => {
   return (
-    <span className={typography.h2}>
+    <Heading appearance="H3">
       {props.children}
-    </span>
+    </Heading>
   );
 };
 Title.displayName = 'TableToolbar.Title';
@@ -17,9 +18,9 @@ Title.propTypes = {
 
 export const SelectedCount = props => {
   return (
-    <span className={typography.t2}>
+    <Text weight="normal" size="medium">
       {props.children}
-    </span>
+    </Text>
   );
 };
 SelectedCount.displayName = 'TableToolbar.SelectedCount';

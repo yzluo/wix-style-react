@@ -1,8 +1,8 @@
 import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import EditableSelector from '../../src/EditableSelector';
-import {Card, Container, Row, Col} from '../../src/Grid';
-
+import {Container, Row, Col} from '../../src/Grid';
+import Card from '../../src/Card';
 
 class CardWithEditableSelector extends React.Component {
 
