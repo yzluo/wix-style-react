@@ -1,3 +1,4 @@
+import '../../test/protractor-register';
 import eyes from 'eyes.it';
 import {createStoryUrl} from '../../test/utils/storybook-helpers';
 
