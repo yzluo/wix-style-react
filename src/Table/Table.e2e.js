@@ -30,4 +30,28 @@ describe('Table', () => {
     const driver = await init('story-table-empty-state-example');
     await scrollToElement(driver.element);
   });
+
+  describe('Action cell', () => {
+    describe('Primary action only', () => {
+      const createDriver = () => init('story-action-cell-primary-example');
+
+      eyes.it('should show a primary action placeholder and hide it on row hover', async () => {
+        const driver = await createDriver();
+
+        driver.hoverRow(1);
+        expect(driver.getRow(0).getCssValue('background-color')).toEqual('rgba(0, 0, 0, 0)');
+        driver.hoverRow(0);
+        expect(driver.getRow(0).getCssValue('background-color')).not.toEqual('rgba(0, 0, 0, 0)');
+      });
+    });
+
+    describe('Primary and secondary actions', () => {
+      const createDriver = () => init('story-action-cell-primary-secondary-example');
+
+      eyes.it('should always show the PopoverMenu, and show the primary and secondary actions only on hover', async () => {
+        const driver = await createDriver();
+        driver.hoverRow(0);
+      });
+    });
+  });
 });

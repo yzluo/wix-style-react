@@ -10,6 +10,7 @@ import {
 
 import TableActionCell from 'wix-style-react/TableActionCell';
 import Card from 'wix-style-react/Card';
+import {Star, Download, Duplicate, Print} from 'wix-style-react/new-icons';
 
 const baseData = [
   {name: 'Apple Towels', SKU: '111222', price: '$2.00', inventory: 'In stock'},
@@ -20,13 +21,13 @@ const baseData = [
 
 const primaryAction = rowData => window.alert(`Editing ${rowData.name}`);
 
-export class PrimaryExample extends React.Component {
+export class ActionCellPrimarySecondaryExample extends React.Component {
 
   render() {
     return (
       <Card>
         <Table
-          dataHook="story-primary-example"
+          dataHook="story-action-cell-primary-secondary-example"
           data={baseData}
           itemsPerPage={20}
           showSelection
@@ -43,9 +44,17 @@ export class PrimaryExample extends React.Component {
                 <TableActionCell
                   primaryAction={{
                     name: 'Edit',
-                    theme: 'whiteblue',
+                    theme: 'fullblue',
                     onActionTrigger: () => primaryAction(rowData)
                   }}
+                  secondaryActions={[
+                    {name: 'Star', icon: <Star/>, onActionTrigger: () => window.alert(`Starring ${rowData.name}`)},
+                    {name: 'Download', icon: <Download/>, onActionTrigger: () => window.alert(`Downloading ${rowData.name}`)},
+                    {name: 'Duplicate', icon: <Duplicate/>, onActionTrigger: () => window.alert(`Duplicating ${(rowData.name)}`)},
+                    {name: 'Print', icon: <Print/>, onActionTrigger: () => window.alert(`Printing ${rowData.name}`)}
+                  ]}
+                  visibleSecondaryActions={2}
+                  alwaysShowSecondaryActions={false}
                   />
               )
             }

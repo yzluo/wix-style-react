@@ -1,6 +1,5 @@
 import dataTableDriverFactory from '../DataTable/DataTable.driver';
 import checkboxDriverFactory from '../Checkbox/Checkbox.driver';
-import tableActionCellDriverFactory from '../TableActionCell/TableActionCell.driver';
 
 const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
   const dataTableDriver = dataTableDriverFactory({element, wrapper, component});
@@ -26,11 +25,6 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
     const checkboxDriver = getBulkSelectionCheckboxDriver();
     return !checkboxDriver.isChecked() && !checkboxDriver.isIndeterminate();
   };
-
-  const getRowActionCellDriver = index =>
-    tableActionCellDriverFactory({
-      element: dataTableDriver.getRow(index).querySelector('td [data-hook="table-action-cell"]')
-    });
 
   return {
     ...dataTableDriver,
@@ -58,9 +52,7 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
       }
     },
     /** Get title-bar (column titles) */
-    getTitlebar,
-    /** Get the action cell driver */
-    getRowActionCellDriver
+    getTitlebar
   };
 };
 

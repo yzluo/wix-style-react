@@ -7,6 +7,6 @@ _visible_, meaning they'll be shown next to the primary action, or _hidden_, mea
 collapsed and shown inside a `<PopoverMenu/>`.
 
 You should render this component inside the `render` property of the `columns` prop (of `<Table/>`).
-This column should not have a title. Check out the examples below for usage.
+This column should not have a title. Check out the examples in the `<Table/>` story for usage.
 
 ## Playground
