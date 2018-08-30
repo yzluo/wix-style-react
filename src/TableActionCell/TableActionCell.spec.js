@@ -188,6 +188,7 @@ describe('testkit', () => {
 
     const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(<div>
       <TableActionCell
+        dataHook={dataHook}
         {...primaryActionProps()}
         />
     </div>));
@@ -200,7 +201,7 @@ describe('testkit', () => {
 describe('enzyme testkit', () => {
   it('should exist', () => {
     const dataHook = 'table-action-cell';
-    const wrapper = mount(<TableActionCell {...primaryActionProps()}/>);
+    const wrapper = mount(<TableActionCell dataHook={dataHook} {...primaryActionProps()}/>);
     const actionCellTextkit = enzymeTableActionCellTestkitFactory({wrapper, dataHook});
     expect(actionCellTextkit.getPrimaryActionPlaceholder()).toBeTruthy();
   });

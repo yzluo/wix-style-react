@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import styles from './TableActionCell.scss';
+import HoverSlot from './HoverSlot';
 import Tooltip from '../Tooltip/Tooltip';
 import Button from '../Button';
 import PopoverMenu from '../PopoverMenu';
@@ -73,18 +73,8 @@ function renderPlaceholder() {
   );
 }
 
-const HoverSlot = ({display, children, ...props}) => (
-  <span className={classNames(styles.hoverSlot, styles[display])} {...props}>
-    {children}
-  </span>
-);
-
-HoverSlot.propTypes = {
-  display: PropTypes.oneOf(['always', 'onHover', 'notOnHover']),
-  children: PropTypes.node
-};
-
 const TableActionCell = ({
+  dataHook,
   primaryAction,
   secondaryActions,
   visibleSecondaryActions,
@@ -94,7 +84,7 @@ const TableActionCell = ({
   const hiddenActions = secondaryActions.slice(visibleSecondaryActions);
 
   return (
-    <span data-hook="table-action-cell" className={styles.actionsContainer}>
+    <span data-hook={dataHook} className={styles.actionsContainer}>
 
       {primaryAction && (
         <HoverSlot display="onHover" data-hook="table-action-cell-primary-action">
@@ -117,7 +107,7 @@ const TableActionCell = ({
       )}
 
       {(primaryAction && !(secondaryActions || []).length) && (
-        <HoverSlot className={styles.placeholderIcon} data-hook="table-action-cell-placeholder">
+        <HoverSlot display="notOnHover" className={styles.placeholderIcon} data-hook="table-action-cell-placeholder">
           {renderPlaceholder()}
         </HoverSlot>
       )}

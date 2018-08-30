@@ -1,4 +1,4 @@
-tr .actionsContainer {
+.actionsContainer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -6,32 +6,23 @@ tr .actionsContainer {
   position: relative;
 }
 
-tr .actionsContainer button {
+.actionsContainer button {
   margin: 0 6px;
   transition-property: background, border;
 }
 
-tr .actionsContainer .hoverSlot.onHover,
-tr:hover .actionsContainer .hoverSlot.notOnHover {
-  visibility: hidden;
-}
-
-tr:hover .actionsContainer .hoverSlot.onHover,
-tr .actionsContainer .hoverSlot.notOnHover {
-  visibility: visible;
-}
-
-// Primary action placeholder
-tr .actionsContainer .placeholderIcon {
-  display: inline-block;
-}
-
-tr:hover .actionsContainer .placeholderIcon {
+tr .actionsContainer span[data-hover-slot="onHover"],
+tr:hover .actionsContainer span[data-hover-slot="notOnHover"] {
   display: none;
 }
 
+tr:hover .actionsContainer span[data-hover-slot="onHover"],
+tr .actionsContainer span[data-hover-slot="notOnHover"] {
+  display: inherit;
+}
+
 :global(.rtl) {
-  tr .actionsContainer .placeholderIcon svg {
+  .actionsContainer .placeholderIcon svg {
     transform: scaleX(-1);
   }
 }
