@@ -24,7 +24,7 @@ class Header extends WixComponent {
     /** define whether header border on the bottom is visible
      * deprecated! use <Card.Divider/> instead
      * @deprecated
-    * */
+     * */
     withoutDivider: bool
   };
 
@@ -41,36 +41,29 @@ class Header extends WixComponent {
       <div>
         <div className={styles.wrapper}>
           <div>
-            { isString(title) ?
-              <Heading
-                dataHook="title"
-                appearance="H3"
-                children={title}
-                /> :
-                title
-            }
+            {isString(title) ? (
+              <Heading dataHook="title" appearance="H3" children={title}/>
+            ) : (
+              <span data-hook="title">{title}</span>
+            )}
 
-            {subtitle &&
-              isString(subtitle) ?
-                <Text
-                  dataHook="subtitle"
-                  children={subtitle}
-                  secondary
-                  /> :
-                subtitle
-            }
+            {subtitle && isString(subtitle) ? (
+              <Text dataHook="subtitle" children={subtitle} secondary/>
+            ) : (
+              <span data-hook="subtitle">{subtitle}</span>
+            )}
           </div>
 
-          { suffix &&
+          {suffix && (
             <div
               data-hook="suffix"
               className={styles.suffix}
               children={suffix}
               />
-          }
+          )}
         </div>
 
-        { !withoutDivider && <Divider/> }
+        {!withoutDivider && <Divider/>}
       </div>
     );
   }

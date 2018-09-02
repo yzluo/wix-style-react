@@ -1,13 +1,13 @@
 import React from 'react';
-import styles from './styles.scss';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {node, bool} from 'prop-types';
+import styles from './styles.scss';
 
-const SideMenu = ({children, inFlex}) => {
+const SideMenu = ({children, inFlex, className}) => {
   const rootStyles = classNames({
     [styles.root]: true,
     [styles.inFlex]: inFlex
-  });
+  }, className);
 
   return (
     <div className={rootStyles} data-hook="side-menu">
@@ -21,8 +21,9 @@ SideMenu.defaultProps = {
 };
 
 SideMenu.propTypes = {
-  inFlex: bool,
-  children: node
+  inFlex: PropTypes.bool,
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 export default SideMenu;

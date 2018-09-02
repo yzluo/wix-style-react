@@ -2,7 +2,7 @@
 
 ## Migration to version 5
 We have updated the appearance ((they way the text looks) of all headings and also extended the appearance values with new ones.
-Possible `appearance values are now:  `H1`, `H2`, `H3`, `H4`, `H5`, `H6`.
+Possible `appearance` values are now:  `H1`, `H2`, `H3`, `H4`, `H5`, `H6`.
 >NOTICE: some appearance values have been moved, for instance H2 should now be H3. (See the following table)
 Check the storybook documentation to see the typography each appearance provide.
 

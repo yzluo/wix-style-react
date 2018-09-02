@@ -4,6 +4,7 @@ import {func, node, oneOf, string} from 'prop-types';
 import Button from '../../../src/Backoffice/Button';
 import WixComponent from '../../BaseComponents/WixComponent';
 import Header from '../Header';
+import deprecationLog from '../../utils/deprecationLog';
 
 const buttonThemes = {
   standard: 'whiteblueprimary',
@@ -14,6 +15,12 @@ const buttonThemes = {
 class ButtonHeader extends WixComponent {
   static displayName = 'ButtonHeader';
 
+  componentDidMount() {
+    deprecationLog(
+      'Card.ButtonHeader is deprecated, please use <Card.Header suffix={<Button/>}/> instead.'
+    );
+  }
+
   static propTypes = {
     ...Header.propTypes,
     title: node.isRequired,
@@ -22,11 +29,8 @@ class ButtonHeader extends WixComponent {
     buttonPrefix: node,
     buttonSuffix: node,
     tooltip: node,
-    theme: oneOf([
-      'standard',
-      'fullblue',
-      'emptyblue'
-    ])
+    theme: oneOf(['standard', 'fullblue', 'emptyblue']),
+    dataHook: string
   };
 
   static defaultProps = {
@@ -48,7 +52,8 @@ class ButtonHeader extends WixComponent {
       buttonSuffix,
       withoutDivider,
       tooltip,
-      theme
+      theme,
+      dataHook
     } = this.props;
 
     const buttonElement = (
@@ -75,6 +80,7 @@ class ButtonHeader extends WixComponent {
         subtitle={subtitle}
         suffix={tooltipElement || buttonElement}
         withoutDivider={withoutDivider}
+        dataHook={dataHook}
         />
     );
   }

@@ -1,10 +1,10 @@
 # `<Card/>`
 
-A generic container component for any content.
+A compound component for any content to be displayed in styled block.
 
-Most often used as compound of `<Card.Header/>` and `<Card.Content/>`.
+Most often used with `<Card.Header/>`, `<Card.Content/>` and `<Card.Divider/>`.
 
-Use [`<Grid/>`](https://wix-wix-style-react.surge.sh/?selectedKind=Common&selectedStory=Grid&full=0&addons=0&stories=1&panelRight=0) component to layout content inside `<Card.Content/>`
+Use [`<Row/>` and `<Col/>`](https://wix-wix-style-react.surge.sh/?selectedKind=Common&selectedStory=Grid&full=0&addons=0&stories=1&panelRight=0) to lay out content inside `<Card.Content/>`
 
 
 ```js
@@ -20,52 +20,40 @@ export default () =>
   </Card>
 ```
 
-| propName          | propType | defaultValue | isRequired | description                                              |
-| ---               | ---      | ---          | ---        | ---                                                      |
-| stretchVertically | bool     | false        | -          | Should this Card stretch vertically inside the container |
+<details>
+  <summary>`Card`</summary>
 
----
-
-Compound components:
+  | propName          | propType | defaultValue | isRequired | description                                                                |
+  | ---               | ---      | ---          | ---        | ---                                                                        |
+  | children          | node     | -            | -          | any nodes to render inside card. Ideally should be one of `<Card.Header/>` |
+  | stretchVertically | bool     | false        | -          | Should this Card stretch vertically inside the container                   |
+</details>
 
 <details>
   <summary>`Card.Header`</summary>
 
-  | propName       | propType | defaultValue | isRequired | description                    |
-  | ---            | ---      | ---          | ---        | ---                            |
-  | title          | string   | -            | +          | The title of the card          |
-  | subtitle       | string   | -            | -          | The subtitle of the card       |
-  | withoutDivider | bool     | false        | -          | Whether to show divider or not |
+  | propName       | propType | defaultValue | isRequired | description                                             |
+  | ---            | ---      | ---          | ---        | ---                                                     |
+  | title          | string   | -            | +          | The title of the card                                   |
+  | subtitle       | string   | -            | -          | The subtitle of the card                                |
+  | suffix         | node     | -            | -          | A component to be displayed on the right side of header |
+  | withoutDivider | bool     | false        | -          | Whether to show divider or not                          |
 </details>
 
 <details>
-  <summary>`Card.ButtonHeader`</summary>
+  <summary>`Card.Content`</summary>
 
-  | propName       | propType | defaultValue | isRequired | description                                  |
-  | ---            | ---      | ---          | ---        | ---                                          |
-  | title          | string   | -            | +          | The title of the card                        |
-  | subtitle       | string   | -            | -          | The subtitle of the card                     |
-  | buttonTitle    | string   | -            | +          | The text to write on the button              |
-  | buttonOnClick  | func     | -            | +          | The onClick function                         |
-  | buttonPrefix   | node     | -            | -          | An optional Icon to put before the button    |
-  | buttonSuffix   | node     | -            | -          | An optional Icon to put after the button     |
-  | tooltip        | node     | -            | -          | If set, this tooltip will wrap the button    |
-  | theme          | string   | 'standard'   | -          | Can be 'standard', 'fullblue' or 'emptyblue' |
-  | withoutDivider | bool     | false        | -          | Whether to show divider or not               |
+  | propName | propType | defaultValue | isRequired | description             |
+  | ---      | ---      | ---          | ---        | ---                     |
+  | children | node     | -            | -          | Any node to be rendered |
 </details>
 
 <details>
-  <summary>`Card.LinkHeader`</summary>
+  <summary>`Card.Divider`</summary>
 
-  | propName       | propType | defaultValue | isRequired | description                             |
-  | ---            | ---      | ---          | ---        | ---                                     |
-  | title          | string   | -            | +          | The title of the card                   |
-  | subtitle       | string   | -            | -          | The subtitle of the card                |
-  | linkTo         | string   | -            | +          | The link to send the user to            |
-  | linkTitle      | string   | -            | +          | The link text                           |
-  | tooltip        | node     | -            | -          | If set, this tooltip will wrap the link |
-  | withoutDivider | bool     | false        | -          | Whether to show divider or not          |
+  Can be used in between `Card.Content`s for visual separation. Accepts no props
 </details>
+
 
 <details>
   <summary>`Card.CollapsedHeader`</summary>
