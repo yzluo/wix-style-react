@@ -9,10 +9,10 @@ const Example = () => (
     <TableActionCell
       dataHook="story-only-visible-secondary"
       secondaryActions={[
-        {name: 'Download', icon: <Download/>, onActionTrigger: () => window.alert('Download action was triggered.')},
-        {name: 'Duplicate', icon: <Duplicate/>, onActionTrigger: () => window.alert('Duplicate action was triggered.')}
+        {text: 'Download', icon: <Download/>, onClick: () => window.alert('Download action was triggered.')},
+        {text: 'Duplicate', icon: <Duplicate/>, onClick: () => window.alert('Duplicate action was triggered.')}
       ]}
-      visibleSecondaryActions={2}
+      numOfVisibleSecondaryActions={2}
       />
   </tr>
 );

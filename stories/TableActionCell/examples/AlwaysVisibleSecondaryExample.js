@@ -9,10 +9,10 @@ const Example = () => (
     <TableActionCell
       dataHook="story-always-visible-secondary"
       secondaryActions={[
-        {name: 'Duplicate', icon: <Duplicate/>, onActionTrigger: () => window.alert('Duplicate action was triggered.')},
-        {name: 'Print', icon: <Print/>, onActionTrigger: () => window.alert('Print action was triggered.')}
+        {text: 'Duplicate', icon: <Duplicate/>, onClick: () => window.alert('Duplicate action was triggered.')},
+        {text: 'Print', icon: <Print/>, onClick: () => window.alert('Print action was triggered.')}
       ]}
-      visibleSecondaryActions={2}
+      numOfVisibleSecondaryActions={2}
       alwaysShowSecondaryActions
       />
   </tr>

@@ -10,40 +10,40 @@ import PopoverMenuItem from '../PopoverMenuItem';
 import ChevronRight from '../new-icons/ChevronRight';
 
 /* eslint-disable react/prop-types */
-function renderPrimaryAction({name, theme, onActionTrigger}) {
+function renderPrimaryAction({text, theme, onClick}) {
   return (
     <Button
       theme={theme}
       onClick={event => {
-        onActionTrigger();
+        onClick();
 
         // Making sure we don't also trigger onRowClick
         event.stopPropagation();
       }}
       >
-      {name}
+      {text}
     </Button>
   );
 }
 /* eslint-enable react/prop-types */
 
 function renderVisibleActions(actions) {
-  return actions.map(({name, icon, onActionTrigger}, index) => (
+  return actions.map(({text, icon, onClick}, index) => (
     <Tooltip
       key={index}
       dataHook="table-action-cell-visible-action-tooltip"
-      content={name}
+      content={text}
       theme="dark"
       >
       <Button
         theme="icon-greybackground"
         onClick={event => {
-          onActionTrigger();
+          onClick();
           event.stopPropagation();
         }}
         withNewIcons
         >
-        {React.cloneElement(icon)}
+        {icon}
       </Button>
     </Tooltip>
   ));
@@ -52,13 +52,13 @@ function renderVisibleActions(actions) {
 function renderHiddenActions(actions) {
   return (
     <PopoverMenu buttonTheme="icon-greybackground" dataHook="table-action-cell-popover-menu" appendToParent>
-      {actions.map(({name, icon, onActionTrigger}, index) => (
+      {actions.map(({text, icon, onClick}, index) => (
         <PopoverMenuItem
           key={index}
           dataHook="table-action-cell-popover-menu-item"
           icon={icon}
-          onClick={() => onActionTrigger()}
-          text={name}
+          onClick={() => onClick()}
+          text={text}
           />
       ))}
     </PopoverMenu>
@@ -77,11 +77,11 @@ const TableActionCell = ({
   dataHook,
   primaryAction,
   secondaryActions,
-  visibleSecondaryActions,
+  numOfVisibleSecondaryActions,
   alwaysShowSecondaryActions
 }) => {
-  const visibleActions = secondaryActions.slice(0, visibleSecondaryActions);
-  const hiddenActions = secondaryActions.slice(visibleSecondaryActions);
+  const visibleActions = secondaryActions.slice(0, numOfVisibleSecondaryActions);
+  const hiddenActions = secondaryActions.slice(numOfVisibleSecondaryActions);
 
   return (
     <span data-hook={dataHook} className={styles.actionsContainer}>
@@ -121,31 +121,31 @@ TableActionCell.propTypes = {
   dataHook: PropTypes.string,
 
   /**
-   * An object containing the primary action properties: `name` is the action
-   * name (the text of the button), `theme` is the button theme (can be
-   * `whiteblue` or `fullblue`), `onActionTrigger` is the callback function for
-   * the action, whose signature is `onActionTrigger(rowData, rowNum)`.
+   * An object containing the primary action properties: `text` is the action
+   * text , `theme` is the button theme (can be `whiteblue` or `fullblue`),
+   * `onClick` is the callback function for the action, whose signature is
+   * `onClick(rowData, rowNum)`.
    */
   primaryAction: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
     theme: PropTypes.oneOf(['whiteblue', 'fullblue']),
-    onActionTrigger: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired
   }),
 
   /**
-   * An array containing the secondary actions: `name` is the action name
+   * An array containing the secondary actions: `text` is the action text
    * (will be shown in the tooltip), `icon` is the icon component for the
-   * action, `onActionTrigger` is the callback function for the action, whose
-   * signature is `onActionTrigger(rowData, rowNum)`.
+   * action, `onClick` is the callback function for the action, whose
+   * signature is `onClick(rowData, rowNum)`.
    */
   secondaryActions: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
     icon: PropTypes.node.isRequired,
-    onActionTrigger: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired
   })),
 
    /** The number of secondary actions to show outside the PopoverMenu */
-  visibleSecondaryActions: PropTypes.number,
+  numOfVisibleSecondaryActions: PropTypes.number,
 
    /** Whether to show the secondary action also when not hovering the row */
   alwaysShowSecondaryActions: PropTypes.bool
@@ -154,7 +154,7 @@ TableActionCell.propTypes = {
 TableActionCell.defaultProps = {
   primaryAction: null,
   secondaryActions: [],
-  visibleSecondaryActions: 0,
+  numOfVisibleSecondaryActions: 0,
   alwaysShowSecondaryActions: false
 };
 

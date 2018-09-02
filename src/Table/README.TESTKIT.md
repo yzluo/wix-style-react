@@ -35,7 +35,6 @@
 |isRowSelected | index : number | boolean | Is row selected by index |
 |getBulkSelectionState | - | string | Get bulk seleciton state. Possible value 'ALL', 'SOME', 'NONE. |
 |getTitlebar | - | element | Get title-bar (column titles) |
-| getRowActionCellDriver | index | `TableActionCellDriver` | Get the action cell driver |
 
 ## Protractor TestKit API
 
@@ -46,7 +45,6 @@
 | element | - | element | get the actual element |
 | getRow | (index) | element | Get a row element |
 | hoverRow | (index) | element | Hover a specific row with the mouse |
-| getRowActionCellDriver | index | `TableActionCellDriver` | Get the action cell driver |
 
 ### Puppeteer
 

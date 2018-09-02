@@ -41,10 +41,11 @@ export class ActionCellPrimaryExample extends React.Component {
               width: '40%',
               render: rowData => (
                 <TableActionCell
+                  dataHook="action-cell-component-primary"
                   primaryAction={{
-                    name: 'Edit',
+                    text: 'Edit',
                     theme: 'whiteblue',
-                    onActionTrigger: () => primaryAction(rowData)
+                    onClick: () => primaryAction(rowData)
                   }}
                   />
               )

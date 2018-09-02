@@ -8,9 +8,9 @@ const Example = () => (
     <TableActionCell
       dataHook="story-primary-blue"
       primaryAction={{
-        name: 'Edit',
+        text: 'Edit',
         theme: 'fullblue',
-        onActionTrigger: () => window.alert('Primary action was triggered!')
+        onClick: () => window.alert('Primary action was triggered!')
       }}
       />
   </tr>

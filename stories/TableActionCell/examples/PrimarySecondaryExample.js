@@ -9,17 +9,17 @@ const Example = () => (
     <TableActionCell
       dataHook="story-primary-secondary"
       primaryAction={{
-        name: 'Edit',
+        text: 'Edit',
         theme: 'whiteblue',
-        onActionTrigger: () => window.alert('Primary action was triggered!')
+        onClick: () => window.alert('Primary action was triggered!')
       }}
       secondaryActions={[
-        {name: 'Star', icon: <Star/>, onActionTrigger: () => window.alert('Star action was triggered.')},
-        {name: 'Download', icon: <Download/>, onActionTrigger: () => window.alert('Download action was triggered.')},
-        {name: 'Duplicate', icon: <Duplicate/>, onActionTrigger: () => window.alert('Duplicate action was triggered.')},
-        {name: 'Print', icon: <Print/>, onActionTrigger: () => window.alert('Print action was triggered.')}
+        {text: 'Star', icon: <Star/>, onClick: () => window.alert('Star action was triggered.')},
+        {text: 'Download', icon: <Download/>, onClick: () => window.alert('Download action was triggered.')},
+        {text: 'Duplicate', icon: <Duplicate/>, onClick: () => window.alert('Duplicate action was triggered.')},
+        {text: 'Print', icon: <Print/>, onClick: () => window.alert('Print action was triggered.')}
       ]}
-      visibleSecondaryActions={1}
+      numOfVisibleSecondaryActions={1}
       />
   </tr>
 );

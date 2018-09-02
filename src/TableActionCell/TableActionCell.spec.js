@@ -10,22 +10,22 @@ import {tableActionCellTestkitFactory as enzymeTableActionCellTestkitFactory} fr
 
 const primaryActionProps = (actionTrigger = () => {}) => ({
   primaryAction: {
-    name: 'primary action',
+    text: 'primary action',
     theme: 'whiteblue',
-    onActionTrigger: actionTrigger
+    onClick: actionTrigger
   }
 });
 
 const secondaryActionsProps = (actionTriggers = []) => {
   const createAction = n => ({
-    name: `Action ${n}`,
+    text: `Action ${n}`,
     icon: <span>{`Icon ${n}`}</span>, // simulate the icon as <span> elements
-    onActionTrigger: actionTriggers[n] || (() => {})
+    onClick: actionTriggers[n] || (() => {})
   });
 
   return {
     secondaryActions: Array(4).fill().map((val, idx) => createAction(idx)),
-    visibleSecondaryActions: 2
+    numOfVisibleSecondaryActions: 2
   };
 };
 
@@ -169,7 +169,7 @@ describe('Table Action Cell', () => {
       <TableActionCell
         {...primaryActionProps()}
         {...secondaryActionsProps()}
-        visibleSecondaryActions={3}
+        numOfVisibleSecondaryActions={3}
         />
     );
 

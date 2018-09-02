@@ -6,7 +6,7 @@ tr .actionsContainer {
   position: relative;
 }
 
-tr .actionsContainer button {
+.hoverSlot > button {
   margin: 0 6px;
   transition-property: background, border;
 }

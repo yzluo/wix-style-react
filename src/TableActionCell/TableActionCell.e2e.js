@@ -1,7 +1,6 @@
 import eyes from 'eyes.it';
 import {createStoryUrl, waitForVisibilityOf, scrollToElement} from 'wix-ui-test-utils/protractor';
 
-import {tableActionCellTestkitFactory} from '../../testkit/protractor';
 import {storySettings} from '../../stories/TableActionCell/storySettings';
 
 const byDataHook = dataHook => $(`[data-hook="${dataHook}"]`);
@@ -19,8 +18,6 @@ describe('Table Action Cell', () => {
     await eyes.checkWindow(dataHook);
     hoverElement(element);
     await eyes.checkWindow(dataHook);
-
-    return tableActionCellTestkitFactory({dataHook});
   };
 
   const examples = {

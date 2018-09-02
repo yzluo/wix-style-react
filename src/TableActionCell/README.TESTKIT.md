@@ -30,18 +30,21 @@
 ## Usage example
 
 Since the `<TableActionCell/>` is meant to be used with `<Table/>`, it is recommended to use the
-`<Table/>`'s testkit in order to access the `<TableActionCell/>`'s driver.
+testkit with `<Table/>`'s testkit in order to access the `<TableActionCell/>` component.
 
 For example:
 
 ```javascript
 import React from 'react';
-import {tableTestkitFactory} from 'wix-style-react/dist/testkit';
+import {tableTestkitFactory, tableActionCellTestkit} from 'wix-style-react/dist/testkit';
 
 // ...
 
-const testkit = tableTestkitFactory({wrapper, dataHook});
-const tableActionCellTestkit = testkit.getRowActionCellDriver(0);
+const tableTestkit = tableTestkitFactory({wrapper, dataHook});
+const tableActionCellTestkit = tableActionCellTestkit({
+  dataHook: 'table-action-cell-datahook',
+  wrapper: tableTestkit.getRow(0)
+});
 ```
 
 A similar approach can be used with the Protractor TestKit.

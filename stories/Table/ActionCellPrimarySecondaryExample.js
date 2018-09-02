@@ -42,18 +42,19 @@ export class ActionCellPrimarySecondaryExample extends React.Component {
               width: '40%',
               render: rowData => (
                 <TableActionCell
+                  dataHook="action-cell-component-secondary"
                   primaryAction={{
-                    name: 'Edit',
+                    text: 'Edit',
                     theme: 'fullblue',
                     onActionTrigger: () => primaryAction(rowData)
                   }}
                   secondaryActions={[
-                    {name: 'Star', icon: <Star/>, onActionTrigger: () => window.alert(`Starring ${rowData.name}`)},
-                    {name: 'Download', icon: <Download/>, onActionTrigger: () => window.alert(`Downloading ${rowData.name}`)},
-                    {name: 'Duplicate', icon: <Duplicate/>, onActionTrigger: () => window.alert(`Duplicating ${(rowData.name)}`)},
-                    {name: 'Print', icon: <Print/>, onActionTrigger: () => window.alert(`Printing ${rowData.name}`)}
+                    {text: 'Star', icon: <Star/>, onClick: () => window.alert(`Starring ${rowData.name}`)},
+                    {text: 'Download', icon: <Download/>, onClick: () => window.alert(`Downloading ${rowData.name}`)},
+                    {text: 'Duplicate', icon: <Duplicate/>, onClick: () => window.alert(`Duplicating ${(rowData.name)}`)},
+                    {text: 'Print', icon: <Print/>, onClick: () => window.alert(`Printing ${rowData.name}`)}
                   ]}
-                  visibleSecondaryActions={2}
+                  numOfVisibleSecondaryActions={2}
                   alwaysShowSecondaryActions={false}
                   />
               )

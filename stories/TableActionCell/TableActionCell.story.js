@@ -30,9 +30,9 @@ import OnlyVisibleSecondaryExampleRaw from '!raw-loader!./examples/OnlyVisibleSe
 import {Star, Download, Duplicate, Print} from 'wix-style-react/new-icons';
 
 const primaryActionOptions1 = {
-  name: 'Details',
+  text: 'Details',
   theme: 'fullblue',
-  onActionTrigger: () => console.log('Details action called!')
+  onClick: () => console.log('Details action called!')
 };
 
 const primaryActionOptions2 = {
@@ -41,10 +41,10 @@ const primaryActionOptions2 = {
 };
 
 const secondaryActionsOption = [
-  {name: 'Star', icon: <Star/>, onActionTrigger: () => console.log('Star action called!')},
-  {name: 'Download', icon: <Download/>, onActionTrigger: () => console.log('Download action called!')},
-  {name: 'Duplicate', icon: <Duplicate/>, onActionTrigger: () => console.log('Duplicate action called!')},
-  {name: 'Print', icon: <Print/>, onActionTrigger: () => console.log('Print action called!')}
+  {text: 'Star', icon: <Star/>, onClick: () => console.log('Star action called!')},
+  {text: 'Download', icon: <Download/>, onClick: () => console.log('Download action called!')},
+  {text: 'Duplicate', icon: <Duplicate/>, onClick: () => console.log('Duplicate action called!')},
+  {text: 'Print', icon: <Print/>, onClick: () => console.log('Print action called!')}
 ];
 
 const ExampleComponent = props => (
@@ -67,7 +67,7 @@ export default {
     dataHook: storySettings.dataHook,
     primaryAction: primaryActionOptions1,
     secondaryActions: secondaryActionsOption,
-    visibleSecondaryActions: 2,
+    numOfVisibleSecondaryActions: 2,
     alwaysShowSecondaryActions: true
   },
 

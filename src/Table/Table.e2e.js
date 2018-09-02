@@ -1,6 +1,6 @@
 import eyes from 'eyes.it';
 
-import {tableTestkitFactory} from '../../testkit/protractor';
+import {tableTestkitFactory, tableActionCellTestkitFactory} from '../../testkit/protractor';
 import {waitForVisibilityOf, scrollToElement} from 'wix-ui-test-utils/protractor';
 import {createStoryUrl} from '../../test/utils/storybook-helpers';
 import {storySettings} from '../../stories/Table/storySettings';
@@ -36,12 +36,20 @@ describe('Table', () => {
       const createDriver = () => init('story-action-cell-primary-example');
 
       eyes.it('should show a primary action placeholder and hide it on row hover', async () => {
-        const driver = await createDriver();
+        const tableDriver = await createDriver();
+        const actionCellDriver = tableActionCellTestkitFactory({dataHook: 'action-cell-component-primary'});
 
-        driver.hoverRow(1);
-        expect(driver.getRow(0).getCssValue('background-color')).toEqual('rgba(0, 0, 0, 0)');
-        driver.hoverRow(0);
-        expect(driver.getRow(0).getCssValue('background-color')).not.toEqual('rgba(0, 0, 0, 0)');
+        expect(actionCellDriver.getPrimaryActionPlaceholder().isDisplayed()).toBe(true);
+        expect(actionCellDriver.getPrimaryActionButton().isDisplayed()).toBe(false);
+        expect(tableDriver.getRow(0).getCssValue('background-color')).toEqual('rgba(0, 0, 0, 0)');
+
+        tableDriver.hoverRow(0);
+
+        expect(actionCellDriver.getPrimaryActionPlaceholder().isDisplayed()).toBe(false);
+        expect(actionCellDriver.getPrimaryActionButton().isDisplayed()).toBe(true);
+        expect(tableDriver.getRow(0).getCssValue('background-color')).not.toEqual('rgba(0, 0, 0, 0)');
+
+        tableDriver.hoverRow(1);
       });
     });
 
@@ -49,8 +57,20 @@ describe('Table', () => {
       const createDriver = () => init('story-action-cell-primary-secondary-example');
 
       eyes.it('should always show the PopoverMenu, and show the primary and secondary actions only on hover', async () => {
-        const driver = await createDriver();
-        driver.hoverRow(0);
+        const tableDriver = await createDriver();
+        const actionCellDriver = tableActionCellTestkitFactory({dataHook: 'action-cell-component-secondary'});
+
+        expect(actionCellDriver.getPrimaryActionButton().isDisplayed()).toBe(false);
+        expect(actionCellDriver.getVisibleActionsWrapper().isDisplayed()).toBe(false);
+        expect(actionCellDriver.getHiddenActionsPopoverMenu().isDisplayed()).toBe(true);
+
+        tableDriver.hoverRow(0);
+
+        expect(actionCellDriver.getPrimaryActionButton().isDisplayed()).toBe(true);
+        expect(actionCellDriver.getVisibleActionsWrapper().isDisplayed()).toBe(true);
+        expect(actionCellDriver.getHiddenActionsPopoverMenu().isDisplayed()).toBe(true);
+
+        tableDriver.hoverRow(1);
       });
     });
   });
