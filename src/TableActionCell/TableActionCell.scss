@@ -1,4 +1,4 @@
-tr .actionsContainer {
+.actionsContainer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -6,28 +6,38 @@ tr .actionsContainer {
   position: relative;
 }
 
-.hoverSlot > button {
-  margin: 0 6px;
-  transition-property: background, border;
+.hoverSlot {
+
+  > button {
+    margin: 0 6px;
+    transition-property: background, border;
+  }
+
+  &.onHover {
+    visibility: hidden;
+
+    tr:hover & {
+      visibility: visible;
+    }
+  }
+
+  &.notOnHover {
+    visibility: visible;
+
+    tr:hover & {
+      visibility: hidden;
+    }
+  }
 }
 
-tr .actionsContainer .hoverSlot.onHover,
-tr:hover .actionsContainer .hoverSlot.notOnHover {
-  visibility: hidden;
-}
-
-tr:hover .actionsContainer .hoverSlot.onHover,
-tr .actionsContainer .hoverSlot.notOnHover {
-  visibility: visible;
-}
 
 // Primary action placeholder
-tr .actionsContainer .placeholderIcon {
+.placeholderIcon {
   display: inline-block;
-}
 
-tr:hover .actionsContainer .placeholderIcon {
-  display: none;
+  tr:hover & {
+    display: none;
+  }
 }
 
 :global(.rtl) {
