@@ -27,6 +27,9 @@ import OnlySecondaryExampleRaw from '!raw-loader!./examples/OnlySecondaryExample
 import OnlyVisibleSecondaryExample from './examples/OnlyVisibleSecondaryExample';
 import OnlyVisibleSecondaryExampleRaw from '!raw-loader!./examples/OnlyVisibleSecondaryExample';
 
+import PrimarySecondaryRTLExample from './examples/PrimarySecondaryRTLExample';
+import PrimarySecondaryRTLExampleRaw from '!raw-loader!./examples/PrimarySecondaryRTLExample';
+
 import {Star, Download, Duplicate, Print} from 'wix-style-react/new-icons';
 
 const primaryActionOptions1 = {
@@ -133,6 +136,12 @@ export default {
       <div className={styles.example}>
         <CodeExample title="Only visible secondary actions" code={OnlyVisibleSecondaryExampleRaw}>
           <OnlyVisibleSecondaryExample/>
+        </CodeExample>
+      </div>
+
+      <div className={styles.example}>
+        <CodeExample title="Primary and secondary actions with RTL" code={PrimarySecondaryRTLExampleRaw}>
+          <PrimarySecondaryRTLExample/>
         </CodeExample>
       </div>
     </div>
