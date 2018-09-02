@@ -5,7 +5,10 @@ module.exports.config = {
   capabilities: {
     browserName: 'chrome',
     shardTestFiles: true,
-    maxInstances: 8
+    maxInstances: 8,
+    chromeOptions: {
+      args: ['--headless']
+    }
   },
   onPrepare() {
     require('./test/protractor-register');
