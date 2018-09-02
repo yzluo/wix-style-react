@@ -1,4 +1,3 @@
-import '../../test/protractor-register';
 import eyes from 'eyes.it';
 import {buttonTestkitFactory, messageBoxFunctionalLayoutTestkitFactory} from '../../testkit/protractor';
 import {waitForVisibilityOf, scrollToElement} from 'wix-ui-test-utils/protractor';

@@ -1,4 +1,3 @@
-import '../../test/protractor-register';
 import eyes from 'eyes.it';
 import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
 import {getStoryUrl} from '../../../test/utils/storybook-helpers';

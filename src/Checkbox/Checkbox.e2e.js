@@ -1,4 +1,3 @@
-import '../../test/protractor-register';
 import eyes from 'eyes.it';
 import {checkboxTestkitFactory} from '../../testkit/protractor';
 import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
