@@ -7,7 +7,7 @@ module.exports.config = {
     shardTestFiles: true,
     maxInstances: 8,
     chromeOptions: {
-      args: ['--headless']
+      args: ['--headless', '--window-size=1050,1075']
     }
   },
   onPrepare() {
