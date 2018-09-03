@@ -25,11 +25,29 @@
   background-color: value(B50);
 }
 
+/*
+ * TableActionCell
+ */
 
-.tableActionCell {
-  -st-extends: TableActionCell;
+/* `onHover` HoverSlot */
+.tableRow TableActionCell::hoverSlot.onHover {
+  visibility: hidden;
 }
 
-.root tr .tableActionCell {
-  background:blue;
+.tableRow:hover TableActionCell::hoverSlot.onHover {
+  visibility: visible;
+}
+
+/* `notOnHover` HoverSlot */
+.tableRow TableActionCell::hoverSlot.notOnHover {
+  visibility: visible;
+}
+
+.tableRow:hover TableActionCell::hoverSlot.notOnHover {
+  visibility: hidden;
+}
+
+/* Placeholder icon */
+.tableRow:hover TableActionCell::placeholderIcon {
+  display: none;
 }

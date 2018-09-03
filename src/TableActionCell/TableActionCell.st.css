@@ -11,30 +11,9 @@
   transition-property: background, border;
 }
 
-.hoverSlot.onHover {
-  visibility: hidden;
-}
-
-.hoverSlot.onHover {
-  visibility: visible;
-}
-
-.hoverSlot.notOnHover {
-  visibility: visible;
-}
-
-.hoverSlot.notOnHover {
-  visibility: hidden;
-}
-
-/* Primary action placeholder */
-.placeholderIcon {
-  display: inline-block;
-}
-
-.placeholderIcon {
-  display: none;
-}
+.hoverSlot.onHover {}
+.hoverSlot.notOnHover {}
+.placeholderIcon {}
 
 :global(.rtl) {
   tr .actionsContainer .placeholderIcon svg {
