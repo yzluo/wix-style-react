@@ -1,0 +1,43 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 36px;
+  position: relative;
+}
+
+.hoverSlot > button {
+  margin: 0 6px;
+  transition-property: background, border;
+}
+
+.hoverSlot.onHover {
+  visibility: hidden;
+}
+
+.hoverSlot.onHover {
+  visibility: visible;
+}
+
+.hoverSlot.notOnHover {
+  visibility: visible;
+}
+
+.hoverSlot.notOnHover {
+  visibility: hidden;
+}
+
+/* Primary action placeholder */
+.placeholderIcon {
+  display: inline-block;
+}
+
+.placeholderIcon {
+  display: none;
+}
+
+:global(.rtl) {
+  tr .actionsContainer .placeholderIcon svg {
+    transform: scaleX(-1);
+  }
+}

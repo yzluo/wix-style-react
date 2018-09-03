@@ -4,7 +4,7 @@ import omit from 'lodash/omit';
 import defaultTo from 'lodash/defaultTo';
 import classNames from 'classnames';
 
-import styles from './Table.scss';
+import style from './Table.st.css';
 import DataTable from '../DataTable';
 import WixComponent from '../BaseComponents/WixComponent';
 import Checkbox from '../Checkbox';
@@ -67,9 +67,7 @@ export function getDataTableProps(tableProps) {
           'hideHeader',
         ),
     newDesign: true,
-    rowClass: classNames(tableProps.rowClass, {
-      [styles.rowHover]: !!tableProps.onRowClick
-    })
+    rowClass: classNames(tableProps.rowClass, style.tableRow)
   };
 }
 
@@ -110,7 +108,7 @@ export class Table extends WixComponent {
   renderChildren() {
     const children = this.props.children;
     return this.props.withWrapper ? (
-      <div>
+      <div {...style('root', {clickable: !!this.props.onRowClick}, this.props)}>
         {children}
       </div>) :
       children;

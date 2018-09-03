@@ -1,0 +1,35 @@
+:import {
+  -st-from: "wix-ui-backoffice/dist/src/palette.st.css";
+  -st-named: D60, B50;
+}
+
+:import {
+  -st-from: '../TableActionCell/TableActionCell.st.css';
+  -st-default: TableActionCell;
+}
+
+.root {
+  -st-states: clickable;
+}
+
+.emptyStateContainer {
+  padding: 42px;
+  border-top: 1px solid value(D60);
+}
+
+.root:clickable .tableRow {
+  cursor: pointer;
+}
+
+.root:clickable .tableRow:hover {
+  background-color: value(B50);
+}
+
+
+.tableActionCell {
+  -st-extends: TableActionCell;
+}
+
+.root tr .tableActionCell {
+  background:blue;
+}
