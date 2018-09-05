@@ -1,0 +1,72 @@
+@import './common';
+
+/* Typography version 5 */
+
+/* SIZE AND FONT-FAMILY */
+$textSize: (
+  tiny: (12px, 15px),
+  small: (14px, 18px),
+  medium: (16px, 24px)
+);
+
+@mixin TextSize($size: medium) {
+  font-size: nth(map-get($textSize, $size), 1);
+  line-height: nth(map-get($textSize, $size), 2);
+}
+
+$textFontFamily: (
+  tiny:   (bold: $FontBold,   normal: $FontMedium, thin: $FontRoman), 
+  small:  (bold: $FontMedium, normal: $FontRoman,  thin: $FontLight),
+  medium: (bold: $FontMedium, normal: $FontRoman,  thin: $FontLight), 
+);
+
+@mixin TextFontFamily($size: medium, $weight: thin) {
+  font-family: map-get(map-get($textFontFamily,$size),$weight);
+}
+
+@mixin TextSizeAndFontFamily($size: medium, $weight: thin) {
+  @include TextFontFamily($size: $size, $weight: $weight);
+  @include TextSize($size: $size);
+}
+
+@each $size, $weights in $textFontFamily {
+  @each $weight, $fontFamily in $weights {
+    .#{$size}_#{$weight} {
+      @include TextSizeAndFontFamily($size: $size, $weight: $weight);
+    }
+  }
+}
+
+/* COLORS */
+@mixin TextColor($light: false, $secondary: false, $skin: standard, $link: false) {
+  @if $skin == success {
+    color: $G10;
+  } @else if $skin == error {
+    color: $R10;
+  } @else if $skin == premium {
+    color: $P10;
+  } @else if $link {
+    color: $B10;
+  } @else if $light and $secondary {
+    color: $D50;
+  } @else if $light {
+    color: $D80;
+  } @else if $secondary {
+    color: $D20;
+  } else {
+    color: $D10;
+  }
+}
+
+/* TEXT */
+@mixin Text(
+  $size: medium,
+  $weight: thin,
+  $light: false,
+  $secondary: false,
+  $skin: standard,
+  $link: false
+  ) {
+  @include TextSizeAndFontFamily($size: $size,$weight: $weight);
+  @include TextColor($light: $light, $secondary: $secondary, $skin: $skin);
+}
