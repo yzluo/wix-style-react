@@ -64,6 +64,7 @@ $base-transition: all 100ms linear;
 
   &.heightx-small {
     @include TextSizeAndFontFamily($size: tiny, $weight: normal);
+    line-height: 18px; /* tiny text has line-height:15 which is a problem centering */
   }
 }
 
