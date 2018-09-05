@@ -4,6 +4,7 @@
 @import '../common';
 @import '../Typography/Typography';
 @import '../common/Focusable/Focusable';
+@import '../TypographyV5';
 
 $base-transition: all 100ms linear;
 
@@ -49,6 +50,21 @@ $base-transition: all 100ms linear;
 
   &#{$focusable-focus-visible} {
     @include FocusBox;
+  }
+
+  /* HEIGHT */
+  @include TextSizeAndFontFamily($size: medium, $weight: normal);
+  
+  &.heightx-large {
+    font-size: 20px;
+  }
+
+  &.heightsmall {
+    @include TextSizeAndFontFamily($size: small, $weight: normal);
+  }
+
+  &.heightx-small {
+    @include TextSizeAndFontFamily($size: tiny, $weight: normal);
   }
 }
 
@@ -169,18 +185,7 @@ $base-transition: all 100ms linear;
 
 .fullblue,
 .icon-standard {
-  @extend .t1_2;
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: $B10;
   border-color: $B10;
@@ -197,102 +202,34 @@ $base-transition: all 100ms linear;
 }
 
 .fullpurple {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: $P10;
   border-color: $P10;
 }
 
 .fullgreen {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: $G10;
   border-color: $G10;
 }
 
 .fullred {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: $R10;
   border-color: $R10;
 }
 
 .emptygreen {
-  @extend .t1_3;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_3;
-    color: $G10;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
-    color: $G10;
-  }
-
-  color: $G10;
+  @include TextColor($skin: success);
 
   background-color: $D80;
   border-color: $G10;
 }
 
 .emptyred {
-  @extend .t1_3;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_3;
-    color: $R00;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
-    color: $R00;
-  }
-
   color: $R00;
 
   background-color: transparent;
@@ -300,19 +237,7 @@ $base-transition: all 100ms linear;
 }
 
 .emptyblue {
-  @extend .t1_3;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_3;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
-  }
+  @include TextColor($link: true);
 
   background-color: $D80;
   border-color: #5babef;
@@ -329,22 +254,6 @@ $base-transition: all 100ms linear;
 }
 
 .emptypurple {
-  @extend .t1_3;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_3;
-    color: $P00;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
-    color: $P00;
-  }
-
   color: $P00;
 
   background-color: transparent;
@@ -353,19 +262,7 @@ $base-transition: all 100ms linear;
 
 .close-transparent,
 .transparent {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: rgba($D10, 0.24);
   border: 0;
@@ -373,19 +270,7 @@ $base-transition: all 100ms linear;
 
 .transparentblue,
 .icon-standardsecondary {
-  @extend .t1_3;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_3;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
-  }
+  @include TextColor($link: true);
 
   background-color: transparent;
   border-color: $B10;
@@ -396,19 +281,7 @@ $base-transition: all 100ms linear;
 .whiteblueprimary,
 .icon-white,
 .whiteblue {
-  @extend .t1_3;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_3;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
-  }
+  @include TextColor($link: true);
 
   background-color: $D80;
   border-color: $D80;
@@ -416,18 +289,8 @@ $base-transition: all 100ms linear;
 
 .whitebluesecondary,
 .icon-whitesecondary {
-  @extend .t1_2;
-  &.heightx-large {
-    font-size: 20px;
-  }
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
-
+  @include TextColor($light: true);
+  
   background-color: transparent;
   border-color: $D80;
 }
@@ -448,19 +311,7 @@ $base-transition: all 100ms linear;
 .fullgreen.hover,
 .emptygreen:hover,
 .emptygreen.hover {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: $G20;
   border-color: $G20;
@@ -470,19 +321,7 @@ $base-transition: all 100ms linear;
 .fullred.hover,
 .emptyred:hover,
 .emptyred.hover {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: $R20;
   border-color: $R20;
@@ -502,19 +341,7 @@ $base-transition: all 100ms linear;
 .transparentblue.hover,
 .whiteblue:hover,
 .whiteblue.hover {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: $B20;
   border-color: $B20;
@@ -540,19 +367,7 @@ $base-transition: all 100ms linear;
 .whiteblueprimary.hover,
 .emptybluesecondary:hover,
 .emptybluesecondary.hover {
-  @extend .t1_3;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_3;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
-  }
+  @include TextColor($link: true);
 
   background-color: $B50;
   border-color: $B50;
@@ -562,19 +377,7 @@ $base-transition: all 100ms linear;
 .transparent.hover,
 .close-transparent:hover,
 .close-transparent.hover {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: rgba($D10, 0.3);
 }
@@ -583,19 +386,7 @@ $base-transition: all 100ms linear;
 .emptypurple.hover,
 .fullpurple:hover,
 .fullpurple.hover {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: $P20;
   border-color: $P20;
@@ -622,19 +413,7 @@ $base-transition: all 100ms linear;
 .whiteblue.active,
 .emptyblue:active,
 .emptyblue.active {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: $B10;
   border-color: $B10;
@@ -660,19 +439,7 @@ $base-transition: all 100ms linear;
 .icon-whitesecondary.active,
 .whitebluesecondary:active,
 .whitebluesecondary.active {
-  @extend .t1_3;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_3;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
-  }
+  @include TextColor($link: true);
 
   background-color: $B40;
   border-color: $B40;
@@ -680,19 +447,7 @@ $base-transition: all 100ms linear;
 
 .emptybluesecondary:active,
 .emptybluesecondary.active {
-  @extend .t1_3;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_3;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
-  }
+  @include TextColor($link: true);
 
   background-color: $D80;
   border-color: $D80;
@@ -702,19 +457,7 @@ $base-transition: all 100ms linear;
 .emptypurple.active,
 .fullpurple:active,
 .fullpurple.active {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: $P10;
   border-color: $P10;
@@ -724,17 +467,7 @@ $base-transition: all 100ms linear;
 .fullgreen.active,
 .emptygreen:active,
 .emptygreen.active {
-  @extend .t1_2;
-  &.heightx-large {
-    font-size: 20px;
-  }
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: $G00;
   border-color: $G00;
@@ -744,19 +477,7 @@ $base-transition: all 100ms linear;
 .fullred.active,
 .emptyred:active,
 .emptyred.active {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: $R10;
   border-color: $R10;
@@ -766,19 +487,7 @@ $base-transition: all 100ms linear;
 .transparent.active,
 .close-transparent:active,
 .close-transparent.active {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   background-color: rgba($D10, 0.36);
 }
@@ -806,19 +515,7 @@ $base-transition: all 100ms linear;
 .button.icon-white.disabled,
 .button.whiteblueprimary.disabled,
 .button.close-transparent.disabled {
-  @extend .t1_2;
-
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
-  }
+  @include TextColor($light: true);
 
   cursor: default;
   background-color: $D55;
@@ -835,18 +532,11 @@ $base-transition: all 100ms linear;
 .button.whiteblue.disabled,
 .button.icon-whitesecondary.disabled,
 .button.whitebluesecondary.disabled {
-  @extend .t1_4;
+  @include Text($size: medium, $weight: normal, $secondary: true, $light: true);
 
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_4;
-  }
-
-  &.heightx-small {
-    @extend .t3_4;
+  &.heightsmall,
+  &.heightx-small  {
+    @include TextColor($secondary: true, $light: true);
   }
 
   cursor: default;
@@ -866,22 +556,15 @@ $base-transition: all 100ms linear;
   background: transparent;
   color: $D10;
   border: none;
-  @extend .t1_2;
+  @include TextColor($light: true);
 
   &:hover, &.hover {
     color: $B10;
   }
 
-  &.heightx-large {
-    font-size: 20px;
-  }
-
-  &.heightsmall {
-    @extend .t3_1;
-  }
-
-  &.heightx-small {
-    @extend .t4_1;
+  &.heightsmall,
+  &.heightx-small  {
+    @include TextColor($secondary: true);
   }
 }
 
@@ -889,28 +572,19 @@ $base-transition: all 100ms linear;
   background: transparent;
   border: none;
   color: #fff;
-  @extend .t1_2;
+  @include TextColor($light: true);
 
   &:hover {
     color: $B10;
   }
 
-  &.heightx-large {
-    font-size: 20px;
-  }
-  &.heightsmall {
-    @extend .t3_2;
-  }
-  &.heightx-small {
-    @extend .t4_2;
-  }
 }
 
 .outlined {
   background: transparent;
   border: 1px solid $D40;
   color: $D10;
-  @extend .t1_2;
+  @include TextColor($light: true);
 
   &:hover {
     background: $D20;
@@ -930,11 +604,9 @@ $base-transition: all 100ms linear;
     border-color: $D55;
   }
 
-  &.heightsmall {
-    @extend .t3_1;
-  }
-
-  &.heightx-small {
-    @extend .t4_1;
+  &.heightsmall,
+  &.heightx-small  {
+    @include TextColor($secondary: true);
   }
 }
+
