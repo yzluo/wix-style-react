@@ -554,14 +554,14 @@ $base-transition: all 100ms linear;
 
 .no-border {
   background: transparent;
-  color: $D10;
   border: none;
-  @include TextColor($light: true);
 
+  color: $D10;
+  
   &:hover, &.hover {
     color: $B10;
   }
-
+  
   &.heightsmall,
   &.heightx-small  {
     @include TextColor($secondary: true);
@@ -572,7 +572,6 @@ $base-transition: all 100ms linear;
   background: transparent;
   border: none;
   color: #fff;
-  @include TextColor($light: true);
 
   &:hover {
     color: $B10;
@@ -584,7 +583,6 @@ $base-transition: all 100ms linear;
   background: transparent;
   border: 1px solid $D40;
   color: $D10;
-  @include TextColor($light: true);
 
   &:hover {
     background: $D20;
