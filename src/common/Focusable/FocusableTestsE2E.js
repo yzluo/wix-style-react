@@ -69,9 +69,6 @@ function runFocusTestsImpl(driver, storyUrl) {
       await browser.get(storyUrl);
       await waitForVisibilityOf(driver.element(), 'Cannot find element');
     });
-    beforeEach(async () => {
-      autoExampleDriver.remount();
-    });
 
     beforeEach(() => autoExampleDriver.remount());
 
