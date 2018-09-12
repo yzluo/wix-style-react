@@ -54,18 +54,19 @@ $base-transition: all 100ms linear;
   /* HEIGHT */
   @include TextSizeAndFontFamily($size: medium, $weight: normal);
   
-  &.heightx-large {
-    font-size: 20px;
-  }
+}
 
-  &.heightsmall {
-    @include TextSizeAndFontFamily($size: small, $weight: normal);
-  }
+.heightx-large {
+  font-size: 20px;
+}
 
-  &.heightx-small {
-    @include TextSizeAndFontFamily($size: tiny, $weight: normal);
-    line-height: 18px; /* tiny text has line-height:15 which is a problem centering */
-  }
+.heightsmall {
+  @include TextSizeAndFontFamily($size: small, $weight: normal);
+}
+
+.heightx-small {
+  @include TextSizeAndFontFamily($size: tiny, $weight: normal);
+  line-height: 18px; /* tiny text has line-height:15 which is a problem centering */
 }
 
 .button>.inner {
