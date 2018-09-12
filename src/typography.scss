@@ -81,24 +81,28 @@ $typography_textFontFamily: (
 }
 
 /* COLORS */
-@mixin TextColor($light: false, $secondary: false, $skin: standard, $link: false) {
+@function getTextColor($light: false, $secondary: false, $skin: standard, $link: false) {
   @if $skin == success {
-    color: $G10;
+    @return $G10;
   } @else if $skin == error {
-    color: $R10;
+    @return $R10;
   } @else if $skin == premium {
-    color: $P10;
+    @return $P10;
   } @else if $link {
-    color: $B10;
+    @return $B10;
   } @else if $light and $secondary {
-    color: $D40;
+    @return $D40;
   } @else if $light {
-    color: $D80;
+    @return $D80;
   } @else if $secondary {
-    color: $D20;
+    @return $D20;
   } @else {
-    color: $D10;
+    @return $D10;
   }
+}
+
+@mixin TextColor($light: false, $secondary: false, $skin: standard, $link: false) {
+  color: getTextColor($light: $light, $secondary: $secondary, $skin: $skin, $link: $link);
 }
 
 /* TEXT */
