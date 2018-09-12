@@ -53,7 +53,7 @@ $textFontFamily: (
     color: $D80;
   } @else if $secondary {
     color: $D20;
-  } else {
+  } @else {
     color: $D10;
   }
 }
