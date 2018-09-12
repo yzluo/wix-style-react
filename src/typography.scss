@@ -5,26 +5,74 @@
 
 /* Typography version 5 */
 
+/* Heading */
+/*---------*/
+
+$typography_headers: (
+  /*    (font-family, font-size, line-height, color, uppercase, letter-spacing) */
+  "h1": ($FontMedium, 36px, 48px, ($D10, $D80), null     , null ),
+  "h2": ($FontMedium, 28px, 42px, ($D10, $D80), null     , null ),
+  "h3": ($FontRoman , 20px, 24px, ($D10, $D80), null     , null ),
+  "h4": ($FontRoman , 18px, 24px, ($D10, $D80), null     , null ), 
+  "h5": ($FontMedium, 12px, 24px, ($D20, $D50), UPPERCASE, 1px  ),
+  "h6": ($FontMedium, 10px, 18px, ($D10, $D50), UPPERCASE, 1.2px),
+);
+
+@mixin HeadingNoColor($tagName) {
+  $heading: map-get($typography_headers, $tagName);
+  
+  font-family: nth($heading, 1);
+  font-size: nth($heading, 2);
+  line-height: nth($heading, 3);
+  
+  @if nth($heading,5) == UPPERCASE {
+    text-transform: uppercase;
+  }
+
+  $letterSpacing: nth($heading,6);
+  @if $letterSpacing != null {
+    letter-spacing: $letterSpacing;
+  }
+}
+
+@mixin HeadingColor($tagName, $light) {
+  $colors: nth(map-get($typography_headers, $tagName),4);
+  
+  @if $light {
+    color: nth($colors, 2);
+  } else {
+    color: nth($colors, 1);
+  }
+}
+
+@mixin Heading($tagName: h1, $light: false) {
+  @include HeadingNoColor($tagName: $tagName);
+  @include HeadingColor($tagName: $tagName, $light: $light);
+}
+
+/* Text */
+/*------*/
+
 /* SIZE AND FONT-FAMILY */
-$textSize: (
+$typography_textSize: (
   tiny: (12px, 15px),
   small: (14px, 18px),
   medium: (16px, 24px)
 );
 
 @mixin TextSize($size: medium) {
-  font-size: nth(map-get($textSize, $size), 1);
-  line-height: nth(map-get($textSize, $size), 2);
+  font-size: nth(map-get($typography_textSize, $size), 1);
+  line-height: nth(map-get($typography_textSize, $size), 2);
 }
 
-$textFontFamily: (
+$typography_textFontFamily: (
   tiny:   (bold: $FontBold,   normal: $FontMedium, thin: $FontRoman), 
   small:  (bold: $FontMedium, normal: $FontRoman,  thin: $FontLight),
   medium: (bold: $FontMedium, normal: $FontRoman,  thin: $FontLight), 
 );
 
 @mixin TextFontFamily($size: medium, $weight: thin) {
-  font-family: map-get(map-get($textFontFamily,$size),$weight);
+  font-family: map-get(map-get($typography_textFontFamily,$size),$weight);
 }
 
 @mixin TextSizeAndFontFamily($size: medium, $weight: thin) {
