@@ -102,7 +102,11 @@ $typography_textFontFamily: (
 }
 
 @mixin TextColor($light: false, $secondary: false, $skin: standard, $link: false) {
-  color: getTextColor($light: $light, $secondary: $secondary, $skin: $skin, $link: $link);
+  color: getTextColor(
+    $light: $light,
+    $secondary: $secondary,
+    $skin: $skin,
+    $link: $link);
 }
 
 /* TEXT */
@@ -115,5 +119,9 @@ $typography_textFontFamily: (
   $link: false
   ) {
   @include TextSizeAndFontFamily($size: $size,$weight: $weight);
-  @include TextColor($light: $light, $secondary: $secondary, $skin: $skin);
+  @include TextColor(
+    $light: $light,
+    $secondary: $secondary,
+    $skin: $skin,
+    $link: $link);
 }
