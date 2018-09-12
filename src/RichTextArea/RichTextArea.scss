@@ -1,5 +1,5 @@
 @import '../common';
-@import '../Typography/Typography';
+@import '../typography';
 
 $minWidth: 380px;
 $minHeight: 132px;
@@ -99,7 +99,7 @@ $richTextAreaFocus: 0 0 0 2px $F00;
 }
 
 .editor {
-  @extend .t1;
+  @include Text($weight: thin, $size: medium);
   flex: 1 1 auto;
   padding: $paddingTop $paddingLeft;
   border-bottom-left-radius: $borderRadius;
@@ -135,19 +135,18 @@ $richTextAreaFocus: 0 0 0 2px $F00;
 }
 
 .placeholder {
-  @extend .t2_1;
-  color: $D40;
+  @include Text($weight: normal, $size: medium, $light: true, $secondary: true);
 }
 
 .link {
-  @extend .t1_3;
+  @include Text($weight: thin, $size: medium, $link: true);
 }
 
 .disabled {
-  @extend .t2_1;
+  @include Text($weight: normal, $size: medium, $light: true, $secondary: true);
 
   .link {
-    @extend .t1_4;
+    @include Text($weight: thin, $size: medium, $light: true, $secondary: true);
   }
 }
 
