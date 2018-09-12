@@ -1,6 +1,6 @@
 @import '../common.scss';
 @import './InputAreaMixins.scss';
-@import '../Typography/Typography.scss';
+@import '../typography.scss';
 
 $input-area-padding-exclamation: 34px;
 $input-area-padding-horizontal: 12px;
@@ -57,9 +57,12 @@ $gap: 6px;
     border: 0;
     outline: 0;
     background: transparent;
-    @extend .t2_1;
-    @include Placeholder($paletteE6);
+    @include TextSizeAndFontFamily($size: medium, $weight: normal);
+
+    @include Placeholder(getTextColor($light: true, $secondary: true));
     @include Selection($paletteB4);
+
+
 }
 
 .counter{
