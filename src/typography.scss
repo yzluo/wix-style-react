@@ -91,7 +91,7 @@ $typography_textFontFamily: (
   } @else if $link {
     color: $B10;
   } @else if $light and $secondary {
-    color: $D50;
+    color: $D40;
   } @else if $light {
     color: $D80;
   } @else if $secondary {
