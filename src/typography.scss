@@ -1,3 +1,6 @@
+/*
+ * This file should contain mixins only (not actuall classes)
+ */
 @import './common';
 
 /* Typography version 5 */
@@ -27,14 +30,6 @@ $textFontFamily: (
 @mixin TextSizeAndFontFamily($size: medium, $weight: thin) {
   @include TextFontFamily($size: $size, $weight: $weight);
   @include TextSize($size: $size);
-}
-
-@each $size, $weights in $textFontFamily {
-  @each $weight, $fontFamily in $weights {
-    .#{$size}_#{$weight} {
-      @include TextSizeAndFontFamily($size: $size, $weight: $weight);
-    }
-  }
 }
 
 /* COLORS */
