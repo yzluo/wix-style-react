@@ -1,8 +1,8 @@
 @import '../common.scss';
-@import '../Typography/Typography';
+@import '../typography';
 
 .container {
-  @extend .t1;
+  @include Text($size: medium, $weight: normal);
   display: flex;
   max-width: 100%;
   border-bottom: 1px solid transparent;
@@ -60,12 +60,12 @@
   }
 
   &:hover {
-    @extend .t1_3;
+    @include TextColor($link: true);
   }
 }
 
 .active {
-  @extend .t1_3;
+  @include TextColor($link: true);
   border-color: $B10;
 }
 
