@@ -23,11 +23,13 @@ class InputWithOptions extends WixComponent {
 
   constructor(props) {
     super(props);
+    const selectedOptionId = this._getOptionIdByValue(this.props.value);
     this.state = {
       inputValue: props.value || '',
       showOptions: false,
       lastOptionsShow: 0,
-      isEditing: false
+      isEditing: false,
+      selectedOptionId
     };
 
     this._onSelect = this._onSelect.bind(this);
@@ -45,6 +47,16 @@ class InputWithOptions extends WixComponent {
     this._onInputClicked = this._onInputClicked.bind(this);
     this.closeOnSelect = this.closeOnSelect.bind(this);
     this.onCompositionChange = this.onCompositionChange.bind(this);
+    this._getOptionIdByValue = this._getOptionIdByValue.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value !== this.props.value) {
+      const selectedOptionId = this._getOptionIdByValue(nextProps.value);
+      this.setState({
+        selectedOptionId
+      });
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -102,7 +114,7 @@ class InputWithOptions extends WixComponent {
 
   _renderDropdownLayout() {
     const inputOnlyProps = omit(['tabIndex'], Input.propTypes);
-    const dropdownProps = Object.assign(omit(Object.keys(inputOnlyProps).concat(['dataHook']), this.props), this.dropdownAdditionalProps());
+    const dropdownProps = Object.assign(omit(Object.keys(inputOnlyProps).concat(['dataHook', 'selectedId']), this.props), this.dropdownAdditionalProps());
 
     const customStyle = {marginLeft: this.props.dropdownOffsetLeft};
 
@@ -118,6 +130,7 @@ class InputWithOptions extends WixComponent {
         <DropdownLayout
           ref={dropdownLayout => this.dropdownLayout = dropdownLayout}
           {...dropdownProps}
+          selectedId={this.state.selectedOptionId}
           options={this._processOptions(dropdownProps.options)}
           theme={this.props.theme}
           visible={isDropdownLayoutVisible}
@@ -191,15 +204,23 @@ class InputWithOptions extends WixComponent {
     if (isSelectedOption) {
       this.setState({showOptions: false});
     } else if (onSelect) {
+      this.setState({selectedOptionId: option.id});
       onSelect(this.props.highlight ? this.props.options.find(opt => opt.id === option.id) : option);
     }
   }
 
   _onChange(event) {
-    this.setState({inputValue: event.target.value});
+    const {value} = event.target;
+    const selectedOptionId = this._getOptionIdByValue(value);
+    this.setState({inputValue: value, selectedOptionId});
     if (this.props.onChange) {
       this.props.onChange(event);
     }
+  }
+
+  _getOptionIdByValue(value) {
+    const option = this.props.options.find(opt => opt.value === value);
+    return option ? option.id : null;
   }
 
   _onInputClicked(event) {

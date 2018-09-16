@@ -22,8 +22,7 @@ class ControlledInputWithOptions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
-      selectedId: -1
+      value: options[4].value
     };
   }
 
@@ -57,7 +56,6 @@ class ControlledInputWithOptions extends React.Component {
     return (
       <InputWithOptions
         options={options.filter(predicate)}
-        selectedId={this.state.selectedId}
         value={this.state.value}
         onChange={onChange}
         onSelect={onSelect}
