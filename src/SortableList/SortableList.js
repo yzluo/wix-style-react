@@ -111,6 +111,7 @@ export default class SortableList extends WixComponent {
               <Draggable
                 {...common}
                 key={`${item.id}-${index}-${this.props.containerId}`}
+                disabled={item.disabled}
                 id={item.id}
                 index={index}
                 item={item}
@@ -142,7 +143,7 @@ SortableList.propTypes = {
     inside of renderItem callback
   */
   dragPreview: PropTypes.bool,
-  /** list of items with {id: any} */
+  /** list of items with {id: any, disabled:bool} */
   items: PropTypes.array,
   /** callback for drag start */
   onDragStart: PropTypes.func,

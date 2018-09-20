@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import identity from 'lodash/identity';
 
 import WixComponent from '../../BaseComponents/WixComponent';
 import DraggableSource from './components/DraggableSource';
@@ -7,9 +8,19 @@ import DraggableTarget from './components/DraggableTarget';
 
 export class Draggable extends WixComponent {
   render() {
-    return (
+    const { item, id } = this.props;
+    return this.props.disabled ? (
+      this.props.renderItem({
+        ...this.props,
+        isPlaceHolder: false,
+        isPreview: false,
+        connectHandle: identity,
+        item,
+        id
+      })
+    ) : (
       <DraggableTarget {...this.props}>
-        <DraggableSource {...this.props}/>
+        <DraggableSource {...this.props} />
       </DraggableTarget>
     );
   }
@@ -39,7 +50,9 @@ Draggable.propTypes = {
   /** callback for drag start */
   onDragStart: PropTypes.func,
   /** callback for drag end */
-  onDragEnd: PropTypes.func
+  onDragEnd: PropTypes.func,
+  /** Disabled Drag and Drop Item */
+  disabled: PropTypes.bool
 };
 
 export default Draggable;

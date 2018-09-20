@@ -9,24 +9,31 @@ import styles from './IntroductionExample.scss';
 export default class IntroductionExample extends React.Component {
   constructor() {
     super();
-    this.state = {items: [
-      {
-        id: 'a',
-        text: 'Item 1'
-      },
-      {
-        id: 'b',
-        text: 'Item 2'
-      },
-      {
-        id: 'c',
-        text: 'Item 3'
-      },
-      {
-        id: 'd',
-        text: 'Item 4'
-      }
-    ]};
+    this.state = {
+      items: [
+        {
+          id: 'a',
+          text: 'Item 1'
+        },
+        {
+          id: 'b',
+          text: 'Item 2'
+        },
+        {
+          id: 'c',
+          text: 'Item 3'
+        },
+        {
+          id: 'd',
+          text: 'Item 4'
+        },
+        {
+          id: 'e',
+          text: 'Disabled Item 5',
+          disabled: true
+        }
+      ]
+    };
   }
 
   handleDrop = ({removedIndex, addedIndex}) => {
@@ -65,4 +72,3 @@ export default class IntroductionExample extends React.Component {
     );
   }
 }
-
