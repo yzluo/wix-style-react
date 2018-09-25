@@ -329,6 +329,20 @@ describe('MultiSelect', () => {
     expect(onSelect).toBeCalledWith([{id: options[0].id, label: options[0].value}]);
   });
 
+  describe('Regressions', () => {
+    it('ISSUE-2166-<MultiSelect/> (Tags) - Cant blur component with autoFocus property', () => {
+      const dataHook = 'myDataHook';
+      const wrapper = ReactTestUtils.renderIntoDocument(<div><MultiSelect dataHook={dataHook} options={options} autoFocus/></div>);
+      const {driver, inputDriver, dropdownLayoutDriver} = multiSelectTestkitFactory({wrapper, dataHook});
+      expect(inputDriver.isFocus()).toBeTruthy();
+      expect(dropdownLayoutDriver.isShown()).toBeTruthy();
+      inputDriver.blur();
+      driver.outsideClick();
+      expect(inputDriver.isFocus()).toBeFalsy();
+      expect(dropdownLayoutDriver.isShown()).toBeFalsy();
+    });
+  });
+
   describe('testkit', () => {
     it('should exist', () => {
       const div = document.createElement('div');
