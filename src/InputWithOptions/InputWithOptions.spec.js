@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactTestUtils from 'react-dom/test-utils';
 import {mount} from 'enzyme';
 
@@ -427,6 +428,108 @@ const runInputWithOptionsTest = driverFactory => {
         driver.pressDownKey();
         driver.pressSpaceKey();
         expect(onSelect).toBeCalledWith(options[0]);
+      });
+    });
+
+    describe('regressions', () => {
+      const simpleOptions = [
+        {id: '0', value: 'First option'},
+        {id: '1', value: 'Second option'},
+        {id: '2', value: 'Third option', disabled: true},
+        {id: '3', value: 'Fourth option'},
+        {id: '4', value: 'Fifth option'},
+        {id: '5', value: 'Very long option text jldlkasj ldk jsalkdjsal kdjaklsjdlkasj dklasj'}
+      ];
+      class ControlledInput extends React.Component {
+        static propTypes = {
+          dataHook: PropTypes.string,
+          onSelect: PropTypes.func
+        }
+
+        state = {
+          value: '',
+          selectedId: -1
+        }
+
+        handleChange = event => this.setState({value: event.target.value});
+        handleSelect = option => {
+          this.setState({value: option.value, selectedId: option.id});
+          if (this.props.onSelect) {
+            this.props.onSelect(option);
+          }
+        };
+
+        render() {
+          const predicate = element => {
+            return this.state.value ?
+              element.value.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1 :
+              true;
+          };
+
+          return (
+            <InputWithOptions
+              highlight
+              value={this.state.value}
+              dataHook={this.props.dataHook}
+              selectedId={this.state.selectedId}
+              options={simpleOptions.filter(predicate)}
+              onChange={this.handleChange}
+              onSelect={this.handleSelect}
+              />
+          );
+        }
+      }
+
+      it('ISSUE-2189: wrong input state after select same item', () => {
+        const onSelect = jest.fn();
+        const dataHook = 'myDataHook';
+        const wrapper = ReactTestUtils.renderIntoDocument(
+          <div>
+            <ControlledInput dataHook={dataHook} onSelect={onSelect}/>
+          </div>
+        );
+        const {driver, inputDriver, dropdownLayoutDriver} = inputWithOptionsTestkitFactory({wrapper, dataHook});
+
+        driver.focus();
+        driver.pressDownKey();
+        driver.pressTabKey();
+
+        expect(inputDriver.getValue()).toEqual(simpleOptions[0].value);
+        expect(onSelect).toBeCalledWith(simpleOptions[0]);
+
+        onSelect.mockClear();
+
+        inputDriver.focus();
+        inputDriver.enterText('First');
+
+        expect(dropdownLayoutDriver.isShown()).toBeTruthy();
+
+        driver.pressDownKey();
+        driver.pressTabKey();
+        expect(onSelect).toBeCalledWith(simpleOptions[0]);
+        expect(inputDriver.getValue()).toEqual(simpleOptions[0].value);
+      });
+
+      it('ISSUE-2189: wrong input state after select same item(type same text)', () => {
+        const onSelect = jest.fn();
+        const dataHook = 'myDataHook';
+        const wrapper = ReactTestUtils.renderIntoDocument(
+          <div>
+            <ControlledInput dataHook={dataHook} onSelect={onSelect}/>
+          </div>
+        );
+        const {driver, inputDriver} = inputWithOptionsTestkitFactory({wrapper, dataHook});
+
+        driver.focus();
+        driver.pressDownKey();
+        driver.pressTabKey();
+        onSelect.mockClear();
+        inputDriver.focus();
+        inputDriver.enterText(simpleOptions[0].value);
+        driver.pressDownKey();
+        driver.pressTabKey();
+        expect(onSelect).not.toBeCalled();
+        expect(inputDriver.getValue()).toEqual(simpleOptions[0].value);
       });
     });
 

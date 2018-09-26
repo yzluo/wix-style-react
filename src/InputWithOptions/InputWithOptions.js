@@ -187,13 +187,12 @@ class InputWithOptions extends WixComponent {
     if (this.closeOnSelect()) {
       this.setState({showOptions: false});
     }
-
-    if (isSelectedOption) {
+    const selectedOption = this.props.highlight ? this.props.options.find(opt => opt.id === option.id) : option;
+    const isSameInputValue = !this.state.inputValue || (selectedOption.value === this.state.inputValue);
+    if (isSelectedOption && isSameInputValue) {
       this.setState({showOptions: false});
-    }
-
-    if (onSelect) {
-      onSelect(this.props.highlight ? this.props.options.find(opt => opt.id === option.id) : option);
+    } else if (onSelect) {
+      onSelect(selectedOption);
     }
   }
 
