@@ -62,7 +62,8 @@ const variants = props => (
             'transparentblue',
             'whiteblue',
             'whiteblueprimary',
-            'whitebluesecondary'
+            'whitebluesecondary',
+            'no-border'
           ],
           {children: 'Click Me', ...props}
         )

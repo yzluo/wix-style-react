@@ -565,9 +565,12 @@ $base-transition: all 100ms linear;
   color: $D55;
 }
 
+// no-border is used in Wix MyAccount header, and should not be part of WSR.
 .no-border {
   background: transparent;
   border: none;
+
+  @include TextSizeAndFontFamily($size: medium, $weight: thin);
 
   color: $D10;
 
@@ -578,6 +581,14 @@ $base-transition: all 100ms linear;
   &.heightsmall,
   &.heightx-small  {
     @include TextColor($secondary: true);
+  }
+  &.heightsmall {
+    @include TextSizeAndFontFamily($size: small, $weight: thin);
+  }
+  
+  &.heightx-small {
+    @include TextSizeAndFontFamily($size: tiny, $weight: thin);
+    line-height: 18px; /* tiny text has line-height:15 which is a problem centering */
   }
 }
 
