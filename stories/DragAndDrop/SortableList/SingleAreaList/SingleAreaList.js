@@ -10,8 +10,11 @@ import styles from './SingleAreaList.scss';
 const generateId = () => Math.floor((Math.random() * 100000));
 
 export default class SingleAreaList extends React.Component {
+
+  //These are just example props for the documentation
   static propTypes = {
-    withHandle: PropTypes.bool
+    withHandle: PropTypes.bool,
+    withDisabledItems: PropTypes.bool
   };
 
   state = {
@@ -26,7 +29,8 @@ export default class SingleAreaList extends React.Component {
       },
       {
         id: generateId(),
-        text: 'Item 3'
+        text: `Item 3${this.props.withDisabledItems ? ' disabled' : ''}`,
+        disabled: this.props.withDisabledItems
       },
       {
         id: generateId(),

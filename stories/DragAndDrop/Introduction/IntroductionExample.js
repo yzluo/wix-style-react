@@ -26,11 +26,6 @@ export default class IntroductionExample extends React.Component {
         {
           id: 'd',
           text: 'Item 4'
-        },
-        {
-          id: 'e',
-          text: 'Disabled Item 5',
-          disabled: true
         }
       ]
     };

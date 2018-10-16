@@ -8,7 +8,7 @@ import DraggableTarget from './components/DraggableTarget';
 
 export class Draggable extends WixComponent {
   render() {
-    const { item, id } = this.props;
+    const {item, id} = this.props;
     return this.props.disabled ? (
       this.props.renderItem({
         ...this.props,
@@ -20,7 +20,7 @@ export class Draggable extends WixComponent {
       })
     ) : (
       <DraggableTarget {...this.props}>
-        <DraggableSource {...this.props} />
+        <DraggableSource {...this.props}/>
       </DraggableTarget>
     );
   }

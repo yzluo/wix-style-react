@@ -24,5 +24,9 @@ export default () => (
     <CodeExample title="SortableList with handle" code={SingleAreaListRawCombined}>
       <SingleAreaList withHandle/>
     </CodeExample>
+
+    <CodeExample title="SortableList with disabled items" code={SingleAreaListRawCombined}>
+      <SingleAreaList withDisabledItems/>
+    </CodeExample>
   </div>
 );
