@@ -44,9 +44,6 @@
     "proxy-wix-ui-icons": "node scripts/proxy-wix-ui-icons"
   },
   "yoshi": {
-    "features": {
-      "addStoriesToBaseGlob": true
-    },
     "entry": {
       "app": "index.js"
     },
