@@ -218,14 +218,6 @@
           "message": "Proxy not supported in IE11."
         }
       ],
-      "indent": 0,
-      "indent-legacy": [
-        2,
-        2,
-        {
-          "SwitchCase": 1
-        }
-      ],
       "no-console": "error"
     }
   }
