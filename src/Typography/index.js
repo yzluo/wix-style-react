@@ -9,8 +9,7 @@ let typographyProxy = typography;
 if (process.env.NODE_ENV !== 'production') {
   const deprecatedRegExp = new RegExp('^([ht][1-6]_[1-6]|t[1-6])$');
 
-  typographyProxy = new Proxy(typography, {
-    // eslint-disable-line no-restricted-globals
+  typographyProxy = new Proxy(typography, { // eslint-disable-line no-restricted-globals
     get(target, prop) {
       if (deprecatedRegExp.test(prop)) {
         deprecationLog(
