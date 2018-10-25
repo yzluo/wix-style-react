@@ -1,4 +1,4 @@
-/* eslint-disable no-duplicate-imports */
+/* eslint-disable import/no-duplicates */
 import * as React from 'react';
 import * as styles from './ExampleBadges.scss';
 
