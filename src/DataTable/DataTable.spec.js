@@ -112,15 +112,9 @@ describe('Table', () => {
         <DataTable {...defaultProps} columns={columns} />,
       );
       columns.forEach((column, colIndex) => {
-        expect(
-          driver.getHeaderCellWidth(colIndex),
-          'header cell width',
-        ).toEqual(column.width);
+        expect(driver.getHeaderCellWidth(colIndex)).toEqual(column.width);
         for (let rowIndex = 0; rowIndex < driver.getRowsCount(); rowIndex++) {
-          expect(
-            driver.getCellWidth(rowIndex, colIndex),
-            'non-header cell width',
-          ).toBe('');
+          expect(driver.getCellWidth(rowIndex, colIndex)).toBe('');
         }
       });
     });
@@ -132,15 +126,11 @@ describe('Table', () => {
       columns.forEach((column, colIndex) => {
         for (let rowIndex = 0; rowIndex < driver.getRowsCount(); rowIndex++) {
           if (rowIndex === 0) {
-            expect(
-              driver.getCellWidth(rowIndex, colIndex),
-              `cell width (rowIndex===0)`,
-            ).toEqual(column.width);
+            expect(driver.getCellWidth(rowIndex, colIndex)).toEqual(
+              column.width,
+            );
           } else {
-            expect(
-              driver.getCellWidth(rowIndex, colIndex),
-              `cell width (rowIndex>0)`,
-            ).toBe('');
+            expect(driver.getCellWidth(rowIndex, colIndex)).toBe('');
           }
         }
       });
