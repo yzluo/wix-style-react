@@ -11,6 +11,7 @@ import {
 import ModalSelectorLayout from './ModalSelectorLayout';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import modalSelectorLayoutDriverFactory from './ModalSelectorLayout.driver';
+import { ASSET_PREFIX } from '../../test/utils';
 
 // TODO: remove this hack
 // taken from here: https://github.com/facebook/jest/issues/2157#issuecomment-279171856
@@ -73,7 +74,7 @@ describe('ModalSelectorLayout', () => {
       expect(driver.searchDriver().exists()).toBe(false);
       expect(driver.showsEmptyState()).toBe(true);
       expect(driver.getEmptyState()).toBeInstanceOf(HTMLImageElement);
-      expect(driver.getEmptyState().src).toBe('empty_state.png');
+      expect(driver.getEmptyState().src).toBe(`${ASSET_PREFIX}empty_state.png`);
       expect(driver.listExists()).toBe(false);
     });
 
@@ -120,7 +121,9 @@ describe('ModalSelectorLayout', () => {
       expect(driver.getSelectorDriverAt(0).getImage()).toBeInstanceOf(
         HTMLImageElement,
       );
-      expect(driver.getSelectorDriverAt(0).getImage().src).toBe('rick.png');
+      expect(driver.getSelectorDriverAt(0).getImage().src).toBe(
+        `${ASSET_PREFIX}rick.png`,
+      );
       expect(
         driver
           .getSelectorDriverAt(1)
@@ -137,12 +140,14 @@ describe('ModalSelectorLayout', () => {
         HTMLImageElement,
       );
       expect(driver.getSelectorDriverAt(1).getExtraNode().src).toBe(
-        'shwifty.png',
+        `${ASSET_PREFIX}shwifty.png`,
       );
       expect(driver.getSelectorDriverAt(1).getImage()).toBeInstanceOf(
         HTMLImageElement,
       );
-      expect(driver.getSelectorDriverAt(1).getImage().src).toBe('morty.png');
+      expect(driver.getSelectorDriverAt(1).getImage().src).toBe(
+        `${ASSET_PREFIX}morty.png`,
+      );
     });
   });
 
@@ -280,7 +285,9 @@ describe('ModalSelectorLayout', () => {
 
       expect(driver.showsNoResultsFoundState()).toBe(true);
       expect(driver.getNoResultsFoundState()).toBeInstanceOf(HTMLImageElement);
-      expect(driver.getNoResultsFoundState().src).toBe('no-results-found.png');
+      expect(driver.getNoResultsFoundState().src).toBe(
+        `${ASSET_PREFIX}no-results-found.png`,
+      );
       expect(driver.getNoResultsFoundState().alt).toBe(searchValue);
 
       driver.searchDriver().inputDriver.clickClear();

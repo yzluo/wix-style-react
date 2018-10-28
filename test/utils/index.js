@@ -9,3 +9,5 @@ export const resolveIn = timeout =>
       resolve({});
     }, timeout);
   });
+
+export const ASSET_PREFIX = 'http://localhost/';
