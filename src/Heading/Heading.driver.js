@@ -1,15 +1,17 @@
 import {StylableDOMUtil} from '@stylable/dom-test-kit';
 import style from './Heading.st.css';
+import {baseUniDriverFactory} from 'wix-ui-test-utils/base-driver';
 
-const headingDriverFactory = factoryParams => {
+const headingDriverFactory = base => {
   const stylableDOMUtil = new StylableDOMUtil(style);
-  const {element} = factoryParams;
-
   return {
-    exists: () => !!element,
-    getText: () => element.innerHTML,
-    getAppearance: () => stylableDOMUtil.getStyleState(element, 'appearance'),
-    isLight: () => stylableDOMUtil.hasStyleState(element, 'light')
+    ...baseUniDriverFactory(base),
+    getText: async () => await base.getNative().innerHTML,
+    getAppearance: async () => await stylableDOMUtil.getStyleState(await base.getNative(), 'appearance'),
+    isLight: async () => {
+      const element = await base.getNative();
+      return stylableDOMUtil.hasStyleState(element, 'light');
+    }
   };
 };
 
