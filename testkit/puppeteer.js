@@ -1,5 +1,5 @@
 import 'regenerator-runtime/runtime';
-import {puppeteerTestkitFactoryCreator} from 'wix-ui-test-utils/puppeteer';
+import {puppeteerTestkitFactoryCreator, puppeteerUniTestkitFactoryCreator} from 'wix-ui-test-utils/puppeteer';
 
 import inputDriverFactory from '../src/Input/Input.puppeteer.driver';
 export const inputTestkitFactory = puppeteerTestkitFactoryCreator(inputDriverFactory);
@@ -13,8 +13,8 @@ export const formFieldTestkitFactory = puppeteerTestkitFactoryCreator(formFieldD
 import tableDriverFactory from '../src/Table/Table.puppeteer.driver';
 export const tableTestkitFactory = puppeteerTestkitFactoryCreator(tableDriverFactory);
 
-import headingDriverFactory from '../src/Heading/Heading.puppeteer.driver';
-export const headingTestkitFactory = puppeteerTestkitFactoryCreator(headingDriverFactory);
+import headingDriverFactory from '../src/Heading/Heading.driver';
+export const headingTestkitFactory = puppeteerUniTestkitFactoryCreator(headingDriverFactory);
 
 import textDriverFactory from '../src/Text/Text.puppeteer.driver';
 export const textTestkitFactory = puppeteerTestkitFactoryCreator(textDriverFactory);
