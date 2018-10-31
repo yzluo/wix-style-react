@@ -1,6 +1,6 @@
 import 'regenerator-runtime/runtime';
 /*eslint no-duplicate-imports: 0*/
-import {protractorTestkitFactoryCreator} from 'wix-ui-test-utils/protractor';
+import {protractorTestkitFactoryCreator, protractorUniTestkitFactoryCreator} from 'wix-ui-test-utils/protractor';
 
 // here for historical reasons, should probably deprecate it
 export {waitForVisibilityOf, scrollToElement} from 'wix-ui-test-utils/protractor';
@@ -155,8 +155,8 @@ export const textTestkitFactory = protractorTestkitFactoryCreator(textDriverFact
 import messageBoxFunctionalLayoutDriverFactory from '../src/MessageBox/MessageBoxFunctionalLayout.protractor.driver';
 export const messageBoxFunctionalLayoutTestkitFactory = protractorTestkitFactoryCreator(messageBoxFunctionalLayoutDriverFactory);
 
-import headingDriverFactory from '../src/Heading/Heading.protractor.driver';
-export const headingTestkitFactory = protractorTestkitFactoryCreator(headingDriverFactory);
+import headingDriverFactory from '../src/Heading/Heading.driver';
+export const headingTestkitFactory = protractorUniTestkitFactoryCreator(headingDriverFactory);
 
 import sectionHelperDriverFactory from '../src/SectionHelper/SectionHelper.protractor.driver';
 export const sectionHelperTestkitFactory = protractorTestkitFactoryCreator(sectionHelperDriverFactory);
