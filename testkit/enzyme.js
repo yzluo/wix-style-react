@@ -1,4 +1,4 @@
-import {enzymeTestkitFactoryCreator} from 'wix-ui-test-utils/enzyme';
+import {enzymeTestkitFactoryCreator, enzymeUniTestkitFactoryCreator} from 'wix-ui-test-utils/enzyme';
 
 import inputDriverFactory from '../src/Input/Input.driver';
 export const inputTestkitFactory = enzymeTestkitFactoryCreator(inputDriverFactory);
@@ -211,7 +211,7 @@ import emptyStateDriverFactory from '../src/EmptyState/EmptyState.driver';
 export const emptyStateTestkitFactory = enzymeTestkitFactoryCreator(emptyStateDriverFactory);
 
 import headingDriverFactory from '../src/Heading/Heading.driver';
-export const headingTestkitFactory = enzymeTestkitFactoryCreator(headingDriverFactory);
+export const headingTestkitFactory = enzymeUniTestkitFactoryCreator(headingDriverFactory);
 
 import textDriverFactory from '../src/Text/Text.driver';
 export const textTestkitFactory = enzymeTestkitFactoryCreator(textDriverFactory);

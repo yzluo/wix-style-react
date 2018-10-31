@@ -1,4 +1,4 @@
-import {testkitFactoryCreator} from 'wix-ui-test-utils/vanilla';
+import {testkitFactoryCreator, uniTestkitFactoryCreator} from 'wix-ui-test-utils/vanilla';
 
 import inputDriverFactory from '../src/Input/Input.driver';
 export const inputTestkitFactory = testkitFactoryCreator(inputDriverFactory);
@@ -214,7 +214,7 @@ import emptyStateDriverFactory from '../src/EmptyState/EmptyState.driver';
 export const emptyStateTestkitFactory = testkitFactoryCreator(emptyStateDriverFactory);
 
 import headingDriverFactory from '../src/Heading/Heading.driver';
-export const headingTestkitFactory = testkitFactoryCreator(headingDriverFactory);
+export const headingTestkitFactory = uniTestkitFactoryCreator(headingDriverFactory);
 
 import textDriverFactory from '../src/Text/Text.driver';
 export const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
