@@ -11,7 +11,8 @@ const headingDriverFactory = base => {
     isLight: async () => {
       const element = await base.getNative();
       return stylableDOMUtil.hasStyleState(element, 'light');
-    }
+    },
+    element: async () => await base.getNative()
   };
 };
 
