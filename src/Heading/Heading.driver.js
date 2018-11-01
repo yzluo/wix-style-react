@@ -6,13 +6,10 @@ const headingDriverFactory = base => {
   const stylableDOMUtil = new StylableDOMUtil(style);
   return {
     ...baseUniDriverFactory(base),
-    getText: async () => await base.getNative().innerHTML,
-    getAppearance: async () => await stylableDOMUtil.getStyleState(await base.getNative(), 'appearance'),
-    isLight: async () => {
-      const element = await base.getNative();
-      return stylableDOMUtil.hasStyleState(element, 'light');
-    },
-    element: async () => await base.getNative()
+    getText: () => base.text(),
+    getAppearance: async () => stylableDOMUtil.getStyleState(await base.getNative(), 'appearance'),
+    isLight: async () => stylableDOMUtil.hasStyleState(await base.getNative(), 'light'),
+    element: () => base.getNative()
   };
 };
 

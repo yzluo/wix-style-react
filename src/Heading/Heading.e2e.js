@@ -4,7 +4,6 @@ import {headingTestkitFactory} from '../../testkit/protractor';
 import {tooltipTestkitFactory} from 'wix-ui-core/dist/src/testkit/protractor';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import {APPEARANCES} from './Heading';
-
 import {storySettings} from '../../stories/Heading/storySettings';
 
 describe('Heading', () => {
@@ -16,33 +15,34 @@ describe('Heading', () => {
     afterEach(() => autoExampleDriver.reset());
 
     eyes.it('children prop', async () => {
-      const dataHook = 'storybook-heading';
+      const dataHook = storySettings.dataHook;
       const driver = headingTestkitFactory({dataHook});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Heading');
+      await waitForVisibilityOf(await driver.element(), 'Cannot find Heading');
 
-      expect(driver.getText()).toBe('Hey there, good looking');
+      expect(await driver.getText()).toBe('Hey there, good looking');
     });
 
     eyes.it('appearance prop', async () => {
       const dataHook = storySettings.dataHook;
       const driver = headingTestkitFactory({dataHook});
+      await waitForVisibilityOf(await driver.element(), 'Cannot find Heading');
 
-      Object.keys(APPEARANCES).forEach(async appearance => {
-        await autoExampleDriver.setProps({appearance});
-        await waitForVisibilityOf(driver.element(), 'Cannot find Heading');
+      for (const appearance of Object.keys(APPEARANCES)) {
+        await autoExampleDriver.setProps({appearance, 'data-hook': storySettings.dataHook});
+        await waitForVisibilityOf(await driver.element(), 'Cannot find Heading');
         await eyes.checkWindow(appearance);
-      });
+      }
     });
 
     eyes.it('light prop', async () => {
       const dataHook = storySettings.dataHook;
       const driver = headingTestkitFactory({dataHook});
 
-      await waitForVisibilityOf(driver.element(), 'Cannot find Heading');
+      await waitForVisibilityOf(await driver.element(), 'Cannot find Heading');
       await eyes.checkWindow('dark');
 
       await autoExampleDriver.setProps({light: true});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Heading');
+      await waitForVisibilityOf(await driver.element(), 'Cannot find Heading');
       await eyes.checkWindow('light');
     });
   });
@@ -53,7 +53,7 @@ describe('Heading', () => {
       const dataHook = storySettings.dataHook;
       const driver = headingTestkitFactory({dataHook});
       const tooltipDriver = tooltipTestkitFactory({dataHook});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Heading');
+      await waitForVisibilityOf(await driver.element(), 'Cannot find Heading');
       expect(tooltipDriver.isContentElementExists()).toBeFalsy();
       await tooltipDriver.mouseEnter();
       expect(tooltipDriver.isContentElementExists()).toBeFalsy();
@@ -64,7 +64,7 @@ describe('Heading', () => {
       const dataHook = 'heading-with-ellipses';
       const driver = headingTestkitFactory({dataHook});
       const tooltipDriver = tooltipTestkitFactory({dataHook});
-      await waitForVisibilityOf(driver.element(), 'Cannot find Heading');
+      await waitForVisibilityOf(await driver.element(), 'Cannot find Heading');
       expect(tooltipDriver.isContentElementExists()).toBeFalsy();
       await tooltipDriver.mouseEnter();
       expect(tooltipDriver.isContentElementExists()).toBeTruthy();
