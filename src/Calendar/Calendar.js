@@ -3,9 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker/DayPicker';
 import addMonths from 'date-fns/add_months';
-import parse from 'date-fns/parse';
 import startOfMonth from 'date-fns/start_of_month';
 import classNames from 'classnames';
+import deprecationLog from '../utils/deprecationLog';
 
 import WixComponent from '../BaseComponents/WixComponent';
 import localeUtilsFactory from '../LocaleUtils';
@@ -27,21 +27,30 @@ export default class Calendar extends WixComponent {
     super(props);
 
     this.state = {
-      month: props.value
+      month: this._getMonth(props)
     };
   }
 
   // TODO: Change to getDerivedStateFromProps with React ^16.0.0
   componentWillReceiveProps(nextProps) {
-    this.setState({month: nextProps.value});
+    this.setState({month: this._getMonth(nextProps)});
   }
 
   _setMonth = month => this.setState({month});
 
   _handleDayClick = (value, modifiers = {}) => {
-    this.props.onChange(value, modifiers);
+    this.props.onSelectedDaysChange(value, modifiers);
     this.props.shouldCloseOnSelect && this.props.onClose();
   };
+
+  _getMonth = props => {
+    const {
+      value,
+      selectedDays
+    } = props;
+
+    return (selectedDays || {}).from || (selectedDays || {}).to || selectedDays || value;
+  }
 
   _createDayPickerProps = () => {
     const {
@@ -51,12 +60,19 @@ export default class Calendar extends WixComponent {
       filterDate,
       excludePastDates,
       value: propsValue,
+      selectedDays,
       rtl,
       twoMonths
     } = this.props;
 
-    const month = this.state.month || propsValue || new Date();
+    const month = this.state.month || this._getMonth(this.props) || new Date();
     const localeUtils = localeUtilsFactory(locale);
+    const from = (selectedDays || {}).from;
+    const to = (selectedDays || {}).to;
+    const singleDay = !from && !to && selectedDays;
+
+    const firstOfMonth = new Date(month.getFullYear(), month.getMonth(), 1);
+    const lastOfMonth = new Date(month.getFullYear(), month.getMonth() + 1, 0);
 
     const captionElement = (
       <DatePickerHead
@@ -81,7 +97,7 @@ export default class Calendar extends WixComponent {
         date => !filterDate(date),
       initialMonth: month,
       initialYear: month,
-      selectedDays: parse(propsValue),
+      selectedDays: selectedDays || propsValue,
       month,
       year: month,
       firstDayOfWeek: 1,
@@ -94,7 +110,8 @@ export default class Calendar extends WixComponent {
       captionElement,
       onDayKeyDown: this._handleDayKeyDown,
       numberOfMonths: twoMonths ? 2 : 1,
-      className: twoMonths ? 'DayPicker--TwoMonths' : ''
+      className: twoMonths ? 'DayPicker--TwoMonths' : '',
+      modifiers: {start: from, end: to, firstOfMonth, lastOfMonth, singleDay}
     };
   };
 
@@ -156,8 +173,17 @@ Calendar.propTypes = {
 
   className: PropTypes.string,
 
+  /** (Deprecated) Callback function called whenever the user selects a day in the calendar */
+  onChange: (props, propName) => {
+    if (props[propName]) {
+      const msg = 'Calendar\'s onChange prop is deprecated, please use onSelectedDaysChange instead.';
+      const key = msg;
+      deprecationLog(msg, key);
+    }
+  },
+
   /** Callback function called whenever the user selects a day in the calendar */
-  onChange: PropTypes.func.isRequired,
+  onSelectedDaysChange: PropTypes.func,
 
   /** Callback function called whenever user press escape or click outside of the element */
   onClose: PropTypes.func,
@@ -171,8 +197,20 @@ Calendar.propTypes = {
   /** RTL mode */
   rtl: PropTypes.bool,
 
-  /** The selected date */
-  value: PropTypes.object,
+  /** (Deprecated) The selected date */
+  value: (props, propName) => {
+    if (props[propName]) {
+      const msg = 'Calendar\'s onValue prop is deprecated, please use onSelectedDaysChange instead.';
+      const key = msg;
+      deprecationLog(msg, key);
+    }
+  },
+
+  /** The selected date range. Can be either a single JS Date object, or a single range object {from: Date, to: Date} */
+  selectedDays: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
 
   /** Display a selectable yearDropdown */
   showYearDropdown: PropTypes.bool,
