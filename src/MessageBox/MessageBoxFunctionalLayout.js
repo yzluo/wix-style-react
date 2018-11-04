@@ -16,7 +16,9 @@ class MessageBoxFunctionalLayout extends WixComponent {
       hasScroll: false,
       scrolledToBottom: false
     };
+
     this.messageBoxRef = null;
+    this.MessageBoxContainerRef = null;
   }
 
   componentWillUnmount() {
@@ -33,6 +35,21 @@ class MessageBoxFunctionalLayout extends WixComponent {
       this.messageBoxRef.addEventListener('scroll', this._handleMessageBoxScroll);
     }
   };
+
+  _initializeMessageBoxContainerRef= el => this.MessageBoxContainerRef = el;
+
+  componentDidMount() {
+    const headerLayoutHeight = this.MessageBoxContainerRef.children[0].clientHeight;
+    const messageBodyHeight = this.MessageBoxContainerRef.children[1].clientHeight;
+    const footerLayoutHeight = this.MessageBoxContainerRef.children[2].clientHeight;
+
+    const totalClientHeight = headerLayoutHeight + messageBodyHeight + footerLayoutHeight;
+
+    if (totalClientHeight > window.innerHeight) {
+      const maxHeight = window.innerHeight - (48 * 2) - headerLayoutHeight - footerLayoutHeight;
+      this.setState({maxHeight});
+    }
+  }
 
   _handleMessageBoxScroll = throttle(() => {
     const scrolledToBottom =
@@ -67,12 +84,12 @@ class MessageBoxFunctionalLayout extends WixComponent {
       sideActions,
       image
     } = this.props;
-    const {hasScroll, scrolledToBottom} = this.state;
+    const {hasScroll, scrolledToBottom, maxHeight: maxHeightState} = this.state;
 
     const messageBoxBodyClassNames = classNames(
       styles.body,
       {
-        [styles.scrollable]: typeof maxHeight !== 'undefined',
+        [styles.scrollable]: typeof maxHeight !== 'undefined' || typeof maxHeightState !== 'undefined',
         [styles.noPadding]: noBodyPadding,
         [styles.fullscreenBody]: fullscreen,
         [styles.noFooter]: hideFooter,
@@ -82,7 +99,7 @@ class MessageBoxFunctionalLayout extends WixComponent {
     );
 
     const messageBoxBodyStyle = {
-      maxHeight
+      maxHeight: maxHeight || maxHeightState
     };
 
     const contentClassName = classNames(
@@ -101,7 +118,7 @@ class MessageBoxFunctionalLayout extends WixComponent {
     );
 
     return (
-      <div className={contentClassName} style={{width}}>
+      <div className={contentClassName} style={{width}} ref={this._initializeMessageBoxContainerRef}>
         <HeaderLayout
           title={title}
           onCancel={onClose ? onClose : onCancel}
