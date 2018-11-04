@@ -3,8 +3,9 @@ import {radioGroupTestkitFactory} from '../../testkit/protractor';
 import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
 import {getStoryUrl} from '../../test/utils/storybook-helpers';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
-import {NUM_OF_BUTTONS_IN_EXAMPLE} from '../../stories/RadioGroup.story';
 import {flattenInternalDriver} from '../../test/utils/private-drivers';
+
+const NUM_OF_BUTTONS_IN_EXAMPLE = 4;
 
 describe('RadioGroup', () => {
   const storyUrl = getStoryUrl('4. Selection', '4.3 Radio Button Group');

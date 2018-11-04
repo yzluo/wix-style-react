@@ -34,8 +34,6 @@ const exampleOptions = [
   }
 ];
 
-export const NUM_OF_BUTTONS_IN_EXAMPLE = exampleChildren[0].value.length;
-
 export default {
   category: '4. Selection',
   storyName: '4.3 Radio Button Group',

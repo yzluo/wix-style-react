@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import Tooltip from '../../../src/Tooltip';
 import Button from '../../../src/Button';
 
-export const SHORT_CONTENT = 'Hello World';
-export const LONG_CONTENT = 'Hello World, Hello World, Hello World, Hello World';
+import {SHORT_CONTENT, LONG_CONTENT} from '../content';
 
 export default class TooltipForEyesOnly extends Component {
   static displayName = 'TooltipForEyesOnly';

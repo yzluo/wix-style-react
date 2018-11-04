@@ -2,7 +2,7 @@ import eyes from 'eyes.it';
 import {tooltipTestkitFactory} from '../../testkit/protractor';
 import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
 import {getStoryUrl} from '../../test/utils/storybook-helpers';
-import {SHORT_CONTENT, LONG_CONTENT} from '../../stories/Tooltip/Composite/TooltipForEyesOnly';
+import {SHORT_CONTENT, LONG_CONTENT} from '../../stories/Tooltip/content';
 
 describe('Tooltip', () => {
   const tooltipStoryUrl = getStoryUrl('7. Tooltips', '7.1. Tooltip');
