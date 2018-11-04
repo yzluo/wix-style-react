@@ -9,7 +9,7 @@ wix-style-react
 |  |__ComponentName
 |  |    index.js                              # entry file for the component
 |  |    ComponentName.js                      # the actual component
-|  |    ComponentName.scss                  # the component stylesheet
+|  |    ComponentName.scss                    # the component stylesheet
 |  |    ComponentName.spec.js                 # component tests
 |  |    ComponentName.driver.js               # vanilla js public driver to abstract common actions
 |  |    ComponentName.e2e.js                  # browser testing
