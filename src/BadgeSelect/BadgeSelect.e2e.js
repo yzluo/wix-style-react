@@ -51,4 +51,22 @@ describe('BadgeSelect', () => {
       await driver.clickBadge();
     });
   });
+
+  describe('word wrapping', () => {
+    beforeEach(async () => {
+      await browser.get(storyUrl);
+    });
+
+    eyes.it('should not wrap between whitespaces', async () => {
+      const driver = await createDriverFactory();
+      await autoExampleDriver.setProps({
+        options: ['general', 'standard', 'danger'].map((skin, id) => ({
+          id: id.toString(),
+          skin,
+          text: `${skin} ${skin}`
+        }))
+      });
+      await driver.clickBadge();
+    });
+  });
 });
