@@ -21,6 +21,7 @@ Types of changes:
 
 ### Fixed
 
+- `<Tooltip/>` - Fix potential null dereferencing that happens in React 16 [2391](https://github.com/wix/wix-style-react/pull/2391)
 - `<BadgeSelect/>` - fix word wrapping and eyes issues [#2397](https://github.com/wix/wix-style-react/pull/2397)
 
 ## 5.8.0 - 2018-10-31
