@@ -217,9 +217,9 @@ export default class DatePicker extends WixComponent {
       filterDate,
       excludePastDates,
       rtl,
-      onChange: this._saveNewValue,
+      onSelectedDaysChange: this._saveNewValue,
       onClose: this.closeCalendar,
-      value,
+      selectedDays: value,
       shouldCloseOnSelect,
       twoMonths
     };

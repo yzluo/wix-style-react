@@ -99,10 +99,87 @@ $hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
       }
     }
 
-    &--outside,
     &--disabled {
       pointer-events: none;
       color: $D55;
+    }
+
+    &.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+      background-color: $B50 !important;
+      border-radius: 0px !important;
+      color: $D10;
+    }
+    &.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside):last-of-type {
+      border-top-right-radius: 50% !important;
+      border-bottom-right-radius: 50% !important;
+    }
+    &.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside):first-of-type {
+      border-top-left-radius: 50% !important;
+      border-bottom-left-radius: 50% !important;
+    }
+    &.DayPicker-Day--firstOfMonth:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+      border-top-left-radius: 50% !important;
+      border-bottom-left-radius: 50% !important;
+    }
+    &.DayPicker-Day--lastOfMonth:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+      border-top-right-radius: 50% !important;
+      border-bottom-right-radius: 50% !important;
+    }
+
+    &.DayPicker-Day--singleDay:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+      border-radius: 50% !important;
+    }
+  
+    &.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside),
+    &.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside) {
+      background-color: #3899ec !important;
+      border-radius: 50% !important;
+      color: #FFFFFF;
+      position: relative;
+    }
+
+    // <An awful hack in order to show a light blue background behind the first and last selected days>
+    &.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside)::before,
+    &.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside)::after { 
+      content: " ";
+      position: absolute;
+    }
+    &.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside)::before {
+      border-radius: 50%;
+      border: solid 18px #3899ec;
+      z-index: -1;
+    }
+    &.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside)::after { 
+      border-right: solid 18px $B50;
+      width: 50%;
+      height: 100%;
+      z-index: -2;
+    }
+
+    &.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside)::before,
+    &.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside)::after { 
+      content: " ";
+      position: absolute;
+    }
+    &.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside)::before {
+      border-radius: 50%;
+      border: solid 18px #3899ec;
+      z-index: -1;
+    }
+    &.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside)::after { 
+      border-right: solid 18px $B50;
+      width: 50%;
+      height: 100%;
+      z-index: -2;
+      right: 18px;
+    }
+
+    // </Hack>
+
+    &--outside {
+      pointer-events: none;
+      color: transparent !important;
+      background-color: transparent !important;
     }
   }
 
