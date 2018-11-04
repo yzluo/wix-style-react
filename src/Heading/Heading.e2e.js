@@ -16,7 +16,7 @@ describe('Heading', () => {
     afterEach(() => autoExampleDriver.reset());
 
     eyes.it('children prop', async () => {
-      const dataHook = 'storybook-heading';
+      const dataHook = storySettings.dataHook;
       const driver = headingTestkitFactory({dataHook});
       await waitForVisibilityOf(driver.element(), 'Cannot find Heading');
 
@@ -27,11 +27,11 @@ describe('Heading', () => {
       const dataHook = storySettings.dataHook;
       const driver = headingTestkitFactory({dataHook});
 
-      Object.keys(APPEARANCES).forEach(async appearance => {
-        await autoExampleDriver.setProps({appearance});
+      for (const appearance of Object.keys(APPEARANCES)) {
+        await autoExampleDriver.setProps({appearance, 'data-hook': storySettings.dataHook});
         await waitForVisibilityOf(driver.element(), 'Cannot find Heading');
         await eyes.checkWindow(appearance);
-      });
+      }
     });
 
     eyes.it('light prop', async () => {
