@@ -15,6 +15,7 @@ Types of changes:
 
 ## Next
 
+## 5.9.0 - 2018-11-05
 ### Added
 - Added tree shaking - [2407](https://github.com/wix/wix-style-react/pull/2407)
 
