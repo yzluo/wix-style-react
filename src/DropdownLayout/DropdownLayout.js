@@ -298,7 +298,7 @@ class DropdownLayout extends WixComponent {
       if (nextProps.visible) {
         hoverIndex = findIndex(this.props.options, item => item.id === this.state.selectedId);
       }
-      this.setState({hovered: hoverIndex || NOT_HOVERED_INDEX});
+      this.setState({hovered: hoverIndex >= 0 ? hoverIndex : NOT_HOVERED_INDEX});
     }
 
     if (this.props.selectedId !== nextProps.selectedId) {
