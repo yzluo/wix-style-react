@@ -15,6 +15,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- Added tree shaking - [2407](https://github.com/wix/wix-style-react/pull/2407)
+
 ### Fixed
 
 - `<DropdownLayout/>` - Reserve hovered state when the selected id is 0 [#2405](https://github.com/wix/wix-style-react/pull/2405)
