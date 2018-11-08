@@ -8,7 +8,6 @@ import {dataHooks} from './Tag.helpers';
 const buttonTestkitFactory = testkitFactoryCreator(buttonDriverFactory);
 
 const getThumb = element => element.querySelector('span');
-const getContentWithoutThumb = element => element.querySelector('span');
 
 const getRemoveButtonDriver = element => {
   return buttonTestkitFactory({
@@ -32,10 +31,8 @@ const tagDriverFactory = ({element}) => {
     removeTag: () => getRemoveButtonDriver(element).click(),
     click: () => ReactTestUtils.Simulate.click(element),
     isThumbExists: () => isClassExists(getThumb(element), 'thumb'),
-    isWrapped: () => isClassExists(element, 'tagEllipsis') && isClassExists(getContentWithoutThumb(element), 'tagTextEllipsis'),
     isDisabled: () => isClassExists(element, 'disabled'),
-    getLabel: () => element.textContent,
-    getTitle: () => element.title
+    getLabel: () => element.textContent
   };
 };
 

@@ -3,6 +3,7 @@ import {createStoryUrl} from '../../test/utils/storybook-helpers';
 import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import {tagTestkitFactory} from '../../testkit/protractor';
+import {tooltipTestkitFactory} from 'wix-ui-core/dist/src/testkit/protractor';
 
 describe('Tag', () => {
   const url = createStoryUrl({kind: '12. Other', story: '12.5 Tag'});
@@ -38,5 +39,16 @@ describe('Tag', () => {
     await waitForVisibilityOf(tagDriver.element(), 'Cannot find <Tag/>');
     autoExampleDriver.setProps({disabled: true});
     await eyes.checkWindow('disabled');
+  });
+
+  eyes.it('should show tooltip on hover when text is truncated with ellipses', async () => {
+    const dataHook = 'story-tag';
+    await autoExampleDriver.setProps({wrap: true, maxWidth: 70});
+    const tagDriver = tagTestkitFactory({dataHook});
+    const tooltipDriver = tooltipTestkitFactory({dataHook});
+    await waitForVisibilityOf(tagDriver.element(), 'Cannot find Tag');
+    expect(await tooltipDriver.isContentElementExists()).toBeFalsy();
+    await tooltipDriver.mouseEnter();
+    expect(await tooltipDriver.isContentElementExists()).toBeTruthy();
   });
 });

@@ -38,12 +38,9 @@ class Tag extends WixComponent {
 
   _renderText() {
     const {size, wrap, children} = this.props;
-    const classes = classNames({
-      [styles.tagTextEllipsis]: wrap
-    });
 
     return (
-      <Text className={classes} size={tagToTextSize[size]} weight={size === 'tiny' ? 'thin' : 'normal'} dataHook={dataHooks.text}>
+      <Text ellipsis={wrap} size={tagToTextSize[size]} weight={size === 'tiny' ? 'thin' : 'normal'} dataHook={dataHooks.text}>
         {children}
       </Text>
     );
@@ -71,7 +68,7 @@ class Tag extends WixComponent {
   };
 
   _getClassName() {
-    const {thumb, removable, size, wrap, disabled, theme, useOldMargins, className, onClick} = this.props;
+    const {thumb, removable, size, disabled, theme, useOldMargins, className, onClick} = this.props;
     return classNames(
       styles.root,
       className,
@@ -81,7 +78,6 @@ class Tag extends WixComponent {
         [styles.deprecatedMargins]: useOldMargins,
         [styles.withRemoveButton]: removable && !disabled,
         [styles.withThumb]: thumb,
-        [styles.tagEllipsis]: wrap,
         [styles.disabled]: disabled,
         [styles.clickable]: onClick !== noop
       }
@@ -89,13 +85,12 @@ class Tag extends WixComponent {
   }
 
   render() {
-    const {id, children, onClick, wrap, maxWidth} = this.props;
+    const {id, onClick, maxWidth} = this.props;
 
     return (
       <span
         className={this._getClassName()}
         id={id}
-        title={wrap ? children : ''}
         onClick={() => onClick(id)}
         style={{maxWidth: `${maxWidth}px`}}
         >
