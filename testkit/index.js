@@ -225,6 +225,9 @@ export const sortableListTestkitFactory = testkitFactoryCreator(sortableListDriv
 import badgeSelectDriverFactory from '../src/BadgeSelect/BadgeSelect.driver';
 export const badgeSelectTestkitFactory = testkitFactoryCreator(badgeSelectDriverFactory);
 
+import genericLayoutDriverFactory from '../src/GenericLayout/GenericLayout.driver';
+export const genericLayoutTestkitFactory = testkitFactoryCreator(genericLayoutDriverFactory);
+
 // wix-ui-backoffice proxy
 
 export {

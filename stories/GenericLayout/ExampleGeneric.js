@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Button} from 'wix-style-react/Backoffice';
+import Button from 'wix-style-react/Button';
 import GenericLayout from 'wix-style-react/GenericLayout';
 import Modal from 'wix-style-react/Modal';
 

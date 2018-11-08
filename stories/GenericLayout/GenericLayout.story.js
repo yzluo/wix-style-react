@@ -22,13 +22,6 @@ export default {
     fullscreen: false
   },
 
-  exampleProps: {
-    fullscreen: [
-      {label: 'enable', value: true},
-      {label: 'disable', value: false}
-    ]
-  },
-
   examples: (
     <div>
       <CodeExample

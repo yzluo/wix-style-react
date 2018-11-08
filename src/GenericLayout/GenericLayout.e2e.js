@@ -16,7 +16,7 @@ async function verifyItem(dataHook) {
 describe('GenericLayout', () => {
   describe('default', () => {
     eyes.it('should open generic layout in modal', async () => {
-      const storyUrl = createStoryUrl({kind: 'Components', story: 'GenericLayout', withExamples: true});
+      const storyUrl = createStoryUrl({kind: 'Components', story: 'GenericLayout'});
       await browser.get(storyUrl);
 
       const button = buttonTestkitFactory({dataHook: 'open-default-generic-layout-in-modal-button'});
@@ -28,7 +28,7 @@ describe('GenericLayout', () => {
 
   describe('fullscreen', () => {
     eyes.it('should open fullscreen generic layout in modal', async () => {
-      const storyUrl = createStoryUrl({kind: 'Components', story: 'GenericLayout', withExamples: true});
+      const storyUrl = createStoryUrl({kind: 'Components', story: 'GenericLayout'});
       await browser.get(storyUrl);
 
       const button = buttonTestkitFactory({dataHook: 'open-fullscreen-generic-layout-in-modal-button'});

@@ -3,8 +3,8 @@ import React from 'react';
 import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 
 import {isEnzymeTestkitExists, isTestkitExists} from '../../test/utils/testkit-sanity';
-import {sectionHelperTestkitFactory} from '../../testkit';
-import {sectionHelperTestkitFactory as enzymeSectionHelperTestkitFactory} from '../../testkit/enzyme';
+import {genericLayoutTestkitFactory} from '../../testkit';
+import {genericLayoutTestkitFactory as enzymeGenericLayoutTestkitFactory} from '../../testkit/enzyme';
 
 import GenericLayout from './';
 import genericLayoutDriverFactory from './GenericLayout.driver';
@@ -64,13 +64,13 @@ describe('GenericLayout', () => {
 
   describe('testkit', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<GenericLayout/>, sectionHelperTestkitFactory)).toBe(true);
+      expect(isTestkitExists(<GenericLayout/>, genericLayoutTestkitFactory)).toBe(true);
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<GenericLayout/>, enzymeSectionHelperTestkitFactory, mount)).toBe(true);
+      expect(isEnzymeTestkitExists(<GenericLayout/>, enzymeGenericLayoutTestkitFactory, mount)).toBe(true);
     });
   });
 });
