@@ -44,7 +44,7 @@ class RichTextAreaToolbar extends WixComponent {
       onLinkButtonClick,
       hasLink,
       disabled,
-      isSelectionExpanded
+      isSelectionExpanded,
     } = this.props;
 
     return (
@@ -90,7 +90,7 @@ RichTextAreaToolbar.propTypes = {
   hasListBlock: PropTypes.func.isRequired,
   hasLink: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
-  isSelectionExpanded: PropTypes.bool
+  isSelectionExpanded: PropTypes.bool,
 };
 
 export default RichTextAreaToolbar;

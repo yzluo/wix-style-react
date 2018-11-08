@@ -10,7 +10,7 @@ const checkboxDriverFactory = ({
   element,
   wrapper,
   component,
-  eventTrigger
+  eventTrigger,
 }) => {
   const input = () => element.querySelector('input');
   const checkbox = () => element.querySelector('.checkbox');
@@ -22,7 +22,7 @@ const checkboxDriverFactory = ({
     exists: () => !!element,
     click: () =>
       eventTrigger.change(input(), {
-        target: { checked: !isChecked(element) }
+        target: { checked: !isChecked(element) },
       }),
     /** trigger focus on the element */
     focus: () => eventTrigger.focus(checkbox()),
@@ -49,7 +49,7 @@ const checkboxDriverFactory = ({
         <div ref={r => (element = r)}>{ClonedWithProps}</div>,
         wrapper,
       );
-    }
+    },
   };
 };
 

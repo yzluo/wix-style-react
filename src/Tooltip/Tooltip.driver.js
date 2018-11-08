@@ -10,7 +10,7 @@ const arrowDirectionToPlacement = {
   top: 'bottom',
   bottom: 'top',
   left: 'right',
-  right: 'left'
+  right: 'left',
 };
 
 const tooltipDriverFactory = ({ element, wrapper }) => {
@@ -23,7 +23,7 @@ const tooltipDriverFactory = ({ element, wrapper }) => {
       return documentResult.length > 0
         ? documentResult
         : wrapper.querySelectorAll && wrapper.querySelectorAll(query);
-    }
+    },
   };
   const getTooltipContent = () => bodyOrWrapper.querySelector('.tooltip');
   const mouseEnter = () => ReactTestUtils.Simulate.mouseEnter(element);
@@ -72,7 +72,7 @@ const tooltipDriverFactory = ({ element, wrapper }) => {
         },
         {
           timeout,
-          interval
+          interval,
         },
       );
     },
@@ -103,7 +103,7 @@ const tooltipDriverFactory = ({ element, wrapper }) => {
         </div>,
         wrapper,
       );
-    }
+    },
   };
 };
 

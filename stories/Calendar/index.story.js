@@ -24,7 +24,7 @@ export default {
     showMonthDropdown: false,
     shouldCloseOnSelect: true,
     locale: 'en',
-    dataHook: 'calendar'
+    dataHook: 'calendar',
   },
 
   examples: (
@@ -50,5 +50,5 @@ export default {
         </Col>
       </Row>
     </Container>
-  )
+  ),
 };

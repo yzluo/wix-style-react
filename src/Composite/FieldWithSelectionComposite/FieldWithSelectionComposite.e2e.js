@@ -21,14 +21,14 @@ const fieldWithSelectionCompositeTestkitE2EFactory = driver => {
       isFocusedFirst: () => inputDriver().isFocused(),
       isFocusedLast: () => checkboxDriver().isFocused(),
       clickFirst: () => inputDriver().click(),
-      clickLast: () => checkboxDriver().click()
+      clickLast: () => checkboxDriver().click(),
     },
     dropdownType: {
       isFocusedFirst: () => inputDriver().isFocused(),
       isFocusedLast: () => dropdownDriver().isFocused(),
       clickFirst: () => inputDriver().click(),
-      clickLast: () => dropdownDriver().click()
-    }
+      clickLast: () => dropdownDriver().click(),
+    },
   };
 };
 
@@ -37,12 +37,12 @@ describe('FieldWithSelectionComposite', () => {
 
   const driverCheckbox = fieldWithSelectionCompositeTestkitE2EFactory(
     fieldWithSelectionCompositeTestkitFactory({
-      dataHook: settings.dataHookExampleCheckbox
+      dataHook: settings.dataHookExampleCheckbox,
     }),
   );
   const driverDropdown = fieldWithSelectionCompositeTestkitE2EFactory(
     fieldWithSelectionCompositeTestkitFactory({
-      dataHook: settings.dataHookExampleDropdown
+      dataHook: settings.dataHookExampleDropdown,
     }),
   );
   const pressTab = () =>

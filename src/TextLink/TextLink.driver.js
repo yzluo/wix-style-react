@@ -38,7 +38,7 @@ const textLinkDriverFactory = ({ element, wrapper, component }) => {
         <div ref={r => (element = r)}>{ClonedWithProps}</div>,
         wrapper,
       );
-    }
+    },
   };
 };
 

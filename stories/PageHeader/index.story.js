@@ -16,7 +16,7 @@ export default {
   componentProps: {
     onBackClicked: () => {},
     title: 'Page Header',
-    dataHook: 'story-page-header'
+    dataHook: 'story-page-header',
   },
 
   exampleProps: {
@@ -30,8 +30,8 @@ export default {
             <Button>Button #1</Button>
             <Button>Button #2</Button>
           </div>
-        )
-      }
-    ]
-  }
+        ),
+      },
+    ],
+  },
 };

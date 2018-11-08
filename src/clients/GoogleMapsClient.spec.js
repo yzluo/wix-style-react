@@ -7,7 +7,7 @@ describe('GoogleMapsClient', () => {
     window.google = new GoogleMapsMock({
       getPlacePredictions: (request, callback) => {
         callback(null, window.google.maps.GeocoderStatus.ZERO_RESULTS);
-      }
+      },
     });
     const client = new GoogleMapsClient();
     return client.autocomplete({ request: {} }).then(result => {
@@ -19,7 +19,7 @@ describe('GoogleMapsClient', () => {
     window.google = new GoogleMapsMock(null, {
       geocode: (request, callback) => {
         callback(null, window.google.maps.GeocoderStatus.ZERO_RESULTS);
-      }
+      },
     });
     const client = new GoogleMapsClient();
     return client.geocode({ request: {} }).then(result => {
@@ -34,7 +34,7 @@ describe('GoogleMapsClient', () => {
           null,
           window.google.maps.places.PlacesServiceStatus.ZERO_RESULTS,
         );
-      }
+      },
     });
     const client = new GoogleMapsClient();
     return client.placeDetails({ request: {} }).then(result => {
@@ -56,14 +56,14 @@ function GoogleMapsMock(
         PlacesService: () => placesServiceInstance,
         PlacesServiceStatus: {
           OK: 'OK',
-          ZERO_RESULTS: 'ZERO_RESULTS'
-        }
+          ZERO_RESULTS: 'ZERO_RESULTS',
+        },
       },
       Geocoder: () => geocoderInstance,
       GeocoderStatus: {
         OK: 'OK',
-        ZERO_RESULTS: 'ZERO_RESULTS'
-      }
-    }
+        ZERO_RESULTS: 'ZERO_RESULTS',
+      },
+    },
   };
 }

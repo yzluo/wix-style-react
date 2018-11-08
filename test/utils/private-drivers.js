@@ -22,7 +22,7 @@ export function mergeDrivers(target, source) {
 
   return {
     ...target,
-    ...source
+    ...source,
   };
 }
 
@@ -35,7 +35,7 @@ export function flattenInternalDriver(driver) {
   if (driver[INTERNAL_DRIVER_SYMBOL]) {
     return {
       ...omit(driver, INTERNAL_DRIVER_SYMBOL),
-      ...driver[INTERNAL_DRIVER_SYMBOL]
+      ...driver[INTERNAL_DRIVER_SYMBOL],
     };
   } else {
     return driver;

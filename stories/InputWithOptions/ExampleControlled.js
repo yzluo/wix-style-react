@@ -7,7 +7,7 @@ const style = {
   padding: '0 5px 0',
   width: '200px',
   lineHeight: '22px',
-  marginBottom: '350px'
+  marginBottom: '350px',
 };
 
 const options = [
@@ -19,8 +19,8 @@ const options = [
   {
     id: '5',
     value:
-      'Very long option text jldlkasj ldk jsalkdjsal kdjaklsjdlkasj dklasj'
-  }
+      'Very long option text jldlkasj ldk jsalkdjsal kdjaklsjdlkasj dklasj',
+  },
 ];
 
 class ControlledInputWithOptions extends React.Component {
@@ -28,7 +28,7 @@ class ControlledInputWithOptions extends React.Component {
     super(props);
     this.state = {
       value: '',
-      selectedId: -1
+      selectedId: -1,
     };
   }
 
@@ -41,7 +41,7 @@ class ControlledInputWithOptions extends React.Component {
       const value = option.value;
       this.setState({
         value,
-        selectedId: option.id
+        selectedId: option.id,
       });
 
       console.log(
@@ -51,7 +51,7 @@ class ControlledInputWithOptions extends React.Component {
 
     const onManuallyInput = value => {
       this.setState({
-        selectedId: -1
+        selectedId: -1,
       });
       console.log(`Manually selected ${value}`);
     };

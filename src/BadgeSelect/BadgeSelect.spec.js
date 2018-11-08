@@ -5,7 +5,7 @@ import BadgeSelect from './BadgeSelect';
 import {
   SKIN,
   SIZE,
-  TYPE
+  TYPE,
 } from 'wix-ui-backoffice/dist/src/components/Badge/constants';
 
 describe('BadgeSelect', () => {
@@ -14,7 +14,7 @@ describe('BadgeSelect', () => {
   const options = Object.values(SKIN).map((skin, id) => ({
     id: id.toString(),
     skin,
-    text: skin
+    text: skin,
   }));
 
   function createComponent(props = {}) {
@@ -57,7 +57,7 @@ describe('BadgeSelect', () => {
     const { badgeDriver } = createComponent({
       type: TYPE.outlined,
       size: SIZE.small,
-      uppercase: false
+      uppercase: false,
     });
     expect(badgeDriver.getType()).toBe(TYPE.outlined);
     expect(badgeDriver.getSize()).toBe(SIZE.small);

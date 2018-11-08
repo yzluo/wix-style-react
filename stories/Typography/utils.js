@@ -34,5 +34,5 @@ export const ExampleWrapper = ({ children, label }) => (
 );
 ExampleWrapper.propTypes = {
   children: any,
-  label: string
+  label: string,
 };

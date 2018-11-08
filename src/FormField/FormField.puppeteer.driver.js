@@ -24,7 +24,7 @@ const formFieldDriverFactory = async (component, page) => {
       return tooltipContent;
     },
     isRequired: async () =>
-      Boolean(await component.$('[data-hook="formfield-asterisk"]'))
+      Boolean(await component.$('[data-hook="formfield-asterisk"]')),
   };
 };
 

@@ -8,7 +8,7 @@ import styles from './styles.scss';
 const headingClasses = props => {
   return classNames({
     [typography[props.appearance]]: props.appearance,
-    [typography.light]: props.light
+    [typography.light]: props.light,
   });
 };
 
@@ -30,7 +30,7 @@ const HeadingExample = props => {
 HeadingExample.propTypes = {
   appearance: string.isRequired,
   light: bool,
-  note: string
+  note: string,
 };
 
 export function renderHeadingTable() {

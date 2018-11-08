@@ -8,7 +8,7 @@ import { textFieldTestkitFactory as enzymeTextFieldTestkitFactory } from '../../
 import { mount } from 'enzyme';
 
 const props = {
-  Client: GmapsTestClient
+  Client: GmapsTestClient,
 };
 
 describe('GoogleAddressInputWithLabel', () => {
@@ -39,7 +39,7 @@ describe('GoogleAddressInputWithLabel', () => {
         );
         const textFieldTestkit = enzymeTextFieldTestkitFactory({
           wrapper,
-          dataHook
+          dataHook,
         });
         expect(textFieldTestkit.exists()).toBeTruthy();
       });

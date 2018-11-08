@@ -28,7 +28,7 @@ const longOptions = [
   { id: 21, value: '-' },
   { id: 22, value: 'Option 3' },
   { id: 23, value: 'Disabled', disabled: true },
-  { id: 24, value: 'Option 4' }
+  { id: 24, value: 'Option 4' },
 ];
 
 const options = [
@@ -37,7 +37,7 @@ const options = [
   { id: 0, value: '-' },
   { id: 3, value: 'Option 3' },
   { id: 'disabled', value: 'Disabled', disabled: true },
-  { id: 4, value: 'Option 4' }
+  { id: 4, value: 'Option 4' },
 ];
 
 class ControlledExample extends Component {

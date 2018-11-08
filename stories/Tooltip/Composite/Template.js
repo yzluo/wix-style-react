@@ -23,7 +23,7 @@ export class Template extends Component {
     shouldUpdatePosition: Tooltip.propTypes.shouldUpdatePosition,
     showImmediately: Tooltip.propTypes.showImmediately,
     moveBy: Tooltip.propTypes.moveBy,
-    showArrow: Tooltip.propTypes.showArrow
+    showArrow: Tooltip.propTypes.showArrow,
   };
 
   componentDidUpdate(props) {
@@ -36,7 +36,7 @@ export class Template extends Component {
 
   getExampleCode() {
     return reactElementToJSXString(this.getComponent(), {
-      showDefaultProps: false
+      showDefaultProps: false,
     });
   }
 

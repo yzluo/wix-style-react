@@ -10,7 +10,7 @@ const NO_DESCRIPTION = '';
 describe('Checkbox', () => {
   const storyUrl = getStoryUrl('4. Selection', '4.2 Checkbox');
   const checkboxDriver = checkboxTestkitFactory({
-    dataHook: 'storybook-checkbox'
+    dataHook: 'storybook-checkbox',
   });
 
   describe(NO_DESCRIPTION, () => {

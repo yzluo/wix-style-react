@@ -13,7 +13,7 @@ const ITEMS = times(50, i => ({
   disabled: !(i % 2),
   image: (
     <img width="100%" height="100%" src="http://via.placeholder.com/100x100" />
-  )
+  ),
 }));
 
 export default {
@@ -40,10 +40,10 @@ export default {
 
           resolve({
             items: filtered.slice(offset, offset + limit),
-            totalCount: filtered.length
+            totalCount: filtered.length,
           });
         }, 2000),
-      )
+      ),
   }),
 
   exampleProps: {
@@ -59,7 +59,7 @@ export default {
     title: [
       {
         label: 'default title',
-        value: ModalSelectorLayout.defaultProps.title
+        value: ModalSelectorLayout.defaultProps.title,
       },
       {
         label: 'BOLD title',
@@ -67,8 +67,8 @@ export default {
           <Text key={0} bold>
             BOLD title
           </Text>
-        )
-      }
+        ),
+      },
     ],
 
     subtitle: [
@@ -79,8 +79,8 @@ export default {
           <span key={0}>
             Some text and a <Button>button</Button>
           </span>
-        )
-      }
-    ]
-  }
+        ),
+      },
+    ],
+  },
 };

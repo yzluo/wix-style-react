@@ -6,7 +6,7 @@ const multiSelectCheckboxDriverFactory = ({ element, wrapper, component }) => {
   const {
     driver,
     inputDriver,
-    dropdownLayoutDriver
+    dropdownLayoutDriver,
   } = inputWithOptionsDriverFactory({ element, wrapper });
   const multiSelectCheckboxDriver = Object.assign(driver, {
     getNumOfLabels() {
@@ -28,13 +28,13 @@ const multiSelectCheckboxDriverFactory = ({ element, wrapper, component }) => {
         <div ref={r => (element = r)}>{ClonedWithProps}</div>,
         wrapper,
       );
-    }
+    },
   });
 
   return {
     driver: multiSelectCheckboxDriver,
     inputDriver,
-    dropdownLayoutDriver
+    dropdownLayoutDriver,
   };
 };
 

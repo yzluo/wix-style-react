@@ -8,7 +8,7 @@ import { inputTestkitFactory, tooltipTestkitFactory } from '../../testkit';
 import { inputTestkitFactory as enzymeInputTestkitFactory } from '../../testkit/enzyme';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import { makeControlled, resolveIn } from '../../test/utils';
 import { mount } from 'enzyme';
@@ -104,7 +104,7 @@ describe('Input', () => {
     it('should pass down to the wrapped input', () => {
       const props = {
         value: 'hello',
-        onChange: () => {}
+        onChange: () => {},
       };
 
       const driver = createDriver(<Input {...props} />);

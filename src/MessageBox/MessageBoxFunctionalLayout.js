@@ -14,7 +14,7 @@ class MessageBoxFunctionalLayout extends WixComponent {
 
     this.state = {
       hasScroll: false,
-      scrolledToBottom: false
+      scrolledToBottom: false,
     };
     this.messageBoxRef = null;
   }
@@ -72,7 +72,7 @@ class MessageBoxFunctionalLayout extends WixComponent {
       fullscreen,
       withEmptyState,
       sideActions,
-      image
+      image,
     } = this.props;
     const { hasScroll, scrolledToBottom } = this.state;
 
@@ -82,20 +82,20 @@ class MessageBoxFunctionalLayout extends WixComponent {
       [styles.fullscreenBody]: fullscreen,
       [styles.noFooter]: hideFooter,
       [styles.footerBorder]: hasScroll && !scrolledToBottom,
-      [styles.withEmptyState]: withEmptyState
+      [styles.withEmptyState]: withEmptyState,
     });
 
     const messageBoxBodyStyle = {
-      maxHeight
+      maxHeight,
     };
 
     const contentClassName = classNames(styles.content, {
-      [styles.fullscreenContent]: fullscreen
+      [styles.fullscreenContent]: fullscreen,
     });
 
     const imageClassName = classNames(styles.image, {
       [styles.withFooterAction]: sideActions,
-      [styles.noPadding]: noBodyPadding
+      [styles.noPadding]: noBodyPadding,
     });
 
     return (
@@ -168,7 +168,7 @@ MessageBoxFunctionalLayout.propTypes = {
   fullscreen: PropTypes.bool,
   withEmptyState: PropTypes.bool,
   sideActions: PropTypes.node,
-  image: PropTypes.node
+  image: PropTypes.node,
 };
 
 MessageBoxFunctionalLayout.defaultProps = {
@@ -177,7 +177,7 @@ MessageBoxFunctionalLayout.defaultProps = {
   disableConfirmation: false,
   noBodyPadding: false,
   fullscreen: false,
-  withEmptyState: false
+  withEmptyState: false,
 };
 
 export default MessageBoxFunctionalLayout;

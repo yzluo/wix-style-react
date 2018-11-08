@@ -18,8 +18,8 @@ const runButtonWithOptionsTest = driverFactory => {
       { id: 'divider1', value: '-' },
       {
         id: 'element1',
-        value: <span style={{ color: 'brown' }}>Option 4</span>
-      }
+        value: <span style={{ color: 'brown' }}>Option 4</span>,
+      },
     ];
 
     const optionsArray = options.map(option => {
@@ -136,7 +136,7 @@ const runButtonWithOptionsTest = driverFactory => {
         const wrapper = mount(buttonWithOptions(props));
         const testkit = enzymeButtonWithOptionsTestkitFactory({
           wrapper,
-          dataHook: props.dataHook
+          dataHook: props.dataHook,
         });
         expect(testkit.dropdownLayoutDriver.hasTheme(props.theme)).toBe(true);
       });
@@ -153,7 +153,7 @@ const runButtonWithOptionsTest = driverFactory => {
         );
         const buttonWithOptionsTestkit = buttonWithOptionsTestkitFactory({
           wrapper,
-          dataHook
+          dataHook,
         });
         expect(buttonWithOptionsTestkit.driver.exists()).toBeTruthy();
         expect(buttonWithOptionsTestkit.buttonDriver.exists()).toBeTruthy();
@@ -169,7 +169,7 @@ const runButtonWithOptionsTest = driverFactory => {
         const wrapper = mount(buttonWithOptions({ dataHook }));
         const buttonWithOptionsTestkit = enzymeButtonWithOptionsTestkitFactory({
           wrapper,
-          dataHook
+          dataHook,
         });
         expect(buttonWithOptionsTestkit.driver.exists()).toBeTruthy();
         expect(buttonWithOptionsTestkit.buttonDriver.exists()).toBeTruthy();
@@ -185,12 +185,12 @@ const runButtonWithOptionsTest = driverFactory => {
         const props = {
           theme: 'no-border',
           dataHook: 'myDataHook',
-          selectedId: option.id
+          selectedId: option.id,
         };
         const wrapper = mount(buttonWithOptions(props));
         const testkit = enzymeButtonWithOptionsTestkitFactory({
           wrapper,
-          dataHook: props.dataHook
+          dataHook: props.dataHook,
         });
 
         expect(testkit.buttonDriver.getButtonTextContent()).toEqual(
@@ -204,12 +204,12 @@ const runButtonWithOptionsTest = driverFactory => {
         const props = {
           theme: 'no-border',
           dataHook: 'myDataHook',
-          selectedId: option.id
+          selectedId: option.id,
         };
         const wrapper = mount(buttonWithOptions(props));
         const testkit = enzymeButtonWithOptionsTestkitFactory({
           wrapper,
-          dataHook: props.dataHook
+          dataHook: props.dataHook,
         });
 
         expect(testkit.buttonDriver.getButtonTextContent()).toEqual(

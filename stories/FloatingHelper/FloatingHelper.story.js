@@ -37,7 +37,7 @@ export default {
     ),
     target: <span>I am a FloatingHelper target</span>,
     placement: 'right',
-    initiallyOpened: true
+    initiallyOpened: true,
   },
 
   exampleProps: {
@@ -56,12 +56,12 @@ export default {
       'bottom-start',
       'left-end',
       'left',
-      'left-start'
+      'left-start',
     ],
 
     target: [
       { label: 'Simple text', value: 'I am simple text target' },
-      { label: 'Simple span', value: <span>I am a span target</span> }
+      { label: 'Simple span', value: <span>I am a span target</span> },
     ],
 
     content: [
@@ -72,7 +72,7 @@ export default {
             title="Don’t forget to setup payments"
             body="In order to sell your music you need to choose a payment method."
           />
-        )
+        ),
       },
 
       {
@@ -85,9 +85,9 @@ export default {
             onActionClick={() => null}
             image={<Image width="102" height="102" />}
           />
-        )
-      }
-    ]
+        ),
+      },
+    ],
   },
 
   examples: (
@@ -130,5 +130,5 @@ export default {
         </div>
       </CodeExample>
     </div>
-  )
+  ),
 };

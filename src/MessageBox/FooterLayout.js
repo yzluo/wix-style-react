@@ -15,10 +15,10 @@ const FooterLayout = ({
   buttonsHeight,
   enableOk,
   enableCancel,
-  sideActions
+  sideActions,
 }) => {
   const footerButtonsClassNames = classNames(styles.footerbuttons, {
-    [styles.withSideActions]: sideActions && (cancelText || confirmText)
+    [styles.withSideActions]: sideActions && (cancelText || confirmText),
   });
   return (
     <div>
@@ -71,14 +71,14 @@ FooterLayout.propTypes = {
   buttonsHeight: PropTypes.string,
   children: PropTypes.any,
   bottomChildren: PropTypes.node,
-  sideActions: PropTypes.node
+  sideActions: PropTypes.node,
 };
 
 FooterLayout.defaultProps = {
   theme: 'blue',
   buttonsHeight: 'small',
   enableOk: true,
-  enableCancel: true
+  enableCancel: true,
 };
 
 export default FooterLayout;

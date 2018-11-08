@@ -14,7 +14,7 @@ const Navigation = ({ children, className }) => (
 
 Navigation.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default Navigation;

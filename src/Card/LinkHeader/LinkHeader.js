@@ -19,11 +19,11 @@ class LinkHeader extends WixComponent {
     linkTitle: string.isRequired,
     linkTo: string.isRequired,
     tooltip: node,
-    dataHook: string
+    dataHook: string,
   };
 
   static defaultProps = {
-    tooltip: null
+    tooltip: null,
   };
 
   render() {
@@ -34,7 +34,7 @@ class LinkHeader extends WixComponent {
       linkTo,
       withoutDivider,
       tooltip,
-      dataHook
+      dataHook,
     } = this.props;
 
     const linkElement = (

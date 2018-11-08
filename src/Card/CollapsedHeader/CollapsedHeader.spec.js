@@ -146,7 +146,7 @@ describe('testkit', () => {
     );
     const collapsedHeaderTestkit = collapsedHeaderTestkitFactory({
       wrapper,
-      dataHook
+      dataHook,
     });
     expect(collapsedHeaderTestkit.exists()).toBeTruthy();
   });
@@ -166,7 +166,7 @@ describe('enzyme testkit', () => {
     );
     const collapsedDriverTestkit = enzymeCollapsedHeaderTestkitFactory({
       wrapper,
-      dataHook
+      dataHook,
     });
     expect(collapsedDriverTestkit.exists()).toBeTruthy();
   });

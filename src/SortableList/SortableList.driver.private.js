@@ -2,7 +2,7 @@ import ReactTestUtils from 'react-dom/test-utils';
 import {
   getInstanceOfDraggableProvider,
   getInstanceOfDraggableSource,
-  getInstanceOfDraggableTarget
+  getInstanceOfDraggableTarget,
 } from './driverHelpers';
 
 import publicSortableListDriver from './SortableList.driver';
@@ -27,15 +27,15 @@ const sortableListFactory = ({ element, wrapper }) => {
     beginDrag: itemId =>
       backend &&
       backend.simulateBeginDrag([
-        getInstanceOfDraggableSource(vanillaWrapper, itemId).getHandlerId()
+        getInstanceOfDraggableSource(vanillaWrapper, itemId).getHandlerId(),
       ]),
     endDrag: () => backend && backend.simulateEndDrag(),
     drop: () => backend && backend.simulateDrop(),
     hover: itemId =>
       backend &&
       backend.simulateHover([
-        getInstanceOfDraggableTarget(vanillaWrapper, itemId).getHandlerId()
-      ])
+        getInstanceOfDraggableTarget(vanillaWrapper, itemId).getHandlerId(),
+      ]),
   };
 };
 

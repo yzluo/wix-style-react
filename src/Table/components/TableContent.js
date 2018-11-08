@@ -15,7 +15,7 @@ export const TableContent = ({ titleBarVisible }) => {
         const dataTableProps = {
           ...getDataTableProps(tableProps),
           dataHook: 'table-content',
-          hideHeader: !titleBarVisible
+          hideHeader: !titleBarVisible,
         };
 
         if (tableProps.showSelection) {
@@ -41,8 +41,8 @@ export const TableContent = ({ titleBarVisible }) => {
 };
 TableContent.displayName = 'Table.Content';
 TableContent.propTypes = {
-  titleBarVisible: bool
+  titleBarVisible: bool,
 };
 TableContent.defaultProps = {
-  titleBarVisible: true
+  titleBarVisible: true,
 };

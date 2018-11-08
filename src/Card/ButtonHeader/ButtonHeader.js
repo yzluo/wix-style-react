@@ -9,7 +9,7 @@ import deprecationLog from '../../utils/deprecationLog';
 const buttonThemes = {
   standard: 'whiteblueprimary',
   emptyblue: 'emptyblue',
-  fullblue: 'fullblue'
+  fullblue: 'fullblue',
 };
 
 class ButtonHeader extends WixComponent {
@@ -30,7 +30,7 @@ class ButtonHeader extends WixComponent {
     buttonSuffix: node,
     tooltip: node,
     theme: oneOf(['standard', 'fullblue', 'emptyblue']),
-    dataHook: string
+    dataHook: string,
   };
 
   static defaultProps = {
@@ -39,7 +39,7 @@ class ButtonHeader extends WixComponent {
     buttonPrefix: null,
     tooltip: null,
     theme: 'standard',
-    buttonSuffix: null
+    buttonSuffix: null,
   };
 
   render() {
@@ -53,7 +53,7 @@ class ButtonHeader extends WixComponent {
       withoutDivider,
       tooltip,
       theme,
-      dataHook
+      dataHook,
     } = this.props;
 
     const buttonElement = (

@@ -8,8 +8,8 @@ const dropdownCompositeDriverFactory = ({ element, wrapper }) => {
     ...inputAreaWithLabelCompositeDriverFactory({ element, wrapper }),
     dropdownLayoutDriver: dropdownDriverFactory({
       element: dropdown,
-      wrapper: dropdown
-    }).dropdownLayoutDriver
+      wrapper: dropdown,
+    }).dropdownLayoutDriver,
   };
 };
 

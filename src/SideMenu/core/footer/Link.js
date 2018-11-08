@@ -13,7 +13,7 @@ const Link = ({ children, icon, className, ...rest }) => (
 Link.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
-  icon: PropTypes.node
+  icon: PropTypes.node,
 };
 
 export default Link;

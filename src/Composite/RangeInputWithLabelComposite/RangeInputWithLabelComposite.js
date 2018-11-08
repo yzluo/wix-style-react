@@ -10,14 +10,14 @@ class RangeInputWithLabelComposite extends WixComponent {
     super(props);
     this.state = {
       hasFocusFirst: false,
-      hasFocusLast: false
+      hasFocusLast: false,
     };
   }
 
   _doKeyDown(e) {
     const keys = {
       upArrow: 38,
-      downArrow: 40
+      downArrow: 40,
     };
     if (e.keyCode === keys.upArrow && !isNaN(e.target.value)) {
       e.preventDefault();
@@ -71,7 +71,7 @@ class RangeInputWithLabelComposite extends WixComponent {
       noRightBorderRadius: true,
       onKeyDown: e => this._doKeyDown(e),
       onFocus: e => this._handleFocusFirst(e),
-      onBlur: e => this._handleBlurFirst(e)
+      onBlur: e => this._handleBlurFirst(e),
     };
 
     const additionalLastInputProps = {
@@ -80,13 +80,13 @@ class RangeInputWithLabelComposite extends WixComponent {
       noLeftBorderRadius: true,
       onKeyDown: e => this._doKeyDown(e),
       onFocus: e => this._handleFocusLast(e),
-      onBlur: e => this._handleBlurLast(e)
+      onBlur: e => this._handleBlurLast(e),
     };
 
     const inputWrapperClassNames = classNames({
       [styles.hasFocusFirst]: this.state.hasFocusFirst,
       [styles.hasFocusLast]: this.state.hasFocusLast,
-      [styles.inputs]: true
+      [styles.inputs]: true,
     });
 
     return (
@@ -115,11 +115,11 @@ RangeInputWithLabelComposite.propTypes = {
   ...WixComponent.propTypes,
   children: PropTypes.any,
   required: PropTypes.bool,
-  info: PropTypes.string
+  info: PropTypes.string,
 };
 
 RangeInputWithLabelComposite.defaultProps = {
-  appendToParent: false
+  appendToParent: false,
 };
 
 RangeInputWithLabelComposite.displayName = 'RangeInputWithLabelComposite';

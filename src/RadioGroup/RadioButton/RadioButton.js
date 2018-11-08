@@ -25,13 +25,13 @@ class RadioButton extends WixComponent {
     lineHeight: PropTypes.string,
 
     /** optional node to be rendered under label. Clicking it will not trigger `onChange` */
-    content: PropTypes.node
+    content: PropTypes.node,
   };
 
   static defaultProps = {
     vAlign: 'center',
     type: 'default',
-    content: null
+    content: null,
   };
 
   constructor(props) {
@@ -46,7 +46,7 @@ class RadioButton extends WixComponent {
       <button
         type="button"
         className={classnames(styles.radioButton, {
-          [styles.checked]: checked
+          [styles.checked]: checked,
         })}
         checked={checked}
         disabled={disabled}
@@ -70,14 +70,14 @@ class RadioButton extends WixComponent {
       onChange,
       style,
       vAlign,
-      value
+      value,
     } = this.props;
 
     return (
       <div
         className={classnames(styles.radioWrapper, {
           [styles.disabled]: disabled,
-          [styles.checked]: checked
+          [styles.checked]: checked,
         })}
         style={style}
         tabIndex={disabled ? null : 0}
@@ -101,7 +101,7 @@ class RadioButton extends WixComponent {
           htmlFor={this.id}
           className={classnames({
             [styles.vcenter]: vAlign === 'center',
-            [styles.vtop]: vAlign === 'top'
+            [styles.vtop]: vAlign === 'top',
           })}
         >
           <div
@@ -111,7 +111,7 @@ class RadioButton extends WixComponent {
           >
             <div
               className={classnames(styles.radio, {
-                [styles.radioButtonChecked]: checked
+                [styles.radioButtonChecked]: checked,
               })}
             />
           </div>

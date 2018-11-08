@@ -24,7 +24,7 @@ const loaderDriverFactory = component => {
     getText: () => getLoaderTextElement(component).getText(),
     isError: () => hasClass(component, css, 'error'),
     isSuccess: () => hasClass(component, css, 'success'),
-    isLoading: () => hasClass(component, css, 'loading')
+    isLoading: () => hasClass(component, css, 'loading'),
   };
 };
 

@@ -11,7 +11,7 @@ class MultiSelectCheckbox extends InputWithOptions {
   wrapOptionsWithCheckbox(options) {
     const newOptions = options.map(option => ({
       ...option,
-      value: this.wrapWithCheckBox(option, this.isSelectedId(option.id))
+      value: this.wrapWithCheckBox(option, this.isSelectedId(option.id)),
     }));
     return newOptions;
   }
@@ -32,7 +32,7 @@ class MultiSelectCheckbox extends InputWithOptions {
     return {
       options: this.wrapOptionsWithCheckbox(this.props.options),
       closeOnSelect: false,
-      selectedHighlight: false
+      selectedHighlight: false,
     };
   }
 
@@ -50,7 +50,7 @@ class MultiSelectCheckbox extends InputWithOptions {
   inputAdditionalProps() {
     return {
       inputElement: <Input textOverflow="ellipsis" readOnly />,
-      value: this.selectedOptionsToText()
+      value: this.selectedOptionsToText(),
     };
   }
 
@@ -121,14 +121,14 @@ MultiSelectCheckbox.propTypes = {
   onDeselect: PropTypes.func,
 
   /** delimiter between the selected options that will be displayed in the input. */
-  delimiter: PropTypes.string
+  delimiter: PropTypes.string,
 };
 
 MultiSelectCheckbox.defaultProps = {
   ...InputWithOptions.defaultProps,
   delimiter: ', ',
   selectedOptions: [],
-  closeOnSelect: false
+  closeOnSelect: false,
 };
 
 export default MultiSelectCheckbox;

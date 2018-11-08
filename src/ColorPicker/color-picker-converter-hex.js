@@ -10,7 +10,7 @@ import css from './color-picker-converter.scss';
 export default class ColorPickerConverterHex extends WixComponent {
   static propTypes = {
     current: object.isRequired,
-    onChange: func.isRequired
+    onChange: func.isRequired,
   };
 
   constructor(props) {
@@ -18,7 +18,7 @@ export default class ColorPickerConverterHex extends WixComponent {
     this.change = this.change.bind(this);
     this.state = {
       hex: props.current.hex(),
-      inFocus: false
+      inFocus: false,
     };
   }
 
@@ -39,7 +39,7 @@ export default class ColorPickerConverterHex extends WixComponent {
   componentWillReceiveProps(props) {
     if (!this.state.inFocus && this.state.hex !== props.current.hex()) {
       this.setState({
-        hex: props.current.hex()
+        hex: props.current.hex(),
       });
     }
   }
@@ -55,14 +55,14 @@ export default class ColorPickerConverterHex extends WixComponent {
 
   handleOnFocus = () => {
     this.setState({
-      inFocus: true
+      inFocus: true,
     });
   };
 
   handleOnBlur = () => {
     this.setState({
       inFocus: false,
-      hex: this.props.current.hex()
+      hex: this.props.current.hex(),
     });
   };
 }

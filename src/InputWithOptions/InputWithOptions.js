@@ -4,7 +4,7 @@ import WixComponent from '../BaseComponents/WixComponent';
 import Input from '../Input';
 import omit from 'omit';
 import DropdownLayout, {
-  DIVIDER_OPTION_VALUE
+  DIVIDER_OPTION_VALUE,
 } from '../DropdownLayout/DropdownLayout';
 import Highlighter from '../Highlighter/Highlighter';
 import { chainEventHandlers } from '../utils/ChainEventHandlers';
@@ -32,7 +32,7 @@ class InputWithOptions extends WixComponent {
       inputValue: props.value || '',
       showOptions: false,
       lastOptionsShow: 0,
-      isEditing: false
+      isEditing: false,
     };
 
     this._onSelect = this._onSelect.bind(this);
@@ -96,7 +96,7 @@ class InputWithOptions extends WixComponent {
       onBlur: this._onBlur,
       onCompositionChange: this.onCompositionChange,
       width: inputElement.props.width,
-      textOverflow: inputElement.props.textOverflow
+      textOverflow: inputElement.props.textOverflow,
     });
   }
 
@@ -116,7 +116,7 @@ class InputWithOptions extends WixComponent {
                 >
                   {option.value}
                 </Highlighter>
-              )
+              ),
           };
         });
   }
@@ -365,7 +365,7 @@ InputWithOptions.defaultProps = {
   dropdownWidth: null,
   dropdownOffsetLeft: '0',
   showOptionsIfEmptyInput: true,
-  autocomplete: 'off'
+  autocomplete: 'off',
 };
 
 InputWithOptions.propTypes = {
@@ -381,7 +381,7 @@ InputWithOptions.propTypes = {
   dropdownOffsetLeft: PropTypes.string,
   /** Controls whether to show options if input is empty */
   showOptionsIfEmptyInput: PropTypes.bool,
-  highlight: PropTypes.bool
+  highlight: PropTypes.bool,
 };
 
 InputWithOptions.displayName = 'InputWithOptions';

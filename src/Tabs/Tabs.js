@@ -11,14 +11,14 @@ import styles from './Tabs.scss';
 
 class Tabs extends WixComponent {
   static defaultProps = {
-    hasDivider: true
+    hasDivider: true,
   };
 
   render() {
     const { sideContent, hasDivider } = this.props;
     const tabItemsProps = omit(['sideContent'], this.props);
     const className = classNames(styles.container, {
-      [styles.hasDivider]: hasDivider
+      [styles.hasDivider]: hasDivider,
     });
 
     return (
@@ -39,7 +39,7 @@ Tabs.propTypes = {
   type: TabPropTypes.type,
   sideContent: TabPropTypes.sideContent,
   width: TabPropTypes.width,
-  onClick: TabPropTypes.onClick
+  onClick: TabPropTypes.onClick,
 };
 
 export default Tabs;

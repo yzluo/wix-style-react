@@ -17,7 +17,7 @@ const defaultBlock = {
   type: 'paragraph',
   isVoid: false,
   data: {},
-  key: 'defaultBlock'
+  key: 'defaultBlock',
 };
 
 /*
@@ -41,13 +41,13 @@ class RichTextArea extends WixComponent {
     resizable: PropTypes.bool,
     value: PropTypes.string,
     onChange: PropTypes.func,
-    onImageRequest: PropTypes.func
+    onImageRequest: PropTypes.func,
   };
 
   static defaultProps = {
     absoluteLinks: false,
     errorMessage: '',
-    value: '<p></p>'
+    value: '<p></p>',
   };
 
   /* eslint-disable react/prop-types */
@@ -82,22 +82,22 @@ class RichTextArea extends WixComponent {
             data-hook="editor-image"
             src={src}
             className={classNames(styles.editorImage, {
-              [styles.activeEditorImage]: isFocused
+              [styles.activeEditorImage]: isFocused,
             })}
           />
         );
-      }
+      },
     },
     marks: {
       bold: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
       },
       italic: {
-        fontStyle: 'italic'
+        fontStyle: 'italic',
       },
       underline: {
-        textDecoration: 'underline'
-      }
+        textDecoration: 'underline',
+      },
     },
     rules: [
       // Rule to insert a paragraph block if the document is empty.
@@ -111,7 +111,7 @@ class RichTextArea extends WixComponent {
         normalize: (transform, document) => {
           const block = Block.create(defaultBlock);
           transform.insertNodeByKey(document.key, 0, block);
-        }
+        },
       },
       // Rule to insert a paragraph below a void node (the image) if that node is
       // the last one in the document.
@@ -126,9 +126,9 @@ class RichTextArea extends WixComponent {
         normalize: (transform, document) => {
           const block = Block.create(defaultBlock);
           transform.insertNodeByKey(document.key, document.nodes.size, block);
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
   /* eslint-disable */
 

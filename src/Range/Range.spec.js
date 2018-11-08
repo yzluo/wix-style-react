@@ -87,7 +87,7 @@ describe('Range', () => {
         );
         const textFieldTestkit = enzymeRangeTestkitFactory({
           wrapper,
-          dataHook
+          dataHook,
         });
         expect(textFieldTestkit.exists()).toBeTruthy();
       });

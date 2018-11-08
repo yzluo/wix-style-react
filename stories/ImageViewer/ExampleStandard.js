@@ -5,7 +5,7 @@ import ImageViewer from '../../src/ImageViewer';
 const style = {
   display: 'inline-block',
   verticalAlign: 'middle',
-  padding: '0 25px 25px'
+  padding: '0 25px 25px',
 };
 
 const Example = () => (
@@ -36,7 +36,7 @@ const Example = () => (
 );
 
 Example.propTypes = {
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 export default Example;

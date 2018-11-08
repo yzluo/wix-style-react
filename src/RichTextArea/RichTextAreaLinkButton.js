@@ -6,7 +6,7 @@ import RichTextAreaButton from './RichTextAreaButton';
 
 class RichTextAreaLinkButton extends Component {
   state = {
-    isFormVisible: false
+    isFormVisible: false,
   };
 
   toggleForm = () => {
@@ -72,7 +72,7 @@ RichTextAreaLinkButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   isActive: PropTypes.bool,
   disabled: PropTypes.bool,
-  isSelectionExpanded: PropTypes.bool
+  isSelectionExpanded: PropTypes.bool,
 };
 
 export default RichTextAreaLinkButton;

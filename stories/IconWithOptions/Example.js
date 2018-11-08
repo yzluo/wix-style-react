@@ -10,7 +10,7 @@ const style = {
   lineHeight: '22px',
   marginBottom: '160px',
   marginLeft: '50px',
-  marginTop: '20px'
+  marginTop: '20px',
 };
 
 const options = [
@@ -18,7 +18,7 @@ const options = [
   { id: 2, value: 'Option 2' },
   { id: 3, value: 'Option 3' },
   { id: 4, value: 'Option 4', disabled: true },
-  { id: 5, value: 'Option 5' }
+  { id: 5, value: 'Option 5' },
 ];
 
 const optionsToArray = options =>

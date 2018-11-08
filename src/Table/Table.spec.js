@@ -23,16 +23,16 @@ describe('Table', () => {
     id: 'id',
     data: [
       { id: ID_1, a: 'value 1', b: 'value 2' },
-      { id: ID_2, a: 'value 3', b: 'value 4' }
+      { id: ID_2, a: 'value 3', b: 'value 4' },
     ],
     columns: [
       { title: 'Row Num', render: (row, rowNum) => rowNum },
       { title: 'A', render: row => row.a },
-      { title: 'B', render: row => row.b }
+      { title: 'B', render: row => row.b },
     ],
     rowClass: 'class-name',
     showSelection: true,
-    children: <Table.Content />
+    children: <Table.Content />,
   };
   const noneSelected = () => [];
   const firstSelected = () => [ID_1];
@@ -79,7 +79,7 @@ describe('Table', () => {
           {...defaultProps}
           data={[
             { id: ID_1, a: 'value 1', b: 'value 2' },
-            { id: ID_2, a: 'value 3', b: 'value 4' }
+            { id: ID_2, a: 'value 3', b: 'value 4' },
           ]}
           selectedIds={[ID_1]}
         />,
@@ -94,7 +94,7 @@ describe('Table', () => {
           {...defaultProps}
           data={[
             { a: 'value 1', b: 'value 2' },
-            { a: 'value 3', b: 'value 4' }
+            { a: 'value 3', b: 'value 4' },
           ]}
           selectedIds={[0]}
         />,
@@ -163,13 +163,13 @@ describe('Table', () => {
         columns: [
           { title: 'Row Num', render: (row, rowNum) => rowNum },
           { title: 'A', render: row => row.a },
-          { title: 'B', render: row => row.b }
+          { title: 'B', render: row => row.b },
         ],
-        rowClass: 'class-name'
+        rowClass: 'class-name',
       };
       const data = [
         { a: 'value 1', b: 'value 2' },
-        { a: 'value 3', b: 'value 4' }
+        { a: 'value 3', b: 'value 4' },
       ];
       const { driver, wrapper } = createEnzymeDriver(
         <Table {...props} data={data} />,
@@ -271,7 +271,7 @@ describe('Table', () => {
         );
         driver.clickBulkSelectionCheckbox();
         expect(onSelectionChanged).toHaveBeenCalledWith(allSelected(), {
-          type: 'ALL'
+          type: 'ALL',
         });
       });
 
@@ -287,7 +287,7 @@ describe('Table', () => {
         );
         driver.clickBulkSelectionCheckbox();
         expect(onSelectionChanged).toHaveBeenCalledWith(noneSelected(), {
-          type: 'NONE'
+          type: 'NONE',
         });
       });
 
@@ -306,7 +306,7 @@ describe('Table', () => {
         expect(onSelectionChanged).toHaveBeenCalledWith(allSelected(), {
           type: 'SINGLE_TOGGLE',
           id: ID_2,
-          value: true
+          value: true,
         });
       });
     });

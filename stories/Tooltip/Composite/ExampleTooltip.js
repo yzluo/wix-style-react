@@ -24,7 +24,7 @@ class ExampleTooltip extends Component {
     moveBy: { x: 0, y: 0 },
     shouldUpdatePosition: false,
     showImmediately: false,
-    showArrow: true
+    showArrow: true,
   };
 
   render() {
@@ -112,7 +112,7 @@ class ExampleTooltip extends Component {
                 checked={this.state.shouldUpdatePosition}
                 onChange={() =>
                   this.setState({
-                    shouldUpdatePosition: !this.state.shouldUpdatePosition
+                    shouldUpdatePosition: !this.state.shouldUpdatePosition,
                   })
                 }
               />
@@ -126,7 +126,7 @@ class ExampleTooltip extends Component {
                 checked={this.state.showImmediately}
                 onChange={() =>
                   this.setState({
-                    showImmediately: !this.state.showImmediately
+                    showImmediately: !this.state.showImmediately,
                   })
                 }
               />
@@ -168,8 +168,8 @@ class ExampleTooltip extends Component {
                     this.setState({
                       moveBy: {
                         ...this.state.moveBy,
-                        x: Number(e.target.value)
-                      }
+                        x: Number(e.target.value),
+                      },
                     })
                   }
                 />
@@ -184,8 +184,8 @@ class ExampleTooltip extends Component {
                     this.setState({
                       moveBy: {
                         ...this.state.moveBy,
-                        y: Number(e.target.value)
-                      }
+                        y: Number(e.target.value),
+                      },
                     })
                   }
                 />
@@ -229,5 +229,5 @@ class ExampleTooltip extends Component {
 export default ExampleTooltip;
 
 ExampleTooltip.propTypes = {
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };

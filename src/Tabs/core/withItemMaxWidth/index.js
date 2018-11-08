@@ -12,7 +12,7 @@ const withMaxWidth = WrappedComponent => {
 
   class Wrapper extends React.Component {
     state = {
-      itemMaxWidth: undefined
+      itemMaxWidth: undefined,
     };
 
     initMaxWidth(itemsContainer) {
@@ -42,7 +42,7 @@ const withMaxWidth = WrappedComponent => {
 
   Wrapper.propTypes = {
     type: TabPropTypes.type,
-    items: TabPropTypes.items.isRequired
+    items: TabPropTypes.items.isRequired,
   };
 
   return Wrapper;

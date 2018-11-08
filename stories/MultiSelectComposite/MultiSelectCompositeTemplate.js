@@ -14,7 +14,7 @@ export default class Form extends Component {
     label: PropTypes.object,
     input: PropTypes.object,
     required: PropTypes.bool,
-    info: PropTypes.string
+    info: PropTypes.string,
   };
 
   componentDidUpdate(props) {
@@ -31,7 +31,7 @@ export default class Form extends Component {
     this.state = {
       tags: [],
       options,
-      inputValue: ''
+      inputValue: '',
     };
   }
 
@@ -47,7 +47,7 @@ export default class Form extends Component {
 
   handleOnRemoveTag = tagId =>
     this.setState({
-      tags: this.state.tags.filter(currTag => currTag.id !== tagId)
+      tags: this.state.tags.filter(currTag => currTag.id !== tagId),
     });
 
   handleOnChange = event => this.setState({ inputValue: event.target.value });

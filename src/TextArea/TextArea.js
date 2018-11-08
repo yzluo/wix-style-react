@@ -17,7 +17,7 @@ const TextArea = ({ children, ...props }) => (
 );
 
 TextArea.propTypes = {
-  children: children(optional(Label), once(InputArea))
+  children: children(optional(Label), once(InputArea)),
 };
 
 TextArea.displayName = 'TextArea';

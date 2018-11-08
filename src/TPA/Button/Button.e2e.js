@@ -28,7 +28,7 @@ describe('TPA Button', () => {
     () => {
       const dataHookDisabled = 'story-button-disabled';
       const driverDisabled = tpaButtonTestkitFactory({
-        dataHook: dataHookDisabled
+        dataHook: dataHookDisabled,
       });
 
       waitForVisibilityOf(

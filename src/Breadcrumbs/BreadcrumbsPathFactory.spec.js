@@ -6,7 +6,7 @@ describe('BreadcrumbsPathFactory', () => {
     const options = [
       { id: 0, value: 'aaa', link: '/aaa' },
       { id: 1, value: 'bbb', link: '/aaa/bbb' },
-      { id: 2, value: 'ccc', link: '/aaa/bbb/ccc' }
+      { id: 2, value: 'ccc', link: '/aaa/bbb/ccc' },
     ];
     expect(breadcrumbsPathFactory(url)).toEqual(options);
   });
@@ -19,7 +19,7 @@ describe('BreadcrumbsPathFactory', () => {
       { id: 0, value: 'wix', link: 'https://www.wix.com' },
       { id: 1, value: 'aaa', link: 'https://www.wix.com/aaa' },
       { id: 2, value: 'bbb', link: 'https://www.wix.com/aaa/bbb' },
-      { id: 3, value: 'ccc', link: 'https://www.wix.com/aaa/bbb/ccc' }
+      { id: 3, value: 'ccc', link: 'https://www.wix.com/aaa/bbb/ccc' },
     ];
     expect(breadcrumbsPathFactory(url, baseUrlLink, baseUrlValue)).toEqual(
       options,
@@ -32,7 +32,7 @@ describe('BreadcrumbsPathFactory', () => {
     const options = [
       { id: 0, value: 'aaa', link: 'https://www.wix.com/aaa' },
       { id: 1, value: 'bbb', link: 'https://www.wix.com/aaa/bbb' },
-      { id: 2, value: 'ccc', link: 'https://www.wix.com/aaa/bbb/ccc' }
+      { id: 2, value: 'ccc', link: 'https://www.wix.com/aaa/bbb/ccc' },
     ];
     expect(breadcrumbsPathFactory(url, baseUrlLink)).toEqual(options);
   });
@@ -42,7 +42,7 @@ describe('BreadcrumbsPathFactory', () => {
     const options = [
       { id: 0, value: 'aaa', link: '/aaa' },
       { id: 1, value: 'bbb', link: '/aaa/bbb' },
-      { id: 2, value: 'ccc', link: '/aaa/bbb/ccc' }
+      { id: 2, value: 'ccc', link: '/aaa/bbb/ccc' },
     ];
     expect(breadcrumbsPathFactory(url, '', null, separator)).toEqual(options);
   });

@@ -4,7 +4,7 @@ import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import highlighterDriverFactory from './Highlighter.driver';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import { highlighterTestkitFactory } from '../../testkit/index';
 import { highlighterTestkitFactory as enzymeHighlighterTestkitFactory } from '../../testkit/enzyme';

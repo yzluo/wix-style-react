@@ -7,7 +7,7 @@ class FullScreenModal extends Component {
   constructor() {
     super();
     this.state = {
-      isOpenFullScreenModal: false
+      isOpenFullScreenModal: false,
     };
   }
 

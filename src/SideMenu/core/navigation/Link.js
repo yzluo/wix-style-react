@@ -34,7 +34,7 @@ const Link = ({
 Link.defaultProps = {
   dataHook: 'menu-navigation-link',
   withArrow: false,
-  disabled: false
+  disabled: false,
 };
 
 Link.propTypes = {
@@ -44,7 +44,7 @@ Link.propTypes = {
   badge: PropTypes.node,
   isDiminishedHover: PropTypes.bool,
   dataHook: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };
 
 export default Link;

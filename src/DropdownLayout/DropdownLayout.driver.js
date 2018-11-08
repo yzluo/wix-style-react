@@ -129,9 +129,9 @@ const dropdownLayoutDriverFactory = ({ element, wrapper, component }) => {
           isClassExists(option, 'wixstylereactSelected'),
         content: () => option.textContent,
         click: () => ReactTestUtils.Simulate.mouseDown(option),
-        isDivider: () => isClassExists(option, 'divider')
+        isDivider: () => isClassExists(option, 'divider'),
       };
-    }
+    },
   };
 };
 

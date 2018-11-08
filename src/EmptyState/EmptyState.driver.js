@@ -36,7 +36,7 @@ const emptyStateDriverFactory = ({ element }) => {
     imageNodeExists: () => !!getImageNode(),
 
     /** Returns `true` if children content exists */
-    childrenContentExists: () => !!getChildrenContainer()
+    childrenContentExists: () => !!getChildrenContainer(),
   };
 };
 

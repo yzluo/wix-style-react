@@ -17,7 +17,7 @@ Range.propTypes = {
     optional(Label),
     oneOf(Input, DatePicker),
     oneOf(Input, DatePicker),
-  )
+  ),
 };
 
 Range.displayName = 'Range';

@@ -7,12 +7,12 @@ import ChevronRight from 'wix-style-react/new-icons/ChevronRight';
 
 export const Title = props => <Markdown source={`# ${props.children}`} />;
 Title.propTypes = {
-  children: string
+  children: string,
 };
 
 export const SubTitle = props => <Markdown source={`### ${props.children}`} />;
 SubTitle.propTypes = {
-  children: string
+  children: string,
 };
 
 export const Section = ({ title, children }) => (
@@ -23,7 +23,7 @@ export const Section = ({ title, children }) => (
 );
 Section.propTypes = {
   children: any,
-  title: string
+  title: string,
 };
 
 export const StoryLink = props => {
@@ -62,7 +62,7 @@ export const IncludedComponents = props => (
 );
 
 IncludedComponents.propTypes = {
-  componentNames: array
+  componentNames: array,
 };
 
 export const TLDRSection = ({ children }) => (
@@ -70,7 +70,7 @@ export const TLDRSection = ({ children }) => (
 );
 
 TLDRSection.propTypes = {
-  children: any
+  children: any,
 };
 
 export const ExamplesSection = ({ children }) => (
@@ -78,5 +78,5 @@ export const ExamplesSection = ({ children }) => (
 );
 
 ExamplesSection.propTypes = {
-  children: any
+  children: any,
 };

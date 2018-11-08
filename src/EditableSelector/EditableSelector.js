@@ -20,18 +20,18 @@ class EditableSelector extends WixComponent {
     onOptionEdit: PropTypes.func,
     onOptionDelete: PropTypes.func,
     onOptionToggle: PropTypes.func,
-    options: PropTypes.array
+    options: PropTypes.array,
   };
 
   static defaultProps = {
     toggleType: 'checkbox',
     newRowLabel: 'New Row',
-    editButtonText: 'Edit'
+    editButtonText: 'Edit',
   };
 
   state = {
     addingNewRow: false,
-    editingRow: null
+    editingRow: null,
   };
 
   addNewRow = () => {
@@ -54,14 +54,14 @@ class EditableSelector extends WixComponent {
     }
     this.setState({
       addingNewRow: false,
-      editingRow: null
+      editingRow: null,
     });
   };
 
   onNewOptionCancel = () => {
     this.setState({
       addingNewRow: false,
-      editingRow: null
+      editingRow: null,
     });
   };
 

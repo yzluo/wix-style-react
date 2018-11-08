@@ -69,7 +69,7 @@ class InputWithTags extends React.Component {
       [styles.hasFocus]: hasFocus,
       [styles.hasMaxHeight]:
         !isUndefined(this.props.maxHeight) ||
-        !isUndefined(this.props.maxNumRows)
+        !isUndefined(this.props.maxNumRows),
     });
 
     const desiredProps = omit(
@@ -87,7 +87,7 @@ class InputWithTags extends React.Component {
         'onBlur',
         'menuArrow',
         'errorMessage',
-        'onInputClicked'
+        'onInputClicked',
       ],
       inputProps,
     );
@@ -135,7 +135,7 @@ class InputWithTags extends React.Component {
         )}
         <span
           className={classNames(styles.input, {
-            [styles.emptyInput]: !tags.length
+            [styles.emptyInput]: !tags.length,
           })}
           data-hook="inner-input-with-tags"
         >
@@ -189,7 +189,7 @@ class InputWithTags extends React.Component {
       [defaultDndStyles.itemPlaceholder]: isPlaceholder,
       [styles.draggedTagPlaceholder]: isPlaceholder,
       [defaultDndStyles.itemPreview]: isPreview,
-      [styles.draggedTag]: isPreview
+      [styles.draggedTag]: isPreview,
     });
 
     return (
@@ -224,7 +224,7 @@ class InputWithTags extends React.Component {
 
   clear() {
     this.setState({
-      inputValue: ''
+      inputValue: '',
     });
   }
 }
@@ -247,14 +247,14 @@ InputWithTags.propTypes = {
   errorMessage: PropTypes.string,
   mode: PropTypes.oneOf(['select']),
   delimiters: PropTypes.array,
-  width: PropTypes.string
+  width: PropTypes.string,
 };
 
 InputWithTags.defaultProps = {
   onRemoveTag: () => {},
   tags: [],
   placeholder: '',
-  delimiters: []
+  delimiters: [],
 };
 
 export default InputWithTags;

@@ -12,7 +12,7 @@ export default class Form extends Component {
     richTextArea: PropTypes.object,
     onChange: PropTypes.func,
     required: PropTypes.bool,
-    info: PropTypes.string
+    info: PropTypes.string,
   };
 
   componentDidUpdate(props) {

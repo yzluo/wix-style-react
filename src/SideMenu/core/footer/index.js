@@ -11,7 +11,7 @@ const Footer = ({ children, className }) => (
 
 Footer.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default Footer;

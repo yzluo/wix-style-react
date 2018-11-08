@@ -101,7 +101,7 @@ const dataTableDriverFactory = ({ element, wrapper, component }) => {
     },
     clickSort: (index, eventData) =>
       ReactTestUtils.Simulate.click(getHeaderCell(index), eventData),
-    getRowDetails: index => getRowDetails(index)
+    getRowDetails: index => getRowDetails(index),
   };
 };
 

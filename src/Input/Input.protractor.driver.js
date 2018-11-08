@@ -11,7 +11,7 @@ const inputDriverFactory = component => {
     hasClearButton: () => clearButton.isPresent(),
     clickClear: () => clearButton.isPresent() && clearButton.click(),
     click: () => input.click(),
-    isFocused: () => isFocused(input)
+    isFocused: () => isFocused(input),
   };
 };
 

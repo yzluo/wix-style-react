@@ -15,7 +15,7 @@ const addItemDriverFactory = ({ element, eventTrigger }) => {
     textExists: () => textDriver().exists(),
     getTooltipDriver: () => tooltipDriver(),
     getTooltipContent: () => tooltipDriver().hoverAndGetContent(),
-    click: () => eventTrigger.click(element)
+    click: () => eventTrigger.click(element),
   };
 };
 

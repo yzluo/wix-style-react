@@ -12,11 +12,11 @@ const badgeSelectDriverFactory = ({ element, wrapper, eventTrigger }) => {
   const badgeDriver = badgeDriverFactory({
     element: badgeWrapper.childNodes[0],
     wrapper: badgeWrapper,
-    eventTrigger
+    eventTrigger,
   });
   const dropdownLayoutDriver = dropdownLayoutDriverFactory({
     element: dropdownLayout,
-    wrapper
+    wrapper,
   });
 
   const driver = {
@@ -27,12 +27,12 @@ const badgeSelectDriverFactory = ({ element, wrapper, eventTrigger }) => {
     /** Performs a click outside the component */
     clickOutside: () => dropdownLayoutDriver.mouseClickOutside(),
     /** Whether the dropdown is shown */
-    isDropdownShown: () => dropdownLayoutDriver.isShown()
+    isDropdownShown: () => dropdownLayoutDriver.isShown(),
   };
 
   return {
     driver,
-    badgeDriver
+    badgeDriver,
   };
 };
 

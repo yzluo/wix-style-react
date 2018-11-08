@@ -20,32 +20,32 @@ const modalSelectorLayoutDriverFactory = ({ element }) => {
   const mainLoaderDriver = () =>
     loaderTestkitFactory({
       wrapper: element,
-      dataHook: dataHooks.mainLoader
+      dataHook: dataHooks.mainLoader,
     });
   const nextPageLoaderDriver = () =>
     loaderTestkitFactory({
       wrapper: element,
-      dataHook: dataHooks.nextPageLoader
+      dataHook: dataHooks.nextPageLoader,
     });
   const cancelButtonDriver = () =>
     buttonTestkitFactory({
       wrapper: element,
-      dataHook: 'cancellation-button'
+      dataHook: 'cancellation-button',
     });
   const okButtonDriver = () =>
     buttonTestkitFactory({
       wrapper: element,
-      dataHook: 'confirmation-button'
+      dataHook: 'confirmation-button',
     });
   const subtitleTextDriver = () =>
     textTestkitFactory({
       wrapper: element,
-      dataHook: dataHooks.subtitle
+      dataHook: dataHooks.subtitle,
     });
   const searchDriver = () =>
     searchTestkitFactory({
       wrapper: element,
-      dataHook: dataHooks.search
+      dataHook: dataHooks.search,
     });
   const getList = () => findInModalbyDataHook(dataHooks.list);
   const getModalBody = () => findInModalbyDataHook(dataHooks.modalBody);
@@ -58,7 +58,7 @@ const modalSelectorLayoutDriverFactory = ({ element }) => {
     findInModalbyDataHook(dataHooks.noResultsFoundState);
   const footerSelector = checkboxTestkitFactory({
     wrapper: element,
-    dataHook: 'footer-selector'
+    dataHook: 'footer-selector',
   });
 
   return {
@@ -82,7 +82,7 @@ const modalSelectorLayoutDriverFactory = ({ element }) => {
     numberOfItemsInList: () => getSelectors().length,
     getSelectorDriverAt: i => selectorDriverAt(i),
     scrollDown: () => getModalBody().dispatchEvent(new Event('scroll')),
-    footerSelector: () => footerSelector
+    footerSelector: () => footerSelector,
   };
 };
 

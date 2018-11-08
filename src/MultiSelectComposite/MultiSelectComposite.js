@@ -16,7 +16,7 @@ MultiSelectComposite.propTypes = {
   required: bool,
   appendToParent: bool,
   info: node,
-  tooltip: node
+  tooltip: node,
 };
 
 MultiSelectComposite.displayName = 'MultiSelectComposite';

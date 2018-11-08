@@ -7,7 +7,7 @@ export const BUTTON_TYPES = [
   'underline',
   'link',
   'unordered-list',
-  'ordered-list'
+  'ordered-list',
 ];
 
 const richTextAreaDriverFactory = component => {
@@ -73,7 +73,7 @@ const richTextAreaDriverFactory = component => {
       component
         .$('[data-hook="toolbar"]')
         .$(`[data-hook="rich-text-area-button-${type}"]`)
-        .click()
+        .click(),
   };
 };
 

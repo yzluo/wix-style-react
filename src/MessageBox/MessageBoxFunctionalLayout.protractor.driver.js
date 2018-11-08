@@ -13,7 +13,7 @@ const messageBoxFunctionalLayoutDriverFactory = component => {
       browser.executeScript(
         `arguments[0].scrollTop = ${offset};`,
         await body().getWebElement(),
-      )
+      ),
   };
 };
 

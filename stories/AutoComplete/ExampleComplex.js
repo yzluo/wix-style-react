@@ -7,7 +7,7 @@ const style = {
   padding: '0 5px 0',
   width: '200px',
   lineHeight: '22px',
-  marginBottom: '200px'
+  marginBottom: '200px',
 };
 
 const options = [
@@ -15,7 +15,7 @@ const options = [
   { id: 1, value: <div style={{ color: 'red' }}>test</div>, v: 'S' },
   { id: 2, value: 'Third option', v: 'T', disabled: true },
   { id: 3, value: 'Fifth option', v: 'Fi' },
-  { id: 4, value: 'Fourth option', v: 'Fo' }
+  { id: 4, value: 'Fourth option', v: 'Fo' },
 ];
 
 // text -> value
@@ -66,7 +66,7 @@ class ControlledAutoComplete extends React.Component {
             .toString()
             .toLowerCase()
             .indexOf(value.toLowerCase()) > -1,
-      )
+      ),
     });
   }
 

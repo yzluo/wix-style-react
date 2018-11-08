@@ -12,7 +12,7 @@ describe('Selector', () => {
 
   const defaultProps = {
     id: 1,
-    title: 'title'
+    title: 'title',
   };
 
   it('should be unchecked by default', () => {
@@ -100,7 +100,7 @@ describe('Selector', () => {
       ['small', 'isImageSmall'],
       ['portrait', 'isImagePortrait'],
       ['large', 'isImageLarge'],
-      ['cinema', 'isImageCinema']
+      ['cinema', 'isImageCinema'],
     ];
 
     sizesAndTestkitMethods.forEach(([size, method]) => {
@@ -110,7 +110,7 @@ describe('Selector', () => {
             {...{
               ...defaultProps,
               imageSize: size,
-              image: <img src="img.png" />
+              image: <img src="img.png" />,
             }}
           />,
         );
@@ -142,7 +142,7 @@ describe('Selector', () => {
       const wrapper = mount(<Selector {...defaultProps} dataHook={dataHook} />);
       const selectorTestkit = enzymeSelectorTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(selectorTestkit.exists()).toBeTruthy();
     });

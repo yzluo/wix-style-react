@@ -14,7 +14,7 @@ const Category = ({ children, className }) => (
 
 Category.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default Category;

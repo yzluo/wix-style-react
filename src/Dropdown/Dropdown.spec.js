@@ -20,7 +20,7 @@ describe('Dropdown', () => {
     { id: 2, value: 'Option 3', disabled: true },
     { id: 3, value: 'Option 4' },
     { id: 'divider1', value: '-' },
-    { id: 'element1', value: <span style={{ color: 'brown' }}>Option 4</span> }
+    { id: 'element1', value: <span style={{ color: 'brown' }}>Option 4</span> },
   ];
 
   it('should select item with selectedId on init state', () => {
@@ -60,7 +60,7 @@ describe('Dropdown', () => {
     const {
       driver,
       inputDriver,
-      dropdownLayoutDriver
+      dropdownLayoutDriver,
     } = enzymeDropdownTestkitFactory({ wrapper, dataHook });
 
     driver.focus();
@@ -115,7 +115,7 @@ describe('Dropdown', () => {
       const wrapper = mount(<Dropdown dataHook={dataHook} />);
       const dropdownTestkit = enzymeDropdownTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(dropdownTestkit.driver.exists()).toBeTruthy();
       expect(dropdownTestkit.inputDriver.exists()).toBeTruthy();

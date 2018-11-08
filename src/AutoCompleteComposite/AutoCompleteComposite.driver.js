@@ -5,7 +5,7 @@ const autoCompleteDriverFactory = ({ element, wrapper }) => {
 
   return {
     ...inputAreaWithLabelCompositeDriverFactory({ element, wrapper }),
-    hasAutoComplete: () => !!input
+    hasAutoComplete: () => !!input,
   };
 };
 

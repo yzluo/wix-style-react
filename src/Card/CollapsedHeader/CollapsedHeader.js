@@ -19,7 +19,7 @@ class CollapsedHeader extends WixComponent {
     onCollapsedChange: func,
     buttonCollapseText: string,
     buttonExpandText: string,
-    controlled: bool
+    controlled: bool,
   };
 
   static defaultProps = {
@@ -27,14 +27,14 @@ class CollapsedHeader extends WixComponent {
     toggleStyle: 'switch',
     buttonCollapseText: 'Less',
     buttonExpandText: 'More',
-    controlled: false
+    controlled: false,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      isCollapsed: props.collapsed
+      isCollapsed: props.collapsed,
     };
   }
 
@@ -103,7 +103,7 @@ class CollapsedHeader extends WixComponent {
       subtitle,
       children,
       withoutDivider,
-      toggleStyle
+      toggleStyle,
     } = this.props;
 
     const { isCollapsed } = this.state;

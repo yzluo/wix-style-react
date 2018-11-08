@@ -7,7 +7,7 @@ import PopoverMenu from '../../../src/PopoverMenu';
 import PopoverMenuItem from '../../../src/PopoverMenuItem';
 import {
   POPOVER_MENU_DATA_HOOK,
-  POPOVER_MENU_ITEM_DATA_HOOK
+  POPOVER_MENU_ITEM_DATA_HOOK,
 } from './PopoverMenuTemplate.helpers';
 import * as Icons from 'wix-style-react/new-icons';
 
@@ -18,7 +18,7 @@ class PopoverMenuTemplate extends Component {
     placement: PopoverMenu.propTypes.placement,
     onChange: PropTypes.func,
     maxWidth: PopoverMenu.propTypes.maxWidth,
-    buttonTheme: PropTypes.any
+    buttonTheme: PropTypes.any,
   };
 
   componentDidUpdate(props) {
@@ -31,7 +31,7 @@ class PopoverMenuTemplate extends Component {
 
   getExampleCode() {
     return reactElementToJSXString(this.getComponent(), {
-      showDefaultProps: false
+      showDefaultProps: false,
     });
   }
 

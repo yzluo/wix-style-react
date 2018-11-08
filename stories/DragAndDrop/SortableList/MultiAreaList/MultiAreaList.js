@@ -10,7 +10,7 @@ const generateStateForContainer = (length, startIndex) => {
   for (let i = 0; i < length; i++) {
     res.push({
       id: 'item' + (startIndex + i),
-      text: `Drag object ${startIndex + i}`
+      text: `Drag object ${startIndex + i}`,
     });
   }
   return res;
@@ -24,7 +24,7 @@ const copy = value => JSON.parse(JSON.stringify(value));
 export default class MultiAreaList extends React.Component {
   state = {
     multiArea1: generateStateForContainer(4, 1),
-    multiArea2: generateStateForContainer(4, 5)
+    multiArea2: generateStateForContainer(4, 5),
   };
 
   handleDrop = ({
@@ -32,7 +32,7 @@ export default class MultiAreaList extends React.Component {
     addedIndex,
     removedFromContainerId,
     addedToContainerId,
-    payload
+    payload,
   }) => {
     const nextState = copy(this.state);
     nextState[removedFromContainerId].splice(removedIndex, 1);
@@ -51,7 +51,7 @@ export default class MultiAreaList extends React.Component {
         [classNames(
           defaultDndStyles.itemPreview,
           styles.itemPreview,
-        )]: isPreview
+        )]: isPreview,
       },
       classNames(defaultDndStyles.item, styles.item),
     );

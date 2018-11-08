@@ -3,14 +3,14 @@ import BadgeSelect from 'wix-style-react/BadgeSelect';
 import {
   SKIN,
   TYPE,
-  SIZE
+  SIZE,
 } from 'wix-ui-backoffice/dist/src/components/Badge/constants';
 import { storySettings } from './storySettings';
 
 const options = Object.values(SKIN).map((skin, id) => ({
   id: id.toString(),
   skin,
-  text: skin
+  text: skin,
 }));
 
 // Centering the component since the DropdownLayout is centerized and overflows
@@ -19,7 +19,7 @@ const CenterBadgeSelect = props => (
   <div
     style={{
       display: 'flex',
-      justifyContent: 'center'
+      justifyContent: 'center',
     }}
   >
     <BadgeSelect {...props} />
@@ -40,13 +40,13 @@ export default {
     options,
     selectedId: '0',
     onSelect: ({ id }) => setState({ selectedId: id }),
-    uppercase: true
+    uppercase: true,
   }),
 
   exampleProps: {
     selectedId: options.map(({ id }) => id),
     options: [{ label: 'All badges', value: options }],
     type: Object.keys(TYPE),
-    size: Object.keys(SIZE)
-  }
+    size: Object.keys(SIZE),
+  },
 };

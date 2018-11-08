@@ -8,12 +8,12 @@ describe('Layout', () => {
     storySettings.holyGrailLayout,
     storySettings.listOfCards,
     storySettings.mainAndSide,
-    storySettings.form
+    storySettings.form,
   ].forEach(story =>
     eyes.it(`should render ${story}`, async () => {
       const url = createStoryUrl({
         kind: storySettings.examplesCategory,
-        story
+        story,
       });
       await browser.get(url);
       await eyes.checkWindow(story);

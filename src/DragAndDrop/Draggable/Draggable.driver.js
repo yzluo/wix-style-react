@@ -3,7 +3,7 @@ const draggableDriverFactory = ({ element, wrapper, component }) => {
     wrapper,
     exists: () => !!element,
     childByHook: hook => element.querySelector(`[data-hook="${hook}"]`),
-    component
+    component,
   };
 };
 

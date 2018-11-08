@@ -23,7 +23,7 @@ export default class Tooltip extends WixComponent {
       'mouseleave',
       'click',
       'focus',
-      'blur'
+      'blur',
     ]),
     hideTrigger: PropTypes.oneOf([
       'custom',
@@ -31,7 +31,7 @@ export default class Tooltip extends WixComponent {
       'mouseleave',
       'click',
       'focus',
-      'blur'
+      'blur',
     ]),
     active: PropTypes.bool,
     arrowPlacement: PropTypes.string,
@@ -47,7 +47,7 @@ export default class Tooltip extends WixComponent {
     shouldCloseOnClickOutside: PropTypes.bool,
     onClickOutside: PropTypes.func,
     onShow: PropTypes.func,
-    size: PropTypes.oneOf(['normal', 'large'])
+    size: PropTypes.oneOf(['normal', 'large']),
   };
 
   static defaultProps = {
@@ -65,7 +65,7 @@ export default class Tooltip extends WixComponent {
     textAlign: 'center',
     onClickOutside: noop,
     onShow: noop,
-    size: 'normal'
+    size: 'normal',
   };
 
   constructor(props) {
@@ -75,19 +75,19 @@ export default class Tooltip extends WixComponent {
       top: 'bottom',
       left: 'right',
       right: 'left',
-      bottom: 'top'
+      bottom: 'top',
     };
     this.alignmentMap = {
       top: 'start',
       right: 'end',
       bottom: 'end',
       left: 'start',
-      center: ''
+      center: '',
     };
 
     this.state = {
       placement: this.getPopperPlacement(props.placement, props.alignment),
-      active: props.active
+      active: props.active,
     };
 
     this.handlePopperUpdate = this.handlePopperUpdate.bind(this);
@@ -109,10 +109,10 @@ export default class Tooltip extends WixComponent {
     this.popper = new Popper(target, content, {
       placement,
       modifiers: {
-        applyStyle: { enabled: false }
+        applyStyle: { enabled: false },
       },
       onUpdate: this.handlePopperUpdate,
-      onCreate: this.handlePopperUpdate
+      onCreate: this.handlePopperUpdate,
     });
   }
 
@@ -189,7 +189,7 @@ export default class Tooltip extends WixComponent {
 
     if (hasChangedPlacement) {
       this.setState({
-        placement: data.placement
+        placement: data.placement,
       });
     }
 
@@ -270,7 +270,7 @@ export default class Tooltip extends WixComponent {
       transform,
       WebkitTransform: transform,
       left: this.props.moveBy.x,
-      top: this.props.moveBy.y
+      top: this.props.moveBy.y,
     };
   }
 
@@ -303,7 +303,7 @@ export default class Tooltip extends WixComponent {
 
       return {
         ...repositionStyle,
-        ...arrowStyle
+        ...arrowStyle,
       };
     }
 
@@ -319,7 +319,7 @@ export default class Tooltip extends WixComponent {
       zIndex,
       textAlign,
       size,
-      targetStyle
+      targetStyle,
     } = this.props;
     const placement = this.placementWithoutAlignment(this.state.placement);
     const arrowPlacement = this.getArrowPlacement(placement);
@@ -344,7 +344,7 @@ export default class Tooltip extends WixComponent {
       onFocus: () =>
         this.handleTrigger(this.props.children.props.onFocus, 'focus'),
       onBlur: () =>
-        this.handleTrigger(this.props.children.props.onBlur, 'blur')
+        this.handleTrigger(this.props.children.props.onBlur, 'blur'),
     });
 
     const popperStyle = this.getPopperStyle();
@@ -362,14 +362,14 @@ export default class Tooltip extends WixComponent {
         <div ref={r => (this.content = r)}>
           <div
             className={classNames(styles.tooltip, {
-              [styles.active]: active
+              [styles.active]: active,
             })}
             style={{ zIndex, ...popperStyle }}
             data-hook="tooltip"
           >
             <div
               className={classNames({
-                [styles[`bounce-${arrowPlacement}`]]: bounce
+                [styles[`bounce-${arrowPlacement}`]]: bounce,
               })}
             >
               <div
@@ -379,7 +379,7 @@ export default class Tooltip extends WixComponent {
                   styles[placement],
                   styles[size],
                   {
-                    [styles.active]: active
+                    [styles.active]: active,
                   },
                 )}
                 style={{ maxWidth }}

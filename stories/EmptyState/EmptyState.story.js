@@ -45,7 +45,7 @@ export default {
     subtitle:
       'Create your product item in an easy & fast way to display it on your site',
     image: <ImagePlaceholder />,
-    children: null
+    children: null,
   },
 
   exampleProps: {
@@ -55,17 +55,17 @@ export default {
       {
         label: 'Image URL',
         value:
-          'https://static.wixstatic.com/media/c78d05b79ede429fb77c9d8ec4443b93.jpg/v1/fit/w_375,h_375/c78d05b79ede429fb77c9d8ec4443b93.jpg'
+          'https://static.wixstatic.com/media/c78d05b79ede429fb77c9d8ec4443b93.jpg/v1/fit/w_375,h_375/c78d05b79ede429fb77c9d8ec4443b93.jpg',
       },
       { label: 'Node', value: <ImagePlaceholder /> },
-      { label: 'SVG', value: <StatusComplete size="120px" /> }
+      { label: 'SVG', value: <StatusComplete size="120px" /> },
     ],
     children: [
       { label: 'No children', value: null },
       { label: 'Single action', value: singleAction },
       { label: 'Two actions', value: twoActions },
-      { label: 'Single action with long text', value: singleActionLongText }
-    ]
+      { label: 'Single action with long text', value: singleActionLongText },
+    ],
   },
 
   examples: (
@@ -101,5 +101,5 @@ export default {
         </li>
       </ul>
     </div>
-  )
+  ),
 };

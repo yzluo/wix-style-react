@@ -8,13 +8,13 @@ export const BulkSelectionContext = createReactContext();
 export const BulkSelectionState = Object.freeze({
   ALL: 'ALL',
   NONE: 'NONE',
-  SOME: 'SOME'
+  SOME: 'SOME',
 });
 
 export const ChangeType = Object.freeze({
   ALL: 'ALL',
   NONE: 'NONE',
-  SINGLE_TOGGLE: 'SINGLE_TOGGLE'
+  SINGLE_TOGGLE: 'SINGLE_TOGGLE',
 });
 
 /** Helper for PropTypes for componenst which consume the BulkSelection context */
@@ -27,7 +27,7 @@ export const BulkSelectionContextPropTypes = {
   toggleAll: func,
   selectAll: func,
   deselectAll: func,
-  setSelectedIds: func
+  setSelectedIds: func,
 };
 
 /**
@@ -43,7 +43,7 @@ export class BulkSelection extends React.Component {
     const selectedIds = (props.selectedIds || []).slice();
     this.state = {
       selectedIds, // not exposed to context consumers
-      helpers: this.createHelpers(selectedIds)
+      helpers: this.createHelpers(selectedIds),
     };
   }
 
@@ -84,7 +84,7 @@ export class BulkSelection extends React.Component {
       {
         type: ChangeType.SINGLE_TOGGLE,
         id,
-        value: newSelectionValue
+        value: newSelectionValue,
       },
     );
   };
@@ -137,7 +137,7 @@ export class BulkSelection extends React.Component {
       /** Set the selection.
        * An optional `change` argument will be passed "as is" to the Table's onSelectionChanged callback.
        */
-      setSelectedIds: this.setSelectedIds
+      setSelectedIds: this.setSelectedIds,
     };
   }
 
@@ -162,5 +162,5 @@ BulkSelection.propTypes = {
    * and a `value` prop with the new boolean selection state of the item. */
   onSelectionChanged: func,
   /** Any - can consume the BulkSelectionProvider context */
-  children: any
+  children: any,
 };

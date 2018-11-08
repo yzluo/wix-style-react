@@ -12,20 +12,20 @@ const Example = () => (
         {
           text: 'Download',
           icon: <Download />,
-          onClick: () => window.alert('Download action was triggered.')
+          onClick: () => window.alert('Download action was triggered.'),
         },
         {
           text: 'Duplicate',
           icon: <Duplicate />,
           onClick: () => window.alert('Duplicate action was triggered.'),
-          disabled: true
+          disabled: true,
         },
         {
           text: 'Print',
           icon: <Print />,
           onClick: () => window.alert('Print action was triggered.'),
-          disabled: true
-        }
+          disabled: true,
+        },
       ]}
       numOfVisibleSecondaryActions={1}
     />

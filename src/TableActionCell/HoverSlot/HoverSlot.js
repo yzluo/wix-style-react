@@ -11,7 +11,7 @@ const HoverSlot = ({ display, children, ...props }) => (
 
 HoverSlot.propTypes = {
   display: PropTypes.oneOf(['always', 'onHover', 'notOnHover']),
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default HoverSlot;

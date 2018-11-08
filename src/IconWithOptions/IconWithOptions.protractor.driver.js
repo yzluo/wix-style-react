@@ -18,7 +18,7 @@ const iconWithOptionsDriverFactory = component => ({
     component
       .$$(`[data-hook="dropdown-layout-options"] div`)
       .getText()
-      .count()
+      .count(),
 });
 
 export default iconWithOptionsDriverFactory;

@@ -46,7 +46,7 @@ const modalSelectorLayoutDriverFactory = component => {
     getEmptyState: () => findByDataHook(dataHooks.emptyState),
     getNoResultsFoundState: () => findByDataHook(dataHooks.noResultsFoundState),
     listExists: () => findByDataHook(dataHooks.list).isPresent(),
-    numberOfItemsInList: () => findAllByDataHook(dataHooks.selector).count()
+    numberOfItemsInList: () => findAllByDataHook(dataHooks.selector).count(),
   };
 };
 

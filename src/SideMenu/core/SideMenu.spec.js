@@ -32,10 +32,10 @@ describe('SideMenu', () => {
       navigation: [
         <SideMenu.NavigationLink key="0" href="//wix.com" />,
         <SideMenu.NavigationSeparator key="1" />,
-        <SideMenu.NavigationLink key="2" href="//wix.com" />
+        <SideMenu.NavigationLink key="2" href="//wix.com" />,
       ],
       promotion: 'Hello Promotion',
-      footer: 'Hello Footer'
+      footer: 'Hello Footer',
     };
     const driver = createComponent(menu);
 
@@ -62,8 +62,8 @@ describe('SideMenu', () => {
         <SideMenu.NavigationCategory key="1">
           Category 1
         </SideMenu.NavigationCategory>,
-        <SideMenu.NavigationLink key="2" href="//wix.com" />
-      ]
+        <SideMenu.NavigationLink key="2" href="//wix.com" />,
+      ],
     };
 
     const driver = createComponent(menu);
@@ -79,8 +79,8 @@ describe('SideMenu', () => {
       navigation: [
         <SideMenu.NavigationBackLink key="0" onBackHandler={spy}>
           Back
-        </SideMenu.NavigationBackLink>
-      ]
+        </SideMenu.NavigationBackLink>,
+      ],
     };
 
     const driver = createComponent(menu);
@@ -95,8 +95,8 @@ describe('SideMenu', () => {
       navigation: [
         <SideMenu.NavigationLink key="0" />,
         <SideMenu.NavigationLink key="1" onClick={spy} />,
-        <SideMenu.NavigationLink key="2" />
-      ]
+        <SideMenu.NavigationLink key="2" />,
+      ],
     };
 
     const driver = createComponent(menu);
@@ -111,8 +111,8 @@ describe('SideMenu', () => {
       navigation: [
         <SideMenu.NavigationLink key="0" />,
         <SideMenu.NavigationLink key="1" badge={badge} />,
-        <SideMenu.NavigationLink key="2" />
-      ]
+        <SideMenu.NavigationLink key="2" />,
+      ],
     };
 
     const driver = createComponent(menu);

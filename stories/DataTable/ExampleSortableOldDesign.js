@@ -3,7 +3,7 @@ import DataTable from 'wix-style-react/DataTable';
 import './Example.scss';
 
 const style = {
-  width: '966px'
+  width: '966px',
 };
 
 const baseData = [
@@ -11,7 +11,7 @@ const baseData = [
   { firstName: 'Sara', lastName: 'Porter' },
   { firstName: 'Deborah', lastName: 'Rhodes' },
   { firstName: 'Walter', lastName: 'Jenning' },
-  { firstName: 'Amanda', lastName: 'Woods' }
+  { firstName: 'Amanda', lastName: 'Woods' },
 ];
 
 class DataTableSortableOldDesignExample extends React.Component {
@@ -25,7 +25,7 @@ class DataTableSortableOldDesignExample extends React.Component {
     const sort = Object.assign({}, this.state.sort, { [colNum]: desc });
     const filelds = {
       1: 'firstName',
-      2: 'lastName'
+      2: 'lastName',
     };
     const sortedData = this.sortDataByField(filelds[colNum], desc);
     this.setState({ sort, data: sortedData });
@@ -49,7 +49,7 @@ class DataTableSortableOldDesignExample extends React.Component {
               render: (row, rowNum) => '#' + (rowNum + 1),
               width: '20%',
               minWidth: '75px',
-              important: true
+              important: true,
             },
             {
               title: 'First Name',
@@ -57,7 +57,7 @@ class DataTableSortableOldDesignExample extends React.Component {
               sortDescending: !!this.state.sort[1],
               render: row => <span>{row.firstName}</span>,
               width: '40%',
-              minWidth: '100px'
+              minWidth: '100px',
             },
             {
               title: 'Last Name',
@@ -65,8 +65,8 @@ class DataTableSortableOldDesignExample extends React.Component {
               sortDescending: !!this.state.sort[2],
               render: row => <span>{row.lastName}</span>,
               width: '40%',
-              minWidth: '100px'
-            }
+              minWidth: '100px',
+            },
           ]}
         />
       </div>

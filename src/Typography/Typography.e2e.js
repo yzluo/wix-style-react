@@ -7,13 +7,13 @@ import { ExpectedConditions } from 'protractor';
 describe('Typography', () => {
   const kind = getTestStoryKind({
     category: Category.FOUNDATION,
-    storyName: '1.2 Typography'
+    storyName: '1.2 Typography',
   });
 
   eyes.it('should render all Text variations', async () => {
     const storyUrl = createStoryUrl({
       kind,
-      story: '1. Typography with Classes - Text'
+      story: '1. Typography with Classes - Text',
     });
     await browser.get(storyUrl);
     await browser.wait(ExpectedConditions.visibilityOf($('table')));
@@ -22,7 +22,7 @@ describe('Typography', () => {
   eyes.it('should render all Heading variations', async () => {
     const storyUrl = createStoryUrl({
       kind,
-      story: '2. Typography with Classes - Heading'
+      story: '2. Typography with Classes - Heading',
     });
     await browser.get(storyUrl);
     await browser.wait(ExpectedConditions.visibilityOf($('table')));

@@ -9,13 +9,13 @@ class CardWithEditableSelector extends React.Component {
     super(props);
     this.state = {
       options: [{ title: 'Pumpkin Seeds' }, { title: 'Sunflower Seeds' }],
-      selectedIndex: null
+      selectedIndex: null,
     };
   }
 
   onOptionAdded = ({ newTitle }) => {
     this.setState({
-      options: [...this.state.options, { title: newTitle }]
+      options: [...this.state.options, { title: newTitle }],
     });
   };
 
@@ -23,7 +23,7 @@ class CardWithEditableSelector extends React.Component {
     this.setState({
       options: this.state.options.map((option, i) =>
         index === i ? { title: newTitle } : option,
-      )
+      ),
     });
   };
 
@@ -39,7 +39,7 @@ class CardWithEditableSelector extends React.Component {
     newOptions[index].isSelected = true;
     this.setState({
       options: newOptions,
-      selectedIndex: index
+      selectedIndex: index,
     });
   };
 
@@ -52,7 +52,7 @@ class CardWithEditableSelector extends React.Component {
     }
     this.setState({
       options: this.state.options.filter((option, i) => index !== i),
-      selectedIndex: newSelectedIndex
+      selectedIndex: newSelectedIndex,
     });
   };
 

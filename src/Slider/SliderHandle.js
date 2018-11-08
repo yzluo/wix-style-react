@@ -8,7 +8,7 @@ export default class SliderHandle extends Component {
 
     this.state = {
       showTooltip: false,
-      dragging: false
+      dragging: false,
     };
 
     this.handleMouseDown = this.handleMouseDown.bind(this);
@@ -72,9 +72,9 @@ export default class SliderHandle extends Component {
 SliderHandle.propTypes = {
   displayTooltip: PropTypes.bool,
   offset: PropTypes.number,
-  value: PropTypes.number
+  value: PropTypes.number,
 };
 
 SliderHandle.defaultProps = {
-  displayTooltip: true
+  displayTooltip: true,
 };

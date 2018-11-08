@@ -5,7 +5,7 @@ import ReactTestUtils from 'react-dom/test-utils';
 const messageBoxMarketerialLayoutDriverFactory = ({
   element,
   wrapper,
-  component
+  component,
 }) => {
   const primaryButton = () =>
     element.querySelector('[data-hook="primary-button"]');
@@ -37,7 +37,7 @@ const messageBoxMarketerialLayoutDriverFactory = ({
         <div ref={r => (element = r)}>{ClonedWithProps}</div>,
         wrapper,
       );
-    }
+    },
   };
 };
 

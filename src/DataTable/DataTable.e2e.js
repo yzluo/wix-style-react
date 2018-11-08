@@ -2,7 +2,7 @@ import eyes from 'eyes.it';
 import { dataTableTestkitFactory } from '../../testkit/protractor';
 import {
   waitForVisibilityOf,
-  scrollToElement
+  scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 import { getStoryUrl } from '../../test/utils/storybook-helpers';
 
@@ -11,7 +11,7 @@ describe('Data Table', () => {
 
   eyes.it('should call func on row click', async () => {
     const driver = dataTableTestkitFactory({
-      dataHook: 'story-data-table-example'
+      dataHook: 'story-data-table-example',
     });
     const indexToClick = 2;
     const name = 'Deborah Rhodes';

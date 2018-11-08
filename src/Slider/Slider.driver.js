@@ -23,7 +23,7 @@ const sliderDriverFactory = ({ element }) => {
     unHoverHandle: ({ handleIndex }) => {
       const handle = $sliderHandles()[handleIndex];
       ReactTestUtils.Simulate.mouseLeave(handle);
-    }
+    },
   };
 };
 

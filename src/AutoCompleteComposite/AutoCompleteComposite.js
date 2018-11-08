@@ -11,7 +11,7 @@ const AutoCompleteComposite = ({ children, ...props }) => (
 );
 
 AutoCompleteComposite.propTypes = {
-  children: children(optional(Label), once(AutoComplete))
+  children: children(optional(Label), once(AutoComplete)),
 };
 
 AutoCompleteComposite.displayName = 'AutoCompleteComposite';

@@ -11,7 +11,7 @@ import styles from './Example.scss';
 
 class ExamplePopoverMenu extends Component {
   static propTypes = {
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
   };
 
   state = {
@@ -20,15 +20,15 @@ class ExamplePopoverMenu extends Component {
     menuItems: [
       { iconName: 'Edit', text: 'Edit' },
       { iconName: 'Hidden', text: 'Hide' },
-      { iconName: 'Delete', text: 'Delete' }
+      { iconName: 'Delete', text: 'Delete' },
     ],
     buttonTheme: 'icon-greybackground',
-    maxWidth: '378px'
+    maxWidth: '378px',
   };
 
   addRow = () =>
     this.setState({
-      menuItems: [...this.state.menuItems, { iconName: '', text: '' }]
+      menuItems: [...this.state.menuItems, { iconName: '', text: '' }],
     });
 
   updateRowIcon = (iconName, i) =>
@@ -38,10 +38,10 @@ class ExamplePopoverMenu extends Component {
         {
           iconName,
           text: this.state.menuItems[i].text,
-          disabled: this.state.menuItems[i].disabled
+          disabled: this.state.menuItems[i].disabled,
         },
-        ...this.state.menuItems.slice(i + 1).map(obj => Object.assign({}, obj))
-      ]
+        ...this.state.menuItems.slice(i + 1).map(obj => Object.assign({}, obj)),
+      ],
     });
 
   updateRowText = (text, i) =>
@@ -51,10 +51,10 @@ class ExamplePopoverMenu extends Component {
         {
           iconName: this.state.menuItems[i].iconName,
           text,
-          disabled: this.state.menuItems[i].disabled
+          disabled: this.state.menuItems[i].disabled,
         },
-        ...this.state.menuItems.slice(i + 1).map(obj => Object.assign({}, obj))
-      ]
+        ...this.state.menuItems.slice(i + 1).map(obj => Object.assign({}, obj)),
+      ],
     });
 
   updateRowDisabled = (disabled, i) =>
@@ -64,10 +64,10 @@ class ExamplePopoverMenu extends Component {
         {
           iconName: this.state.menuItems[i].iconName,
           text: this.state.menuItems[i].text,
-          disabled
+          disabled,
         },
-        ...this.state.menuItems.slice(i + 1).map(obj => Object.assign({}, obj))
-      ]
+        ...this.state.menuItems.slice(i + 1).map(obj => Object.assign({}, obj)),
+      ],
     });
 
   render() {

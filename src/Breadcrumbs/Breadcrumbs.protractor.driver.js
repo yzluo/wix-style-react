@@ -37,7 +37,7 @@ const breadcrumbsDriverFactory = component => {
         .get(position)
         .getAttribute('class'),
     click: () => component.click(),
-    element: () => component
+    element: () => component,
   };
 };
 

@@ -22,7 +22,7 @@ class DropdownLayout extends WixComponent {
 
     this.state = {
       hovered: NOT_HOVERED_INDEX,
-      selectedId: props.selectedId
+      selectedId: props.selectedId,
     };
 
     this._onSelect = this._onSelect.bind(this);
@@ -87,7 +87,7 @@ class DropdownLayout extends WixComponent {
       const sameOptionWasPicked = chosenOption.id === this.state.selectedId;
       this.setState({
         selectedId: chosenOption.id,
-        hovered: NOT_HOVERED_INDEX
+        hovered: NOT_HOVERED_INDEX,
       });
       if (onSelect) {
         onSelect(chosenOption, sameOptionWasPicked);
@@ -95,7 +95,7 @@ class DropdownLayout extends WixComponent {
     } else {
       this.setState({
         selectedId: undefined,
-        hovered: NOT_HOVERED_INDEX
+        hovered: NOT_HOVERED_INDEX,
       });
     }
     return !!onSelect && chosenOption;
@@ -109,7 +109,7 @@ class DropdownLayout extends WixComponent {
 
   _onMouseLeave() {
     this.setState({
-      hovered: NOT_HOVERED_INDEX
+      hovered: NOT_HOVERED_INDEX,
     });
   }
 
@@ -195,7 +195,7 @@ class DropdownLayout extends WixComponent {
 
   _onClose() {
     this.setState({
-      hovered: NOT_HOVERED_INDEX
+      hovered: NOT_HOVERED_INDEX,
     });
 
     if (this.props.onClose) {
@@ -218,7 +218,7 @@ class DropdownLayout extends WixComponent {
       withArrow,
       onMouseEnter,
       onMouseLeave,
-      inContainer
+      inContainer,
     } = this.props;
     const contentContainerClassName = classNames({
       [styles.contentContainer]: true,
@@ -226,7 +226,7 @@ class DropdownLayout extends WixComponent {
       [styles.up]: dropDirectionUp,
       [styles.down]: !dropDirectionUp,
       [styles.withArrow]: withArrow,
-      [styles.containerStyles]: !inContainer
+      [styles.containerStyles]: !inContainer,
     });
 
     return (
@@ -246,7 +246,7 @@ class DropdownLayout extends WixComponent {
             maxHeight: this.props.maxHeightPixels + 'px',
             minWidth: this.props.minWidthPixels
               ? `${this.props.minWidthPixels}px`
-              : undefined
+              : undefined,
           }}
         >
           {this.renderNode(fixedHeader)}
@@ -279,7 +279,7 @@ class DropdownLayout extends WixComponent {
       disabled: disabled || title,
       title,
       overrideStyle,
-      dataHook: `dropdown-item-${id}`
+      dataHook: `dropdown-item-${id}`,
     });
 
     return linkTo ? (
@@ -303,7 +303,7 @@ class DropdownLayout extends WixComponent {
     disabled,
     title,
     overrideStyle,
-    dataHook
+    dataHook,
   }) {
     const { itemHeight, selectedHighlight } = this.props;
 
@@ -316,7 +316,7 @@ class DropdownLayout extends WixComponent {
       [styles.disabled]: disabled,
       [styles.title]: title,
       [styles.smallHeight]: itemHeight === 'small',
-      [styles.bigHeight]: itemHeight === 'big'
+      [styles.bigHeight]: itemHeight === 'big',
     });
 
     return (
@@ -339,7 +339,7 @@ class DropdownLayout extends WixComponent {
     const arrowClassName = classNames({
       [styles.arrow]: true,
       [styles.up]: dropDirectionUp,
-      [styles.down]: !dropDirectionUp
+      [styles.down]: !dropDirectionUp,
     });
     return withArrow && visible ? <div className={arrowClassName} /> : null;
   }
@@ -354,7 +354,7 @@ class DropdownLayout extends WixComponent {
         );
       }
       this.setState({
-        hovered: hoverIndex >= 0 ? hoverIndex : NOT_HOVERED_INDEX
+        hovered: hoverIndex >= 0 ? hoverIndex : NOT_HOVERED_INDEX,
       });
     }
 
@@ -374,7 +374,7 @@ class DropdownLayout extends WixComponent {
           hovered: findIndex(
             nextProps.options,
             item => item.id === this.props.options[this.state.hovered].id,
-          )
+          ),
         });
       }
     }
@@ -401,13 +401,13 @@ DropdownLayout.propTypes = {
         value: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
           .isRequired,
         disabled: PropTypes.bool,
-        overrideStyle: PropTypes.bool
+        overrideStyle: PropTypes.bool,
       }),
 
       // A divider option without an id
       PropTypes.shape({
-        value: PropTypes.oneOf([DIVIDER_OPTION_VALUE])
-      })
+        value: PropTypes.oneOf([DIVIDER_OPTION_VALUE]),
+      }),
     ]),
   ),
   /** The id of the selected option in the list  */
@@ -427,7 +427,7 @@ DropdownLayout.propTypes = {
   onMouseLeave: PropTypes.func,
   itemHeight: PropTypes.oneOf(['small', 'big']),
   selectedHighlight: PropTypes.bool,
-  inContainer: PropTypes.bool
+  inContainer: PropTypes.bool,
 };
 
 DropdownLayout.defaultProps = {
@@ -438,7 +438,7 @@ DropdownLayout.defaultProps = {
   closeOnSelect: true,
   itemHeight: 'small',
   selectedHighlight: true,
-  inContainer: false
+  inContainer: false,
 };
 
 DropdownLayout.NONE_SELECTED_ID = NOT_HOVERED_INDEX;

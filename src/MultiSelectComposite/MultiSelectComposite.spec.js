@@ -22,7 +22,7 @@ describe('MultiSelectComposite', () => {
       );
       const multiSelectCompositeTestkit = multiSelectCompositeTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(multiSelectCompositeTestkit.exists()).toBeTruthy();
     });
@@ -38,7 +38,7 @@ describe('MultiSelectComposite', () => {
         const multiSelectCompositeTestkit = enzymeMultiSelectCompositeTestkitFactory(
           {
             wrapper,
-            dataHook
+            dataHook,
           },
         );
         expect(multiSelectCompositeTestkit.exists()).toBeTruthy();

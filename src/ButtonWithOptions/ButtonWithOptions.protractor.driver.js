@@ -12,7 +12,7 @@ const buttonWithOptionsDriverFactory = component => ({
       .$$(`[data-hook="dropdown-layout-options"] div`)
       .getText()
       .count(),
-  element: () => component
+  element: () => component,
 });
 
 export default buttonWithOptionsDriverFactory;

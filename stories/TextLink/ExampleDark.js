@@ -7,7 +7,7 @@ const style = {
   padding: '0 5px',
   width: '340px',
   backgroundColor: '#172D3C',
-  lineHeight: '22px'
+  lineHeight: '22px',
 };
 
 class ControlledExample extends Component {

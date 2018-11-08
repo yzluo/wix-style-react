@@ -6,17 +6,17 @@ const BLOCK_TAGS = {
   ul: 'unordered-list',
   li: 'list-item',
   ol: 'ordered-list',
-  img: 'image'
+  img: 'image',
 };
 
 const MARK_TAGS = {
   em: 'italic',
   strong: 'bold',
-  u: 'underline'
+  u: 'underline',
 };
 
 const INLINE_TAGS = {
-  a: 'link'
+  a: 'link',
 };
 
 const rules = [
@@ -41,7 +41,7 @@ const rules = [
         kind: 'block',
         type,
         data,
-        nodes: next(el.children)
+        nodes: next(el.children),
       };
     },
     serialize(object, children) {
@@ -63,7 +63,7 @@ const rules = [
         default:
           return { children };
       }
-    }
+    },
   },
   {
     deserialize(el, next) {
@@ -75,7 +75,7 @@ const rules = [
       return {
         kind: 'mark',
         type,
-        nodes: next(el.children)
+        nodes: next(el.children),
       };
     },
     serialize(object, children) {
@@ -93,7 +93,7 @@ const rules = [
         default:
           return { children };
       }
-    }
+    },
   },
   {
     deserialize(el, next) {
@@ -106,9 +106,9 @@ const rules = [
         kind: 'inline',
         type,
         data: {
-          href: el.attribs.href
+          href: el.attribs.href,
         },
-        nodes: next(el.children)
+        nodes: next(el.children),
       };
     },
     serialize(object, children) {
@@ -130,8 +130,8 @@ const rules = [
         default:
           return { children };
       }
-    }
-  }
+    },
+  },
 ];
 
 export default new Html({ rules });

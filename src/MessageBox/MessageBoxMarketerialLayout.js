@@ -29,12 +29,12 @@ class MessageBoxMarketerialLayout extends WixComponent {
       primaryButtonTheme,
       imageComponent,
       footerBottomChildren,
-      fixImagePosition
+      fixImagePosition,
     } = this.props;
 
     const headerClasses = classNames({
       [styles.header]: true,
-      [styles[`header-${theme}`]]: true
+      [styles[`header-${theme}`]]: true,
     });
 
     return (
@@ -48,7 +48,7 @@ class MessageBoxMarketerialLayout extends WixComponent {
           ) : (
             <div
               className={classNames(styles.headerImage, {
-                [styles.headerImageFix]: fixImagePosition
+                [styles.headerImageFix]: fixImagePosition,
               })}
             >
               <img src={imageUrl} data-hook="header-image" />
@@ -111,11 +111,11 @@ MessageBoxMarketerialLayout.propTypes = {
   footerBottomChildren: PropTypes.node,
   theme: PropTypes.oneOf(['blue', 'purple']),
   primaryButtonTheme: PropTypes.oneOf(['blue', 'purple']),
-  fixImagePosition: PropTypes.bool
+  fixImagePosition: PropTypes.bool,
 };
 
 MessageBoxMarketerialLayout.defaultProps = {
-  theme: 'blue'
+  theme: 'blue',
 };
 
 export default MessageBoxMarketerialLayout;

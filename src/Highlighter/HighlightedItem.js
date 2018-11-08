@@ -6,7 +6,7 @@ import escapeRegExp from 'lodash/escapeRegExp';
 class HighlightedItem extends WixComponent {
   static propTypes = {
     match: PropTypes.string,
-    caseSensitive: PropTypes.bool
+    caseSensitive: PropTypes.bool,
   };
 
   renderElement() {
@@ -32,7 +32,7 @@ class HighlightedItem extends WixComponent {
     if (matches) {
       return {
         first: matches.index,
-        last: matches.index + matches[0].length
+        last: matches.index + matches[0].length,
       };
     }
   }

@@ -12,7 +12,7 @@ import StorySettings from './StorySettings';
 
 class ExampleStandard extends Component {
   static propTypes = {
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
   };
 
   state = {
@@ -27,21 +27,21 @@ class ExampleStandard extends Component {
     selectionInput: 'checkbox',
     label: {
       appearance: 'T1.1',
-      children: 'Field With Selection Label'
+      children: 'Field With Selection Label',
     },
     firstInput: {
       placeholder: '0',
       resizable: false,
-      borderRadius: 0
+      borderRadius: 0,
     },
     lastInput: {
       placeholder: '0',
-      resizable: false
+      resizable: false,
     },
     firstButtonLabel: 'Yes',
     secondButtonLabel: 'No',
     required: false,
-    info: ''
+    info: '',
   };
 
   setComponentState(componentName, obj) {
@@ -93,7 +93,7 @@ class ExampleStandard extends Component {
                   value={this.state.label.children}
                   onChange={e =>
                     this.setComponentState('label', {
-                      children: e.target.value
+                      children: e.target.value,
                     })
                   }
                 />

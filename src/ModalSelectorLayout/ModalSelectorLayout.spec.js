@@ -6,7 +6,7 @@ import { modalSelectorLayoutTestkitFactory as enzymeModalSelectorLayoutTestkitFa
 import { modalSelectorLayoutTestkitFactory } from '../../testkit';
 import {
   isEnzymeTestkitExists,
-  isTestkitExists
+  isTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import ModalSelectorLayout from './ModalSelectorLayout';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
@@ -26,7 +26,7 @@ const paginatedDataSourceFactory = items => async (
   );
   return {
     items: filteredItems.slice(offset, offset + limit),
-    totalCount: filteredItems.length
+    totalCount: filteredItems.length,
   };
 };
 
@@ -37,7 +37,7 @@ const paginatedDataSource = paginatedDataSourceFactory(
 const emptyDataSource = paginatedDataSourceFactory([]);
 const createDriver = createDriverFactory(modalSelectorLayoutDriverFactory);
 const requiredProps = {
-  dataSource: emptyDataSource
+  dataSource: emptyDataSource,
 };
 const createDriverWithProps = props =>
   createDriver(<ModalSelectorLayout {...requiredProps} {...props} />);
@@ -63,7 +63,7 @@ describe('ModalSelectorLayout', () => {
     it('should hide the loader & render only passed empty state when there are no items in data source', async () => {
       const driver = createDriverWithProps({
         dataSource: emptyDataSource,
-        emptyState: <img src="empty_state.png" />
+        emptyState: <img src="empty_state.png" />,
       });
 
       await flushPromises();
@@ -84,15 +84,15 @@ describe('ModalSelectorLayout', () => {
           title: 'rick',
           subtitle: 'sanchez',
           extraText: 'get',
-          image: <img src="rick.png" />
+          image: <img src="rick.png" />,
         },
         {
           id: 2,
           title: 'morty',
           subtitle: 'smith',
           extraNode: <img src="shwifty.png" />,
-          image: <img src="morty.png" />
-        }
+          image: <img src="morty.png" />,
+        },
       ]);
 
       const driver = createDriverWithProps({ dataSource });
@@ -157,7 +157,7 @@ describe('ModalSelectorLayout', () => {
       const expectedSubtitle = 'Wubba Lubba Dub Dub';
       const driver = createDriverWithProps({
         dataSource: paginatedDataSource,
-        subtitle: expectedSubtitle
+        subtitle: expectedSubtitle,
       });
 
       await flushPromises();
@@ -184,7 +184,7 @@ describe('ModalSelectorLayout', () => {
       const stub = jest.fn();
       const driver = createDriverWithProps({
         cancelButtonText: 'Cancel',
-        onCancel: stub
+        onCancel: stub,
       });
       driver.cancelButtonDriver().click();
 
@@ -213,7 +213,7 @@ describe('ModalSelectorLayout', () => {
     it('should allow hiding search', async () => {
       const driver = createDriverWithProps({
         dataSource: paginatedDataSource,
-        withSearch: false
+        withSearch: false,
       });
 
       await flushPromises();
@@ -225,7 +225,7 @@ describe('ModalSelectorLayout', () => {
       const expectedPlaceholder = 'some placeholder';
       const driver = createDriverWithProps({
         dataSource: paginatedDataSource,
-        searchPlaceholder: expectedPlaceholder
+        searchPlaceholder: expectedPlaceholder,
       });
 
       await flushPromises();
@@ -262,7 +262,7 @@ describe('ModalSelectorLayout', () => {
         dataSource: paginatedDataSource,
         noResultsFoundStateFactory: searchValue => (
           <img alt={searchValue} src="no-results-found.png" />
-        )
+        ),
       });
 
       expect(driver.showsNoResultsFoundState()).toBe(false);
@@ -314,7 +314,7 @@ describe('ModalSelectorLayout', () => {
     it('should allow configuring items per page', async () => {
       const driver = createDriverWithProps({
         dataSource: paginatedDataSource,
-        itemsPerPage: 2
+        itemsPerPage: 2,
       });
 
       await flushPromises();
@@ -337,7 +337,7 @@ describe('ModalSelectorLayout', () => {
     it('should render tiny images', async () => {
       const driver = createDriverWithProps({
         dataSource: paginatedDataSource,
-        imageSize: 'tiny'
+        imageSize: 'tiny',
       });
 
       await flushPromises();
@@ -348,7 +348,7 @@ describe('ModalSelectorLayout', () => {
     it('should render small images', async () => {
       const driver = createDriverWithProps({
         dataSource: paginatedDataSource,
-        imageSize: 'small'
+        imageSize: 'small',
       });
 
       await flushPromises();
@@ -359,7 +359,7 @@ describe('ModalSelectorLayout', () => {
     it('should render portrait images', async () => {
       const driver = createDriverWithProps({
         dataSource: paginatedDataSource,
-        imageSize: 'portrait'
+        imageSize: 'portrait',
       });
 
       await flushPromises();
@@ -370,7 +370,7 @@ describe('ModalSelectorLayout', () => {
     it('should render large images', async () => {
       const driver = createDriverWithProps({
         dataSource: paginatedDataSource,
-        imageSize: 'large'
+        imageSize: 'large',
       });
 
       await flushPromises();
@@ -381,7 +381,7 @@ describe('ModalSelectorLayout', () => {
     it('should render cinema images', async () => {
       const driver = createDriverWithProps({
         dataSource: paginatedDataSource,
-        imageSize: 'cinema'
+        imageSize: 'cinema',
       });
 
       await flushPromises();
@@ -392,7 +392,7 @@ describe('ModalSelectorLayout', () => {
     it('should render circle images', async () => {
       const driver = createDriverWithProps({
         dataSource: paginatedDataSource,
-        imageShape: 'circle'
+        imageShape: 'circle',
       });
 
       await flushPromises();
@@ -403,7 +403,7 @@ describe('ModalSelectorLayout', () => {
     it('should render rectangular images', async () => {
       const driver = createDriverWithProps({
         dataSource: paginatedDataSource,
-        imageShape: 'rectangular'
+        imageShape: 'rectangular',
       });
 
       await flushPromises();
@@ -513,7 +513,7 @@ describe('ModalSelectorLayout', () => {
       const driver = createDriverWithProps({
         dataSource,
         multiple: true,
-        onOk: spy
+        onOk: spy,
       });
 
       await flushPromises();
@@ -526,7 +526,7 @@ describe('ModalSelectorLayout', () => {
 
     it('should support a disabled selector', async () => {
       const driver = await multiselectModalWithItems([
-        { id: 1, title: 'first', disabled: true }
+        { id: 1, title: 'first', disabled: true },
       ]);
 
       expect(driver.getSelectorDriverAt(0).isDisabled()).toBe(true);
@@ -534,7 +534,7 @@ describe('ModalSelectorLayout', () => {
 
     it('should not count selection of disabled items', async () => {
       const driver = await multiselectModalWithItems([
-        { id: 1, title: 'first', disabled: true }
+        { id: 1, title: 'first', disabled: true },
       ]);
 
       expect(driver.footerSelector().getLabel()).toContain('(0)');
@@ -542,7 +542,7 @@ describe('ModalSelectorLayout', () => {
 
     it('should not count selection of disabled items for deselecting all', async () => {
       const driver = await multiselectModalWithItems([
-        { id: 1, title: 'first', disabled: true }
+        { id: 1, title: 'first', disabled: true },
       ]);
 
       driver.footerSelector().click();
@@ -553,7 +553,7 @@ describe('ModalSelectorLayout', () => {
     it('should not count selection of disabled items for selecting some', async () => {
       const driver = await multiselectModalWithItems([
         { id: 1, title: 'first', disabled: true },
-        { id: 2, title: 'sec' }
+        { id: 2, title: 'sec' },
       ]);
 
       driver.getSelectorDriverAt(1).toggle();
@@ -564,7 +564,7 @@ describe('ModalSelectorLayout', () => {
     it('should count how many left for select all', async () => {
       const driver = await multiselectModalWithItems([
         { id: 1, title: 'first', disabled: true },
-        { id: 2, title: 'sec' }
+        { id: 2, title: 'sec' },
       ]);
 
       expect(driver.footerSelector().getLabel()).toContain('(1)');
@@ -575,7 +575,7 @@ describe('ModalSelectorLayout', () => {
     const items = [
       { id: 1, title: 'first' },
       { id: 2, title: 'second', selected: true },
-      { id: 3, title: 'third', disabled: true, selected: true }
+      { id: 3, title: 'third', disabled: true, selected: true },
     ];
 
     const dataSource = paginatedDataSourceFactory(items);
@@ -603,7 +603,7 @@ describe('ModalSelectorLayout', () => {
   describe('defaults', () => {
     it('should render empty state', async () => {
       const driver = createDriverWithProps({
-        dataSource: emptyDataSource
+        dataSource: emptyDataSource,
       });
       await flushPromises();
 
@@ -616,7 +616,7 @@ describe('ModalSelectorLayout', () => {
     it('should render noResultsFound state', async () => {
       const searchValue = 'wubba lubba dub dub';
       const driver = createDriverWithProps({
-        dataSource: paginatedDataSource
+        dataSource: paginatedDataSource,
       });
       await flushPromises();
       driver.searchDriver().inputDriver.focus();
@@ -667,7 +667,7 @@ describe('ModalSelectorLayout', () => {
 
     it('should not render subtitle by default', async () => {
       const driver = createDriverWithProps({
-        dataSource: paginatedDataSource
+        dataSource: paginatedDataSource,
       });
 
       await flushPromises();

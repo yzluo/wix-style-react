@@ -11,7 +11,7 @@ import Input from '../Input';
 import DatePicker from './DatePicker';
 import {
   rangePolyfill,
-  requestAnimationFramePolyfill
+  requestAnimationFramePolyfill,
 } from '../../testkit/polyfills';
 
 import isLocale from 'date-fns/locale/is';
@@ -143,7 +143,7 @@ describe('DatePicker', () => {
         calendarDriver.triggerKeyDown({
           key: 'Tab',
           keyCode: 9,
-          preventDefault
+          preventDefault,
         });
 
         expect(preventDefault.mock.calls).toHaveLength(0);
@@ -623,7 +623,7 @@ describe('DatePicker', () => {
       return {
         calendarDriver,
         driver,
-        inputDriver
+        inputDriver,
       };
     };
 
@@ -634,14 +634,14 @@ describe('DatePicker', () => {
 
     it('should display translated month in dropdown label', () => {
       const { calendarDriver } = setup({
-        showMonthDropdown: true
+        showMonthDropdown: true,
       });
       expect(calendarDriver.getMonthDropdownLabel()).toEqual('octobre');
     });
 
     it('should display translated months in dropdown options', () => {
       const { calendarDriver } = setup({
-        showMonthDropdown: true
+        showMonthDropdown: true,
       });
       expect(
         calendarDriver.getMonthDropdownDriver().optionContentAt(0),
@@ -662,7 +662,7 @@ describe('DatePicker', () => {
       it('should display translated month in dropdown label', () => {
         const { calendarDriver } = setup({
           locale: isLocale,
-          showMonthDropdown: true
+          showMonthDropdown: true,
         });
         expect(calendarDriver.getMonthDropdownLabel()).toEqual('október');
       });
@@ -670,7 +670,7 @@ describe('DatePicker', () => {
       it('should display translated months in dropdown options', () => {
         const { calendarDriver } = setup({
           locale: isLocale,
-          showMonthDropdown: true
+          showMonthDropdown: true,
         });
         expect(
           calendarDriver.getMonthDropdownDriver().optionContentAt(0),
@@ -746,7 +746,7 @@ describe('DatePicker', () => {
       );
       const { driver, calendarDriver, inputDriver } = datePickerTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
 
       expect(driver.exists()).toBe(true);
@@ -762,7 +762,7 @@ describe('DatePicker', () => {
       const {
         driver,
         calendarDriver,
-        inputDriver
+        inputDriver,
       } = enzymeDatePickerTestkitFactory({ wrapper, dataHook });
 
       expect(driver.exists()).toBe(true);

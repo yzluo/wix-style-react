@@ -9,7 +9,7 @@ import styles from './RichTextAreaLinkForm.scss';
 
 class RichTextAreaLinkForm extends Component {
   state = {
-    text: this.props.selection
+    text: this.props.selection,
   };
 
   getChangeHandler = field => ({ target: { value } }) => {
@@ -86,7 +86,7 @@ RichTextAreaLinkForm.propTypes = {
   selection: PropTypes.string,
   onCancel: PropTypes.func,
   onSubmit: PropTypes.func,
-  isTextInputVisible: PropTypes.bool
+  isTextInputVisible: PropTypes.bool,
 };
 
 export default RichTextAreaLinkForm;

@@ -39,7 +39,7 @@ describe('RichTextAreaComposite', () => {
       );
       const richTextAreaCompositeTestkit = richTextAreaCompositeTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(richTextAreaCompositeTestkit.exists()).toBeTruthy();
     });

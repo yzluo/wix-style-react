@@ -30,7 +30,7 @@ class InputLoaderSuffix extends React.Component {
 
 InputLoaderSuffix.propTypes = {
   tooltipMessage: PropTypes.string.isRequired,
-  tooltipPlacement: PropTypes.string
+  tooltipPlacement: PropTypes.string,
 };
 
 export default InputLoaderSuffix;

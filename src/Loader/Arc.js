@@ -7,7 +7,7 @@ function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
 
   return {
     x: centerX + radius * Math.cos(angleInRadians),
-    y: centerY + radius * Math.sin(angleInRadians)
+    y: centerY + radius * Math.sin(angleInRadians),
   };
 }
 
@@ -29,7 +29,7 @@ function describeArc(x, y, radius, startAngle, endAngle) {
     largeArcFlag,
     0,
     end.x,
-    end.y
+    end.y,
   ].join(' ');
 
   return d;
@@ -55,7 +55,7 @@ Arc.propTypes = {
   angle: PropTypes.number,
   className: PropTypes.string,
   strokeWidth: PropTypes.number,
-  viewBoxSize: PropTypes.number
+  viewBoxSize: PropTypes.number,
 };
 
 Arc.displayName = 'Arc';

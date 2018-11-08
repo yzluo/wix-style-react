@@ -6,7 +6,7 @@ import slideOut from './SlideOutAnimation.scss';
 
 export const SlideDirection = {
   in: 'in',
-  out: 'out'
+  out: 'out',
 };
 
 const animationDuration = 300; // Synced with SlideAnimation.scss file
@@ -23,13 +23,13 @@ class SlideAnimation extends Component {
       onEnter,
       onExit,
       onEntered,
-      onExited
+      onExited,
     } = this.props;
     const transitionNames =
       direction === SlideDirection.in ? slideIn : slideOut;
     const childTimeout = {
       enter: animateEnter ? animationDuration : 0,
-      exit: animateLeave ? animationDuration : 0
+      exit: animateLeave ? animationDuration : 0,
     };
 
     return (
@@ -61,7 +61,7 @@ SlideAnimation.propTypes = {
   onEnter: func,
   onEntered: func,
   onExit: func,
-  onExited: func
+  onExited: func,
 };
 
 SlideAnimation.defaultProps = {
@@ -69,7 +69,7 @@ SlideAnimation.defaultProps = {
   animateAppear: true,
   animateEnter: true,
   animateLeave: true,
-  children: null
+  children: null,
 };
 
 export default SlideAnimation;

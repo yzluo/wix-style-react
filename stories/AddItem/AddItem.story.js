@@ -81,12 +81,12 @@ const Within = (
 const childrenExamples = [
   {
     label: 'String',
-    value: 'Add New Item'
+    value: 'Add New Item',
   },
   {
     label: 'Component',
-    value: <Text>Add New Item</Text>
-  }
+    value: <Text>Add New Item</Text>,
+  },
 ];
 
 export default {
@@ -99,12 +99,12 @@ export default {
     theme: 'dashes',
     dataHook: storySettings.dataHook,
     children: childrenExamples[0].value,
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   exampleProps: {
-    children: childrenExamples
+    children: childrenExamples,
   },
 
-  examples: [Cards, Within, Breakpoints]
+  examples: [Cards, Within, Breakpoints],
 };

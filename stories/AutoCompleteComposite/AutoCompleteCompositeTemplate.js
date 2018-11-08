@@ -11,7 +11,7 @@ export default class Form extends Component {
     onChange: PropTypes.func.isRequired,
     withLabel: PropTypes.bool,
     label: PropTypes.object,
-    autoComplete: PropTypes.object
+    autoComplete: PropTypes.object,
   };
 
   componentDidUpdate(props) {

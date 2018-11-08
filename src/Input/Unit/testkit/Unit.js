@@ -6,7 +6,7 @@ import Unit from '../Unit';
 const unitDriverFactory = ({ element }) => {
   return {
     isEmpty: () => element.children.length === 0,
-    hasChild: style => !!element.querySelector(style)
+    hasChild: style => !!element.querySelector(style),
   };
 };
 

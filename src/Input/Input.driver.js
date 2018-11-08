@@ -109,7 +109,7 @@ const inputDriverFactory = ({ element, wrapper, component }) => {
         <div ref={r => (element = r)}>{ClonedWithProps}</div>,
         wrapper,
       );
-    }
+    },
   };
 
   return driver;

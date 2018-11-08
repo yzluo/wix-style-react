@@ -30,7 +30,7 @@ const YearDropdown = ({ date, onChange }) => {
 
 YearDropdown.propTypes = {
   date: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 export default YearDropdown;

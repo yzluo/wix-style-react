@@ -7,7 +7,7 @@ import {
   Item,
   Label,
   SelectedCount,
-  Divider
+  Divider,
 } from 'wix-style-react/TableToolbar';
 
 import Dropdown from 'wix-style-react/Dropdown';
@@ -30,7 +30,7 @@ const createDataSet = setIndex => [
     SKU: '111222',
     price: '$2.00',
     inventory: 'In stock',
-    collectionId: 1
+    collectionId: 1,
   },
   {
     id: `${setIndex}-2`,
@@ -39,7 +39,7 @@ const createDataSet = setIndex => [
     price: '$2.00',
     inventory: 'In stock',
     collectionId: 1,
-    filterId: 2
+    filterId: 2,
   },
   {
     id: `${setIndex}-3`,
@@ -47,7 +47,7 @@ const createDataSet = setIndex => [
     SKU: '333444',
     price: '$14.00',
     inventory: 'In stock',
-    collectionId: 2
+    collectionId: 2,
   },
   {
     id: `${setIndex}-4`,
@@ -56,8 +56,8 @@ const createDataSet = setIndex => [
     price: '$14.00',
     inventory: 'Out of stock',
     collectionId: 2,
-    filterId: 1
-  }
+    filterId: 1,
+  },
 ];
 
 const allData = [1, 2, 3, 4, 5].reduce(
@@ -71,7 +71,7 @@ export class TablePageExample extends React.Component {
     collectionId: 0,
     filterId: 0,
     searchTerm: '',
-    inStock: false
+    inStock: false,
   };
 
   clearSearch() {
@@ -79,7 +79,7 @@ export class TablePageExample extends React.Component {
       collectionId: 0,
       filterId: 0,
       searchTerm: '',
-      inStock: false
+      inStock: false,
     });
   }
 
@@ -87,13 +87,13 @@ export class TablePageExample extends React.Component {
     const collectionOptions = [
       { id: 0, value: 'All' },
       { id: 1, value: 'Towels' },
-      { id: 2, value: 'Slippers' }
+      { id: 2, value: 'Slippers' },
     ];
 
     const filterOptions = [
       { id: 0, value: 'All' },
       { id: 1, value: 'Red' },
-      { id: 2, value: 'Cyan' }
+      { id: 2, value: 'Cyan' },
     ];
 
     return (
@@ -220,7 +220,7 @@ export class TablePageExample extends React.Component {
           paddingBottom: '16px',
           display: 'flex',
           flexFlow: 'column',
-          minWidth: '966px'
+          minWidth: '966px',
         }}
       >
         <Table
@@ -237,26 +237,26 @@ export class TablePageExample extends React.Component {
                 </Highlighter>
               ),
               width: '30%',
-              minWidth: '150px'
+              minWidth: '150px',
             },
             {
               title: 'SKU',
               render: row => row.SKU,
               width: '20%',
-              minWidth: '100px'
+              minWidth: '100px',
             },
             {
               title: 'Price',
               render: row => row.price,
               width: '20%',
-              minWidth: '100px'
+              minWidth: '100px',
             },
             {
               title: 'Inventory',
               render: row => row.inventory,
               width: '20%',
-              minWidth: '100px'
-            }
+              minWidth: '100px',
+            },
           ]}
           onSelectionChange={selectedIds =>
             console.log('Table.onSelectionChange(): selectedIds=', selectedIds)

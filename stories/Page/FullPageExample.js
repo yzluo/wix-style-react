@@ -36,7 +36,7 @@ class FullPageExample extends React.Component {
   static propTypes = {
     shortContent: bool,
     maxWidth: number,
-    sidePadding: number
+    sidePadding: number,
   };
 
   render() {

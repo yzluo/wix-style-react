@@ -13,7 +13,7 @@ const highlighterDriverFactory = ({ element, wrapper, component }) => {
         ...(component.props.children || []),
       );
       render(<div ref={r => (element = r)}>{ClonedWithProps}</div>, wrapper);
-    }
+    },
   };
 };
 

@@ -15,7 +15,7 @@ const CompositeExample = ({ children }) => {
 };
 
 CompositeExample.propTypes = {
-  children: children(once(Label), once(Input))
+  children: children(once(Label), once(Input)),
 };
 
 export default () => (

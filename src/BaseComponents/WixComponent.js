@@ -84,7 +84,7 @@ class WixComponent extends React.PureComponent {
 
 WixComponent.propTypes = {
   dataHook: PropTypes.string,
-  styles: PropTypes.string
+  styles: PropTypes.string,
 };
 
 export default WixComponent;

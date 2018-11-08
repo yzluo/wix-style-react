@@ -1,7 +1,7 @@
 import eyes from 'eyes.it';
 import {
   createStoryUrl,
-  waitForVisibilityOf
+  waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { headingTestkitFactory } from '../../testkit/protractor';
 import { tooltipTestkitFactory } from 'wix-ui-core/dist/src/testkit/protractor';
@@ -14,12 +14,12 @@ describe('Heading', () => {
   const storyUrl = createStoryUrl({
     kind: storySettings.kind,
     story: storySettings.storyName,
-    withExamples: false
+    withExamples: false,
   });
   const storyUrlWithExamples = createStoryUrl({
     kind: storySettings.kind,
     story: storySettings.storyName,
-    withExamples: true
+    withExamples: true,
   });
 
   describe('AutoExample', () => {
@@ -41,7 +41,7 @@ describe('Heading', () => {
       for (const appearance of Object.keys(APPEARANCES)) {
         await autoExampleDriver.setProps({
           appearance,
-          'data-hook': storySettings.dataHook
+          'data-hook': storySettings.dataHook,
         });
         await waitForVisibilityOf(driver.element(), 'Cannot find Heading');
         await eyes.checkWindow(appearance);

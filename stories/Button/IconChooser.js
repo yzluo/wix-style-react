@@ -13,7 +13,7 @@ class IconChooser extends Component {
           <div style={{ display: 'flex', paddingLeft: '10px' }}>
             {React.createElement(Icons[name])} - {name}
           </div>
-        )
+        ),
       };
     });
     return (
@@ -30,7 +30,7 @@ class IconChooser extends Component {
 
 IconChooser.propTypes = {
   onSelect: PropTypes.func.isRequired,
-  selectedId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  selectedId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default IconChooser;

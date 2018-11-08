@@ -9,7 +9,7 @@ const componentProps = {
   title: 'This is the title',
   body: 'This is the a long text which is passed in the `body` propterty',
   actionText: 'Ok, Take Me There!',
-  onActionClick: () => null
+  onActionClick: () => null,
 };
 
 export default {
@@ -25,8 +25,8 @@ export default {
       /** see interactive preview*/
     },
     actionTheme: ['white', 'premium'],
-    image: [{ label: 'with image', value: image }]
+    image: [{ label: 'with image', value: image }],
   },
   exampleImport:
-    'import ... - do not import directly, use FloatingHelper.Content'
+    'import ... - do not import directly, use FloatingHelper.Content',
 };

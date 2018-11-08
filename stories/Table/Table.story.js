@@ -30,21 +30,21 @@ const data = [
   { firstName: 'Meghan', lastName: 'Bishop' },
   { firstName: 'Sara', lastName: 'Porter' },
   { firstName: 'Deborah', lastName: 'Rhodes' },
-  { firstName: 'Walter', lastName: 'Jenning' }
+  { firstName: 'Walter', lastName: 'Jenning' },
 ];
 
 const dataLong = [1, 2, 3, 4, 5].reduce(accum => accum.concat(data), []);
 
 const columnsOption1 = [
   { title: 'First', width: '30%', render: row => row.firstName },
-  { title: 'Last', width: '30%', render: row => row.lastName }
+  { title: 'Last', width: '30%', render: row => row.lastName },
 ];
 
 const columnsOption2 = [
   { title: 'Row Num', render: (row, rowNum) => rowNum },
   { title: 'First', render: row => row.firstName },
   { title: 'Last', render: row => row.lastName },
-  { title: 'Full', render: row => row.firstName + row.lastName }
+  { title: 'Full', render: row => row.firstName + row.lastName },
 ];
 
 export default {
@@ -59,17 +59,17 @@ export default {
     id: 'id',
     data,
     columns: columnsOption1,
-    showSelection: true
+    showSelection: true,
   },
   exampleProps: {
     columns: [
       { label: '2 columns example', value: columnsOption1 },
-      { label: '4 columns example', value: columnsOption2 }
+      { label: '4 columns example', value: columnsOption2 },
     ],
     data: [
       { label: '4 rows', value: data },
-      { label: '40 rows', value: dataLong }
-    ]
+      { label: '40 rows', value: dataLong },
+    ],
   },
   codeExample: false,
   examples: (
@@ -130,5 +130,5 @@ export default {
         </div>
       </div>
     </div>
-  )
+  ),
 };

@@ -26,7 +26,7 @@ const ExternalModuleReferer = ({ name, example }) => {
 
 ExternalModuleReferer.propTypes = {
   name: PropTypes.string,
-  example: PropTypes.node
+  example: PropTypes.node,
 };
 
 export default ExternalModuleReferer;

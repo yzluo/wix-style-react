@@ -6,7 +6,7 @@ import { tpaTextLinkTestkitFactory as textLinkTestkitFactory } from '../../../te
 import { tpaTextLinkTestkitFactory as enzymeTextLinkTestkitFactory } from '../../../testkit/enzyme';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../../test/utils/testkit-sanity';
 import { mount } from 'enzyme';
 

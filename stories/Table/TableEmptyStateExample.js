@@ -5,7 +5,7 @@ import {
   ItemGroup,
   Item,
   Label,
-  Title
+  Title,
 } from 'wix-style-react/TableToolbar';
 
 import Card from 'wix-style-react/Card';
@@ -29,26 +29,26 @@ export class TableEmptyStateExample extends React.Component {
               title: 'Name',
               render: row => <span>{row.name}</span>,
               width: '30%',
-              minWidth: '150px'
+              minWidth: '150px',
             },
             {
               title: 'SKU',
               render: row => <span>{row.SKU}</span>,
               width: '20%',
-              minWidth: '100px'
+              minWidth: '100px',
             },
             {
               title: 'Price',
               render: row => <span>{row.price}</span>,
               width: '20%',
-              minWidth: '100px'
+              minWidth: '100px',
             },
             {
               title: 'Inventory',
               render: row => <span>{row.inventory}</span>,
               width: '20%',
-              minWidth: '100px'
-            }
+              minWidth: '100px',
+            },
           ]}
           showSelection
         >
@@ -72,13 +72,13 @@ const MainToolbar = () => {
   const collectionOptions = [
     { id: 0, value: 'All Products' },
     { id: 1, value: 'Towels' },
-    { id: 2, value: 'Slippers' }
+    { id: 2, value: 'Slippers' },
   ];
 
   const filterOptions = [
     { id: 0, value: 'All' },
     { id: 1, value: 'Red' },
-    { id: 2, value: 'Cyan' }
+    { id: 2, value: 'Cyan' },
   ];
 
   return (

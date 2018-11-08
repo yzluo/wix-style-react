@@ -8,7 +8,7 @@ import { inputAreaTestkitFactory as enzymeInputAreaTestkitFactory } from '../../
 import sinon from 'sinon';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import { mount } from 'enzyme';
 
@@ -23,7 +23,7 @@ describe('InputArea', () => {
     it('should pass down to the wrapped input', () => {
       const props = {
         value: 'hello',
-        onChange: () => {}
+        onChange: () => {},
       };
 
       const driver = createDriver(<InputAreaForTesting {...props} />);

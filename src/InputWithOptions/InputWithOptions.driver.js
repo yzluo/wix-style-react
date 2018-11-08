@@ -8,13 +8,13 @@ const inputWithOptionsDriverFactory = ({ element, wrapper }) => {
     element &&
     inputDriverFactory({
       element: inputWrapper.childNodes[0],
-      wrapper: inputWrapper
+      wrapper: inputWrapper,
     });
   const dropdownLayoutDriver =
     element &&
     dropdownLayoutDriverFactory({
       element: element.childNodes[1].childNodes[0],
-      wrapper
+      wrapper,
     });
 
   const createDeprecationMessageForKeyMethod = methodName =>
@@ -65,14 +65,14 @@ const inputWithOptionsDriverFactory = ({ element, wrapper }) => {
     pressEscKey: () => {
       createDeprecationMessageForKeyMethod('pressEscKey');
       inputDriver.keyDown('Escape');
-    }
+    },
   };
 
   return {
     exists: () => driver.exists(),
     driver,
     inputDriver,
-    dropdownLayoutDriver
+    dropdownLayoutDriver,
   };
 };
 

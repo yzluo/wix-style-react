@@ -6,7 +6,7 @@ import Text from '../../Text';
 
 const ICON_SIZES = {
   small: '18px',
-  medium: '24px'
+  medium: '24px',
 };
 
 const addIcon = (className, icon, size = 'medium') =>
@@ -23,16 +23,16 @@ export const ThemeOptions = {
   NORMAL: { type: 'normal', color: { hover: '#4eb7f5', normal: '#3899ec' } },
   DARK_BACKGROUND: {
     type: 'darkBackground',
-    color: { hover: '#f0f4f7', normal: '#f0f4f7' }
+    color: { hover: '#f0f4f7', normal: '#f0f4f7' },
   },
   GREYSCALE: {
     type: 'greyScale',
-    color: { hover: '#162d3d', normal: '#162d3d' }
+    color: { hover: '#162d3d', normal: '#162d3d' },
   },
   DISABLED: {
     type: 'disabled',
-    color: { hover: '#cbd3dc', normal: '#cbd3dc' }
-  }
+    color: { hover: '#cbd3dc', normal: '#cbd3dc' },
+  },
 };
 
 export default class TextLinkLayout extends WixComponent {
@@ -46,7 +46,7 @@ export default class TextLinkLayout extends WixComponent {
     disabled: PropTypes.bool,
     prefixIcon: PropTypes.node,
     suffixIcon: PropTypes.node,
-    ellipsis: PropTypes.bool
+    ellipsis: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -56,13 +56,13 @@ export default class TextLinkLayout extends WixComponent {
     size: 'medium',
     display: 'block',
     disabled: false,
-    ellipsis: false
+    ellipsis: false,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      isHover: false
+      isHover: false,
     };
 
     this.setHover = this.setHover.bind(this);
@@ -70,7 +70,7 @@ export default class TextLinkLayout extends WixComponent {
 
   setHover(hover) {
     this.setState({
-      isHover: hover
+      isHover: hover,
     });
   }
 
@@ -109,7 +109,7 @@ export default class TextLinkLayout extends WixComponent {
       disabled,
       prefixIcon,
       suffixIcon,
-      ellipsis
+      ellipsis,
     } = this.props;
 
     const color = this.getColor();
@@ -118,7 +118,7 @@ export default class TextLinkLayout extends WixComponent {
       color,
       display: displayStyle,
       background: 'none',
-      cursor: disabled ? 'default' : 'pointer'
+      cursor: disabled ? 'default' : 'pointer',
     };
 
     const textStyles = {
@@ -127,7 +127,7 @@ export default class TextLinkLayout extends WixComponent {
         (underlineStyle === 'hover' && isHover && !disabled) ||
         underlineStyle === 'always'
           ? 'underline'
-          : 'none'
+          : 'none',
     };
 
     return (

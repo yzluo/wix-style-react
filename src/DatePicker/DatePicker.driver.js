@@ -8,13 +8,13 @@ const datePickerDriverFactory = ({ element, wrapper }) => {
 
   const driver = {
     exists: () => !!element,
-    open: () => inputDriver.focus()
+    open: () => inputDriver.focus(),
   };
 
   return {
     driver,
     inputDriver,
-    calendarDriver
+    calendarDriver,
   };
 };
 

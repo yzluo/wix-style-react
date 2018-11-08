@@ -5,7 +5,7 @@ const style = {
   display: 'inline-block',
   padding: '0 5px',
   width: '200px',
-  lineHeight: '22px'
+  lineHeight: '22px',
 };
 
 export default () => (

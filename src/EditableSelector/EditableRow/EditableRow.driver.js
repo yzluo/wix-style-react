@@ -6,15 +6,15 @@ import buttonDriverFactory from '../../Backoffice/Button/Button.driver';
 const editableRowDriverFactory = ({ element, wrapper, component }) => {
   const inputDriver = inputDriverFactory({
     element: element.querySelector('[data-hook="edit-row-input"]'),
-    wrapper: element
+    wrapper: element,
   });
   const approveBtnDriver = buttonDriverFactory({
     element: element.querySelector('[data-hook="edit-row-approve-button"]'),
-    wrapper: element
+    wrapper: element,
   });
   const cancelBtnDriver = buttonDriverFactory({
     element: element.querySelector('[data-hook="edit-row-cancel-button"]'),
-    wrapper: element
+    wrapper: element,
   });
 
   return {
@@ -36,7 +36,7 @@ const editableRowDriverFactory = ({ element, wrapper, component }) => {
         <div ref={r => (element = r)}>{ClonedWithProps}</div>,
         wrapper,
       );
-    }
+    },
   };
 };
 

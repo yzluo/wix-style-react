@@ -12,13 +12,13 @@ class EditableRow extends WixComponent {
   static propTypes = {
     newOption: PropTypes.string,
     onApprove: PropTypes.func,
-    onCancel: PropTypes.func
+    onCancel: PropTypes.func,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      newOption: props.newOption || ''
+      newOption: props.newOption || '',
     };
   }
 

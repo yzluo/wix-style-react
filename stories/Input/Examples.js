@@ -78,7 +78,7 @@ const Examples = ({ theme }) => (
 );
 
 Examples.propTypes = {
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 export default Examples;

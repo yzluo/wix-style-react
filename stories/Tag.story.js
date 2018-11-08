@@ -9,10 +9,10 @@ export default {
   componentProps: {
     children: 'Hello World',
     dataHook: 'story-tag',
-    useOldMargins: false
+    useOldMargins: false,
   },
   exampleProps: {
     onRemove: id => `ID: ${id} Removed!`,
-    onClick: id => `ID: ${id} Clicked!`
-  }
+    onClick: id => `ID: ${id} Clicked!`,
+  },
 };

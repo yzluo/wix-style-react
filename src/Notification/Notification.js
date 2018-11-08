@@ -18,12 +18,12 @@ export const DEFAULT_TIMEOUT = 6000;
 export const notificationTypeToPosition = {
   [LOCAL_NOTIFICATION]: 'absolute',
   [GLOBAL_NOTIFICATION]: 'relative',
-  [STICKY_NOTIFICATION]: 'fixed'
+  [STICKY_NOTIFICATION]: 'fixed',
 };
 
 const animationsTimeouts = {
   enter: 500,
-  exit: 350
+  exit: 350,
 };
 
 function FirstChild(props) {
@@ -38,12 +38,12 @@ function mapChildren(children) {
     return {
       label: childrenArray[0],
       ctaButton: childrenArray[1],
-      closeButton: React.cloneElement(childrenArray[2], { size: 'small' })
+      closeButton: React.cloneElement(childrenArray[2], { size: 'small' }),
     };
   } else {
     return {
       label: childrenArray[0],
-      closeButton: React.cloneElement(childrenArray[1], { size: 'small' })
+      closeButton: React.cloneElement(childrenArray[1], { size: 'small' }),
     };
   }
 }
@@ -55,7 +55,7 @@ class Notification extends WixComponent {
     super(props);
     this.state = {
       hideByCloseClick: false,
-      hideByTimer: false
+      hideByTimer: false,
     };
 
     this.startCloseTimer(props);
@@ -101,7 +101,7 @@ class Notification extends WixComponent {
   bypassCloseFlags() {
     this.setState({
       hideByCloseClick: false,
-      hideByTimer: false
+      hideByTimer: false,
     });
   }
 
@@ -133,7 +133,7 @@ class Notification extends WixComponent {
           enter: css.notificationAnimationEnter,
           enterActive: css.notificationAnimationEnterActive,
           exit: css.notificationAnimationExit,
-          exitActive: css.notificationAnimationExitActive
+          exitActive: css.notificationAnimationExitActive,
         }}
         timeout={animationsTimeouts}
       >
@@ -191,12 +191,12 @@ Notification.propTypes = {
     'error',
     'success',
     'warning',
-    'premium'
+    'premium',
   ]),
   type: PropTypes.oneOf([
     GLOBAL_NOTIFICATION,
     LOCAL_NOTIFICATION,
-    STICKY_NOTIFICATION
+    STICKY_NOTIFICATION,
   ]),
   timeout: PropTypes.number,
   zIndex: PropTypes.number,
@@ -205,13 +205,13 @@ Notification.propTypes = {
     once(TextLabel),
     optional(ActionButton),
     optional(CloseButton),
-  )
+  ),
 };
 
 Notification.defaultProps = {
   theme: 'standard',
   type: GLOBAL_NOTIFICATION,
-  onClose: null
+  onClose: null,
 };
 
 Notification.CloseButton = CloseButton;

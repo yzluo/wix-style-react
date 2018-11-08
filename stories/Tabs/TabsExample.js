@@ -20,7 +20,7 @@ class TabsExample extends Component {
     type: '',
     hasDivider: true,
     width: 30,
-    showSideContent: false
+    showSideContent: false,
   };
 
   render() {
@@ -124,7 +124,7 @@ class TabsExample extends Component {
 }
 
 TabsExample.propTypes = {
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 export default TabsExample;

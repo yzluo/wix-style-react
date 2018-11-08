@@ -32,7 +32,7 @@ const radioGroupDriverFactory = component => {
           .get(index)
           .$(`[tabindex="0"]`),
       ),
-    element: () => component
+    element: () => component,
   };
 };
 

@@ -12,7 +12,7 @@ const tableActionCellDriverFactory = component => ({
     component.$('[data-hook="table-action-cell-visible-actions"]'),
   /** Get the secondary actions popover menu element */
   getHiddenActionsPopoverMenu: () =>
-    component.$('[data-hook="table-action-cell-popover-menu"]')
+    component.$('[data-hook="table-action-cell-popover-menu"]'),
 });
 
 export default tableActionCellDriverFactory;

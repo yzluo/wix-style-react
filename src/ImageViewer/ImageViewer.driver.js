@@ -9,7 +9,7 @@ const imageViewerDriverFactory = ({
   component,
   wrapper,
   element,
-  eventTrigger
+  eventTrigger,
 }) => {
   const addItemDataHook = 'add-image';
   const updateDataHook = 'update-image';
@@ -22,14 +22,14 @@ const imageViewerDriverFactory = ({
   const addItemDriver = addItemDriverFactory({
     wrapper,
     element,
-    eventTrigger
+    eventTrigger,
   });
   const tooltipDriver = addItemDriver.getTooltipDriver();
   const addItemClick = () =>
     addItemDriverFactory({
       wrapper,
       element: byHook('add-image'),
-      eventTrigger
+      eventTrigger,
     }).click();
   const updateIcon = () => byHook(updateDataHook);
   const removeIcon = () => byHook(removeDataHook);
@@ -46,18 +46,18 @@ const imageViewerDriverFactory = ({
     getErrorTooltipContent: () =>
       tooltipDriverFactory({
         wrapper,
-        element: errorIcon()
+        element: errorIcon(),
       }).hoverAndGetContent(),
     getAddTooltipContent: () => tooltipDriver.hoverAndGetContent(),
     getUpdateTooltipContent: () =>
       tooltipDriverFactory({
         wrapper,
-        element: updateIcon()
+        element: updateIcon(),
       }).hoverAndGetContent(),
     getRemoveTooltipContent: () =>
       tooltipDriverFactory({
         wrapper,
-        element: removeIcon()
+        element: removeIcon(),
       }).hoverAndGetContent(),
     isAddItemVisible: () => !!addItem(),
     isImageVisible: () => !!image(),
@@ -77,7 +77,7 @@ const imageViewerDriverFactory = ({
         <div ref={r => (element = r)}>{ClonedWithProps}</div>,
         wrapper,
       );
-    }
+    },
   };
 };
 

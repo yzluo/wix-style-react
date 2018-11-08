@@ -14,7 +14,7 @@ function renderTrend(percent) {
     icon: null,
     skin: null,
     dataHook: 'percent-value',
-    type: 'transparent'
+    type: 'transparent',
   };
 
   //TODO - the data-class is just a hack in order not to break the testkit function that exposes it
@@ -50,7 +50,7 @@ class StatsWidget extends WixComponent {
           .isRequired,
         subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
           .isRequired,
-        percent: PropTypes.number
+        percent: PropTypes.number,
       }),
     ),
     /** Filters for statistics (will be shown in right top corner) Accepts array of  <StatsWidget.Filter> which accepts all dropdown properties*/
@@ -67,7 +67,7 @@ class StatsWidget extends WixComponent {
         );
       }
     }),
-    emptyState: PropTypes.node
+    emptyState: PropTypes.node,
   };
 
   _renderColumn(statistics, index) {

@@ -12,7 +12,7 @@ class ExamplePopover extends Component {
   state = {
     placement: 'top',
     text: 'Popover appears on click',
-    maxWidth: ''
+    maxWidth: '',
   };
 
   render() {
@@ -78,5 +78,5 @@ class ExamplePopover extends Component {
 export default ExamplePopover;
 
 ExamplePopover.propTypes = {
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };

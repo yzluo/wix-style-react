@@ -5,7 +5,7 @@ import styles from './Example.scss';
 
 class ExampleBounce extends Component {
   state = {
-    bounce: true
+    bounce: true,
   };
 
   clearPendingTimeout() {

@@ -18,7 +18,7 @@ ProxyHeading.propTypes = {
   ...Heading.propTypes,
 
   /** should the text get ellipsed with tooltip, or should it get broken into lines when it reaches the end of its container */
-  ellipsis: bool
+  ellipsis: bool,
 };
 
 ProxyHeading.displayName = 'Heading';

@@ -6,7 +6,7 @@ import Heading from '../../Heading';
 
 class ProgressBar extends WixComponent {
   static propTypes = {
-    progress: PropTypes.number.isRequired
+    progress: PropTypes.number.isRequired,
   };
 
   render() {

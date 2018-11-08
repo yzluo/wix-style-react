@@ -15,7 +15,7 @@ const ButtonLayout = props => {
     height,
     children,
     matchParent,
-    className: extendingClassName
+    className: extendingClassName,
   } = props;
 
   const className = classNames(
@@ -25,7 +25,7 @@ const ButtonLayout = props => {
       [styles.hover]: hover,
       [styles.active]: active,
       [styles.disabled]: disabled,
-      [styles[`height${height}`]]: height !== 'medium'
+      [styles[`height${height}`]]: height !== 'medium',
     },
     children.props.className,
     extendingClassName,
@@ -33,7 +33,7 @@ const ButtonLayout = props => {
 
   const _style = Object.assign({}, children.props.style, {
     height,
-    display: 'inline-block'
+    display: 'inline-block',
   });
 
   if (matchParent) {
@@ -52,7 +52,7 @@ const ButtonLayout = props => {
 ButtonLayout.defaultProps = {
   height: 'medium',
   theme: 'fullblue',
-  type: 'button'
+  type: 'button',
 };
 
 ButtonLayout.propTypes = {
@@ -96,10 +96,10 @@ ButtonLayout.propTypes = {
     'icon-whitesecondary',
     'no-border',
     'dark-no-border',
-    'outlined'
+    'outlined',
   ]),
 
-  type: oneOf(['button', 'submit', 'reset'])
+  type: oneOf(['button', 'submit', 'reset']),
 };
 
 ButtonLayout.displayName = 'ButtonLayout';

@@ -20,7 +20,7 @@ const pageDriverFactory = component => {
     scrollDown: () => setContentScrollOffset(SCROLL_TOP_THRESHOLD + 1),
     scrollUp: () => setContentScrollOffset(SCROLL_TOP_THRESHOLD),
     titleExists: () => titleElement(component).isPresent(),
-    titleElement: () => titleElement(component)
+    titleElement: () => titleElement(component),
   };
 };
 

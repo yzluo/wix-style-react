@@ -14,7 +14,7 @@ export const HELPER_APPEARANCE = {
   standard: styles.standard,
   danger: styles.danger,
   success: styles.success,
-  premium: styles.premium
+  premium: styles.premium,
 };
 
 /**
@@ -34,7 +34,7 @@ class SectionHelper extends WixComponent {
         {showCloseButton && onClose && (
           <div
             className={classnames(styles.close, {
-              [styles.closeWithTitle]: this.props.title
+              [styles.closeWithTitle]: this.props.title,
             })}
           >
             <CloseButton
@@ -96,12 +96,12 @@ SectionHelper.propTypes = {
   actionText: PropTypes.string,
 
   /** Children to render */
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 SectionHelper.defaultProps = {
   showCloseButton: true,
-  appearance: 'warning'
+  appearance: 'warning',
 };
 
 export default SectionHelper;

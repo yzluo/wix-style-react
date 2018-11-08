@@ -4,7 +4,7 @@ import {
   ItemGroup,
   Item,
   Label,
-  Title
+  Title,
 } from 'wix-style-react/TableToolbar';
 
 import Card from 'wix-style-react/Card';
@@ -16,13 +16,13 @@ export default class MainExample extends React.Component {
     const collectionOptions = [
       { id: 0, value: 'All Products' },
       { id: 1, value: 'Towels' },
-      { id: 2, value: 'Slippers' }
+      { id: 2, value: 'Slippers' },
     ];
 
     const filterOptions = [
       { id: 0, value: 'All' },
       { id: 1, value: 'Red' },
-      { id: 2, value: 'Cyan' }
+      { id: 2, value: 'Cyan' },
     ];
 
     return (

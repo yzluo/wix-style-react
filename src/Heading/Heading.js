@@ -9,7 +9,7 @@ export const APPEARANCES = {
   H3: 'H3',
   H4: 'H4',
   H5: 'H5',
-  H6: 'H6'
+  H6: 'H6',
 };
 
 const Heading = ({ light, appearance, children, ...rest }) =>
@@ -17,7 +17,7 @@ const Heading = ({ light, appearance, children, ...rest }) =>
     appearance.toLowerCase(),
     {
       ...omit(rest, ['dataHook']),
-      ...style('root', { light, appearance }, rest)
+      ...style('root', { light, appearance }, rest),
     },
     children,
   );
@@ -32,12 +32,12 @@ Heading.propTypes = {
   light: bool,
 
   /** typography of the heading */
-  appearance: oneOf(Object.keys(APPEARANCES))
+  appearance: oneOf(Object.keys(APPEARANCES)),
 };
 
 Heading.defaultProps = {
   appearance: APPEARANCES.H1,
-  light: false
+  light: false,
 };
 
 export default Heading;

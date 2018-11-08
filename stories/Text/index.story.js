@@ -36,7 +36,7 @@ export default {
     skin: SKINS.standard,
     weight: WEIGHTS.thin,
     tagName: 'span',
-    ellipsis: false
+    ellipsis: false,
   },
 
   examples: (
@@ -61,5 +61,5 @@ export default {
         <TypographyExample />
       </CodeExample>
     </div>
-  )
+  ),
 };

@@ -33,7 +33,7 @@ describe('ColorPicker', () => {
         onChange,
         onCancel,
         onConfirm,
-        showHistory: true
+        showHistory: true,
       });
       expect(driver.historyPanelExists()).toBeTruthy();
       expect(color(driver.historyCurrentColor()).hex()).toBe(value);
@@ -50,7 +50,7 @@ describe('ColorPicker', () => {
         onChange,
         onCancel,
         onConfirm,
-        showHistory: true
+        showHistory: true,
       });
       driver.selectBlackColor();
       expect(color(driver.historyCurrentColor()).hex()).toBe('#000000');
@@ -67,7 +67,7 @@ describe('ColorPicker', () => {
         onChange,
         onCancel,
         onConfirm,
-        showHistory: true
+        showHistory: true,
       });
       driver.selectBlackColor();
       expect(color(driver.historyCurrentColor()).hex()).toBe('#000000');
@@ -86,7 +86,7 @@ describe('ColorPicker', () => {
         onChange,
         onCancel,
         onConfirm,
-        showHistory: true
+        showHistory: true,
       });
       driver.selectBlackColor();
       expect(color(driver.historyCurrentColor()).hex()).toBe('#000000');

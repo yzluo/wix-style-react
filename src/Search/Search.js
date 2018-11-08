@@ -17,13 +17,13 @@ export default class Search extends WixComponent {
   static propTypes = {
     ...InputWithOptions.propTypes,
     placeholder: PropTypes.string,
-    expandable: PropTypes.bool
+    expandable: PropTypes.bool,
   };
 
   static defaultProps = {
     ...InputWithOptions.defaultProps,
     placeholder: 'Search',
-    expandable: false
+    expandable: false,
   };
 
   constructor(props) {
@@ -33,7 +33,7 @@ export default class Search extends WixComponent {
 
     this.state = {
       inputValue: initialValue,
-      collapsed: props.expandable && initialValue === '' && !props.autoFocus
+      collapsed: props.expandable && initialValue === '' && !props.autoFocus,
     };
   }
 
@@ -58,7 +58,7 @@ export default class Search extends WixComponent {
       this.props.onChange(e);
     } else {
       this.setState({
-        inputValue: e.target.value
+        inputValue: e.target.value,
       });
     }
   };
@@ -68,7 +68,7 @@ export default class Search extends WixComponent {
 
     if (!this.state.collapsed && this.props.expandable) {
       this.setState({
-        collapsed: true
+        collapsed: true,
       });
     }
 
@@ -95,7 +95,7 @@ export default class Search extends WixComponent {
 
       if (value === '') {
         this.setState({
-          collapsed: true
+          collapsed: true,
         });
       }
     }
@@ -126,7 +126,7 @@ export default class Search extends WixComponent {
     const wrapperClasses = classNames({
       [styles.expandableStyles]: this.props.expandable,
       [styles.collapsed]: this.state.collapsed && this.props.expandable,
-      [styles.expanded]: !this.state.collapsed && this.props.expandable
+      [styles.expanded]: !this.state.collapsed && this.props.expandable,
     });
 
     return (

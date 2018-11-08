@@ -8,7 +8,7 @@ import InfoCircle from '../new-icons/InfoCircle';
 class FieldLabelAttributes extends WixComponent {
   static tooltipDefaultProps = {
     moveBy: { x: 0, y: -1 },
-    minWidth: '150px'
+    minWidth: '150px',
   };
 
   infoIcon = (
@@ -23,12 +23,12 @@ class FieldLabelAttributes extends WixComponent {
         ...this.tooltipDefaultProps,
         appendToParent: this.props.appendToParent,
         content: this.props.info,
-        children: this.infoIcon
+        children: this.infoIcon,
       });
     } else if (this.props.tooltip) {
       return React.cloneElement(this.props.tooltip, {
         ...this.tooltipDefaultProps,
-        children: this.props.tooltip.props.children || this.infoIcon
+        children: this.props.tooltip.props.children || this.infoIcon,
       });
     } else {
       return null;
@@ -54,14 +54,14 @@ FieldLabelAttributes.defaultProps = {
   required: false,
   info: '',
   appendToParent: true,
-  tooltip: null
+  tooltip: null,
 };
 
 FieldLabelAttributes.propTypes = {
   required: bool,
   info: node,
   appendToParent: bool,
-  tooltip: node
+  tooltip: node,
 };
 
 export default FieldLabelAttributes;

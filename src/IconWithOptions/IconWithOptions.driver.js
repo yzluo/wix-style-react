@@ -12,7 +12,7 @@ const IconWithOptionsDriverFactory = ({ element, wrapper }) => {
   );
   const dropdownLayoutDriver = dropdownLayoutDriverFactory({
     element: dropdownLayout,
-    wrapper
+    wrapper,
   });
 
   const driver = {
@@ -21,7 +21,7 @@ const IconWithOptionsDriverFactory = ({ element, wrapper }) => {
     mouseLeave: () => ReactTestUtils.Simulate.mouseLeave(element),
     isIconBlue: () => isClassExists(element, 'hover'),
     iconWrapper: () => iconWrapper,
-    element: () => element
+    element: () => element,
   };
 
   return {
@@ -30,8 +30,8 @@ const IconWithOptionsDriverFactory = ({ element, wrapper }) => {
       ...dropdownLayoutDriver,
       isDropDirectionUp: () =>
         dropdownLayoutDriver.isUp() &&
-        isClassExists(dropdownLayoutWrapper, 'dropDirectionUp')
-    }
+        isClassExists(dropdownLayoutWrapper, 'dropDirectionUp'),
+    },
   };
 };
 

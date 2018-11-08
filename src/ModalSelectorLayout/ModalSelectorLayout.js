@@ -120,7 +120,7 @@ export default class ModalSelectorLayout extends WixComponent {
     selectAllText: string,
 
     /** string to be displayed in footer when `multiple` prop is used and some or all items ar selected */
-    deselectAllText: string
+    deselectAllText: string,
   };
 
   static defaultProps = {
@@ -140,7 +140,7 @@ export default class ModalSelectorLayout extends WixComponent {
       </div>
     ),
     selectAllText: 'Select All',
-    deselectAllText: 'Deselect All'
+    deselectAllText: 'Deselect All',
   };
 
   state = {
@@ -150,7 +150,7 @@ export default class ModalSelectorLayout extends WixComponent {
     searchValue: '',
     selectedItems: [],
     shouldShowNoResultsFoundState: false,
-    isEmpty: false
+    isEmpty: false,
   };
 
   render() {
@@ -162,7 +162,7 @@ export default class ModalSelectorLayout extends WixComponent {
       emptyState,
       noResultsFoundStateFactory,
       withSearch,
-      height
+      height,
     } = this.props;
 
     const {
@@ -171,7 +171,7 @@ export default class ModalSelectorLayout extends WixComponent {
       isEmpty,
       isSearching,
       searchValue,
-      shouldShowNoResultsFoundState
+      shouldShowNoResultsFoundState,
     } = this.state;
 
     return (
@@ -257,7 +257,7 @@ export default class ModalSelectorLayout extends WixComponent {
           ? isSelected(item)
             ? selectedItems.filter(({ id }) => item.id !== id)
             : selectedItems.concat(item)
-          : [item]
+          : [item],
       });
 
     if (items.length > 0) {
@@ -295,7 +295,7 @@ export default class ModalSelectorLayout extends WixComponent {
     this.setState({
       searchValue: e.target.value,
       isSearching: true,
-      items: []
+      items: [],
     });
   }
 
@@ -323,7 +323,7 @@ export default class ModalSelectorLayout extends WixComponent {
             isEmpty,
             isSearching: false,
             totalCount,
-            shouldShowNoResultsFoundState
+            shouldShowNoResultsFoundState,
           });
         }
       },
@@ -349,7 +349,7 @@ export default class ModalSelectorLayout extends WixComponent {
       onOk,
       cancelButtonText,
       okButtonText,
-      multiple
+      multiple,
     } = this.props;
 
     const enabledItems = this._getEnabledItems(selectedItems);
@@ -380,7 +380,7 @@ export default class ModalSelectorLayout extends WixComponent {
         onChange: () =>
           this.setState({ selectedItems: selectedItems.concat(enabledItems) }),
         indeterminate: false,
-        checked: false
+        checked: false,
       },
 
       deselect: {
@@ -388,11 +388,11 @@ export default class ModalSelectorLayout extends WixComponent {
         number: selectedEnabled.length,
         onChange: () =>
           this.setState({
-            selectedItems: selectedItems.filter(({ disabled }) => disabled)
+            selectedItems: selectedItems.filter(({ disabled }) => disabled),
           }),
         indeterminate: selectedEnabled.length < enabledItems.length,
-        checked: true
-      }
+        checked: true,
+      },
     };
 
     const {
@@ -400,7 +400,7 @@ export default class ModalSelectorLayout extends WixComponent {
       number,
       onChange,
       checked,
-      indeterminate
+      indeterminate,
     } = selectedEnabled.length ? cases.deselect : cases.select;
 
     return (

@@ -17,7 +17,7 @@ const LinkLayout = ({
       {
         [styles.linkActive]: isActive,
         [styles.linkDiminishedHover]: isDiminishedHover,
-        [styles.linkDisabled]: disabled
+        [styles.linkDisabled]: disabled,
       },
       className,
     )}
@@ -34,7 +34,7 @@ LinkLayout.propTypes = {
   isActive: PropTypes.bool,
   isDiminishedHover: PropTypes.bool,
   disabled: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default LinkLayout;

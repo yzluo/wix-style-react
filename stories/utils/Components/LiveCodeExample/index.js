@@ -11,7 +11,7 @@ import * as iconsScope from 'wix-ui-icons-common';
  */
 const scope = {
   ...wsrScope,
-  ...iconsScope
+  ...iconsScope,
 };
 
 const Component = props => {
@@ -27,7 +27,7 @@ const Component = props => {
 };
 
 Component.propTypes = {
-  ...LiveCodeExample.propTypes
+  ...LiveCodeExample.propTypes,
 };
 
 export default Component;

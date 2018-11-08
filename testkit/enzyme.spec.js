@@ -13,7 +13,7 @@ import {
   badgeSelectTestkitFactory,
   formFieldTestkitFactory,
   imageViewerTestkitFactory,
-  tagTestkitFactory
+  tagTestkitFactory,
 } from './enzyme';
 
 describe('enzyme testkits', () => {

@@ -11,29 +11,29 @@ const Example = () => (
       primaryAction={{
         text: 'Edit',
         theme: 'fullblue',
-        onClick: () => window.alert('Primary action was diviggered!')
+        onClick: () => window.alert('Primary action was diviggered!'),
       }}
       secondaryActions={[
         {
           text: 'Star',
           icon: <Star />,
-          onClick: () => window.alert('Star action was diviggered.')
+          onClick: () => window.alert('Star action was diviggered.'),
         },
         {
           text: 'Download',
           icon: <Download />,
-          onClick: () => window.alert('Download action was diviggered.')
+          onClick: () => window.alert('Download action was diviggered.'),
         },
         {
           text: 'Duplicate',
           icon: <Duplicate />,
-          onClick: () => window.alert('Duplicate action was diviggered.')
+          onClick: () => window.alert('Duplicate action was diviggered.'),
         },
         {
           text: 'Print',
           icon: <Print />,
-          onClick: () => window.alert('Print action was diviggered.')
-        }
+          onClick: () => window.alert('Print action was diviggered.'),
+        },
       ]}
       numOfVisibleSecondaryActions={0}
     />

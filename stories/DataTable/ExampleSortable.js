@@ -8,20 +8,20 @@ const baseData = [
   { firstName: 'Sara', lastName: 'Porter' },
   { firstName: 'Deborah', lastName: 'Rhodes' },
   { firstName: 'Walter', lastName: 'Jenning' },
-  { firstName: 'Amanda', lastName: 'Woods' }
+  { firstName: 'Amanda', lastName: 'Woods' },
 ];
 
 class DataTableSortableExample extends React.Component {
   static propTypes = {
     style: any,
-    dataHook: string
+    dataHook: string,
   };
 
   static defaultProps = {
     style: {
-      width: '966px'
+      width: '966px',
     },
-    dataHook: 'story-data-table-sortable'
+    dataHook: 'story-data-table-sortable',
   };
 
   constructor(props) {
@@ -34,7 +34,7 @@ class DataTableSortableExample extends React.Component {
     const sort = Object.assign({}, this.state.sort, { [colNum]: desc });
     const filelds = {
       1: 'firstName',
-      2: 'lastName'
+      2: 'lastName',
     };
     const sortedData = this.sortDataByField(filelds[colNum], desc);
     this.setState({ sort, data: sortedData });
@@ -60,7 +60,7 @@ class DataTableSortableExample extends React.Component {
               width: '20%',
               minWidth: '75px',
               important: true,
-              infoTooltipProps: { content: 'Very informative tooltip text' }
+              infoTooltipProps: { content: 'Very informative tooltip text' },
             },
             {
               title: 'First Name',
@@ -68,7 +68,7 @@ class DataTableSortableExample extends React.Component {
               sortDescending: !!this.state.sort[1],
               render: row => <span>{row.firstName}</span>,
               width: '40%',
-              minWidth: '100px'
+              minWidth: '100px',
             },
             {
               title: 'Last Name',
@@ -77,8 +77,8 @@ class DataTableSortableExample extends React.Component {
               render: row => <span>{row.lastName}</span>,
               width: '40%',
               minWidth: '100px',
-              infoTooltipProps: { content: 'Very informative tooltip text' }
-            }
+              infoTooltipProps: { content: 'Very informative tooltip text' },
+            },
           ]}
           showLastRowDivider={false}
         />

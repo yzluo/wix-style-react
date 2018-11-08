@@ -5,7 +5,7 @@ const options = [
   { id: 1, value: 'Option 1' },
   { id: 2, value: 'Option 2' },
   { id: 3, value: 'Option 3' },
-  { id: 4, value: 'Option 4' }
+  { id: 4, value: 'Option 4' },
 ];
 
 const containerStyles = {
@@ -17,7 +17,7 @@ const containerStyles = {
   borderRadius: 6,
   overflow: 'auto',
   boxShadow: '0 0 6px rgba(0, 0, 0, 0.6)',
-  padding: '6px 0'
+  padding: '6px 0',
 };
 
 class ControlledExample extends Component {

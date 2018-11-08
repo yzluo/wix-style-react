@@ -5,7 +5,7 @@ import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import sinon from 'sinon';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import { modalTestkitFactory } from '../../testkit';
 import { modalTestkitFactory as enzymeMessageBoxTestkitFactory } from '../../testkit/enzyme';
@@ -123,7 +123,7 @@ describe('Modal', () => {
 
         const driver = createDriver(<Modal {...props} />);
         driver.setProps({
-          isOpen: false
+          isOpen: false,
         });
 
         setTimeout(() => {

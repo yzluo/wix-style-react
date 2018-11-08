@@ -22,7 +22,7 @@ describe('DropdownComposite', () => {
       );
       const dropdownCompositeTestkit = dropdownCompositeTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(dropdownCompositeTestkit.exists()).toBeTruthy();
     });
@@ -32,7 +32,7 @@ describe('DropdownComposite', () => {
       const dataHook = 'compHook';
       const someOptions = [
         { id: 0, value: 'Option 1' },
-        { id: 1, value: 'Option 2' }
+        { id: 1, value: 'Option 2' },
       ];
       const wrapper = div.appendChild(
         ReactTestUtils.renderIntoDocument(
@@ -45,7 +45,7 @@ describe('DropdownComposite', () => {
       );
       const dropdownCompositeTestkit = dropdownCompositeTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(
         dropdownCompositeTestkit.dropdownLayoutDriver.optionsLength(),
@@ -62,7 +62,7 @@ describe('DropdownComposite', () => {
         );
         const dropdownCompositeTestkit = enzymeDropdownCompositeTestkitFactory({
           wrapper,
-          dataHook
+          dataHook,
         });
         expect(dropdownCompositeTestkit.exists()).toBeTruthy();
       });
@@ -71,7 +71,7 @@ describe('DropdownComposite', () => {
         const dataHook = 'myDataHook';
         const someOptions = [
           { id: 0, value: 'Option 1' },
-          { id: 1, value: 'Option 2' }
+          { id: 1, value: 'Option 2' },
         ];
         const wrapper = mount(
           <DropdownComposite dataHook={dataHook}>
@@ -80,7 +80,7 @@ describe('DropdownComposite', () => {
         );
         const dropdownCompositeTestkit = enzymeDropdownCompositeTestkitFactory({
           wrapper,
-          dataHook
+          dataHook,
         });
         expect(
           dropdownCompositeTestkit.dropdownLayoutDriver.optionsLength(),

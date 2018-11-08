@@ -9,7 +9,7 @@ const headingDriverFactory = factoryParams => {
     exists: () => !!element,
     getText: () => element.innerHTML,
     getAppearance: () => stylableDOMUtil.getStyleState(element, 'appearance'),
-    isLight: () => stylableDOMUtil.hasStyleState(element, 'light')
+    isLight: () => stylableDOMUtil.hasStyleState(element, 'light'),
   };
 };
 

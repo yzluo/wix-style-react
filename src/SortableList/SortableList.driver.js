@@ -2,7 +2,7 @@ import ReactTestUtils from 'react-dom/test-utils';
 import {
   getInstanceOfDraggableProvider,
   getInstanceOfDraggableSource,
-  getInstanceOfDraggableTarget
+  getInstanceOfDraggableTarget,
 } from './driverHelpers';
 
 const sortableListFactory = ({ element, wrapper }) => {
@@ -29,15 +29,15 @@ const sortableListFactory = ({ element, wrapper }) => {
           getInstanceOfDraggableSource(
             vanillaWrapper,
             removedId,
-          ).getHandlerId()
+          ).getHandlerId(),
         ]);
         backend.simulateHover([
-          getInstanceOfDraggableTarget(vanillaWrapper, addedId).getHandlerId()
+          getInstanceOfDraggableTarget(vanillaWrapper, addedId).getHandlerId(),
         ]);
         backend.simulateDrop();
         backend.simulateEndDrag();
       }
-    }
+    },
   };
 };
 

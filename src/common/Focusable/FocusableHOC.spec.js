@@ -11,7 +11,7 @@ const focusableDriver = ({ element, eventTrigger }) => ({
   focus: () => eventTrigger.focus(element),
   blur: () => eventTrigger.blur(element),
   hasFocusState: () => !!element.getAttribute('data-focus'),
-  hasFocusVisibleState: () => !!element.getAttribute('data-focus-visible')
+  hasFocusVisibleState: () => !!element.getAttribute('data-focus-visible'),
 });
 
 describe('FocusableHOC', () => {
@@ -27,7 +27,7 @@ describe('FocusableHOC', () => {
     }
 
     static propTypes = {
-      id: PropTypes.string
+      id: PropTypes.string,
     };
 
     static staticVariable = 'staticVariable';
@@ -61,8 +61,8 @@ describe('FocusableHOC', () => {
       ...focusableDriver({
         element,
         getFocusableElement: () => element,
-        eventTrigger
-      })
+        eventTrigger,
+      }),
     };
   };
 
@@ -127,7 +127,7 @@ describe('FocusableHOC', () => {
         fireKeyUp,
         tabOut,
         tabIn,
-        click
+        click,
       };
     };
 

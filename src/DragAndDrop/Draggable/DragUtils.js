@@ -19,6 +19,6 @@ export const dragCoordinates = ({ monitor, component }) => {
     clientOffset,
     hoverClientY,
     hoverMiddleX,
-    hoverClientX
+    hoverClientX,
   };
 };

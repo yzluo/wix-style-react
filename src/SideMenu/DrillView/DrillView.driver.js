@@ -8,7 +8,7 @@ const drillViewDriverFactory = ({ element }) => {
 
   return {
     getMenuDriver: () => createMenuDriver(getMenu()),
-    getStickyFooter: () => element.querySelector('[data-hook=menu-footer]')
+    getStickyFooter: () => element.querySelector('[data-hook=menu-footer]'),
   };
 };
 

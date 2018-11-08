@@ -10,17 +10,17 @@ import styles from './ExampleStandard.scss';
 
 class ExampleStandard extends Component {
   static propTypes = {
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
   };
 
   state = {
     withLabel: true,
     label: {
       appearance: 'T1.1',
-      children: 'First name'
+      children: 'First name',
     },
     required: false,
-    info: ''
+    info: '',
   };
 
   setComponentState(componentName, obj) {

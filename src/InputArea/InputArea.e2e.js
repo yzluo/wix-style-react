@@ -9,10 +9,10 @@ describe('input area page', () => {
   const storyUrl = createStoryUrl({
     kind: storySettings.category,
     story: storySettings.storyName,
-    withExamples: false
+    withExamples: false,
   });
   const inputAreaTestkit = inputAreaTestkitFactory({
-    dataHook: 'storybook-inputarea'
+    dataHook: 'storybook-inputarea',
   });
 
   beforeEach(async () => {

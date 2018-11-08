@@ -29,7 +29,7 @@ const EmptyState = ({ theme, title, subtitle, image, children, dataHook }) => (
             />
           ) : (
             React.cloneElement(image, {
-              'data-hook': 'image-node'
+              'data-hook': 'image-node',
             })
           )}
         </div>
@@ -85,13 +85,13 @@ EmptyState.propTypes = {
   /** Children to render below the subtitle, ideally an action of some type (Button or TextLink for instance) */
   children: PropTypes.node,
 
-  dataHook: PropTypes.string
+  dataHook: PropTypes.string,
 };
 
 EmptyState.defaultProps = {
   theme: 'section',
   image: null,
-  children: null
+  children: null,
 };
 
 export default EmptyState;

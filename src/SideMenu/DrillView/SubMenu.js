@@ -18,7 +18,7 @@ const SubMenu = ({
   showCategory,
   badge,
   linkDataHook,
-  disabled
+  disabled,
 }) => {
   if (!isOpen) {
     return (
@@ -66,7 +66,7 @@ SubMenu.defaultProps = {
   backLabel: 'Back',
   showCategory: true,
   linkDataHook: 'menu-drill-sub-menu-link',
-  disabled: false
+  disabled: false,
 };
 
 SubMenu.propTypes = {
@@ -81,7 +81,7 @@ SubMenu.propTypes = {
   badge: PropTypes.node,
   linkDataHook: PropTypes.string,
   children: PropTypes.node.isRequired,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };
 
 export default SubMenu;

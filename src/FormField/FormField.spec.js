@@ -66,7 +66,7 @@ describe('FormField', () => {
     const tooltipProps = {
       relative: true,
       appendToParent: true,
-      showDelay: 0
+      showDelay: 0,
     };
 
     it('should display `infoContent` value in tooltip', async () => {
@@ -104,7 +104,7 @@ describe('FormField', () => {
 
     describe('when function', () => {
       const setCharactersLeftOnMount = charactersLeft => ({
-        setCharactersLeft
+        setCharactersLeft,
       }) => <Children onMount={() => setCharactersLeft(charactersLeft)} />;
 
       it('should receive setCharactersLeft', () => {
@@ -121,7 +121,7 @@ describe('FormField', () => {
           const driver = createDriver(
             renderFormField({
               label,
-              children: setCharactersLeftOnMount(charactersLeft)
+              children: setCharactersLeftOnMount(charactersLeft),
             }),
           );
           expect(driver.getLengthLeft()).toBe(charactersLeft);
@@ -132,7 +132,7 @@ describe('FormField', () => {
           const driver = createDriver(
             renderFormField({
               label,
-              children: setCharactersLeftOnMount(charactersLeft)
+              children: setCharactersLeftOnMount(charactersLeft),
             }),
           );
           expect(driver.isLengthExceeded()).toBe(true);
@@ -143,7 +143,7 @@ describe('FormField', () => {
           const driver = createDriver(
             renderFormField({
               label,
-              children: setCharactersLeftOnMount(charactersLeft)
+              children: setCharactersLeftOnMount(charactersLeft),
             }),
           );
           expect(driver.getLengthLeft()).toBe(0);

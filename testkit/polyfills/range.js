@@ -31,5 +31,5 @@ const uninstall = () => {
 
 export default {
   install,
-  uninstall
+  uninstall,
 };

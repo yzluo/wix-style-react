@@ -11,11 +11,11 @@ export default class WixStyleProvider extends React.PureComponent {
 
 WixStyleProvider.propTypes = {
   children: any,
-  theme: object
+  theme: object,
 };
 
 WixStyleProvider.defaultProps = {
-  theme: {}
+  theme: {},
 };
 
 export const withStyles = (Component, styles) => injectSheet(styles)(Component);

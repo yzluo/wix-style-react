@@ -4,7 +4,7 @@ import sinon from 'sinon';
 
 import {
   buttonHeaderTestkitFactory,
-  buttonTestkitFactory
+  buttonTestkitFactory,
 } from '../../../testkit';
 import { buttonHeaderTestkitFactory as enzymeButtonHeaderTestkitFactory } from '../../../testkit/enzyme';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
@@ -13,7 +13,7 @@ import ButtonHeader from './ButtonHeader';
 import buttonHeaderDriverFactory from './ButtonHeader.driver';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../../test/utils/testkit-sanity';
 
 describe('ButtonHeader', () => {
@@ -53,7 +53,7 @@ describe('ButtonHeader', () => {
     );
     const buttonDriverTestkit = buttonTestkitFactory({
       wrapper: driver.element(),
-      dataHook: driver.buttonDataHook()
+      dataHook: driver.buttonDataHook(),
     });
     expect(buttonDriverTestkit.getButtonTextContent()).toBe('Click me');
   });

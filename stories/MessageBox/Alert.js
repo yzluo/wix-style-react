@@ -35,7 +35,7 @@ Components to be used within \`wix-style-react/Modal\`:
 `;
 
 const layoutStyles = {
-  margin: '0 30px'
+  margin: '0 30px',
 };
 
 export default () => (

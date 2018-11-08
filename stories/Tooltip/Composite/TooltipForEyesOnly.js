@@ -16,7 +16,7 @@ export default class TooltipForEyesOnly extends Component {
     this.state = {
       content: SHORT_CONTENT,
       style: {},
-      popover: false
+      popover: false,
     };
   }
 
@@ -57,7 +57,7 @@ export default class TooltipForEyesOnly extends Component {
   _onClick() {
     this.setState({
       style: { position: 'relative', left: '20px' },
-      content: LONG_CONTENT
+      content: LONG_CONTENT,
     });
   }
 }

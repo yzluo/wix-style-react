@@ -6,7 +6,7 @@ import InputArea from 'wix-style-react/InputArea';
 import FormField from 'wix-style-react/FormField';
 
 const defaultProps = {
-  placeholder: 'Placeholder Text'
+  placeholder: 'Placeholder Text',
 };
 
 const Example = () => (
@@ -25,7 +25,7 @@ const Example = () => (
 );
 
 Example.propTypes = {
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 export default Example;

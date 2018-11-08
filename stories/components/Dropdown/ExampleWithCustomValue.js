@@ -8,7 +8,7 @@ const style = {
   padding: '0 5px 0',
   width: '200px',
   lineHeight: '22px',
-  marginBottom: '350px'
+  marginBottom: '350px',
 };
 
 class CustomValuesInDropdown extends React.Component {
@@ -44,7 +44,7 @@ class CustomValuesInDropdown extends React.Component {
       { id: 4, value: 'Option 4', disabled: true },
       { id: 5, value: 'Option 5' },
       { id: 6, value: customValue },
-      { id: 7, value: customValue }
+      { id: 7, value: customValue },
     ];
 
     return (

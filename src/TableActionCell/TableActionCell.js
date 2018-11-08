@@ -84,7 +84,7 @@ const TableActionCell = props => {
     primaryAction,
     secondaryActions,
     numOfVisibleSecondaryActions,
-    alwaysShowSecondaryActions
+    alwaysShowSecondaryActions,
   } = props;
 
   const visibleActions = secondaryActions.slice(
@@ -148,7 +148,7 @@ TableActionCell.propTypes = {
   primaryAction: PropTypes.shape({
     text: PropTypes.string.isRequired,
     theme: PropTypes.oneOf(['whiteblue', 'fullblue']),
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
   }),
 
   /**
@@ -163,7 +163,7 @@ TableActionCell.propTypes = {
       text: PropTypes.string.isRequired,
       icon: PropTypes.node.isRequired,
       onClick: PropTypes.func.isRequired,
-      disabled: PropTypes.bool
+      disabled: PropTypes.bool,
     }),
   ),
 
@@ -171,14 +171,14 @@ TableActionCell.propTypes = {
   numOfVisibleSecondaryActions: PropTypes.number,
 
   /** Whether to show the secondary action also when not hovering the row */
-  alwaysShowSecondaryActions: PropTypes.bool
+  alwaysShowSecondaryActions: PropTypes.bool,
 };
 
 TableActionCell.defaultProps = {
   primaryAction: null,
   secondaryActions: [],
   numOfVisibleSecondaryActions: 0,
-  alwaysShowSecondaryActions: false
+  alwaysShowSecondaryActions: false,
 };
 
 export default TableActionCell;

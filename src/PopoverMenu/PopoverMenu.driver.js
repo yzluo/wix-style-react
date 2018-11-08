@@ -20,7 +20,7 @@ const popoverMenuDriverFactory = ({ element }) => {
       menuItemDataHook
         .split(' ')
         .reduce((q, hook) => q + `[data-hook~="${hook}"]`, ''),
-    )
+    ),
   ];
 
   const driver = {
@@ -35,7 +35,7 @@ const popoverMenuDriverFactory = ({ element }) => {
       parentElement: element => {
         parentElement = element;
         return driver;
-      }
+      },
     },
 
     menu: {
@@ -50,8 +50,8 @@ const popoverMenuDriverFactory = ({ element }) => {
         ReactTestUtils.Simulate.click(
           itemsArray()[index].querySelector('button'),
         ),
-      )
-    }
+      ),
+    },
   };
 
   return driver;

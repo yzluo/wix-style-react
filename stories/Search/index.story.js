@@ -18,14 +18,14 @@ const options = [
   'Option3',
   'Option4',
   'Option5',
-  'last Option'
+  'last Option',
 ].map(createOption);
 
 const settings = {
   category: '3. Inputs',
   storyName: '3.9 Search',
   dataHook: 'storybook-search',
-  options
+  options,
 };
 
 export default {
@@ -43,7 +43,7 @@ export default {
 
     onChange: e => setState({ value: e.target.value }),
 
-    onSelect: option => setState({ value: option.value })
+    onSelect: option => setState({ value: option.value }),
   }),
 
   exampleProps: {
@@ -51,8 +51,8 @@ export default {
     onChange: e => e.target.value,
     options: [
       { label: 'One option', value: [createOption('Just me :)')] },
-      { label: `${options.length} options`, value: options }
-    ]
+      { label: `${options.length} options`, value: options },
+    ],
   },
 
   examples: (
@@ -61,5 +61,5 @@ export default {
         <ExpandableSearchExample />
       </CodeExample>
     </div>
-  )
+  ),
 };

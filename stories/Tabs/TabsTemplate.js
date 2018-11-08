@@ -10,12 +10,12 @@ const items = [
   { id: 4, title: 'Fourth item' },
   { id: 6, title: 'Fifth item' },
   { id: 7, title: 'Sixth item' },
-  { id: 8, title: 'A very long tab item that may not fit' }
+  { id: 8, title: 'A very long tab item that may not fit' },
 ];
 
 class TabsTemplate extends Component {
   state = {
-    activeId: items[0].id
+    activeId: items[0].id,
   };
 
   componentDidUpdate(props) {
@@ -59,13 +59,13 @@ TabsTemplate.propTypes = {
   type: PropTypes.oneOf(Tabs.tabTypes),
   hasDivider: PropTypes.bool,
   width: PropTypes.string,
-  sideContent: PropTypes.node
+  sideContent: PropTypes.node,
 };
 
 function getExampleCode(element) {
   return reactElementToJSXString(element, {
     filterProps: ['onClick'],
-    showDefaultProps: false
+    showDefaultProps: false,
   });
 }
 

@@ -7,7 +7,7 @@ import Tooltip from '../../src/Tooltip';
 export default class SomeContentComponent extends React.Component {
   static propTypes = {
     showScss: bool,
-    shortContent: bool
+    shortContent: bool,
   };
 
   render() {

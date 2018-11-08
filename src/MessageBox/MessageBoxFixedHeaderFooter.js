@@ -11,7 +11,7 @@ class MessageBoxFixedHeaderFooter extends WixComponent {
       prefixContent,
       suffixContent,
       footer,
-      header
+      header,
     } = this.props;
 
     const customHeader = header && (
@@ -45,11 +45,11 @@ MessageBoxFixedHeaderFooter.propTypes = {
   header: PropTypes.node,
   children: PropTypes.any,
   prefixContent: PropTypes.node,
-  suffixContent: PropTypes.node
+  suffixContent: PropTypes.node,
 };
 
 MessageBoxFixedHeaderFooter.defaultProps = {
-  width: '600px'
+  width: '600px',
 };
 
 export default MessageBoxFixedHeaderFooter;

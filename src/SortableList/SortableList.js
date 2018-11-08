@@ -11,7 +11,7 @@ import DragDropContextProvider from '../DragDropContextProvider';
  */
 export default class SortableList extends WixComponent {
   state = {
-    items: this.props.items || []
+    items: this.props.items || [],
   };
 
   componentWillReceiveProps({ items }) {
@@ -42,14 +42,14 @@ export default class SortableList extends WixComponent {
     addedIndex,
     removedIndex,
     addedToContainerId,
-    removedFromContainerId
+    removedFromContainerId,
   }) => {
     this.props.onDrop({
       payload,
       addedIndex,
       removedIndex,
       addedToContainerId,
-      removedFromContainerId
+      removedFromContainerId,
     });
   };
 
@@ -76,7 +76,7 @@ export default class SortableList extends WixComponent {
                 item,
                 id: item.id,
                 isPlaceholder: false,
-                isPreview: false
+                isPreview: false,
               })}
             </div>
           ))}
@@ -91,7 +91,7 @@ export default class SortableList extends WixComponent {
       groupName,
       containerId: this.props.containerId,
       onHover: this.handleHover,
-      onMoveOut: this.handleMoveOut
+      onMoveOut: this.handleMoveOut,
     };
 
     if (dragPreview) {
@@ -149,5 +149,5 @@ SortableList.propTypes = {
   /** className of the root container */
   className: PropTypes.string,
   /** className of the first items parent container */
-  contentClassName: PropTypes.string
+  contentClassName: PropTypes.string,
 };

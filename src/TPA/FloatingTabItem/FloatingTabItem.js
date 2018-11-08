@@ -11,7 +11,7 @@ try {
 class FloatingTabItem extends WixComponent {
   static propTypes = {
     active: bool,
-    children: any
+    children: any,
   };
 
   static defaultProps = {

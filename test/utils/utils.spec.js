@@ -58,7 +58,7 @@ describe('test-utils', () => {
         />
       );
       NotifyOnEnter.propTypes = {
-        onEnter: PropTypes.func
+        onEnter: PropTypes.func,
       };
       const ControlledInput = makeControlled(NotifyOnEnter);
       const component = mount(

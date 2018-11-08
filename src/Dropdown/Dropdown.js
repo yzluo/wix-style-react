@@ -59,7 +59,7 @@ class Dropdown extends InputWithOptions {
     return {
       selectedId: this.state.selectedId,
       value: this.state.value,
-      tabIndex: -1
+      tabIndex: -1,
     };
   }
 
@@ -70,7 +70,7 @@ class Dropdown extends InputWithOptions {
   _onSelect(option) {
     this.setState({
       value: this.props.valueParser(option),
-      selectedId: option.id
+      selectedId: option.id,
     });
     super._onSelect(option);
   }

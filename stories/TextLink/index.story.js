@@ -26,11 +26,11 @@ export default {
     children: 'Click to visit wix.com',
     theme: 'normal',
     size: 'medium',
-    ellipsis: false
+    ellipsis: false,
   },
   exampleProps: {
     prefixIcon: icons,
-    suffixIcon: icons
+    suffixIcon: icons,
   },
   examples: (
     <div>
@@ -42,5 +42,5 @@ export default {
         <ExampleDark />
       </CodeExample>
     </div>
-  )
+  ),
 };

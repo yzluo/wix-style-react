@@ -7,7 +7,7 @@ import {
   IncludedComponents,
   SubTitle,
   TLDRSection,
-  ExamplesSection
+  ExamplesSection,
 } from '../UXStoryTemplate';
 import { Layout, Cell } from 'wix-style-react/Layout';
 

@@ -19,7 +19,7 @@ export default class Form extends Component {
     super(props);
     this.state = {
       buttonValue: 0,
-      checkboxValue: false
+      checkboxValue: false,
     };
   }
 
@@ -35,7 +35,7 @@ export default class Form extends Component {
     info: PropTypes.string,
     error: PropTypes.Error,
     disabled: PropTypes.bool,
-    dataHook: PropTypes.string
+    dataHook: PropTypes.string,
   };
 
   componentDidUpdate(props) {

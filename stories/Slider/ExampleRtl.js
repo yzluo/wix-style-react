@@ -3,7 +3,7 @@ import Slider from './ControlledSlider';
 
 const style = {
   padding: '0 5px 55px',
-  width: '500px'
+  width: '500px',
 };
 
 export default () => (

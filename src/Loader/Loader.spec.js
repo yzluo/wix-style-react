@@ -6,7 +6,7 @@ import { loaderTestkitFactory } from '../../testkit';
 import { loaderTestkitFactory as enzymeLoaderTestkitFactory } from '../../testkit/enzyme';
 import {
   isEnzymeTestkitExists,
-  isTestkitExists
+  isTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import { mount } from 'enzyme';
 

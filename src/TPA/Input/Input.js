@@ -14,13 +14,13 @@ class Input extends WixComponent {
   static propTypes = {
     errorClassName: string,
     inputClassName: string,
-    error: bool
+    error: bool,
   };
 
   static defaultProps = {
     errorClassName: '',
     inputClassName: '',
-    error: false
+    error: false,
   };
 
   constructor(props) {
@@ -50,7 +50,7 @@ class Input extends WixComponent {
             'errorClassName',
             'inputClassName',
             'error',
-            'dataHook'
+            'dataHook',
           ],
           this.props,
         )}

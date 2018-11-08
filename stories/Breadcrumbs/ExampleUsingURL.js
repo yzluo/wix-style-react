@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ExampleBreadcrumbs.scss';
 import Breadcrumbs, {
-  breadcrumbsPathFactory
+  breadcrumbsPathFactory,
 } from '../../src/Breadcrumbs/Breadcrumbs';
 
 const items = breadcrumbsPathFactory('aa/bb/cc/dd');

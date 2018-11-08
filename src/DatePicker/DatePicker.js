@@ -39,7 +39,7 @@ export default class DatePicker extends WixComponent {
     filterDate: () => true,
     rtl: false,
     width: 150,
-    zIndex: 1
+    zIndex: 1,
   };
 
   constructor(props) {
@@ -48,7 +48,7 @@ export default class DatePicker extends WixComponent {
     this.state = {
       value: props.value || new Date(),
       isOpen: props.isOpen || false,
-      isDateInputFocusable: !props.isOpen
+      isDateInputFocusable: !props.isOpen,
     };
   }
 
@@ -56,7 +56,7 @@ export default class DatePicker extends WixComponent {
     super.componentDidMount();
 
     this._popper = new Popper(this.inputRef, this.calendarRef, {
-      placement: 'top-start'
+      placement: 'top-start',
     });
   }
 
@@ -71,7 +71,7 @@ export default class DatePicker extends WixComponent {
         {
           isOpen: true,
           isDateInputFocusable: false,
-          value: this.props.value || new Date()
+          value: this.props.value || new Date(),
         },
         () => this._popper.scheduleUpdate(),
       );
@@ -112,7 +112,7 @@ export default class DatePicker extends WixComponent {
       const newValue = [
         [value.getFullYear(), setYear],
         [value.getMonth(), setMonth],
-        [value.getDate(), setDate]
+        [value.getDate(), setDate],
       ].reduce(
         (value, [datePart, setter]) => setter(value, datePart),
         this.props.value,
@@ -164,7 +164,7 @@ export default class DatePicker extends WixComponent {
       error,
       errorMessage,
       customInput,
-      inputProps
+      inputProps,
     } = this.props;
 
     const _inputProps = {
@@ -186,7 +186,7 @@ export default class DatePicker extends WixComponent {
       errorMessage,
       autoSelect: false,
       ...(customInput ? customInput.props : {}),
-      ...inputProps
+      ...inputProps,
     };
 
     return React.cloneElement(customInput || <Input />, _inputProps);
@@ -208,7 +208,7 @@ export default class DatePicker extends WixComponent {
       calendarDataHook,
       twoMonths,
       locale,
-      zIndex
+      zIndex,
     } = this.props;
 
     const { isOpen, value } = this.state;
@@ -224,7 +224,7 @@ export default class DatePicker extends WixComponent {
       onClose: this.closeCalendar,
       value,
       shouldCloseOnSelect,
-      twoMonths
+      twoMonths,
     };
 
     return (
@@ -282,12 +282,12 @@ DatePicker.propTypes = {
       'sv',
       'no',
       'nl',
-      'da'
+      'da',
     ]),
     PropTypes.shape({
       distanceInWords: PropTypes.object,
-      format: PropTypes.object
-    })
+      format: PropTypes.object,
+    }),
   ]),
 
   /** Is the DatePicker disabled */
@@ -321,5 +321,5 @@ DatePicker.propTypes = {
   width: PropTypes.number,
 
   /** set desired z-index of DatePicker popover */
-  zIndex: PropTypes.number
+  zIndex: PropTypes.number,
 };

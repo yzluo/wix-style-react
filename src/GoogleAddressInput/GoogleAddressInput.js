@@ -8,13 +8,13 @@ import InputWithOptions from '../InputWithOptions';
 import {
   google2address,
   includes,
-  trySetStreetNumberIfNotReceived
+  trySetStreetNumberIfNotReceived,
 } from './google2address';
 import styles from './GoogleAddressInput.scss';
 
 export const GoogleAddressInputHandler = {
   geocode: 'geocode',
-  places: 'places'
+  places: 'places',
 };
 
 /**
@@ -26,7 +26,7 @@ class GoogleAddressInput extends React.Component {
 
     this.state = {
       suggestions: [],
-      value: props.value || ''
+      value: props.value || '',
     };
 
     this.autoCompleteRequestId = 0;
@@ -64,10 +64,10 @@ class GoogleAddressInput extends React.Component {
             {
               id: suggestions.length,
               value: this.props.footer,
-              ...this.props.footerOptions
-            }
+              ...this.props.footerOptions,
+            },
           ]
-        : [])
+        : []),
     ];
 
     return (
@@ -158,8 +158,8 @@ class GoogleAddressInput extends React.Component {
     ) {
       handlerCall = this.client.placeDetails({
         request: {
-          placeId: suggestion.place_id
-        }
+          placeId: suggestion.place_id,
+        },
       });
     } else {
       handlerCall = this.client.geocode({
@@ -167,8 +167,8 @@ class GoogleAddressInput extends React.Component {
           region: countryCode,
           [suggestion ? 'placeId' : 'address']: suggestion
             ? suggestion.place_id
-            : value
-        }
+            : value,
+        },
       });
     }
 
@@ -197,7 +197,7 @@ class GoogleAddressInput extends React.Component {
         const result = {
           originValue: value,
           googleResult: firstResult,
-          address: google2address(firstResult)
+          address: google2address(firstResult),
         };
 
         this.props.onSet && this.props.onSet(result);
@@ -258,7 +258,7 @@ class GoogleAddressInput extends React.Component {
         const request = {
           types,
           components: 'country:' + countryCode,
-          input: valuePrefix + value
+          input: valuePrefix + value,
         };
 
         return this.client.autocomplete({ request });
@@ -293,7 +293,7 @@ GoogleAddressInput.defaultProps = {
   clearSuggestionsOnBlur: true,
   fallbackToManual: false,
   poweredByGoogle: false,
-  handler: GoogleAddressInputHandler.geocode
+  handler: GoogleAddressInputHandler.geocode,
 };
 
 GoogleAddressInput.propTypes = {
@@ -354,8 +354,8 @@ GoogleAddressInput.propTypes = {
   /** Sets how to get more details for a place (e.g. geocode, places, etc) */
   handler: PropTypes.oneOf([
     GoogleAddressInputHandler.geocode,
-    GoogleAddressInputHandler.places
-  ])
+    GoogleAddressInputHandler.places,
+  ]),
 };
 
 export default GoogleAddressInput;

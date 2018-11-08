@@ -9,7 +9,7 @@ const withTooltip = WrappedComponent => {
 
   class Wrapper extends React.Component {
     state = {
-      hasTooltip: false
+      hasTooltip: false,
     };
 
     initHasTooltip(content) {
@@ -30,7 +30,7 @@ const withTooltip = WrappedComponent => {
         'onMouseEnter',
         'onMouseLeave',
         'onFocus',
-        'onBlur'
+        'onBlur',
       ];
       return React.cloneElement(component, { [key]: tooltipProperties });
     }
@@ -61,7 +61,7 @@ const withTooltip = WrappedComponent => {
 
   Wrapper.propTypes = {
     type: TabPropTypes.type,
-    item: TabPropTypes.item.isRequired
+    item: TabPropTypes.item.isRequired,
   };
 
   return Wrapper;

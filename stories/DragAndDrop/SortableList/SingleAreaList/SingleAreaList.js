@@ -11,39 +11,39 @@ const generateId = () => Math.floor(Math.random() * 100000);
 
 export default class SingleAreaList extends React.Component {
   static propTypes = {
-    withHandle: PropTypes.bool
+    withHandle: PropTypes.bool,
   };
 
   state = {
     items: [
       {
         id: generateId(),
-        text: 'Item 1'
+        text: 'Item 1',
       },
       {
         id: generateId(),
-        text: 'Item 2'
+        text: 'Item 2',
       },
       {
         id: generateId(),
-        text: 'Item 3'
+        text: 'Item 3',
       },
       {
         id: generateId(),
-        text: 'Item 4'
+        text: 'Item 4',
       },
       {
         id: generateId(),
-        text: 'Item 5'
-      }
-    ]
+        text: 'Item 5',
+      },
+    ],
   };
 
   handleDrop = ({ removedIndex, addedIndex }) => {
     const nextItems = [...this.state.items];
     nextItems.splice(addedIndex, 0, ...nextItems.splice(removedIndex, 1));
     this.setState({
-      items: nextItems
+      items: nextItems,
     });
   };
 
@@ -65,7 +65,7 @@ export default class SingleAreaList extends React.Component {
         defaultDndStyles.itemPlaceholder,
         styles.placeholder,
       )]: isPlaceholder,
-      [classNames(defaultDndStyles.itemPreview, styles.preview)]: isPreview
+      [classNames(defaultDndStyles.itemPreview, styles.preview)]: isPreview,
     });
 
     return (

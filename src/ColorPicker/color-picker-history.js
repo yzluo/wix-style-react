@@ -26,7 +26,7 @@ ColorPickerHistory.propTypes = {
   show: bool.isRequired,
   previous: object.isRequired,
   current: object.isRequired,
-  onClick: func.isRequired
+  onClick: func.isRequired,
 };
 
 export default ColorPickerHistory;

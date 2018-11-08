@@ -8,10 +8,10 @@ describe('SectionHelper', () => {
   const storyUrl = createStoryUrl({
     kind: storybookConfig.category,
     story: storybookConfig.storyName,
-    withExamples: false
+    withExamples: false,
   });
   const testkit = sectionHelperTestkitFactory({
-    dataHook: 'storybook-sectionhelper'
+    dataHook: 'storybook-sectionhelper',
   });
 
   eyes.it('should render default props', async () => {

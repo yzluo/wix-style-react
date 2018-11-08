@@ -23,7 +23,7 @@ export default () => (
           </Cell>
           <Cell span={1}>
             {text('<Cell span={1}><div style={width: 300}>Right</div></Cell>', {
-              width: 300
+              width: 300,
             })}
           </Cell>
         </Layout>
@@ -45,7 +45,7 @@ function text(text, style) {
         justifyContent: 'center',
         height: '100px',
         background: '#F0F4F7',
-        ...style
+        ...style,
       }}
     >
       <Text>{text}</Text>

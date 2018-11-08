@@ -31,7 +31,7 @@ class Checkbox extends WixComponent {
     /** used for automatic testing */
     hover: bool,
     size: oneOf(['medium']),
-    onChange: func
+    onChange: func,
   };
 
   static defaultProps = {
@@ -39,7 +39,7 @@ class Checkbox extends WixComponent {
     size: 'medium',
     onChange: e => {
       e.stopPropagation();
-    }
+    },
   };
 
   _id = `${Checkbox.displayName}-${uniqueId()}`;
@@ -54,7 +54,7 @@ class Checkbox extends WixComponent {
       hover,
       size,
       onChange,
-      children
+      children,
     } = this.props;
 
     const classname = classNames(
@@ -67,7 +67,7 @@ class Checkbox extends WixComponent {
       {
         [styles.hover]: hover,
         [styles.disabled]: disabled,
-        [styles.hasError]: hasError
+        [styles.hasError]: hasError,
       },
     );
 

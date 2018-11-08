@@ -37,7 +37,7 @@ export default class Slider extends Component {
   getMarks() {
     return this.getRange().reduce((acc, cur) => {
       acc[cur] = {
-        label: this.renderLabel(cur)
+        label: this.renderLabel(cur),
       };
 
       return acc;
@@ -112,7 +112,7 @@ Slider.propTypes = {
   pushable: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 
   /** The slider's selected range */
-  value: PropTypes.arrayOf(PropTypes.number)
+  value: PropTypes.arrayOf(PropTypes.number),
 };
 
 Slider.defaultProps = {
@@ -124,5 +124,5 @@ Slider.defaultProps = {
   id: uniqueId(),
   displayTooltip: true,
   displayMarks: true,
-  rtl: false
+  rtl: false,
 };

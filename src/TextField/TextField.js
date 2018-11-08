@@ -17,11 +17,11 @@ const TextField = ({ children, ...props }) => (
 );
 
 TextField.propTypes = {
-  children: children(optional(Label), once(Input))
+  children: children(optional(Label), once(Input)),
 };
 
 TextField.defaultProps = {
-  appendToParent: false
+  appendToParent: false,
 };
 
 TextField.displayName = 'TextField';

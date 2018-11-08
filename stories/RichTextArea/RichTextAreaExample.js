@@ -23,7 +23,7 @@ class RichTextAreaExample extends Component {
     },
     placeholder: 'Rich placeholder',
     value:
-      '<p>$$$ Rich text area</p><strong>bold text here</strong><ul><li>The amazing fox lives in <a href="wix.com">Lithuania</a></li></ul>'
+      '<p>$$$ Rich text area</p><strong>bold text here</strong><ul><li>The amazing fox lives in <a href="wix.com">Lithuania</a></li></ul>',
   };
 
   handleRichTextAreaChange = value => {
@@ -127,7 +127,7 @@ class RichTextAreaExample extends Component {
 }
 
 RichTextAreaExample.propTypes = {
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 export default RichTextAreaExample;

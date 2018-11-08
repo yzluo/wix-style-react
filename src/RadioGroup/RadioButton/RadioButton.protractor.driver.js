@@ -8,7 +8,7 @@ const buttonDriverFactory = element => {
   const focusableDriver = focusableDriverFactory({
     rootElement: element,
     nativeFocusableElement: element,
-    clickableElements: [getRadio, getTextChildren]
+    clickableElements: [getRadio, getTextChildren],
   });
 
   const publicDriver = {

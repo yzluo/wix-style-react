@@ -2,7 +2,7 @@ import {
   MessageBoxMarketerialLayout,
   MessageBoxFunctionalLayout,
   HeaderLayout,
-  FooterLayout
+  FooterLayout,
 } from './MessageBox';
 
 export { default as AddItem } from './AddItem';
@@ -24,7 +24,7 @@ export {
   HeaderLayout,
   HeaderLayout as HeaderLayout1,
   FooterLayout,
-  FooterLayout as FooterLayout1
+  FooterLayout as FooterLayout1,
 };
 export { default as RadioGroup } from './RadioGroup';
 export { default as RadioButton } from './RadioGroup/RadioButton/RadioButton';
@@ -93,7 +93,7 @@ export {
   Columns as Row,
   AutoAdjustedColumns,
   AutoAdjustedColumns as AutoAdjustedRow,
-  Col
+  Col,
 } from './Grid';
 export { Layout, Cell } from './Layout';
 export { default as Typography } from './Typography';

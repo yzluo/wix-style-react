@@ -7,7 +7,7 @@ const Group = ({ children }) => <div className={styles.root}>{children}</div>;
 
 Group.displayName = 'Input.Group';
 Group.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default Group;

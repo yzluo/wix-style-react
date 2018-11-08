@@ -5,7 +5,7 @@ import {
   ItemGroup,
   Item,
   Title,
-  SelectedCount
+  SelectedCount,
 } from 'wix-style-react/TableToolbar';
 
 import TableActionCell from 'wix-style-react/TableActionCell';
@@ -16,21 +16,21 @@ const baseData = [
     name: 'Apple Towels',
     SKU: '111222',
     price: '$2.00',
-    inventory: 'In stock'
+    inventory: 'In stock',
   },
   { name: 'Cyan Towels', SKU: '222333', price: '$2.00', inventory: 'In stock' },
   {
     name: 'Marble Slippers',
     SKU: '333444',
     price: '$14.00',
-    inventory: 'In stock'
+    inventory: 'In stock',
   },
   {
     name: 'Red Slippers',
     SKU: '444555',
     price: '$14.00',
-    inventory: 'Out of stock'
-  }
+    inventory: 'Out of stock',
+  },
 ];
 
 const primaryAction = rowData => window.alert(`Editing ${rowData.name}`);
@@ -50,25 +50,25 @@ export class ActionCellPrimaryExample extends React.Component {
               title: 'Name',
               render: row => <span>{row.name}</span>,
               width: '30%',
-              minWidth: '150px'
+              minWidth: '150px',
             },
             {
               title: 'SKU',
               render: row => <span>{row.SKU}</span>,
               width: '20%',
-              minWidth: '100px'
+              minWidth: '100px',
             },
             {
               title: 'Price',
               render: row => <span>{row.price}</span>,
               width: '20%',
-              minWidth: '100px'
+              minWidth: '100px',
             },
             {
               title: 'Inventory',
               render: row => <span>{row.inventory}</span>,
               width: '20%',
-              minWidth: '100px'
+              minWidth: '100px',
             },
             {
               title: '',
@@ -79,11 +79,11 @@ export class ActionCellPrimaryExample extends React.Component {
                   primaryAction={{
                     text: 'Edit',
                     theme: 'whiteblue',
-                    onClick: () => primaryAction(rowData)
+                    onClick: () => primaryAction(rowData),
                   }}
                 />
-              )
-            }
+              ),
+            },
           ]}
         >
           <Table.ToolbarContainer>

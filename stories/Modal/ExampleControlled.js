@@ -8,7 +8,7 @@ import DatePicker from 'wix-style-react/DatePicker';
 
 class ControlledModal extends Component {
   static propTypes = {
-    isOpen: PropTypes.bool
+    isOpen: PropTypes.bool,
   };
 
   constructor({ isOpen = false }) {
@@ -16,7 +16,7 @@ class ControlledModal extends Component {
     this.state = {
       isOpenBlueModal: isOpen,
       isOpenModalWithDatePicker: false,
-      isOpenModalWithCloseButton: false
+      isOpenModalWithCloseButton: false,
     };
   }
 
@@ -27,17 +27,17 @@ class ControlledModal extends Component {
     const openBlueModal = setState({ isOpenBlueModal: true });
 
     const closeModalWithDatePicker = setState({
-      isOpenModalWithDatePicker: false
+      isOpenModalWithDatePicker: false,
     });
     const openModalWithDatePicker = setState({
-      isOpenModalWithDatePicker: true
+      isOpenModalWithDatePicker: true,
     });
 
     const closeModalWithCloseButton = setState({
-      isOpenModalWithCloseButton: false
+      isOpenModalWithCloseButton: false,
     });
     const openModalWithCloseButton = setState({
-      isOpenModalWithCloseButton: true
+      isOpenModalWithCloseButton: true,
     });
 
     return (

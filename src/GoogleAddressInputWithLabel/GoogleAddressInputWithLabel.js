@@ -11,7 +11,7 @@ const GoogleAddressInputWithLabel = ({ children, ...props }) => (
 );
 
 GoogleAddressInputWithLabel.propTypes = {
-  children: children(optional(Label), once(GoogleAddressInput))
+  children: children(optional(Label), once(GoogleAddressInput)),
 };
 
 GoogleAddressInputWithLabel.displayName = 'GoogleAddressInputWithLabel';

@@ -5,7 +5,7 @@ import { protractorTestkitFactoryCreator } from 'wix-ui-test-utils/protractor';
 // here for historical reasons, should probably deprecate it
 export {
   waitForVisibilityOf,
-  scrollToElement
+  scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 
 import inputDriverFactory from '../src/Input/Input.protractor.driver';
@@ -341,5 +341,5 @@ export {
   labelTestkitFactory,
   floatingHelperTestkitFactory,
   linearProgressBarTestkitFactory,
-  circularProgressBarTestkitFactory
+  circularProgressBarTestkitFactory,
 } from 'wix-ui-backoffice/dist/src/testkit/protractor';

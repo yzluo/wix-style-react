@@ -11,5 +11,5 @@ export default ({ element }) => ({
   gradientContainerHeight: () =>
     element.querySelector('[data-hook="page-gradient-class-name"]').style
       .height,
-  getPageHtml: () => element.innerHTML
+  getPageHtml: () => element.innerHTML,
 });

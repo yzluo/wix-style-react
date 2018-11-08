@@ -8,7 +8,7 @@ export default class EndorseContentLayoutDriver {
   component;
   when = {
     created: props =>
-      (this.component = shallow(<EndorseContentLayout {...props} />))
+      (this.component = shallow(<EndorseContentLayout {...props} />)),
   };
 
   get = {
@@ -16,6 +16,6 @@ export default class EndorseContentLayoutDriver {
     head: () => this.component.find(`.${styles.head}`),
     content: () => this.component.find(`.${styles.content}`),
     primaryCta: () => this.component.find(`.${styles.primaryCta}`),
-    secondaryCta: () => this.component.find(`.${styles.secondaryCta}`)
+    secondaryCta: () => this.component.find(`.${styles.secondaryCta}`),
   };
 }

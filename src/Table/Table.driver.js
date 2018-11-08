@@ -5,7 +5,7 @@ const tableDriverFactory = ({ element, wrapper, component, eventTrigger }) => {
   const dataTableDriver = dataTableDriverFactory({
     element,
     wrapper,
-    component
+    component,
   });
   const getTitlebar = () =>
     element.querySelector('[data-hook="table-title-bar"]');
@@ -14,14 +14,14 @@ const tableDriverFactory = ({ element, wrapper, component, eventTrigger }) => {
       element: dataTableDriver
         .getCell(index, 0)
         .querySelector('[data-hook="row-select"]'),
-      eventTrigger
+      eventTrigger,
     });
   const getBulkSelectionCheckboxDriver = () =>
     checkboxDriverFactory({
       element: dataTableDriver
         .getHeaderCell(0)
         .querySelector('[data-hook="table-select"]'),
-      eventTrigger
+      eventTrigger,
     });
 
   const isBulkSelectionChecked = () => {
@@ -63,7 +63,7 @@ const tableDriverFactory = ({ element, wrapper, component, eventTrigger }) => {
       }
     },
     /** Get title-bar (column titles) */
-    getTitlebar
+    getTitlebar,
   };
 };
 

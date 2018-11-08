@@ -19,7 +19,7 @@ const target = {
     */
     return {
       containerId: props.containerId,
-      index: props.index
+      index: props.index,
     };
   },
   hover(props, monitor, component) {
@@ -61,15 +61,15 @@ const target = {
     */
     props.onHover(dragIndex, hoverIndex, {
       id: monitorItem.id,
-      item: monitorItem.originalItem
+      item: monitorItem.originalItem,
     });
     /** set new index for item */
     monitorItem.index = hoverIndex;
-  }
+  },
 };
 
 const collect = connect => ({
-  connectDropTarget: connect.dropTarget()
+  connectDropTarget: connect.dropTarget(),
 });
 
 @DropTarget(ItemTypes.DRAGGABLE, target, collect)
@@ -89,7 +89,7 @@ DraggableTarget.propTypes = {
   groupName: PropTypes.string,
   index: PropTypes.number,
   onMoveOut: PropTypes.func,
-  onHover: PropTypes.func
+  onHover: PropTypes.func,
 };
 
 export default DraggableTarget;

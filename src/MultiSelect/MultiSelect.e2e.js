@@ -13,7 +13,7 @@ describe('MultiSelect', () => {
 
   eyes.it('should show focus style + hover (focused by keyboard)', async () => {
     const driver = multiSelectTestkitFactory({
-      dataHook: 'multi-select-standard'
+      dataHook: 'multi-select-standard',
     });
     const element = driver.element();
     await waitForVisibilityOf(element, 'Cannot find <MultiSelect/>');
@@ -33,7 +33,7 @@ describe('MultiSelect', () => {
 
   eyes.it('should show hover style (Standard)', async () => {
     const driver = multiSelectTestkitFactory({
-      dataHook: 'multi-select-standard'
+      dataHook: 'multi-select-standard',
     });
     const element = driver.element();
     await waitForVisibilityOf(element, 'Cannot find <MultiSelect/>');
@@ -46,7 +46,7 @@ describe('MultiSelect', () => {
 
   eyes.it('should show hover style (when Reorderable)', async () => {
     const driver = multiSelectTestkitFactory({
-      dataHook: 'multi-select-reorderable'
+      dataHook: 'multi-select-reorderable',
     });
     const element = driver.element();
     await waitForVisibilityOf(element, 'Cannot find <MultiSelect/>');
@@ -61,7 +61,7 @@ describe('MultiSelect', () => {
     async () => {
       const ELEMENT_HEIGHT_MULTILINE = 66;
       const driver = multiSelectTestkitFactory({
-        dataHook: 'multi-select-limited'
+        dataHook: 'multi-select-limited',
       });
       await waitForVisibilityOf(driver.element(), 'Cannot find <MultiSelect/>');
       for (let i = 0; i < 9; i++) {

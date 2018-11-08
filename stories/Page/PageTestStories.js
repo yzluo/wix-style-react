@@ -14,7 +14,7 @@ const PageContainer = props => {
   return <div className={s.pageContainer}>{props.children}</div>;
 };
 PageContainer.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
 };
 
 const kind = getTestStoryKind(storySettings);

@@ -6,11 +6,11 @@ const fieldLabelAttributesDriverFactory = ({ element, wrapper }) => {
     getTooltipTestKit: () =>
       tooltipDriverFactory({
         wrapper,
-        element: element.querySelector('[data-hook="info"]')
+        element: element.querySelector('[data-hook="info"]'),
       }),
     hasRequired: () =>
       !!element.querySelectorAll('[data-hook="required"]').length,
-    hasInfo: () => !!element.querySelectorAll('[data-hook="info"]').length
+    hasInfo: () => !!element.querySelectorAll('[data-hook="info"]').length,
   };
 };
 

@@ -9,7 +9,7 @@ const TextLabel = ({ children }) => (
 );
 
 TextLabel.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 TextLabel.displayName = 'Notification.TextLabel';

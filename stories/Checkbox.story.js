@@ -11,7 +11,7 @@ const labelExamples = [
       <span key={0}>
         Hello <strong>World!</strong>
       </span>
-    )
+    ),
   },
   {
     label: 'Component with icon',
@@ -19,8 +19,8 @@ const labelExamples = [
       <span key={1}>
         Hello <Languages />
       </span>
-    )
-  }
+    ),
+  },
 ];
 
 export default {
@@ -32,11 +32,11 @@ export default {
   componentProps: setState => ({
     children: labelExamples[0].value,
     onChange: ({ target: { checked } }) => setState({ checked }),
-    dataHook: 'storybook-checkbox'
+    dataHook: 'storybook-checkbox',
   }),
 
   exampleProps: {
     children: labelExamples,
-    onChange: ({ target: { checked } }) => (checked ? 'Checked' : 'Unchecked')
-  }
+    onChange: ({ target: { checked } }) => (checked ? 'Checked' : 'Unchecked'),
+  },
 };

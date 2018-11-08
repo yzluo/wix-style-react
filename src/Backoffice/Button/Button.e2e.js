@@ -37,7 +37,7 @@ describe('Backoffice Button', () => {
 
     eyes.it('should alert on click', async () => {
       await autoExampleDriver.setProps({
-        onClick: () => window.alert('clicked') // eslint-disable-line no-alert
+        onClick: () => window.alert('clicked'), // eslint-disable-line no-alert
       });
 
       await driver.click();
@@ -56,7 +56,7 @@ describe('Backoffice Button', () => {
     eyes.it('should render prefix & sufix', async () => {
       await autoExampleDriver.setProps({
         prefixIcon: <div>prefix</div>,
-        suffixIcon: <div>suffix</div>
+        suffixIcon: <div>suffix</div>,
       });
 
       expect(await driver.isPrefixIconExists()).toBe(true);

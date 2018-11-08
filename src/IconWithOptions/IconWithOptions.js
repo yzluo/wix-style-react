@@ -37,7 +37,7 @@ class IconWithOptions extends WixComponent {
 
     const classes = classNames({
       [styles.dropdownLayout]: true,
-      [styles.dropDirectionUp]: dropdownProps.dropDirectionUp
+      [styles.dropDirectionUp]: dropdownProps.dropDirectionUp,
     });
 
     const style = { width: dropdownProps.dropdownWidth };
@@ -66,7 +66,7 @@ class IconWithOptions extends WixComponent {
     const style = { width: dropdownWidth };
     const classes = classNames({
       [styles.wrapper]: true,
-      [styles.hover]: this.state.showOptions
+      [styles.hover]: this.state.showOptions,
     });
 
     return (
@@ -100,13 +100,13 @@ IconWithOptions.defaultProps = {
   ...DropdownLayout.defaultProps,
   onSelect: () => {},
   withArrow: true,
-  dropdownWidth: '130px'
+  dropdownWidth: '130px',
 };
 
 IconWithOptions.propTypes = {
   ...DropdownLayout.propTypes,
   dropdownWidth: PropTypes.string,
-  children: PropTypes.array.isRequired
+  children: PropTypes.array.isRequired,
 };
 
 IconWithOptions.Option = () => null;

@@ -16,7 +16,7 @@ describe('Tabs component', () => {
     items = [
       { id: 0, title: 'Tab 0' },
       { id: 1, title: 'Tab 1', dataHook: 'tab-data-hook' },
-      { id: 2, title: 'Tab 2' }
+      { id: 2, title: 'Tab 2' },
     ];
   });
 
@@ -126,7 +126,7 @@ describe('Tabs component', () => {
       const wrapper = mount(<Tabs items={[]} dataHook={dataHook} />);
       const breadcrumbsTestkit = enzymeTabsTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(breadcrumbsTestkit.exists()).toBeTruthy();
     });

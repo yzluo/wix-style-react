@@ -21,13 +21,13 @@ export default {
   componentProps: {
     children,
     theme: 'fullblue',
-    height: 'medium'
+    height: 'medium',
   },
 
   exampleProps: {
     children: [
       { label: 'anchor element', value: children },
-      { label: 'text in span', value: <span>text in span</span> }
-    ]
-  }
+      { label: 'text in span', value: <span>text in span</span> },
+    ],
+  },
 };

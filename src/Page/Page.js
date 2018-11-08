@@ -11,7 +11,7 @@ import Tail from './Tail';
 import {
   SCROLL_TOP_THRESHOLD,
   SHORT_SCROLL_TOP_THRESHOLD,
-  TAIL_TOP_PADDING_PX
+  TAIL_TOP_PADDING_PX,
 } from './constants';
 
 /**
@@ -48,7 +48,7 @@ import {
  */
 class Page extends WixComponent {
   static defaultProps = {
-    gradientCoverTail: true
+    gradientCoverTail: true,
   };
 
   constructor(props) {
@@ -63,7 +63,7 @@ class Page extends WixComponent {
       tailHeight: 0,
       fixedContentHeight: 0,
       scrollBarWidth: 0,
-      minimized: false
+      minimized: false,
     };
   }
 
@@ -108,7 +108,7 @@ class Page extends WixComponent {
       this.setState({
         fixedContainerHeight: newFixedContainerHeight,
         tailHeight: newTailHeight,
-        fixedContentHeight: newFixedContentHeight
+        fixedContentHeight: newFixedContentHeight,
       });
     }
   }
@@ -141,7 +141,7 @@ class Page extends WixComponent {
 
     if (minimized !== nextMinimized) {
       this.setState({
-        minimized: nextMinimized
+        minimized: nextMinimized,
       });
     }
   }
@@ -215,7 +215,7 @@ class Page extends WixComponent {
       imageHeight,
       gradientHeight,
       fixedContainerHeight,
-      minimizedFixedContainerHeight
+      minimizedFixedContainerHeight,
     };
   }
 
@@ -224,7 +224,7 @@ class Page extends WixComponent {
       backgroundImageUrl,
       gradientClassName,
       className,
-      children
+      children,
     } = this.props;
     const { minimized } = this.state;
     const hasBackgroundImage = !!backgroundImageUrl;
@@ -233,10 +233,10 @@ class Page extends WixComponent {
       PageHeader,
       PageContent,
       PageFixedContent,
-      PageTail
+      PageTail,
     } = getChildrenObject(children);
     this._setContainerScrollTopThreshold({
-      shortThreshold: PageTail && hasGradientClassName
+      shortThreshold: PageTail && hasGradientClassName,
     });
     const contentFullScreen = PageContent && PageContent.props.fullScreen;
     const pageDimensionsStyle = this._calculatePageDimensionsStyle();
@@ -244,14 +244,14 @@ class Page extends WixComponent {
       imageHeight,
       gradientHeight,
       fixedContainerHeight,
-      minimizedFixedContainerHeight
+      minimizedFixedContainerHeight,
     } = this._calculateHeaderMeasurements({ PageTail });
 
     const contentLayoutProps = {
       className: classNames(s.content, {
-        [s.contentFullScreen]: contentFullScreen
+        [s.contentFullScreen]: contentFullScreen,
       }),
-      style: contentFullScreen ? null : pageDimensionsStyle
+      style: contentFullScreen ? null : pageDimensionsStyle,
     };
 
     return (
@@ -269,14 +269,14 @@ class Page extends WixComponent {
           <div
             className={classNames(s.pageHeaderContainer, {
               [s.minimized]: minimized,
-              [s.withoutBottomPadding]: PageTail && minimized
+              [s.withoutBottomPadding]: PageTail && minimized,
             })}
           >
             {PageHeader && (
               <div className={s.pageHeader} style={pageDimensionsStyle}>
                 {React.cloneElement(PageHeader, {
                   minimized,
-                  hasBackgroundImage
+                  hasBackgroundImage,
                 })}
               </div>
             )}
@@ -336,7 +336,7 @@ class Page extends WixComponent {
               <div
                 style={{
                   height: `${fixedContainerHeight -
-                    minimizedFixedContainerHeight}px`
+                    minimizedFixedContainerHeight}px`,
                 }}
               />
             ) : null}
@@ -350,7 +350,7 @@ class Page extends WixComponent {
 const FixedContent = props => props.children;
 FixedContent.displayName = 'Page.FixedContent';
 FixedContent.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 };
 
 Page.displayName = 'Page';
@@ -398,7 +398,7 @@ Page.propTypes = {
         `Page: Invalid Prop children, unknown child ${children[key].type}`,
       );
     }
-  }).isRequired
+  }).isRequired,
 };
 
 function getChildrenObject(children) {

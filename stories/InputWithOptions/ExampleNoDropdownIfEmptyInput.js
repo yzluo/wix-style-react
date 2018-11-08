@@ -5,7 +5,7 @@ const style = {
   display: 'inline-block',
   padding: '0 5px 0',
   width: '200px',
-  lineHeight: '22px'
+  lineHeight: '22px',
 };
 
 const options = [
@@ -17,13 +17,13 @@ const options = [
   {
     id: '5',
     value:
-      'Very long option text jldlkasj ldk jsalkdjsal kdjaklsjdlkasj dklasj'
-  }
+      'Very long option text jldlkasj ldk jsalkdjsal kdjaklsjdlkasj dklasj',
+  },
 ];
 
 class NoDropdownIfEmptyInput extends React.Component {
   state = {
-    value: ''
+    value: '',
   };
 
   render() {

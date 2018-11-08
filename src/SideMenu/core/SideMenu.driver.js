@@ -58,7 +58,7 @@ const sideMenuDriverFactory = ({ element }) => {
     },
     clickBackLink: () => ReactTestUtils.Simulate.click(getNavigationBackLink()),
     promotionContent: () => getPromotion().textContent,
-    footerContent: () => getFooter().textContent
+    footerContent: () => getFooter().textContent,
   };
 };
 

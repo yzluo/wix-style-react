@@ -7,7 +7,7 @@ import PopoverMenuItem from '../PopoverMenuItem/PopoverMenuItem';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import { popoverMenuTestkitFactory } from '../../testkit';
 import { popoverMenuTestkitFactory as enzymePopoverMenuTestkitFactory } from '../../testkit/enzyme';

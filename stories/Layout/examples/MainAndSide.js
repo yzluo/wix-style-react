@@ -41,5 +41,5 @@ function Section({ title, height }) {
 
 Section.propTypes = {
   title: PropTypes.string,
-  height: PropTypes.string
+  height: PropTypes.string,
 };

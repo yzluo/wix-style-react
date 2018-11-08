@@ -12,11 +12,11 @@ const ButtonWithOptionsDriverFactory = ({ element, wrapper, component }) => {
   );
   const buttonDriver = buttonDriverFactory({
     element: buttonWrapper.childNodes[0],
-    wrapper: buttonWrapper
+    wrapper: buttonWrapper,
   });
   const dropdownLayoutDriver = dropdownLayoutDriverFactory({
     element: dropdownLayout,
-    wrapper
+    wrapper,
   });
 
   const driver = {
@@ -33,7 +33,7 @@ const ButtonWithOptionsDriverFactory = ({ element, wrapper, component }) => {
         <div ref={r => (element = r)}>{ClonedWithProps}</div>,
         wrapper,
       );
-    }
+    },
   };
   return { driver, buttonDriver, dropdownLayoutDriver };
 };

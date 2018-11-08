@@ -15,7 +15,7 @@ class FieldWithSelectionComposite extends WixComponent {
 
     this.state = {
       hasFocusFirst: false,
-      hasFocusLast: false
+      hasFocusLast: false,
     };
   }
 
@@ -76,7 +76,7 @@ class FieldWithSelectionComposite extends WixComponent {
       disabled: this.props.disabled,
       [errorPropName]: this.props.error,
       onFocus: this._onFocusLast,
-      onBlur: this._onBlurLast
+      onBlur: this._onBlurLast,
     });
 
     return isCheckbox
@@ -138,7 +138,7 @@ class FieldWithSelectionComposite extends WixComponent {
             onBlur: this._onBlurFirst,
             error: this.props.error,
             disabled: this.props.disabled,
-            withSelection: true
+            withSelection: true,
           })}
           {this.cloneSelectionInput(originalSelectionInput, selectionInputType)}
         </div>
@@ -148,11 +148,11 @@ class FieldWithSelectionComposite extends WixComponent {
 }
 
 FieldWithSelectionComposite.propTypes = {
-  children: any
+  children: any,
 };
 
 FieldWithSelectionComposite.defaultProps = {
-  appendToParent: false
+  appendToParent: false,
 };
 
 FieldWithSelectionComposite.displayName = 'FieldWithSelectionComposite';

@@ -8,7 +8,7 @@ import { headerTestkitFactory } from '../../../testkit';
 import { headerTestkitFactory as enzymeHeaderTestkitFactory } from '../../../testkit/enzyme';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../../test/utils/testkit-sanity';
 
 describe('Header', () => {

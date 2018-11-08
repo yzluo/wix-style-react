@@ -33,7 +33,7 @@ export default class extends Component {
     /** Display in RTL  */
     rtl: PropTypes.bool,
 
-    style: PropTypes.object
+    style: PropTypes.object,
   };
 
   static defaultProps = {
@@ -42,7 +42,7 @@ export default class extends Component {
     style: {},
     disableAmPm: false,
     disabled: false,
-    dashesWhenDisabled: false
+    dashesWhenDisabled: false,
   };
 
   constructor(props) {
@@ -52,7 +52,7 @@ export default class extends Component {
       focus: false,
       lastCaretIdx: 0,
       hover: false,
-      ...this.getInitTime(this.props.defaultValue)
+      ...this.getInitTime(this.props.defaultValue),
     };
   }
 
@@ -181,7 +181,7 @@ export default class extends Component {
       return;
     }
     return this.setState({
-      text: e.target.value
+      text: e.target.value,
     });
   };
 
@@ -256,7 +256,7 @@ export default class extends Component {
     return (
       <div
         className={classNames(styles.wrapper, {
-          [styles.disabled]: disabled
+          [styles.disabled]: disabled,
         })}
         style={style}
         data-hook={dataHook}
@@ -267,7 +267,7 @@ export default class extends Component {
           className={classNames(styles.time, {
             focus,
             hover: hover && !focus,
-            rtl
+            rtl,
           })}
         >
           {this.renderTimeTextbox()}

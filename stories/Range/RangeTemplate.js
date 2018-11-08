@@ -19,7 +19,7 @@ export default class Form extends Component {
     required: PropTypes.bool,
     info: PropTypes.string,
     rangeType: PropTypes.object,
-    dataHook: PropTypes.string
+    dataHook: PropTypes.string,
   };
 
   componentDidUpdate(props) {

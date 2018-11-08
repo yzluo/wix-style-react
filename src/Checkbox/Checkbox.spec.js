@@ -95,7 +95,7 @@ describe('Checkbox', () => {
       const wrapper = mount(<Checkbox dataHook={dataHook} />);
       const checkboxTestkit = enzymeCheckboxTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(checkboxTestkit.exists()).toBeTruthy();
     });

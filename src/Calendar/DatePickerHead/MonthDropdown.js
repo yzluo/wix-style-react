@@ -25,7 +25,7 @@ const MonthDropdown = ({ months, date, onChange }) => {
 MonthDropdown.propTypes = {
   months: PropTypes.arrayOf(PropTypes.string).isRequired,
   date: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 export default MonthDropdown;

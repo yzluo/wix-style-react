@@ -8,7 +8,7 @@ const multiSelectDriverFactory = ({ element, wrapper, component }) => {
   const {
     driver,
     inputDriver,
-    dropdownLayoutDriver
+    dropdownLayoutDriver,
   } = inputWithOptionsDriverFactory({ element, wrapper });
 
   const inputWrapper = driver.inputWrapper().childNodes[0];
@@ -26,7 +26,7 @@ const multiSelectDriverFactory = ({ element, wrapper, component }) => {
     getTagDriverByTagId: tagId =>
       tagDriverFactory({
         element: tags.find(tag => tag.id === tagId),
-        wrapper
+        wrapper,
       }),
     setProps: props => {
       const ClonedWithProps = React.cloneElement(
@@ -38,7 +38,7 @@ const multiSelectDriverFactory = ({ element, wrapper, component }) => {
         <div ref={r => (element = r)}>{ClonedWithProps}</div>,
         wrapper,
       );
-    }
+    },
   });
 
   return { driver: multiSelectDriver, inputDriver, dropdownLayoutDriver };

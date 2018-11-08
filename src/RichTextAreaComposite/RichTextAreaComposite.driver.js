@@ -2,7 +2,7 @@ import inputAreaWithLabelCompositeDriverFactory from '../Composite/InputAreaWith
 
 const RichTextAreaCompositeDriverFactory = ({ element, wrapper }) => {
   return {
-    ...inputAreaWithLabelCompositeDriverFactory({ element, wrapper })
+    ...inputAreaWithLabelCompositeDriverFactory({ element, wrapper }),
   };
 };
 

@@ -47,7 +47,7 @@ export default component => {
         .mouseMove(handle)
         .mouseMove({ x: -100, y: -100 })
         .perform();
-    }
+    },
   };
 
   return actions;

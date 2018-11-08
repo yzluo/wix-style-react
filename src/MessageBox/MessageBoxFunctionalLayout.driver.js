@@ -6,7 +6,7 @@ import styles from './MessageBoxFunctionalLayout.scss';
 const messageBoxFunctionalLayoutDriverFactory = ({
   element,
   wrapper,
-  component
+  component,
 }) => {
   const confirmationButton = () =>
     element.querySelector('[data-hook="confirmation-button"]');
@@ -49,7 +49,7 @@ const messageBoxFunctionalLayoutDriverFactory = ({
         wrapper,
       );
     },
-    toHaveBodyPadding: () => !body().classList.contains(`${styles.noPadding}`)
+    toHaveBodyPadding: () => !body().classList.contains(`${styles.noPadding}`),
   };
 };
 

@@ -2,7 +2,7 @@ import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import SideMenu from '../core/SideMenu';
 import SlideAnimation, {
-  SlideDirection
+  SlideDirection,
 } from '../../Animations/SlideAnimation';
 import styles from './DrillView.scss';
 
@@ -19,7 +19,7 @@ class SideMenuDrill extends React.Component {
       currentMenuId: this.props.menuKey,
       previousMenuId: null,
       showMenuA: true,
-      slideDirection: SlideDirection.in
+      slideDirection: SlideDirection.in,
     };
 
     this.processChildren({ props: this.props }, state);
@@ -29,7 +29,7 @@ class SideMenuDrill extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const state = {
-      menus: {}
+      menus: {},
     };
 
     this.processChildren({ props: nextProps }, state);
@@ -41,7 +41,7 @@ class SideMenuDrill extends React.Component {
     if (!this.state) {
       Object.assign(state, {
         currentMenuId: selectedItemMenuId,
-        selectedItemMenuId
+        selectedItemMenuId,
       });
       return;
     }
@@ -89,7 +89,7 @@ class SideMenuDrill extends React.Component {
       currentMenuId: nextMenuId,
       previousMenuId,
       showMenuA,
-      slideDirection
+      slideDirection,
     });
   }
 
@@ -142,7 +142,7 @@ class SideMenuDrill extends React.Component {
           menu.props.onBackHandler.apply(menu, [event]);
         }
       },
-      isActive
+      isActive,
     };
 
     return React.cloneElement(menu, defaultSubMenProps, childrenClone);
@@ -267,7 +267,7 @@ class SideMenuDrill extends React.Component {
       currentMenuId,
       previousMenuId,
       showMenuA,
-      slideDirection
+      slideDirection,
     } = this.state;
     const menuAId = showMenuA ? currentMenuId : previousMenuId;
     const menuBId = showMenuA ? previousMenuId : currentMenuId;
@@ -307,7 +307,7 @@ class SideMenuDrill extends React.Component {
 
 SideMenuDrill.defaultProps = {
   inFlex: false,
-  menuKey: 'root'
+  menuKey: 'root',
 };
 
 SideMenuDrill.propTypes = {
@@ -315,7 +315,7 @@ SideMenuDrill.propTypes = {
   inFlex: PropTypes.bool,
   menuKey: PropTypes.string,
   children: PropTypes.node,
-  stickyFooter: PropTypes.node
+  stickyFooter: PropTypes.node,
 };
 
 export default SideMenuDrill;

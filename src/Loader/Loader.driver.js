@@ -20,12 +20,12 @@ const loaderDriverFactory = ({ element }) => {
     isSuccess: () => isClassExists(element, 'success'),
     getStatusMessage: () => {
       const tooltipDriver = tooltipDriverFactory({
-        element: findByHook(element, 'loader-tooltip')
+        element: findByHook(element, 'loader-tooltip'),
       });
 
       tooltipDriver.mouseEnter();
       return resolveIn(500).then(() => tooltipDriver.getContent());
-    }
+    },
   };
 };
 

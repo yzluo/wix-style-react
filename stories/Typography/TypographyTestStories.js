@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import {
   renderSizeAndWeightTable,
-  renderColorTable
+  renderColorTable,
 } from './TextClassesExample';
 import { renderHeadingTable } from './HeadingClassesExample';
 import { getTestStoryKind, Category } from '../storiesHierarchy';
@@ -12,7 +12,7 @@ import typography from '../../src/Typography';
 
 const kind = getTestStoryKind({
   category: Category.FOUNDATION,
-  storyName: '1.2 Typography'
+  storyName: '1.2 Typography',
 });
 storiesOf(kind, module).add('1. Typography with Classes - Text', () => {
   return (

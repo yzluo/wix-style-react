@@ -4,14 +4,14 @@ import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import LinkHeader from './LinkHeader';
 import {
   linkHeaderTestkitFactory,
-  textLinkTestkitFactory
+  textLinkTestkitFactory,
 } from '../../../testkit';
 import { linkHeaderTestkitFactory as enzymeLinkHeaderTestkitFactory } from '../../../testkit/enzyme';
 import { mount } from 'enzyme';
 
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../../test/utils/testkit-sanity';
 
 describe('LinkHeader', () => {
@@ -51,7 +51,7 @@ describe('LinkHeader', () => {
     );
     const textLinkDriverTestkit = textLinkTestkitFactory({
       wrapper: driver.element(),
-      dataHook: driver.linkDataHook()
+      dataHook: driver.linkDataHook(),
     });
     expect(textLinkDriverTestkit.getContent()).toBe('Wix');
   });

@@ -10,7 +10,7 @@ import { runFocusTests } from '../common/Focusable/FocusableTestsE2E';
 describe('AddItem', () => {
   const storyUrl = createStoryUrl({
     kind: storySettings.kind,
-    story: storySettings.storyName
+    story: storySettings.storyName,
   });
 
   beforeAll(async () => {

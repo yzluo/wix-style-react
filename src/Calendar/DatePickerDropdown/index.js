@@ -12,20 +12,20 @@ export default class DropdownPicker extends React.Component {
     caption: PropTypes.node,
     options: PropTypes.array,
     onChange: PropTypes.func,
-    selectedId: PropTypes.number
+    selectedId: PropTypes.number,
   };
 
   constructor(props) {
     super(props);
     this.stopAllEventsThatCanOpenModalInSameEventLoop = false;
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
   }
 
   onClose = () => {
     this.setState({
-      isOpen: false
+      isOpen: false,
     });
     this.stopAllEventsThatCanOpenModalInSameEventLoop = true;
     setTimeout(() => {
@@ -42,7 +42,7 @@ export default class DropdownPicker extends React.Component {
   toggleDropdown = () => {
     if (!this.stopAllEventsThatCanOpenModalInSameEventLoop) {
       this.setState({
-        isOpen: !this.state.isOpen
+        isOpen: !this.state.isOpen,
       });
     }
   };

@@ -15,17 +15,17 @@ function getDefaultManager(backend) {
 class DragDropContextProvider extends React.Component {
   static propTypes = {
     children: PropTypes.node,
-    backend: PropTypes.func
+    backend: PropTypes.func,
   };
   static defaultProps = {
-    backend: HTML5Backend
+    backend: HTML5Backend,
   };
   static contextTypes = {
-    dragDropManager: PropTypes.object
+    dragDropManager: PropTypes.object,
   };
 
   static childContextTypes = {
-    dragDropManager: PropTypes.object
+    dragDropManager: PropTypes.object,
   };
 
   getChildContext() {
@@ -34,7 +34,7 @@ class DragDropContextProvider extends React.Component {
       this.context.dragDropManager || getDefaultManager(this.props.backend);
 
     return {
-      dragDropManager: this.getManager()
+      dragDropManager: this.getManager(),
     };
   }
 

@@ -14,7 +14,7 @@ class TabItem extends React.Component {
     return (
       {
         uniformSide: { width },
-        compactSide: itemMaxWidth ? { maxWidth: `${itemMaxWidth}pt` } : {}
+        compactSide: itemMaxWidth ? { maxWidth: `${itemMaxWidth}pt` } : {},
       }[type] || {}
     );
   }
@@ -25,7 +25,7 @@ class TabItem extends React.Component {
       onItemClick,
       isActive,
       initHasTooltip,
-      dynamicProperties
+      dynamicProperties,
     } = this.props;
 
     const containerProps = {
@@ -33,7 +33,7 @@ class TabItem extends React.Component {
       onClick: () => onItemClick(item),
       className: classNames(styles.tab, { [styles.active]: isActive }),
       style: this.getItemStyle(),
-      ...pick(this.props, dynamicProperties)
+      ...pick(this.props, dynamicProperties),
     };
 
     return (
@@ -52,7 +52,7 @@ TabItem.propTypes = {
   type: TabPropTypes.type,
   width: TabPropTypes.width,
   initHasTooltip: PropTypes.func.isRequired,
-  dynamicProperties: PropTypes.array
+  dynamicProperties: PropTypes.array,
 };
 
 export default withTooltip(TabItem);

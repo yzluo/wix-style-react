@@ -14,7 +14,7 @@ export const tickerDriverFactory = component => {
     isUpDisabled: () => handlers.getUp().classList.contains(styles.disabled),
     isDownDisabled: () =>
       handlers.getDown().classList.contains(styles.disabled),
-    exists: () => !!component
+    exists: () => !!component,
   };
   return handlers;
 };

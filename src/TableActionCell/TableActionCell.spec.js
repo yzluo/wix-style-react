@@ -14,22 +14,22 @@ const primaryActionProps = (actionTrigger = () => {}) => ({
   primaryAction: {
     text: 'primary action',
     theme: 'whiteblue',
-    onClick: actionTrigger
-  }
+    onClick: actionTrigger,
+  },
 });
 
 const secondaryActionsProps = (actionTriggers = []) => {
   const createAction = n => ({
     text: `Action ${n}`,
     icon: <span>{`Icon ${n}`}</span>, // simulate the icon as <span> elements
-    onClick: actionTriggers[n] || (() => {})
+    onClick: actionTriggers[n] || (() => {}),
   });
 
   return {
     secondaryActions: Array(4)
       .fill()
       .map((val, idx) => createAction(idx)),
-    numOfVisibleSecondaryActions: 2
+    numOfVisibleSecondaryActions: 2,
   };
 };
 
@@ -165,7 +165,7 @@ describe('Table Action Cell', () => {
       text: `Disabled Action`,
       icon: <span>Icon</span>,
       onClick: actionTrigger,
-      disabled: true
+      disabled: true,
     };
     const driver = createDriver(
       <TableActionCell
@@ -213,7 +213,7 @@ describe('testkit', () => {
 
     const actionCellTextkit = tableActionCellTestkitFactory({
       wrapper,
-      dataHook
+      dataHook,
     });
     expect(actionCellTextkit.getPrimaryActionButtonDriver()).toBeTruthy();
   });
@@ -227,7 +227,7 @@ describe('enzyme testkit', () => {
     );
     const actionCellTextkit = enzymeTableActionCellTestkitFactory({
       wrapper,
-      dataHook
+      dataHook,
     });
     expect(actionCellTextkit.getPrimaryActionButtonDriver()).toBeTruthy();
   });

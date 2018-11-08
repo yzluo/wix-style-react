@@ -39,35 +39,35 @@ import { Star, Download, Duplicate, Print } from 'wix-style-react/new-icons';
 const primaryActionOptions1 = {
   text: 'Details',
   theme: 'fullblue',
-  onClick: () => console.log('Details action called!')
+  onClick: () => console.log('Details action called!'),
 };
 
 const primaryActionOptions2 = {
   ...primaryActionOptions1,
-  theme: 'whiteblue'
+  theme: 'whiteblue',
 };
 
 const secondaryActionsOption = [
   {
     text: 'Star',
     icon: <Star />,
-    onClick: () => console.log('Star action called!')
+    onClick: () => console.log('Star action called!'),
   },
   {
     text: 'Download',
     icon: <Download />,
-    onClick: () => console.log('Download action called!')
+    onClick: () => console.log('Download action called!'),
   },
   {
     text: 'Duplicate',
     icon: <Duplicate />,
-    onClick: () => console.log('Duplicate action called!')
+    onClick: () => console.log('Duplicate action called!'),
   },
   {
     text: 'Print',
     icon: <Print />,
-    onClick: () => console.log('Print action called!')
-  }
+    onClick: () => console.log('Print action called!'),
+  },
 ];
 
 const ExampleComponent = props => (
@@ -93,19 +93,19 @@ export default {
     primaryAction: primaryActionOptions1,
     secondaryActions: secondaryActionsOption,
     numOfVisibleSecondaryActions: 2,
-    alwaysShowSecondaryActions: true
+    alwaysShowSecondaryActions: true,
   },
 
   exampleProps: {
     primaryAction: [
       { label: 'No primary action', value: null },
       { label: 'Blue primary action', value: primaryActionOptions1 },
-      { label: 'White primary action', value: primaryActionOptions2 }
+      { label: 'White primary action', value: primaryActionOptions2 },
     ],
     secondaryActions: [
       { label: 'No secondary actions', value: [] },
-      { label: '4 secondary actions', value: secondaryActionsOption }
-    ]
+      { label: '4 secondary actions', value: secondaryActionsOption },
+    ],
   },
 
   examples: (
@@ -185,5 +185,5 @@ export default {
         </CodeExample>
       </div>
     </div>
-  )
+  ),
 };

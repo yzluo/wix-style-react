@@ -65,7 +65,7 @@ describe('SortableList', () => {
 
     const privateDriver = privateSortableListDriver({
       wrapper,
-      element: ReactDOM.findDOMNode(wrapper)
+      element: ReactDOM.findDOMNode(wrapper),
     });
 
     privateDriver.beginDrag('1');
@@ -76,14 +76,14 @@ describe('SortableList', () => {
       groupName: 'group',
       id: '1',
       index: 0,
-      item: { id: '1', text: 'item 1' }
+      item: { id: '1', text: 'item 1' },
     });
     expect(onDragEnd).toBeCalledWith({
       containerId: 'sortable-list',
       groupName: 'group',
       id: '1',
       index: 0,
-      item: { id: '1', text: 'item 1' }
+      item: { id: '1', text: 'item 1' },
     });
     expect(onDrop).not.toBeCalled();
   });
@@ -115,7 +115,7 @@ describe('SortableList', () => {
       addedToContainerId: 'sortable-list',
       payload: { id: '1', text: 'item 1' },
       removedFromContainerId: 'sortable-list',
-      removedIndex: 0
+      removedIndex: 0,
     });
   });
 
@@ -147,7 +147,7 @@ describe('SortableList', () => {
       addedToContainerId: 'sortable-list',
       payload: { id: '1', text: 'item 1' },
       removedFromContainerId: 'sortable-list',
-      removedIndex: 0
+      removedIndex: 0,
     });
   });
 
@@ -180,7 +180,7 @@ describe('SortableList', () => {
       addedToContainerId: 'sortable-list',
       payload: { id: '1', text: 'item 1' },
       removedFromContainerId: 'sortable-list',
-      removedIndex: 0
+      removedIndex: 0,
     });
   });
 
@@ -219,7 +219,7 @@ describe('SortableList', () => {
         addedToContainerId: 'sortable-list',
         payload: { id: '1', text: 'item 1' },
         removedFromContainerId: 'sortable-list',
-        removedIndex: 0
+        removedIndex: 0,
       });
       done();
     }, 100);
@@ -260,7 +260,7 @@ describe('SortableList', () => {
         addedToContainerId: 'sortable-list',
         payload: { id: '1', text: 'item 1' },
         removedFromContainerId: 'sortable-list',
-        removedIndex: 0
+        removedIndex: 0,
       });
       done();
     }, 100);
@@ -294,7 +294,7 @@ describe('SortableList', () => {
       addedToContainerId: 'sortable-list',
       payload: { id: '1', text: 'item 1' },
       removedFromContainerId: 'sortable-list',
-      removedIndex: 0
+      removedIndex: 0,
     });
   });
 });
@@ -327,7 +327,7 @@ describe('Enzyme: SortableList', () => {
       addedToContainerId: 'sortable-list',
       payload: { id: '1', text: 'item 1' },
       removedFromContainerId: 'sortable-list',
-      removedIndex: 0
+      removedIndex: 0,
     });
   });
 
@@ -336,7 +336,7 @@ describe('Enzyme: SortableList', () => {
     const items = [{ id: '1', text: 'item 1' }, { id: '2', text: 'item 2' }];
     const items2 = [
       { id: '11', text: 'item 11' },
-      { id: '21', text: 'item 21' }
+      { id: '21', text: 'item 21' },
     ];
     const onDrop = jest.fn();
     const renderItem = ({ item }) => <div key={item.id}>{item.text}</div>; // eslint-disable-line react/prop-types
@@ -382,7 +382,7 @@ describe('Enzyme: SortableList', () => {
       addedToContainerId: 'sortable-list-2',
       payload: { id: '1', text: 'item 1' },
       removedFromContainerId: 'sortable-list-1',
-      removedIndex: 0
+      removedIndex: 0,
     });
   });
 
@@ -391,7 +391,7 @@ describe('Enzyme: SortableList', () => {
     const items = [{ id: '1', text: 'item 1' }, { id: '2', text: 'item 2' }];
     const items2 = [
       { id: '11', text: 'item 11' },
-      { id: '21', text: 'item 21' }
+      { id: '21', text: 'item 21' },
     ];
     const onDrop = jest.fn();
     const renderItem = ({ item }) => <div key={item.id}>{item.text}</div>; // eslint-disable-line react/prop-types
@@ -442,7 +442,7 @@ describe('Enzyme: SortableList', () => {
       addedToContainerId: 'sortable-list-1',
       payload: { id: '1', text: 'item 1' },
       removedFromContainerId: 'sortable-list-1',
-      removedIndex: 0
+      removedIndex: 0,
     });
   });
 
@@ -474,7 +474,7 @@ describe('Enzyme: SortableList', () => {
       addedToContainerId: 'sortable-list',
       payload: { id: '1', text: 'item 1' },
       removedFromContainerId: 'sortable-list',
-      removedIndex: 0
+      removedIndex: 0,
     });
   });
 });

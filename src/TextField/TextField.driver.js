@@ -6,7 +6,7 @@ const textFieldDriverFactory = ({ element, wrapper }) => {
   return {
     ...inputAreaWithLabelCompositeDriverFactory({ element, wrapper }),
     getInput: () => input,
-    hasInput: () => !!input
+    hasInput: () => !!input,
   };
 };
 

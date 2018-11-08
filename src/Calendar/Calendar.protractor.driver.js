@@ -44,7 +44,7 @@ const calendarDriverFactory = component => {
     pressArrowRightKey: () =>
       getKeyboardSelectedDay().sendKeys(protractor.Key.ARROW_RIGHT),
     pressArrowLeftKey: () =>
-      getKeyboardSelectedDay().sendKeys(protractor.Key.ARROW_LEFT)
+      getKeyboardSelectedDay().sendKeys(protractor.Key.ARROW_LEFT),
   };
 };
 

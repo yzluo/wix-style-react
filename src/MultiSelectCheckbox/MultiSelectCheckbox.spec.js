@@ -24,7 +24,7 @@ describe('multiSelectCheckbox', () => {
     { value: 'California5', id: 'California5' },
     { value: 'California6', id: 'California6' },
     { value: 'California7', id: 'California7', disabled: true },
-    { value: 'Two words', id: 'Two words' }
+    { value: 'Two words', id: 'Two words' },
   ];
 
   it('should have a readonly input', () => {
@@ -72,7 +72,7 @@ describe('multiSelectCheckbox', () => {
   const OPEN_DROPDOWN_CHARS = [
     { key: 'ArrowDown', keyCode: 40, which: 40 },
     { key: 'Enter', keyCode: 13, which: 13 },
-    { key: 'Space', keyCode: 32, which: 32 }
+    { key: 'Space', keyCode: 32, which: 32 },
   ];
   OPEN_DROPDOWN_CHARS.forEach(charData => {
     it(`should show dropdown on input focus and press on ${
@@ -229,7 +229,7 @@ describe('multiSelectCheckbox', () => {
       );
       const multiSelectCheckboxTestkit = multiSelectCheckboxTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(multiSelectCheckboxTestkit.driver.exists()).toBeTruthy();
       expect(multiSelectCheckboxTestkit.inputDriver.exists()).toBeTruthy();

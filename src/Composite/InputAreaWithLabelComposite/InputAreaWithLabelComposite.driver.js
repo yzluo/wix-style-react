@@ -5,7 +5,7 @@ import fieldLabelAttributesDriverFactory from '../../FieldLabelAttributes/FieldL
 const inputAreaWithLabelCompositeDriverFactory = ({
   element,
   wrapper,
-  component
+  component,
 }) => {
   const label = element.childNodes[0].childNodes[0];
   return {
@@ -17,7 +17,7 @@ const inputAreaWithLabelCompositeDriverFactory = ({
     getInfoTooltipTestKit: () =>
       fieldLabelAttributesDriverFactory({
         wrapper,
-        element: element.querySelector('[data-hook="field-label-attributes"]')
+        element: element.querySelector('[data-hook="field-label-attributes"]'),
       }).getTooltipTestKit(),
     hasFieldLabelAttributes: () =>
       !!element.querySelectorAll('[data-hook="field-label-attributes"]').length,
@@ -31,7 +31,7 @@ const inputAreaWithLabelCompositeDriverFactory = ({
         <div ref={r => (element = r)}>{ClonedWithProps}</div>,
         wrapper,
       );
-    }
+    },
   };
 };
 

@@ -6,7 +6,7 @@ import Notification from './Notification';
 import {
   LOCAL_NOTIFICATION,
   GLOBAL_NOTIFICATION,
-  STICKY_NOTIFICATION
+  STICKY_NOTIFICATION,
 } from '../../src/Notification';
 import Label from '../../src/Label';
 import ToggleSwitch from '../../src/ToggleSwitch';
@@ -16,7 +16,7 @@ import Input from '../../src/Input';
 class ExampleStandard extends Component {
   static propTypes = {
     onChange: PropTypes.func,
-    theme: PropTypes.string
+    theme: PropTypes.string,
   };
 
   state = {
@@ -24,13 +24,13 @@ class ExampleStandard extends Component {
       show: true,
       type: GLOBAL_NOTIFICATION,
       timeout: '',
-      zIndex: 10000
+      zIndex: 10000,
     },
     actionButton: {
       type: 'button',
       text: 'Thanks',
-      link: 'https://www.wix.com'
-    }
+      link: 'https://www.wix.com',
+    },
   };
 
   setComponentState(componentName, obj) {
@@ -66,7 +66,7 @@ class ExampleStandard extends Component {
                 checked={this.state.notification.show}
                 onChange={() =>
                   this.setComponentState('notification', {
-                    show: !this.state.notification.show
+                    show: !this.state.notification.show,
                   })
                 }
               />
@@ -104,7 +104,7 @@ class ExampleStandard extends Component {
                 value={this.state.notification.timeout}
                 onChange={e =>
                   this.setComponentState('notification', {
-                    timeout: Number(e.target.value)
+                    timeout: Number(e.target.value),
                   })
                 }
               />
@@ -137,7 +137,7 @@ class ExampleStandard extends Component {
                       size="small"
                       onChange={event =>
                         this.setComponentState('actionButton', {
-                          link: event.target.value
+                          link: event.target.value,
                         })
                       }
                     />
@@ -152,7 +152,7 @@ class ExampleStandard extends Component {
                     size="small"
                     onChange={event =>
                       this.setComponentState('actionButton', {
-                        text: event.target.value
+                        text: event.target.value,
                       })
                     }
                   />
@@ -171,7 +171,7 @@ class ExampleStandard extends Component {
               value={this.state.notification.zIndex}
               onChange={e =>
                 this.setComponentState('notification', {
-                  zIndex: Number(e.target.value)
+                  zIndex: Number(e.target.value),
                 })
               }
             />

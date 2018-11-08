@@ -6,7 +6,7 @@ import { Button } from 'wix-style-react/Backoffice';
 const secondaryCtaStyle = {
   fontSize: '14px',
   color: '#2b81cb',
-  textDecoration: 'none'
+  textDecoration: 'none',
 };
 
 export default () => (

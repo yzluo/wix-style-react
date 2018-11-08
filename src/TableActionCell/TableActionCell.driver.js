@@ -13,28 +13,28 @@ const tableActionCellDriverFactory = ({ element }) => {
     buttonDriverFactory({
       element: element.querySelector(
         '[data-hook="table-action-cell-primary-action"] button',
-      )
+      ),
     });
 
   const getVisibleActionTooltipDriver = actionIndex =>
     tooltipDriverFactory({
       element: getVisibleActionsWrapper().querySelectorAll(
         '[data-hook="table-action-cell-visible-action-tooltip"]',
-      )[actionIndex]
+      )[actionIndex],
     });
 
   const getVisibleActionButtonDriver = actionIndex =>
     buttonDriverFactory({
       element: getVisibleActionsWrapper().querySelectorAll('button')[
         actionIndex
-      ]
+      ],
     });
 
   const getHiddenActionsPopoverMenuDriver = () =>
     popoverMenuDriverFactory({
       element: element.querySelector(
         '[data-hook="table-action-cell-popover-menu"]',
-      )
+      ),
     })
       .init.menuItemDataHook('table-action-cell-popover-menu-item')
       .init.parentElement(element);
@@ -71,8 +71,8 @@ const tableActionCellDriverFactory = ({ element }) => {
     /* Private driver */
     [INTERNAL_DRIVER_SYMBOL]: {
       /** Whether the primary action placeholder exists */
-      primaryActionPlaceholderExists: () => !!getPrimaryActionPlaceholder()
-    }
+      primaryActionPlaceholderExists: () => !!getPrimaryActionPlaceholder(),
+    },
   };
 };
 

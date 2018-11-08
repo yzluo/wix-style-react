@@ -25,7 +25,7 @@ const ColorPickerActions = ({ onCancel, onConfirm }) => (
 
 ColorPickerActions.propTypes = {
   onCancel: func.isRequired,
-  onConfirm: func.isRequired
+  onConfirm: func.isRequired,
 };
 
 export default ColorPickerActions;

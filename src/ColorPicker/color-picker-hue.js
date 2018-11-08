@@ -11,7 +11,7 @@ import css from './color-picker-hue.scss';
 export default class ColorPickerHue extends WixComponent {
   static propTypes = {
     current: object.isRequired,
-    onChange: func.isRequired
+    onChange: func.isRequired,
   };
 
   onMarkerDragStart = e => {

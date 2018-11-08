@@ -1,11 +1,11 @@
 import eyes from 'eyes.it';
 import {
   buttonTestkitFactory,
-  messageBoxFunctionalLayoutTestkitFactory
+  messageBoxFunctionalLayoutTestkitFactory,
 } from '../../testkit/protractor';
 import {
   waitForVisibilityOf,
-  scrollToElement
+  scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 import { createStoryUrl } from '../../test/utils/storybook-helpers';
 
@@ -32,7 +32,7 @@ describe('MessageBox', () => {
     eyes.it('should not break design', async () => {
       const storyUrl = createStoryUrl({
         kind: '9. Modals',
-        story: '9.1 Alert'
+        story: '9.1 Alert',
       });
       await browser.get(storyUrl);
       await verifyItem(standard);
@@ -50,13 +50,13 @@ describe('MessageBox', () => {
       async () => {
         const storyUrl = createStoryUrl({
           kind: '9. Modals',
-          story: '9.1 Alert'
+          story: '9.1 Alert',
         });
         await browser.get(storyUrl);
         await verifyItem(scrollable);
 
         const driver = messageBoxFunctionalLayoutTestkitFactory({
-          dataHook: scrollable
+          dataHook: scrollable,
         });
         const SMALL_SCROLL_OFFSET = 50;
         const MAX_SCROLL_OFFSET = 500;
@@ -79,7 +79,7 @@ describe('MessageBox', () => {
     eyes.it('should not break design', async () => {
       const storyUrl = createStoryUrl({
         kind: '9. Modals',
-        story: '9.2 Destructive Alert'
+        story: '9.2 Destructive Alert',
       });
       await browser.get(storyUrl);
       await verifyItem(standard);
@@ -91,11 +91,11 @@ describe('MessageBox', () => {
     eyes.it('should open full screen modal', async () => {
       const storyUrl = createStoryUrl({
         kind: '9. Modals',
-        story: '9.3 Custom Modal'
+        story: '9.3 Custom Modal',
       });
       await browser.get(storyUrl);
       const button = buttonTestkitFactory({
-        dataHook: 'open-full-screen-modal-button'
+        dataHook: 'open-full-screen-modal-button',
       });
       button.click();
       await verifyItem('fullscreen-modal');
@@ -106,7 +106,7 @@ describe('MessageBox', () => {
     eyes.it('should not break design', async () => {
       const storyUrl = createStoryUrl({
         kind: '9. Modals',
-        story: '9.4 Announcement'
+        story: '9.4 Announcement',
       });
       const standard = 'announcement-standard';
       const primaryTheme = 'announcement-primary-theme';

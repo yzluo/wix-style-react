@@ -4,13 +4,13 @@ import TabTypes from './tab-types';
 
 const stringOrNumber = PropTypes.oneOfType([
   PropTypes.string,
-  PropTypes.number
+  PropTypes.number,
 ]);
 
 export const item = PropTypes.shape({
   id: stringOrNumber,
   title: PropTypes.node,
-  dataHook: PropTypes.string
+  dataHook: PropTypes.string,
 });
 
 export const items = PropTypes.arrayOf(item);

@@ -42,7 +42,7 @@ export function google2address(google) {
     formattedStreetAddress: getFormattedStreetAddress(google.adr_address),
     latLng: {
       lat: locationFuncOrValue(lat),
-      lng: locationFuncOrValue(lng)
+      lng: locationFuncOrValue(lng),
     },
     approximate:
       !includes(google.types, 'street_address') &&
@@ -56,7 +56,7 @@ export function google2address(google) {
     street: components.route && components.route.long_name,
     number: components.street_number && components.street_number.long_name,
     postalCode: components.postal_code && components.postal_code.long_name,
-    subpremise: components.subpremise && components.subpremise.long_name
+    subpremise: components.subpremise && components.subpremise.long_name,
   };
 
   for (const key in result) {
@@ -79,7 +79,7 @@ export const trySetStreetNumberIfNotReceived = (google, inputValue) => {
   google.address_components.unshift({
     long_name: addressParts.join(),
     short_name: addressParts.join(),
-    types: ['street_number']
+    types: ['street_number'],
   });
   return google;
 };

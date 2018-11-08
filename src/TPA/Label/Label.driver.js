@@ -4,7 +4,7 @@ const labelDriverFactory = ({ element }) => {
     getContent: () => element.innerHTML,
     getAttribute: attributeName => element.getAttribute(attributeName),
     hasClass: className =>
-      element.getAttribute('class').indexOf(className) > -1
+      element.getAttribute('class').indexOf(className) > -1,
   };
 };
 

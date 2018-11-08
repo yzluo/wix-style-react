@@ -22,7 +22,7 @@ export default {
     light: false,
     dataHook: 'storybook-heading',
     appearance: 'H1',
-    ellipsis: false
+    ellipsis: false,
   },
 
   examples: (
@@ -35,5 +35,5 @@ export default {
         <TypographyExample />
       </CodeExample>
     </div>
-  )
+  ),
 };

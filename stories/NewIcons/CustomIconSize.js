@@ -4,7 +4,7 @@ import s from './style.scss';
 
 export default () => {
   const style = {
-    color: '#F00'
+    color: '#F00',
   };
 
   return (

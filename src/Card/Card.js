@@ -14,7 +14,7 @@ import styles from './Card.scss';
 const Card = ({ stretchVertically, children, dataHook }) => (
   <div
     className={classNames(styles.card, {
-      [styles.stretchVertically]: stretchVertically
+      [styles.stretchVertically]: stretchVertically,
     })}
     children={children}
     data-hook={dataHook}
@@ -26,11 +26,11 @@ Card.displayName = 'Card';
 Card.propTypes = {
   children: node,
   stretchVertically: bool,
-  dataHook: string
+  dataHook: string,
 };
 
 Card.defaultProps = {
-  stretchVertically: false
+  stretchVertically: false,
 };
 
 Card.Content = Content;

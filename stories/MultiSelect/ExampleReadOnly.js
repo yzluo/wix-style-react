@@ -13,7 +13,7 @@ export const options = [
       </div>
     ),
     id: 'Arizona',
-    tag: { label: 'Arizona', thumb: <div className={styles.thumb} /> }
+    tag: { label: 'Arizona', thumb: <div className={styles.thumb} /> },
   },
   { value: 'Arkansas', id: 'Arkansas' },
   { value: 'California', id: 'California' },
@@ -23,7 +23,7 @@ export const options = [
   { value: 'California5', id: 'California5' },
   { value: 'California6', id: 'California6' },
   { value: 'California7', id: 'California7' },
-  { value: 'Two words', id: 'Two words' }
+  { value: 'Two words', id: 'Two words' },
 ];
 
 class ExampleReadOnly extends React.Component {
@@ -32,7 +32,7 @@ class ExampleReadOnly extends React.Component {
 
     this.state = {
       tags: [],
-      options
+      options,
     };
   }
 
@@ -43,7 +43,7 @@ class ExampleReadOnly extends React.Component {
 
   handleOnRemoveTag = tagId =>
     this.setState({
-      tags: this.state.tags.filter(currTag => currTag.id !== tagId)
+      tags: this.state.tags.filter(currTag => currTag.id !== tagId),
     });
 
   render() {

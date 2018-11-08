@@ -7,7 +7,7 @@ import {
   Label,
   Title,
   SelectedCount,
-  Divider
+  Divider,
 } from 'wix-style-react/TableToolbar';
 
 import Card from 'wix-style-react/Card';
@@ -21,21 +21,21 @@ const baseData = [
     name: 'Apple Towels',
     SKU: '111222',
     price: '$2.00',
-    inventory: 'In stock'
+    inventory: 'In stock',
   },
   { name: 'Cyan Towels', SKU: '222333', price: '$2.00', inventory: 'In stock' },
   {
     name: 'Marble Slippers',
     SKU: '333444',
     price: '$14.00',
-    inventory: 'In stock'
+    inventory: 'In stock',
   },
   {
     name: 'Red Slippers',
     SKU: '444555',
     price: '$14.00',
-    inventory: 'Out of stock'
-  }
+    inventory: 'Out of stock',
+  },
 ];
 
 export class TableExample extends React.Component {
@@ -52,26 +52,26 @@ export class TableExample extends React.Component {
               render: row => <span>{row.name}</span>,
               width: '30%',
               minWidth: '150px',
-              infoTooltip: { content: 'This is the name column' }
+              infoTooltip: { content: 'This is the name column' },
             },
             {
               title: 'SKU',
               render: row => <span>{row.SKU}</span>,
               width: '20%',
-              minWidth: '100px'
+              minWidth: '100px',
             },
             {
               title: 'Price',
               render: row => <span>{row.price}</span>,
               width: '20%',
-              minWidth: '100px'
+              minWidth: '100px',
             },
             {
               title: 'Inventory',
               render: row => <span>{row.inventory}</span>,
               width: '20%',
-              minWidth: '100px'
-            }
+              minWidth: '100px',
+            },
           ]}
           showSelection
         >
@@ -95,13 +95,13 @@ const MainToolbar = () => {
   const collectionOptions = [
     { id: 0, value: 'All Products' },
     { id: 1, value: 'Towels' },
-    { id: 2, value: 'Slippers' }
+    { id: 2, value: 'Slippers' },
   ];
 
   const filterOptions = [
     { id: 0, value: 'All' },
     { id: 1, value: 'Red' },
-    { id: 2, value: 'Cyan' }
+    { id: 2, value: 'Cyan' },
   ];
 
   return (

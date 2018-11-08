@@ -6,14 +6,14 @@ const style = {
   padding: '0 5px',
   width: '200px',
   lineHeight: '22px',
-  verticalAlign: 'top'
+  verticalAlign: 'top',
 };
 
 const defaultProps = {
   size: 'normal',
   magnifyingGlass: true,
   placeholder: 'They did not know it was impossible, so they did it!',
-  unit: '$'
+  unit: '$',
 };
 
 export default () => (

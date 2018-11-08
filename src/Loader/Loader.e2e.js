@@ -23,7 +23,7 @@ describe('Loader', () => {
     autoExampleDriver.setProps({
       size: 'large',
       color: 'white',
-      text: 'Wubba Lubba Dub Dub'
+      text: 'Wubba Lubba Dub Dub',
     });
 
     await waitForVisibilityOf(loaderDriver.element(), 'Cannot find <Loader/>');

@@ -11,8 +11,8 @@ const GEOCODE_RESULT = JSON.parse(
 GEOCODE_RESULT.geometry = {
   location: {
     lat: () => 31.12,
-    lng: () => 33.34
-  }
+    lng: () => 33.34,
+  },
 };
 
 const buildResult = originValue => {
@@ -23,11 +23,11 @@ const buildResult = originValue => {
       approximate: true,
       latLng: {
         lat: 31.12,
-        lng: 33.34
+        lng: 33.34,
       },
       number: 123,
-      formatted: '_formatted_address_'
-    }
+      formatted: '_formatted_address_',
+    },
   };
 };
 
@@ -39,7 +39,7 @@ export class GmapsTestClient {
 
     return Promise.resolve([
       { description: JSON.stringify(request) + ' - 1', id: 0 },
-      { description: JSON.stringify(request) + ' - 2', id: 1 }
+      { description: JSON.stringify(request) + ' - 2', id: 1 },
     ]);
   }
 
@@ -47,7 +47,7 @@ export class GmapsTestClient {
     const { address, placeId } = request;
     if (address || placeId) {
       return Promise.resolve([
-        _.extend({}, GEOCODE_RESULT, { __called__: JSON.stringify(request) })
+        _.extend({}, GEOCODE_RESULT, { __called__: JSON.stringify(request) }),
       ]);
     }
     throw new Error('geocode() request params are malformed');
@@ -57,7 +57,7 @@ export class GmapsTestClient {
     const { placeId } = request;
     if (placeId) {
       return Promise.resolve([
-        _.extend({}, GEOCODE_RESULT, { __called__: JSON.stringify(request) })
+        _.extend({}, GEOCODE_RESULT, { __called__: JSON.stringify(request) }),
       ]);
     }
     throw new Error('placeDetails() request params are malformed');
@@ -78,7 +78,7 @@ describe('GoogleAddressInput', () => {
     it('should allow hiding magnifying glass', () => {
       const component = createShallow({
         Client: GmapsTestClient,
-        magnifyingGlass: false
+        magnifyingGlass: false,
       });
       expect(
         component.find('InputWithOptions').props().magnifyingGlass,
@@ -88,7 +88,7 @@ describe('GoogleAddressInput', () => {
     it('should allow setting theme for the nested input', () => {
       const component = createShallow({
         Client: GmapsTestClient,
-        theme: 'material'
+        theme: 'material',
       });
       expect(component.find('InputWithOptions').props().theme).toEqual(
         'material',
@@ -98,7 +98,7 @@ describe('GoogleAddressInput', () => {
     it('should allow the input to be readOnly', () => {
       const component = createShallow({
         Client: GmapsTestClient,
-        readOnly: true
+        readOnly: true,
       });
       expect(component.find('InputWithOptions').props().readOnly).toEqual(true);
     });
@@ -108,7 +108,7 @@ describe('GoogleAddressInput', () => {
         Client: GmapsTestClient,
         readOnly: true,
         footer: 'foo bar',
-        footerOptions: { overrideStyle: true, disabled: true }
+        footerOptions: { overrideStyle: true, disabled: true },
       });
 
       expect(component.find('InputWithOptions').props().options).toEqual([
@@ -116,8 +116,8 @@ describe('GoogleAddressInput', () => {
           id: 0,
           value: 'foo bar',
           overrideStyle: true,
-          disabled: true
-        }
+          disabled: true,
+        },
       ]);
     });
 
@@ -134,10 +134,10 @@ describe('GoogleAddressInput', () => {
       it('should show google footer', () => {
         const component = createMount({
           Client: GmapsTestClient,
-          poweredByGoogle: true
+          poweredByGoogle: true,
         });
         component.setState({
-          suggestions: ['a', 'b', 'c'].map(s => ({ description: s, id: s }))
+          suggestions: ['a', 'b', 'c'].map(s => ({ description: s, id: s })),
         });
         expect(component.find('[data-hook="google-footer"]').exists()).toEqual(
           true,
@@ -147,7 +147,7 @@ describe('GoogleAddressInput', () => {
       it('should not show google footer if `state.suggestions.length === 0`', () => {
         const component = createMount({
           Client: GmapsTestClient,
-          poweredByGoogle: true
+          poweredByGoogle: true,
         });
         component.setState({ suggestions: [] });
         expect(component.find('[data-hook="google-footer"]').exists()).toEqual(
@@ -170,13 +170,13 @@ describe('GoogleAddressInput', () => {
     const defaultSuggestions = [
       JSON.parse(
         '{"description": "my address", "id": "my-id", "place_id": 123}',
-      )
+      ),
     ];
 
     it('should specify autoSelect as default option', () => {
       const component = createMount({
         Client: GmapsTestClient,
-        countryCode: 'XX'
+        countryCode: 'XX',
       });
       expect(component.find('InputWithOptions').props().autoSelect).toEqual(
         true,
@@ -187,7 +187,7 @@ describe('GoogleAddressInput', () => {
       const component = createMount({
         Client: GmapsTestClient,
         countryCode: 'XX',
-        autoSelect: false
+        autoSelect: false,
       });
       expect(component.find('InputWithOptions').props().autoSelect).toEqual(
         false,
@@ -197,7 +197,7 @@ describe('GoogleAddressInput', () => {
     it('should allow focusing input', () => {
       const component = createMount({
         Client: GmapsTestClient,
-        countryCode: 'XX'
+        countryCode: 'XX',
       });
       const input = component.find('input').instance();
       sinon.spy(input, 'focus');
@@ -208,7 +208,7 @@ describe('GoogleAddressInput', () => {
     it('should allow selecting input', () => {
       const component = createMount({
         Client: GmapsTestClient,
-        countryCode: 'XX'
+        countryCode: 'XX',
       });
       const input = component.find('input').instance();
       sinon.spy(input, 'select');
@@ -219,7 +219,7 @@ describe('GoogleAddressInput', () => {
     it('If user changes the value in the autocomplete box, request suggestions from google.maps', done => {
       const component = createShallow({
         Client: GmapsTestClient,
-        countryCode: 'XX'
+        countryCode: 'XX',
       });
       const event = { target: { value: 'Hatomer 49' } };
       component
@@ -234,12 +234,12 @@ describe('GoogleAddressInput', () => {
           expect(component.find('InputWithOptions').props().options).toEqual([
             {
               id: 0,
-              value: '{"components":"country:XX","input":"Hatomer 49"} - 1'
+              value: '{"components":"country:XX","input":"Hatomer 49"} - 1',
             },
             {
               id: 1,
-              value: '{"components":"country:XX","input":"Hatomer 49"} - 2'
-            }
+              value: '{"components":"country:XX","input":"Hatomer 49"} - 2',
+            },
           ]);
           done();
         } catch (e) {
@@ -254,7 +254,7 @@ describe('GoogleAddressInput', () => {
       const component = createShallow({
         Client: GmapsTestClient,
         countryCode: 'XX',
-        onSet
+        onSet,
       });
       component.setState({ suggestions: defaultSuggestions });
       component
@@ -280,7 +280,7 @@ describe('GoogleAddressInput', () => {
         Client: GmapsTestClient,
         countryCode: 'XX',
         onSet,
-        handler: GoogleAddressInputHandler.places
+        handler: GoogleAddressInputHandler.places,
       });
       component.setState({ suggestions: defaultSuggestions });
       component
@@ -305,7 +305,7 @@ describe('GoogleAddressInput', () => {
       const component = createShallow({
         Client: GmapsTestClient,
         countryCode: 'XX',
-        onSet
+        onSet,
       });
       component.setState({ suggestions: defaultSuggestions });
       component
@@ -329,7 +329,7 @@ describe('GoogleAddressInput', () => {
       const component = createShallow({
         Client: GmapsTestClient,
         countryCode: 'YY',
-        onSet
+        onSet,
       });
       component.setState({ suggestions: defaultSuggestions });
       component
@@ -354,7 +354,7 @@ describe('GoogleAddressInput', () => {
         Client: GmapsTestClient,
         countryCode: 'YY',
         onSet,
-        fallbackToManual: true
+        fallbackToManual: true,
       });
       component.setState({ suggestions: [] });
       component
@@ -378,7 +378,7 @@ describe('GoogleAddressInput', () => {
       const component = createMount({
         Client: GmapsTestClient,
         countryCode: 'XX',
-        clearSuggestionsOnBlur: true
+        clearSuggestionsOnBlur: true,
       });
       component.setState({ suggestions: defaultSuggestions });
       component.find('input').simulate('blur');
@@ -392,7 +392,7 @@ describe('GoogleAddressInput', () => {
       const component = createShallow({
         Client: GmapsTestClient,
         countryCode: 'XX',
-        clearSuggestionsOnBlur: false
+        clearSuggestionsOnBlur: false,
       });
       component.setState({ suggestions: defaultSuggestions });
       component

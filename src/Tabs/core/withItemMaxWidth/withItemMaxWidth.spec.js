@@ -39,7 +39,7 @@ describe('withItemMaxWidth hoc', () => {
   it('does not set itemMaxWidth for other types', () => {
     const comp = aComponent({
       items: [anItem('a'), anItem('b')],
-      type: 'uniformFull'
+      type: 'uniformFull',
     });
     expect(comp.find(Component).prop('itemMaxWidth')).toBe(undefined);
   });

@@ -11,7 +11,7 @@ const RichTextAreaComposite = ({ children, ...props }) => (
 );
 
 RichTextAreaComposite.propTypes = {
-  children: children(optional(Label), once(RichTextArea))
+  children: children(optional(Label), once(RichTextArea)),
 };
 
 RichTextAreaComposite.displayName = 'RichTextAreaComposite';

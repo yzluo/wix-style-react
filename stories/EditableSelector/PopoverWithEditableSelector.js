@@ -13,14 +13,14 @@ class PopoverWithEditableSelector extends React.Component {
         { title: 'Bernard Park' },
         { title: 'Carlos Dunn' },
         { title: 'Norman Reeves' },
-        { title: 'Richard Medina' }
-      ]
+        { title: 'Richard Medina' },
+      ],
     };
   }
 
   onOptionAdded = ({ newTitle }) => {
     this.setState({
-      options: [...this.state.options, { title: newTitle, isSelected: true }]
+      options: [...this.state.options, { title: newTitle, isSelected: true }],
     });
   };
 
@@ -28,7 +28,7 @@ class PopoverWithEditableSelector extends React.Component {
     this.setState({
       options: this.state.options.map((option, i) =>
         index === i ? { title: newTitle } : option,
-      )
+      ),
     });
   };
 
@@ -41,13 +41,13 @@ class PopoverWithEditableSelector extends React.Component {
         } else {
           return option;
         }
-      })
+      }),
     });
   };
 
   onOptionDelete = ({ index }) => {
     this.setState({
-      options: this.state.options.filter((option, i) => index !== i)
+      options: this.state.options.filter((option, i) => index !== i),
     });
   };
 
@@ -67,7 +67,7 @@ class PopoverWithEditableSelector extends React.Component {
         style={{
           backgroundColor: '#f0f4f7',
           minHeight: '300px',
-          padding: '20px'
+          padding: '20px',
         }}
       >
         <Tooltip

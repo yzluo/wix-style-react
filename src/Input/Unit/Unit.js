@@ -12,7 +12,7 @@ const Unit = ({ children, value }) => (
 Unit.displayName = 'Input.Unit';
 Unit.propTypes = {
   children: PropTypes.node,
-  value: PropTypes.string
+  value: PropTypes.string,
 };
 
 export default Unit;

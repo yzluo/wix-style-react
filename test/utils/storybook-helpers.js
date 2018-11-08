@@ -7,6 +7,6 @@ export { getStoryUrl, createStoryUrl };
 export const createTestStoryUrl = ({ testName, category, storyName }) => {
   return createStoryUrl({
     kind: `${TESTS_PREFIX}/${category}/${storyName}`,
-    story: testName
+    story: testName,
   });
 };

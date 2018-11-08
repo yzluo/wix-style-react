@@ -4,7 +4,7 @@ import {
   TableToolbar,
   ItemGroup,
   Item,
-  Title
+  Title,
 } from 'wix-style-react/TableToolbar';
 
 import Card from 'wix-style-react/Card';
@@ -23,15 +23,15 @@ export class TableColumnAlignmentExample extends React.Component {
           name: 'Marble Slippers',
           visible: false,
           onSale: false,
-          price: '$125,265.00'
+          price: '$125,265.00',
         },
         {
           name: 'Red Slippers',
           visible: false,
           onSale: false,
-          price: '$1,265.69'
-        }
-      ]
+          price: '$1,265.69',
+        },
+      ],
     };
   }
 
@@ -44,9 +44,9 @@ export class TableColumnAlignmentExample extends React.Component {
 
         return {
           ...row,
-          ...data
+          ...data,
         };
-      })
+      }),
     });
   }
 
@@ -62,7 +62,7 @@ export class TableColumnAlignmentExample extends React.Component {
               title: 'Name',
               render: row => <span>{row.name}</span>,
               width: '30%',
-              minWidth: '150px'
+              minWidth: '150px',
             },
             {
               title: 'Visibility',
@@ -81,7 +81,7 @@ export class TableColumnAlignmentExample extends React.Component {
               ),
               width: '20%',
               minWidth: '100px',
-              align: 'start'
+              align: 'start',
             },
             {
               title: 'On Sale',
@@ -97,16 +97,16 @@ export class TableColumnAlignmentExample extends React.Component {
               minWidth: '100px',
               align: 'center',
               infoTooltipProps: {
-                content: 'I am a Tooltip!'
-              }
+                content: 'I am a Tooltip!',
+              },
             },
             {
               title: 'Price',
               render: row => <span>{row.price}</span>,
               width: '20%',
               minWidth: '100px',
-              align: 'end'
-            }
+              align: 'end',
+            },
           ]}
         >
           <MainToolbar />

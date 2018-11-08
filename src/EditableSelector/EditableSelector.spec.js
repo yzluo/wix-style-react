@@ -163,7 +163,7 @@ describe('EditableSelector', () => {
       );
       const editableSelectorTestkit = editableSelectorTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(editableSelectorTestkit.exists()).toBeTruthy();
     });
@@ -177,7 +177,7 @@ describe('EditableSelector', () => {
       );
       const editableSelectorTestkit = enzymeEditableSelectorTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(editableSelectorTestkit.exists()).toBeTruthy();
     });

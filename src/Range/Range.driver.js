@@ -8,7 +8,7 @@ const rangeDriverFactory = ({ element, wrapper }) => {
     getInput: () => input,
     hasInput: () => input.childNodes[0].tagName.toLowerCase() === 'input',
     getLabel: () => label,
-    hasLabel: () => label.tagName.toLowerCase() === 'label'
+    hasLabel: () => label.tagName.toLowerCase() === 'label',
   };
 };
 

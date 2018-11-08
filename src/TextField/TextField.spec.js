@@ -34,7 +34,7 @@ describe('TextField', () => {
         );
         const textFieldTestkit = enzymeTextFieldTestkitFactory({
           wrapper,
-          dataHook
+          dataHook,
         });
         expect(textFieldTestkit.exists()).toBeTruthy();
       });

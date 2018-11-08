@@ -6,5 +6,5 @@ export {
   AutoAdjustedColumns,
   AutoAdjustedColumns as AutoAdjustedRow,
   Col,
-  Card
+  Card,
 } from './Grid';

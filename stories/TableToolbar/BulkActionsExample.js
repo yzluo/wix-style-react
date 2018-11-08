@@ -5,7 +5,7 @@ import {
   ItemGroup,
   Item,
   SelectedCount,
-  Divider
+  Divider,
 } from 'wix-style-react/TableToolbar';
 
 import Card from 'wix-style-react/Card';

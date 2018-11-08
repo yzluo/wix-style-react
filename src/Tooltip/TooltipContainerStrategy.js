@@ -3,7 +3,7 @@ export class TooltipContainerStrategy {
     this._predicates = [
       element =>
         element.getAttribute('data-class') === 'page-scrollable-content',
-      element => element === document.body
+      element => element === document.body,
     ];
 
     this._ancestor = null;

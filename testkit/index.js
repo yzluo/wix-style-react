@@ -433,5 +433,5 @@ export {
   labelTestkitFactory,
   floatingHelperTestkitFactory,
   linearProgressBarTestkitFactory,
-  circularProgressBarTestkitFactory
+  circularProgressBarTestkitFactory,
 } from 'wix-ui-backoffice/dist/src/testkit';

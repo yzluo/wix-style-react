@@ -14,7 +14,7 @@ describe('Tooltip', () => {
   const _props = {
     showDelay: 5,
     hideDelay: 5,
-    content: <TooltipContent children={"I'm the content"} />
+    content: <TooltipContent children={"I'm the content"} />,
   };
   const children = <div>Here there is a children</div>;
 
@@ -70,7 +70,7 @@ describe('Tooltip', () => {
       expect(driver.isShown()).toBeTruthy();
       const buttonTestkit = buttonTestkitFactory({
         wrapper: driver.getTooltipWrapper(),
-        dataHook
+        dataHook,
       });
       expect(buttonTestkit.getButtonTextContent()).toBe('Button content');
     });
@@ -268,7 +268,7 @@ describe('Tooltip', () => {
         hideTrigger: 'custom',
         showTrigger: 'custom',
         active: false,
-        disabled: false
+        disabled: false,
       };
       const driver = createDriver(<Tooltip {...props}>{children}</Tooltip>);
       return resolveIn(30)
@@ -287,7 +287,7 @@ describe('Tooltip', () => {
         hideTrigger: 'custom',
         showTrigger: 'custom',
         active: true,
-        disabled: false
+        disabled: false,
       };
       const driver = createDriver(<Tooltip {...props}>{children}</Tooltip>);
       return resolveIn(30)
@@ -436,7 +436,7 @@ describe('Tooltip', () => {
   describe('showArrow prop', () => {
     const props = {
       ..._props,
-      content: 'This is the content'
+      content: 'This is the content',
     };
 
     it('should have an arrow by default', () => {
@@ -534,7 +534,7 @@ describe('Tooltip', () => {
     it('should have dark theme when appendToParent', () => {
       const driver = createTooltipTestkitDriver({
         appendToParent: true,
-        theme: 'dark'
+        theme: 'dark',
       });
       driver.mouseEnter();
       return resolveIn(30).then(() => {
@@ -545,7 +545,7 @@ describe('Tooltip', () => {
     it('should have error theme when appendToParent', () => {
       const driver = createTooltipTestkitDriver({
         appendToParent: true,
-        theme: 'error'
+        theme: 'error',
       });
       driver.mouseEnter();
       return resolveIn(30).then(() => {

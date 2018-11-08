@@ -11,11 +11,11 @@ try {
 
 class Label extends WixComponent {
   static propTypes = {
-    LabelClassName: string
+    LabelClassName: string,
   };
 
   static defaultProps = {
-    LabelClassName: ''
+    LabelClassName: '',
   };
 
   constructor(props) {

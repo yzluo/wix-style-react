@@ -5,7 +5,7 @@ import Tooltip from './Tooltip';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import {
   buttonTestkitFactory,
-  backofficeTooltipTestkitFactory as tooltipTestkitFactory
+  backofficeTooltipTestkitFactory as tooltipTestkitFactory,
 } from '../../../testkit';
 import { backofficeTooltipTestkitFactory as enzymeTooltipTestkitFactory } from '../../../testkit/enzyme';
 import { mount } from 'enzyme';
@@ -18,7 +18,7 @@ describe('Tooltip', () => {
   const _props = {
     showDelay: 5,
     hideDelay: 5,
-    content: <div>Some content</div>
+    content: <div>Some content</div>,
   };
   const children = <div>foo children</div>;
 
@@ -177,7 +177,7 @@ describe('Tooltip', () => {
       .then(() => {
         const buttonTestkit = buttonTestkitFactory({
           wrapper: driver.getTooltipWrapper(),
-          dataHook
+          dataHook,
         });
         expect(buttonTestkit.getButtonTextContent()).toBe('Button content');
       });

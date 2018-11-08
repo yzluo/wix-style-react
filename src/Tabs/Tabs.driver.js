@@ -34,7 +34,7 @@ const tabsDriverFactory = ({ element, wrapper, component }) => {
       );
     },
     getSideContent: () => findFirst(`.${styles.sideContent}`),
-    getItemsMaxWidths: () => getItems().map(item => item.style.maxWidth)
+    getItemsMaxWidths: () => getItems().map(item => item.style.maxWidth),
   };
 };
 

@@ -20,5 +20,5 @@ export default ({ element }) => ({
   isBreadcrumbsExists: () => !!breadcrumbsElement(element),
   breadcrumbsText: () => breadcrumbsElement(element).textContent,
   isActionBarExists: () => !!actionBarElement(element),
-  isBackButtonExists: () => !!backButtonElement(element)
+  isBackButtonExists: () => !!backButtonElement(element),
 });

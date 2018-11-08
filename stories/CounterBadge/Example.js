@@ -13,7 +13,7 @@ const skinOptions = Object.keys(SKIN).map(value => ({ id: value, value }));
 const childrenOptions = [
   { id: '12', value: '12' },
   { id: '1', value: '1' },
-  { id: 'Email', value: 'Email' }
+  { id: 'Email', value: 'Email' },
 ];
 
 class ControlledCounterBadgeExample extends React.Component {
@@ -21,7 +21,7 @@ class ControlledCounterBadgeExample extends React.Component {
     super(props);
     this.state = {
       skin: SKIN.general,
-      children: '12'
+      children: '12',
     };
   }
   render() {

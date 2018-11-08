@@ -11,19 +11,19 @@ import styles from './ExampleStandard.scss';
 
 class ExampleStandard extends Component {
   static propTypes = {
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
   };
 
   state = {
     withLabel: true,
     label: {
       appearance: 'T1.1',
-      children: 'Address'
+      children: 'Address',
     },
     input: {
       placeholder: 'Enter Address...',
-      Client: clients.GoogleMapsClient
-    }
+      Client: clients.GoogleMapsClient,
+    },
   };
 
   setComponentState(componentName, obj) {
@@ -68,7 +68,7 @@ class ExampleStandard extends Component {
                 value={this.state.input.placeholder}
                 onChange={e =>
                   this.setComponentState('input', {
-                    placeholder: e.target.value
+                    placeholder: e.target.value,
                   })
                 }
               />

@@ -9,7 +9,7 @@ export const Toolbar = props => {
 };
 Toolbar.displayName = 'Toolbar';
 Toolbar.propTypes = {
-  children: any // TODO: validate children are of type <ItemGroup>
+  children: any, // TODO: validate children are of type <ItemGroup>
 };
 
 export const ItemGroup = props => {
@@ -17,8 +17,8 @@ export const ItemGroup = props => {
     s.itemGroup,
     {
       positionStart: props.position === 'start',
-      positionEnd: props.position === 'end'
-    }
+      positionEnd: props.position === 'end',
+    },
   ]);
 
   return <div className={classes}>{props.children}</div>;
@@ -26,18 +26,18 @@ export const ItemGroup = props => {
 ItemGroup.displayName = 'Toolbar.ItemGroup';
 ItemGroup.propTypes = {
   children: any, // TODO: validate children are either <Item> od <Divider>
-  position: oneOf(['start', 'end'])
+  position: oneOf(['start', 'end']),
 };
 ItemGroup.defaultProps = {
-  position: 'start'
+  position: 'start',
 };
 
 export const Item = props => {
   const classes = classNames([
     s.item,
     {
-      [s.layoutButton]: props.layout === 'button'
-    }
+      [s.layoutButton]: props.layout === 'button',
+    },
   ]);
 
   return <span className={classes}>{props.children}</span>;
@@ -45,7 +45,7 @@ export const Item = props => {
 Item.displayName = 'Toolbar.Item';
 Item.propTypes = {
   children: any,
-  layout: oneOf(['button'])
+  layout: oneOf(['button']),
 };
 
 /**
@@ -63,7 +63,7 @@ export const Label = props => {
 };
 Label.displayName = 'Toolbar.Label';
 Label.propTypes = {
-  children: any
+  children: any,
 };
 
 export const Divider = () => {

@@ -5,12 +5,12 @@ const style = {
   display: 'inline-block',
   padding: '0 5px',
   width: '140px',
-  lineHeight: '22px'
+  lineHeight: '22px',
 };
 
 const nodeStyle = {
   background: 'azure',
-  paddingLeft: '25px'
+  paddingLeft: '25px',
 };
 
 const options = [
@@ -43,7 +43,7 @@ const options = [
   { id: 26, value: 'Option 27' },
   { id: 27, value: 'Option 28' },
   { id: 28, value: 'Option 29' },
-  { id: 29, value: 'Option 30' }
+  { id: 29, value: 'Option 30' },
 ];
 
 export default () => (

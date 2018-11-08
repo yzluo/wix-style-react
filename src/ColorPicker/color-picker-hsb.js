@@ -11,7 +11,7 @@ import css from './color-picker-hsb.scss';
 export default class ColorPickerHsb extends WixComponent {
   static propTypes = {
     current: object.isRequired,
-    onChange: func.isRequired
+    onChange: func.isRequired,
   };
 
   onMarkerDragStart = e => {
@@ -56,7 +56,7 @@ export default class ColorPickerHsb extends WixComponent {
     const hue = current.saturationv(100).lightness(50);
     const style = {
       left: `${current.saturationv()}%`,
-      top: `${100 - current.value()}%`
+      top: `${100 - current.value()}%`,
     };
     return (
       <div

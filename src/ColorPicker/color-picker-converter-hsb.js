@@ -10,7 +10,7 @@ import css from './color-picker-converter.scss';
 export default class ColorPickerConverterHsb extends WixComponent {
   static propTypes = {
     current: object.isRequired,
-    onChange: func.isRequired
+    onChange: func.isRequired,
   };
 
   constructor(props) {
@@ -57,7 +57,7 @@ export default class ColorPickerConverterHsb extends WixComponent {
   change(
     part,
     {
-      target: { value }
+      target: { value },
     },
   ) {
     this.setState({ [part]: value }, () => {

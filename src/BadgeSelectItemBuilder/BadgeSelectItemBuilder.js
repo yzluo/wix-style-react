@@ -20,10 +20,10 @@ const BadgeOption = props => {
 
 BadgeOption.propTypes = {
   text: PropTypes.node.isRequired,
-  skin: PropTypes.string.isRequired
+  skin: PropTypes.string.isRequired,
 };
 
 export const badgeSelectItemBuilder = ({ id, text, skin }) => ({
   id,
-  value: <BadgeOption skin={skin} text={text} />
+  value: <BadgeOption skin={skin} text={text} />,
 });

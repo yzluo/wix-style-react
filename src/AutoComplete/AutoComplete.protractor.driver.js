@@ -12,7 +12,7 @@ const autoCompleteDriverFactory = component => ({
       .$$(`[data-hook="dropdown-layout-options"] div`)
       .getText()
       .count(),
-  element: () => component
+  element: () => component,
 });
 
 export default autoCompleteDriverFactory;

@@ -33,7 +33,7 @@ class CommandsExample extends React.Component {
 }
 
 CommandsExample.propTypes = {
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 const Example = ({ theme }) => (
@@ -43,7 +43,7 @@ const Example = ({ theme }) => (
 );
 
 Example.propTypes = {
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 export default Example;

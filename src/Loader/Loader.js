@@ -15,32 +15,32 @@ import Heading from '../Heading';
 const arcsAngles = {
   tiny: {
     light: 216,
-    dark: 144
+    dark: 144,
   },
   small: {
     light: 216,
-    dark: 144
+    dark: 144,
   },
   medium: {
     light: 108,
-    dark: 108
+    dark: 108,
   },
   large: {
     light: 180,
-    dark: 180
-  }
+    dark: 180,
+  },
 };
 const strokeWidths = {
   tiny: 3,
   small: 4,
   medium: 4,
-  large: 4
+  large: 4,
 };
 const sizesInPx = {
   tiny: 18,
   small: 30,
   medium: 54,
-  large: 102
+  large: 102,
 };
 
 const FULL_CIRCLE_ANGLE = 359;
@@ -49,14 +49,14 @@ const sizeToSuccessIcon = {
   tiny: <ToggleOn />,
   small: <CircleLoaderCheckSmall />,
   medium: <CircleLoaderCheck />,
-  large: <CircleLoaderCheck />
+  large: <CircleLoaderCheck />,
 };
 
 const sizeToErrorIcon = {
   tiny: <FormFieldError />,
   small: <FormFieldErrorSmall />,
   medium: <FormFieldError />,
-  large: <FormFieldError />
+  large: <FormFieldError />,
 };
 
 export default class Loader extends WixComponent {
@@ -76,13 +76,13 @@ export default class Loader extends WixComponent {
     status: PropTypes.oneOf(['loading', 'success', 'error']),
 
     /** Text to be shown in the tolltip **/
-    statusMessage: PropTypes.string
+    statusMessage: PropTypes.string,
   };
 
   static defaultProps = {
     size: 'medium',
     color: 'blue',
-    status: 'loading'
+    status: 'loading',
   };
 
   render() {
@@ -105,7 +105,7 @@ export default class Loader extends WixComponent {
         className={css.arcsContainer}
         style={{
           width: `${sizeInPx}px`,
-          height: `${sizeInPx}px`
+          height: `${sizeInPx}px`,
         }}
       >
         <Arc

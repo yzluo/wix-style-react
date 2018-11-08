@@ -6,7 +6,7 @@ import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import { notificationTestkitFactory } from '../../testkit';
 import {
   notificationTestkitFactory as enzymeNotificationTestkitFactory,
-  buttonTestkitFactory as enzymeButtonTestkitFactory
+  buttonTestkitFactory as enzymeButtonTestkitFactory,
 } from '../../testkit/enzyme';
 
 import Notification from './Notification';
@@ -245,7 +245,7 @@ describe('Notification', () => {
             renderNotificationWithProps({
               show: true,
               type,
-              timeout: someTimeout
+              timeout: someTimeout,
             }),
           );
 
@@ -262,7 +262,7 @@ describe('Notification', () => {
             renderNotificationWithProps({
               show: true,
               type,
-              timeout: someTimeout
+              timeout: someTimeout,
             }),
           );
 
@@ -282,7 +282,7 @@ describe('Notification', () => {
             renderNotificationWithProps({
               show: false,
               type,
-              timeout: someTimeout
+              timeout: someTimeout,
             }),
           );
 
@@ -330,11 +330,11 @@ describe('Notification', () => {
 
       const enzymeNotificationTestkit = enzymeNotificationTestkitFactory({
         wrapper: component,
-        dataHook: 'notification_dh'
+        dataHook: 'notification_dh',
       });
       const enzymeButtonTestkit = enzymeButtonTestkitFactory({
         wrapper: component,
-        dataHook: 'button_dh'
+        dataHook: 'button_dh',
       });
 
       expect(enzymeNotificationTestkit.visible()).toBeFalsy();

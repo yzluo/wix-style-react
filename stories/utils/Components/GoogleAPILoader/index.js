@@ -6,16 +6,16 @@ import Loader from 'wix-style-react/Loader';
 const STATUS = {
   success: 'success',
   loading: 'loading',
-  error: 'error'
+  error: 'error',
 };
 
 export default class GoogleMapsLoader extends React.Component {
   state = {
-    dependencyStatus: STATUS.loading
+    dependencyStatus: STATUS.loading,
   };
 
   static propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
   };
 
   componentWillMount() {
@@ -54,7 +54,7 @@ export default class GoogleMapsLoader extends React.Component {
     error: this.errorView,
     undefined: this.errorView,
     success: this.successView,
-    loading: this.loadingView
+    loading: this.loadingView,
   };
 
   render() {

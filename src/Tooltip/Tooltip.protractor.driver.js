@@ -4,7 +4,7 @@ const tooltipDriverFactory = component => ({
     component.$(`[data-hook="${datahook}"]`),
   getTooltipTextContent: datahook =>
     component.$(`[data-hook="${datahook}"]`).getText(),
-  element: () => component
+  element: () => component,
 });
 
 export default tooltipDriverFactory;

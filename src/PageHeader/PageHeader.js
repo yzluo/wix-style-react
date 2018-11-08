@@ -51,7 +51,7 @@ const generateThemedBreadcrumbs = (
 ) => {
   if (breadcrumbs) {
     return React.cloneElement(breadcrumbs, {
-      theme: getBreadcrumbsTheme(hasBackgroundImage, minimized)
+      theme: getBreadcrumbsTheme(hasBackgroundImage, minimized),
     });
   }
 
@@ -72,7 +72,7 @@ export default class PageHeader extends WixComponent {
         title,
         hasBackgroundImage,
         minimized,
-      )
+      ),
     };
   }
 
@@ -109,7 +109,7 @@ export default class PageHeader extends WixComponent {
       actionsBar,
       showBackButton,
       hasBackgroundImage,
-      className
+      className,
     } = this.props;
     const breadcrumbsExists = !!breadcrumbs;
     const { themedBreadcrumbs } = this.state;
@@ -124,7 +124,7 @@ export default class PageHeader extends WixComponent {
               <div
                 className={classNames(s.breadcrumbsContainer, {
                   [s.absolute]: !breadcrumbsExists,
-                  [s.minimized]: minimized
+                  [s.minimized]: minimized,
                 })}
                 data-hook="page-header-breadcrumbs"
               >
@@ -134,7 +134,7 @@ export default class PageHeader extends WixComponent {
           </div>
           <div
             className={classNames(s.titleContainer, {
-              [s.minimized]: minimized
+              [s.minimized]: minimized,
             })}
           >
             {showBackButton &&
@@ -145,7 +145,7 @@ export default class PageHeader extends WixComponent {
                 <div
                   className={classNames(s.backButton, {
                     [s.minimized]: minimized,
-                    [s.darkTheme]: isDarkTheme(hasBackgroundImage, minimized)
+                    [s.darkTheme]: isDarkTheme(hasBackgroundImage, minimized),
                   })}
                   data-hook="page-header-backbutton"
                 >
@@ -161,7 +161,7 @@ export default class PageHeader extends WixComponent {
                   !breadcrumbsExists,
                   <div
                     className={classNames(s.title, {
-                      [s.minimized]: minimized
+                      [s.minimized]: minimized,
                     })}
                     data-hook="page-header-title"
                   >
@@ -193,7 +193,7 @@ export default class PageHeader extends WixComponent {
           <div
             className={classNames(s.actionsBar, {
               [s.minimized]: minimized,
-              [s.withBreadcrumbs]: breadcrumbsExists
+              [s.withBreadcrumbs]: breadcrumbsExists,
             })}
             data-hook="page-header-actionbar"
           >
@@ -225,9 +225,9 @@ PageHeader.propTypes = {
   /** The callback when back button is clicked */
   onBackClicked: PropTypes.func,
   /** A placeholder for a component that can contain actions / anything else */
-  actionsBar: PropTypes.node
+  actionsBar: PropTypes.node,
 };
 
 PageHeader.defaultProps = {
-  minimized: false
+  minimized: false,
 };

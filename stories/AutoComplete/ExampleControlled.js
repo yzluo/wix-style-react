@@ -5,7 +5,7 @@ const style = {
   display: 'inline-block',
   padding: '0 5px 0',
   width: '200px',
-  lineHeight: '22px'
+  lineHeight: '22px',
 };
 
 const options = [
@@ -13,7 +13,7 @@ const options = [
   { id: 1, value: 'Second option' },
   { id: 2, value: 'Third option' },
   { id: 3, value: 'Fifth option' },
-  { id: 4, value: 'Fourth option' }
+  { id: 4, value: 'Fourth option' },
 ];
 
 class ControlledAutoComplete extends React.Component {

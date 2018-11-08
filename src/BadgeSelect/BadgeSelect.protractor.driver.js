@@ -15,7 +15,7 @@ const badgeSelectDriverFactory = component => {
     async selectOption(index) {
       await this.clickBadge();
       await getDropdownItem(index).click();
-    }
+    },
   };
 };
 export default badgeSelectDriverFactory;

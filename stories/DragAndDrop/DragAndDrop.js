@@ -12,7 +12,7 @@ import {
   SingleAreaList,
   MultiAreaList,
   MultiAreaListWithSortableColumns,
-  Styles as SortableListStyles
+  Styles as SortableListStyles,
 } from './SortableList';
 
 import Introduction from './Introduction';

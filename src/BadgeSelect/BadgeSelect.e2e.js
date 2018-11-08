@@ -3,7 +3,7 @@ import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import {
   createStoryUrl,
   waitForVisibilityOf,
-  scrollToElement
+  scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 
 import { badgeSelectTestkitFactory } from '../../testkit/protractor';
@@ -13,7 +13,7 @@ describe('BadgeSelect', () => {
   const storyUrl = createStoryUrl({
     kind: storySettings.kind,
     story: storySettings.storyName,
-    withExamples: false
+    withExamples: false,
   });
 
   const createDriverFactory = async (dataHook = storySettings.dataHook) => {
@@ -73,8 +73,8 @@ describe('BadgeSelect', () => {
         options: ['general', 'standard', 'danger'].map((skin, id) => ({
           id: id.toString(),
           skin,
-          text: `${skin} ${skin}`
-        }))
+          text: `${skin} ${skin}`,
+        })),
       });
       await driver.clickBadge();
     });

@@ -13,12 +13,12 @@ class PopoverMenuItem extends WixComponent {
     text: PropTypes.string,
     onClick: PropTypes.func,
     size: PropTypes.oneOf(['normal', 'large']),
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
   };
 
   static defaultProps = {
     size: 'normal',
-    disabled: false
+    disabled: false,
   };
 
   render() {
@@ -27,7 +27,7 @@ class PopoverMenuItem extends WixComponent {
     return (
       <li
         className={classnames(styles.root, {
-          [styles.large]: this.props.size === 'large'
+          [styles.large]: this.props.size === 'large',
         })}
       >
         <button

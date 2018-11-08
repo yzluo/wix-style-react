@@ -22,7 +22,7 @@ const DatePickerHead = ({
   onLeftArrowClick,
   onRightArrowClick,
   showMonthDropdown,
-  showYearDropdown
+  showYearDropdown,
 }) => {
   // We use global DayPicker-Nav--Left(--Right) class for consistency.
   // All styles of the DayPicker component are global and kept in ../DatePicker.scss
@@ -81,7 +81,7 @@ DatePickerHead.propTypes = {
   onLeftArrowClick: PropTypes.func.isRequired,
   onRightArrowClick: PropTypes.func.isRequired,
   showMonthDropdown: PropTypes.bool,
-  showYearDropdown: PropTypes.bool
+  showYearDropdown: PropTypes.bool,
 };
 
 export default DatePickerHead;

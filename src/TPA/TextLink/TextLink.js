@@ -14,13 +14,13 @@ class TextLink extends WixComponent {
   static propTypes = {
     link: string.isRequired,
     id: string,
-    children: string
+    children: string,
   };
 
   static defaultProps = {
     disabled: false,
     rel: null,
-    target: null
+    target: null,
   };
 
   render() {
@@ -36,7 +36,7 @@ class TextLink extends WixComponent {
       'link',
       'href',
       'dataHook',
-      'injectedStyles'
+      'injectedStyles',
     ];
 
     return (

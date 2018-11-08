@@ -10,7 +10,7 @@ const generateStateForContainer = (length, startIndex) => {
   for (let i = 0; i < length; i++) {
     res.push({
       id: 'item-new' + (startIndex + i),
-      text: `Drag object ${startIndex + i}`
+      text: `Drag object ${startIndex + i}`,
     });
   }
   return res;
@@ -26,13 +26,13 @@ export default class MultiAreaListWithSortableColumns extends React.Component {
     columns: [
       {
         id: 'multiArea1',
-        items: generateStateForContainer(4, 1)
+        items: generateStateForContainer(4, 1),
       },
       {
         id: 'multiArea2',
-        items: generateStateForContainer(4, 5)
-      }
-    ]
+        items: generateStateForContainer(4, 5),
+      },
+    ],
   };
 
   handleDropCell = ({
@@ -40,7 +40,7 @@ export default class MultiAreaListWithSortableColumns extends React.Component {
     addedIndex,
     removedFromContainerId,
     addedToContainerId,
-    payload
+    payload,
   }) => {
     const nextState = copy(this.state);
     nextState.columns
@@ -71,7 +71,7 @@ export default class MultiAreaListWithSortableColumns extends React.Component {
         [classNames(
           defaultDndStyles.itemPreview,
           styles.itemPreview,
-        )]: isPreview
+        )]: isPreview,
       },
       classNames(defaultDndStyles.item, styles.item),
     );
@@ -93,7 +93,7 @@ export default class MultiAreaListWithSortableColumns extends React.Component {
         [classNames(
           defaultDndStyles.itemPreview,
           styles.columnItemPreview,
-        )]: isPreview
+        )]: isPreview,
       },
       classNames(defaultDndStyles.item, styles.columnItem),
     );

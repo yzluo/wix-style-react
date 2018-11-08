@@ -15,7 +15,7 @@ export default class BadgeSelect extends React.Component {
       PropTypes.shape({
         id: PropTypes.string.isRequired,
         skin: PropTypes.oneOf(Object.keys(SKIN)).isRequired,
-        text: PropTypes.string.isRequired
+        text: PropTypes.string.isRequired,
       }),
     ),
     /** The id of the selected option in the list */
@@ -28,7 +28,7 @@ export default class BadgeSelect extends React.Component {
     type: PropTypes.oneOf(Object.keys(TYPE)),
     /** Whether the text of the `<Badge/>` should be uppercase */
     uppercase: PropTypes.bool,
-    dataHook: PropTypes.string
+    dataHook: PropTypes.string,
   };
 
   static displayName = 'BadgeSelect';
@@ -38,7 +38,7 @@ export default class BadgeSelect extends React.Component {
 
     this.state = {
       visible: false,
-      selectedBadge: this.getSelectedOption(props)
+      selectedBadge: this.getSelectedOption(props),
     };
 
     this.onKeyDown = this.onKeyDown.bind(this);
@@ -47,7 +47,7 @@ export default class BadgeSelect extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.selectedId !== nextProps.selectedId) {
       this.setState({
-        selectedBadge: this.getSelectedOption(nextProps)
+        selectedBadge: this.getSelectedOption(nextProps),
       });
     }
   }

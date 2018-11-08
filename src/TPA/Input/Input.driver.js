@@ -3,7 +3,7 @@ const inputDriverFactory = ({ element }) => {
     exists: () => !!element,
     getValue: () => element.value,
     hasClass: className =>
-      element.getAttribute('class').indexOf(className) > -1
+      element.getAttribute('class').indexOf(className) > -1,
   };
 };
 

@@ -5,7 +5,7 @@ import {
   any,
   oneOf,
   multiple,
-  optional
+  optional,
 } from './CompositeValidation';
 
 const Label = () => null;

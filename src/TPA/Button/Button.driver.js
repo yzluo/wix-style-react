@@ -14,7 +14,7 @@ const buttonDriverFactory = ({ element }) => {
     hasClass: className =>
       element.getAttribute('class').indexOf(className) > -1,
     getButtonTextContent: () => element.textContent,
-    isButtonDisabled: () => element.getAttribute('disabled') === ''
+    isButtonDisabled: () => element.getAttribute('disabled') === '',
   };
 };
 

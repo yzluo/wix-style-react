@@ -17,7 +17,7 @@ const DEFAULT_TOOLTIP_PROPS = {
   hideDelay: 0,
   align: 'center',
   placement: 'top',
-  theme: 'dark'
+  theme: 'dark',
 };
 
 class ImageViewer extends WixComponent {
@@ -35,15 +35,15 @@ class ImageViewer extends WixComponent {
       height,
       error,
       errorMessage,
-      tooltipPlacement
+      tooltipPlacement,
     } = this.props;
     const classes = classNames(style.container, {
       [style.hasLogo]: imageUrl,
-      [style.hasError]: error
+      [style.hasError]: error,
     });
     const tooltipProps = {
       ...DEFAULT_TOOLTIP_PROPS,
-      ...this.props.tooltipProps
+      ...this.props.tooltipProps,
     };
     return (
       <div className={classes} style={{ width, height }}>
@@ -112,7 +112,7 @@ ImageViewer.defaultProps = {
   showUpdateButton: true,
   addImageInfo: 'Add Image',
   updateImageInfo: 'Update',
-  removeImageInfo: 'Remove'
+  removeImageInfo: 'Remove',
 };
 
 ImageViewer.propTypes = {
@@ -146,7 +146,7 @@ ImageViewer.propTypes = {
   /** Element width */
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** Element height */
-  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default ImageViewer;

@@ -6,7 +6,7 @@ import { sliderTestkitFactory } from '../../testkit';
 import { sliderTestkitFactory as enzymeSliderTestkitFactory } from '../../testkit/enzyme';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import { mount } from 'enzyme';
 

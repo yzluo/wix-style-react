@@ -1,7 +1,7 @@
 import eyes from 'eyes.it';
 import {
   waitForVisibilityOf,
-  scrollToElement
+  scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 import { createStoryUrl } from '../../test/utils/storybook-helpers';
 

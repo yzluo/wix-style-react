@@ -22,7 +22,7 @@ DropdownComposite.propTypes = {
   required: bool,
   appendToParent: bool,
   info: node,
-  tooltip: node
+  tooltip: node,
 };
 
 DropdownComposite.displayName = 'DropdownComposite';

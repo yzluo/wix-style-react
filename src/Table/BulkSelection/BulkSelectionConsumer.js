@@ -27,10 +27,10 @@ export const BulkSelectionConsumer = props => {
 BulkSelectionConsumer.propTypes = {
   children: PropTypes.any.isRequired,
   consumerCompName: PropTypes.string,
-  providerCompName: PropTypes.string
+  providerCompName: PropTypes.string,
 };
 
 BulkSelectionConsumer.defaultProps = {
   consumerCompName: 'BulkSelectionConsumer',
-  providerCompName: 'BulkSelection'
+  providerCompName: 'BulkSelection',
 };

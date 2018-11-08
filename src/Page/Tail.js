@@ -8,7 +8,7 @@ Tail.displayName = 'Page.Tail';
 
 Tail.propTypes = {
   children: PropTypes.element.isRequired,
-  minimized: PropTypes.bool
+  minimized: PropTypes.bool,
 };
 
 export default Tail;

@@ -15,7 +15,7 @@ const tagToTextSize = {
   tiny: 'tiny',
   small: 'small',
   medium: 'small',
-  large: 'medium'
+  large: 'medium',
 };
 
 /**
@@ -39,7 +39,7 @@ class Tag extends WixComponent {
   _renderText() {
     const { size, wrap, children } = this.props;
     const classes = classNames({
-      [styles.tagTextEllipsis]: wrap
+      [styles.tagTextEllipsis]: wrap,
     });
 
     return (
@@ -87,7 +87,7 @@ class Tag extends WixComponent {
       theme,
       useOldMargins,
       className,
-      onClick
+      onClick,
     } = this.props;
     return classNames(
       styles.root,
@@ -100,7 +100,7 @@ class Tag extends WixComponent {
         [styles.withThumb]: thumb,
         [styles.tagEllipsis]: wrap,
         [styles.disabled]: disabled,
-        [styles.clickable]: onClick !== noop
+        [styles.clickable]: onClick !== noop,
       },
     );
   }
@@ -161,7 +161,7 @@ Tag.propTypes = {
   wrap: PropTypes.bool,
 
   /* Standard className which has preference over any other intrinsic classes  */
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 Tag.defaultProps = {
@@ -171,7 +171,7 @@ Tag.defaultProps = {
   removable: true,
   theme: 'standard',
   wrap: false,
-  useOldMargins: true
+  useOldMargins: true,
 };
 
 export default Tag;

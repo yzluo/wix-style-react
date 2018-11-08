@@ -4,7 +4,7 @@ import FloatingTabItem from '../../../src/TPA/FloatingTabItem';
 import styles from './styles.scss';
 
 const style = {
-  padding: '0 5px'
+  padding: '0 5px',
 };
 
 class FloatingTabsCustomClassesExample extends Component {

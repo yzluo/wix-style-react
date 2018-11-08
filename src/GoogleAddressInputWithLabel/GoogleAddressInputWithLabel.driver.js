@@ -6,7 +6,7 @@ const GoogleAddressInputWithLabelDriverFactory = ({ element, wrapper }) => {
   return {
     ...inputAreaWithLabelCompositeDriverFactory({ element, wrapper }),
     getInput: () => input,
-    hasInput: () => input.childNodes[0].tagName.toLowerCase() === 'input'
+    hasInput: () => input.childNodes[0].tagName.toLowerCase() === 'input',
   };
 };
 

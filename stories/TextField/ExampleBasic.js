@@ -5,7 +5,7 @@ import Input from 'wix-style-react/Input';
 
 export default class TextFieldBasicExample extends React.Component {
   state = {
-    value: ''
+    value: '',
   };
 
   render() {

@@ -5,7 +5,7 @@ import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import sinon from 'sinon';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import { messageBoxFunctionalLayoutTestkitFactory } from '../../testkit';
 import { messageBoxFunctionalLayoutTestkitFactory as enzymeMessageBoxTestkitFactory } from '../../testkit/enzyme';
@@ -16,7 +16,7 @@ describe('MessageBox', () => {
   describe('action buttons', () => {
     it('should display the confirmation text on top the confirmation button', () => {
       const props = {
-        confirmText: 'confirmText'
+        confirmText: 'confirmText',
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getConfirmationButtonText()).toBe(props.confirmText);
@@ -24,7 +24,7 @@ describe('MessageBox', () => {
 
     it('should display the cancellation text on top the cancellation button', () => {
       const props = {
-        cancelText: 'cancelText'
+        cancelText: 'cancelText',
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getCancellationButtonText()).toBe(props.cancelText);
@@ -33,7 +33,7 @@ describe('MessageBox', () => {
     it('should disable cancel button if disabled', () => {
       const props = {
         cancelText: 'cancelText',
-        disableCancel: true
+        disableCancel: true,
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.isCancelEnable()).toBeFalsy();
@@ -42,7 +42,7 @@ describe('MessageBox', () => {
     it('should disable confirmation button if disabled', () => {
       const props = {
         confirmText: 'ok',
-        disableConfirmation: true
+        disableConfirmation: true,
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.isConfirmationEnable()).toBeFalsy();
@@ -57,7 +57,7 @@ describe('MessageBox', () => {
     it(`should trigger the 'onOk' action upon clicking the confirmation button`, () => {
       const props = {
         onOk: sinon.spy(),
-        confirmText: 'confirm'
+        confirmText: 'confirm',
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       driver.clickOnConfirmationButton();
@@ -67,7 +67,7 @@ describe('MessageBox', () => {
     it(`should trigger the 'onCancel' action upon clicking the cancellation button`, () => {
       const props = {
         cancelText: 'cancelText',
-        onCancel: sinon.spy()
+        onCancel: sinon.spy(),
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       driver.clickOnCancellationButton();
@@ -77,7 +77,7 @@ describe('MessageBox', () => {
     it('should render side actions', () => {
       const dataHook = 'side-actions';
       const props = {
-        sideActions: <div data-hook={dataHook} />
+        sideActions: <div data-hook={dataHook} />,
       };
 
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
@@ -91,7 +91,7 @@ describe('MessageBox', () => {
   describe('closeButton attribute', () => {
     it('should appear by default', () => {
       const props = {
-        onCancel: sinon.spy()
+        onCancel: sinon.spy(),
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getHeaderCloseButton()).toBeTruthy();
@@ -100,7 +100,7 @@ describe('MessageBox', () => {
     it('should not appear', () => {
       const props = {
         onCancel: sinon.spy(),
-        closeButton: false
+        closeButton: false,
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getHeaderCloseButton()).toBeFalsy();
@@ -108,7 +108,7 @@ describe('MessageBox', () => {
 
     it(`should trigger the 'onCancel' action upon clicking the header close button`, () => {
       const props = {
-        onCancel: sinon.spy()
+        onCancel: sinon.spy(),
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       driver.clickOnHeaderCloseButton();
@@ -121,7 +121,7 @@ describe('MessageBox', () => {
 
       const props = {
         onCancel: onCancelFunction,
-        onClose: onCloseFunction
+        onClose: onCloseFunction,
       };
 
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
@@ -140,7 +140,7 @@ describe('MessageBox', () => {
 
     it('should allowing setting the theme', () => {
       const props = {
-        theme: 'green'
+        theme: 'green',
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.isThemeExist('green')).toBeTruthy();
@@ -151,7 +151,7 @@ describe('MessageBox', () => {
   describe('footer children', () => {
     it(`should render the passed footer content`, () => {
       const props = {
-        footerBottomChildren: <div data-hook="inner-div" />
+        footerBottomChildren: <div data-hook="inner-div" />,
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(
@@ -178,7 +178,7 @@ describe('MessageBox', () => {
   describe('general', () => {
     it(`should hide the footer`, () => {
       const props = {
-        hideFooter: true
+        hideFooter: true,
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getFooter()).toBeNull();
@@ -192,7 +192,7 @@ describe('MessageBox', () => {
 
     it(`should render title`, () => {
       const props = {
-        title: 'title'
+        title: 'title',
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getTitle()).toBe(props.title);
@@ -230,7 +230,7 @@ describe('MessageBox', () => {
 
     it('should render the passed image', () => {
       const props = {
-        image: <div data-hook="inner-div" />
+        image: <div data-hook="inner-div" />,
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(

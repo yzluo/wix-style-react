@@ -15,20 +15,20 @@ class FloatingTabs extends WixComponent {
     children: any,
     tabClassName: string,
     contentClassName: string,
-    activeTabClassName: string
+    activeTabClassName: string,
   };
 
   static defaultProps = {
     tabClassName: '',
     contentClassName: '',
-    activeTabClassName: ''
+    activeTabClassName: '',
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedTabIndex: null
+      selectedTabIndex: null,
     };
   }
 

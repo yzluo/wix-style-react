@@ -15,7 +15,7 @@ const options = [
       </div>
     ),
     id: 'Arizona',
-    tag: { label: 'Arizona', thumb: <div className={styles.thumb} /> }
+    tag: { label: 'Arizona', thumb: <div className={styles.thumb} /> },
   },
   { value: 'Arkansas', id: 'Arkansas' },
   { value: 'California', id: 'California' },
@@ -25,7 +25,7 @@ const options = [
   { value: 'California5', id: 'California5' },
   { value: 'California6', id: 'California6' },
   { value: 'California7', id: 'California7' },
-  { value: 'Two words', id: 'Two words' }
+  { value: 'Two words', id: 'Two words' },
 ];
 
 const valueParser = option => (option.tag ? option.tag.label : option.value);
@@ -37,7 +37,7 @@ class ExampleWithLimitedNumRows extends React.Component {
     this.state = {
       tags: [],
       options,
-      inputValue: ''
+      inputValue: '',
     };
   }
 
@@ -53,7 +53,7 @@ class ExampleWithLimitedNumRows extends React.Component {
 
   handleOnRemoveTag = tagId =>
     this.setState({
-      tags: this.state.tags.filter(currTag => currTag.id !== tagId)
+      tags: this.state.tags.filter(currTag => currTag.id !== tagId),
     });
 
   handleOnChange = event => this.setState({ inputValue: event.target.value });

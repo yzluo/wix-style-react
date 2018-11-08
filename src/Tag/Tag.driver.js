@@ -13,7 +13,7 @@ const getContentWithoutThumb = element => element.querySelector('span');
 const getRemoveButtonDriver = element => {
   return buttonTestkitFactory({
     wrapper: element,
-    dataHook: dataHooks.removeButton
+    dataHook: dataHooks.removeButton,
   });
 };
 
@@ -36,7 +36,7 @@ const tagDriverFactory = ({ element }) => {
       isClassExists(getContentWithoutThumb(element), 'tagTextEllipsis'),
     isDisabled: () => isClassExists(element, 'disabled'),
     getLabel: () => element.textContent,
-    getTitle: () => element.title
+    getTitle: () => element.title,
   };
 };
 

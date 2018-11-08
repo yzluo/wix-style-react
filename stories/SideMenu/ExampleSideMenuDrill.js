@@ -18,7 +18,7 @@ const items = [
     to: '//wix.com',
     title: 'link #0_2',
     badge: true,
-    badgeTooltip: true
+    badgeTooltip: true,
   },
   {
     type: 'menu',
@@ -27,8 +27,8 @@ const items = [
     items: [
       { type: 'link', to: '//wix.com', title: 'link #1_1' },
       { type: 'link', to: '//wix.com', title: 'link #1_2' },
-      { type: 'link', to: '//wix.com', title: 'link #1_3', badge: true }
-    ]
+      { type: 'link', to: '//wix.com', title: 'link #1_3', badge: true },
+    ],
   },
   {
     type: 'menu',
@@ -44,10 +44,10 @@ const items = [
         items: [
           { type: 'link', to: '//wix.com', title: 'link #2-3_1' },
           { type: 'link', to: '//wix.com', title: 'link #2-3_2' },
-          { type: 'link', to: '//wix.com', title: 'link #2-3_3' }
-        ]
-      }
-    ]
+          { type: 'link', to: '//wix.com', title: 'link #2-3_3' },
+        ],
+      },
+    ],
   },
   {
     type: 'menu',
@@ -55,8 +55,8 @@ const items = [
     items: [
       { type: 'link', to: '//wix.com', title: 'link #3_1' },
       { type: 'link', to: '//wix.com', title: 'link #3_2' },
-      { type: 'link', to: '//wix.com', title: 'link #3_3' }
-    ]
+      { type: 'link', to: '//wix.com', title: 'link #3_3' },
+    ],
   },
   {
     type: 'menu',
@@ -64,9 +64,9 @@ const items = [
     items: [
       { type: 'link', to: '//wix.com', title: 'link #4_1' },
       { type: 'link', to: '//wix.com', title: 'link #4_2' },
-      { type: 'link', to: '//wix.com', title: 'link #4_3' }
-    ]
-  }
+      { type: 'link', to: '//wix.com', title: 'link #4_3' },
+    ],
+  },
 ];
 
 class ExampleSideMenuDrill extends React.Component {
@@ -74,7 +74,7 @@ class ExampleSideMenuDrill extends React.Component {
     super(props);
 
     this.state = {
-      items
+      items,
     };
   }
 
@@ -176,10 +176,10 @@ class ExampleSideMenuDrill extends React.Component {
     const newItem = {
       type: 'link',
       to: '//wix.com',
-      title: `link #0_${counter++}`
+      title: `link #0_${counter++}`,
     };
     this.setState({
-      items: [...this.state.items, newItem]
+      items: [...this.state.items, newItem],
     });
   }
 
@@ -217,7 +217,7 @@ class ExampleSideMenuDrill extends React.Component {
           style={{
             padding: '26px 30px',
             width: '100%',
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
           }}
         >
           <div style={{ display: 'flex' }}>

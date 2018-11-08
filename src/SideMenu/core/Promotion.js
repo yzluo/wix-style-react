@@ -14,7 +14,7 @@ const Promotion = ({ children, className }) => (
 
 Promotion.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default Promotion;

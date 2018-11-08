@@ -15,7 +15,7 @@ const options = [
   { value: 'California5', id: 'California5' },
   { value: 'California6', id: 'California6' },
   { value: 'California7', id: 'California7' },
-  { value: 'Two words', id: 'Two words' }
+  { value: 'Two words', id: 'Two words' },
 ];
 
 export default {
@@ -31,27 +31,27 @@ export default {
       setState({
         selectedOptions: getState().selectedOptions.filter(
           val => val !== selectedOption,
-        )
+        ),
       });
     },
     onSelect: selectedOption => {
       setState({
-        selectedOptions: [...getState().selectedOptions, selectedOption]
+        selectedOptions: [...getState().selectedOptions, selectedOption],
       });
     },
-    dataHook: 'multi-select-checkbox'
+    dataHook: 'multi-select-checkbox',
   }),
 
   exampleProps: {
     options: [
       { label: 'One option', value: [{ id: 0, value: 'Just me here' }] },
-      { label: `${options.length} options`, value: options }
-    ]
+      { label: `${options.length} options`, value: options },
+    ],
   },
 
   examples: (
     <CodeExample title="Standard" code={ExampleStandardRaw}>
       <ExampleStandard />
     </CodeExample>
-  )
+  ),
 };

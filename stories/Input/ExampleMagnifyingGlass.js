@@ -6,7 +6,7 @@ const style = {
   display: 'inline-block',
   padding: '0 5px',
   width: '200px',
-  lineHeight: '22px'
+  lineHeight: '22px',
 };
 
 const Example = ({ theme }) => (
@@ -35,7 +35,7 @@ const Example = ({ theme }) => (
 );
 
 Example.propTypes = {
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 export default Example;

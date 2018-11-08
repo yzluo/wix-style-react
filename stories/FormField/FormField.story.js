@@ -27,12 +27,12 @@ const childrenExamples = [
         onChange={e => setCharactersLeft(50 - e.target.value.length)}
         id={ID}
       />
-    )
+    ),
   },
 
   {
     label: 'InputArea',
-    value: <InputArea placeholder={placeholder} id={ID} />
+    value: <InputArea placeholder={placeholder} id={ID} />,
   },
 
   {
@@ -44,7 +44,7 @@ const childrenExamples = [
         id={ID}
         onChange={e => setCharactersLeft(50 - e.target.value.length)}
       />
-    )
+    ),
   },
 
   { label: 'RichTextArea', value: <RichTextArea placeholder={placeholder} /> },
@@ -59,11 +59,11 @@ const childrenExamples = [
         options={[
           { id: 0, value: 'Left' },
           { id: 1, value: 'Right' },
-          { id: 2, value: 'Ambidextrous' }
+          { id: 2, value: 'Ambidextrous' },
         ]}
       />
-    )
-  }
+    ),
+  },
 ];
 
 export default {
@@ -78,14 +78,14 @@ export default {
     label: 'This is an input:',
     required: true,
     infoContent: 'I help you to fill info',
-    id: 'formFieldId'
+    id: 'formFieldId',
   },
 
   exampleProps: {
     children: childrenExamples,
     infoTooltipProps: [
-      { label: 'placement left', value: { placement: 'left' } }
-    ]
+      { label: 'placement left', value: { placement: 'left' } },
+    ],
   },
   examples: (
     <CodeExample title="With Length Count" code={ExampleWithLengthCountRaw}>
@@ -93,5 +93,5 @@ export default {
         <ExampleWithLengthCount />
       </div>
     </CodeExample>
-  )
+  ),
 };

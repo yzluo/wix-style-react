@@ -10,7 +10,7 @@ const layerStyles = {
   pointerEvents: 'none',
   zIndex: 100,
   left: 0,
-  top: 0
+  top: 0,
 };
 
 let dragPreviewRef = null;
@@ -41,7 +41,7 @@ class CustomDragLayer extends React.Component {
     const { offsetOfHandle } = this.props;
     const styles = Object.assign({}, layerStyles, {
       left: -offsetOfHandle.x,
-      top: -offsetOfHandle.y
+      top: -offsetOfHandle.y,
     });
     return (
       <div style={styles} ref={node => (dragPreviewRef = node)}>
@@ -72,7 +72,7 @@ CustomDragLayer.propTypes = {
   isDragging: PropTypes.bool,
   renderPreview: PropTypes.func,
   usePortal: PropTypes.bool,
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default DragLayer((monitor, props) => {
@@ -81,6 +81,6 @@ export default DragLayer((monitor, props) => {
     offsetOfHandle: props.offsetOfHandle,
     item: monitor.getItem(),
     itemType: monitor.getItemType(),
-    isDragging: monitor.isDragging()
+    isDragging: monitor.isDragging(),
   };
 })(CustomDragLayer);

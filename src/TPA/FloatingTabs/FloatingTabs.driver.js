@@ -52,7 +52,7 @@ const floatingTabsDriverFactory = ({ element }) => {
         const buttonFactory = buttonDriverFactory({ element: button });
         return buttonFactory.click();
       }
-    }
+    },
   };
 };
 

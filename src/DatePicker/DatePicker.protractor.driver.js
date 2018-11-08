@@ -39,7 +39,7 @@ const datePickerDriverFactory = component => {
       pressEscKey: () => getInput().sendKeys(protractor.Key.ESCAPE),
       pressTabKey: () => getInput().sendKeys(protractor.Key.TAB),
       pressArrowRightKey: () => getInput().sendKeys(protractor.Key.ARROW_RIGHT),
-      isFocused: () => isFocused(getInput())
+      isFocused: () => isFocused(getInput()),
     },
     calendarDriver: {
       getElement: () => getCalendar(),
@@ -57,8 +57,8 @@ const datePickerDriverFactory = component => {
       pressEnterKey: () =>
         getKeyboardSelectedDay().sendKeys(protractor.Key.ENTER),
       pressArrowRightKey: () =>
-        getKeyboardSelectedDay().sendKeys(protractor.Key.ARROW_RIGHT)
-    }
+        getKeyboardSelectedDay().sendKeys(protractor.Key.ARROW_RIGHT),
+    },
   };
 };
 

@@ -12,7 +12,7 @@ const EDITOR_TAB_ORDINAL = 7;
 describe('RichTextArea', () => {
   const storyUrl = getStoryUrl(settings.category, settings.storyName);
   const richTextAreaTestkit = richTextAreaTestkitFactory({
-    dataHook: settings.dataHook
+    dataHook: settings.dataHook,
   });
 
   const pressTab = times =>

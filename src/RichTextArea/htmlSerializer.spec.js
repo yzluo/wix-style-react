@@ -14,23 +14,23 @@ describe('HTML serializer', () => {
               kind: 'text',
               ranges: [
                 {
-                  text: 'Hello'
+                  text: 'Hello',
                 },
                 {
                   text: 'bold text',
-                  marks: [{ type: 'bold' }]
+                  marks: [{ type: 'bold' }],
                 },
                 {
                   text: 'italic',
-                  marks: [{ type: 'italic' }]
+                  marks: [{ type: 'italic' }],
                 },
                 {
                   text: 'and underlined',
-                  marks: [{ type: 'underline' }, { type: 'italic' }]
-                }
-              ]
-            }
-          ]
+                  marks: [{ type: 'underline' }, { type: 'italic' }],
+                },
+              ],
+            },
+          ],
         },
         {
           kind: 'block',
@@ -42,9 +42,9 @@ describe('HTML serializer', () => {
               nodes: [
                 {
                   kind: 'text',
-                  text: 'one'
-                }
-              ]
+                  text: 'one',
+                },
+              ],
             },
             {
               kind: 'block',
@@ -52,11 +52,11 @@ describe('HTML serializer', () => {
               nodes: [
                 {
                   kind: 'text',
-                  text: 'two'
-                }
-              ]
-            }
-          ]
+                  text: 'two',
+                },
+              ],
+            },
+          ],
         },
         {
           kind: 'block',
@@ -67,19 +67,19 @@ describe('HTML serializer', () => {
               kind: 'inline',
               type: 'link',
               data: {
-                href: 'http://localhost'
+                href: 'http://localhost',
               },
               nodes: [
                 {
                   kind: 'text',
-                  text: 'Link to localhost'
-                }
-              ]
+                  text: 'Link to localhost',
+                },
+              ],
             },
-            { kind: 'text', text: '' }
-          ]
-        }
-      ]
+            { kind: 'text', text: '' },
+          ],
+        },
+      ],
     };
 
     const deserialized = htmlSerializer.deserialize(text);
@@ -100,9 +100,9 @@ describe('HTML serializer', () => {
               nodes: [
                 {
                   kind: 'text',
-                  text: 'one'
-                }
-              ]
+                  text: 'one',
+                },
+              ],
             },
             {
               kind: 'block',
@@ -110,11 +110,11 @@ describe('HTML serializer', () => {
               nodes: [
                 {
                   kind: 'text',
-                  text: 'two'
-                }
-              ]
-            }
-          ]
+                  text: 'two',
+                },
+              ],
+            },
+          ],
         },
         {
           kind: 'block',
@@ -124,38 +124,38 @@ describe('HTML serializer', () => {
               kind: 'text',
               ranges: [
                 {
-                  text: 'Text here'
+                  text: 'Text here',
                 },
                 {
                   text: 'bold text',
-                  marks: [{ type: 'bold' }]
+                  marks: [{ type: 'bold' }],
                 },
                 {
                   text: 'italic',
-                  marks: [{ type: 'italic' }]
+                  marks: [{ type: 'italic' }],
                 },
                 {
                   text: 'and underlined',
-                  marks: [{ type: 'underline' }, { type: 'italic' }]
-                }
-              ]
+                  marks: [{ type: 'underline' }, { type: 'italic' }],
+                },
+              ],
             },
             {
               kind: 'inline',
               type: 'link',
               data: {
-                href: 'http://localhost'
+                href: 'http://localhost',
               },
               nodes: [
                 {
                   kind: 'text',
-                  text: 'Link'
-                }
-              ]
-            }
-          ]
-        }
-      ]
+                  text: 'Link',
+                },
+              ],
+            },
+          ],
+        },
+      ],
     };
     const serialized = Raw.deserialize(state, { terse: true });
     expect(htmlSerializer.serialize(serialized)).toEqual(expected);

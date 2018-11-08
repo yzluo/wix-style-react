@@ -45,7 +45,7 @@ describe('RichTextArea', () => {
   it('should render value as text', () => {
     const text = 'text content';
     const driver = createComponent({
-      value: `<p>${text}</p>`
+      value: `<p>${text}</p>`,
     });
     expect(driver.getContent()).toBe(text);
   });
@@ -64,7 +64,7 @@ describe('RichTextArea', () => {
       'underline',
       'link',
       'unordered-list',
-      'ordered-list'
+      'ordered-list',
     ];
     const driver = createComponent({ buttons });
     expect(driver.getButtonTypes()).toEqual(buttons);
@@ -172,7 +172,7 @@ describe('RichTextArea', () => {
   function createComponent(props) {
     const mergedProps = Object.assign(
       {
-        onChange: newValue => (currentValue = newValue)
+        onChange: newValue => (currentValue = newValue),
       },
       props,
     );

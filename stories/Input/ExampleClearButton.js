@@ -6,16 +6,16 @@ const style = {
   display: 'inline-block',
   padding: '0 5px',
   width: '200px',
-  lineHeight: '22px'
+  lineHeight: '22px',
 };
 
 class ControlledInput extends Component {
   static propTypes = {
-    value: PropTypes.string
+    value: PropTypes.string,
   };
 
   state = {
-    value: ''
+    value: '',
   };
 
   render() {
@@ -35,7 +35,7 @@ const Example = ({ theme }) => (
 );
 
 Example.propTypes = {
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 export default Example;

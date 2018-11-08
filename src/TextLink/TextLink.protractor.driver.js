@@ -15,7 +15,7 @@ const TextLinkFactory = component => {
       component.$('[data-hook="prefix-icon"]').isPresent(),
     /* Returns `true` if a suffix icon exists */
     isSuffixIconExists: () =>
-      component.$('[data-hook="suffix-icon"]').isPresent()
+      component.$('[data-hook="suffix-icon"]').isPresent(),
   };
 };
 

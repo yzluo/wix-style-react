@@ -20,7 +20,7 @@ describe('Autocomplete', () => {
     { id: 2, value: 'bbb', disabled: true },
     { id: 3, value: 'bcc' },
     { id: 'divider1', value: '-' },
-    { id: 'element1', value: <span style={{ color: 'brown' }}>ccc</span> }
+    { id: 'element1', value: <span style={{ color: 'brown' }}>ccc</span> },
   ];
 
   const predicate = option =>
@@ -76,7 +76,7 @@ describe('Autocomplete', () => {
       );
       const autoCompleteTestkit = autoCompleteTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(autoCompleteTestkit.driver.exists()).toBeTruthy();
       expect(autoCompleteTestkit.inputDriver.exists()).toBeTruthy();
@@ -90,7 +90,7 @@ describe('Autocomplete', () => {
       const wrapper = mount(<AutoComplete dataHook={dataHook} />);
       const autoCompleteTestkit = enzymeAutoCompleteTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(autoCompleteTestkit.driver.exists()).toBeTruthy();
       expect(autoCompleteTestkit.inputDriver.exists()).toBeTruthy();

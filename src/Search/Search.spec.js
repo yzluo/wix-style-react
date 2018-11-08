@@ -5,7 +5,7 @@ import Search from './Search';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import { searchTestkitFactory } from '../../testkit';
 import { searchTestkitFactory as enzymeSearchTestkitFactory } from '../../testkit/enzyme';
@@ -17,7 +17,7 @@ import { mount } from 'enzyme';
 runInputWithOptionsTest(args =>
   searchDriverFactory({
     ...args,
-    element: args.element ? args.element.parentElement : args.element
+    element: args.element ? args.element.parentElement : args.element,
   }),
 );
 
@@ -27,7 +27,7 @@ const options = [
   'fox',
   'jumps over',
   'the lazy',
-  'dog'
+  'dog',
 ].map((value, index) => ({ id: index, value }));
 
 describe('Search', () => {

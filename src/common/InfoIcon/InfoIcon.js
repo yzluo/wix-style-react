@@ -9,7 +9,7 @@ import styles from './InfoIcon.scss';
 
 const rootHelper = (props, stylesObject) => ({
   className: classnames(stylesObject.root, props.className),
-  'data-hook': props.dataHook
+  'data-hook': props.dataHook,
 });
 
 const InfoIcon = props => (
@@ -27,7 +27,7 @@ InfoIcon.displayName = 'InfoIcon';
 InfoIcon.propTypes = {
   tooltipProps: PropTypes.shape(Tooltip.propTypes),
   dataHook: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default InfoIcon;

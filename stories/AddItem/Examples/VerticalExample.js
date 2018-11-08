@@ -18,7 +18,7 @@ export default () => (
                 height: 120,
                 width: 120,
                 backgroundColor: '#dfe5eb',
-                borderRadius: '50%'
+                borderRadius: '50%',
               }}
             />
           </CenterElements>
@@ -41,7 +41,7 @@ const CenterElements = ({ children }) => (
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '15px'
+      padding: '15px',
     }}
   >
     {children}
@@ -49,5 +49,5 @@ const CenterElements = ({ children }) => (
 );
 
 CenterElements.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };

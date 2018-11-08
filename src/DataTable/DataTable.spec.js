@@ -16,9 +16,9 @@ describe('Table', () => {
     columns: [
       { title: 'Row Num', render: (row, rowNum) => rowNum },
       { title: 'A', render: row => row.a },
-      { title: 'B', render: row => row.b }
+      { title: 'B', render: row => row.b },
     ],
-    rowClass: 'class-name'
+    rowClass: 'class-name',
   });
   const defaultProps = createDefaultProps();
 
@@ -31,7 +31,7 @@ describe('Table', () => {
     const rowDataHook = 'row-data-hook';
     const props = Object.assign({}, defaultProps, {
       data: [],
-      rowDataHook
+      rowDataHook,
     });
 
     it('should display nothing', () => {
@@ -86,7 +86,7 @@ describe('Table', () => {
     const props = {
       ...defaultProps,
       data: [],
-      showHeaderWhenEmpty: true
+      showHeaderWhenEmpty: true,
     };
 
     const driver = createDriver(<DataTable {...props} />);
@@ -104,7 +104,7 @@ describe('Table', () => {
     const columns = [
       { title: 'Row Num', width: '30%', render: (row, rowNum) => rowNum },
       { title: 'A', width: '40px', render: row => row.a },
-      { title: 'B', width: '50px', render: row => row.b }
+      { title: 'B', width: '50px', render: row => row.b },
     ];
 
     it('should apply column.width', () => {
@@ -219,7 +219,7 @@ describe('Table', () => {
     const calcDataHook = (rowData, rowIndex) =>
       `row-index-${rowIndex}-a-${rowData.a.replace(' ', '_')}`;
     const props = Object.assign({}, defaultProps, {
-      rowDataHook: calcDataHook
+      rowDataHook: calcDataHook,
     });
     const driver = createDriver(<DataTable {...props} />);
     expect(driver.getRowWithDataHook(`row-index-0-a-value_1`).textContent).toBe(
@@ -252,7 +252,7 @@ describe('Table', () => {
       thBorder: '4px',
       thColor: 'rgb(18, 52, 86)',
       thOpacity: '0.8',
-      thLetterSpacing: '1.5px'
+      thLetterSpacing: '1.5px',
     };
     const driver = createDriver(
       <DataTable {...defaultProps} {...inlineThStyle} />,
@@ -265,7 +265,7 @@ describe('Table', () => {
         border: '4px',
         color: 'rgb(18, 52, 86)',
         opacity: '0.8',
-        'letter-spacing': '1.5px'
+        'letter-spacing': '1.5px',
       }),
     );
   });
@@ -278,15 +278,15 @@ describe('Table', () => {
       style: {
         paddingLeft: '1px',
         height: '2px',
-        width: '100px'
-      }
+        width: '100px',
+      },
     });
     const driver = createDriver(<DataTable {...clonedProps} />);
     expect(driver.getCellStyle(0, 3)).toEqual(
       jasmine.objectContaining({
         'padding-left': '1px',
         height: '2px',
-        width: '100px'
+        width: '100px',
       }),
     );
   });
@@ -303,7 +303,7 @@ describe('Table', () => {
     it('should assign the class to rows when onRowClick prop is provided', () => {
       const props = {
         ...defaultProps,
-        onRowClick: jest.fn()
+        onRowClick: jest.fn(),
       };
 
       const driver = createDriver(<DataTable {...props} />);
@@ -323,7 +323,7 @@ describe('Table', () => {
     it('should assign the class to rows when rowDetails prop is provided', () => {
       const props = {
         ...defaultProps,
-        rowDetails: row => <span>{row.a}</span>
+        rowDetails: row => <span>{row.a}</span>,
       };
 
       const driver = createDriver(<DataTable {...props} />);
@@ -335,14 +335,14 @@ describe('Table', () => {
     const tests = [
       { handler: 'onRowClick', driverMethod: 'clickRow' },
       { handler: 'onMouseEnterRow', driverMethod: 'mouseEnterRow' },
-      { handler: 'onMouseLeaveRow', driverMethod: 'mouseLeaveRow' }
+      { handler: 'onMouseLeaveRow', driverMethod: 'mouseLeaveRow' },
     ];
 
     tests.forEach(({ handler, driverMethod }) => {
       it(`should call ${handler} with row data and index`, () => {
         const props = {
           ...defaultProps,
-          [handler]: jest.fn()
+          [handler]: jest.fn(),
         };
 
         const driver = createDriver(<DataTable {...props} />);
@@ -360,7 +360,7 @@ describe('Table', () => {
 
       const props = {
         ...defaultProps,
-        rowDetails: row => <span>{row.a}</span>
+        rowDetails: row => <span>{row.a}</span>,
       };
 
       const driver = createDriver(<DataTable {...props} />);
@@ -387,7 +387,7 @@ describe('Table', () => {
     it('should have correct row count when row details enabled', () => {
       const props = {
         ...defaultProps,
-        rowDetails: jest.fn()
+        rowDetails: jest.fn(),
       };
 
       const driver = createDriver(<DataTable {...props} />);
@@ -409,16 +409,16 @@ describe('Table', () => {
             title: 'A',
             sortable: true,
             sortDescending: false,
-            render: row => row.a
+            render: row => row.a,
           },
           { title: 'B', render: row => row.b },
           {
             title: 'C',
             sortable: true,
             sortDescending: true,
-            render: row => row.a
-          }
-        ]
+            render: row => row.a,
+          },
+        ],
       };
     });
 
@@ -467,10 +467,10 @@ describe('Table', () => {
           {
             title: 'A',
             infoTooltipProps: { content: 'Vary informative tooltip text' },
-            render: row => row.a
+            render: row => row.a,
           },
-          { title: 'B', render: row => row.b }
-        ]
+          { title: 'B', render: row => row.b },
+        ],
       };
       const driver = createDriver(<DataTable {...props} />);
       expect(driver.hasInfoIcon(0)).toBe(false);
@@ -502,7 +502,7 @@ describe('Table', () => {
       );
       const dataTableTestkit = enzymeDataTableTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(dataTableTestkit.hasChildWithId(defaultProps.id)).toBeTruthy();
     });

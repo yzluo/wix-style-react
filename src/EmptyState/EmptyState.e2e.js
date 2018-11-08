@@ -5,7 +5,7 @@ import { emptyStateTestkitFactory } from '../../testkit/protractor';
 import {
   createStoryUrl,
   waitForVisibilityOf,
-  scrollToElement
+  scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 import { storySettings } from '../../stories/EmptyState/storySettings';
 
@@ -13,7 +13,7 @@ describe('EmptyState', () => {
   const storyUrl = createStoryUrl({
     kind: storySettings.kind,
     story: storySettings.storyName,
-    withExamples: false
+    withExamples: false,
   });
 
   const createDriverFactory = async (dataHook = 'storybook-empty-state') => {

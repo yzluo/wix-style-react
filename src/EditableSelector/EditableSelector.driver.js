@@ -12,7 +12,7 @@ const editableSelectorDriverFactory = ({ element, wrapper, component }) => {
       element: element.querySelectorAll('[data-hook="editable-selector-item"]')[
         index
       ],
-      wrapper: element
+      wrapper: element,
     });
   const editButtonAt = index =>
     element.querySelectorAll('[data-hook="edit-item"]')[index];
@@ -21,7 +21,7 @@ const editableSelectorDriverFactory = ({ element, wrapper, component }) => {
   const editableRowDriver = () =>
     editableRowDriverFactory({
       element: element.querySelector('[data-hook="edit-row-wrapper"]'),
-      wrapper: element
+      wrapper: element,
     });
   const isEditRowActive = () =>
     !!element.querySelectorAll('[data-hook="edit-row-wrapper"]').length;
@@ -29,7 +29,7 @@ const editableSelectorDriverFactory = ({ element, wrapper, component }) => {
   return {
     items: () => {
       return [
-        ...element.querySelectorAll('[data-hook="editable-selector-item"]')
+        ...element.querySelectorAll('[data-hook="editable-selector-item"]'),
       ].map(selector => selectorDriverFactory({ element: selector }));
     },
     exists: () => !!element,
@@ -68,7 +68,7 @@ const editableSelectorDriverFactory = ({ element, wrapper, component }) => {
         <div ref={r => (element = r)}>{ClonedWithProps}</div>,
         wrapper,
       );
-    }
+    },
   };
 };
 

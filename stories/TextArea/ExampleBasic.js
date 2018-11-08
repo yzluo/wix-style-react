@@ -5,7 +5,7 @@ import InputArea from 'wix-style-react/InputArea';
 
 export default class BasicExample extends React.Component {
   state = {
-    value: ''
+    value: '',
   };
 
   render() {

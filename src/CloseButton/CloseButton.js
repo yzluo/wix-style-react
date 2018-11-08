@@ -15,7 +15,7 @@ const CloseButton = ({
   size,
   theme,
   onClick,
-  className
+  className,
 }) => {
   return (
     <Button
@@ -37,13 +37,13 @@ CloseButton.propTypes = {
   dataHook: string,
   size: oneOf(['small', 'large']),
   theme: string,
-  onClick: func
+  onClick: func,
 };
 
 CloseButton.defaultProps = {
   arialLabel: 'close button',
   theme: 'close-transparent',
-  size: 'large'
+  size: 'large',
 };
 
 CloseButton.displayName = 'CloseButton';

@@ -8,12 +8,12 @@ const style = {
   padding: '0 5px 0',
   width: '400px',
   lineHeight: '22px',
-  paddingBottom: '350px'
+  paddingBottom: '350px',
 };
 
 class ControlledGoogleAddressInput extends Component {
   static propTypes = {
-    result: PropTypes.bool
+    result: PropTypes.bool,
   };
 
   constructor({ value }) {

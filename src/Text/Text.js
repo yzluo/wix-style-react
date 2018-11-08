@@ -12,20 +12,20 @@ import omit from 'lodash/omit';
 export const SIZES = {
   tiny: 'tiny',
   small: 'small',
-  medium: 'medium'
+  medium: 'medium',
 };
 
 export const SKINS = {
   standard: 'standard',
   error: 'error',
   success: 'success',
-  premium: 'premium'
+  premium: 'premium',
 };
 
 export const WEIGHTS = {
   thin: 'thin',
   normal: 'normal',
-  bold: 'bold'
+  bold: 'bold',
 };
 
 const Text = ({
@@ -57,10 +57,10 @@ const Text = ({
           skin,
           light: light && skin === SKINS.standard,
           weight,
-          bold
+          bold,
         },
         rest,
-      )
+      ),
     },
     children,
   );
@@ -94,7 +94,7 @@ Text.propTypes = {
   weight: oneOf(Object.keys(WEIGHTS)),
 
   /** is the text bold */
-  bold: bool
+  bold: bool,
 };
 
 Text.defaultProps = {
@@ -103,7 +103,7 @@ Text.defaultProps = {
   skin: SKINS.standard,
   light: false,
   weight: WEIGHTS.thin,
-  tagName: 'span'
+  tagName: 'span',
 };
 
 export default Text;

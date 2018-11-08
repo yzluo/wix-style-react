@@ -2,11 +2,11 @@ import eyes from 'eyes.it';
 
 import {
   tableTestkitFactory,
-  tableActionCellTestkitFactory
+  tableActionCellTestkitFactory,
 } from '../../testkit/protractor';
 import {
   waitForVisibilityOf,
-  scrollToElement
+  scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 import { createStoryUrl } from '../../test/utils/storybook-helpers';
 import { flattenInternalDriver } from '../../test/utils/private-drivers';
@@ -15,7 +15,7 @@ import { storySettings } from '../../stories/Table/storySettings';
 describe('Table', () => {
   const storyUrl = createStoryUrl({
     kind: storySettings.kind,
-    story: storySettings.storyName
+    story: storySettings.storyName,
   });
 
   const init = async (dataHook = 'storybook-table') => {
@@ -55,7 +55,7 @@ describe('Table', () => {
         async () => {
           const tableDriver = await createDriver();
           const actionCellDriver = tableActionCellTestkitFactory({
-            dataHook: 'action-cell-component-primary'
+            dataHook: 'action-cell-component-primary',
           });
 
           expect(
@@ -94,7 +94,7 @@ describe('Table', () => {
         async () => {
           const tableDriver = await createDriver();
           const actionCellDriver = tableActionCellTestkitFactory({
-            dataHook: 'action-cell-component-secondary'
+            dataHook: 'action-cell-component-secondary',
           });
 
           expect(actionCellDriver.getPrimaryActionButton().isDisplayed()).toBe(

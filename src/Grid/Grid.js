@@ -7,13 +7,13 @@ import styles from './Grid.scss';
 const containerProps = {
   children: PropTypes.node,
   fluid: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 const RawContainer = ({ children, fluid, className }) => (
   <div
     className={classNames(styles.rawContainer, className, {
-      [styles.fluidContainer]: fluid
+      [styles.fluidContainer]: fluid,
     })}
     children={children}
   />
@@ -24,7 +24,7 @@ RawContainer.propTypes = containerProps;
 const Container = ({ children, fluid, className }) => (
   <div
     className={classNames(styles.wixContainer, className, {
-      [styles.fluidContainer]: fluid
+      [styles.fluidContainer]: fluid,
     })}
     children={children}
   />
@@ -38,11 +38,11 @@ class Columns extends Component {
     className: PropTypes.string,
     rtl: PropTypes.bool,
     stretchViewsVertically: PropTypes.bool,
-    dataHook: PropTypes.string
+    dataHook: PropTypes.string,
   };
 
   static defaultProps = {
-    stretchViewsVertically: false
+    stretchViewsVertically: false,
   };
 
   render() {
@@ -51,12 +51,12 @@ class Columns extends Component {
       rtl,
       stretchViewsVertically,
       dataHook,
-      children
+      children,
     } = this.props;
 
     const rowClasses = classNames(styles.row, className, {
       [styles.rtl]: rtl,
-      [styles.stretch_vertically_row]: stretchViewsVertically
+      [styles.stretch_vertically_row]: stretchViewsVertically,
     });
 
     return (
@@ -69,7 +69,7 @@ class AutoAdjustedColumns extends Component {
   DEFAULT_MAX_SPAN = 12;
 
   static propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
   };
 
   render() {
@@ -98,11 +98,11 @@ class Col extends Component {
     md: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     lg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     xl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    dataHook: PropTypes.string
+    dataHook: PropTypes.string,
   };
 
   static defaultProps = {
-    span: 12
+    span: 12,
   };
 
   isVisibleHidden(str) {
@@ -128,7 +128,7 @@ class Col extends Component {
       md,
       lg,
       xl,
-      dataHook
+      dataHook,
     } = this.props;
 
     const columnClasses = classNames(className, styles.col, {
@@ -142,7 +142,7 @@ class Col extends Component {
       [styles[`${xs}Xs`]]: this.isVisibleHidden(xs),
       [styles[`${sm}Sm`]]: this.isVisibleHidden(sm),
       [styles[`${md}Md`]]: this.isVisibleHidden(md),
-      [styles[`${lg}Lg`]]: this.isVisibleHidden(lg)
+      [styles[`${lg}Lg`]]: this.isVisibleHidden(lg),
     });
 
     return (
@@ -158,5 +158,5 @@ export {
   Columns as Row,
   AutoAdjustedColumns,
   AutoAdjustedColumns as AutoAdjustedRow,
-  Col
+  Col,
 };

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {
   wrapDisplayName,
   getDisplayName,
-  isStatelessComponent
+  isStatelessComponent,
 } from '../hocUtils';
 
 /**
@@ -19,7 +19,7 @@ export function focusableStates(props) {
   }
   return {
     'data-focus': props.focusableIsFocused,
-    'data-focus-visible': props.focusableIsFocusVisible
+    'data-focus-visible': props.focusableIsFocusVisible,
   };
 }
 
@@ -34,7 +34,7 @@ export const FocusablePropTypes = {
   focusableOnFocus: PropTypes.func,
   focusableOnBlur: PropTypes.func,
   focusableIsFocused: PropTypes.bool,
-  focusableIsFocusVisible: PropTypes.bool
+  focusableIsFocusVisible: PropTypes.bool,
 };
 
 /**
@@ -110,7 +110,7 @@ export const withFocusable = Component => {
 
     state = {
       focus: false,
-      focusVisible: false
+      focusVisible: false,
     };
 
     componentWillUnmount() {
@@ -166,6 +166,6 @@ export const withFocusable = Component => {
 
   return hoistNonReactMethods(FocusableHOC, Component, {
     delegateTo: c => c.wrappedComponentRef,
-    hoistStatics: true
+    hoistStatics: true,
   });
 };

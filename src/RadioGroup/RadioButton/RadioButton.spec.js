@@ -5,7 +5,7 @@ import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import { radioButtonTestkitFactory } from '../../../testkit';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../../test/utils/testkit-sanity';
 import { radioButtonTestkitFactory as enzymeRadioButtonTestkitFactory } from '../../../testkit/enzyme';
 import { mount } from 'enzyme';

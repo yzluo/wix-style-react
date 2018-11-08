@@ -12,13 +12,13 @@ const Example = () => (
         {
           text: 'Duplicate',
           icon: <Duplicate />,
-          onClick: () => window.alert('Duplicate action was diviggered.')
+          onClick: () => window.alert('Duplicate action was diviggered.'),
         },
         {
           text: 'Print',
           icon: <Print />,
-          onClick: () => window.alert('Print action was diviggered.')
-        }
+          onClick: () => window.alert('Print action was diviggered.'),
+        },
       ]}
       numOfVisibleSecondaryActions={2}
       alwaysShowSecondaryActions

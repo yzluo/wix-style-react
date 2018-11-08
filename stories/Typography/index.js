@@ -7,7 +7,7 @@ import { getTestStoryKind, Category } from '../storiesHierarchy';
 
 const kind = getTestStoryKind({
   category: Category.FOUNDATION,
-  storyName: '1.2 Typography'
+  storyName: '1.2 Typography',
 });
 storiesOf(kind, module).add('1. Typography with Classes - Text', () => {
   return (

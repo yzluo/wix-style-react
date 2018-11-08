@@ -13,12 +13,12 @@ import styles from './ExampleButton.scss';
 
 const nodeStyle = {
   background: 'azure',
-  paddingLeft: '25px'
+  paddingLeft: '25px',
 };
 
 class ButtonWithOptionsStandard extends Component {
   static propTypes = {
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
   };
 
   state = {
@@ -29,7 +29,7 @@ class ButtonWithOptionsStandard extends Component {
     withArrow: false,
     style: { padding: '0 5px' },
     re: true,
-    hasFixedFooter: false
+    hasFixedFooter: false,
   };
 
   render() {
@@ -47,7 +47,7 @@ class ButtonWithOptionsStandard extends Component {
                   this.setState({
                     theme,
                     iconOnly: false,
-                    restrainDropdownSize: true
+                    restrainDropdownSize: true,
                   })
                 }
               >
@@ -71,7 +71,7 @@ class ButtonWithOptionsStandard extends Component {
                   this.setState({
                     theme,
                     iconOnly: true,
-                    restrainDropdownSize: false
+                    restrainDropdownSize: false,
                   })
                 }
               >
@@ -113,7 +113,7 @@ class ButtonWithOptionsStandard extends Component {
               <IconChooser
                 onSelect={option =>
                   this.setState({
-                    prefixIcon: React.createElement(Icons[option.id])
+                    prefixIcon: React.createElement(Icons[option.id]),
                   })
                 }
               />
@@ -126,7 +126,7 @@ class ButtonWithOptionsStandard extends Component {
               <IconChooser
                 onSelect={option =>
                   this.setState({
-                    suffixIcon: React.createElement(Icons[option.id])
+                    suffixIcon: React.createElement(Icons[option.id]),
                   })
                 }
               />
@@ -201,7 +201,7 @@ class ButtonWithOptionsStandard extends Component {
                     hasFixedFooter: !this.state.hasFixedFooter,
                     fixedFooter: this.state.hasFixedFooter ? null : (
                       <div style={nodeStyle}>I am a footer</div>
-                    )
+                    ),
                   })
                 }
               />
@@ -216,7 +216,7 @@ class ButtonWithOptionsStandard extends Component {
                 checked={this.state.restrainDropdownSize}
                 onChange={() =>
                   this.setState({
-                    restrainDropdownSize: !this.state.restrainDropdownSize
+                    restrainDropdownSize: !this.state.restrainDropdownSize,
                   })
                 }
               />

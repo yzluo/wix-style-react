@@ -18,7 +18,7 @@ const popoverConfig = {
   contentClassName: styles.popoverTooltipContent,
   theme: 'light',
   showTrigger: 'click',
-  hideTrigger: 'click'
+  hideTrigger: 'click',
 };
 
 /** A Tooltip component */
@@ -41,7 +41,7 @@ class Tooltip extends WixComponent {
       'mouseleave',
       'click',
       'focus',
-      'blur'
+      'blur',
     ]),
     hideTrigger: PropTypes.oneOf([
       'custom',
@@ -49,7 +49,7 @@ class Tooltip extends WixComponent {
       'mouseleave',
       'click',
       'focus',
-      'blur'
+      'blur',
     ]),
     active: PropTypes.bool,
     bounce: PropTypes.bool,
@@ -105,7 +105,7 @@ class Tooltip extends WixComponent {
      */
     moveBy: PropTypes.shape({
       x: PropTypes.number,
-      y: PropTypes.number
+      y: PropTypes.number,
     }),
 
     /**
@@ -128,7 +128,7 @@ class Tooltip extends WixComponent {
     showImmediately: PropTypes.bool,
 
     /** Show an arrow shape */
-    showArrow: PropTypes.bool
+    showArrow: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -153,7 +153,7 @@ class Tooltip extends WixComponent {
     relative: false,
     shouldUpdatePosition: false,
     showImmediately: false,
-    showArrow: true
+    showArrow: true,
   };
 
   _childNode = null;
@@ -168,7 +168,7 @@ class Tooltip extends WixComponent {
     super(props);
     this.state = {
       visible: false,
-      hidden: true
+      hidden: true,
     };
 
     this._tooltipContainerStrategy = new TooltipContainerStrategy(
@@ -236,7 +236,7 @@ class Tooltip extends WixComponent {
   getTriggers() {
     return {
       hideTrigger: this.props.popover ? 'click' : this.props.hideTrigger,
-      showTrigger: this.props.popover ? 'click' : this.props.showTrigger
+      showTrigger: this.props.popover ? 'click' : this.props.showTrigger,
     };
   }
 
@@ -251,7 +251,7 @@ class Tooltip extends WixComponent {
         top: 'bottom',
         left: 'right',
         right: 'left',
-        bottom: 'top'
+        bottom: 'top',
       };
       const position = this.props.relative ? 'relative' : 'absolute';
       const tooltip = (
@@ -320,7 +320,7 @@ class Tooltip extends WixComponent {
         onBlur: this._chainCallbacks(
           child.props ? child.props.onBlur : null,
           this._onBlur,
-        )
+        ),
       });
     } else {
       return <div />;
@@ -486,7 +486,7 @@ class Tooltip extends WixComponent {
     if (!ref || !tooltipNode) {
       return {
         top: -1,
-        left: -1
+        left: -1,
       };
     }
     return this._adjustPosition(
@@ -496,7 +496,7 @@ class Tooltip extends WixComponent {
         {
           placement: this.props.placement,
           alignment: this.props.alignment,
-          margin: 10
+          margin: 10,
         },
         this.props.relative,
       ),
@@ -554,7 +554,7 @@ class Tooltip extends WixComponent {
         left: el.offsetLeft,
         top: el.offsetTop,
         width: el.offsetWidth,
-        height: el.offsetHeight
+        height: el.offsetHeight,
       };
     }
 
@@ -566,7 +566,7 @@ class Tooltip extends WixComponent {
         left: selfRect.left - containerRect.left + container.scrollLeft,
         top: selfRect.top - containerRect.top + container.scrollTop,
         width: selfRect.width,
-        height: selfRect.height
+        height: selfRect.height,
       };
     }
     return el.getBoundingClientRect();
@@ -581,7 +581,7 @@ class Tooltip extends WixComponent {
     }
     return {
       left: originalPosition.left + x,
-      top: originalPosition.top + y
+      top: originalPosition.top + y,
     };
   }
 

@@ -17,7 +17,7 @@ function renderThemes(themes, props) {
       style={{
         display: 'flex',
         width: '300px',
-        alignItems: 'center'
+        alignItems: 'center',
       }}
     >
       <span style={{ flexGrow: 1, padding: '5px' }}>{theme}</span>
@@ -27,7 +27,7 @@ function renderThemes(themes, props) {
           backgroundColor:
             theme.includes('white') && theme.includes('secondary')
               ? '#5b7fa4'
-              : '#F0F4F7'
+              : '#F0F4F7',
         }}
       >
         <Button theme={theme} {...props} />
@@ -48,7 +48,7 @@ const variants = props => (
           'emptyred',
           'emptygreen',
           'emptybluesecondary',
-          'emptyblue'
+          'emptyblue',
         ],
         { children: 'Click Me', ...props },
       )}
@@ -63,7 +63,7 @@ const variants = props => (
           'transparentblue',
           'whiteblue',
           'whiteblueprimary',
-          'whitebluesecondary'
+          'whitebluesecondary',
         ],
         { children: 'Click Me', ...props },
       )}
@@ -71,7 +71,7 @@ const variants = props => (
     <div style={COLUMN_STYLE}>
       {renderThemes(['close-standard', 'close-dark', 'close-transparent'], {
         children: <X />,
-        ...props
+        ...props,
       })}
       {renderThemes(
         [
@@ -79,7 +79,7 @@ const variants = props => (
           'icon-standard',
           'icon-standardsecondary',
           'icon-white',
-          'icon-whitesecondary'
+          'icon-whitesecondary',
         ],
         { children: <Check />, ...props },
       )}

@@ -34,7 +34,7 @@ describe('TextArea', () => {
         );
         const textAreaTestkit = enzymeTextAreaTestkitFactory({
           wrapper,
-          dataHook
+          dataHook,
         });
         expect(textAreaTestkit.exists()).toBeTruthy();
       });

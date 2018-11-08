@@ -2,7 +2,7 @@ import browserLogs from 'protractor-browser-logs';
 import eyes from 'eyes.it';
 import {
   POPOVER_MENU_DATA_HOOK,
-  POPOVER_MENU_ITEM_DATA_HOOK
+  POPOVER_MENU_ITEM_DATA_HOOK,
 } from '../../stories/Tooltip/Composite/PopoverMenuTemplate.helpers';
 
 const EC = protractor.ExpectedConditions;
@@ -21,7 +21,7 @@ describe('PopoverMenu', () => {
     logs.ignore(message => message.message.indexOf('Uncaught') === -1);
 
     driver = popoverMenuTestkitFactory({
-      dataHook: POPOVER_MENU_DATA_HOOK
+      dataHook: POPOVER_MENU_DATA_HOOK,
     }).init.menuItemDataHook(POPOVER_MENU_ITEM_DATA_HOOK);
     await browser.get(storyUrl);
   });
@@ -56,7 +56,7 @@ describe('PopoverMenu', () => {
       await browser.get(storyUrl);
 
       driver = popoverMenuTestkitFactory({
-        dataHook: 'popover-0'
+        dataHook: 'popover-0',
       }).init.menuItemDataHook('popover-item-0');
 
       await waitForVisibilityOf(driver.element());

@@ -5,7 +5,7 @@ import styles from './RichTextArea.scss';
 
 const richTextAreaDriverFactory = ({ element, wrapper, component }) => {
   const getButtons = () => [
-    ...element.querySelectorAll('[data-hook*="rich-text-area-button"]')
+    ...element.querySelectorAll('[data-hook*="rich-text-area-button"]'),
   ];
   const getEditorWrapper = () =>
     element.querySelector('[data-hook=editor-wrapper]');
@@ -61,7 +61,7 @@ const richTextAreaDriverFactory = ({ element, wrapper, component }) => {
         <div ref={r => (element = r)}>{ClonedWithProps}</div>,
         wrapper,
       );
-    }
+    },
   };
 };
 

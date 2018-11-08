@@ -23,5 +23,5 @@ export default ({ element, wrapper, component }) => ({
       <div ref={r => (element = r)}>{ClonedWithProps}</div>,
       wrapper,
     );
-  }
+  },
 });

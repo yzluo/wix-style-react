@@ -6,7 +6,7 @@ import { sectionHelperTestkitFactory } from '../../testkit';
 import { sectionHelperTestkitFactory as enzymeSectionHelperTestkitFactory } from '../../testkit/enzyme';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import { mount } from 'enzyme';
 
@@ -43,7 +43,7 @@ describe('SectionHelper', () => {
       const driver = createDriver(
         renderWithProps({
           actionText: 'Muffins are the best!',
-          onAction: () => null
+          onAction: () => null,
         }),
       );
 

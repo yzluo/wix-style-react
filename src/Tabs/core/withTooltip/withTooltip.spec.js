@@ -24,7 +24,7 @@ describe('withTooltip hoc', () => {
 
   class Component extends React.Component {
     static propTypes = {
-      initHasTooltip: PropTypes.func
+      initHasTooltip: PropTypes.func,
     };
 
     render() {

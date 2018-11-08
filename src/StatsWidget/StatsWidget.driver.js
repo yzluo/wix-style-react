@@ -10,7 +10,7 @@ const statsWidgetDriverFactory = ({ element }) => {
 
   const headerDriver = headerDriverFactory({
     wrapper: element,
-    element: headerElement
+    element: headerElement,
   });
 
   return {
@@ -40,7 +40,7 @@ const statsWidgetDriverFactory = ({ element }) => {
     getFilterDriver: dataHook => {
       const optionElement = findByHook(element, dataHook);
       return dropdownLayoutDriver({ wrapper: element, element: optionElement });
-    }
+    },
   };
 };
 

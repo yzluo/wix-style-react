@@ -29,13 +29,13 @@ const Exclamation = ({ errorMessage, tooltipPlacement, onTooltipShow }) => (
 
 Exclamation.defaultProps = {
   errorMessage: '',
-  tooltipPlacement: 'top'
+  tooltipPlacement: 'top',
 };
 
 Exclamation.propTypes = {
   errorMessage: PropTypes.string,
   tooltipPlacement: PropTypes.oneOf(['right', 'left', 'top', 'bottom']),
-  onTooltipShow: PropTypes.func
+  onTooltipShow: PropTypes.func,
 };
 
 export default Exclamation;

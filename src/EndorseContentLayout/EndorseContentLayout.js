@@ -26,7 +26,7 @@ EndorseContentLayout.propTypes = {
   head: PropTypes.node,
   content: PropTypes.node,
   primaryCta: PropTypes.node,
-  secondaryCta: PropTypes.node
+  secondaryCta: PropTypes.node,
 };
 
 export default EndorseContentLayout;

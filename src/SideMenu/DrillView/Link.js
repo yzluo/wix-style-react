@@ -15,12 +15,12 @@ class Link extends React.Component {
 }
 
 Link.defaultProps = {
-  isActive: false
+  isActive: false,
 };
 
 Link.propTypes = {
   children: node.isRequired,
-  isActive: bool
+  isActive: bool,
 };
 
 export default Link;

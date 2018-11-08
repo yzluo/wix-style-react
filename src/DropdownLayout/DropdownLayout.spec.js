@@ -16,7 +16,7 @@ describe('DropdownLayout', () => {
     { id: 3, value: 'Option 4' },
     { id: 'divider1', value: '-' },
     { id: 'element1', value: <span style={{ color: 'brown' }}>Option 4</span> },
-    { value: '-' }
+    { value: '-' },
   ];
 
   it('should have be invisible and drop down by default', () => {
@@ -52,7 +52,7 @@ describe('DropdownLayout', () => {
     const options = [
       { id: 0, value: 'Option 1' },
       { id: 1, value: 'Option 2' },
-      { id: 2, value: 'Option 3' }
+      { id: 2, value: 'Option 3' },
     ];
     const optionsContent = options.map(option => option.value);
     const driver = createDriver(<DropdownLayout options={options} />);
@@ -443,7 +443,7 @@ describe('DropdownLayout', () => {
       const wrapper = mount(<DropdownLayout {...props} />);
       const testkit = enzymeDropdownLayoutTestkitFactory({
         wrapper,
-        dataHook: props.dataHook
+        dataHook: props.dataHook,
       });
       expect(testkit.hasTheme('material')).toBe(true);
     });
@@ -462,7 +462,7 @@ describe('DropdownLayout', () => {
       );
       const dropdownLayoutTestkit = dropdownLayoutTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(dropdownLayoutTestkit.exists()).toBeTruthy();
       expect(dropdownLayoutTestkit.optionsLength()).toBe(7);
@@ -477,7 +477,7 @@ describe('DropdownLayout', () => {
       );
       const dropdownLayoutTestkit = enzymeDropdownLayoutTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(dropdownLayoutTestkit.exists()).toBeTruthy();
       expect(dropdownLayoutTestkit.optionsLength()).toBe(7);

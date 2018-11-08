@@ -14,11 +14,11 @@ class Button extends WixComponent {
   static propTypes = {
     theme: oneOf(['fill', 'outline']),
     children: any,
-    id: string
+    id: string,
   };
 
   static defaultProps = {
-    theme: 'fill'
+    theme: 'fill',
   };
 
   render() {
@@ -27,7 +27,7 @@ class Button extends WixComponent {
     const classes = classNames(
       [
         [locals['wix-style-react-button']],
-        [locals[`wix-style-react-button-${theme}`]]
+        [locals[`wix-style-react-button-${theme}`]],
       ],
       className,
     ).trim();

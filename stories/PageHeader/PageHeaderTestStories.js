@@ -13,7 +13,7 @@ const PageHeaderContainer = props => {
   );
 };
 PageHeaderContainer.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
 };
 
 const kind = getTestStoryKind(storySettings);

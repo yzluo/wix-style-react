@@ -25,13 +25,13 @@ class Header extends WixComponent {
      * deprecated! use <Card.Divider/> instead
      * @deprecated
      * */
-    withoutDivider: bool
+    withoutDivider: bool,
   };
 
   static defaultProps = {
     subtitle: null,
     suffix: null,
-    withoutDivider: false
+    withoutDivider: false,
   };
 
   render() {

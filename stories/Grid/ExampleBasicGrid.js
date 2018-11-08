@@ -40,7 +40,7 @@ function text(text) {
         justifyContent: 'center',
         background: 'rgba(0,0,0,.1)',
         width: '100%',
-        height: '50px'
+        height: '50px',
       }}
       children={text}
     />

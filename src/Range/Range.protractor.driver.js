@@ -2,7 +2,7 @@ import rangeWithLabelCompositeDriverFactory from '../Composite/RangeInputWithLab
 
 const rangeDriverFactory = component => {
   return {
-    ...rangeWithLabelCompositeDriverFactory(component)
+    ...rangeWithLabelCompositeDriverFactory(component),
   };
 };
 

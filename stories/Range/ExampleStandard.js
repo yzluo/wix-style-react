@@ -12,7 +12,7 @@ import styles from './ExampleStandard.scss';
 class ExampleStandard extends Component {
   static propTypes = {
     onChange: PropTypes.func,
-    dataHook: PropTypes.string
+    dataHook: PropTypes.string,
   };
 
   rangeTypes = [{ id: 0, value: 'InputRange' }, { id: 1, value: 'DateRange' }];
@@ -27,32 +27,32 @@ class ExampleStandard extends Component {
     suffixTicker: false,
     label: {
       appearance: 'T1.1',
-      children: 'Range Label'
+      children: 'Range Label',
     },
     firstInput: {
       disabled: false,
       placeholder: '0',
-      resizable: false
+      resizable: false,
     },
     lastInput: {
       disabled: false,
       placeholder: '0',
-      resizable: false
+      resizable: false,
     },
     firstDate: {
       disabled: false,
       placeholderText: 'From',
       onChange: ev => this.setComponentState('firstDate', { value: ev }),
-      dateFormat: 'YYYY/MM/DD'
+      dateFormat: 'YYYY/MM/DD',
     },
     lastDate: {
       disabled: false,
       placeholderText: 'To.',
       onChange: ev => this.setComponentState('lastDate', { value: ev }),
-      dateFormat: 'YYYY/MM/DD'
+      dateFormat: 'YYYY/MM/DD',
     },
     required: false,
-    info: ''
+    info: '',
   };
 
   setComponentState(componentName, obj) {
@@ -69,20 +69,20 @@ class ExampleStandard extends Component {
     this.setState({
       firstInput: {
         ...this.state.firstInput,
-        [propertyName]: !this.state.firstInput[propertyName]
+        [propertyName]: !this.state.firstInput[propertyName],
       },
       lastInput: {
         ...this.state.firstInput,
-        [propertyName]: !this.state.lastInput[propertyName]
+        [propertyName]: !this.state.lastInput[propertyName],
       },
       firstDate: {
         ...this.state.firstDate,
-        [propertyName]: !this.state.firstDate[propertyName]
+        [propertyName]: !this.state.firstDate[propertyName],
       },
       lastDate: {
         ...this.state.lastDate,
-        [propertyName]: !this.state.lastDate[propertyName]
-      }
+        [propertyName]: !this.state.lastDate[propertyName],
+      },
     });
   }
 
@@ -133,10 +133,10 @@ class ExampleStandard extends Component {
                   value={this.state.firstInput.placeholder}
                   onChange={e => {
                     this.setComponentState('firstInput', {
-                      placeholder: e.target.value
+                      placeholder: e.target.value,
                     });
                     this.setComponentState('firstDate', {
-                      placeholderText: e.target.value
+                      placeholderText: e.target.value,
                     });
                   }}
                 />
@@ -152,10 +152,10 @@ class ExampleStandard extends Component {
               value={this.state.lastInput.placeholder}
               onChange={e => {
                 this.setComponentState('lastInput', {
-                  placeholder: e.target.value
+                  placeholder: e.target.value,
                 });
                 this.setComponentState('lastDate', {
-                  placeholderText: e.target.value
+                  placeholderText: e.target.value,
                 });
               }}
             />

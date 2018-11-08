@@ -10,7 +10,7 @@ const TextLinkDriverFactory = ({ element }) => {
         element.simulate('click');
       }
     },
-    getTextContent: () => element.textContent
+    getTextContent: () => element.textContent,
   };
 };
 

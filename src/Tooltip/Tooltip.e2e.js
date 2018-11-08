@@ -90,7 +90,7 @@ describe('Tooltip', () => {
     describe('Popover with EmptyState', () => {
       eyes.it('should not break design', async () => {
         const driver = tooltipTestkitFactory({
-          dataHook: 'popover-empty-state'
+          dataHook: 'popover-empty-state',
         });
 
         await waitForVisibilityOf(driver.element());

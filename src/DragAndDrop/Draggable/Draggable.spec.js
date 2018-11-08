@@ -15,13 +15,13 @@ describe('Draggable', () => {
       isPlaceholder ? <div data-hook={dataHook} /> : null;
 
     render.propTypes = {
-      isPlaceholder: PropTypes.bool
+      isPlaceholder: PropTypes.bool,
     };
 
     const props = {
       render,
       id: '1',
-      dataHook: 'draggable'
+      dataHook: 'draggable',
     };
 
     const wrapper = mount(
@@ -32,7 +32,7 @@ describe('Draggable', () => {
 
     const testkit = enzymeDraggableTestkitFactory({
       dataHook: 'draggable',
-      wrapper
+      wrapper,
     });
 
     console.info(wrapper.instance());

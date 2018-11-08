@@ -22,7 +22,7 @@ describe('ImageViewer', () => {
     await waitForVisibilityOf(driver.element(), 'Cannot find ImageViewer');
     await autoExampleDriver.setProps({
       imageUrl:
-        'https://static.wixstatic.com/media/c78d05b79ede429fb77c9d8ec4443b93.jpg/v1/fit/w_375,h_375/c78d05b79ede429fb77c9d8ec4443b93.jpg'
+        'https://static.wixstatic.com/media/c78d05b79ede429fb77c9d8ec4443b93.jpg/v1/fit/w_375,h_375/c78d05b79ede429fb77c9d8ec4443b93.jpg',
     });
   });
 

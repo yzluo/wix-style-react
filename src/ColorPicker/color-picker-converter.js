@@ -14,7 +14,7 @@ const HSB = 'HSB';
 const tabs = [
   { id: HEX, title: HEX },
   { id: RGB, title: RGB },
-  { id: HSB, title: HSB }
+  { id: HSB, title: HSB },
 ];
 
 export default class ColorPickerConverter extends WixComponent {
@@ -22,11 +22,11 @@ export default class ColorPickerConverter extends WixComponent {
     current: object.isRequired,
     showConverter: bool.isRequired,
     showInput: bool.isRequired,
-    onChange: func.isRequired
+    onChange: func.isRequired,
   };
 
   state = {
-    activeTab: HEX
+    activeTab: HEX,
   };
 
   constructor(props) {

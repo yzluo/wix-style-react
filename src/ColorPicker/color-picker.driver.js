@@ -9,7 +9,7 @@ const colorPickerDriverFactory = ({ element }) => {
         element.querySelector('[data-hook="color-picker-hsb"]'),
         {
           clientX: 1,
-          clientY: 1
+          clientY: 1,
         },
       );
     },
@@ -28,7 +28,7 @@ const colorPickerDriverFactory = ({ element }) => {
         .background,
     historyPreviousColor: () =>
       element.querySelector('[data-hook="color-picker-history-previous"]').style
-        .background
+        .background,
   };
 };
 

@@ -15,7 +15,7 @@ import {
   TableToolbarContainer,
   TableTitleBar,
   TableContent,
-  TableEmptyState
+  TableEmptyState,
 } from './components';
 
 export function createColumns({ tableProps, bulkSelectionContext }) {
@@ -23,7 +23,7 @@ export function createColumns({ tableProps, bulkSelectionContext }) {
     toggleAll,
     bulkSelectionState,
     toggleSelectionById,
-    isSelected
+    isSelected,
   }) => {
     return {
       title: (
@@ -46,7 +46,7 @@ export function createColumns({ tableProps, bulkSelectionContext }) {
           </div>
         );
       },
-      width: '12px'
+      width: '12px',
     };
   };
 
@@ -67,7 +67,7 @@ export function getDataTableProps(tableProps) {
       'hideHeader',
     ),
     newDesign: true,
-    rowClass: classNames(tableProps.rowClass, style.tableRow)
+    rowClass: classNames(tableProps.rowClass, style.tableRow),
   };
 }
 
@@ -139,7 +139,7 @@ Table.defaultProps = {
   showSelection: false,
   children: [<Table.Content key="content" />],
   withWrapper: true,
-  showLastRowDivider: false
+  showLastRowDivider: false,
 };
 
 Table.propTypes = {
@@ -159,7 +159,7 @@ Table.propTypes = {
       sortable: PropTypes.bool,
       infoTooltipProps: PropTypes.shape(Tooltip.propTypes),
       sortDescending: PropTypes.bool,
-      align: PropTypes.oneOf(['start', 'center', 'end'])
+      align: PropTypes.oneOf(['start', 'center', 'end']),
     }),
   ).isRequired,
   /** A func that gets row data and returns a class(es) to apply to that specific row */
@@ -217,14 +217,14 @@ Table.propTypes = {
    *  If data objects do not have id property, then the data row's index would be used as an id. */
   selectedIds: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
-    PropTypes.arrayOf(PropTypes.number)
+    PropTypes.arrayOf(PropTypes.number),
   ]),
   /** The width of the fixed table. Can be in percentages or pixels. */
   width: PropTypes.string,
   /**
    *  When false then Table would not create a `<div/>` wrapper around it's children.
    *  Useful when using `<Table/>` to wrap a `<Page/>` component, in that case we use the `<Table/>` only as a context provider and it doesn't render anything to the DOM by itself.*/
-  withWrapper: PropTypes.bool
+  withWrapper: PropTypes.bool,
 };
 
 // export default Table;

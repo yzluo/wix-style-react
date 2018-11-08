@@ -6,16 +6,16 @@ import { Container } from '../../src/Grid';
 const statistics = [
   {
     title: '$10',
-    subtitle: 'Revenue'
+    subtitle: 'Revenue',
   },
   {
     title: '2',
-    subtitle: 'Products'
+    subtitle: 'Products',
   },
   {
     title: '$1',
-    subtitle: 'Transactions'
-  }
+    subtitle: 'Transactions',
+  },
 ];
 
 export default () => (

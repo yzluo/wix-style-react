@@ -6,7 +6,7 @@ import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 describe('DatePicker', () => {
   const storyUrl = getStoryUrl('3. Inputs', '3.6 DatePicker');
   const { inputDriver, calendarDriver } = datePickerTestkitFactory({
-    dataHook: 'storybook-datepicker'
+    dataHook: 'storybook-datepicker',
   });
 
   beforeAll(async () => {
@@ -106,7 +106,7 @@ describe('DatePicker', () => {
         await autoExampleDriver.setProps({
           showYearDropdown: true,
           showMonthDropdown: true,
-          value: new Date('2017/05/01')
+          value: new Date('2017/05/01'),
         }),
     );
 

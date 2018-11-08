@@ -19,7 +19,7 @@ const Header = ({ onClick, children, className }) => {
 Header.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.node,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Header;

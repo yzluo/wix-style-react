@@ -14,8 +14,8 @@ const tableDriverFactory = component => ({
   /** Private driver */
   [INTERNAL_DRIVER_SYMBOL]: {
     /** Get a row element */
-    getRow: index => rowByIndex(component, index)
-  }
+    getRow: index => rowByIndex(component, index),
+  },
 });
 
 export default tableDriverFactory;

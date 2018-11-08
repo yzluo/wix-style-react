@@ -28,12 +28,12 @@ class RadioGroup extends WixComponent {
       display,
       type,
       spacing,
-      lineHeight
+      lineHeight,
     } = this.props;
     return (
       <div
         className={classNames(styles[display], {
-          [styles.buttonType]: type === 'button'
+          [styles.buttonType]: type === 'button',
         })}
       >
         {React.Children.map(this.props.children, (radio, index) => (
@@ -98,7 +98,7 @@ RadioGroup.propTypes = {
   /** Vertical spacing between radio buttons */
   spacing: PropTypes.string,
 
-  lineHeight: PropTypes.string
+  lineHeight: PropTypes.string,
 };
 
 RadioGroup.defaultProps = {
@@ -109,7 +109,7 @@ RadioGroup.defaultProps = {
   display: 'vertical',
   spacing: '12px',
   lineHeight: '24px',
-  type: 'default'
+  type: 'default',
 };
 
 RadioGroup.Radio = RadioButton;

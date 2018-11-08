@@ -2,7 +2,7 @@ import eyes from 'eyes.it';
 import {
   createStoryUrl,
   waitForVisibilityOf,
-  scrollToElement
+  scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 
 import { storySettings } from '../../stories/TableActionCell/storySettings';
@@ -17,7 +17,7 @@ const hoverElement = element =>
 describe('Table Action Cell', () => {
   const storyUrl = createStoryUrl({
     kind: storySettings.kind,
-    story: storySettings.storyName
+    story: storySettings.storyName,
   });
 
   const verifyItem = async dataHook => {
@@ -39,7 +39,7 @@ describe('Table Action Cell', () => {
     'Always visible secondary actions': 'story-always-visible-secondary',
     'Only secondary actions': 'story-only-secondary',
     'Only visible secondary actions': 'story-only-visible-secondary',
-    'Primary and secondary actions with RTL': 'story-primary-secondary-rtl'
+    'Primary and secondary actions with RTL': 'story-primary-secondary-rtl',
   };
 
   beforeAll(async () => {

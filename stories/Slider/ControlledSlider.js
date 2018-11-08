@@ -4,7 +4,7 @@ import Slider from 'wix-style-react/Slider';
 
 class ControlledSlider extends Component {
   static propTypes = {
-    value: PropTypes.arrayOf(PropTypes.number)
+    value: PropTypes.arrayOf(PropTypes.number),
   };
 
   constructor({ value }) {

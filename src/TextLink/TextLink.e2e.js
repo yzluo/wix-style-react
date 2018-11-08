@@ -29,7 +29,7 @@ describe('TextLink', () => {
   eyes.it('should render prefix & sufix', async () => {
     await autoExampleDriver.setProps({
       prefixIcon: <div>prefix</div>,
-      suffixIcon: <div>suffix</div>
+      suffixIcon: <div>suffix</div>,
     });
 
     expect(await driver.isPrefixIconExists()).toBe(true);
@@ -40,7 +40,7 @@ describe('TextLink', () => {
     await autoExampleDriver.setProps({
       ellipsis: true,
       children:
-        'This is a very long text, very long text indeed. What can we possibly write to make this text long enough?'
+        'This is a very long text, very long text indeed. What can we possibly write to make this text long enough?',
     });
   });
 
@@ -50,7 +50,7 @@ describe('TextLink', () => {
       suffixIcon: <div>S</div>,
       ellipsis: true,
       children:
-        'This is a very long text, very long text indeed. What can we possibly write to make this text long enough?'
+        'This is a very long text, very long text indeed. What can we possibly write to make this text long enough?',
     });
   });
 });

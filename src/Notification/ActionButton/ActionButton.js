@@ -6,7 +6,7 @@ import TextLink from '../../TextLink';
 const ActionButton = ({ children, onClick, type, link }) => {
   const commonProps = {
     dataHook: 'notification-cta-button',
-    onClick: e => onClick(e)
+    onClick: e => onClick(e),
   };
 
   if (type === 'textLink') {
@@ -33,12 +33,12 @@ ActionButton.propTypes = {
   children: PropTypes.any,
   onClick: PropTypes.func,
   link: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
 };
 
 ActionButton.defaultProps = {
   onClick: e => e.preventDefault(),
-  type: 'button'
+  type: 'button',
 };
 
 ActionButton.displayName = 'Notification.ActionButton';

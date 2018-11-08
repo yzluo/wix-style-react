@@ -18,7 +18,7 @@ const options = [
   { id: 0, value: 'Option 1' },
   { id: 1, value: 'Option 2' },
   { id: 2, value: 'Option 3' },
-  { id: 3, value: 'Option 4' }
+  { id: 3, value: 'Option 4' },
 ];
 
 const optionsWithDivider = [
@@ -26,7 +26,7 @@ const optionsWithDivider = [
   { id: 1, value: 'Option 2' },
   { id: -99, value: '-' },
   { id: 2, value: 'Option 3' },
-  { id: 3, value: 'Option 4' }
+  { id: 3, value: 'Option 4' },
 ];
 
 const optionsWithFooter = [
@@ -43,8 +43,8 @@ const optionsWithFooter = [
       >
         This is a footer with a <a href="http://www.wix.com">link</a>.
       </div>
-    )
-  }
+    ),
+  },
 ];
 
 export default {
@@ -59,7 +59,7 @@ export default {
     placeholder: 'This is a placeholder',
     options,
     onSelect: option =>
-      console.log(`option selected. ${JSON.stringify(option)}.`)
+      console.log(`option selected. ${JSON.stringify(option)}.`),
   },
   exampleProps: {
     // FIXME: The following onSelect callback prop is commented out since it exposes a
@@ -68,8 +68,8 @@ export default {
     options: [
       { label: 'normal', value: options },
       { label: 'with divider', value: optionsWithDivider },
-      { label: 'with footer', value: optionsWithFooter }
-    ]
+      { label: 'with footer', value: optionsWithFooter },
+    ],
   },
   examples: (
     <div>
@@ -88,5 +88,5 @@ export default {
         <ExampleWithCustomValue />
       </CodeExample>
     </div>
-  )
+  ),
 };

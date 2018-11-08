@@ -20,7 +20,7 @@ describe('FloatingTabs', () => {
     );
     const floatingTabsTestkit = floatingTabsTestkitFactory({
       wrapper,
-      dataHook
+      dataHook,
     });
     expect(floatingTabsTestkit.exists()).toBeTruthy();
     expect(floatingTabsTestkit.activeContent()).toEqual('1');
@@ -45,7 +45,7 @@ describe('FloatingTabs', () => {
     );
     const floatingTabsTestkit = floatingTabsTestkitFactory({
       wrapper,
-      dataHook
+      dataHook,
     });
     expect(floatingTabsTestkit.isButtonByIdExists('first')).toBe(true);
     expect(floatingTabsTestkit.isButtonByIdExists('second')).toBe(true);
@@ -71,7 +71,7 @@ describe('FloatingTabs', () => {
     );
     const floatingTabsTestkit = floatingTabsTestkitFactory({
       wrapper,
-      dataHook
+      dataHook,
     });
     expect(floatingTabsTestkit.isButtonActive('first')).toBe(true);
     expect(floatingTabsTestkit.isButtonActive('second')).toBe(false);
@@ -96,7 +96,7 @@ describe('FloatingTabs', () => {
     );
     const floatingTabsTestkit = floatingTabsTestkitFactory({
       wrapper,
-      dataHook
+      dataHook,
     });
     expect(floatingTabsTestkit.isButtonActive('first')).toBe(true);
     expect(floatingTabsTestkit.isButtonActive('second')).toBe(false);
@@ -124,7 +124,7 @@ describe('FloatingTabs', () => {
     );
     const floatingTabsTestkit = floatingTabsTestkitFactory({
       wrapper,
-      dataHook
+      dataHook,
     });
     floatingTabsTestkit.clickButtonById('second');
     expect(onChangeMock).toHaveBeenCalledWith('second');
@@ -153,7 +153,7 @@ describe('FloatingTabs', () => {
     );
     const floatingTabsTestkit = floatingTabsTestkitFactory({
       wrapper,
-      dataHook
+      dataHook,
     });
 
     expect(floatingTabsTestkit.isButtonHasClass('second', 'activeClass')).toBe(

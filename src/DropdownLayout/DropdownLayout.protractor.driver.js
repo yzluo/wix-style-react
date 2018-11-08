@@ -14,7 +14,7 @@ const driverFactory = component => {
         .getText()
         .count(),
     selectItemById: itemId =>
-      component.$(`[data-hook^="dropdown-item-${itemId}"]`).click()
+      component.$(`[data-hook^="dropdown-item-${itemId}"]`).click(),
   };
 };
 

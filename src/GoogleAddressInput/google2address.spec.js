@@ -1,7 +1,7 @@
 /*eslint camelcase: off*/
 import {
   google2address,
-  trySetStreetNumberIfNotReceived
+  trySetStreetNumberIfNotReceived,
 } from './google2address';
 
 describe('google 2 address', () => {
@@ -10,14 +10,14 @@ describe('google 2 address', () => {
   const aComponent = (long_name, short_name, ...types) => ({
     long_name,
     short_name,
-    types
+    types,
   });
 
   const aGeometry = (lng, lat) => ({
     location: {
       lat: () => lng,
-      lng: () => lat
-    }
+      lng: () => lat,
+    },
   });
 
   const aGoogleResponse = ({
@@ -25,13 +25,13 @@ describe('google 2 address', () => {
     formatted,
     geometry,
     types,
-    adr_address
+    adr_address,
   }) => ({
     geometry: geometry || aGeometry(1, 2),
     address_components: components || [],
     formatted_address: formatted || '',
     types: types || [],
-    adr_address
+    adr_address,
   });
 
   it('should set state according to administrative_area_level_1', () => {
@@ -71,7 +71,7 @@ describe('google 2 address', () => {
       const components = [
         localityComponent,
         subLocalityComponent,
-        postalTownComponent
+        postalTownComponent,
       ];
       expect(google2address(aGoogleResponse({ components })).city).toEqual(
         someLocality,
@@ -157,13 +157,13 @@ describe('google 2 address', () => {
     const geometry = {
       location: {
         lat: 777,
-        lng: 666
-      }
+        lng: 666,
+      },
     };
 
     expect(google2address(aGoogleResponse({ geometry })).latLng).toEqual({
       lng: 666,
-      lat: 777
+      lat: 777,
     });
   });
 
@@ -191,9 +191,9 @@ describe('google 2 address', () => {
       approximate: true,
       latLng: {
         lat: 1,
-        lng: 2
+        lng: 2,
       },
-      formatted: ''
+      formatted: '',
     });
   });
 
@@ -212,9 +212,9 @@ describe('google 2 address', () => {
         {
           long_name: 'Chemin West Hill',
           short_name: 'Chemin West Hill',
-          types: ['route']
-        }
-      ]
+          types: ['route'],
+        },
+      ],
     };
     const userInput = '5-202 Chemin';
     const actual = trySetStreetNumberIfNotReceived(resultFromGoogle, userInput);
@@ -224,14 +224,14 @@ describe('google 2 address', () => {
         {
           long_name: '5-202',
           short_name: '5-202',
-          types: ['street_number']
+          types: ['street_number'],
         },
         {
           long_name: 'Chemin West Hill',
           short_name: 'Chemin West Hill',
-          types: ['route']
-        }
-      ]
+          types: ['route'],
+        },
+      ],
     };
 
     expect(actual).toEqual(expected);
@@ -243,9 +243,9 @@ describe('google 2 address', () => {
         {
           long_name: 'Chemin West Hill',
           short_name: 'Chemin West Hill',
-          types: ['route']
-        }
-      ]
+          types: ['route'],
+        },
+      ],
     };
     const userInput = '5/202 Chemin';
     const actual = trySetStreetNumberIfNotReceived(resultFromGoogle, userInput);
@@ -255,14 +255,14 @@ describe('google 2 address', () => {
         {
           long_name: '5/202',
           short_name: '5/202',
-          types: ['street_number']
+          types: ['street_number'],
         },
         {
           long_name: 'Chemin West Hill',
           short_name: 'Chemin West Hill',
-          types: ['route']
-        }
-      ]
+          types: ['route'],
+        },
+      ],
     };
 
     expect(actual).toEqual(expected);
@@ -274,9 +274,9 @@ describe('google 2 address', () => {
         {
           long_name: 'Chemin West Hill',
           short_name: 'Chemin West Hill',
-          types: ['route']
-        }
-      ]
+          types: ['route'],
+        },
+      ],
     };
     const userInput = '5 202 Chemin';
     const actual = trySetStreetNumberIfNotReceived(resultFromGoogle, userInput);
@@ -286,14 +286,14 @@ describe('google 2 address', () => {
         {
           long_name: '5 202',
           short_name: '5 202',
-          types: ['street_number']
+          types: ['street_number'],
         },
         {
           long_name: 'Chemin West Hill',
           short_name: 'Chemin West Hill',
-          types: ['route']
-        }
-      ]
+          types: ['route'],
+        },
+      ],
     };
 
     expect(actual).toEqual(expected);
@@ -305,9 +305,9 @@ describe('google 2 address', () => {
         {
           long_name: '5-202',
           short_name: '5-202',
-          types: ['street_number']
-        }
-      ]
+          types: ['street_number'],
+        },
+      ],
     };
     const expected = deepClone(given);
     expect(trySetStreetNumberIfNotReceived(given, '77777 Chemin')).toEqual(

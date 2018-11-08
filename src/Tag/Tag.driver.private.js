@@ -13,14 +13,14 @@ const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 const getRemoveButtonLayoutDriver = element => {
   return buttonLayoutTestkitFactory({
     wrapper: element,
-    dataHook: dataHooks.removeButton
+    dataHook: dataHooks.removeButton,
   });
 };
 
 const getTextDriver = element => {
   return textTestkitFactory({
     wrapper: element,
-    dataHook: dataHooks.text
+    dataHook: dataHooks.text,
   });
 };
 
@@ -34,7 +34,7 @@ const tagPrivateDriverFactory = ({ element }) => {
     isCloseButtonLarge,
     getTextSize: () => getTextDriver(element).getSize(),
     getTextWeight: () => getTextDriver(element).getWeight(),
-    isClickable: () => isClassExists(element, 'clickable')
+    isClickable: () => isClassExists(element, 'clickable'),
   };
 };
 

@@ -4,7 +4,7 @@ import styles from './Content.scss';
 
 class Content extends Component {
   static propTypes = {
-    children: node
+    children: node,
   };
 
   _getChildName = children =>

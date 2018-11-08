@@ -11,7 +11,7 @@ const ICON_SIZES = {
   large: '24px',
   medium: '24px',
   small: '18px',
-  tiny: '18px'
+  tiny: '18px',
 };
 
 class Button extends WixComponent {
@@ -26,11 +26,11 @@ class Button extends WixComponent {
     type: string,
     onClick: func,
     onMouseEnter: func,
-    onMouseLeave: func
+    onMouseLeave: func,
   };
 
   static defaultProps = {
-    ...ButtonLayout.defaultProps
+    ...ButtonLayout.defaultProps,
   };
 
   addIcon = (className, icon, height) => {
@@ -58,7 +58,7 @@ class Button extends WixComponent {
       children,
       type,
       onMouseEnter,
-      onMouseLeave
+      onMouseLeave,
     } = this.props;
 
     const buttonLayoutProps = omit(

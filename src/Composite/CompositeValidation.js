@@ -25,7 +25,7 @@ const validators = {
       ++i;
     }
     return i;
-  }
+  },
 };
 
 const error = (componentName, rules) => {

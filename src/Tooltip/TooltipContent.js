@@ -76,7 +76,7 @@ class TooltipContent extends Component {
     showImmediately: PropTypes.bool,
 
     /** Show an arrow shape */
-    showArrow: PropTypes.bool
+    showArrow: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -85,7 +85,7 @@ class TooltipContent extends Component {
     maxWidth: '204px',
     size: 'normal',
     textAlign: 'center',
-    showArrow: true
+    showArrow: true,
   };
 
   render() {
@@ -107,7 +107,7 @@ class TooltipContent extends Component {
       color,
       lineHeight,
       showImmediately,
-      showArrow
+      showArrow,
     } = this.props;
 
     return (
@@ -120,7 +120,7 @@ class TooltipContent extends Component {
         <div className={classnames({ [styles.fadeIn]: !showImmediately })}>
           <div
             className={classnames({
-              [styles[`bounce-${arrowPlacement}`]]: bounce
+              [styles[`bounce-${arrowPlacement}`]]: bounce,
             })}
           >
             <div
@@ -137,7 +137,7 @@ class TooltipContent extends Component {
                 textAlign,
                 padding,
                 lineHeight,
-                color
+                color,
               }}
             >
               <div data-hook="tooltip-content">{children}</div>

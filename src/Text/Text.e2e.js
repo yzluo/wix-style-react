@@ -2,7 +2,7 @@ import eyes from 'eyes.it';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import {
   createStoryUrl,
-  waitForVisibilityOf
+  waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { tooltipTestkitFactory } from 'wix-ui-core/dist/src/testkit/protractor';
 import { textTestkitFactory } from '../../testkit/protractor';
@@ -13,12 +13,12 @@ describe('Text', () => {
   const storyUrl = createStoryUrl({
     kind: storySettings.kind,
     story: storySettings.storyName,
-    withExamples: false
+    withExamples: false,
   });
   const storyUrlWithExamples = createStoryUrl({
     kind: storySettings.kind,
     story: storySettings.storyName,
-    withExamples: true
+    withExamples: true,
   });
 
   const init = async ({ url, dataHook }) => {

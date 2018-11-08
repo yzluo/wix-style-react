@@ -36,7 +36,7 @@ export default {
     error: false,
     theme: 'normal',
     hasCounter: false,
-    resizable: false
+    resizable: false,
   },
 
   examples: (
@@ -65,5 +65,5 @@ export default {
         <ExampleRefs />
       </CodeExample>
     </div>
-  )
+  ),
 };

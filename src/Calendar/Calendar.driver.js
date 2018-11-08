@@ -36,7 +36,7 @@ const calendarDriverFactory = ({ element, wrapper }) => {
     close: () =>
       ReactTestUtils.Simulate.keyDown(getFocusedDay(), {
         key: 'Escape',
-        keyCode: 27
+        keyCode: 27,
       }),
     isVisible: () => !!getCalendar(),
     getCurrentMonthWithYear: () =>
@@ -72,12 +72,12 @@ const calendarDriverFactory = ({ element, wrapper }) => {
     pressLeftArrow: () =>
       ReactTestUtils.Simulate.keyDown(getFocusedDay(), {
         key: 'ArrowLeft',
-        keyCode: 37
+        keyCode: 37,
       }),
     pressRightArrow: () =>
       ReactTestUtils.Simulate.keyDown(getFocusedDay(), {
         key: 'ArrowRight',
-        keyCode: 39
+        keyCode: 39,
       }),
     getSelectedDay: () => getSelectedDay().textContent,
     getWidth: () => element.style.width,
@@ -97,7 +97,7 @@ const calendarDriverFactory = ({ element, wrapper }) => {
         element: wrapper.querySelector(
           '[data-hook="datepicker-month-dropdown-menu"]',
         ),
-        wrapper
+        wrapper,
       });
     },
 
@@ -110,12 +110,12 @@ const calendarDriverFactory = ({ element, wrapper }) => {
         element: wrapper.querySelector(
           '[data-hook="datepicker-year-dropdown-menu"]',
         ),
-        wrapper
+        wrapper,
       });
     },
 
     mouseClickOutside: () =>
-      document.body.dispatchEvent(new Event('mouseup', { cancelable: true }))
+      document.body.dispatchEvent(new Event('mouseup', { cancelable: true })),
   };
 
   return driver;

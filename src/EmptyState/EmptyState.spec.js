@@ -13,7 +13,7 @@ describe('EmptyState', () => {
 
   const defaultProps = {
     title: 'My awesome title',
-    subtitle: 'My awesome subtitle'
+    subtitle: 'My awesome subtitle',
   };
 
   it('should have a title and a subtitle', () => {

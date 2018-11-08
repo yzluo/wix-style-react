@@ -13,21 +13,21 @@ export default class IntroductionExample extends React.Component {
       items: [
         {
           id: 'a',
-          text: 'Item 1'
+          text: 'Item 1',
         },
         {
           id: 'b',
-          text: 'Item 2'
+          text: 'Item 2',
         },
         {
           id: 'c',
-          text: 'Item 3'
+          text: 'Item 3',
         },
         {
           id: 'd',
-          text: 'Item 4'
-        }
-      ]
+          text: 'Item 4',
+        },
+      ],
     };
   }
 
@@ -35,14 +35,14 @@ export default class IntroductionExample extends React.Component {
     const nextItems = [...this.state.items];
     nextItems.splice(addedIndex, 0, ...nextItems.splice(removedIndex, 1));
     this.setState({
-      items: nextItems
+      items: nextItems,
     });
   };
 
   renderItem = ({ isPlaceholder, isPreview, id, previewStyles, item }) => {
     const classes = classNames(styles.card, {
       [styles.placeholder]: isPlaceholder,
-      [styles.preview]: isPreview
+      [styles.preview]: isPreview,
     });
 
     return (

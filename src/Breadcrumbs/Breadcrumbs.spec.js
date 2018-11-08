@@ -37,7 +37,7 @@ describe('Breadcrumbs', () => {
     driver.clickBreadcrumbAt(itemIndex);
     expect(onClick).toBeCalledWith({
       id: items[itemIndex].id,
-      value: 'Option 2'
+      value: 'Option 2',
     });
   });
 
@@ -77,7 +77,7 @@ describe('Breadcrumbs', () => {
   describe('item with link attribute', () => {
     const linkItems = [
       { id: 0, value: 'Option 1', link: '//www.wix.com' },
-      { id: 1, value: 'Option 2', link: '//www.facebook.com' }
+      { id: 1, value: 'Option 2', link: '//www.facebook.com' },
     ];
 
     it('should not have links if link attribute is not given', () => {
@@ -104,13 +104,13 @@ describe('Breadcrumbs', () => {
       {
         id: 0,
         value: 'Option 1',
-        customElement: <a href="//www.wix.com">Option 1</a>
+        customElement: <a href="//www.wix.com">Option 1</a>,
       },
       {
         id: 1,
         value: 'Option 2',
-        customElement: <a href="//www.facebook.com">Option 2</a>
-      }
+        customElement: <a href="//www.facebook.com">Option 2</a>,
+      },
     ];
 
     const customItemsWithLinks = [
@@ -118,8 +118,8 @@ describe('Breadcrumbs', () => {
         id: 0,
         value: 'value',
         customElement: <a href="//www.wix.com">Custom value</a>,
-        link: 'www.bla.com'
-      }
+        link: 'www.bla.com',
+      },
     ];
 
     it('should render the customElement when given', () => {
@@ -157,7 +157,7 @@ describe('Breadcrumbs', () => {
       );
       const breadcrumbsTestkit = breadcrumbsTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(breadcrumbsTestkit.exists()).toBeTruthy();
     });
@@ -171,7 +171,7 @@ describe('Breadcrumbs', () => {
       );
       const breadcrumbsTestkit = enzymeBreadcrumbsTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(breadcrumbsTestkit.exists()).toBeTruthy();
     });

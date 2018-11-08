@@ -6,7 +6,7 @@ import { textLinkLayoutTestkitFactory } from '../../../testkit';
 import { textLinkLayoutTestkitFactory as enzymeTextLinkLayoutTestkitFactory } from '../../../testkit/enzyme';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../../test/utils/testkit-sanity';
 import { mount } from 'enzyme';
 

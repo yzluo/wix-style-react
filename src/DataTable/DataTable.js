@@ -21,7 +21,7 @@ export const DataTableHeader = props => (
 );
 
 DataTableHeader.propTypes = {
-  width: PropTypes.string
+  width: PropTypes.string,
 };
 
 class DataTable extends React.Component {
@@ -79,7 +79,7 @@ class DataTable extends React.Component {
       data,
       showHeaderWhenEmpty,
       infiniteScroll,
-      itemsPerPage
+      itemsPerPage,
     } = this.props;
 
     if (!data.length && !showHeaderWhenEmpty) {
@@ -124,7 +124,7 @@ class DataTable extends React.Component {
           id={this.props.id}
           style={style}
           className={classNames(this.style.table, {
-            [this.style.showLastRowDivider]: this.props.showLastRowDivider
+            [this.style.showLastRowDivider]: this.props.showLastRowDivider,
           })}
         >
           {!this.props.hideHeader && <TableHeader {...this.props} />}
@@ -149,7 +149,7 @@ class DataTable extends React.Component {
       onMouseLeaveRow,
       rowDataHook,
       dynamicRowClass,
-      rowDetails
+      rowDetails,
     } = this.props;
     const rowClasses = [this.props.rowClass];
     const optionalRowProps = {};
@@ -157,7 +157,7 @@ class DataTable extends React.Component {
     const handlers = [
       { rowEventHandler: this.onRowClick, eventHandler: 'onClick' },
       { rowEventHandler: onMouseEnterRow, eventHandler: 'onMouseEnter' },
-      { rowEventHandler: onMouseLeaveRow, eventHandler: 'onMouseLeave' }
+      { rowEventHandler: onMouseLeaveRow, eventHandler: 'onMouseLeave' },
     ];
 
     handlers.forEach(({ rowEventHandler, eventHandler }) => {
@@ -199,7 +199,7 @@ class DataTable extends React.Component {
         {this.props.columns.map((column, colNum) =>
           this.renderCell(rowData, column, rowNum, colNum),
         )}
-      </tr>
+      </tr>,
     ];
 
     if (rowDetails) {
@@ -241,7 +241,7 @@ class DataTable extends React.Component {
 
       [this.style.alignStart]: column.align === 'start',
       [this.style.alignCenter]: column.align === 'center',
-      [this.style.alignEnd]: column.align === 'end'
+      [this.style.alignEnd]: column.align === 'end',
     });
 
     const width =
@@ -269,7 +269,7 @@ class DataTable extends React.Component {
     let selectedRows = { [selectedRow]: !this.state.selectedRows[selectedRow] };
     if (this.props.allowMultiDetailsExpansion) {
       selectedRows = Object.assign({}, this.state.selectedRows, {
-        [selectedRow]: !this.state.selectedRows[selectedRow]
+        [selectedRow]: !this.state.selectedRows[selectedRow],
       });
     }
     this.setState({ selectedRows });
@@ -288,7 +288,7 @@ class TableHeader extends Component {
     thLetterSpacing: PropTypes.string,
     thBoxShadow: PropTypes.string,
     columns: PropTypes.array,
-    newDesign: PropTypes.bool
+    newDesign: PropTypes.bool,
   };
 
   get style() {
@@ -336,7 +336,7 @@ class TableHeader extends Component {
     } else {
       const _tooltipProps = Object.assign({ theme: 'dark' }, tooltipProps, {
         dataHook: `${colNum}_info_tooltip`,
-        moveBy: { x: 2.5, y: -7 }
+        moveBy: { x: 2.5, y: -7 },
       });
       return (
         <Tooltip {..._tooltipProps}>
@@ -370,11 +370,11 @@ class TableHeader extends Component {
       color: this.props.thColor,
       opacity: this.props.thOpacity,
       letterSpacing: this.props.thLetterSpacing,
-      cursor: column.sortable === undefined ? 'arrow' : 'pointer'
+      cursor: column.sortable === undefined ? 'arrow' : 'pointer',
     };
 
     const thClasses = classNames({
-      [this.style.thText]: this.props.newDesign
+      [this.style.thText]: this.props.newDesign,
     });
 
     const optionalHeaderCellProps = {};
@@ -395,7 +395,7 @@ class TableHeader extends Component {
           className={classNames(this.style.thContainer, {
             [this.style.alignStart]: !column.align || column.align === 'start',
             [this.style.alignCenter]: column.align === 'center',
-            [this.style.alignEnd]: column.align === 'end'
+            [this.style.alignEnd]: column.align === 'end',
           })}
         >
           {column.title}
@@ -443,7 +443,7 @@ DataTable.defaultProps = {
   scrollElement: null,
   useWindow: true,
   rowVerticalPadding: 'medium',
-  showLastRowDivider: true
+  showLastRowDivider: true,
 };
 
 DataTable.propTypes = {
@@ -462,7 +462,7 @@ DataTable.propTypes = {
         omit(Tooltip.propTypes, ['moveBy', 'dataHook']),
       ),
       sortDescending: PropTypes.bool,
-      align: PropTypes.oneOf(['start', 'center', 'end'])
+      align: PropTypes.oneOf(['start', 'center', 'end']),
     }),
   ).isRequired,
   /** Should the table show the header when data is empty */
@@ -537,7 +537,7 @@ DataTable.propTypes = {
   hideHeader: PropTypes.bool,
   /** A flag specifying weather to show a divider after the last row */
   showLastRowDivider: PropTypes.bool,
-  newDesign: PropTypes.bool
+  newDesign: PropTypes.bool,
 };
 DataTable.displayName = 'DataTable';
 

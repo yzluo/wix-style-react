@@ -14,7 +14,7 @@ const driverFactory = component => {
     isFocused: () => isFocused(input),
     element: () => component,
     /** Check wether the options dropdown is open */
-    isOptionsShown: () => dropdownLayoutDriver.getDropdown().isDisplayed()
+    isOptionsShown: () => dropdownLayoutDriver.getDropdown().isDisplayed(),
   };
 };
 

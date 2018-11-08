@@ -31,6 +31,6 @@ export default component => {
     hasNoTransitionClassesInDrillView: () =>
       getDrillViewPanelClasses().then(
         classes => classes.split(' ').length === 1,
-      )
+      ),
   };
 };

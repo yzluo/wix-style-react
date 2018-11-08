@@ -7,7 +7,7 @@ const SideMenu = ({ children, inFlex, className, dataHook }) => {
   const rootStyles = classNames(
     {
       [styles.root]: true,
-      [styles.inFlex]: inFlex
+      [styles.inFlex]: inFlex,
     },
     className,
   );
@@ -20,14 +20,14 @@ const SideMenu = ({ children, inFlex, className, dataHook }) => {
 };
 
 SideMenu.defaultProps = {
-  inFlex: false
+  inFlex: false,
 };
 
 SideMenu.propTypes = {
   inFlex: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.node,
-  dataHook: PropTypes.string
+  dataHook: PropTypes.string,
 };
 
 export default SideMenu;

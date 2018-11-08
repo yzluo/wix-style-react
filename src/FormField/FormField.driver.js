@@ -25,8 +25,8 @@ const formFieldDriver = ({ wrapper, element }) => {
     getInfoContent: () =>
       tooltipDriverFactory({
         wrapper,
-        element: byHook('formfield-infotooltip')
-      }).hoverAndGetContent()
+        element: byHook('formfield-infotooltip'),
+      }).hoverAndGetContent(),
   };
 };
 

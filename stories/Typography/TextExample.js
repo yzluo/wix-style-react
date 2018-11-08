@@ -25,7 +25,7 @@ const propsToClassNames = props => {
     [`skin${capitalize(props.skin)}`]: !!props.skin,
     link: !!props.link,
     light: !!props.light,
-    secondary: !!props.secondary
+    secondary: !!props.secondary,
   };
   return Object.entries(names).reduce((acc, entry) => {
     if (entry[1]) {
@@ -55,7 +55,7 @@ const TextSizeWeightExample = props => {
 
 TextSizeWeightExample.propTypes = {
   size: string,
-  weight: string
+  weight: string,
 };
 
 const TextColorExample = props => {
@@ -84,7 +84,7 @@ TextColorExample.propTypes = {
   link: bool,
   light: bool,
   secondary: bool,
-  note: string
+  note: string,
 };
 
 export function renderSizeAndWeightTable() {

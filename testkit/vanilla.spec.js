@@ -12,7 +12,7 @@ import {
   badgeSelectTestkitFactory,
   formFieldTestkitFactory,
   imageViewerTestkitFactory,
-  tagTestkitFactory
+  tagTestkitFactory,
 } from './index';
 
 describe('vanilla testkits', () => {

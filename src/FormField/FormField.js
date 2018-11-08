@@ -68,19 +68,19 @@ class FormField extends React.Component {
     id: PropTypes.string,
 
     /** used for testing */
-    dataHook: PropTypes.string
+    dataHook: PropTypes.string,
   };
 
   static defaultProps = {
-    required: false
+    required: false,
   };
 
   state = {
-    lengthLeft: undefined
+    lengthLeft: undefined,
   };
 
   childrenRenderPropInterface = {
-    setCharactersLeft: lengthLeft => this.setState({ lengthLeft })
+    setCharactersLeft: lengthLeft => this.setState({ lengthLeft }),
   };
 
   renderChildren() {
@@ -102,7 +102,7 @@ class FormField extends React.Component {
           tooltipProps={{
             content: infoContent,
             ...infoTooltipProps,
-            dataHook: 'formfield-infotooltip'
+            dataHook: 'formfield-infotooltip',
           }}
         />
       )
@@ -128,7 +128,7 @@ class FormField extends React.Component {
         <div
           data-hook="formfield-children"
           className={classnames(styles.children, {
-            [styles.childrenWithoutLabel]: !label
+            [styles.childrenWithoutLabel]: !label,
           })}
         >
           {this.renderChildren()}

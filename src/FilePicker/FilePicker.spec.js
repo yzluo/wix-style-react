@@ -6,7 +6,7 @@ import { filePickerTestkitFactory } from '../../testkit';
 import { filePickerTestkitFactory as enzymeFilePickerTestkitFactory } from '../../testkit/enzyme';
 import {
   isTestkitExists,
-  isEnzymeTestkitExists
+  isEnzymeTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import { mount } from 'enzyme';
 

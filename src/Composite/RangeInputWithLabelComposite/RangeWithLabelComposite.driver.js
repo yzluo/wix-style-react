@@ -30,7 +30,7 @@ const rangeInputWithLabelCompositeDriverFactory = ({ element, wrapper }) => {
         </div>,
         wrapper,
       );
-    }
+    },
   };
 };
 

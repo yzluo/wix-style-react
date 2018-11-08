@@ -24,7 +24,7 @@ describe('MultiSelect', () => {
     { value: 'California5', id: 'California5' },
     { value: 'California6', id: 'California6' },
     { value: 'California7', id: 'California7' },
-    { value: 'Two words', id: 'Two words' }
+    { value: 'Two words', id: 'Two words' },
   ];
 
   it('should NOT show dropdown when autofocus is on', () => {
@@ -90,7 +90,7 @@ describe('MultiSelect', () => {
     driver.pressKey('ArrowDown');
     driver.pressKey('Tab');
     expect(onSelect).toBeCalledWith([
-      { id: options[0].id, label: options[0].value }
+      { id: options[0].id, label: options[0].value },
     ]);
     expect(dropdownLayoutDriver.isShown()).toBeTruthy();
     expect(inputDriver.isFocus()).toBeTruthy();
@@ -111,7 +111,7 @@ describe('MultiSelect', () => {
     driver.pressKey('ArrowDown');
     inputDriver.trigger('keyDown', { key: ',' });
     expect(onSelect).toBeCalledWith([
-      { id: options[0].id, label: options[0].value }
+      { id: options[0].id, label: options[0].value },
     ]);
     expect(onChange).toBeCalledWith({ target: { value: '' } });
     expect(dropdownLayoutDriver.isShown()).toBeTruthy();
@@ -181,7 +181,7 @@ describe('MultiSelect', () => {
     driver.pressKey('ArrowDown');
     inputDriver.trigger('keyDown', { key: ';' });
     expect(onSelect).toBeCalledWith([
-      { id: options[0].id, label: options[0].value }
+      { id: options[0].id, label: options[0].value },
     ]);
     expect(onChange).toBeCalledWith({ target: { value: '' } });
     expect(dropdownLayoutDriver.isShown()).toBeTruthy();
@@ -245,7 +245,7 @@ describe('MultiSelect', () => {
   it('should contain specific tags', () => {
     const tags = [
       { id: 'Alabama', label: 'Alabama' },
-      { id: 'Alaska', label: 'Alaska' }
+      { id: 'Alaska', label: 'Alaska' },
     ];
 
     const { driver } = createDriver(
@@ -268,7 +268,7 @@ describe('MultiSelect', () => {
     expect(onChange).toBeCalledWith({ target: { value: '' } });
     expect(onSelect).toBeCalledWith([
       { id: options[0].id, label: options[0].value },
-      { id: options[2].id, label: options[2].value }
+      { id: options[2].id, label: options[2].value },
     ]);
   });
 
@@ -285,7 +285,7 @@ describe('MultiSelect', () => {
     const onSelectCallArgs = onSelect.mock.calls[0][0];
     expect(onSelectCallArgs[0]).toEqual({
       id: options[0].id,
-      label: options[0].value
+      label: options[0].value,
     });
     expect(onSelectCallArgs[1].label).toEqual('Arkansa');
     expect(onSelectCallArgs[1].theme).toEqual('error');
@@ -386,7 +386,7 @@ describe('MultiSelect', () => {
 
   it('should set maxHeight when maxNumRows defined (large tags)', () => {
     const options = [
-      { value: 'Alaska', id: 'Alaska', label: 'Alaska', size: 'large' }
+      { value: 'Alaska', id: 'Alaska', label: 'Alaska', size: 'large' },
     ];
 
     const { driver } = createDriver(
@@ -412,7 +412,7 @@ describe('MultiSelect', () => {
     );
     driver.pressKey(',');
     expect(onSelect).toBeCalledWith([
-      { id: options[0].id, label: options[0].value }
+      { id: options[0].id, label: options[0].value },
     ]);
   });
 
@@ -422,11 +422,11 @@ describe('MultiSelect', () => {
       { label: 'Alabama', id: 'Alabama' },
       { label: 'California2', id: 'California2' },
       { label: 'California3', id: 'California3' },
-      { label: 'California4', id: 'California4' }
+      { label: 'California4', id: 'California4' },
     ];
     const onReorder = jest.fn();
     const {
-      driver: { getTagLabelAt, getTagDriverByTagId }
+      driver: { getTagLabelAt, getTagDriverByTagId },
     } = createDriver(
       <MultiSelect
         draggable
@@ -459,7 +459,7 @@ describe('MultiSelect', () => {
       );
       const multiSelectTestkit = multiSelectTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(multiSelectTestkit.driver.exists()).toBeTruthy();
       expect(multiSelectTestkit.inputDriver.exists()).toBeTruthy();
@@ -477,7 +477,7 @@ describe('MultiSelect', () => {
       const wrapper = mount(<MultiSelect dataHook={dataHook} tags={tags} />);
       const multiSelectTestkit = enzymeMultiSelectTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(multiSelectTestkit.driver.exists()).toBeTruthy();
       expect(multiSelectTestkit.inputDriver.exists()).toBeTruthy();

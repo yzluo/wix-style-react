@@ -6,7 +6,7 @@ import Input from 'wix-style-react/Input';
 import FormField from 'wix-style-react/FormField';
 
 const defaultProps = {
-  placeholder: 'Search term'
+  placeholder: 'Search term',
 };
 
 const Example = () => (
@@ -65,7 +65,7 @@ const Example = () => (
 );
 
 Example.propTypes = {
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 export default Example;

@@ -8,7 +8,7 @@ import styles from './Input.scss';
 class InputErrorSuffix extends React.Component {
   render() {
     const classes = classNames(styles.exclamation, {
-      [styles.narrow]: this.props.narrow
+      [styles.narrow]: this.props.narrow,
     });
     return (
       <Tooltip
@@ -37,7 +37,7 @@ InputErrorSuffix.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   focused: PropTypes.bool,
   narrow: PropTypes.bool,
-  tooltipPlacement: PropTypes.string
+  tooltipPlacement: PropTypes.string,
 };
 
 export default InputErrorSuffix;

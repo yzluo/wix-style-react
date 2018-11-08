@@ -5,7 +5,7 @@ const style = {
   display: 'inline-block',
   padding: '0 5px 0',
   width: '200px',
-  lineHeight: '22px'
+  lineHeight: '22px',
 };
 
 const options = [
@@ -17,8 +17,8 @@ const options = [
   {
     id: 5,
     value:
-      'Very long option text jldlkasj ldk jsalkdjsal kdjaklsjdlkasj dklasj'
-  }
+      'Very long option text jldlkasj ldk jsalkdjsal kdjaklsjdlkasj dklasj',
+  },
 ];
 
 const rtlOptions = [
@@ -26,7 +26,7 @@ const rtlOptions = [
   { id: 1, value: 'אפשרות שניה' },
   { id: 2, value: 'אפשרות שלישית' },
   { id: 3, value: '-' },
-  { id: 4, value: 'אפשרות רביעית' }
+  { id: 4, value: 'אפשרות רביעית' },
 ];
 
 export default () => (

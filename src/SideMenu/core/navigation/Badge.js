@@ -17,7 +17,7 @@ class Badge extends React.Component {
 }
 
 Badge.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Badge;

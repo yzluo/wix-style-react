@@ -3,7 +3,7 @@ import FloatingTabs from '../../../src/TPA/FloatingTabs';
 import FloatingTabItem from '../../../src/TPA/FloatingTabItem';
 
 const style = {
-  padding: '0 5px'
+  padding: '0 5px',
 };
 
 class FloatingTabsExample extends Component {

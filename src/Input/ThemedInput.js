@@ -23,7 +23,7 @@ class ThemedInput extends Input {
       noLeftBorderRadius,
       noRightBorderRadius,
       value,
-      withSelection
+      withSelection,
     } = this.props;
 
     let hasError = status === Input.StatusError;
@@ -48,7 +48,7 @@ class ThemedInput extends Input {
        * a bug that existed in WSR version <= 4.1.0. This should be removed in version 5.x.x.
        */
       [noRightBorderRadius]: typeof noRightBorderRadius === 'string',
-      [noLeftBorderRadius]: typeof noLeftBorderRadius === 'string'
+      [noLeftBorderRadius]: typeof noLeftBorderRadius === 'string',
     };
 
     const placeholder = this.props.placeholder;

@@ -19,7 +19,7 @@ const childKeyGenerator = () => {
 const ELEM_TYPES = {
   STRING: 'string',
   ARRAY: 'array',
-  REACT_ELEMENT: 'React_element'
+  REACT_ELEMENT: 'React_element',
 };
 
 const getElementType = element => {
@@ -58,7 +58,7 @@ const highlight = (element, match, nextChildKey) => {
       return elem;
     },
     [ELEM_TYPES.ARRAY]: elem =>
-      elem.map(el => highlight(el, match, nextChildKey))
+      elem.map(el => highlight(el, match, nextChildKey)),
   };
 
   return elementTypesMap[elementType]
@@ -69,7 +69,7 @@ const highlight = (element, match, nextChildKey) => {
 class Highlighter extends WixComponent {
   static propTypes = {
     /** match to highlight */
-    match: PropTypes.string
+    match: PropTypes.string,
   };
 
   constructor(props) {

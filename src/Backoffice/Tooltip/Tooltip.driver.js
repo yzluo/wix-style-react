@@ -35,7 +35,7 @@ const tooltipDriverFactory = ({ element, wrapper }) => {
         wrapper,
       );
     },
-    getWrapper: () => wrapper
+    getWrapper: () => wrapper,
   };
 };
 

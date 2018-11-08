@@ -18,7 +18,7 @@ const childrenExample = [
       <Cell>
         <GreyBox children="hello" />
       </Cell>
-    )
+    ),
   },
   {
     label: 'two cells',
@@ -28,8 +28,8 @@ const childrenExample = [
       </Cell>,
       <Cell>
         <GreyBox children="hello again" />
-      </Cell>
-    ]
+      </Cell>,
+    ],
   },
   {
     label: 'two cells as columns',
@@ -39,8 +39,8 @@ const childrenExample = [
       </Cell>,
       <Cell span={6}>
         <GreyBox children="hello again" />
-      </Cell>
-    ]
+      </Cell>,
+    ],
   },
   {
     label: 'three cells and one row',
@@ -56,8 +56,8 @@ const childrenExample = [
       </Cell>,
       <Cell>
         <GreyBox children="full" />
-      </Cell>
-    ]
+      </Cell>,
+    ],
   },
   {
     label: 'various height cells',
@@ -65,7 +65,7 @@ const childrenExample = [
       <Cell span={span}>
         <GreyBox height={height} children={`${height}px`} />
       </Cell>
-    ))
+    )),
   },
   {
     label: 'vertically aligned cells',
@@ -73,8 +73,8 @@ const childrenExample = [
       <Cell span={span} vertical>
         <GreyBox height={height} children={`${height}px`} />
       </Cell>
-    ))
-  }
+    )),
+  },
 ];
 
 export default {
@@ -85,10 +85,10 @@ export default {
   exampleImport: `import { Layout, Cell } from 'wix-style-react/Layout';`,
 
   componentProps: {
-    children: childrenExample[0].value
+    children: childrenExample[0].value,
   },
 
   exampleProps: {
-    children: childrenExample
-  }
+    children: childrenExample,
+  },
 };

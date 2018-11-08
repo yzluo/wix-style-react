@@ -3,7 +3,7 @@ import RichTextArea from '../../src/RichTextArea';
 export const settings = {
   category: '3. Inputs',
   storyName: '3.2b + RichTextArea',
-  dataHook: 'storybook-richtextarea'
+  dataHook: 'storybook-richtextarea',
 };
 
 export default {
@@ -15,7 +15,7 @@ export default {
     dataHook: settings.dataHook,
     onChange: value => {
       setProps({ value });
-    }
-  })
+    },
+  }),
   // TODO: Add old example. It has a nice live output box.
 };

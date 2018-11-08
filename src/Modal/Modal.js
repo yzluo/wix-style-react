@@ -28,7 +28,7 @@ class Modal extends WixComponent {
     maxHeight: PropTypes.string,
     height: PropTypes.string,
     overlayPosition: PropTypes.oneOf(Object.keys(positions)),
-    parentSelector: PropTypes.func
+    parentSelector: PropTypes.func,
   };
 
   static defaultProps = {
@@ -44,7 +44,7 @@ class Modal extends WixComponent {
     scrollableContent: false,
     height: '100%',
     maxHeight: 'auto',
-    overlayPosition: 'fixed'
+    overlayPosition: 'fixed',
   };
 
   render() {
@@ -67,7 +67,7 @@ class Modal extends WixComponent {
       children,
       appElement,
       overlayPosition,
-      parentSelector
+      parentSelector,
     } = this.props;
 
     let { maxHeight } = this.props;
@@ -90,7 +90,7 @@ class Modal extends WixComponent {
         display: 'flex',
         justifyContent,
         alignItems,
-        overflowY: scrollable ? 'auto' : 'hidden'
+        overflowY: scrollable ? 'auto' : 'hidden',
       },
       content: {
         // Overriding defaults
@@ -107,13 +107,13 @@ class Modal extends WixComponent {
         // Overriding defaults - END
         backgroundColor: 'transparent',
         marginBottom: '0px',
-        position: 'relative'
-      }
+        position: 'relative',
+      },
     };
 
     const modalClasses = `${styles.modal} ${styles[theme]}`;
     const portalClassName = classnames(styles.portal, {
-      [styles.portalNonScrollable]: !scrollable
+      [styles.portalNonScrollable]: !scrollable,
     });
 
     if (appElement) {

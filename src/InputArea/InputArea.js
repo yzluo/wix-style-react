@@ -23,7 +23,7 @@ class InputArea extends WixComponent {
 
   state = {
     focus: false,
-    counter: (this.props.value || this.props.defaultValue || '').length
+    counter: (this.props.value || this.props.defaultValue || '').length,
   };
 
   componentDidMount() {
@@ -53,7 +53,7 @@ class InputArea extends WixComponent {
       theme,
       errorMessage,
       tooltipPlacement,
-      onTooltipShow
+      onTooltipShow,
     } = this.props;
 
     const inlineStyle = {};
@@ -73,7 +73,7 @@ class InputArea extends WixComponent {
       [styles.hasHover]: forceHover,
       [styles.hasFocus]: forceFocus || this.state.focus,
       [styles.resizable]: !!resizable,
-      [styles.nonResizable]: !resizable
+      [styles.nonResizable]: !resizable,
     });
 
     const ariaAttribute = {};
@@ -178,7 +178,7 @@ class InputArea extends WixComponent {
 InputArea.displayName = 'InputArea';
 
 InputArea.defaultProps = {
-  theme: 'normal'
+  theme: 'normal',
 };
 
 InputArea.propTypes = {
@@ -254,7 +254,7 @@ InputArea.propTypes = {
   tooltipPlacement: PropTypes.string,
 
   /** Inputs value */
-  value: PropTypes.string
+  value: PropTypes.string,
 };
 
 export default InputArea;

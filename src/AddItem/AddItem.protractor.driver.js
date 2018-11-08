@@ -5,11 +5,11 @@ const addItemDriverFactory = element => {
   const focusableDriver = focusableDriverFactory({
     rootElement: element,
     nativeFocusableElement: element,
-    clickableElements: [element]
+    clickableElements: [element],
   });
   const publicDriver = {
     click: () => element.click(),
-    element: () => element
+    element: () => element,
   };
   return mergeDrivers(publicDriver, focusableDriver);
 };

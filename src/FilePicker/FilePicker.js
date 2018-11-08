@@ -12,7 +12,7 @@ class FilePicker extends WixComponent {
   constructor(props) {
     super(props);
     this.state = {
-      selectedFileName: props.subLabel
+      selectedFileName: props.subLabel,
     };
     this.id = props.id || uniqueId('file_picker_input_');
   }
@@ -34,7 +34,7 @@ class FilePicker extends WixComponent {
       mainLabel,
       supportedFormats,
       error,
-      errorMessage
+      errorMessage,
     } = this.props;
 
     return (
@@ -78,7 +78,7 @@ FilePicker.defaultProps = {
   onChange: () => {},
   supportedFormats: '*',
   errorMessage: '',
-  maxSize: 5000000 //5MB
+  maxSize: 5000000, //5MB
 };
 
 FilePicker.propTypes = {
@@ -107,7 +107,7 @@ FilePicker.propTypes = {
   errorMessage: PropTypes.string,
 
   /** id for the filePicker */
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default FilePicker;

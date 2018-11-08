@@ -7,7 +7,7 @@ const style = {
   padding: '0 5px 0',
   width: '200px',
   lineHeight: '22px',
-  marginBottom: '160px'
+  marginBottom: '160px',
 };
 
 const options = [
@@ -15,7 +15,7 @@ const options = [
   { id: 2, value: 'Option 2' },
   { id: 3, value: 'Option 3' },
   { id: 4, value: 'Option 4', disabled: true },
-  { id: 5, value: 'Option 5' }
+  { id: 5, value: 'Option 5' },
 ];
 
 class ControlledDropdown extends React.Component {

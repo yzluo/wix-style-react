@@ -10,7 +10,7 @@ export default {
 
   componentProps: {
     theme: 'whiteblueprimary',
-    children: 'Click Me'
+    children: 'Click Me',
   },
 
   exampleProps: {
@@ -18,6 +18,6 @@ export default {
     onMouseEnter: () => 'Mouse Enter!',
     onMouseLeave: () => 'Mouse Leave!',
     prefixIcon: icons,
-    suffixIcon: icons
-  }
+    suffixIcon: icons,
+  },
 };

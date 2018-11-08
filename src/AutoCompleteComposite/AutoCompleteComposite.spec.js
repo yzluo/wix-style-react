@@ -22,7 +22,7 @@ describe('AutoCompleteComposite', () => {
       );
       const autoCompleteCompositeTestkit = autoCompleteCompositeTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(autoCompleteCompositeTestkit.exists()).toBeTruthy();
     });
@@ -37,7 +37,7 @@ describe('AutoCompleteComposite', () => {
         );
         const autoCompleteCompositeTestkit = enzymeTextAreaTestkitFactory({
           wrapper,
-          dataHook
+          dataHook,
         });
         expect(autoCompleteCompositeTestkit.exists()).toBeTruthy();
       });

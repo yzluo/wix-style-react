@@ -12,9 +12,9 @@ export const TableEmptyState = props => (
 TableEmptyState.displayName = 'Table.EmptyState';
 
 TableEmptyState.propTypes = {
-  ...EmptyState.propTypes
+  ...EmptyState.propTypes,
 };
 
 TableEmptyState.defaultProps = {
-  ...EmptyState.defaultProps
+  ...EmptyState.defaultProps,
 };

@@ -7,7 +7,7 @@ import CodeExample from 'wix-storybook-utils/CodeExample';
 import InputExample, {
   InputValidationErrorExample,
   InputWithCustomErrorExample,
-  InputWithCustomStyleExample
+  InputWithCustomStyleExample,
 } from './InputExample';
 import InputExampleRaw from '!raw-loader!./InputExample';
 import WixStyleDecorator from '../decorators/WixStyleDecorator';

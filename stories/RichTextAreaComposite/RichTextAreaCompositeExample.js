@@ -9,14 +9,14 @@ import RichTextAreaCompositeTemplate from './RichTextAreaCompositeTemplate';
 
 class RichTextAreaCompositeExample extends Component {
   static propTypes = {
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
   };
 
   state = {
     withLabel: true,
     label: {
       appearance: 'T1.1',
-      children: 'First name'
+      children: 'First name',
     },
     richTextArea: {
       placeholder: 'Please type your text here...',
@@ -30,10 +30,10 @@ class RichTextAreaCompositeExample extends Component {
         }
         callback(src);
       },
-      disabled: false
+      disabled: false,
     },
     required: false,
-    info: ''
+    info: '',
   };
 
   setComponentState(componentName, obj) {
@@ -80,7 +80,7 @@ class RichTextAreaCompositeExample extends Component {
                 value={this.state.richTextArea.placeholder}
                 onChange={event =>
                   this.setComponentState('richTextArea', {
-                    placeholder: event.target.value
+                    placeholder: event.target.value,
                   })
                 }
               />
@@ -96,7 +96,7 @@ class RichTextAreaCompositeExample extends Component {
                 value={this.state.richTextArea.maxHeight}
                 onChange={event =>
                   this.setComponentState('richTextArea', {
-                    maxHeight: Number(event.target.value)
+                    maxHeight: Number(event.target.value),
                   })
                 }
               />
@@ -129,7 +129,7 @@ class RichTextAreaCompositeExample extends Component {
               checked={this.state.richTextArea.error}
               onChange={() =>
                 this.setComponentState('richTextArea', {
-                  error: !this.state.richTextArea.error
+                  error: !this.state.richTextArea.error,
                 })
               }
             />
@@ -142,7 +142,7 @@ class RichTextAreaCompositeExample extends Component {
               checked={this.state.richTextArea.disabled}
               onChange={() =>
                 this.setComponentState('richTextArea', {
-                  disabled: !this.state.richTextArea.disabled
+                  disabled: !this.state.richTextArea.disabled,
                 })
               }
             />
@@ -154,7 +154,7 @@ class RichTextAreaCompositeExample extends Component {
               checked={this.state.richTextArea.resizable}
               onChange={() =>
                 this.setComponentState('richTextArea', {
-                  resizable: !this.state.richTextArea.resizable
+                  resizable: !this.state.richTextArea.resizable,
                 })
               }
             />
@@ -188,7 +188,7 @@ class RichTextAreaCompositeExample extends Component {
             value={errorMessage}
             onChange={event =>
               this.setComponentState('richTextArea', {
-                errorMessage: event.target.value
+                errorMessage: event.target.value,
               })
             }
           />

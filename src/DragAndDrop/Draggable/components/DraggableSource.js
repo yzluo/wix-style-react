@@ -18,7 +18,7 @@ const source = {
     groupName,
     item,
     onMoveOut,
-    onDragStart
+    onDragStart,
   }) => {
     if (onDragStart) {
       onDragStart({
@@ -26,7 +26,7 @@ const source = {
         index,
         containerId,
         groupName,
-        item
+        item,
       });
     }
     /** we setup monitor.getItem() snapshot, so we will be always able to get info about item that we drag */
@@ -39,8 +39,8 @@ const source = {
       onMoveOut,
       realTime: {
         onMoveOut,
-        containerId
-      }
+        containerId,
+      },
     };
   },
   endDrag: (
@@ -54,7 +54,7 @@ const source = {
         index,
         containerId,
         groupName,
-        item
+        item,
       });
     }
     if (monitor.getDropResult()) {
@@ -63,7 +63,7 @@ const source = {
         removedIndex: index, // original item index
         addedIndex: monitor.getDropResult().index, // new item index
         addedToContainerId: monitor.getDropResult().containerId, // new container for item
-        removedFromContainerId: containerId // original item container
+        removedFromContainerId: containerId, // original item container
       });
     }
   },
@@ -73,25 +73,25 @@ const source = {
       groupName && item.groupName && groupName === item.groupName;
     const isSameContainer = containerId === item.containerId;
     return (isSameGroup || isSameContainer) && item.id === id;
-  }
+  },
 };
 
 const collect = (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   connectDragPreview: connect.dragPreview(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.isDragging(),
 });
 
 @DragSource(ItemTypes.DRAGGABLE, source, collect)
 export default class DraggableSource extends React.Component {
   state = {
-    offsetOfHandle: { x: 0, y: 0 }
+    offsetOfHandle: { x: 0, y: 0 },
   };
 
   componentDidMount() {
     if (this.props.connectDragPreview) {
       this.props.connectDragPreview(getEmptyImage(), {
-        captureDraggingState: true
+        captureDraggingState: true,
       });
     }
     this.updateDiff();
@@ -116,8 +116,8 @@ export default class DraggableSource extends React.Component {
             this.rootNode.getBoundingClientRect().x,
           y:
             this.handleNode.getBoundingClientRect().y -
-            this.rootNode.getBoundingClientRect().y
-        }
+            this.rootNode.getBoundingClientRect().y,
+        },
       });
     }
   }
@@ -129,7 +129,7 @@ export default class DraggableSource extends React.Component {
       withHandle,
       renderItem,
       id,
-      item
+      item,
     } = this.props;
     if (withHandle) {
       return renderItem({
@@ -138,10 +138,10 @@ export default class DraggableSource extends React.Component {
         isPlaceholder: isDragging,
         connectHandle: handle => {
           const handleWithRef = React.cloneElement(handle, {
-            ref: node => (this.handleNode = ReactDOM.findDOMNode(node))
+            ref: node => (this.handleNode = ReactDOM.findDOMNode(node)),
           });
           return connectDragSource(handleWithRef);
-        }
+        },
       });
     }
 
@@ -150,7 +150,7 @@ export default class DraggableSource extends React.Component {
         id,
         item,
         isPlaceholder: isDragging,
-        connectHandle: noop
+        connectHandle: noop,
       }),
     );
   }
@@ -162,7 +162,7 @@ export default class DraggableSource extends React.Component {
       item,
       previewStyles,
       isPreview: true,
-      connectHandle: noop
+      connectHandle: noop,
     });
   };
 
@@ -206,5 +206,5 @@ DraggableSource.propTypes = {
   onDrop: PropTypes.func,
   onMoveOut: PropTypes.func,
   onDragStart: PropTypes.func,
-  onDragEnd: PropTypes.func
+  onDragEnd: PropTypes.func,
 };

@@ -23,17 +23,17 @@ import ExampleUsingURL from './ExampleUsingURL';
 const items = [
   {
     id: '1',
-    value: 'First item'
+    value: 'First item',
   },
   {
     id: '2',
     link: 'http://www.wix.com',
-    value: 'Linked item'
+    value: 'Linked item',
   },
   {
     id: '3',
-    value: 'Third item'
-  }
+    value: 'Third item',
+  },
 ];
 
 export default {
@@ -44,14 +44,14 @@ export default {
   componentProps: {
     activeId: '1',
     items,
-    size: 'medium'
+    size: 'medium',
   },
   exampleProps: {
     activeId: ['1', '2', '3'],
     items: [
       { label: 'One item', value: [{ id: 0, value: 'Homepage' }] },
-      { label: 'Three items', value: items }
-    ]
+      { label: 'Three items', value: items },
+    ],
   },
   examples: (
     <div>
@@ -82,5 +82,5 @@ export default {
         <ExampleWithChosenActiveElement />
       </CodeExample>
     </div>
-  )
+  ),
 };

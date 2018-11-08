@@ -9,13 +9,13 @@ describe('Dropdown', () => {
   const autoExampleUrl = createStoryUrl({
     kind: storySettings.kind,
     story: storySettings.storyName,
-    withExamples: false
+    withExamples: false,
   });
 
   eyes.it('should choose different dropdown items', async () => {
     const storyUrl = createStoryUrl({
       kind: storySettings.kind,
-      story: storySettings.storyName
+      story: storySettings.storyName,
     });
     const dataHook = 'story-dropdown-controlled';
     const driver = dropdownTestkitFactory({ dataHook });
@@ -56,8 +56,8 @@ describe('Dropdown', () => {
       options: [
         { id: 1, value: 'op 1' },
         { id: -99, value: '-' },
-        { id: 2, value: 'op 2' }
-      ]
+        { id: 2, value: 'op 2' },
+      ],
     });
     const driver = dropdownTestkitFactory({ dataHook });
     await waitForVisibilityOf(driver.element(), 'Cannot find Dropdown');

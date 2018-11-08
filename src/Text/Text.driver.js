@@ -21,7 +21,7 @@ const textDriverFactory = ({ element }) => {
         'Text testkit method "isBold" is deprecated, use "getWeight" method instead',
       );
       return stylableDOMUtil.hasStyleState(element, 'bold');
-    }
+    },
   };
 };
 

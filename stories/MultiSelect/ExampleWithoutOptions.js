@@ -11,7 +11,7 @@ class ExampleWithoutOptions extends React.Component {
 
     this.state = {
       inputValue: '',
-      tags: []
+      tags: [],
     };
   }
 
@@ -25,7 +25,7 @@ class ExampleWithoutOptions extends React.Component {
 
   handleOnRemoveTag = tagId =>
     this.setState({
-      tags: this.state.tags.filter(currTag => currTag.id !== tagId)
+      tags: this.state.tags.filter(currTag => currTag.id !== tagId),
     });
 
   handleOnChange = event => this.setState({ inputValue: event.target.value });

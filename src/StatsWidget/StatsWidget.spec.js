@@ -5,7 +5,7 @@ import StatsWidget from './StatsWidget';
 import ButtonWithOptions from '../ButtonWithOptions';
 import {
   isEnzymeTestkitExists,
-  isTestkitExists
+  isTestkitExists,
 } from '../../test/utils/testkit-sanity';
 import { statsWidgetTestkitFactory } from '../../testkit';
 import { statsWidgetTestkitFactory as enzymeStatsWidgetTestkitFactory } from '../../testkit/enzyme';
@@ -18,42 +18,42 @@ describe('StatsWidget', () => {
   const statistics = [
     {
       title: '10$',
-      subtitle: 'Revenue'
+      subtitle: 'Revenue',
     },
     {
       title: '2',
-      subtitle: 'Products'
+      subtitle: 'Products',
     },
     {
       title: '1',
-      subtitle: 'Transactions'
+      subtitle: 'Transactions',
     },
     {
       title: '5',
-      subtitle: 'Profit'
+      subtitle: 'Profit',
     },
     {
       title: '15',
-      subtitle: 'Music'
-    }
+      subtitle: 'Music',
+    },
   ];
 
   const statisticsWithPercents = [
     {
       title: '10$',
       subtitle: 'Revenue',
-      percent: 15
+      percent: 15,
     },
     {
       title: '2',
       subtitle: 'Products',
-      percent: -15
+      percent: -15,
     },
     {
       title: '1',
       subtitle: 'Transactions',
-      percent: 0
-    }
+      percent: 0,
+    },
   ];
 
   let driver;
@@ -184,18 +184,18 @@ describe('StatsWidget', () => {
       {
         title: '10$',
         subtitle: 'Revenue',
-        percent: '15%'
+        percent: '15%',
       },
       {
         title: '2',
         subtitle: 'Products',
-        percent: '-15%'
+        percent: '-15%',
       },
       {
         title: '1',
         subtitle: 'Transactions',
-        percent: '0'
-      }
+        percent: '0',
+      },
     ];
 
     const PageRequiredChildrenArrayError =

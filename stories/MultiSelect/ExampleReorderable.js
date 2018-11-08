@@ -13,7 +13,7 @@ export const options = [
       </div>
     ),
     id: 'Arizona',
-    tag: { label: 'Arizona', thumb: <div className={styles.thumb} /> }
+    tag: { label: 'Arizona', thumb: <div className={styles.thumb} /> },
   },
   { value: 'Arkansas', id: 'Arkansas' },
   { value: 'California', id: 'California' },
@@ -24,7 +24,7 @@ export const options = [
   { value: 'California6', id: 'California6' },
   { value: 'California7', id: 'California7' },
   { id: 'Divider', value: '-' },
-  { value: 'Two words', id: 'Two words' }
+  { value: 'Two words', id: 'Two words' },
 ];
 
 export const valueParser = option =>
@@ -37,7 +37,7 @@ class ExampleReorderable extends React.Component {
     this.state = {
       tags: [],
       options,
-      inputValue: ''
+      inputValue: '',
     };
   }
 
@@ -53,7 +53,7 @@ class ExampleReorderable extends React.Component {
 
   handleOnRemoveTag = tagId =>
     this.setState({
-      tags: this.state.tags.filter(currTag => currTag.id !== tagId)
+      tags: this.state.tags.filter(currTag => currTag.id !== tagId),
     });
 
   handleOnChange = event => this.setState({ inputValue: event.target.value });
@@ -81,7 +81,7 @@ class ExampleReorderable extends React.Component {
                 ...nextTags.splice(removedIndex, 1),
               );
               this.setState({
-                tags: nextTags
+                tags: nextTags,
               });
             }}
             onChange={this.handleOnChange}

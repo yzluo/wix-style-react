@@ -15,32 +15,32 @@ import { withFocusable, focusableStates } from '../common/Focusable';
 const buttons = {
   bold: {
     icon: TextAreaBold,
-    tooltipText: 'Bold'
+    tooltipText: 'Bold',
   },
   italic: {
     icon: TextAreaItalic,
-    tooltipText: 'Italic'
+    tooltipText: 'Italic',
   },
   underline: {
     icon: TextAreaUnderline,
-    tooltipText: 'Underline'
+    tooltipText: 'Underline',
   },
   'unordered-list': {
     icon: TextAreaBulletList,
-    tooltipText: 'Bulletted list'
+    tooltipText: 'Bulletted list',
   },
   'ordered-list': {
     icon: TextAreaNumberedList,
-    tooltipText: 'Numbered list'
+    tooltipText: 'Numbered list',
   },
   link: {
     icon: TextAreaLink,
-    tooltipText: 'Link'
+    tooltipText: 'Link',
   },
   image: {
     icon: TextAreaImage,
-    tooltipText: 'Image'
-  }
+    tooltipText: 'Image',
+  },
 };
 
 class RichTextAreaButton extends Component {
@@ -58,7 +58,7 @@ class RichTextAreaButton extends Component {
     );
     const className = classNames(styles.button, {
       [styles.isActive]: isActive,
-      [styles.disabled]: disabled
+      [styles.disabled]: disabled,
     });
     return (
       <Tooltip
@@ -97,7 +97,7 @@ RichTextAreaButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   isActive: PropTypes.bool,
   isTooltipDisabled: PropTypes.bool,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };
 
 export default withFocusable(RichTextAreaButton);

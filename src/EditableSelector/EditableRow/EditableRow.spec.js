@@ -82,7 +82,7 @@ describe('EditableRow', () => {
       );
       const editableRowTestkit = editableRowTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(editableRowTestkit.exists()).toBeTruthy();
     });
@@ -94,7 +94,7 @@ describe('EditableRow', () => {
       const wrapper = mount(<EditableRow {...props} dataHook={dataHook} />);
       const editableRowTestkit = enzymeEditableRowTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(editableRowTestkit.exists()).toBeTruthy();
     });

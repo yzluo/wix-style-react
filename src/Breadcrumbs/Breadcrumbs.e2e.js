@@ -14,10 +14,10 @@ describe('Breadcrumbs', () => {
     'should display breadcrumbs',
     () => {
       const driverNoLinks = breadcrumbsTestkitFactory({
-        dataHook: 'story-breadcrumbs-no-links'
+        dataHook: 'story-breadcrumbs-no-links',
       });
       const driverWithLinks = breadcrumbsTestkitFactory({
-        dataHook: 'story-breadcrumbs-with-links'
+        dataHook: 'story-breadcrumbs-with-links',
       });
 
       const breadcrumbsItems = ['first item', 'second item', 'third item'];
@@ -43,7 +43,7 @@ describe('Breadcrumbs', () => {
     'should show active item once clicked upon',
     () => {
       const driver = breadcrumbsTestkitFactory({
-        dataHook: 'story-breadcrumbs-active'
+        dataHook: 'story-breadcrumbs-active',
       });
       const breadcrumbsItems = ['first item', 'second item', 'third item'];
       const itemToSelect = 2;
@@ -65,7 +65,7 @@ describe('Breadcrumbs', () => {
 
   it('should call func on item click', () => {
     const driver = breadcrumbsTestkitFactory({
-      dataHook: 'story-breadcrumbs-onclick'
+      dataHook: 'story-breadcrumbs-onclick',
     });
     const breadcrumbsItems = ['first item', 'second item', 'third item'];
     const idxToClick = 1;

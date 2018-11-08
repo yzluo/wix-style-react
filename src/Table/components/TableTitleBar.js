@@ -25,7 +25,7 @@ export const TableTitleBar = () => {
                     {...dataTableProps}
                     columns={createColumns({
                       tableProps,
-                      bulkSelectionContext
+                      bulkSelectionContext,
                     })}
                   />
                 </div>

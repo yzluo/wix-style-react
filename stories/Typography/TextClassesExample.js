@@ -26,7 +26,7 @@ const propsToClassNames = props => {
     link: !!props.link,
     disabled: !!props.disabled,
     light: !!props.light,
-    secondary: !!props.secondary
+    secondary: !!props.secondary,
   };
   return Object.entries(names).reduce((acc, entry) => {
     if (entry[1]) {
@@ -56,7 +56,7 @@ const TextSizeWeightExample = props => {
 
 TextSizeWeightExample.propTypes = {
   size: string,
-  weight: string
+  weight: string,
 };
 
 const TextColorExample = props => {
@@ -87,7 +87,7 @@ TextColorExample.propTypes = {
   disabled: bool,
   light: bool,
   secondary: bool,
-  note: string
+  note: string,
 };
 
 export function renderSizeAndWeightTable() {

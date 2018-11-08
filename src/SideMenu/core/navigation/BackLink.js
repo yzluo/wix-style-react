@@ -20,7 +20,7 @@ const BackLink = ({ onBackHandler, className, children }) => (
 BackLink.propTypes = {
   onBackHandler: PropTypes.func,
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default BackLink;

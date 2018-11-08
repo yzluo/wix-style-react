@@ -7,12 +7,12 @@ import { TESTS_PREFIX } from '../../storiesHierarchy';
 
 class TestComponent extends React.Component {
   state = {
-    menus: [0]
+    menus: [0],
   };
 
   handleDeleteMenuItem = deletedItemId => {
     this.setState({
-      menus: this.state.menus.filter(id => id !== deletedItemId)
+      menus: this.state.menus.filter(id => id !== deletedItemId),
     });
   };
 

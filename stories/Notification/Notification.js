@@ -8,7 +8,7 @@ export default class Form extends Component {
     onChange: PropTypes.func.isRequired,
     notification: PropTypes.object,
     withActionButton: PropTypes.bool,
-    actionButton: PropTypes.object
+    actionButton: PropTypes.object,
   };
 
   componentDidUpdate(props) {

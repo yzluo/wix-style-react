@@ -14,12 +14,12 @@ const options = [
   { id: 2, value: 'Second Option' },
   { id: 3, value: 'Third Option' },
   { id: 4, value: 'Fourth Option' },
-  { id: 4, value: 'Fifth Option' }
+  { id: 4, value: 'Fifth Option' },
 ];
 
 class ExampleStandard extends Component {
   static propTypes = {
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
   };
 
   state = {
@@ -31,13 +31,13 @@ class ExampleStandard extends Component {
     suffixTicker: false,
     label: {
       appearance: 'T1.1',
-      children: 'First name'
+      children: 'First name',
     },
     autoComplete: {
       size: 'normal',
       placeholder: 'Please start typing...',
-      options
-    }
+      options,
+    },
   };
 
   setComponentState(componentName, obj) {
@@ -61,15 +61,15 @@ class ExampleStandard extends Component {
               <Input.Unit value={unit} />
               <Input.Ticker onUp={() => {}} onDown={() => {}} />
             </Input.Group>
-          )
+          ),
         });
       } else if (unit) {
         this.setComponentState('input', {
-          [name]: <Input.Unit value={unit} />
+          [name]: <Input.Unit value={unit} />,
         });
       } else if (ticker) {
         this.setComponentState('input', {
-          [name]: <Input.Ticker onUp={() => {}} onDown={() => {}} />
+          [name]: <Input.Ticker onUp={() => {}} onDown={() => {}} />,
         });
       } else {
         this.setComponentState('input', { [name]: null });
@@ -109,7 +109,7 @@ class ExampleStandard extends Component {
                 value={this.state.autoComplete.placeholder}
                 onChange={e =>
                   this.setComponentState('autoComplete', {
-                    placeholder: e.target.value
+                    placeholder: e.target.value,
                   })
                 }
               />

@@ -13,7 +13,7 @@ const placementToMoveBy = {
   right: { x: 2, y: -10 },
   left: { x: -2, y: -10 },
   top: { x: 0, y: -10 },
-  bottom: { x: 0, y: -8 }
+  bottom: { x: 0, y: -8 },
 };
 
 const AmaterialErrorSuffix = ({
@@ -21,7 +21,7 @@ const AmaterialErrorSuffix = ({
   error,
   errorMessage,
   placement,
-  onShow
+  onShow,
 }) =>
   focused ? null : (
     <Tooltip
@@ -50,11 +50,11 @@ AmaterialErrorSuffix.propTypes = {
   error: PropTypes.bool,
   focused: PropTypes.bool,
   placement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-  onShow: PropTypes.func
+  onShow: PropTypes.func,
 };
 
 AmaterialErrorSuffix.defaultProps = {
-  placement: 'right'
+  placement: 'right',
 };
 
 class ThemedInputErrorSuffix extends InputErrorSuffix {
@@ -65,7 +65,7 @@ class ThemedInputErrorSuffix extends InputErrorSuffix {
       error,
       errorMessage,
       tooltipPlacement,
-      onTooltipShow
+      onTooltipShow,
     } = this.props;
     return theme === 'amaterial' ? (
       <AmaterialErrorSuffix
@@ -83,7 +83,7 @@ class ThemedInputErrorSuffix extends InputErrorSuffix {
 
 ThemedInputErrorSuffix.propTypes = {
   tooltipPlacement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-  onTooltipShow: PropTypes.func
+  onTooltipShow: PropTypes.func,
 };
 
 export default ThemedInputErrorSuffix;

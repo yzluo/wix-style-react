@@ -8,7 +8,7 @@ const tableDriverFactory = async (component, page) => {
         `[data-table-row]:nth-child(${row + 1}) td:nth-child(${column + 1})`,
       );
       return await page.evaluate(_cell => _cell.innerText, cell);
-    }
+    },
   };
 };
 

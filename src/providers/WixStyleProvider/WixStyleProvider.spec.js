@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import WixStyleProvider, { withStyles } from './index';
 
 const styles = theme => ({
-  color: theme.color
+  color: theme.color,
 });
 
 const Component = ({ theme }) => (
@@ -12,7 +12,7 @@ const Component = ({ theme }) => (
 );
 
 Component.propTypes = {
-  theme: object
+  theme: object,
 };
 
 const WrappedComponent = withStyles(styles, Component);

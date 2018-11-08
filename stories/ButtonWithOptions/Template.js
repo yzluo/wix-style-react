@@ -70,7 +70,7 @@ Form.propTypes = {
   prefixIcon: PropTypes.node,
   suffixIcon: PropTypes.node,
   dropdownTheme: PropTypes.string,
-  withArrow: PropTypes.bool
+  withArrow: PropTypes.bool,
 };
 
 export default Form;

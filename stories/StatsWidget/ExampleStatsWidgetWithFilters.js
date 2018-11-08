@@ -7,25 +7,25 @@ import { Container } from '../../src/Grid';
 const statistics = [
   {
     title: '$10',
-    subtitle: 'Revenue'
+    subtitle: 'Revenue',
   },
   {
     title: '2',
-    subtitle: 'Products'
+    subtitle: 'Products',
   },
   {
     title: '1',
-    subtitle: 'Transactions'
+    subtitle: 'Transactions',
   },
   {
     title: '$5',
-    subtitle: 'Profit'
-  }
+    subtitle: 'Profit',
+  },
 ];
 
 const dropdownOption = [
   { id: 0, value: 'This month' },
-  { id: 1, value: 'This week' }
+  { id: 1, value: 'This week' },
 ];
 
 const onFilterChange = () => {
@@ -44,7 +44,7 @@ const optionsArray = dropdownOption.map(option => {
 const ButtonWithOptionsProps = {
   theme: 'no-border',
   dataHook: 'StatsWidgetFilter',
-  selectedId: 1
+  selectedId: 1,
 };
 
 export default () => (

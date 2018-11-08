@@ -4,12 +4,12 @@ import InputWithOptions from '../InputWithOptions/InputWithOptions';
 class AutoComplete extends InputWithOptions {
   static propTypes = {
     ...InputWithOptions.propTypes,
-    predicate: func
+    predicate: func,
   };
 
   static defaultProps = {
     ...InputWithOptions.defaultProps,
-    predicate: () => true
+    predicate: () => true,
   };
 
   dropdownAdditionalProps() {

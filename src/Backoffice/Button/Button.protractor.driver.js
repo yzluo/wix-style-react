@@ -6,7 +6,7 @@ const buttonDriverFactory = element => {
   const focusableDriver = focusableDriverFactory({
     rootElement: element,
     nativeFocusableElement: element,
-    clickableElements: [element]
+    clickableElements: [element],
   });
 
   const publicDriver = {
@@ -15,7 +15,7 @@ const buttonDriverFactory = element => {
     isButtonDisabled: () => hasAttribute(element, 'disabled'),
     isPrefixIconExists: () => element.$('[data-hook="btn-prefix"]').isPresent(),
     isSuffixIconExists: () => element.$('[data-hook="btn-suffix"]').isPresent(),
-    element: () => element
+    element: () => element,
   };
 
   return mergeDrivers(publicDriver, focusableDriver);

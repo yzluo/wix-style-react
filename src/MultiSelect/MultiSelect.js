@@ -42,7 +42,7 @@ class MultiSelect extends InputWithOptions {
     return {
       options: this.getUnselectedOptions().filter(this.props.predicate),
       closeOnSelect: false,
-      selectedHighlight: false
+      selectedHighlight: false,
     };
   }
 
@@ -61,7 +61,7 @@ class MultiSelect extends InputWithOptions {
       ),
       onKeyDown: this.onKeyDown,
       delimiters: this.props.delimiters,
-      onPaste: this.onPaste
+      onPaste: this.onPaste,
     };
   }
 
@@ -203,7 +203,7 @@ MultiSelect.propTypes = {
   mode: PropTypes.string,
   error: PropTypes.bool,
   errorMessage: PropTypes.string,
-  onReorder: PropTypes.func
+  onReorder: PropTypes.func,
 };
 
 MultiSelect.defaultProps = {
@@ -212,7 +212,7 @@ MultiSelect.defaultProps = {
   theme: 'tags',
   predicate: () => true,
   tags: [],
-  delimiters: [',']
+  delimiters: [','],
 };
 
 export default MultiSelect;

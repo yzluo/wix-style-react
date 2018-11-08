@@ -8,13 +8,13 @@ const sectionHelperDriverFactory = ({ element }) => {
   const actionButtonDriver = () =>
     buttonTestkitFactory({
       wrapper: element,
-      dataHook: 'sectionhelper-action-btn'
+      dataHook: 'sectionhelper-action-btn',
     });
 
   const closeButtonDriver = () =>
     buttonTestkitFactory({
       wrapper: element,
-      dataHook: 'sectionhelper-close-btn'
+      dataHook: 'sectionhelper-close-btn',
     });
 
   return {
@@ -30,7 +30,7 @@ const sectionHelperDriverFactory = ({ element }) => {
     isStandard: () => classExists('standard'),
     isDanger: () => classExists('danger'),
     isSuccess: () => classExists('success'),
-    isPremium: () => classExists('premium')
+    isPremium: () => classExists('premium'),
   };
 };
 

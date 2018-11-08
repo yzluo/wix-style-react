@@ -9,7 +9,7 @@ import {
   shape,
   string,
   any,
-  bool
+  bool,
 } from 'prop-types';
 import styles from './Breadcrumbs.scss';
 import classnames from 'classnames';
@@ -38,18 +38,18 @@ class Breadcrumbs extends WixComponent {
         value: node.isRequired,
         link: string,
         customElement: any,
-        disabled: bool
+        disabled: bool,
       }),
     ).isRequired,
     onClick: func,
     activeId: oneOfType([string, number]),
     size: oneOf(['medium', 'large']),
-    theme: oneOf(['onWhiteBackground', 'onGrayBackground', 'onDarkBackground'])
+    theme: oneOf(['onWhiteBackground', 'onGrayBackground', 'onDarkBackground']),
   };
 
   static defaultProps = {
     size: 'medium',
-    theme: 'onGrayBackground'
+    theme: 'onGrayBackground',
   };
 
   handleBreadcrumbClick = item =>
@@ -64,7 +64,7 @@ class Breadcrumbs extends WixComponent {
     return {
       weight: isActive ? 'normal' : 'thin',
       light: isDarkBackground,
-      size: isSmallSize ? 'small' : 'medium'
+      size: isSmallSize ? 'small' : 'medium',
     };
   }
 
@@ -81,7 +81,7 @@ class Breadcrumbs extends WixComponent {
         data-hook="breadcrumb-clickable"
         className={classnames(styles.item, styles.button, {
           [styles.disabled]: item.disabled,
-          [styles.active]: isActive
+          [styles.active]: isActive,
         })}
         onClick={onClick}
         children={breadcrumbValue(item.value)}
@@ -94,7 +94,7 @@ class Breadcrumbs extends WixComponent {
         data-hook="breadcrumb-clickable"
         className={classnames(styles.item, styles.link, {
           [styles.disabled]: item.disabled,
-          [styles.active]: isActive
+          [styles.active]: isActive,
         })}
         onClick={onClick}
         children={breadcrumbValue(item.value)}
@@ -128,14 +128,14 @@ class Breadcrumbs extends WixComponent {
       <div
         key={item.id}
         className={classnames(styles.itemContainer, {
-          [styles.active]: isActive
+          [styles.active]: isActive,
         })}
       >
         {this.createItem({
           item,
           isActive,
           onClick: () =>
-            item.disabled !== true && this.handleBreadcrumbClick(item)
+            item.disabled !== true && this.handleBreadcrumbClick(item),
         })}
         {isDividerVisible && (
           <BreadcrumbsChevronRight className={styles.divider} />

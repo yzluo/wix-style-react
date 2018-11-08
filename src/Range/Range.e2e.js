@@ -25,14 +25,14 @@ const rangeTestkitE2EFactory = rangeDriver => {
       isFocusedFirst: () => inputDriverFirst().isFocused(),
       isFocusedLast: () => inputDriverLast().isFocused(),
       clickFirst: () => inputDriverFirst().click(),
-      clickLast: () => inputDriverLast().click()
+      clickLast: () => inputDriverLast().click(),
     },
     dateType: {
       isFocusedFirst: () => datePickerDriverFirst().inputDriver.isFocused(),
       isFocusedLast: () => datePickerDriverLast().inputDriver.isFocused(),
       clickFirst: () => datePickerDriverFirst().inputDriver.click(),
-      clickLast: () => datePickerDriverLast().inputDriver.click()
-    }
+      clickLast: () => datePickerDriverLast().inputDriver.click(),
+    },
   };
 };
 

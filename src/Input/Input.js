@@ -20,7 +20,7 @@ class Input extends Component {
   static StatusLoading = 'loading';
 
   state = {
-    focus: false
+    focus: false,
   };
 
   componentDidMount() {
@@ -75,7 +75,7 @@ class Input extends Component {
       autocomplete,
       required,
       error,
-      errorMessage
+      errorMessage,
     } = this.props;
 
     const onIconClicked = e => {
@@ -110,13 +110,13 @@ class Input extends Component {
       isClearButtonVisible,
       menuArrow,
       unit,
-      suffix
+      suffix,
     });
 
     const inputClassNames = classNames(styles.input, {
       [styles.withPrefix]: !!prefix,
       [styles.withSuffix]: visibleSuffixCount,
-      [styles.withSuffixes]: visibleSuffixCount > 1
+      [styles.withSuffixes]: visibleSuffixCount > 1,
     });
 
     const ariaAttribute = {};
@@ -287,7 +287,7 @@ class Input extends Component {
 
     e.target = {
       ...e.target,
-      value: ''
+      value: '',
     };
     this._onChange(e);
     this.focus();
@@ -309,7 +309,7 @@ Input.defaultProps = {
   textOverflow: 'clip',
   maxLength: 524288,
   withSelection: false,
-  clearButton: false
+  clearButton: false,
 };
 
 const borderRadiusValidator = (props, propName) => {
@@ -466,7 +466,7 @@ Input.propTypes = {
     'material',
     'amaterial',
     'flat',
-    'flatdark'
+    'flatdark',
   ]),
 
   /** The material design style floating label for input (supported only for amaterial theme for now) */
@@ -480,7 +480,7 @@ Input.propTypes = {
   /** Inputs value */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   withSelection: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
 };
 
 export default Input;

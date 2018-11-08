@@ -11,7 +11,7 @@ const placementToMoveBy = {
   right: { x: 10, y: -10 },
   left: { x: -10, y: -10 },
   top: { x: 0, y: -5 },
-  bottom: { x: 0, y: -15 }
+  bottom: { x: 0, y: -15 },
 };
 
 const AmaterialHelpSuffix = ({ help, helpMessage, placement, onShow }) => (
@@ -38,11 +38,11 @@ AmaterialHelpSuffix.propTypes = {
   help: PropTypes.bool,
   helpMessage: PropTypes.node,
   placement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-  onShow: PropTypes.func
+  onShow: PropTypes.func,
 };
 
 AmaterialHelpSuffix.defaultProps = {
-  placement: 'right'
+  placement: 'right',
 };
 
 class ThemedInputHelpSuffix extends InputHelpSuffix {
@@ -52,7 +52,7 @@ class ThemedInputHelpSuffix extends InputHelpSuffix {
       help,
       helpMessage,
       tooltipPlacement,
-      onTooltipShow
+      onTooltipShow,
     } = this.props;
 
     return theme === 'amaterial' ? (
@@ -70,7 +70,7 @@ class ThemedInputHelpSuffix extends InputHelpSuffix {
 
 ThemedInputHelpSuffix.propTypes = {
   tooltipPlacement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-  onTooltipShow: PropTypes.func
+  onTooltipShow: PropTypes.func,
 };
 
 export default ThemedInputHelpSuffix;

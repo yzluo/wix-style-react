@@ -9,7 +9,7 @@ describe('ModalSelectorLayout', () => {
     '11.3 ModalSelectorLayout',
   );
   const modalSelectorLayoutDriver = modalSelectorLayoutTestkitFactory({
-    dataHook: 'storybook-modal-selector-layout'
+    dataHook: 'storybook-modal-selector-layout',
   });
 
   beforeAll(() => {
@@ -24,7 +24,7 @@ describe('ModalSelectorLayout', () => {
     autoExampleDriver.setProps({
       size: 'large',
       color: 'white',
-      text: 'Wubba Lubba Dub Dub'
+      text: 'Wubba Lubba Dub Dub',
     });
 
     waitForVisibilityOf(

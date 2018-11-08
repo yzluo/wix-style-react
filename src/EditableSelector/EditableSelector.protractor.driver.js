@@ -42,7 +42,7 @@ const editableSelectorDriverFactory = component => ({
     getOption(component, index)
       .$('input')
       .isSelected(),
-  element: () => component
+  element: () => component,
 });
 
 export default editableSelectorDriverFactory;

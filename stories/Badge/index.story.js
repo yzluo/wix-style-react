@@ -21,7 +21,7 @@ export default {
     type: 'solid',
     size: 'medium',
     uppercase: true,
-    dataHook: 'storybook-badge'
+    dataHook: 'storybook-badge',
   },
 
   exampleProps: {
@@ -30,7 +30,7 @@ export default {
     size: Object.keys(SIZE),
     prefixIcon: [<ChevronDown key="0" />, <Facebook key="1" />],
     suffixIcon: [<ChevronDown key="2" />, <Facebook key="3" />],
-    onClick: () => alert('Badge Clicked')
+    onClick: () => alert('Badge Clicked'),
   },
 
   examples: (
@@ -39,5 +39,5 @@ export default {
         <ExampleBadges />
       </CodeExample>
     </div>
-  )
+  ),
 };

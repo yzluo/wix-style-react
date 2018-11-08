@@ -16,7 +16,7 @@ describe('IconWithOptions', () => {
     { id: 2, value: 'Option 3', disabled: true },
     { id: 3, value: 'Option 4' },
     { id: 'divider1', value: '-' },
-    { id: 'element1', value: <span style={{ color: 'brown' }}>Option 4</span> }
+    { id: 'element1', value: <span style={{ color: 'brown' }}>Option 4</span> },
   ];
 
   const optionsToArray = options =>
@@ -167,7 +167,7 @@ describe('IconWithOptions', () => {
       );
       const iconWithOptionsTestkit = iconWithOptionsTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(iconWithOptionsTestkit.driver.exists()).toBeTruthy();
       expect(iconWithOptionsTestkit.dropdownLayoutDriver.exists()).toBeTruthy();
@@ -185,7 +185,7 @@ describe('IconWithOptions', () => {
       );
       const iconWithOptionsTestkit = enzymeIconWithOptionsTestkitFactory({
         wrapper,
-        dataHook
+        dataHook,
       });
       expect(iconWithOptionsTestkit.driver.exists()).toBeTruthy();
       expect(iconWithOptionsTestkit.dropdownLayoutDriver.exists()).toBeTruthy();

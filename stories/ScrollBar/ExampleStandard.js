@@ -33,7 +33,7 @@ const bigContent = `
 class ExampleStandard extends Component {
   static propTypes = {
     onChange: PropTypes.func,
-    theme: PropTypes.string
+    theme: PropTypes.string,
   };
 
   render() {

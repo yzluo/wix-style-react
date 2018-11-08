@@ -9,7 +9,7 @@ export const Title = props => {
 };
 Title.displayName = 'TableToolbar.Title';
 Title.propTypes = {
-  children: node
+  children: node,
 };
 
 export const SelectedCount = props => {
@@ -21,7 +21,7 @@ export const SelectedCount = props => {
 };
 SelectedCount.displayName = 'TableToolbar.SelectedCount';
 SelectedCount.propTypes = {
-  children: node
+  children: node,
 };
 
 export const TableToolbar = Toolbar;

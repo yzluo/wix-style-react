@@ -6,7 +6,7 @@ const style = {
   display: 'inline-block',
   padding: '0 5px',
   width: '340px',
-  lineHeight: '22px'
+  lineHeight: '22px',
 };
 
 class ControlledExample extends Component {

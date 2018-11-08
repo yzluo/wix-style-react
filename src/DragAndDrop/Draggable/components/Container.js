@@ -16,7 +16,7 @@ const getRelativePositions = (child, parent) => {
 
   return {
     top: topPositionOfChild,
-    bottom: bottomPositionOfChild
+    bottom: bottomPositionOfChild,
   };
 };
 
@@ -28,7 +28,7 @@ const target = {
     }
     return {
       containerId: props.containerId,
-      index: monitor.getItem().index
+      index: monitor.getItem().index,
     };
   },
   hover(props, monitor, component) {
@@ -95,15 +95,15 @@ const target = {
     */
     props.onHover(dragIndex, hoverIndex, {
       id: monitorItem.id,
-      item: monitorItem.originalItem
+      item: monitorItem.originalItem,
     });
     /** set new index for item */
     monitor.getItem().index = hoverIndex;
-  }
+  },
 };
 
 @DropTarget(ItemTypes.DRAGGABLE, target, connect => ({
-  connectDropTarget: connect.dropTarget()
+  connectDropTarget: connect.dropTarget(),
 }))
 class Container extends WixComponent {
   setRootRef = node => (this.rootNode = node);
@@ -128,7 +128,7 @@ Container.propTypes = {
   groupName: PropTypes.string,
   index: PropTypes.number,
   onMoveOut: PropTypes.func,
-  onHover: PropTypes.func
+  onHover: PropTypes.func,
 };
 
 export default Container;

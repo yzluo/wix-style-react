@@ -5,7 +5,7 @@ import Text from '../../Text';
 
 class ExtraText extends WixComponent {
   static propTypes = {
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
   };
 
   render() {

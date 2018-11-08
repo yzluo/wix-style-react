@@ -11,7 +11,7 @@ class PopoverMenuBuilder extends React.Component {
     addRow: PropTypes.func.isRequired,
     updateRowIcon: PropTypes.func.isRequired,
     updateRowText: PropTypes.func.isRequired,
-    updateRowDisabled: PropTypes.func.isRequired
+    updateRowDisabled: PropTypes.func.isRequired,
   };
 
   render() {

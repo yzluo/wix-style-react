@@ -6,7 +6,7 @@ import eyes from 'eyes.it';
 describe('MultiSelectCheckbox', () => {
   const storyUrl = getStoryUrl('4. Selection', '4.1 + MultiSelectCheckbox');
   const driver = multiSelectCheckboxTestkitFactory({
-    dataHook: 'multi-select-checkbox'
+    dataHook: 'multi-select-checkbox',
   });
 
   beforeEach(() => {

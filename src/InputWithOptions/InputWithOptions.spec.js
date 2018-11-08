@@ -22,8 +22,8 @@ const runInputWithOptionsTest = driverFactory => {
       { id: 'divider1', value: '-' },
       {
         id: 'element1',
-        value: <span style={{ color: 'brown' }}>Option 4</span>
-      }
+        value: <span style={{ color: 'brown' }}>Option 4</span>,
+      },
     ];
 
     it('should NOT show dropdown when autofocus is on', () => {
@@ -130,7 +130,7 @@ const runInputWithOptionsTest = driverFactory => {
           );
 
           driver.inputDriver.trigger('keyDown', {
-            key: 37 // <Left Arrow> key code
+            key: 37, // <Left Arrow> key code
           });
           expect(driver.dropdownLayoutDriver.isShown()).toBe(false);
         });
@@ -343,7 +343,7 @@ const runInputWithOptionsTest = driverFactory => {
       driver.pressKey('Enter');
       expect(onManuallyInput).toBeCalledWith('Option 2', {
         id: 1,
-        value: 'Option 2'
+        value: 'Option 2',
       });
     });
 
@@ -578,7 +578,7 @@ const runInputWithOptionsTest = driverFactory => {
         );
         const inputWithOptionsTestkit = inputWithOptionsTestkitFactory({
           wrapper,
-          dataHook
+          dataHook,
         });
         expect(inputWithOptionsTestkit.driver.exists()).toBeTruthy();
         expect(inputWithOptionsTestkit.inputDriver.exists()).toBeTruthy();
@@ -594,7 +594,7 @@ const runInputWithOptionsTest = driverFactory => {
         const wrapper = mount(<InputWithOptions dataHook={dataHook} />);
         const inputWithOptionsTestkit = enzymeInputWithOptionsTestkitFactory({
           wrapper,
-          dataHook
+          dataHook,
         });
         expect(inputWithOptionsTestkit.driver.exists()).toBeTruthy();
         expect(inputWithOptionsTestkit.inputDriver.exists()).toBeTruthy();
@@ -610,7 +610,7 @@ const runInputWithOptionsTest = driverFactory => {
         const wrapper = mount(<InputWithOptions {...props} />);
         const testkit = enzymeInputWithOptionsTestkitFactory({
           wrapper,
-          dataHook: props.dataHook
+          dataHook: props.dataHook,
         });
         expect(testkit.inputDriver.isOfStyle(props.theme)).toBe(true);
         expect(testkit.dropdownLayoutDriver.hasTheme(props.theme)).toBe(true);

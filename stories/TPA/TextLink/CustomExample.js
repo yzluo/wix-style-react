@@ -6,7 +6,7 @@ const style = {
   display: 'inline-block',
   padding: '0 5px',
   width: '140px',
-  lineHeight: '22px'
+  lineHeight: '22px',
 };
 
 function Example() {

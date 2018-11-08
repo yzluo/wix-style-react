@@ -45,13 +45,13 @@ export default class ColorPicker extends WixComponent {
     /** Handle confirm button click */
     onConfirm: func.isRequired,
     /** Children would be rendered above action buttons */
-    children: node
+    children: node,
   };
 
   static defaultProps = {
     showHistory: false,
     showConverter: true,
-    showInput: true
+    showInput: true,
   };
 
   constructor(props) {

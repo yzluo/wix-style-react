@@ -6,7 +6,7 @@ import Input from 'wix-style-react/Input';
 import FormField from 'wix-style-react/FormField';
 
 const defaultProps = {
-  placeholder: 'They did not know it was impossible, so they did it!'
+  placeholder: 'They did not know it was impossible, so they did it!',
 };
 
 const Example = ({ theme }) => (
@@ -33,7 +33,7 @@ const Example = ({ theme }) => (
 );
 
 Example.propTypes = {
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 export default Example;

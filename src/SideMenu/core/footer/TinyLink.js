@@ -17,7 +17,7 @@ const TinyLink = ({ icon, tooltip, ...rest }) => (
 
 TinyLink.propTypes = {
   icon: PropTypes.node.isRequired,
-  tooltip: PropTypes.string.isRequired
+  tooltip: PropTypes.string.isRequired,
 };
 
 export default TinyLink;

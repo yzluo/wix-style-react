@@ -70,7 +70,7 @@ class ButtonWithOptions extends WixComponent {
       this.cleanOptionToSimpleTextForm(selectedOption.props.children),
       <span key={1} className={styles.icon}>
         <ChevronDown />
-      </span>
+      </span>,
     ];
   }
 
@@ -78,14 +78,14 @@ class ButtonWithOptions extends WixComponent {
     return React.cloneElement(this.buttonElement, {
       onClick: this.showOptions,
       children: this.getSelectedOptionValue(),
-      theme: this.props.theme
+      theme: this.props.theme,
     });
   }
 
   renderDropdownLayout() {
     const dropdownProps = omit(this.props, [
       'dataHook',
-      'restrainDropdownSize'
+      'restrainDropdownSize',
     ]);
 
     const dropdownLayoutOptions = React.Children.map(
@@ -142,7 +142,7 @@ ButtonWithOptions.defaultProps = {
   ...DropdownLayout.defaultProps,
   onSelect: () => {},
   restrainDropdownSize: true,
-  theme: Button.defaultProps.theme
+  theme: Button.defaultProps.theme,
 };
 
 ButtonWithOptions.propTypes = {
@@ -171,7 +171,7 @@ ButtonWithOptions.propTypes = {
         }
       });
     }
-  })
+  }),
 };
 
 ButtonWithOptions.Button = props => (
@@ -192,7 +192,7 @@ ButtonWithOptions.Option = class Option extends React.Component {
       if (React.Children.count(prop) !== 1) {
         return new Error(`${componentName}: Should have a single child`);
       }
-    }
+    },
   };
 
   render() {

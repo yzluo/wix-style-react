@@ -40,7 +40,7 @@ export default () => (
 class ControlledExample extends React.Component {
   state = {
     collapsed: false,
-    toggled: false
+    toggled: false,
   };
 
   onCollapsedChange() {

@@ -1,13 +1,13 @@
 import { INTERNAL_DRIVER_SYMBOL } from '../../../test/utils/private-drivers';
 import {
   hasAttribute,
-  isFocused
+  isFocused,
 } from '../../../test/utils/protractor-helpers';
 
 const focusableDriverFactory = ({
   rootElement,
   clickableElements,
-  nativeFocusableElement
+  nativeFocusableElement,
 }) => {
   if (!rootElement || !clickableElements || !nativeFocusableElement) {
     throw new Error('focusableDriverFactory: Invalid aruments');
@@ -21,8 +21,8 @@ const focusableDriverFactory = ({
       hasFocusVisibleState: () =>
         hasAttribute(rootElement, 'data-focus-visible'),
       clickRoot: () => rootElement.click(),
-      clickableElements
-    }
+      clickableElements,
+    },
   };
 };
 

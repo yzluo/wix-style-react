@@ -4,11 +4,11 @@ import eventually from 'wix-eventually';
 import { pageTestkitFactory } from '../../testkit/protractor';
 import {
   waitForVisibilityOf,
-  scrollToElement
+  scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 import {
   createStoryUrl,
-  createTestStoryUrl
+  createTestStoryUrl,
 } from '../../test/utils/storybook-helpers';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import { storySettings } from '../../stories/Page/storySettings';
@@ -51,7 +51,7 @@ describe('Page', async () => {
     const storyUrl = createStoryUrl({
       kind: category,
       story: storyName,
-      withExamples: false
+      withExamples: false,
     });
     describe('With Background-Image', () => {
       runTestCases({ storyUrl, dataHook });

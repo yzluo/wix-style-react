@@ -9,7 +9,7 @@ export default class WixStyleTpaProvider extends React.Component {
     this.update = this.update.bind(this);
     this.state = {
       theme: props.themeCreator(),
-      events: props.events.filter(event => Wix.Events[event] !== undefined)
+      events: props.events.filter(event => Wix.Events[event] !== undefined),
     };
   }
 
@@ -41,9 +41,9 @@ export default class WixStyleTpaProvider extends React.Component {
 WixStyleTpaProvider.propTypes = {
   themeCreator: func,
   children: any,
-  events: array
+  events: array,
 };
 
 WixStyleTpaProvider.defaultProps = {
-  events: ['STYLE_PARAMS_CHANGE']
+  events: ['STYLE_PARAMS_CHANGE'],
 };
