@@ -18,7 +18,7 @@ const { category, storyName } = storySettings;
 const testStoryUrl = testName =>
   createTestStoryUrl({ category, storyName, testName });
 
-describe('Page', async () => {
+describe('Page', () => {
   const dataHook = 'story-page';
 
   const initTest = async ({ storyUrl, dataHook, props }) => {
@@ -47,12 +47,13 @@ describe('Page', async () => {
     });
   };
 
-  describe('Header + Tail + Content', async () => {
+  describe('Header + Tail + Content', () => {
     const storyUrl = createStoryUrl({
       kind: category,
       story: storyName,
       withExamples: false,
     });
+
     describe('With Background-Image', () => {
       runTestCases({ storyUrl, dataHook });
     });
@@ -62,7 +63,7 @@ describe('Page', async () => {
     });
   });
 
-  describe('Header + Content', async () => {
+  describe('Header + Content', () => {
     describe('With Background-Image', () => {
       const storyUrl = testStoryUrl('1. Image');
       runTestCases({ storyUrl, dataHook });
