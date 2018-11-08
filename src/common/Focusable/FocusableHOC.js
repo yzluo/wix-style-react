@@ -161,7 +161,7 @@ export const withFocusable = Component => {
       );
     }
   }
-  
+
   assignPropTypesHack(FocusableHOC, Component.propTypes);
 
   return hoistNonReactMethods(FocusableHOC, Component, {
@@ -172,12 +172,12 @@ export const withFocusable = Component => {
 
 /**
  * Assigned the given propTypes to the given class.
- * 
+ *
  * This is a hack because since Yoshi3, with babel-preset-yoshi,
  * the babel-plugin-transform-react-remove-prop-types is enabled and removes propTypes.
- * 
+ *
  * So if we simply do FocusableHOC.propTypes = Component.propTypes, it is being stripped away.
- * 
+ *
  * This later becomes a problem if another component defines:
  * <code>
  * Comp.propTypes = {

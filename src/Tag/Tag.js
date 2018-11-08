@@ -37,10 +37,15 @@ class Tag extends WixComponent {
   }
 
   _renderText() {
-    const {size, wrap, children} = this.props;
+    const { size, wrap, children } = this.props;
 
     return (
-      <Text ellipsis={wrap} size={tagToTextSize[size]} weight={size === 'tiny' ? 'thin' : 'normal'} dataHook={dataHooks.text}>
+      <Text
+        ellipsis={wrap}
+        size={tagToTextSize[size]}
+        weight={size === 'tiny' ? 'thin' : 'normal'}
+        dataHook={dataHooks.text}
+      >
         {children}
       </Text>
     );
@@ -70,7 +75,16 @@ class Tag extends WixComponent {
   };
 
   _getClassName() {
-    const {thumb, removable, size, disabled, theme, useOldMargins, className, onClick} = this.props;
+    const {
+      thumb,
+      removable,
+      size,
+      disabled,
+      theme,
+      useOldMargins,
+      className,
+      onClick,
+    } = this.props;
     return classNames(
       styles.root,
       className,
@@ -87,7 +101,7 @@ class Tag extends WixComponent {
   }
 
   render() {
-    const {id, onClick, maxWidth} = this.props;
+    const { id, onClick, maxWidth } = this.props;
 
     return (
       <span

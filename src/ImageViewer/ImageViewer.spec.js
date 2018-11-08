@@ -2,7 +2,7 @@ import React from 'react';
 import ImageViewer from './ImageViewer';
 import ImageViewerDriverFactory from './ImageViewer.driver';
 
-import { ReactDOMTestContainer } from "../../test/dom-test-container";
+import { ReactDOMTestContainer } from '../../test/dom-test-container';
 
 describe('ImageViewer', () => {
   const createDriver = new ReactDOMTestContainer()

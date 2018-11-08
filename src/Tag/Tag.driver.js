@@ -31,7 +31,7 @@ const tagDriverFactory = ({ element }) => {
     click: () => ReactTestUtils.Simulate.click(element),
     isThumbExists: () => isClassExists(getThumb(element), 'thumb'),
     isDisabled: () => isClassExists(element, 'disabled'),
-    getLabel: () => element.textContent
+    getLabel: () => element.textContent,
   };
 };
 
