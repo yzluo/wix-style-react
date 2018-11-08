@@ -11,7 +11,7 @@ const modalDriverFactory = ({element, wrapper, component}) => {
   return {
     exists: () => !!(getPortal()),
     element: () => element,
-    isOpen: () => !!(getContent()),
+    isOpen: () => !!getContent() && !!(getContent().textContent),
     isThemeExist: theme => !!getPortal().querySelector(`.${theme}`),
     getChildBySelector: selector => getPortal().querySelector(selector),
     isScrollable: () => !getPortal().classList.contains('portalNonScrollable'),
