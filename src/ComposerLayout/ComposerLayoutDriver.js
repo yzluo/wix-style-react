@@ -1,5 +1,5 @@
 import {findByHook} from '../../test/utils';
-import {buttonTestkitFactory, genericLayoutTestkitFactory} from '../../testkit';
+import {buttonTestkitFactory, genericModalLayoutTestkitFactory} from '../../testkit';
 
 
 const composerLayoutDriverFactory = ({element}) => {
@@ -7,7 +7,7 @@ const composerLayoutDriverFactory = ({element}) => {
   const footer = element.querySelector('[data-hook="footer"]');
   const closeButtonTestkit = buttonTestkitFactory({wrapper: header, dataHook: 'close-button'});
   const infoButtonTestkit = buttonTestkitFactory({wrapper: header, dataHook: 'info-button'});
-  const genericLayoutTestkit = genericLayoutTestkitFactory({wrapper: element, dataHook: 'generic-layout'});
+  const genericLayoutTestkit = genericModalLayoutTestkitFactory({wrapper: element, dataHook: 'generic-modal-layout'});
   const confirmButtonTestkit = buttonTestkitFactory({wrapper: footer, dataHook: 'confirm-button'});
   const cancelButtonTestkit = buttonTestkitFactory({wrapper: footer, dataHook: 'cancel-button'});
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import GenericLayout from '../GenericLayout';
+import GenericModalLayout from '../GenericModalLayout';
 import {HeaderLayout} from './HeaderLayout';
 import FooterLayout from './FooterLayout';
 import styles from './ComposerLayout.scss';
@@ -35,8 +35,9 @@ export const ComposerLayout = props => {
   const content = <div data-hook="content" className={styles.content}>{props.content}</div>;
 
   return (
-    <GenericLayout
-      data-hook="generic-layout"
+    <GenericModalLayout
+      data-hook="generic-modal-layout"
+      dataHook="generic-modal-layout"
       header={props.showHeader && header}
       content={content}
       footer={props.showFooter && footer}

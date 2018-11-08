@@ -3,7 +3,7 @@ import Button from 'wix-style-react/Button';
 import Modal from 'wix-style-react/Modal';
 
 import {ComposerLayout} from '../../../src/ComposerLayout';
-import {GenericLayout} from '../../../src/GenericLayout';
+import {GenericModalLayout} from '../../../src/GenericModalLayout';
 
 
 class GenericModal extends Component {
@@ -17,7 +17,7 @@ class GenericModal extends Component {
   renderComposerLayout() {
     const confirmButtonContent = 'Save!';
     const cancelButtonContent = 'Cancel!';
-    const content = 'hello world! '.repeat(150);
+    const content = 'hello world! '.repeat(100);
 
     return (<ComposerLayout
       content={<div style={{wordBreak: 'all'}}>{content}</div>}
@@ -32,7 +32,7 @@ class GenericModal extends Component {
 
   renderGenericLayout() {
     const x = new Array(100).fill(<div>hello</div>);
-    return (<GenericLayout
+    return (<GenericModalLayout
       header="header"
       content={x}
       footer="footer"

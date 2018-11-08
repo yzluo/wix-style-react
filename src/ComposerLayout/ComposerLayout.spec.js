@@ -75,14 +75,15 @@ describe('ComposerLayout', () => {
       expect(driver.header.getSideActions()).toEqual(headerSideActions);
     });
 
+    it('should not be rendered in full screen by default', () => {
+      const driver = createDriver(<ComposerLayout/>);
+
+      expect(driver.isRenderedInFullscreen()).toEqual(false);
+    });
+
     it('should be rendered in full screen when fullscreen is true', () => {
       const driver = createDriver(<ComposerLayout fullscreen/>);
       expect(driver.isRenderedInFullscreen()).toEqual(true);
-    });
-
-    it('should not be rendered in full screen by default', () => {
-      const driver = createDriver(<ComposerLayout/>);
-      expect(driver.isRenderedInFullscreen()).toEqual(false);
     });
 
     it('clicking on close button should trigger onCloseButtonClick', () => {
