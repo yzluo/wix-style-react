@@ -7,22 +7,24 @@ import {Row} from './Row';
 
 export const HeaderLayout = props => {
   const rightAlignedItems = (<div>
-    {props.showQuestionMarkButton && <InfoIcon data-hook="info-icon" onClick={props.onInfoButtonClick}/>}
-    {props.showCloseButton && <XIcon data-hook="x-icon" onClick={props.onCloseButtonClick}/>}
+    {props.showInfoButton && <InfoIcon data-hook="info-button" onClick={props.onInfoButtonClick}/>}
+    {props.showCloseButton && <XIcon data-hook="close-button" onClick={props.onCloseButtonClick}/>}
   </div>);
+
+  const title = <div data-hook="title">{props.title}</div>;
+  const sideActions = <div data-hook="side-actions">{props.sideActions}</div>;
   return (
     <Row
-      data-hook="header-layout"
       rightAlignedItems={rightAlignedItems}
-      centerAlignedItems={props.title}
-      leftAlignedItems={props.sideActions}
+      centerAlignedItems={title}
+      leftAlignedItems={sideActions}
       />
   );
 };
 
 HeaderLayout.propTypes = {
   showCloseButton: PropTypes.bool,
-  showQuestionMarkButton: PropTypes.bool,
+  showInfoButton: PropTypes.bool,
   onCloseButtonClick: PropTypes.func,
   onInfoButtonClick: PropTypes.func,
   title: PropTypes.string,
@@ -31,5 +33,5 @@ HeaderLayout.propTypes = {
 
 HeaderLayout.defaultProps = {
   showCloseButton: true,
-  showQuestionMarkButton: true
+  showInfoButton: true
 };

@@ -28,13 +28,15 @@ class GenericModal extends Component {
     return (<ComposerLayout
       content={<div >Hello</div>}
       title="title"
-      sideActions={<div>Some Side Actions</div>}
+      headerSideActions={<div>Some header Side Actions</div>}
+      footerSideActions={<div>Some footer Side Actions</div>}
       onCloseButtonClick={onCloseButtonClick}
       onInfoButtonClick={onInfoButtonClick}
       onConfirmButtonClick={onConfirmButtonClick}
       onCancelButtonClick={onCancelButtonClick}
       confirmButtonContent={confirmButtonContent}
       cancelButtonContent={cancelButtonContent}
+      fullscreen
       />);
   }
 

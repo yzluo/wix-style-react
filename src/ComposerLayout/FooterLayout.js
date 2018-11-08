@@ -58,7 +58,7 @@ FooterLayout.defaultProps = {
   isConfirmButtonEnabled: true,
   isCancelButtonEnabled: true,
   confirmButtonContent: 'Save',
-  Button: 'Cancel'
+  cancelButtonContent: 'Cancel'
 }
 ;
 
