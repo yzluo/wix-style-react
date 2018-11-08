@@ -10,12 +10,11 @@ import ExampleFullscreenRaw from '!raw-loader!./ExampleFullscreen';
 
 export default {
   category: 'Components',
-  storyName: 'GenericLayout',
+  storyName: 'GenericModalLayout',
   component: ExampleGeneric,
-  componentPath: '../../src/GenericLayout',
+  componentPath: '../../src/GenericModalLayout',
 
   componentProps: {
-    dataHook: 'storybook-generic-layout',
     header: 'header',
     content: 'content',
     footer: 'footer',

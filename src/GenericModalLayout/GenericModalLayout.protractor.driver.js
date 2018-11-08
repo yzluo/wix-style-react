@@ -1,4 +1,4 @@
-const GenericLayoutDriverFactory = component => {
+const GenericModalLayoutDriverFactory = component => {
   const hasClass = className => component.getAttribute('class')
     .then(classes => classes
       .split(' ')
@@ -12,4 +12,4 @@ const GenericLayoutDriverFactory = component => {
   };
 };
 
-export default GenericLayoutDriverFactory;
+export default GenericModalLayoutDriverFactory;

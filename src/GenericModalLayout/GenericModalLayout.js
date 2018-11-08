@@ -4,10 +4,10 @@ import React from 'react';
 
 import WixComponent from '../BaseComponents/WixComponent';
 
-import styles from './GenericLayout.scss';
+import styles from './GenericModalLayout.scss';
 
 
-export default class GenericLayout extends WixComponent {
+export default class GenericModalLayout extends WixComponent {
   render() {
     const {
             fullscreen,
@@ -35,15 +35,15 @@ export default class GenericLayout extends WixComponent {
   }
 }
 
-GenericLayout.propTypes = {
+GenericModalLayout.propTypes = {
   header: PropTypes.node,
   content: PropTypes.node,
   footer: PropTypes.node,
   fullscreen: PropTypes.bool
 };
 
-GenericLayout.defaultProps = {
+GenericModalLayout.defaultProps = {
   fullscreen: false
 };
 
-GenericLayout.displayName = 'GenericLayout';
+GenericModalLayout.displayName = 'GenericModalLayout';

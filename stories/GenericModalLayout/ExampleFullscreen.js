@@ -1,12 +1,12 @@
 import React from 'react';
 import Button from 'wix-style-react/Button';
-import GenericLayout from 'wix-style-react/GenericLayout';
+import GenericModalLayout from 'wix-style-react/GenericModalLayout';
 import Modal from 'wix-style-react/Modal';
 
-import styles from './ExampleStandard.scss';
+import styles from './ExampleFullscreen.scss';
 
 
-export default class ExampleStandard extends React.Component {
+export default class ExampleFullscreen extends React.Component {
   constructor() {
     super();
 
@@ -31,21 +31,22 @@ export default class ExampleStandard extends React.Component {
     return (
       <div>
         <Button
-          dataHook="open-default-generic-layout-in-modal-button"
+          dataHook="open-fullscreen-generic-modal-layout-in-modal-button"
           onClick={() => this.openModal()}
           >Open Layout in Modal</Button>
 
         <Modal
           isOpen={this.state.isModalOpened}
           onRequestClose={() => this.closeModal()}
-          contentLabel="Generic layout"
+          contentLabel="Fullscreen generic modal layout"
           shouldDisplayCloseButton
           >
-          <GenericLayout
+          <GenericModalLayout
             header={<div className={styles.header}>header</div>}
             content={<div className={styles.content}>content</div>}
             footer={<div className={styles.footer}>footer</div>}
-            dataHook="default-generic-layout"
+            fullscreen
+            dataHook="fullscreen-generic-modal-layout"
             />
         </Modal>
       </div>

@@ -3,17 +3,17 @@ import React from 'react';
 import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 
 import {isEnzymeTestkitExists, isTestkitExists} from '../../test/utils/testkit-sanity';
-import {genericLayoutTestkitFactory} from '../../testkit';
-import {genericLayoutTestkitFactory as enzymeGenericLayoutTestkitFactory} from '../../testkit/enzyme';
+import {genericModalLayoutTestkitFactory} from '../../testkit';
+import {genericModalLayoutTestkitFactory as enzymeGenericModalLayoutTestkitFactory} from '../../testkit/enzyme';
 
-import GenericLayout from './';
-import genericLayoutDriverFactory from './GenericLayout.driver';
+import GenericModalLayout from './';
+import genericModalLayoutDriverFactory from './GenericModalLayout.driver';
 
 
-const renderWithProps = (properties = {}) => <GenericLayout {...properties}/>;
+const renderWithProps = (properties = {}) => <GenericModalLayout {...properties}/>;
 
-describe('GenericLayout', () => {
-  const createDriver = createDriverFactory(genericLayoutDriverFactory);
+describe('GenericModalLayout', () => {
+  const createDriver = createDriverFactory(genericModalLayoutDriverFactory);
 
   it('should render', () => {
     const driver = createDriver(renderWithProps());
@@ -22,12 +22,12 @@ describe('GenericLayout', () => {
 
   it('should render header', () => {
     const driver = createDriver(renderWithProps({
-      header: <div data-hook="generic-layout-header">Header</div>
+      header: <div data-hook="generic-modal-layout-header">Header</div>
     }));
 
     const headerTextContent = driver
       .getElement()
-      .querySelector('[data-hook="generic-layout-header"]')
+      .querySelector('[data-hook="generic-modal-layout-header"]')
       .textContent;
 
     expect(headerTextContent).toEqual('Header');
@@ -35,12 +35,12 @@ describe('GenericLayout', () => {
 
   it('should render content', () => {
     const driver = createDriver(renderWithProps({
-      content: <div data-hook="generic-layout-content">Content</div>
+      content: <div data-hook="generic-modal-layout-content">Content</div>
     }));
 
     const contentTextContent = driver
       .getElement()
-      .querySelector('[data-hook="generic-layout-content"]')
+      .querySelector('[data-hook="generic-modal-layout-content"]')
       .textContent;
 
     expect(contentTextContent).toEqual('Content');
@@ -48,12 +48,12 @@ describe('GenericLayout', () => {
 
   it('should render footer', () => {
     const driver = createDriver(renderWithProps({
-      footer: <div data-hook="generic-layout-footer">Footer</div>
+      footer: <div data-hook="generic-modal-layout-footer">Footer</div>
     }));
 
     const footerTextContent = driver
       .getElement()
-      .querySelector('[data-hook="generic-layout-footer"]')
+      .querySelector('[data-hook="generic-modal-layout-footer"]')
       .textContent;
 
     expect(footerTextContent).toEqual('Footer');
@@ -85,13 +85,13 @@ describe('GenericLayout', () => {
 
   describe('testkit', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<GenericLayout/>, genericLayoutTestkitFactory)).toBe(true);
+      expect(isTestkitExists(<GenericModalLayout/>, genericModalLayoutTestkitFactory)).toBe(true);
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<GenericLayout/>, enzymeGenericLayoutTestkitFactory, mount)).toBe(true);
+      expect(isEnzymeTestkitExists(<GenericModalLayout/>, enzymeGenericModalLayoutTestkitFactory, mount)).toBe(true);
     });
   });
 });

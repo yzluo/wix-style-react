@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from 'wix-style-react/Button';
-import GenericLayout from 'wix-style-react/GenericLayout';
+import GenericModalLayout from 'wix-style-react/GenericModalLayout';
 import Modal from 'wix-style-react/Modal';
 
 import styles from './ExampleGeneric.scss';
@@ -41,15 +41,15 @@ export default class ExampleGeneric extends React.Component {
         <Modal
           isOpen={this.state.isModalOpened}
           onRequestClose={() => this.closeModal()}
-          contentLabel="Generic layout"
+          contentLabel="Generic Modal layout"
           shouldDisplayCloseButton
           >
-          <GenericLayout
+          <GenericModalLayout
             header={<div className={styles.header}>{header}</div>}
             content={<div className={styles.content}>{content}</div>}
             footer={<div className={styles.footer}>{footer}</div>}
             fullscreen={fullscreen}
-            dataHook="generic-layout"
+            dataHook="generic-modal-layout"
             />
         </Modal>
       </div>

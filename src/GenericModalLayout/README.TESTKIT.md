@@ -1,4 +1,4 @@
-# Generic layout TestKit API 
+# Generic Modal Layout TestKit API 
 
 ## Enzyme / ReactTestUtils TestKit API
 

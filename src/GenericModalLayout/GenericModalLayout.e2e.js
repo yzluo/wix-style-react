@@ -13,28 +13,28 @@ async function verifyItem(dataHook) {
   await eyes.checkWindow(dataHook);
 }
 
-describe('GenericLayout', () => {
+describe('GenericModalLayout', () => {
   describe('default', () => {
-    eyes.it('should open generic layout in modal', async () => {
-      const storyUrl = createStoryUrl({kind: 'Components', story: 'GenericLayout'});
+    eyes.it('should open generic modal layout in modal', async () => {
+      const storyUrl = createStoryUrl({kind: 'Components', story: 'GenericModalLayout'});
       await browser.get(storyUrl);
 
-      const button = buttonTestkitFactory({dataHook: 'open-default-generic-layout-in-modal-button'});
+      const button = buttonTestkitFactory({dataHook: 'open-default-generic-modal-layout-in-modal-button'});
 
       await button.click();
-      await verifyItem('default-generic-layout');
+      await verifyItem('default-generic-modal-layout');
     });
   });
 
   describe('fullscreen', () => {
-    eyes.it('should open fullscreen generic layout in modal', async () => {
-      const storyUrl = createStoryUrl({kind: 'Components', story: 'GenericLayout'});
+    eyes.it('should open fullscreen generic modal layout in modal', async () => {
+      const storyUrl = createStoryUrl({kind: 'Components', story: 'GenericModalLayout'});
       await browser.get(storyUrl);
 
-      const button = buttonTestkitFactory({dataHook: 'open-fullscreen-generic-layout-in-modal-button'});
+      const button = buttonTestkitFactory({dataHook: 'open-fullscreen-generic-modal-layout-in-modal-button'});
 
       await button.click();
-      await verifyItem('fullscreen-generic-layout');
+      await verifyItem('fullscreen-generic-modal-layout');
     });
   });
 });
