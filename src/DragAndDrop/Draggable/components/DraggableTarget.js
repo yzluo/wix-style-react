@@ -1,9 +1,9 @@
 import React from 'react';
 import WixComponent from '../../../BaseComponents/WixComponent';
 import PropTypes from 'prop-types';
-import {DropTarget} from 'react-dnd';
+import { DropTarget } from 'react-dnd';
 
-import {ItemTypes} from './../types';
+import { ItemTypes } from '../types';
 
 /* eslint-disable new-cap */
 
@@ -26,8 +26,12 @@ const target = {
     const monitorItem = monitor.getItem();
     const dragIndex = monitorItem.index; // position of item that we drag
     const hoverIndex = props.index; // position of item that we hover(want to put draggable item on it)
-    const isSameGroup = props.groupName && monitorItem.groupName && props.groupName === monitorItem.groupName; // check that items from same group
-    const isSameContainer = props.containerId === monitorItem.realTime.containerId; // check that items from same container
+    const isSameGroup =
+      props.groupName &&
+      monitorItem.groupName &&
+      props.groupName === monitorItem.groupName; // check that items from same group
+    const isSameContainer =
+      props.containerId === monitorItem.realTime.containerId; // check that items from same container
     /** in case that item not in same group and not from same container - do nothing */
     if (!isSameContainer && !isSameGroup) {
       return;

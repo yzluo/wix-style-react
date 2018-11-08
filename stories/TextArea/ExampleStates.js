@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Layout, Cell} from 'wix-style-react/Layout';
+import { Layout, Cell } from 'wix-style-react/Layout';
 import InputArea from 'wix-style-react/InputArea';
 import FormField from 'wix-style-react/FormField';
 
@@ -13,12 +13,12 @@ const Example = () => (
   <Layout>
     <Cell span="4">
       <FormField label="Error">
-        <InputArea {...defaultProps} error/>
+        <InputArea {...defaultProps} error />
       </FormField>
     </Cell>
     <Cell span="4">
       <FormField label="Disabled">
-        <InputArea {...defaultProps} readOnly/>
+        <InputArea {...defaultProps} readOnly />
       </FormField>
     </Cell>
   </Layout>

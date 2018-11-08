@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 
 import styles from '../Input.scss';
 
-const Unit = ({children, value}) =>
-  <div
-    className={styles.unit}
-    data-hook="unit"
-    >
+const Unit = ({ children, value }) => (
+  <div className={styles.unit} data-hook="unit">
     {value || children}
-  </div>;
+  </div>
+);
 
 Unit.displayName = 'Input.Unit';
 Unit.propTypes = {

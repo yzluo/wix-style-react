@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-let deprecationLog = function () {};
+let deprecationLog = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
   class DeprecationLogger {

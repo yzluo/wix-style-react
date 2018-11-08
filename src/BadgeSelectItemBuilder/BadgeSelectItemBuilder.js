@@ -4,18 +4,13 @@ import PropTypes from 'prop-types';
 import Text from '../Text/Text';
 
 const BadgeOption = props => {
-  const {skin, text} = props;
+  const { skin, text } = props;
 
   return (
-    <div {...styles('root', {skin}, props)}>
-      <div className={styles.marker}/>
+    <div {...styles('root', { skin }, props)}>
+      <div className={styles.marker} />
       <span className={styles.label}>
-        <Text
-          size="small"
-          skin="standard"
-          tagName="span"
-          weight="normal"
-          >
+        <Text size="small" skin="standard" tagName="span" weight="normal">
           {text}
         </Text>
       </span>
@@ -28,7 +23,7 @@ BadgeOption.propTypes = {
   skin: PropTypes.string.isRequired
 };
 
-export const badgeSelectItemBuilder = ({id, text, skin}) => ({
+export const badgeSelectItemBuilder = ({ id, text, skin }) => ({
   id,
-  value: <BadgeOption skin={skin} text={text}/>
+  value: <BadgeOption skin={skin} text={text} />
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import {bool, node} from 'prop-types';
+import { bool, node } from 'prop-types';
 
 import Divider from '../Divider';
 import styles from './Header.scss';
@@ -35,20 +35,20 @@ class Header extends WixComponent {
   };
 
   render() {
-    const {title, subtitle, withoutDivider, suffix} = this.props;
+    const { title, subtitle, withoutDivider, suffix } = this.props;
 
     return (
       <div>
         <div className={styles.wrapper}>
           <div>
             {isString(title) ? (
-              <Heading dataHook="title" appearance="H3" children={title}/>
+              <Heading dataHook="title" appearance="H3" children={title} />
             ) : (
               <span data-hook="title">{title}</span>
             )}
 
             {subtitle && isString(subtitle) ? (
-              <Text dataHook="subtitle" children={subtitle} secondary/>
+              <Text dataHook="subtitle" children={subtitle} secondary />
             ) : (
               <span data-hook="subtitle">{subtitle}</span>
             )}
@@ -59,11 +59,11 @@ class Header extends WixComponent {
               data-hook="suffix"
               className={styles.suffix}
               children={suffix}
-              />
+            />
           )}
         </div>
 
-        {!withoutDivider && <Divider/>}
+        {!withoutDivider && <Divider />}
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './ScrollBar.scss';
 
@@ -37,13 +37,7 @@ class ExampleStandard extends Component {
   };
 
   render() {
-    return (
-      <div
-        className={styles.root}
-        >
-        {bigContent}
-      </div>
-    );
+    return <div className={styles.root}>{bigContent}</div>;
   }
 }
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Tail = ({children, minimized}) => React.cloneElement(children, {minimized});
+const Tail = ({ children, minimized }) =>
+  React.cloneElement(children, { minimized });
 
 Tail.displayName = 'Page.Tail';
 

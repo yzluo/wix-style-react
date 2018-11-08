@@ -7,7 +7,7 @@ import defaultDndStyles from 'wix-style-react/dnd-styles';
 
 import styles from './SingleAreaList.scss';
 
-const generateId = () => Math.floor((Math.random() * 100000));
+const generateId = () => Math.floor(Math.random() * 100000);
 
 export default class SingleAreaList extends React.Component {
   static propTypes = {
@@ -39,7 +39,7 @@ export default class SingleAreaList extends React.Component {
     ]
   };
 
-  handleDrop = ({removedIndex, addedIndex}) => {
+  handleDrop = ({ removedIndex, addedIndex }) => {
     const nextItems = [...this.state.items];
     nextItems.splice(addedIndex, 0, ...nextItems.splice(removedIndex, 1));
     this.setState({
@@ -47,29 +47,33 @@ export default class SingleAreaList extends React.Component {
     });
   };
 
-  renderHandle({connectHandle, id, isPlaceholder}) {
+  renderHandle({ connectHandle, id, isPlaceholder }) {
     return connectHandle(
-      <div className={styles.handle} style={{opacity: isPlaceholder ? 0 : 1}} data-hook={`card-${id}-handle`}>
+      <div
+        className={styles.handle}
+        style={{ opacity: isPlaceholder ? 0 : 1 }}
+        data-hook={`card-${id}-handle`}
+      >
         Drag Handle
-      </div>
+      </div>,
     );
   }
 
-
-  renderItem = ({isPlaceholder, isPreview, id, connectHandle, item}) => {
-    const classes = classNames(
-      classNames(defaultDndStyles.item, styles.item),
-      {
-        [classNames(defaultDndStyles.itemPlaceholder, styles.placeholder)]: isPlaceholder,
-        [classNames(defaultDndStyles.itemPreview, styles.preview)]: isPreview
-      });
+  renderItem = ({ isPlaceholder, isPreview, id, connectHandle, item }) => {
+    const classes = classNames(classNames(defaultDndStyles.item, styles.item), {
+      [classNames(
+        defaultDndStyles.itemPlaceholder,
+        styles.placeholder,
+      )]: isPlaceholder,
+      [classNames(defaultDndStyles.itemPreview, styles.preview)]: isPreview
+    });
 
     return (
       <div className={classes} data-hook={`item-${id}`}>
         {item.text}
-        {
-          this.props.withHandle ? this.renderHandle({connectHandle, id, isPlaceholder}) : null
-        }
+        {this.props.withHandle
+          ? this.renderHandle({ connectHandle, id, isPlaceholder })
+          : null}
       </div>
     );
   };
@@ -86,9 +90,8 @@ export default class SingleAreaList extends React.Component {
           items={this.state.items}
           renderItem={this.renderItem}
           onDrop={this.handleDrop}
-          />
+        />
       </div>
     );
   }
 }
-

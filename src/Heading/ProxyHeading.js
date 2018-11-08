@@ -1,15 +1,18 @@
 import React from 'react';
-import {bool} from 'prop-types';
-import {createHOC} from 'wix-ui-core/dist/src/createHOC';
+import { bool } from 'prop-types';
+import { createHOC } from 'wix-ui-core/dist/src/createHOC';
 import Heading from './Heading';
-import {withEllipsedTooltip} from 'wix-ui-core/dist/src/hocs/EllipsedTooltip';
+import { withEllipsedTooltip } from 'wix-ui-core/dist/src/hocs/EllipsedTooltip';
 import ellipsedStyle from '../common/EllipsedTooltip/EllipsedTooltip.st.css';
 
-const EllipsedHeading = withEllipsedTooltip({showTooltip: true})(Heading);
+const EllipsedHeading = withEllipsedTooltip({ showTooltip: true })(Heading);
 
-const ProxyHeading = ({ellipsis, ...props}) => ellipsis ?
-  <EllipsedHeading {...ellipsedStyle('root', {}, props)} {...props}/> :
-  <Heading {...props}/>;
+const ProxyHeading = ({ ellipsis, ...props }) =>
+  ellipsis ? (
+    <EllipsedHeading {...ellipsedStyle('root', {}, props)} {...props} />
+  ) : (
+    <Heading {...props} />
+  );
 
 ProxyHeading.propTypes = {
   ...Heading.propTypes,

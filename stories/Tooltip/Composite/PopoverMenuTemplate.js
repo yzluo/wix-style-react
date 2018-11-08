@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import reactElementToJSXString from 'react-element-to-jsx-string';
@@ -12,7 +12,6 @@ import {
 import * as Icons from 'wix-style-react/new-icons';
 
 class PopoverMenuTemplate extends Component {
-
   static propTypes = {
     menuItems: PropTypes.array.isRequired,
     size: PopoverMenu.propTypes.size,
@@ -44,9 +43,10 @@ class PopoverMenuTemplate extends Component {
         placement={this.props.placement}
         buttonTheme={this.props.buttonTheme}
         maxWidth={this.props.maxWidth}
-        >
-        {
-          this.props.menuItems.filter(menuItem => menuItem.iconName).map((menuItem, i) => (
+      >
+        {this.props.menuItems
+          .filter(menuItem => menuItem.iconName)
+          .map((menuItem, i) => (
             <PopoverMenuItem
               dataHook={POPOVER_MENU_ITEM_DATA_HOOK}
               key={i}
@@ -54,9 +54,8 @@ class PopoverMenuTemplate extends Component {
               text={menuItem.text}
               disabled={menuItem.disabled}
               onClick={() => console.log(`menu item ${i} clicked`)}
-              />
-          ))
-        }
+            />
+          ))}
       </PopoverMenu>
     );
   }

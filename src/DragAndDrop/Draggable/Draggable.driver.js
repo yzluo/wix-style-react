@@ -1,4 +1,4 @@
-const draggableDriverFactory = ({element, wrapper, component}) => {
+const draggableDriverFactory = ({ element, wrapper, component }) => {
   return {
     wrapper,
     exists: () => !!element,

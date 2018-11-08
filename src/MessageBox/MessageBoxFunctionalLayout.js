@@ -21,25 +21,32 @@ class MessageBoxFunctionalLayout extends WixComponent {
 
   componentWillUnmount() {
     if (this.state.hasScroll) {
-      this.messageBoxRef.removeEventListener('scroll', this._handleMessageBoxScroll);
+      this.messageBoxRef.removeEventListener(
+        'scroll',
+        this._handleMessageBoxScroll,
+      );
     }
   }
 
   _initializeMessageBoxRef = el => {
     if (el && el.scrollHeight > el.clientHeight) {
-      this.setState({hasScroll: true});
+      this.setState({ hasScroll: true });
 
       this.messageBoxRef = el;
-      this.messageBoxRef.addEventListener('scroll', this._handleMessageBoxScroll);
+      this.messageBoxRef.addEventListener(
+        'scroll',
+        this._handleMessageBoxScroll,
+      );
     }
   };
 
   _handleMessageBoxScroll = throttle(() => {
     const scrolledToBottom =
-      this.messageBoxRef.scrollTop + this.messageBoxRef.clientHeight === this.messageBoxRef.scrollHeight;
+      this.messageBoxRef.scrollTop + this.messageBoxRef.clientHeight ===
+      this.messageBoxRef.scrollHeight;
 
     if (scrolledToBottom !== this.state.scrolledToBottom) {
-      this.setState({scrolledToBottom});
+      this.setState({ scrolledToBottom });
     }
   }, 16);
 
@@ -67,68 +74,60 @@ class MessageBoxFunctionalLayout extends WixComponent {
       sideActions,
       image
     } = this.props;
-    const {hasScroll, scrolledToBottom} = this.state;
+    const { hasScroll, scrolledToBottom } = this.state;
 
-    const messageBoxBodyClassNames = classNames(
-      styles.body,
-      {
-        [styles.scrollable]: typeof maxHeight !== 'undefined',
-        [styles.noPadding]: noBodyPadding,
-        [styles.fullscreenBody]: fullscreen,
-        [styles.noFooter]: hideFooter,
-        [styles.footerBorder]: hasScroll && !scrolledToBottom,
-        [styles.withEmptyState]: withEmptyState
-      }
-    );
+    const messageBoxBodyClassNames = classNames(styles.body, {
+      [styles.scrollable]: typeof maxHeight !== 'undefined',
+      [styles.noPadding]: noBodyPadding,
+      [styles.fullscreenBody]: fullscreen,
+      [styles.noFooter]: hideFooter,
+      [styles.footerBorder]: hasScroll && !scrolledToBottom,
+      [styles.withEmptyState]: withEmptyState
+    });
 
     const messageBoxBodyStyle = {
       maxHeight
     };
 
-    const contentClassName = classNames(
-      styles.content,
-      {
-        [styles.fullscreenContent]: fullscreen
-      }
-    );
+    const contentClassName = classNames(styles.content, {
+      [styles.fullscreenContent]: fullscreen
+    });
 
-    const imageClassName = classNames(
-      styles.image,
-      {
-        [styles.withFooterAction]: sideActions,
-        [styles.noPadding]: noBodyPadding
-      }
-    );
+    const imageClassName = classNames(styles.image, {
+      [styles.withFooterAction]: sideActions,
+      [styles.noPadding]: noBodyPadding
+    });
 
     return (
-      <div className={contentClassName} style={{width}}>
+      <div className={contentClassName} style={{ width }}>
         <HeaderLayout
           title={title}
           onCancel={onClose ? onClose : onCancel}
           theme={theme}
           closeButton={closeButton}
-          />
-        {image && !withEmptyState ?
+        />
+        {image && !withEmptyState ? (
           <div className={styles.messageWithImage}>
-            <div className={imageClassName} children={image}/>
+            <div className={imageClassName} children={image} />
             <div
               data-hook="message-box-body"
               className={messageBoxBodyClassNames}
               style={messageBoxBodyStyle}
               ref={this._initializeMessageBoxRef}
-              >
+            >
               {children}
             </div>
-          </div> :
+          </div>
+        ) : (
           <div
             data-hook="message-box-body"
             className={messageBoxBodyClassNames}
             style={messageBoxBodyStyle}
             ref={this._initializeMessageBoxRef}
-            >
+          >
             {children}
           </div>
-        }
+        )}
         {!hideFooter ? (
           <FooterLayout
             bottomChildren={footerBottomChildren}
@@ -141,7 +140,7 @@ class MessageBoxFunctionalLayout extends WixComponent {
             onOk={onOk}
             theme={theme}
             sideActions={sideActions}
-            />
+          />
         ) : null}
       </div>
     );

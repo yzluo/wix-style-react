@@ -14,7 +14,7 @@ export default {
   componentProps: setProps => ({
     dataHook: settings.dataHook,
     onChange: value => {
-      setProps({value});
+      setProps({ value });
     }
   })
   // TODO: Add old example. It has a nice live output box.

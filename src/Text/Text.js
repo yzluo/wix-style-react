@@ -1,5 +1,5 @@
 import React from 'react';
-import {oneOf, bool, string, any} from 'prop-types';
+import { oneOf, bool, string, any } from 'prop-types';
 import style from './Text.st.css';
 import deprecationLog from '../utils/deprecationLog';
 import omit from 'lodash/omit';
@@ -28,33 +28,41 @@ export const WEIGHTS = {
   bold: 'bold'
 };
 
-const Text = ({size, secondary, skin, light, bold, weight, tagName, children, ...rest}) => {
+const Text = ({
+  size,
+  secondary,
+  skin,
+  light,
+  bold,
+  weight,
+  tagName,
+  children,
+  ...rest
+}) => {
   if (bold !== undefined) {
     deprecationLog('Text prop "bold" is deprecated, use "weight" prop instead');
   } else {
     bold = false;
   }
 
-  return (
-    React.createElement(
-      tagName,
-      {
-        ...omit(rest, ['dataHook']),
-        ...style(
-          'root',
-          {
-            size,
-            secondary,
-            skin,
-            light: light && skin === SKINS.standard,
-            weight,
-            bold
-          },
-          rest
-        )
-      },
-      children
-    )
+  return React.createElement(
+    tagName,
+    {
+      ...omit(rest, ['dataHook']),
+      ...style(
+        'root',
+        {
+          size,
+          secondary,
+          skin,
+          light: light && skin === SKINS.standard,
+          weight,
+          bold
+        },
+        rest,
+      )
+    },
+    children,
   );
 };
 

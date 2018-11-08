@@ -1,4 +1,4 @@
-import {mergeDrivers} from '../../test/utils/private-drivers';
+import { mergeDrivers } from '../../test/utils/private-drivers';
 import focusableDriverFactory from '../common/Focusable/Focusable.protractor.driver';
 
 const addItemDriverFactory = element => {

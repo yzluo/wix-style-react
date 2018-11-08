@@ -4,10 +4,9 @@ import RadioGroup from '../src/RadioGroup';
 const exampleChildren = [
   {
     label: '4 radios',
-    value:
-      [1, 2, 3, 4].map(n =>
-        <RadioGroup.Radio key={n} value={n} children={`Option ${n}`}/>
-      )
+    value: [1, 2, 3, 4].map(n => (
+      <RadioGroup.Radio key={n} value={n} children={`Option ${n}`} />
+    ))
   },
   {
     label: '2 radios',
@@ -28,7 +27,8 @@ const exampleOptions = [
   {
     label: 'none disabled',
     value: []
-  }, {
+  },
+  {
     label: 'with disabled options',
     value: [1, 2]
   }
@@ -45,7 +45,7 @@ export default {
     hasError: false,
     size: 'medium',
     children: exampleChildren[0].value,
-    onChange: value => setState({value}),
+    onChange: value => setState({ value }),
     dataHook: 'storybook-radiogroup'
   }),
 

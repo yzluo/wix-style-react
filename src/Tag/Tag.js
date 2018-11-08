@@ -7,7 +7,7 @@ import WixComponent from '../BaseComponents/WixComponent';
 import Text from '../Text';
 import noop from 'lodash/noop';
 import deprecationLog from '../utils/deprecationLog';
-import {dataHooks} from './Tag.helpers';
+import { dataHooks } from './Tag.helpers';
 
 const useOldMarginsDeprecationMessage = `You're using the <Tag/> component with margins which are incorrect. Pass 'useOldMargins={false}' prop in order to remove them. They will be removed in the next major version`;
 
@@ -32,46 +32,63 @@ class Tag extends WixComponent {
   }
 
   _renderThumb() {
-    const {thumb} = this.props;
+    const { thumb } = this.props;
     return thumb ? <span className={styles.thumb}>{thumb}</span> : null;
   }
 
   _renderText() {
-    const {size, wrap, children} = this.props;
+    const { size, wrap, children } = this.props;
     const classes = classNames({
       [styles.tagTextEllipsis]: wrap
     });
 
     return (
-      <Text className={classes} size={tagToTextSize[size]} weight={size === 'tiny' ? 'thin' : 'normal'} dataHook={dataHooks.text}>
+      <Text
+        className={classes}
+        size={tagToTextSize[size]}
+        weight={size === 'tiny' ? 'thin' : 'normal'}
+        dataHook={dataHooks.text}
+      >
         {children}
       </Text>
     );
   }
 
   _renderRemoveButton() {
-    const {removable, disabled, size} = this.props;
+    const { removable, disabled, size } = this.props;
     if (removable && !disabled) {
-      return (<CloseButton
-        size={size === 'large' ? 'large' : 'small'}
-        theme="close-dark"
-        dataHook={dataHooks.removeButton}
-        className={styles.removeButton}
-        onClick={this._handleRemoveClick}
-        />);
+      return (
+        <CloseButton
+          size={size === 'large' ? 'large' : 'small'}
+          theme="close-dark"
+          dataHook={dataHooks.removeButton}
+          className={styles.removeButton}
+          onClick={this._handleRemoveClick}
+        />
+      );
     } else {
       return null;
     }
   }
 
   _handleRemoveClick = event => {
-    const {onRemove, id} = this.props;
+    const { onRemove, id } = this.props;
     event.stopPropagation();
     onRemove(id);
   };
 
   _getClassName() {
-    const {thumb, removable, size, wrap, disabled, theme, useOldMargins, className, onClick} = this.props;
+    const {
+      thumb,
+      removable,
+      size,
+      wrap,
+      disabled,
+      theme,
+      useOldMargins,
+      className,
+      onClick
+    } = this.props;
     return classNames(
       styles.root,
       className,
@@ -84,12 +101,12 @@ class Tag extends WixComponent {
         [styles.tagEllipsis]: wrap,
         [styles.disabled]: disabled,
         [styles.clickable]: onClick !== noop
-      }
+      },
     );
   }
 
   render() {
-    const {id, children, onClick, wrap, maxWidth} = this.props;
+    const { id, children, onClick, wrap, maxWidth } = this.props;
 
     return (
       <span
@@ -97,8 +114,8 @@ class Tag extends WixComponent {
         id={id}
         title={wrap ? children : ''}
         onClick={() => onClick(id)}
-        style={{maxWidth: `${maxWidth}px`}}
-        >
+        style={{ maxWidth: `${maxWidth}px` }}
+      >
         {this._renderThumb()}
         {this._renderText()}
         {this._renderRemoveButton()}

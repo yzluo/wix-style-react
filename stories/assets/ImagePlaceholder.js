@@ -8,5 +8,5 @@ export default () => (
       backgroundColor: '#dfe5eb',
       borderRadius: '50%'
     }}
-    />
+  />
 );

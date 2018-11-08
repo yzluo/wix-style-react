@@ -17,24 +17,30 @@ const defaultProps = {
   unit: '$'
 };
 
-const Example = ({theme}) =>
+const Example = ({ theme }) => (
   <div>
     <div style={style}>
       Small
-      <Input theme={theme} {...defaultProps} size="small"/><br/>
-      <Input theme={theme} {...defaultProps} size="small" error/>
+      <Input theme={theme} {...defaultProps} size="small" />
+      <br />
+      <Input theme={theme} {...defaultProps} size="small" error />
     </div>
     <div style={style}>
-      Normal<br/>
-      <Input theme={theme} {...defaultProps} size="normal"/><br/>
-      <Input theme={theme} {...defaultProps} size="normal" error/>
+      Normal
+      <br />
+      <Input theme={theme} {...defaultProps} size="normal" />
+      <br />
+      <Input theme={theme} {...defaultProps} size="normal" error />
     </div>
     <div style={style}>
-      Large<br/>
-      <Input theme={theme} {...defaultProps} size="large"/><br/>
-      <Input theme={theme} {...defaultProps} size="large" error/>
+      Large
+      <br />
+      <Input theme={theme} {...defaultProps} size="large" />
+      <br />
+      <Input theme={theme} {...defaultProps} size="large" error />
     </div>
-  </div>;
+  </div>
+);
 
 Example.propTypes = {
   theme: PropTypes.string

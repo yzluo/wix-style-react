@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Col, Row} from 'wix-style-react/Grid';
+import { Col, Row } from 'wix-style-react/Grid';
 import Heading from 'wix-style-react/Heading';
 import Text from 'wix-style-react/Text';
 import AddItem from 'wix-style-react/AddItem';
@@ -20,7 +20,7 @@ export default () => (
                 backgroundColor: '#dfe5eb',
                 borderRadius: '50%'
               }}
-              />
+            />
           </CenterElements>
           <CenterElements>
             <Heading appearance="H4">Clark Broke</Heading>
@@ -35,7 +35,7 @@ export default () => (
   </Row>
 );
 
-const CenterElements = ({children}) => (
+const CenterElements = ({ children }) => (
   <div
     style={{
       display: 'flex',
@@ -43,7 +43,7 @@ const CenterElements = ({children}) => (
       alignItems: 'center',
       padding: '15px'
     }}
-    >
+  >
     {children}
   </div>
 );

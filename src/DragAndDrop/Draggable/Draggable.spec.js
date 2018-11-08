@@ -2,16 +2,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TestBackend from 'react-dnd-test-backend';
-import {DraggableSource} from './Draggable';
-import {DragDropContextProvider} from 'react-dnd';
+import { DraggableSource } from './Draggable';
+import { DragDropContextProvider } from 'react-dnd';
 
-import {draggableTestkitFactory as enzymeDraggableTestkitFactory} from '../../../testkit/enzyme';
-import {mount} from 'enzyme';
+import { draggableTestkitFactory as enzymeDraggableTestkitFactory } from '../../../testkit/enzyme';
+import { mount } from 'enzyme';
 
 describe('Draggable', () => {
   xit('is draggable', async () => {
     const dataHook = 'draggable-content';
-    const render = ({isPlaceholder}) => (isPlaceholder ? <div data-hook={dataHook}/> : null);
+    const render = ({ isPlaceholder }) =>
+      isPlaceholder ? <div data-hook={dataHook} /> : null;
 
     render.propTypes = {
       isPlaceholder: PropTypes.bool
@@ -25,11 +26,14 @@ describe('Draggable', () => {
 
     const wrapper = mount(
       <DragDropContextProvider backend={TestBackend}>
-        <DraggableSource {...props}/>
-      </DragDropContextProvider>
+        <DraggableSource {...props} />
+      </DragDropContextProvider>,
     );
 
-    const testkit = enzymeDraggableTestkitFactory({dataHook: 'draggable', wrapper});
+    const testkit = enzymeDraggableTestkitFactory({
+      dataHook: 'draggable',
+      wrapper
+    });
 
     console.info(wrapper.instance());
 

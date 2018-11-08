@@ -27,14 +27,15 @@ const getFormattedStreetAddress = address => {
 
 export function google2address(google) {
   const components = {};
-  google.address_components.forEach(({types, long_name, short_name}) => {
+  google.address_components.forEach(({ types, long_name, short_name }) => {
     types.forEach(type => {
-      components[type] = {long_name, short_name};
+      components[type] = { long_name, short_name };
     });
   });
 
-  const locality = components.locality || components.sublocality || components.postal_town;
-  const {lat, lng} = google.geometry.location;
+  const locality =
+    components.locality || components.sublocality || components.postal_town;
+  const { lat, lng } = google.geometry.location;
 
   const result = {
     formatted: google.formatted_address,
@@ -43,9 +44,13 @@ export function google2address(google) {
       lat: locationFuncOrValue(lat),
       lng: locationFuncOrValue(lng)
     },
-    approximate: (!includes(google.types, 'street_address') && (!includes(google.types, 'premise'))),
+    approximate:
+      !includes(google.types, 'street_address') &&
+      !includes(google.types, 'premise'),
     city: locality && locality.long_name,
-    state: components.administrative_area_level_1 && components.administrative_area_level_1.short_name,
+    state:
+      components.administrative_area_level_1 &&
+      components.administrative_area_level_1.short_name,
     country: components.country && components.country.long_name,
     countryCode: components.country && components.country.short_name,
     street: components.route && components.route.long_name,
@@ -65,7 +70,9 @@ export function google2address(google) {
 
 export const trySetStreetNumberIfNotReceived = (google, inputValue) => {
   const addressParts = inputValue.match(/^\d+[ -/]*\d*[^\D]/);
-  const hasStreetNumber = google.address_components.some(address => address.types.some(t => t === 'street_number'));
+  const hasStreetNumber = google.address_components.some(address =>
+    address.types.some(t => t === 'street_number'),
+  );
   if (hasStreetNumber || !addressParts) {
     return google;
   }

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import FloatingHelperContent from '../../src/FloatingHelper/FloatingHelperContent';
-import {storySettings} from './StorySettings';
+import { storySettings } from './StorySettings';
 import Image from 'wix-ui-icons-common/Image';
 
-const image = <Image width="102" height="102"/>;
+const image = <Image width="102" height="102" />;
 
 const componentProps = {
   title: 'This is the title',
@@ -16,16 +16,17 @@ export default {
   category: storySettings.kind,
   storyName: storySettings.story,
   component: FloatingHelperContent,
-  componentPath: '../../node_modules/wix-ui-backoffice/src/components/FloatingHelper/FloatingHelperContent/FloatingHelperContent.tsx',
+  componentPath:
+    '../../node_modules/wix-ui-backoffice/src/components/FloatingHelper/FloatingHelperContent/FloatingHelperContent.tsx',
   displayName: 'FloatingHelper.Content',
   componentProps,
   exampleProps: {
-    onActionClick: () => {/** see interactive preview*/ },
+    onActionClick: () => {
+      /** see interactive preview*/
+    },
     actionTheme: ['white', 'premium'],
-    image: [{label: 'with image', value: image}]
+    image: [{ label: 'with image', value: image }]
   },
-  exampleImport: 'import ... - do not import directly, use FloatingHelper.Content'
+  exampleImport:
+    'import ... - do not import directly, use FloatingHelper.Content'
 };
-
-
-

@@ -1,4 +1,4 @@
-import {SCROLL_TOP_THRESHOLD} from './constants';
+import { SCROLL_TOP_THRESHOLD } from './constants';
 
 const titleElement = component =>
   component.$(`[data-hook="page-header-title"]`);
@@ -10,7 +10,7 @@ const pageDriverFactory = component => {
     const element = scrollableContentElement(component);
     await browser.executeScript(
       `arguments[0].scrollTop = ${offset};`,
-      await element.getWebElement()
+      await element.getWebElement(),
     );
   };
 

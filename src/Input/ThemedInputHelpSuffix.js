@@ -8,13 +8,13 @@ import InfoCircle from '../new-icons/InfoCircle';
 import styles from './Input.scss';
 
 const placementToMoveBy = {
-  right: {x: 10, y: -10},
-  left: {x: -10, y: -10},
-  top: {x: 0, y: -5},
-  bottom: {x: 0, y: -15}
+  right: { x: 10, y: -10 },
+  left: { x: -10, y: -10 },
+  top: { x: 0, y: -5 },
+  bottom: { x: 0, y: -15 }
 };
 
-const AmaterialHelpSuffix = ({help, helpMessage, placement, onShow}) =>
+const AmaterialHelpSuffix = ({ help, helpMessage, placement, onShow }) => (
   <Tooltip
     dataHook="input-tooltip"
     disabled={!help || helpMessage.length === 0}
@@ -27,9 +27,12 @@ const AmaterialHelpSuffix = ({help, helpMessage, placement, onShow}) =>
     textAlign="left"
     overlay=""
     onShow={onShow}
-    >
-    <div className={styles.amaterialHelp}><InfoCircle height="30" width="30"/></div>
-  </Tooltip>;
+  >
+    <div className={styles.amaterialHelp}>
+      <InfoCircle height="30" width="30" />
+    </div>
+  </Tooltip>
+);
 
 AmaterialHelpSuffix.propTypes = {
   help: PropTypes.bool,
@@ -42,14 +45,26 @@ AmaterialHelpSuffix.defaultProps = {
   placement: 'right'
 };
 
-
 class ThemedInputHelpSuffix extends InputHelpSuffix {
   render() {
-    const {theme, help, helpMessage, tooltipPlacement, onTooltipShow} = this.props;
+    const {
+      theme,
+      help,
+      helpMessage,
+      tooltipPlacement,
+      onTooltipShow
+    } = this.props;
 
-    return theme === 'amaterial' ?
-      <AmaterialHelpSuffix help={help} helpMessage={helpMessage} placement={tooltipPlacement} onShow={onTooltipShow}/> :
-      super.render();
+    return theme === 'amaterial' ? (
+      <AmaterialHelpSuffix
+        help={help}
+        helpMessage={helpMessage}
+        placement={tooltipPlacement}
+        onShow={onTooltipShow}
+      />
+    ) : (
+      super.render()
+    );
   }
 }
 
@@ -57,6 +72,5 @@ ThemedInputHelpSuffix.propTypes = {
   tooltipPlacement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
   onTooltipShow: PropTypes.func
 };
-
 
 export default ThemedInputHelpSuffix;

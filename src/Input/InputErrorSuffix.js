@@ -7,7 +7,9 @@ import styles from './Input.scss';
 
 class InputErrorSuffix extends React.Component {
   render() {
-    const classes = classNames(styles.exclamation, {[styles.narrow]: this.props.narrow});
+    const classes = classNames(styles.exclamation, {
+      [styles.narrow]: this.props.narrow
+    });
     return (
       <Tooltip
         dataHook="input-tooltip"
@@ -21,8 +23,10 @@ class InputErrorSuffix extends React.Component {
         maxWidth="230px"
         hideDelay={150}
         zIndex={10000}
-        >
-        <div className={classes}><FormFieldErrorFilled/></div>
+      >
+        <div className={classes}>
+          <FormFieldErrorFilled />
+        </div>
       </Tooltip>
     );
   }

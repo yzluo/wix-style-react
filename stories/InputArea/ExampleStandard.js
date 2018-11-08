@@ -8,10 +8,27 @@ const style = {
   lineHeight: '22px'
 };
 
-export default () =>
-  <div style={{display: 'flex'}}>
-    <div style={style}>InputArea<br/><InputArea resizable/></div>
-    <div style={style}>Focus<br/><InputArea forceFocus resizable/></div>
-    <div style={style}>Hover<br/><InputArea forceHover resizable/></div>
-    <div style={style}>With placeholder<br/><InputArea placeholder="duyg" resizable/></div>
-  </div>;
+export default () => (
+  <div style={{ display: 'flex' }}>
+    <div style={style}>
+      InputArea
+      <br />
+      <InputArea resizable />
+    </div>
+    <div style={style}>
+      Focus
+      <br />
+      <InputArea forceFocus resizable />
+    </div>
+    <div style={style}>
+      Hover
+      <br />
+      <InputArea forceHover resizable />
+    </div>
+    <div style={style}>
+      With placeholder
+      <br />
+      <InputArea placeholder="duyg" resizable />
+    </div>
+  </div>
+);

@@ -14,9 +14,9 @@ const rootHelper = (props, stylesObject) => ({
 
 const InfoIcon = props => (
   <div {...rootHelper(props, styles)}>
-    <Tooltip theme="dark" moveBy={{y: 6}} {...props.tooltipProps}>
+    <Tooltip theme="dark" moveBy={{ y: 6 }} {...props.tooltipProps}>
       <div>
-        <InfoCircle size="24px"/>
+        <InfoCircle size="24px" />
       </div>
     </Tooltip>
   </div>

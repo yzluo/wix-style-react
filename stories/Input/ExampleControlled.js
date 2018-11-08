@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Input from 'wix-style-react/Input';
 
@@ -19,7 +19,7 @@ class ControlledInput extends Component {
   };
 
   render() {
-    const onChange = event => this.setState({value: event.target.value});
+    const onChange = event => this.setState({ value: event.target.value });
 
     return (
       <Input
@@ -27,16 +27,17 @@ class ControlledInput extends Component {
         error={this.state.value === 'Starwars'}
         value={this.state.value}
         onChange={onChange}
-        />
+      />
     );
   }
 }
 
-const Example = ({theme}) =>
+const Example = ({ theme }) => (
   <div style={style}>
     <span>This shows an error for &quot;Starwars&quot;</span>
-    <ControlledInput theme={theme}/>
-  </div>;
+    <ControlledInput theme={theme} />
+  </div>
+);
 
 Example.propTypes = {
   theme: PropTypes.string

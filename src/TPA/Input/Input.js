@@ -1,15 +1,14 @@
 import React from 'react';
-import {string, bool} from 'prop-types';
+import { string, bool } from 'prop-types';
 import classNames from 'classnames';
 import WixComponent from '../../BaseComponents/WixComponent';
 import tpaStyleInjector from '../TpaStyleInjector';
 import omit from 'omit';
 
-let styles = {locals: {}};
+let styles = { locals: {} };
 try {
   styles = require('!css-loader?modules&camelCase&localIdentName="[path][name]__[local]__[hash:base64:5]"!sass-loader!./Input.scss');
-} catch (e) {
-}
+} catch (e) {}
 
 class Input extends WixComponent {
   static propTypes = {
@@ -37,7 +36,26 @@ class Input extends WixComponent {
 
   render() {
     const errorClassName = this.props.error === true ? this.errorClassName : '';
-    return (<input className={classNames(styles.locals.input, this.props.inputClassName, errorClassName)} {...omit(['injectedStyles', 'styles', 'errorClassName', 'inputClassName', 'error', 'dataHook'], this.props)}/>);
+    return (
+      <input
+        className={classNames(
+          styles.locals.input,
+          this.props.inputClassName,
+          errorClassName,
+        )}
+        {...omit(
+          [
+            'injectedStyles',
+            'styles',
+            'errorClassName',
+            'inputClassName',
+            'error',
+            'dataHook'
+          ],
+          this.props,
+        )}
+      />
+    );
   }
 }
 

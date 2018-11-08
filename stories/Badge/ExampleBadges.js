@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as styles from './ExampleBadges.scss';
 
 import Badge from 'wix-style-react/Badge';
-import {SIZE, SKIN, TYPE} from 'wix-style-react/Badge';
+import { SIZE, SKIN, TYPE } from 'wix-style-react/Badge';
 
 const skins = Object.keys(SKIN);
 const sizes = Object.keys(SIZE);
@@ -14,22 +14,23 @@ const typesString = types.join(', ');
 const renderBadge = props => (
   <span className={styles.option}>
     <Badge {...props}>Some Badge</Badge>
-  </span>);
+  </span>
+);
 
-
-const renderTypes = props => (types.map(type => renderBadge({type, ...props})));
-const renderSizes = props => (sizes.map(size => renderTypes({size, ...props})));
+const renderTypes = props => types.map(type => renderBadge({ type, ...props }));
+const renderSizes = props => sizes.map(size => renderTypes({ size, ...props }));
 
 export default () => (
   <div data-hook="badge-variations">
     {skins.map(skin => (
       <div key={skin}>
-          skin: {skin} | sizes: {sizesString} | types: {typesString} | upppercase: true, false
-          <div className={styles.wrapper} key={skin}>
-            {renderSizes({skin})}
-            {renderBadge({uppercase: false, skin})}
-          </div>
+        skin: {skin} | sizes: {sizesString} | types: {typesString} | upppercase:
+        true, false
+        <div className={styles.wrapper} key={skin}>
+          {renderSizes({ skin })}
+          {renderBadge({ uppercase: false, skin })}
+        </div>
       </div>
-      )
-    )}
-  </div>);
+    ))}
+  </div>
+);

@@ -12,7 +12,7 @@ const Example = () => (
         theme: 'fullblue',
         onClick: () => window.alert('Primary action was triggered!')
       }}
-      />
+    />
   </div>
 );
 

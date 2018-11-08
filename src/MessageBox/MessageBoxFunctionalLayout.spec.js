@@ -1,13 +1,15 @@
 import React from 'react';
 import MessageBoxFunctionalLayout from './MessageBoxFunctionalLayout';
 import MessageBoxFunctionalLayoutFactory from './MessageBoxFunctionalLayout.driver';
-import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
+import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import sinon from 'sinon';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
-import {messageBoxFunctionalLayoutTestkitFactory} from '../../testkit';
-import {messageBoxFunctionalLayoutTestkitFactory as enzymeMessageBoxTestkitFactory} from '../../testkit/enzyme';
-import {mount} from 'enzyme';
-
+import {
+  isTestkitExists,
+  isEnzymeTestkitExists
+} from '../../test/utils/testkit-sanity';
+import { messageBoxFunctionalLayoutTestkitFactory } from '../../testkit';
+import { messageBoxFunctionalLayoutTestkitFactory as enzymeMessageBoxTestkitFactory } from '../../testkit/enzyme';
+import { mount } from 'enzyme';
 
 describe('MessageBox', () => {
   const createDriver = createDriverFactory(MessageBoxFunctionalLayoutFactory);
@@ -16,7 +18,7 @@ describe('MessageBox', () => {
       const props = {
         confirmText: 'confirmText'
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getConfirmationButtonText()).toBe(props.confirmText);
     });
 
@@ -24,7 +26,7 @@ describe('MessageBox', () => {
       const props = {
         cancelText: 'cancelText'
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getCancellationButtonText()).toBe(props.cancelText);
     });
 
@@ -33,7 +35,7 @@ describe('MessageBox', () => {
         cancelText: 'cancelText',
         disableCancel: true
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.isCancelEnable()).toBeFalsy();
     });
 
@@ -42,14 +44,13 @@ describe('MessageBox', () => {
         confirmText: 'ok',
         disableConfirmation: true
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.isConfirmationEnable()).toBeFalsy();
     });
 
     it('should not display the cancellation button if cancellationText is empty', () => {
-      const props = {
-      };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const props = {};
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getCancellationButton()).toBeNull();
     });
 
@@ -58,7 +59,7 @@ describe('MessageBox', () => {
         onOk: sinon.spy(),
         confirmText: 'confirm'
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       driver.clickOnConfirmationButton();
       expect(props.onOk.calledOnce).toBeTruthy();
     });
@@ -68,7 +69,7 @@ describe('MessageBox', () => {
         cancelText: 'cancelText',
         onCancel: sinon.spy()
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       driver.clickOnCancellationButton();
       expect(props.onCancel.calledOnce).toBeTruthy();
     });
@@ -76,12 +77,14 @@ describe('MessageBox', () => {
     it('should render side actions', () => {
       const dataHook = 'side-actions';
       const props = {
-        sideActions: <div data-hook={dataHook}/>
+        sideActions: <div data-hook={dataHook} />
       };
 
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
 
-      expect(driver.getChildBySelector(`[data-hook="${dataHook}"]`)).not.toBeNull();
+      expect(
+        driver.getChildBySelector(`[data-hook="${dataHook}"]`),
+      ).not.toBeNull();
     });
   });
 
@@ -90,7 +93,7 @@ describe('MessageBox', () => {
       const props = {
         onCancel: sinon.spy()
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getHeaderCloseButton()).toBeTruthy();
     });
 
@@ -99,7 +102,7 @@ describe('MessageBox', () => {
         onCancel: sinon.spy(),
         closeButton: false
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getHeaderCloseButton()).toBeFalsy();
     });
 
@@ -107,7 +110,7 @@ describe('MessageBox', () => {
       const props = {
         onCancel: sinon.spy()
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       driver.clickOnHeaderCloseButton();
       expect(props.onCancel.calledOnce).toBeTruthy();
     });
@@ -121,7 +124,7 @@ describe('MessageBox', () => {
         onClose: onCloseFunction
       };
 
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       driver.clickOnHeaderCloseButton();
       expect(props.onCancel.calledOnce).toBeFalsy();
       expect(props.onClose.calledOnce).toBeTruthy();
@@ -130,9 +133,8 @@ describe('MessageBox', () => {
 
   describe('theme attribute', () => {
     it('should set the theme by default to "blue"', () => {
-      const props = {
-      };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const props = {};
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.isThemeExist('blue')).toBeTruthy();
     });
 
@@ -140,7 +142,7 @@ describe('MessageBox', () => {
       const props = {
         theme: 'green'
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.isThemeExist('green')).toBeTruthy();
       expect(driver.isThemeExist('blue')).toBeFalsy();
     });
@@ -149,35 +151,42 @@ describe('MessageBox', () => {
   describe('footer children', () => {
     it(`should render the passed footer content`, () => {
       const props = {
-        footerBottomChildren: (<div data-hook="inner-div"/>)
+        footerBottomChildren: <div data-hook="inner-div" />
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
-      expect(driver.getChildBySelector('[data-hook="inner-div"]')).not.toBeNull();
-      expect(driver.getChildBySelector('[data-hook="footer-layout-bottom-children"]')).not.toBeNull();
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
+      expect(
+        driver.getChildBySelector('[data-hook="inner-div"]'),
+      ).not.toBeNull();
+      expect(
+        driver.getChildBySelector(
+          '[data-hook="footer-layout-bottom-children"]',
+        ),
+      ).not.toBeNull();
     });
 
     it(`should not render footer's wrapper div when footer content isn't passed`, () => {
-      const props = {
-      };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
-      expect(driver.getChildBySelector('[data-hook="footer-layout-bottom-children"]')).toBeNull();
+      const props = {};
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
+      expect(
+        driver.getChildBySelector(
+          '[data-hook="footer-layout-bottom-children"]',
+        ),
+      ).toBeNull();
     });
   });
 
   describe('general', () => {
-
     it(`should hide the footer`, () => {
       const props = {
         hideFooter: true
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getFooter()).toBeNull();
     });
 
     it(`should show footer by default`, () => {
-      const props = {
-      };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const props = {};
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getFooter()).not.toBeNull();
     });
 
@@ -185,51 +194,71 @@ describe('MessageBox', () => {
       const props = {
         title: 'title'
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
       expect(driver.getTitle()).toBe(props.title);
     });
 
     it(`should render the passed children in the markup`, () => {
-      const props = {
-      };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}>
-        <div data-hook="inner-div"/>
-      </MessageBoxFunctionalLayout>);
-      expect(driver.getChildBySelector('[data-hook="inner-div"]')).not.toBeNull();
+      const props = {};
+      const driver = createDriver(
+        <MessageBoxFunctionalLayout {...props}>
+          <div data-hook="inner-div" />
+        </MessageBoxFunctionalLayout>,
+      );
+      expect(
+        driver.getChildBySelector('[data-hook="inner-div"]'),
+      ).not.toBeNull();
     });
 
     it('should render with zero padding when explicitly asked for', () => {
       const normalRendering = {};
-      const zeroPaddingRendering = {noBodyPadding: true};
-      const regularDriver = createDriver(<MessageBoxFunctionalLayout {...normalRendering}>
-        <div>Content</div>
-      </MessageBoxFunctionalLayout>);
+      const zeroPaddingRendering = { noBodyPadding: true };
+      const regularDriver = createDriver(
+        <MessageBoxFunctionalLayout {...normalRendering}>
+          <div>Content</div>
+        </MessageBoxFunctionalLayout>,
+      );
       expect(regularDriver.toHaveBodyPadding()).toBeTruthy();
 
-      const zeroPaddingDriver = createDriver(<MessageBoxFunctionalLayout {...zeroPaddingRendering}>
-        <div>Content</div>
-      </MessageBoxFunctionalLayout>);
+      const zeroPaddingDriver = createDriver(
+        <MessageBoxFunctionalLayout {...zeroPaddingRendering}>
+          <div>Content</div>
+        </MessageBoxFunctionalLayout>,
+      );
       expect(zeroPaddingDriver.toHaveBodyPadding()).toBeFalsy();
     });
 
     it('should render the passed image', () => {
       const props = {
-        image: (<div data-hook="inner-div"/>)
+        image: <div data-hook="inner-div" />
       };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
-      expect(driver.getChildBySelector('[data-hook="inner-div"]')).not.toBeNull();
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props} />);
+      expect(
+        driver.getChildBySelector('[data-hook="inner-div"]'),
+      ).not.toBeNull();
     });
   });
 
   describe('testkit', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<MessageBoxFunctionalLayout/>, messageBoxFunctionalLayoutTestkitFactory)).toBe(true);
+      expect(
+        isTestkitExists(
+          <MessageBoxFunctionalLayout />,
+          messageBoxFunctionalLayoutTestkitFactory,
+        ),
+      ).toBe(true);
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<MessageBoxFunctionalLayout/>, enzymeMessageBoxTestkitFactory, mount)).toBe(true);
+      expect(
+        isEnzymeTestkitExists(
+          <MessageBoxFunctionalLayout />,
+          enzymeMessageBoxTestkitFactory,
+          mount,
+        ),
+      ).toBe(true);
     });
   });
 });

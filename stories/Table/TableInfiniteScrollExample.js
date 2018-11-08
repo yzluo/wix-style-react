@@ -1,4 +1,4 @@
-import {Table} from 'wix-style-react/Table';
+import { Table } from 'wix-style-react/Table';
 import React from 'react';
 import {
   TableToolbar,
@@ -92,17 +92,17 @@ export class TableInfiniteScrollExample extends React.Component {
           alignItems: 'center',
           padding: '25px 0'
         }}
-        >
-        <Loader/>
+      >
+        <Loader />
       </div>
     );
   }
 
   loadMore() {
     const loadMoreData = () => {
-      this.setState({count: this.state.count + 5});
+      this.setState({ count: this.state.count + 5 });
       if (this.state.count > 20) {
-        this.setState({hasMore: false});
+        this.setState({ hasMore: false });
       }
     };
     setTimeout(loadMoreData, 1000);
@@ -118,7 +118,7 @@ export class TableInfiniteScrollExample extends React.Component {
           flexFlow: 'column',
           minWidth: '966px'
         }}
-        >
+      >
         <Table
           withWrapper={false}
           dataHook="story-table-infinite-example"
@@ -156,16 +156,17 @@ export class TableInfiniteScrollExample extends React.Component {
             }
           ]}
           showLastRowDivider
-          >
+        >
           <Page
             scrollableContentRef={scrollableContentRef =>
-              !this.state.scrollableContentRef && this.setState({scrollableContentRef})
+              !this.state.scrollableContentRef &&
+              this.setState({ scrollableContentRef })
             }
-            >
-            <Page.Header title="My Table Title"/>
+          >
+            <Page.Header title="My Table Title" />
             <Page.Content>
               <Card>
-                <Table.Content titleBarVisible={false}/>
+                <Table.Content titleBarVisible={false} />
               </Card>
             </Page.Content>
           </Page>

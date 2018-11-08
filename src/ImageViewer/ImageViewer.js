@@ -46,14 +46,14 @@ class ImageViewer extends WixComponent {
       ...this.props.tooltipProps
     };
     return (
-      <div className={classes} style={{width, height}}>
+      <div className={classes} style={{ width, height }}>
         {!imageUrl && (
           <AddItem
             onClick={onAddImage}
             theme="image"
             dataHook="add-image"
-            tooltipProps={{...tooltipProps, content: addImageInfo}}
-            />
+            tooltipProps={{ ...tooltipProps, content: addImageInfo }}
+          />
         )}
         {!!imageUrl && (
           <div className={style.changeLogoContainer}>
@@ -62,7 +62,7 @@ class ImageViewer extends WixComponent {
                 data-hook="image-viewer-image"
                 className={style.image}
                 src={imageUrl}
-                />
+              />
             </div>
             <div className={style.imageBackground}>
               <div className={style.buttons}>
@@ -71,9 +71,9 @@ class ImageViewer extends WixComponent {
                     dataHook="update-image"
                     {...tooltipProps}
                     content={updateImageInfo}
-                    >
+                  >
                     <Button onClick={onUpdateImage} theme="icon-whitesecondary">
-                      <Replace size="1.5em"/>
+                      <Replace size="1.5em" />
                     </Button>
                   </Tooltip>
                 )}
@@ -81,9 +81,9 @@ class ImageViewer extends WixComponent {
                   dataHook="remove-image"
                   {...tooltipProps}
                   content={removeImageInfo}
-                  >
+                >
                   <Button theme="icon-whitesecondary" onClick={onRemoveImage}>
-                    <Delete size="1.5em"/>
+                    <Delete size="1.5em" />
                   </Button>
                 </Tooltip>
               </div>
@@ -97,9 +97,9 @@ class ImageViewer extends WixComponent {
             content={errorMessage}
             {...tooltipProps}
             placement={tooltipPlacement || tooltipProps.placement}
-            >
+          >
             <div className={style.exclamation}>
-              <FormFieldError/>
+              <FormFieldError />
             </div>
           </Tooltip>
         )}

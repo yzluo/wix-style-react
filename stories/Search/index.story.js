@@ -4,7 +4,7 @@ import CodeExample from 'wix-storybook-utils/CodeExample';
 import ExpandableExampleRaw from '!raw-loader!./expandable.example';
 import ExpandableSearchExample from './expandable.example';
 
-const createOption = (value, id = 0) => ({id, value});
+const createOption = (value, id = 0) => ({ id, value });
 
 const options = [
   'The quick',
@@ -41,26 +41,24 @@ export default {
     showOptionsIfEmptyInput: false,
     closeOnSelect: false,
 
-    onChange: e =>
-      setState({value: e.target.value}),
+    onChange: e => setState({ value: e.target.value }),
 
-    onSelect: option =>
-      setState({value: option.value})
+    onSelect: option => setState({ value: option.value })
   }),
 
   exampleProps: {
     onSelect: option => option.value,
     onChange: e => e.target.value,
     options: [
-      {label: 'One option', value: [createOption('Just me :)')]},
-      {label: `${options.length} options`, value: options}
+      { label: 'One option', value: [createOption('Just me :)')] },
+      { label: `${options.length} options`, value: options }
     ]
   },
 
   examples: (
     <div>
       <CodeExample title="Expandable" code={ExpandableExampleRaw}>
-        <ExpandableSearchExample/>
+        <ExpandableSearchExample />
       </CodeExample>
     </div>
   )

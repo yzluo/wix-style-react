@@ -1,10 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import Notification from '../../src/Notification';
 
 export default class Form extends Component {
-
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     notification: PropTypes.object,
@@ -40,12 +39,8 @@ export default class Form extends Component {
         <Notification.TextLabel>
           Boo! I scared you with this very scary error message!
         </Notification.TextLabel>
-        {
-          this.props.actionButton.type !== 'none' ?
-            this.getCtaButton() :
-            null
-        }
-        <Notification.CloseButton/>
+        {this.props.actionButton.type !== 'none' ? this.getCtaButton() : null}
+        <Notification.CloseButton />
       </Notification>
     );
   }

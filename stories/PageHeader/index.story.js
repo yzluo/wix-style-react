@@ -5,7 +5,7 @@ import Button from 'wix-style-react/Button';
 
 import Breadcrumbs from '../Page/Breadcrumbs';
 import './PageHeader.scss';
-import {storySettings} from './storySettings';
+import { storySettings } from './storySettings';
 
 export default {
   category: storySettings.category,
@@ -20,9 +20,9 @@ export default {
   },
 
   exampleProps: {
-    breadcrumbs: [{label: 'Breadcrumbs', value: Breadcrumbs}],
+    breadcrumbs: [{ label: 'Breadcrumbs', value: Breadcrumbs }],
     actionsBar: [
-      {label: 'Button', value: <Button>Action</Button>},
+      { label: 'Button', value: <Button>Action</Button> },
       {
         label: 'Two buttons',
         value: (

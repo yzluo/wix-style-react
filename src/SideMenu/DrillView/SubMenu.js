@@ -1,5 +1,5 @@
 import SideMenuDrill from './index';
-import React, {Children} from 'react';
+import React, { Children } from 'react';
 import styles from './DrillView.scss';
 import Navigation from '../core/navigation';
 import PropTypes from 'prop-types';
@@ -7,11 +7,29 @@ import NavigationLink from '../core/navigation/Link';
 import NavigationBackLink from '../core/navigation/BackLink';
 import NavigationCategory from '../core/navigation/Category';
 
-const SubMenu = ({children, title, isOpen, isActive, onSelectHandler, onBackHandler, backLabel, showCategory, badge, linkDataHook, disabled}) => {
+const SubMenu = ({
+  children,
+  title,
+  isOpen,
+  isActive,
+  onSelectHandler,
+  onBackHandler,
+  backLabel,
+  showCategory,
+  badge,
+  linkDataHook,
+  disabled
+}) => {
   if (!isOpen) {
-
     return (
-      <NavigationLink isActive={isActive} onClick={onSelectHandler} badge={badge} withArrow={!badge} data-hook={linkDataHook} disabled={disabled}>
+      <NavigationLink
+        isActive={isActive}
+        onClick={onSelectHandler}
+        badge={badge}
+        withArrow={!badge}
+        data-hook={linkDataHook}
+        disabled={disabled}
+      >
         {title}
       </NavigationLink>
     );
@@ -21,11 +39,11 @@ const SubMenu = ({children, title, isOpen, isActive, onSelectHandler, onBackHand
     if (child.type === SideMenuDrill.Navigation) {
       return (
         <div className={styles.openSubMenu}>
-          <NavigationBackLink onBackHandler={onBackHandler}>{backLabel}</NavigationBackLink>
+          <NavigationBackLink onBackHandler={onBackHandler}>
+            {backLabel}
+          </NavigationBackLink>
           {showCategory && <NavigationCategory>{title}</NavigationCategory>}
-          <Navigation>
-            {child.props.children}
-          </Navigation>
+          <Navigation>{child.props.children}</Navigation>
         </div>
       );
     }

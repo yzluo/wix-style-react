@@ -20,7 +20,7 @@ class ButtonWithOptions extends WixComponent {
   constructor(props) {
     super(props);
 
-    this.state = {showOptions: false, selectedId: props.selectedId};
+    this.state = { showOptions: false, selectedId: props.selectedId };
 
     if (props.children) {
       this.sortChildren(props);
@@ -32,7 +32,9 @@ class ButtonWithOptions extends WixComponent {
   }
 
   sortChildren(props) {
-    [this.buttonElement, ...this.optionsElement] = React.Children.toArray(props.children);
+    [this.buttonElement, ...this.optionsElement] = React.Children.toArray(
+      props.children,
+    );
   }
 
   cleanOptionToSimpleTextForm(children) {
@@ -43,30 +45,31 @@ class ButtonWithOptions extends WixComponent {
 
     children = Array.isArray(children) ? children : [children];
 
-    const filteredChildren = children.filter(child => supportedElements.includes(child.type || typeof child));
+    const filteredChildren = children.filter(child =>
+      supportedElements.includes(child.type || typeof child),
+    );
 
     return filteredChildren;
   }
 
   getSelectedOptionValue() {
-    const {children} = this.buttonElement.props;
-    const {selectedId} = this.state;
-    const {theme} = this.props;
+    const { children } = this.buttonElement.props;
+    const { selectedId } = this.state;
+    const { theme } = this.props;
 
     if (theme.indexOf('no-border') === -1 || selectedId < 0) {
       return children;
     }
 
     const childrenArr = React.Children.toArray(this.props.children);
-    const selectedOption = childrenArr.find(({props: {id}}) => id === selectedId);
+    const selectedOption = childrenArr.find(
+      ({ props: { id } }) => id === selectedId,
+    );
 
     return [
       this.cleanOptionToSimpleTextForm(selectedOption.props.children),
-      <span
-        key={1}
-        className={styles.icon}
-        >
-        <ChevronDown/>
+      <span key={1} className={styles.icon}>
+        <ChevronDown />
       </span>
     ];
   }
@@ -80,12 +83,18 @@ class ButtonWithOptions extends WixComponent {
   }
 
   renderDropdownLayout() {
-    const dropdownProps = omit(this.props, ['dataHook', 'restrainDropdownSize']);
+    const dropdownProps = omit(this.props, [
+      'dataHook',
+      'restrainDropdownSize'
+    ]);
 
-    const dropdownLayoutOptions = React.Children.map(this.optionsElement, option => {
-      const {children: value, ...rest} = option.props;
-      return {value, ...rest};
-    });
+    const dropdownLayoutOptions = React.Children.map(
+      this.optionsElement,
+      option => {
+        const { children: value, ...rest } = option.props;
+        return { value, ...rest };
+      },
+    );
 
     return (
       <DropdownLayout
@@ -95,18 +104,20 @@ class ButtonWithOptions extends WixComponent {
         theme={this.props.theme}
         visible={this.state.showOptions}
         onSelect={(option, sameOptionSelected) => {
-          this.setState({selectedId: option.id});
+          this.setState({ selectedId: option.id });
           this.onSelect(option, sameOptionSelected);
         }}
         onClickOutside={this.hideOptions}
         selectedId={this.state.selectedId}
-        />
+      />
     );
   }
 
   render() {
-    const {dropDirectionUp} = this.props;
-    const sizeRestrictionStyles = this.props.restrainDropdownSize ? {display: 'inline-block'} : {};
+    const { dropDirectionUp } = this.props;
+    const sizeRestrictionStyles = this.props.restrainDropdownSize
+      ? { display: 'inline-block' }
+      : {};
 
     return (
       <div style={sizeRestrictionStyles}>
@@ -117,14 +128,14 @@ class ButtonWithOptions extends WixComponent {
     );
   }
 
-  hideOptions = () => this.setState({showOptions: false});
+  hideOptions = () => this.setState({ showOptions: false });
 
-  showOptions = () => this.setState({showOptions: true});
+  showOptions = () => this.setState({ showOptions: true });
 
   onSelect = (option, sameOptionSelected) => {
     this.hideOptions();
     this.props.onSelect(option, sameOptionSelected);
-  }
+  };
 }
 
 ButtonWithOptions.defaultProps = {
@@ -146,30 +157,32 @@ ButtonWithOptions.propTypes = {
    */
   children: PropTypes.arrayOf((propValue, key) => {
     if (key === 0 && propValue[key].type !== ButtonWithOptions.Button) {
-      return new Error('ButtonWithOptions: Invalid Prop children, first child must be ButtonWithOptions.Button');
+      return new Error(
+        'ButtonWithOptions: Invalid Prop children, first child must be ButtonWithOptions.Button',
+      );
     }
 
     if (key !== 0) {
       React.Children.forEach(propValue[key], item => {
         if (item.type !== ButtonWithOptions.Option) {
-          return new Error(`ButtonWithOptions: Invalid Prop children was given. Validation failed on child number ${key}`);
+          return new Error(
+            `ButtonWithOptions: Invalid Prop children was given. Validation failed on child number ${key}`,
+          );
         }
       });
     }
   })
 };
 
-
-ButtonWithOptions.Button = props =>
+ButtonWithOptions.Button = props => (
   <div data-hook="buttonWithOptions-button-wrapper">
-    <Button {...props}/>
-  </div>;
+    <Button {...props} />
+  </div>
+);
 
 ButtonWithOptions.Button.displayName = 'ButtonWithOptions.Button';
 
-ButtonWithOptions.Option =
-class Option extends React.Component {
-
+ButtonWithOptions.Option = class Option extends React.Component {
   static displayName = 'ButtonWithOptions.Option';
 
   static propTypes = {
@@ -180,11 +193,10 @@ class Option extends React.Component {
         return new Error(`${componentName}: Should have a single child`);
       }
     }
-  }
+  };
 
   render() {
     return null;
   }
 };
 export default ButtonWithOptions;
-

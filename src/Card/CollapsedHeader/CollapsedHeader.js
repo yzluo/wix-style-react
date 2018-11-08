@@ -1,11 +1,11 @@
 import React from 'react';
-import {bool, node, oneOf, func, string} from 'prop-types';
+import { bool, node, oneOf, func, string } from 'prop-types';
 import Collapse from 'react-collapse';
 
-import ToggleSwitch from '../../../src/ToggleSwitch';
-import WixComponent from '../../../src/BaseComponents/WixComponent';
+import ToggleSwitch from '../../ToggleSwitch';
+import WixComponent from '../../BaseComponents/WixComponent';
 import Header from '../Header';
-import Button from '../../../src/Button';
+import Button from '../../Button';
 import ChevronDown from '../../new-icons/ChevronDown';
 import ChevronUp from '../../new-icons/ChevronUp';
 
@@ -43,7 +43,7 @@ class CollapsedHeader extends WixComponent {
       this.props.collapsed !== nextProps.collapsed &&
       nextProps.collapsed !== this.state.isCollapsed
     ) {
-      this.setState({isCollapsed: nextProps.collapsed});
+      this.setState({ isCollapsed: nextProps.collapsed });
     }
   }
 
@@ -52,43 +52,50 @@ class CollapsedHeader extends WixComponent {
   }
 
   onCollapsedChange() {
-    const {onCollapsedChange} = this.props;
+    const { onCollapsedChange } = this.props;
     onCollapsedChange && onCollapsedChange(this.state.isCollapsed);
   }
 
   onToggleChange = () => {
-    const {controlled} = this.props;
+    const { controlled } = this.props;
 
     if (controlled) {
       this.onCollapsedChange();
     } else {
-      this.setState(({isCollapsed}) => ({isCollapsed: !isCollapsed}), this.onCollapsedChange);
+      this.setState(
+        ({ isCollapsed }) => ({ isCollapsed: !isCollapsed }),
+        this.onCollapsedChange,
+      );
     }
   };
 
-  _toggleSwitchElement = () =>
+  _toggleSwitchElement = () => (
     <div onClick={this.stopPropagation}>
       <ToggleSwitch
         dataHook="switch"
         onChange={this.onToggleChange}
         checked={!this.state.isCollapsed}
-        />
-    </div>;
+      />
+    </div>
+  );
 
-  _buttonElement = () =>
+  _buttonElement = () => (
     <div onClick={this.stopPropagation}>
       <Button
         withNewIcons
         dataHook="button"
         height="medium"
-        prefixIcon={this.state.isCollapsed ? <ChevronDown/> : <ChevronUp/>}
+        prefixIcon={this.state.isCollapsed ? <ChevronDown /> : <ChevronUp />}
         onClick={this.onToggleChange}
         theme="whiteblueprimary"
         type="button"
-        >
-        {this.state.isCollapsed ? this.props.buttonExpandText : this.props.buttonCollapseText}
+      >
+        {this.state.isCollapsed
+          ? this.props.buttonExpandText
+          : this.props.buttonCollapseText}
       </Button>
-    </div>;
+    </div>
+  );
 
   render() {
     const {
@@ -99,7 +106,7 @@ class CollapsedHeader extends WixComponent {
       toggleStyle
     } = this.props;
 
-    const {isCollapsed} = this.state;
+    const { isCollapsed } = this.state;
 
     return (
       <div>
@@ -107,15 +114,16 @@ class CollapsedHeader extends WixComponent {
           <Header
             title={title}
             subtitle={subtitle}
-            suffix={toggleStyle === 'switch' ? this._toggleSwitchElement() : this._buttonElement()}
+            suffix={
+              toggleStyle === 'switch'
+                ? this._toggleSwitchElement()
+                : this._buttonElement()
+            }
             withoutDivider={withoutDivider || isCollapsed}
-            />
+          />
         </div>
 
-        <Collapse
-          isOpened={!isCollapsed}
-          children={children}
-          />
+        <Collapse isOpened={!isCollapsed} children={children} />
       </div>
     );
   }

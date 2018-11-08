@@ -4,7 +4,7 @@ import FormFieldError from '../new-icons/system/FormFieldError';
 import Tooltip from '../Tooltip';
 import styles from './InputArea.scss';
 
-const Exclamation = ({errorMessage, tooltipPlacement, onTooltipShow}) =>
+const Exclamation = ({ errorMessage, tooltipPlacement, onTooltipShow }) => (
   <div className={styles.suffix}>
     <Tooltip
       dataHook="inputArea-tooltip"
@@ -14,15 +14,18 @@ const Exclamation = ({errorMessage, tooltipPlacement, onTooltipShow}) =>
       alignment="center"
       hideDelay={100}
       content={errorMessage}
-      moveBy={{x: 0, y: -10}}
+      moveBy={{ x: 0, y: -10 }}
       overlay=""
       maxWidth="250px"
       textAlign="left"
       theme="dark"
-      >
-      <div className={styles.errorIcon}><FormFieldError/></div>
+    >
+      <div className={styles.errorIcon}>
+        <FormFieldError />
+      </div>
     </Tooltip>
-  </div>;
+  </div>
+);
 
 Exclamation.defaultProps = {
   errorMessage: '',

@@ -6,8 +6,8 @@ import Add from '../new-icons/Add';
 import uniqueId from 'lodash/uniqueId';
 
 /**
-  * File picker component
-  */
+ * File picker component
+ */
 class FilePicker extends WixComponent {
   constructor(props) {
     super(props);
@@ -18,31 +18,53 @@ class FilePicker extends WixComponent {
   }
 
   onChooseFile(file) {
-    const {maxSize, onChange} = this.props;
+    const { maxSize, onChange } = this.props;
 
     if (file) {
       onChange(file);
       if (file.size <= maxSize) {
-        this.setState({selectedFileName: file.name});
+        this.setState({ selectedFileName: file.name });
       }
     }
   }
 
   render() {
-    const {header, mainLabel, supportedFormats, error, errorMessage} = this.props;
+    const {
+      header,
+      mainLabel,
+      supportedFormats,
+      error,
+      errorMessage
+    } = this.props;
 
     return (
       <div>
-        {header && (<span className={styles.header}>{header}</span>)}
+        {header && <span className={styles.header}>{header}</span>}
         <label className={styles.label} htmlFor={this.id}>
-          <div className={styles.icon}><Add/></div>
+          <div className={styles.icon}>
+            <Add />
+          </div>
           <div className={styles.content}>
-            <span className={styles.cta} data-hook="main-label">{mainLabel}</span>
-            <span className={styles.info} data-hook="sub-label">{this.state.selectedFileName}</span>
-            {error && <span className={styles.error} data-hook="filePicker-error">{errorMessage}</span>}
+            <span className={styles.cta} data-hook="main-label">
+              {mainLabel}
+            </span>
+            <span className={styles.info} data-hook="sub-label">
+              {this.state.selectedFileName}
+            </span>
+            {error && (
+              <span className={styles.error} data-hook="filePicker-error">
+                {errorMessage}
+              </span>
+            )}
           </div>
         </label>
-        <input id={this.id} className={styles.input} type="file" accept={supportedFormats} onChange={e => this.onChooseFile(e.target.files[0])}/>
+        <input
+          id={this.id}
+          className={styles.input}
+          type="file"
+          accept={supportedFormats}
+          onChange={e => this.onChooseFile(e.target.files[0])}
+        />
       </div>
     );
   }

@@ -4,16 +4,32 @@ import ChevronRight from 'wix-ui-icons-common/ChevronRight';
 import LinkLayout from './LinkLayout';
 import styles from './styles.scss';
 
-const Link = ({children, isDiminishedHover, isActive, withArrow, badge, dataHook, disabled, ...rest}) =>
-  <LinkLayout isDiminishedHover={isDiminishedHover} isActive={isActive} disabled={disabled}>
+const Link = ({
+  children,
+  isDiminishedHover,
+  isActive,
+  withArrow,
+  badge,
+  dataHook,
+  disabled,
+  ...rest
+}) => (
+  <LinkLayout
+    isDiminishedHover={isDiminishedHover}
+    isActive={isActive}
+    disabled={disabled}
+  >
     <a data-hook={dataHook} {...rest} className={styles.linkAnchor}>
-      <span className={styles.linkChildren}>
-        {children}
-      </span>
+      <span className={styles.linkChildren}>{children}</span>
       {badge}
-      {withArrow && <span className={styles.linkArrow}><ChevronRight/></span>}
+      {withArrow && (
+        <span className={styles.linkArrow}>
+          <ChevronRight />
+        </span>
+      )}
     </a>
-  </LinkLayout>;
+  </LinkLayout>
+);
 
 Link.defaultProps = {
   dataHook: 'menu-navigation-link',

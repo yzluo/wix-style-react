@@ -1,5 +1,8 @@
 import ToggleSwitch from 'wix-style-react/ToggleSwitch';
-import {SKINS, SIZES} from 'wix-ui-backoffice/dist/src/components/ToggleSwitch/constants';
+import {
+  SKINS,
+  SIZES
+} from 'wix-ui-backoffice/dist/src/components/ToggleSwitch/constants';
 
 export default {
   category: '4. Selection',
@@ -10,7 +13,7 @@ export default {
 
   componentProps: (setState, getState) => ({
     checked: false,
-    onChange: () => setState({checked: !getState().checked})
+    onChange: () => setState({ checked: !getState().checked })
   }),
 
   exampleProps: {

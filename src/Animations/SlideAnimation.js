@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {node, bool, oneOf, func} from 'prop-types';
-import {CSSTransition} from 'react-transition-group';
+import React, { Component } from 'react';
+import { node, bool, oneOf, func } from 'prop-types';
+import { CSSTransition } from 'react-transition-group';
 import slideIn from './SlideInAnimation.scss';
 import slideOut from './SlideOutAnimation.scss';
 
@@ -13,8 +13,20 @@ const animationDuration = 300; // Synced with SlideAnimation.scss file
 
 class SlideAnimation extends Component {
   render() {
-    const {isVisible, animateAppear, animateEnter, animateLeave, children, direction, onEnter, onExit, onEntered, onExited} = this.props;
-    const transitionNames = direction === SlideDirection.in ? slideIn : slideOut;
+    const {
+      isVisible,
+      animateAppear,
+      animateEnter,
+      animateLeave,
+      children,
+      direction,
+      onEnter,
+      onExit,
+      onEntered,
+      onExited
+    } = this.props;
+    const transitionNames =
+      direction === SlideDirection.in ? slideIn : slideOut;
     const childTimeout = {
       enter: animateEnter ? animationDuration : 0,
       exit: animateLeave ? animationDuration : 0
@@ -32,8 +44,8 @@ class SlideAnimation extends Component {
         onExit={onExit}
         onEntered={onEntered}
         onExited={onExited}
-        >
-        {children || <span/>}
+      >
+        {children || <span />}
       </CSSTransition>
     );
   }
@@ -41,10 +53,7 @@ class SlideAnimation extends Component {
 
 SlideAnimation.propTypes = {
   isVisible: bool.isRequired,
-  direction: oneOf([
-    SlideDirection.in,
-    SlideDirection.out
-  ]),
+  direction: oneOf([SlideDirection.in, SlideDirection.out]),
   animateAppear: bool,
   animateEnter: bool,
   animateLeave: bool,

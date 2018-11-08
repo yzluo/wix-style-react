@@ -1,7 +1,7 @@
 import React from 'react';
 import ImageViewer from './ImageViewer';
 import ImageViewerDriverFactory from './ImageViewer.driver';
-import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
+import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 
 describe('ImageViewer', () => {
   const createDriver = createDriverFactory(ImageViewerDriverFactory);
@@ -19,7 +19,7 @@ describe('ImageViewer', () => {
         onUpdateImage: updateImage,
         onRemoveImage: removeImage
       };
-      driver = createDriver(<ImageViewer {...props}/>);
+      driver = createDriver(<ImageViewer {...props} />);
     });
 
     it('should display image url', () => {
@@ -41,7 +41,7 @@ describe('ImageViewer', () => {
         imageUrl: '',
         onAddImage: addImage
       };
-      driver = createDriver(<ImageViewer {...props}/>);
+      driver = createDriver(<ImageViewer {...props} />);
       driver.clickAdd();
       expect(addImage).toBeCalled();
     });
@@ -51,7 +51,7 @@ describe('ImageViewer', () => {
     props = {
       imageUrl: ''
     };
-    driver = createDriver(<ImageViewer {...props}/>);
+    driver = createDriver(<ImageViewer {...props} />);
     expect(driver.isImageVisible()).toBeFalsy();
   });
 
@@ -62,8 +62,10 @@ describe('ImageViewer', () => {
         width: 300,
         height: 300
       };
-      driver = createDriver(<ImageViewer {...props}/>);
-      expect(driver.getContainerStyles()).toEqual('width: 300px; height: 300px;');
+      driver = createDriver(<ImageViewer {...props} />);
+      expect(driver.getContainerStyles()).toEqual(
+        'width: 300px; height: 300px;',
+      );
     });
 
     it('should be added to style attribute when image is present', () => {
@@ -72,15 +74,17 @@ describe('ImageViewer', () => {
         width: 300,
         height: 300
       };
-      driver = createDriver(<ImageViewer {...props}/>);
-      expect(driver.getContainerStyles()).toEqual('width: 300px; height: 300px;');
+      driver = createDriver(<ImageViewer {...props} />);
+      expect(driver.getContainerStyles()).toEqual(
+        'width: 300px; height: 300px;',
+      );
     });
 
     it('should not add style attribute when width and height props are not passed', () => {
       props = {
         imageUrl: IMAGE_URL
       };
-      driver = createDriver(<ImageViewer {...props}/>);
+      driver = createDriver(<ImageViewer {...props} />);
       expect(driver.getContainerStyles()).toEqual(null);
     });
   });
@@ -91,7 +95,7 @@ describe('ImageViewer', () => {
         imageUrl: IMAGE_URL
       };
 
-      driver = createDriver(<ImageViewer {...props}/>);
+      driver = createDriver(<ImageViewer {...props} />);
       expect(driver.isAddItemVisible()).toBeFalsy();
     });
 
@@ -100,7 +104,7 @@ describe('ImageViewer', () => {
         imageUrl: ''
       };
 
-      driver = createDriver(<ImageViewer {...props}/>);
+      driver = createDriver(<ImageViewer {...props} />);
       expect(driver.isAddItemVisible()).toBeTruthy();
     });
   });
@@ -123,7 +127,7 @@ describe('ImageViewer', () => {
       };
 
       it('should display provided tooltip content', async () => {
-        const driver = createDriver(<ImageViewer {...props}/>);
+        const driver = createDriver(<ImageViewer {...props} />);
         expect(await driver.getAddTooltipContent()).toEqual(props.addImageInfo);
       });
     });
@@ -136,8 +140,10 @@ describe('ImageViewer', () => {
       };
 
       it('should display provided tooltip content', async () => {
-        const driver = createDriver(<ImageViewer {...props}/>);
-        expect(await driver.getUpdateTooltipContent()).toEqual(props.updateImageInfo);
+        const driver = createDriver(<ImageViewer {...props} />);
+        expect(await driver.getUpdateTooltipContent()).toEqual(
+          props.updateImageInfo,
+        );
       });
     });
 
@@ -149,8 +155,10 @@ describe('ImageViewer', () => {
       };
 
       it('should display provided tooltip content', async () => {
-        const driver = createDriver(<ImageViewer {...props}/>);
-        expect(await driver.getRemoveTooltipContent()).toEqual(props.removeImageInfo);
+        const driver = createDriver(<ImageViewer {...props} />);
+        expect(await driver.getRemoveTooltipContent()).toEqual(
+          props.removeImageInfo,
+        );
       });
     });
 
@@ -161,7 +169,7 @@ describe('ImageViewer', () => {
       };
 
       it('should hide update button', async () => {
-        const driver = createDriver(<ImageViewer {...props}/>);
+        const driver = createDriver(<ImageViewer {...props} />);
         expect(await driver.updateExists()).toEqual(false);
       });
     });
@@ -174,7 +182,7 @@ describe('ImageViewer', () => {
           height: 300
         };
 
-        driver = createDriver(<ImageViewer {...props}/>);
+        driver = createDriver(<ImageViewer {...props} />);
         expect(driver.isErrorVisible()).toBeFalsy();
       });
 
@@ -188,8 +196,10 @@ describe('ImageViewer', () => {
           tooltipProps
         };
 
-        driver = createDriver(<ImageViewer {...props}/>);
-        expect(await driver.getErrorTooltipContent()).toEqual(props.errorMessage);
+        driver = createDriver(<ImageViewer {...props} />);
+        expect(await driver.getErrorTooltipContent()).toEqual(
+          props.errorMessage,
+        );
       });
     });
   });

@@ -1,4 +1,4 @@
-import {pickAccessibilityProps} from './pickAccessibilityProps';
+import { pickAccessibilityProps } from './pickAccessibilityProps';
 
 describe('accessibility', () => {
   describe('pickAccessibilityProps', () => {
@@ -7,7 +7,7 @@ describe('accessibility', () => {
         a: 1,
         'aria-label': 'hello'
       };
-      expect(pickAccessibilityProps(props)).toEqual({'aria-label': 'hello'});
+      expect(pickAccessibilityProps(props)).toEqual({ 'aria-label': 'hello' });
     });
   });
 });

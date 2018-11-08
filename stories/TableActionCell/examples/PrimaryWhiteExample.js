@@ -12,7 +12,7 @@ const Example = () => (
         theme: 'whiteblue',
         onClick: () => window.alert('Primary action was diviggered!')
       }}
-      />
+    />
   </div>
 );
 

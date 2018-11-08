@@ -1,5 +1,4 @@
 const pageHeaderDriverFactory = component => {
-
   return {
     element: () => component
   };

@@ -1,4 +1,4 @@
-import {Raw} from 'slate';
+import { Raw } from 'slate';
 import htmlSerializer from './htmlSerializer';
 
 describe('HTML serializer', () => {
@@ -18,22 +18,15 @@ describe('HTML serializer', () => {
                 },
                 {
                   text: 'bold text',
-                  marks: [
-                    {type: 'bold'}
-                  ]
+                  marks: [{ type: 'bold' }]
                 },
                 {
                   text: 'italic',
-                  marks: [
-                    {type: 'italic'}
-                  ]
+                  marks: [{ type: 'italic' }]
                 },
                 {
                   text: 'and underlined',
-                  marks: [
-                    {type: 'underline'},
-                    {type: 'italic'}
-                  ]
+                  marks: [{ type: 'underline' }, { type: 'italic' }]
                 }
               ]
             }
@@ -69,7 +62,7 @@ describe('HTML serializer', () => {
           kind: 'block',
           type: 'paragraph',
           nodes: [
-            {kind: 'text', text: ''},
+            { kind: 'text', text: '' },
             {
               kind: 'inline',
               type: 'link',
@@ -83,14 +76,14 @@ describe('HTML serializer', () => {
                 }
               ]
             },
-            {kind: 'text', text: ''}
+            { kind: 'text', text: '' }
           ]
         }
       ]
     };
 
     const deserialized = htmlSerializer.deserialize(text);
-    expect(Raw.serialize(deserialized, {terse: true})).toEqual(expected);
+    expect(Raw.serialize(deserialized, { terse: true })).toEqual(expected);
   });
 
   it('should correctly serialize slate object to HTML string', () => {
@@ -135,22 +128,15 @@ describe('HTML serializer', () => {
                 },
                 {
                   text: 'bold text',
-                  marks: [
-                    {type: 'bold'}
-                  ]
+                  marks: [{ type: 'bold' }]
                 },
                 {
                   text: 'italic',
-                  marks: [
-                    {type: 'italic'}
-                  ]
+                  marks: [{ type: 'italic' }]
                 },
                 {
                   text: 'and underlined',
-                  marks: [
-                    {type: 'underline'},
-                    {type: 'italic'}
-                  ]
+                  marks: [{ type: 'underline' }, { type: 'italic' }]
                 }
               ]
             },
@@ -171,7 +157,7 @@ describe('HTML serializer', () => {
         }
       ]
     };
-    const serialized = Raw.deserialize(state, {terse: true});
+    const serialized = Raw.deserialize(state, { terse: true });
     expect(htmlSerializer.serialize(serialized)).toEqual(expected);
   });
 });

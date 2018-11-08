@@ -18,15 +18,11 @@ const Component = props => {
   // Remove `eslint-disable` comments
   const filteredCode = props.initialCode.replace(
     /^(\s)*\/\*(\s)*eslint-disable(\s)*\*\/(\s)*$/gm,
-    ''
+    '',
   );
 
   return (
-    <LiveCodeExample
-      scope={scope}
-      {...props}
-      initialCode={filteredCode}
-      />
+    <LiveCodeExample scope={scope} {...props} initialCode={filteredCode} />
   );
 };
 

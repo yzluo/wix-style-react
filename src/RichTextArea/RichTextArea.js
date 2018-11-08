@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import FormFieldError from 'wix-ui-icons-common/system/FormFieldError';
 import WixComponent from '../BaseComponents/WixComponent';
-import {Editor, Block} from 'slate';
+import { Editor, Block } from 'slate';
 import Tooltip from '../Tooltip';
 import RichTextEditorToolbar from './RichTextAreaToolbar';
 import htmlSerializer from './htmlSerializer';
@@ -25,7 +25,8 @@ const defaultBlock = {
   and if it not absolute, then we add '//' at the beginning of it,
   to make link absolute
 */
-export const makeHrefAbsolute = href => /^(https?:)?\/\//.test(href) ? href : `//${href}`;
+export const makeHrefAbsolute = href =>
+  /^(https?:)?\/\//.test(href) ? href : `//${href}`;
 
 class RichTextArea extends WixComponent {
   static propTypes = {
@@ -41,30 +42,50 @@ class RichTextArea extends WixComponent {
     value: PropTypes.string,
     onChange: PropTypes.func,
     onImageRequest: PropTypes.func
-  }
+  };
 
   static defaultProps = {
     absoluteLinks: false,
     errorMessage: '',
     value: '<p></p>'
-  }
+  };
 
   /* eslint-disable react/prop-types */
   schema = {
     nodes: {
-      'unordered-list': props => <ul {...props.attributes}>{props.children}</ul>,
+      'unordered-list': props => (
+        <ul {...props.attributes}>{props.children}</ul>
+      ),
       'list-item': props => <li {...props.attributes}>{props.children}</li>,
       'ordered-list': props => <ol {...props.attributes}>{props.children}</ol>,
       link: props => {
-        const {data} = props.node;
+        const { data } = props.node;
         const href = data.get('href');
-        return <a className={styles.link} {...props.attributes} rel="noopener noreferrer" target="_blank" href={href}>{props.children}</a>;
+        return (
+          <a
+            className={styles.link}
+            {...props.attributes}
+            rel="noopener noreferrer"
+            target="_blank"
+            href={href}
+          >
+            {props.children}
+          </a>
+        );
       },
       image: props => {
-        const {node, state} = props;
+        const { node, state } = props;
         const isFocused = state.selection.hasEdgeIn(node);
         const src = node.data.get('src');
-        return (<img data-hook="editor-image" src={src} className={classNames(styles.editorImage, {[styles.activeEditorImage]: isFocused})}/>);
+        return (
+          <img
+            data-hook="editor-image"
+            src={src}
+            className={classNames(styles.editorImage, {
+              [styles.activeEditorImage]: isFocused
+            })}
+          />
+        );
       }
     },
     marks: {

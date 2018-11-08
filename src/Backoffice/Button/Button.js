@@ -1,11 +1,11 @@
 import React from 'react';
-import {func, node, string} from 'prop-types';
+import { func, node, string } from 'prop-types';
 import styles from './Button.scss';
 import WixComponent from '../../BaseComponents/WixComponent';
 import ButtonLayout from '../../ButtonLayout/ButtonLayout';
 import omit from 'omit';
-import {withFocusable, focusableStates} from '../../common/Focusable';
-import {pickAccessibilityProps} from '../../common/accessibility';
+import { withFocusable, focusableStates } from '../../common/Focusable';
+import { pickAccessibilityProps } from '../../common/accessibility';
 
 const ICON_SIZES = {
   large: '24px',
@@ -27,7 +27,7 @@ class Button extends WixComponent {
     onClick: func,
     onMouseEnter: func,
     onMouseLeave: func
-  }
+  };
 
   static defaultProps = {
     ...ButtonLayout.defaultProps
@@ -38,14 +38,12 @@ class Button extends WixComponent {
     const iconSize = ICON_SIZES[height] || fallbackSize;
     const dataHook = className === styles.prefix ? 'btn-prefix' : 'btn-suffix';
 
-    return (
-      icon ?
-        <div className={className} data-hook={dataHook}>
-          {React.cloneElement(icon, {size: iconSize})}
-        </div> :
-        null
-    );
-  }
+    return icon ? (
+      <div className={className} data-hook={dataHook}>
+        {React.cloneElement(icon, { size: iconSize })}
+      </div>
+    ) : null;
+  };
 
   addPrefix = () =>
     this.addIcon(styles.prefix, this.props.prefixIcon, this.props.height);
@@ -63,7 +61,10 @@ class Button extends WixComponent {
       onMouseLeave
     } = this.props;
 
-    const buttonLayoutProps = omit(['id', 'onClick', 'prefixIcon', 'suffixIcon', 'type'], this.props);
+    const buttonLayoutProps = omit(
+      ['id', 'onClick', 'prefixIcon', 'suffixIcon', 'type'],
+      this.props,
+    );
     return (
       <ButtonLayout {...buttonLayoutProps}>
         <button
@@ -76,7 +77,7 @@ class Button extends WixComponent {
           onBlur={this.props.focusableOnBlur}
           {...focusableStates(this.props)}
           {...pickAccessibilityProps(this.props)}
-          >
+        >
           {this.addPrefix()}
           {children}
           {this.addSuffix()}
@@ -87,4 +88,3 @@ class Button extends WixComponent {
 }
 
 export default withFocusable(Button);
-

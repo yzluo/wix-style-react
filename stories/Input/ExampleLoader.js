@@ -9,12 +9,22 @@ const style = {
   lineHeight: '22px'
 };
 
-const Example = ({theme}) =>
+const Example = ({ theme }) => (
   <div>
-    <div style={style}>Left to right<Input theme={theme} status={'loading'}/></div>
-    <div className="rtl" style={style}>Right to left<Input theme={theme} rtl status={'loading'}/></div>
-    <div style={style}>Loader with tooltip<Input theme={theme} status={'loading'} statusMessage="I am a message"/></div>
-  </div>;
+    <div style={style}>
+      Left to right
+      <Input theme={theme} status={'loading'} />
+    </div>
+    <div className="rtl" style={style}>
+      Right to left
+      <Input theme={theme} rtl status={'loading'} />
+    </div>
+    <div style={style}>
+      Loader with tooltip
+      <Input theme={theme} status={'loading'} statusMessage="I am a message" />
+    </div>
+  </div>
+);
 
 Example.propTypes = {
   theme: PropTypes.string

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -10,19 +10,25 @@ const containerProps = {
   className: PropTypes.string
 };
 
-const RawContainer = ({children, fluid, className}) =>
+const RawContainer = ({ children, fluid, className }) => (
   <div
-    className={classNames(styles.rawContainer, className, {[styles.fluidContainer]: fluid})}
+    className={classNames(styles.rawContainer, className, {
+      [styles.fluidContainer]: fluid
+    })}
     children={children}
-    />;
+  />
+);
 
 RawContainer.propTypes = containerProps;
 
-const Container = ({children, fluid, className}) =>
+const Container = ({ children, fluid, className }) => (
   <div
-    className={classNames(styles.wixContainer, className, {[styles.fluidContainer]: fluid})}
+    className={classNames(styles.wixContainer, className, {
+      [styles.fluidContainer]: fluid
+    })}
     children={children}
-    />;
+  />
+);
 
 Container.propTypes = containerProps;
 
@@ -40,23 +46,21 @@ class Columns extends Component {
   };
 
   render() {
-    const {className, rtl, stretchViewsVertically, dataHook, children} = this.props;
-
-    const rowClasses = classNames(
-      styles.row,
+    const {
       className,
-      {
-        [styles.rtl]: rtl,
-        [styles.stretch_vertically_row]: stretchViewsVertically
-      }
-    );
+      rtl,
+      stretchViewsVertically,
+      dataHook,
+      children
+    } = this.props;
+
+    const rowClasses = classNames(styles.row, className, {
+      [styles.rtl]: rtl,
+      [styles.stretch_vertically_row]: stretchViewsVertically
+    });
 
     return (
-      <div
-        className={rowClasses}
-        data-hook={dataHook}
-        children={children}
-        />
+      <div className={rowClasses} data-hook={dataHook} children={children} />
     );
   }
 }
@@ -75,13 +79,9 @@ class AutoAdjustedColumns extends Component {
 
     return (
       <div className={classNames(styles.row, styles.flexContainer)}>
-        { cols.map((col, index) =>
-          <Col
-            span={spanSize}
-            key={index}
-            children={col}
-            />
-        ) }
+        {cols.map((col, index) => (
+          <Col span={spanSize} key={index} children={col} />
+        ))}
       </div>
     );
   }
@@ -131,30 +131,22 @@ class Col extends Component {
       dataHook
     } = this.props;
 
-    const columnClasses = classNames(
-      className,
-      styles.col,
-      {
-        [styles.rtl]: rtl,
-        [styles[`colXs${span}`]]: this.isLegalCol(span),
-        [styles[`colXs${xs}`]]: this.isLegalCol(xs),
-        [styles[`colSm${sm}`]]: this.isLegalCol(sm),
-        [styles[`colMd${md}`]]: this.isLegalCol(md),
-        [styles[`colLg${lg}`]]: this.isLegalCol(lg),
-        [styles[`colXl${xl}`]]: this.isLegalCol(xl),
-        [styles[`${xs}Xs`]]: this.isVisibleHidden(xs),
-        [styles[`${sm}Sm`]]: this.isVisibleHidden(sm),
-        [styles[`${md}Md`]]: this.isVisibleHidden(md),
-        [styles[`${lg}Lg`]]: this.isVisibleHidden(lg)
-      }
-    );
+    const columnClasses = classNames(className, styles.col, {
+      [styles.rtl]: rtl,
+      [styles[`colXs${span}`]]: this.isLegalCol(span),
+      [styles[`colXs${xs}`]]: this.isLegalCol(xs),
+      [styles[`colSm${sm}`]]: this.isLegalCol(sm),
+      [styles[`colMd${md}`]]: this.isLegalCol(md),
+      [styles[`colLg${lg}`]]: this.isLegalCol(lg),
+      [styles[`colXl${xl}`]]: this.isLegalCol(xl),
+      [styles[`${xs}Xs`]]: this.isVisibleHidden(xs),
+      [styles[`${sm}Sm`]]: this.isVisibleHidden(sm),
+      [styles[`${md}Md`]]: this.isVisibleHidden(md),
+      [styles[`${lg}Lg`]]: this.isVisibleHidden(lg)
+    });
 
     return (
-      <div
-        className={columnClasses}
-        data-hook={dataHook}
-        children={children}
-        />
+      <div className={columnClasses} data-hook={dataHook} children={children} />
     );
   }
 }

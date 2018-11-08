@@ -57,48 +57,54 @@ class Selector extends WixComponent {
     } = this.props;
 
     return (
-      <li
-        className={styles.root}
-        onClick={this._onClick}
-        >
-        { toggleType === 'checkbox' ?
-          <Checkbox dataHook="toggle" checked={isSelected} disabled={isDisabled}/> :
-          <RadioButton dataHook="toggle" checked={isSelected} disabled={isDisabled}/>
-        }
+      <li className={styles.root} onClick={this._onClick}>
+        {toggleType === 'checkbox' ? (
+          <Checkbox
+            dataHook="toggle"
+            checked={isSelected}
+            disabled={isDisabled}
+          />
+        ) : (
+          <RadioButton
+            dataHook="toggle"
+            checked={isSelected}
+            disabled={isDisabled}
+          />
+        )}
 
-        {image &&
+        {image && (
           <div
             data-hook="selector-image"
-            className={classNames(styles.image, styles[imageSize], styles[imageShape])}
+            className={classNames(
+              styles.image,
+              styles[imageSize],
+              styles[imageShape],
+            )}
             children={image}
-            />
-        }
+          />
+        )}
 
         <div className={styles.titles}>
-          <Text
-            dataHook="selector-title"
-            ellipsis
-            children={title}
-            />
+          <Text dataHook="selector-title" ellipsis children={title} />
 
-          {subtitle &&
+          {subtitle && (
             <Text
               size="small"
               secondary
               dataHook="selector-subtitle"
               ellipsis
               children={subtitle}
-              />
-          }
+            />
+          )}
         </div>
 
-        {extraNode &&
+        {extraNode && (
           <div
             className={styles.extra}
             data-hook="selector-extra-node"
             children={extraNode}
-            />
-        }
+          />
+        )}
       </li>
     );
   }

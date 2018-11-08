@@ -12,7 +12,7 @@ export default {
 
   componentProps: {
     theme: 'icon-standard',
-    children: <Icons.X/>
+    children: <Icons.X />
   },
 
   exampleProps: {

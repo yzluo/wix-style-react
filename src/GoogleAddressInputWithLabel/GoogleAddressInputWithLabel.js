@@ -1,10 +1,10 @@
 import React from 'react';
-import {children, optional, once} from '../Composite';
+import { children, optional, once } from '../Composite';
 import Label from '../Label';
 import GoogleAddressInput from '../GoogleAddressInput';
 import InputAreaWithLabelComposite from '../Composite/InputAreaWithLabelComposite/InputAreaWithLabelComposite';
 
-const GoogleAddressInputWithLabel = ({children, ...props}) => (
+const GoogleAddressInputWithLabel = ({ children, ...props }) => (
   <InputAreaWithLabelComposite {...props}>
     {children}
   </InputAreaWithLabelComposite>

@@ -12,24 +12,29 @@ const style = {
 function Example() {
   return (
     <div>
-
       <div style={style}>
-        Fill<br/>
+        Fill
+        <br />
         <Button theme="fill">Fill</Button>
       </div>
 
       <div style={style}>
-        Outline<br/>
+        Outline
+        <br />
         <Button theme="outline">Outline</Button>
       </div>
 
       <div style={style}>
-        Fill (Disabled)<br/>
-        <Button theme="fill" disabled>Fill (Disabled)</Button>
+        Fill (Disabled)
+        <br />
+        <Button theme="fill" disabled>
+          Fill (Disabled)
+        </Button>
       </div>
 
       <div style={style}>
-        Custom<br/>
+        Custom
+        <br />
         <Button className={styles.customButton}>Custom</Button>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
-import {func, node, oneOf, string} from 'prop-types';
+import { func, node, oneOf, string } from 'prop-types';
 
-import Button from '../../../src/Backoffice/Button';
+import Button from '../../Backoffice/Button';
 import WixComponent from '../../BaseComponents/WixComponent';
 import Header from '../Header';
 import deprecationLog from '../../utils/deprecationLog';
@@ -17,7 +17,7 @@ class ButtonHeader extends WixComponent {
 
   componentDidMount() {
     deprecationLog(
-      'Card.ButtonHeader is deprecated, please use <Card.Header suffix={<Button/>}/> instead.'
+      'Card.ButtonHeader is deprecated, please use <Card.Header suffix={<Button/>}/> instead.',
     );
   }
 
@@ -66,13 +66,13 @@ class ButtonHeader extends WixComponent {
           onClick={buttonOnClick}
           theme={buttonThemes[theme] || buttonThemes.standard}
           children={buttonTitle}
-          />
+        />
       </div>
     );
 
-    const tooltipElement = tooltip ?
-      React.cloneElement(tooltip, {children: buttonElement}) :
-      null;
+    const tooltipElement = tooltip
+      ? React.cloneElement(tooltip, { children: buttonElement })
+      : null;
 
     return (
       <Header
@@ -81,7 +81,7 @@ class ButtonHeader extends WixComponent {
         suffix={tooltipElement || buttonElement}
         withoutDivider={withoutDivider}
         dataHook={dataHook}
-        />
+      />
     );
   }
 }

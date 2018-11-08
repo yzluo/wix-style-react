@@ -1,5 +1,5 @@
 import React from 'react';
-import {Html} from 'slate';
+import { Html } from 'slate';
 
 const BLOCK_TAGS = {
   p: 'paragraph',
@@ -33,7 +33,8 @@ const rules = [
           data.src = el.attribs.src;
           break;
         }
-        default: break;
+        default:
+          break;
       }
 
       return {
@@ -49,12 +50,18 @@ const rules = [
       }
 
       switch (object.type) {
-        case 'paragraph': return <p>{children}</p>;
-        case 'list-item': return <li>{children}</li>;
-        case 'ordered-list': return <ol>{children}</ol>;
-        case 'unordered-list': return <ul>{children}</ul>;//data-hook="editor-image"
-        case 'image': return <img data-hook="editor-image" src={object.data.get('src')}/>;
-        default: return {children};
+        case 'paragraph':
+          return <p>{children}</p>;
+        case 'list-item':
+          return <li>{children}</li>;
+        case 'ordered-list':
+          return <ol>{children}</ol>;
+        case 'unordered-list':
+          return <ul>{children}</ul>; //data-hook="editor-image"
+        case 'image':
+          return <img data-hook="editor-image" src={object.data.get('src')} />;
+        default:
+          return { children };
       }
     }
   },
@@ -77,10 +84,14 @@ const rules = [
       }
 
       switch (object.type) {
-        case 'bold': return <strong>{children}</strong>;
-        case 'italic': return <em>{children}</em>;
-        case 'underline': return <u>{children}</u>;
-        default: return {children};
+        case 'bold':
+          return <strong>{children}</strong>;
+        case 'italic':
+          return <em>{children}</em>;
+        case 'underline':
+          return <u>{children}</u>;
+        default:
+          return { children };
       }
     }
   },
@@ -106,11 +117,21 @@ const rules = [
       }
 
       switch (object.type) {
-        case 'link': return <a rel="noopener noreferrer" target="_blank" href={object.data.get('href')}>{children}</a>;
-        default: return {children};
+        case 'link':
+          return (
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href={object.data.get('href')}
+            >
+              {children}
+            </a>
+          );
+        default:
+          return { children };
       }
     }
   }
 ];
 
-export default new Html({rules});
+export default new Html({ rules });

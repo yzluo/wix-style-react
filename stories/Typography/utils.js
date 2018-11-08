@@ -1,5 +1,5 @@
 import React from 'react';
-import {any, string} from 'prop-types';
+import { any, string } from 'prop-types';
 
 import Text from 'wix-style-react/Text';
 
@@ -24,8 +24,8 @@ export function propsToJsxString(props) {
   }, '');
 }
 
-export const ExampleWrapper = ({children, label}) => (
-  <div style={{padding: '10px'}}>
+export const ExampleWrapper = ({ children, label }) => (
+  <div style={{ padding: '10px' }}>
     {children}
     <Text size="tiny" weight="thin" light secondary>
       {label}

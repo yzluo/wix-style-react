@@ -1,6 +1,6 @@
 import React from 'react';
 import color from 'color';
-import {object, func} from 'prop-types';
+import { object, func } from 'prop-types';
 
 import WixComponent from '../BaseComponents/WixComponent';
 import Input from '../Input';
@@ -8,11 +8,10 @@ import Input from '../Input';
 import css from './color-picker-converter.scss';
 
 export default class ColorPickerConverterHex extends WixComponent {
-
   static propTypes = {
     current: object.isRequired,
     onChange: func.isRequired
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -26,7 +25,13 @@ export default class ColorPickerConverterHex extends WixComponent {
   render() {
     return (
       <div className={css.root}>
-        <Input size="small" value={this.state.hex} onChange={this.change} onFocus={this.handleOnFocus} onBlur={this.handleOnBlur}/>
+        <Input
+          size="small"
+          value={this.state.hex}
+          onChange={this.change}
+          onFocus={this.handleOnFocus}
+          onBlur={this.handleOnBlur}
+        />
       </div>
     );
   }
@@ -39,8 +44,8 @@ export default class ColorPickerConverterHex extends WixComponent {
     }
   }
 
-  change({target: {value}}) {
-    this.setState({hex: value}, () => {
+  change({ target: { value } }) {
+    this.setState({ hex: value }, () => {
       const color = safeColor(value);
       if (color) {
         this.props.onChange(color);
@@ -52,14 +57,14 @@ export default class ColorPickerConverterHex extends WixComponent {
     this.setState({
       inFocus: true
     });
-  }
+  };
 
   handleOnBlur = () => {
     this.setState({
       inFocus: false,
       hex: this.props.current.hex()
     });
-  }
+  };
 }
 
 function safeColor(input) {

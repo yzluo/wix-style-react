@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import GoogleAddressInput from 'wix-style-react/GoogleAddressInput';
 import clients from 'wix-style-react/clients';
@@ -16,14 +16,15 @@ class ControlledGoogleAddressInput extends Component {
     result: PropTypes.bool
   };
 
-  constructor({value}) {
+  constructor({ value }) {
     super();
-    this.state = {value};
+    this.state = { value };
   }
 
   render() {
-    const onSet = event => event && this.setState({value: event.originValue});
-    const onChange = event => event && this.setState({value: event.target.value});
+    const onSet = event => event && this.setState({ value: event.originValue });
+    const onChange = event =>
+      event && this.setState({ value: event.target.value });
 
     return (
       <GoogleAddressInput
@@ -34,14 +35,15 @@ class ControlledGoogleAddressInput extends Component {
         placeholder="Enter Address..."
         Client={clients.GoogleMapsClient}
         footer={'foo'}
-        footerOptions={{disabled: true}}
+        footerOptions={{ disabled: true }}
         clearSuggestionsOnBlur={false}
-        />
+      />
     );
   }
 }
 
-export default () =>
+export default () => (
   <div style={style}>
-    <ControlledGoogleAddressInput countryCode="US"/>
-  </div>;
+    <ControlledGoogleAddressInput countryCode="US" />
+  </div>
+);

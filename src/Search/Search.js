@@ -42,16 +42,14 @@ export default class Search extends WixComponent {
   }
 
   get _filteredOptions() {
-    const {
-      options,
-      value
-    } = this.props;
+    const { options, value } = this.props;
 
     const searchText = this._isControlled ? value : this.state.inputValue;
 
-    return options.filter(option => (searchText && searchText.length) ?
-      new RegExp(searchText.trim(), 'i').test(option.value) :
-      true
+    return options.filter(option =>
+      searchText && searchText.length
+        ? new RegExp(searchText.trim(), 'i').test(option.value)
+        : true,
     );
   }
 
@@ -66,9 +64,7 @@ export default class Search extends WixComponent {
   };
 
   _onClear = () => {
-    const {
-      onClear
-    } = this.props;
+    const { onClear } = this.props;
 
     if (!this.state.collapsed && this.props.expandable) {
       this.setState({
@@ -92,9 +88,7 @@ export default class Search extends WixComponent {
   };
 
   _onBlur = () => {
-    const {
-      onBlur
-    } = this.props;
+    const { onBlur } = this.props;
 
     if (!this.state.collapsed && this.props.expandable) {
       const value = this._currentValue();
@@ -112,7 +106,7 @@ export default class Search extends WixComponent {
   _onWrapperClick = () => {
     if (this.props.expandable && this.state.collapsed) {
       this.searchInput.input.focus();
-      this.setState({collapsed: false});
+      this.setState({ collapsed: false });
     }
   };
 
@@ -136,12 +130,20 @@ export default class Search extends WixComponent {
     });
 
     return (
-      <div className={wrapperClasses} onClick={this._onWrapperClick} onMouseDown={this._onWrapperMouseDown}>
+      <div
+        className={wrapperClasses}
+        onClick={this._onWrapperClick}
+        onMouseDown={this._onWrapperMouseDown}
+      >
         <InputWithOptions
           {...this.props}
-          ref={r => this.searchInput = r}
+          ref={r => (this.searchInput = r)}
           roundInput
-          prefix={<div className={styles.leftIcon}><SearchIcon/></div>}
+          prefix={
+            <div className={styles.leftIcon}>
+              <SearchIcon />
+            </div>
+          }
           menuArrow={false}
           clearButton
           closeOnSelect
@@ -151,7 +153,7 @@ export default class Search extends WixComponent {
           onChange={this._onChange}
           onBlur={this._onBlur}
           highlight
-          />
+        />
       </div>
     );
   }

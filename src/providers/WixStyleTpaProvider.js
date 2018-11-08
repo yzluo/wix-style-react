@@ -1,5 +1,5 @@
 import React from 'react';
-import {func, any, array} from 'prop-types';
+import { func, any, array } from 'prop-types';
 import Wix from 'Wix';
 import WixStyleProvider from './WixStyleProvider';
 
@@ -14,15 +14,19 @@ export default class WixStyleTpaProvider extends React.Component {
   }
 
   update(data) {
-    this.setState({theme: this.props.themeCreator(data)});
+    this.setState({ theme: this.props.themeCreator(data) });
   }
 
   componentDidMount() {
-    this.state.events.forEach(event => Wix.addEventListener(Wix.Events[event], this.update));
+    this.state.events.forEach(event =>
+      Wix.addEventListener(Wix.Events[event], this.update),
+    );
   }
 
   componentWillUnmout() {
-    this.state.events.forEach(event => Wix.removeEventListener(Wix.Events[event], this.update));
+    this.state.events.forEach(event =>
+      Wix.removeEventListener(Wix.Events[event], this.update),
+    );
   }
 
   render() {

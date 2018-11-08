@@ -15,7 +15,9 @@ export function mergeDrivers(target, source) {
   // TODO: merge driver2's internal methods into driver1's internal methods.
   // TODO: make this a reduce that accepts a list of drivers.
   if (target[INTERNAL_DRIVER_SYMBOL]) {
-    throw new Error('mergeDrivers(): Merging into a driver with INTERNAL_DRIVER methods, is currently not supported yet.');
+    throw new Error(
+      'mergeDrivers(): Merging into a driver with INTERNAL_DRIVER methods, is currently not supported yet.',
+    );
   }
 
   return {

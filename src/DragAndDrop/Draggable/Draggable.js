@@ -9,7 +9,7 @@ export class Draggable extends WixComponent {
   render() {
     return (
       <DraggableTarget {...this.props}>
-        <DraggableSource {...this.props}/>
+        <DraggableSource {...this.props} />
       </DraggableTarget>
     );
   }

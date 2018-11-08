@@ -1,11 +1,13 @@
-import {testkitFactoryCreator} from 'wix-ui-test-utils/vanilla';
+import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 import buttonLayoutDriverFactory from '../ButtonLayout/ButtonLayout.driver';
-import {dataHooks} from './Tag.helpers';
+import { dataHooks } from './Tag.helpers';
 import textDriverFactory from '../Text/Text.driver';
 import tagDriverFactory from './Tag.driver';
-import {isClassExists} from '../../test/utils';
+import { isClassExists } from '../../test/utils';
 
-const buttonLayoutTestkitFactory = testkitFactoryCreator(buttonLayoutDriverFactory);
+const buttonLayoutTestkitFactory = testkitFactoryCreator(
+  buttonLayoutDriverFactory,
+);
 const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 
 const getRemoveButtonLayoutDriver = element => {
@@ -22,11 +24,12 @@ const getTextDriver = element => {
   });
 };
 
-const tagPrivateDriverFactory = ({element}) => {
-  const isCloseButtonLarge = () => getRemoveButtonLayoutDriver(element).doesComponentHasClass('heightlarge');
+const tagPrivateDriverFactory = ({ element }) => {
+  const isCloseButtonLarge = () =>
+    getRemoveButtonLayoutDriver(element).doesComponentHasClass('heightlarge');
 
   return {
-    ...tagDriverFactory({element}),
+    ...tagDriverFactory({ element }),
     isCloseButtonSmall: () => !isCloseButtonLarge(),
     isCloseButtonLarge,
     getTextSize: () => getTextDriver(element).getSize(),

@@ -1,11 +1,11 @@
 import React from 'react';
-import {bool, node} from 'prop-types';
-import {children, optional, once} from '../Composite';
+import { bool, node } from 'prop-types';
+import { children, optional, once } from '../Composite';
 import Label from '../Label';
 import MultiSelect from '../MultiSelect';
 import InputAreaWithLabelComposite from '../Composite/InputAreaWithLabelComposite/InputAreaWithLabelComposite';
 
-const MultiSelectComposite = ({children, ...props}) => (
+const MultiSelectComposite = ({ children, ...props }) => (
   <InputAreaWithLabelComposite {...props}>
     {children}
   </InputAreaWithLabelComposite>

@@ -9,7 +9,7 @@ import EllipsisExampleRaw from '!raw-loader!./ExampleEllipsis';
 import TypographyExample from './ExampleTypography';
 import TypographyExampleRaw from '!raw-loader!./ExampleTypography';
 
-import {storySettings} from './storySettings';
+import { storySettings } from './storySettings';
 
 export default {
   category: storySettings.kind,
@@ -28,11 +28,11 @@ export default {
   examples: (
     <div>
       <CodeExample title="Ellipsis Example" code={EllipsisExampleRaw}>
-        <EllipsisExample/>
+        <EllipsisExample />
       </CodeExample>
 
       <CodeExample title="Typography Example" code={TypographyExampleRaw}>
-        <TypographyExample/>
+        <TypographyExample />
       </CodeExample>
     </div>
   )

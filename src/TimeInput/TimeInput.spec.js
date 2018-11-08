@@ -1,13 +1,16 @@
 import React from 'react';
 import TimePicker from './TimeInput';
 import timeInputDriverFactory from './TimeInput.driver';
-import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
+import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import moment from 'moment';
 import sinon from 'sinon';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../test/utils/testkit-sanity';
-import {timeInputTestkitFactory} from '../../testkit';
-import {timeInputTestkitFactory as enzymeTimeInputTestkitFactory} from '../../testkit/enzyme';
-import {mount} from 'enzyme';
+import {
+  isTestkitExists,
+  isEnzymeTestkitExists
+} from '../../test/utils/testkit-sanity';
+import { timeInputTestkitFactory } from '../../testkit';
+import { timeInputTestkitFactory as enzymeTimeInputTestkitFactory } from '../../testkit/enzyme';
+import { mount } from 'enzyme';
 
 const defaultMoment = moment();
 const defaultMomentWithAM = moment('2014-04-25T01:00:00.00Z');
@@ -23,18 +26,20 @@ describe('TimeInput', () => {
       const props = {
         defaultValue: defaultMoment
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       expect(driver.getValue()).toBe(format12Hours(props.defaultValue));
     });
 
     it(`should render the current time if no default value were passed `, () => {
-      const driver = createDriver(<TimePicker/>);
+      const driver = createDriver(<TimePicker />);
       const currentTime = defaultMoment;
       const currentTimeHours = format12Hours(currentTime).substring(0, 2);
       const currentTimeMinutes = format12Hours(currentTime).substring(3, 5);
       const inputTimeHours = driver.getValue().substring(0, 2);
       const inputTimeMinutes = driver.getValue().substring(3, 5);
-      const minutesDiff = Math.abs((parseInt(inputTimeMinutes) - parseInt(currentTimeMinutes)));
+      const minutesDiff = Math.abs(
+        parseInt(inputTimeMinutes) - parseInt(currentTimeMinutes),
+      );
       expect(inputTimeHours).toBe(currentTimeHours);
       expect(minutesDiff <= 1).toBeTruthy(); //ignore diff of one minute (minute can be change from the time the object was created to current time)
     });
@@ -44,7 +49,7 @@ describe('TimeInput', () => {
         defaultValue: defaultMoment,
         disableAmPm: true
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       expect(driver.getValue()).toBe(format24Hours(props.defaultValue));
     });
 
@@ -53,7 +58,7 @@ describe('TimeInput', () => {
         defaultValue: defaultMoment,
         disableAmPm: false
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       expect(driver.isAmPmIndicatorExist()).toBeTruthy();
     });
 
@@ -62,7 +67,7 @@ describe('TimeInput', () => {
         defaultValue: defaultMomentWithAM,
         disableAmPm: false
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       expect(driver.getAmPmIndicatorText()).toBe('am');
     });
 
@@ -71,7 +76,7 @@ describe('TimeInput', () => {
         defaultValue: defaultMomentWithPM,
         disableAmPm: false
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       expect(driver.getAmPmIndicatorText()).toBe('pm');
     });
   });
@@ -81,7 +86,7 @@ describe('TimeInput', () => {
       const props = {
         onChange: sinon.spy()
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       expect(driver.isDisabled()).toBeFalsy();
       driver.clickTickerUp();
       driver.clickTickerDown();
@@ -93,7 +98,7 @@ describe('TimeInput', () => {
         onChange: sinon.spy(),
         disabled: true
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
 
       driver.clickTickerUp();
       driver.clickTickerDown();
@@ -106,25 +111,29 @@ describe('TimeInput', () => {
       const props = {
         defaultValue: defaultMoment
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       driver.clickTickerUp();
-      expect(driver.getValue()).toBe(format12Hours(props.defaultValue.add(20, 'minutes')));
+      expect(driver.getValue()).toBe(
+        format12Hours(props.defaultValue.add(20, 'minutes')),
+      );
     });
 
     it(`should decrease input value by 20 minutes upon clicking the input's down ticker`, () => {
       const props = {
         defaultValue: defaultMoment
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       driver.clickTickerDown();
-      expect(driver.getValue()).toBe(format12Hours(props.defaultValue.subtract(20, 'minutes')));
+      expect(driver.getValue()).toBe(
+        format12Hours(props.defaultValue.subtract(20, 'minutes')),
+      );
     });
 
     it(`should allow to change time using keyboard's input`, () => {
       const props = {
         defaultValue: defaultMoment
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       driver.setValue('12:00');
       driver.blur();
       expect(driver.getValue()).toBe('12:00');
@@ -134,7 +143,7 @@ describe('TimeInput', () => {
       const props = {
         defaultValue: defaultMomentWithAM
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       driver.setValue('blabla');
       driver.blur();
       expect(driver.getValue()).toBe(format12Hours(props.defaultValue));
@@ -144,7 +153,7 @@ describe('TimeInput', () => {
       const props = {
         defaultValue: defaultMomentWithAM
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       driver.setValue('99:99');
       driver.blur();
       expect(driver.getValue()).toBe(format12Hours(props.defaultValue));
@@ -155,7 +164,7 @@ describe('TimeInput', () => {
         defaultValue: defaultMomentWithPM,
         disableAmPm: false
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       expect(driver.getAmPmIndicatorText()).toBe('pm');
       driver.toggleAmPmIndicator();
       expect(driver.getAmPmIndicatorText()).toBe('am');
@@ -165,7 +174,7 @@ describe('TimeInput', () => {
       const props = {
         defaultValue: defaultMoment
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       driver.setValue('11:01');
       driver.setValue('10a:02');
       expect(driver.getValue()).toBe('11:01');
@@ -174,9 +183,8 @@ describe('TimeInput', () => {
 
   describe('Styling', () => {
     it(`should not be created in rtl mode by default`, () => {
-      const props = {
-      };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const props = {};
+      const driver = createDriver(<TimePicker {...props} />);
       expect(driver.isRtl()).toBeFalsy();
     });
 
@@ -184,20 +192,28 @@ describe('TimeInput', () => {
       const props = {
         rtl: true
       };
-      const driver = createDriver(<TimePicker {...props}/>);
+      const driver = createDriver(<TimePicker {...props} />);
       expect(driver.isRtl()).toBeTruthy();
     });
   });
 
   describe('testkit', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<TimePicker/>, timeInputTestkitFactory)).toBe(true);
+      expect(isTestkitExists(<TimePicker />, timeInputTestkitFactory)).toBe(
+        true,
+      );
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<TimePicker/>, enzymeTimeInputTestkitFactory, mount)).toBe(true);
+      expect(
+        isEnzymeTestkitExists(
+          <TimePicker />,
+          enzymeTimeInputTestkitFactory,
+          mount,
+        ),
+      ).toBe(true);
     });
   });
 });

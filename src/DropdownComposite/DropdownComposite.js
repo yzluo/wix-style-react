@@ -1,15 +1,17 @@
 import React from 'react';
-import {bool, node} from 'prop-types';
-import {children, optional, once} from '../Composite';
+import { bool, node } from 'prop-types';
+import { children, optional, once } from '../Composite';
 import Label from '../Label';
 import Dropdown from '../Dropdown';
 import InputAreaWithLabelComposite from '../Composite/InputAreaWithLabelComposite/InputAreaWithLabelComposite';
 
 import deprecationLog from '../utils/deprecationLog';
 
-deprecationLog(`Using "DropdownComposite" is deprecated. Please use "FormField".`);
+deprecationLog(
+  `Using "DropdownComposite" is deprecated. Please use "FormField".`,
+);
 
-const DropdownComposite = ({children, ...props}) => (
+const DropdownComposite = ({ children, ...props }) => (
   <InputAreaWithLabelComposite {...props}>
     {children}
   </InputAreaWithLabelComposite>

@@ -19,11 +19,13 @@ class CommandsExample extends React.Component {
 
     return (
       <div>
-        <div style={{width: '400px'}}>
-          <Input theme={this.props.theme} ref="inputtest"/>
+        <div style={{ width: '400px' }}>
+          <Input theme={this.props.theme} ref="inputtest" />
         </div>
         <TextButton onClick={handleClick1}>Focus</TextButton>
-        <TextButton onClick={handleClick2}>Focus &amp; blur 1 second later</TextButton>
+        <TextButton onClick={handleClick2}>
+          Focus &amp; blur 1 second later
+        </TextButton>
         <TextButton onClick={handleClick3}>Select text</TextButton>
       </div>
     );
@@ -34,10 +36,11 @@ CommandsExample.propTypes = {
   theme: PropTypes.string
 };
 
-const Example = ({theme}) =>
+const Example = ({ theme }) => (
   <div>
-    <CommandsExample theme={theme}/>
-  </div>;
+    <CommandsExample theme={theme} />
+  </div>
+);
 
 Example.propTypes = {
   theme: PropTypes.string

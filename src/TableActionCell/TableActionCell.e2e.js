@@ -1,13 +1,24 @@
 import eyes from 'eyes.it';
-import {createStoryUrl, waitForVisibilityOf, scrollToElement} from 'wix-ui-test-utils/protractor';
+import {
+  createStoryUrl,
+  waitForVisibilityOf,
+  scrollToElement
+} from 'wix-ui-test-utils/protractor';
 
-import {storySettings} from '../../stories/TableActionCell/storySettings';
+import { storySettings } from '../../stories/TableActionCell/storySettings';
 
 const byDataHook = dataHook => $(`[data-hook="${dataHook}"]`);
-const hoverElement = element => browser.actions().mouseMove(element).perform();
+const hoverElement = element =>
+  browser
+    .actions()
+    .mouseMove(element)
+    .perform();
 
 describe('Table Action Cell', () => {
-  const storyUrl = createStoryUrl({kind: storySettings.kind, story: storySettings.storyName});
+  const storyUrl = createStoryUrl({
+    kind: storySettings.kind,
+    story: storySettings.storyName
+  });
 
   const verifyItem = async dataHook => {
     const element = byDataHook(dataHook);

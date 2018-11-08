@@ -2,24 +2,24 @@ import * as React from 'react';
 import FloatingHelper from 'wix-style-react/FloatingHelper';
 import Image from 'wix-ui-icons-common/Image';
 
-import {storySettings} from './StorySettings';
-import {storySettings as helperStorySettings} from '../FloatingHelperContent/StorySettings';
+import { storySettings } from './StorySettings';
+import { storySettings as helperStorySettings } from '../FloatingHelperContent/StorySettings';
 
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
-import {SimpleExample} from './SimpleExample';
+import { SimpleExample } from './SimpleExample';
 import SimpleExampleRaw from '!raw-loader!./SimpleExample';
 
-import {FullExample} from './FullExample';
+import { FullExample } from './FullExample';
 import FullExampleRaw from '!raw-loader!./FullExample';
 
-import {ProgrammaticExample} from './ProgrammaticExample';
+import { ProgrammaticExample } from './ProgrammaticExample';
 import ProgrammaticExampleRaw from '!raw-loader!./ProgrammaticExample';
 
-import {ControlledExample} from './ControlledExample';
+import { ControlledExample } from './ControlledExample';
 import ControlledExampleRaw from '!raw-loader!./ControlledExample';
 
-const exampleWrapperStyle = {marginTop: 100, marginBottom: 100};
+const exampleWrapperStyle = { marginTop: 100, marginBottom: 100 };
 
 export default {
   category: storySettings.kind,
@@ -33,7 +33,7 @@ export default {
       <FloatingHelper.Content
         title="Don’t forget to setup payments"
         body="In order to sell your music you need to choose a payment method."
-        />
+      />
     ),
     target: <span>I am a FloatingHelper target</span>,
     placement: 'right',
@@ -56,11 +56,12 @@ export default {
       'bottom-start',
       'left-end',
       'left',
-      'left-start'],
+      'left-start'
+    ],
 
     target: [
-      {label: 'Simple text', value: 'I am simple text target'},
-      {label: 'Simple span', value: <span>I am a span target</span>}
+      { label: 'Simple text', value: 'I am simple text target' },
+      { label: 'Simple span', value: <span>I am a span target</span> }
     ],
 
     content: [
@@ -70,7 +71,7 @@ export default {
           <FloatingHelper.Content
             title="Don’t forget to setup payments"
             body="In order to sell your music you need to choose a payment method."
-            />
+          />
         )
       },
 
@@ -82,8 +83,8 @@ export default {
             body="In order to sell your music you need to choose a payment method."
             actionText="Ok, Take Me There"
             onActionClick={() => null}
-            image={<Image width="102" height="102"/>}
-            />
+            image={<Image width="102" height="102" />}
+          />
         )
       }
     ]
@@ -91,33 +92,41 @@ export default {
 
   examples: (
     <div>
-      <p style={{fontSize: 20}}>The content property should receive a {`<FloatingHelper.Content>`} element.
-        <br/>See story:
-        <br/>
-        <p style={{fontSize: 25, fontWeight: 'bold'}}>{helperStorySettings.story}</p>
+      <p style={{ fontSize: 20 }}>
+        The content property should receive a {`<FloatingHelper.Content>`}{' '}
+        element.
+        <br />
+        See story:
+        <br />
+        <p style={{ fontSize: 25, fontWeight: 'bold' }}>
+          {helperStorySettings.story}
+        </p>
       </p>
 
       <CodeExample title="Simple Example" code={SimpleExampleRaw}>
         <div style={exampleWrapperStyle}>
-          <SimpleExample/>
+          <SimpleExample />
         </div>
       </CodeExample>
 
       <CodeExample title="Full Example" code={FullExampleRaw}>
         <div style={exampleWrapperStyle}>
-          <FullExample/>
+          <FullExample />
         </div>
       </CodeExample>
 
-      <CodeExample title="Programmatic Open Example" code={ProgrammaticExampleRaw}>
+      <CodeExample
+        title="Programmatic Open Example"
+        code={ProgrammaticExampleRaw}
+      >
         <div style={exampleWrapperStyle}>
-          <ProgrammaticExample/>
+          <ProgrammaticExample />
         </div>
       </CodeExample>
 
       <CodeExample title="Controlled Example" code={ControlledExampleRaw}>
         <div style={exampleWrapperStyle}>
-          <ControlledExample/>
+          <ControlledExample />
         </div>
       </CodeExample>
     </div>

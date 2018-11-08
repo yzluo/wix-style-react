@@ -1,5 +1,5 @@
 import React from 'react';
-import {bool, node} from 'prop-types';
+import { bool, node } from 'prop-types';
 import styles from './FieldLabelAttributes.scss';
 import WixComponent from '../BaseComponents/WixComponent';
 import Tooltip from '../Tooltip';
@@ -7,52 +7,44 @@ import InfoCircle from '../new-icons/InfoCircle';
 
 class FieldLabelAttributes extends WixComponent {
   static tooltipDefaultProps = {
-    moveBy: {x: 0, y: -1},
+    moveBy: { x: 0, y: -1 },
     minWidth: '150px'
   };
 
-  infoIcon =
-    <span
-      data-hook="info"
-      className={styles.icon}
-      >
-      <InfoCircle/>
-    </span>;
-
+  infoIcon = (
+    <span data-hook="info" className={styles.icon}>
+      <InfoCircle />
+    </span>
+  );
 
   getTooltip = () => {
     if (this.props.info) {
-      return React.createElement(
-        Tooltip,
-        {
-          ...this.tooltipDefaultProps,
-          appendToParent: this.props.appendToParent,
-          content: this.props.info,
-          children: this.infoIcon
-        }
-      );
+      return React.createElement(Tooltip, {
+        ...this.tooltipDefaultProps,
+        appendToParent: this.props.appendToParent,
+        content: this.props.info,
+        children: this.infoIcon
+      });
     } else if (this.props.tooltip) {
-      return React.cloneElement(
-        this.props.tooltip,
-        {
-          ...this.tooltipDefaultProps,
-          children: this.props.tooltip.props.children || this.infoIcon
-        }
-      );
+      return React.cloneElement(this.props.tooltip, {
+        ...this.tooltipDefaultProps,
+        children: this.props.tooltip.props.children || this.infoIcon
+      });
     } else {
       return null;
     }
-  }
+  };
 
   render() {
     return (
-      <div
-        className={styles.root}
-        data-hook="field-label-attributes"
-        >
-        { this.props.required && <span data-hook="required" className={styles.required}>*</span> }
+      <div className={styles.root} data-hook="field-label-attributes">
+        {this.props.required && (
+          <span data-hook="required" className={styles.required}>
+            *
+          </span>
+        )}
 
-        { this.getTooltip() }
+        {this.getTooltip()}
       </div>
     );
   }

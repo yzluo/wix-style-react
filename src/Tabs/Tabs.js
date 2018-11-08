@@ -9,15 +9,13 @@ import classNames from 'classnames';
 import * as TabPropTypes from './core/constants/tab-prop-types';
 import styles from './Tabs.scss';
 
-
 class Tabs extends WixComponent {
-
   static defaultProps = {
     hasDivider: true
-  }
+  };
 
   render() {
-    const {sideContent, hasDivider} = this.props;
+    const { sideContent, hasDivider } = this.props;
     const tabItemsProps = omit(['sideContent'], this.props);
     const className = classNames(styles.container, {
       [styles.hasDivider]: hasDivider
@@ -25,12 +23,11 @@ class Tabs extends WixComponent {
 
     return (
       <div className={className}>
-        <TabItems {...tabItemsProps}/>
-        <SideContent content={sideContent}/>
+        <TabItems {...tabItemsProps} />
+        <SideContent content={sideContent} />
       </div>
     );
   }
-
 }
 
 Tabs.propTypes = {

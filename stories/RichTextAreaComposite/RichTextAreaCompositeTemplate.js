@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RichTextAreaComposite from '../../src/RichTextAreaComposite';
 import RichTextArea from '../../src/RichTextArea';
@@ -6,7 +6,6 @@ import Label from '../../src/Label';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
 export default class Form extends Component {
-
   static propTypes = {
     withLabel: PropTypes.bool,
     label: PropTypes.object,
@@ -26,9 +25,12 @@ export default class Form extends Component {
 
   getComponent() {
     return (
-      <RichTextAreaComposite required={this.props.required} info={this.props.info}>
-        {this.props.withLabel ? <Label {...this.props.label}/> : null}
-        <RichTextArea {...this.props.richTextArea}/>
+      <RichTextAreaComposite
+        required={this.props.required}
+        info={this.props.info}
+      >
+        {this.props.withLabel ? <Label {...this.props.label} /> : null}
+        <RichTextArea {...this.props.richTextArea} />
       </RichTextAreaComposite>
     );
   }

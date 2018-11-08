@@ -17,8 +17,22 @@ export default class Tooltip extends WixComponent {
     theme: PropTypes.oneOf(['light', 'dark', 'error']),
     showDelay: PropTypes.number,
     hideDelay: PropTypes.number,
-    showTrigger: PropTypes.oneOf(['custom', 'mouseenter', 'mouseleave', 'click', 'focus', 'blur']),
-    hideTrigger: PropTypes.oneOf(['custom', 'mouseenter', 'mouseleave', 'click', 'focus', 'blur']),
+    showTrigger: PropTypes.oneOf([
+      'custom',
+      'mouseenter',
+      'mouseleave',
+      'click',
+      'focus',
+      'blur'
+    ]),
+    hideTrigger: PropTypes.oneOf([
+      'custom',
+      'mouseenter',
+      'mouseleave',
+      'click',
+      'focus',
+      'blur'
+    ]),
     active: PropTypes.bool,
     arrowPlacement: PropTypes.string,
     arrowStyle: PropTypes.object,
@@ -44,7 +58,7 @@ export default class Tooltip extends WixComponent {
     showTrigger: 'mouseenter',
     hideTrigger: 'mouseleave',
     active: false,
-    moveBy: {x: 0, y: 0},
+    moveBy: { x: 0, y: 0 },
     disabled: false,
     maxWidth: '1200px',
     zIndex: 2000,
@@ -57,8 +71,19 @@ export default class Tooltip extends WixComponent {
   constructor(props) {
     super(props);
 
-    this.placementFlipMap = {top: 'bottom', left: 'right', right: 'left', bottom: 'top'};
-    this.alignmentMap = {top: 'start', right: 'end', bottom: 'end', left: 'start', center: ''};
+    this.placementFlipMap = {
+      top: 'bottom',
+      left: 'right',
+      right: 'left',
+      bottom: 'top'
+    };
+    this.alignmentMap = {
+      top: 'start',
+      right: 'end',
+      bottom: 'end',
+      left: 'start',
+      center: ''
+    };
 
     this.state = {
       placement: this.getPopperPlacement(props.placement, props.alignment),
@@ -77,14 +102,14 @@ export default class Tooltip extends WixComponent {
   componentDidMount() {
     super.componentDidMount();
 
-    const {placement} = this.state;
+    const { placement } = this.state;
     const target = this.target.children[0];
     const content = this.content.children[0];
 
     this.popper = new Popper(target, content, {
       placement,
       modifiers: {
-        applyStyle: {enabled: false}
+        applyStyle: { enabled: false }
       },
       onUpdate: this.handlePopperUpdate,
       onCreate: this.handlePopperUpdate
@@ -130,12 +155,13 @@ export default class Tooltip extends WixComponent {
   }
 
   toggleActive(active) {
-    this.setState({active});
+    this.setState({ active });
   }
 
   handleNextMoveBy(nextProps) {
-    const hasChanged = nextProps.moveBy.x !== this.props.moveBy.x ||
-                       nextProps.moveBy.y !== this.props.moveBy.y;
+    const hasChanged =
+      nextProps.moveBy.x !== this.props.moveBy.x ||
+      nextProps.moveBy.y !== this.props.moveBy.y;
 
     if (hasChanged) {
       this.moveBy = nextProps.moveBy;
@@ -144,12 +170,16 @@ export default class Tooltip extends WixComponent {
   }
 
   handleNextActive(nextProps) {
-    const {active: nextActive} = nextProps;
-    const {active: currentlyActive} = this.props;
+    const { active: nextActive } = nextProps;
+    const { active: currentlyActive } = this.props;
 
     if (nextProps.showTrigger === 'custom' && nextActive && !currentlyActive) {
       this.toggleActive(true);
-    } else if (nextProps.hideTrigger === 'custom' && !nextActive && currentlyActive) {
+    } else if (
+      nextProps.hideTrigger === 'custom' &&
+      !nextActive &&
+      currentlyActive
+    ) {
       this.toggleActive(false);
     }
   }
@@ -163,12 +193,12 @@ export default class Tooltip extends WixComponent {
       });
     }
 
-    this.setState({popperData: data});
+    this.setState({ popperData: data });
   }
 
   handleTrigger(originalCallback = noop, triggerType) {
-    const {showTrigger, hideTrigger} = this.props;
-    const {active} = this.state;
+    const { showTrigger, hideTrigger } = this.props;
+    const { active } = this.state;
 
     if (showTrigger === hideTrigger && showTrigger === triggerType) {
       if (active) {
@@ -196,9 +226,12 @@ export default class Tooltip extends WixComponent {
   handleToggleWithDelay(toggle) {
     clearTimeout(this.mouseTimeout);
 
-    this.mouseTimeout = setTimeout(() => {
-      this.toggleActive(toggle);
-    }, toggle ? this.props.showDelay : this.props.hideDelay);
+    this.mouseTimeout = setTimeout(
+      () => {
+        this.toggleActive(toggle);
+      },
+      toggle ? this.props.showDelay : this.props.hideDelay,
+    );
   }
 
   getPopperPlacement(placement, alignment) {
@@ -242,7 +275,7 @@ export default class Tooltip extends WixComponent {
   }
 
   getArrowStyle() {
-    const {moveArrowTo, arrowStyle} = this.props;
+    const { moveArrowTo, arrowStyle } = this.props;
     const placement = this.placementWithoutAlignment(this.props.placement);
     const isVertical = placement === 'top' || placement === 'bottom';
     const isHorizontal = placement === 'left' || placement === 'right';
@@ -278,20 +311,40 @@ export default class Tooltip extends WixComponent {
   }
 
   render() {
-    const {theme, bounce, disabled, maxWidth, zIndex, textAlign, size, targetStyle} = this.props;
+    const {
+      theme,
+      bounce,
+      disabled,
+      maxWidth,
+      zIndex,
+      textAlign,
+      size,
+      targetStyle
+    } = this.props;
     const placement = this.placementWithoutAlignment(this.state.placement);
     const arrowPlacement = this.getArrowPlacement(placement);
 
-    let {active} = this.state;
+    let { active } = this.state;
 
     active = active && !disabled;
 
     const clonedTarget = React.cloneElement(this.props.children, {
-      onMouseEnter: () => this.handleTrigger(this.props.children.props.onMouseEnter, 'mouseenter'),
-      onMouseLeave: () => this.handleTrigger(this.props.children.props.onMouseLeave, 'mouseleave'),
-      onClick: () => this.handleTrigger(this.props.children.props.onClick, 'click'),
-      onFocus: () => this.handleTrigger(this.props.children.props.onFocus, 'focus'),
-      onBlur: () => this.handleTrigger(this.props.children.props.onBlur, 'blur')
+      onMouseEnter: () =>
+        this.handleTrigger(
+          this.props.children.props.onMouseEnter,
+          'mouseenter',
+        ),
+      onMouseLeave: () =>
+        this.handleTrigger(
+          this.props.children.props.onMouseLeave,
+          'mouseleave',
+        ),
+      onClick: () =>
+        this.handleTrigger(this.props.children.props.onClick, 'click'),
+      onFocus: () =>
+        this.handleTrigger(this.props.children.props.onFocus, 'focus'),
+      onBlur: () =>
+        this.handleTrigger(this.props.children.props.onBlur, 'blur')
     });
 
     const popperStyle = this.getPopperStyle();
@@ -299,36 +352,46 @@ export default class Tooltip extends WixComponent {
 
     return (
       <div className={styles.root} style={targetStyle}>
-        <div ref={r => this.target = r} data-hook="target" className="targetWrapper">
+        <div
+          ref={r => (this.target = r)}
+          data-hook="target"
+          className="targetWrapper"
+        >
           {clonedTarget}
         </div>
-        <div ref={r => this.content = r}>
+        <div ref={r => (this.content = r)}>
           <div
             className={classNames(styles.tooltip, {
               [styles.active]: active
             })}
-            style={{zIndex, ...popperStyle}}
+            style={{ zIndex, ...popperStyle }}
             data-hook="tooltip"
-            >
+          >
             <div
               className={classNames({
                 [styles[`bounce-${arrowPlacement}`]]: bounce
               })}
-              >
+            >
               <div
-                className={classNames(styles.tooltipInner, styles[theme], styles[placement], styles[size], {
-                  [styles.active]: active
-                })}
-                style={{maxWidth}}
+                className={classNames(
+                  styles.tooltipInner,
+                  styles[theme],
+                  styles[placement],
+                  styles[size],
+                  {
+                    [styles.active]: active
+                  },
+                )}
+                style={{ maxWidth }}
                 data-hook="tooltip-inner"
-                >
-                <div data-hook="tooltip-content" style={{textAlign}}>
+              >
+                <div data-hook="tooltip-content" style={{ textAlign }}>
                   {this.props.content}
                 </div>
                 <div
                   className={classNames(styles.arrow, styles[arrowPlacement])}
                   style={arrowStyle}
-                  />
+                />
               </div>
             </div>
           </div>

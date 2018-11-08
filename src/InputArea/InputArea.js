@@ -7,8 +7,8 @@ import WixComponent from '../BaseComponents/WixComponent';
 import styles from './InputArea.scss';
 
 /**
-  * General inputArea container
-  */
+ * General inputArea container
+ */
 class InputArea extends WixComponent {
   constructor(props) {
     super(props);
@@ -77,7 +77,14 @@ class InputArea extends WixComponent {
     });
 
     const ariaAttribute = {};
-    Object.keys(this.props).filter(key => key.startsWith('aria')).map(key => ariaAttribute['aria-' + key.substr(4).toLowerCase()] = this.props[key]);
+    Object.keys(this.props)
+      .filter(key => key.startsWith('aria'))
+      .map(
+        key =>
+          (ariaAttribute['aria-' + key.substr(4).toLowerCase()] = this.props[
+            key
+          ]),
+      );
 
     return (
       <div className={styles.wrapper}>
@@ -85,7 +92,7 @@ class InputArea extends WixComponent {
           <textarea
             rows={rows}
             maxLength={maxLength}
-            ref={ref => this.textArea = ref}
+            ref={ref => (this.textArea = ref)}
             className={styles.inputArea}
             id={id}
             style={inlineStyle}
@@ -102,12 +109,22 @@ class InputArea extends WixComponent {
             onKeyUp={onKeyUp}
             {...ariaAttribute}
             readOnly={readOnly}
-            />
-          {theme === 'material' && <div className={styles.bar}/>}
-          {hasCounter && maxLength && <span className={styles.counter} data-hook="counter">{this.state.counter}/{maxLength}</span>}
+          />
+          {theme === 'material' && <div className={styles.bar} />}
+          {hasCounter && maxLength && (
+            <span className={styles.counter} data-hook="counter">
+              {this.state.counter}/{maxLength}
+            </span>
+          )}
         </div>
         <div className={styles.error}>
-          {error && <Exclamation errorMessage={errorMessage} tooltipPlacement={tooltipPlacement} onTooltipShow={onTooltipShow}/>}
+          {error && (
+            <Exclamation
+              errorMessage={errorMessage}
+              tooltipPlacement={tooltipPlacement}
+              onTooltipShow={onTooltipShow}
+            />
+          )}
         </div>
       </div>
     );
@@ -126,7 +143,7 @@ class InputArea extends WixComponent {
   }
 
   _onFocus(e) {
-    this.setState({focus: true});
+    this.setState({ focus: true });
     this.props.onFocus && this.props.onFocus(e);
 
     if (this.props.autoSelect) {
@@ -138,7 +155,7 @@ class InputArea extends WixComponent {
   }
 
   _onBlur(e) {
-    this.setState({focus: false});
+    this.setState({ focus: false });
     this.props.onBlur && this.props.onBlur(e);
   }
 
@@ -153,7 +170,7 @@ class InputArea extends WixComponent {
   }
 
   _onChange(e) {
-    this.props.hasCounter && this.setState({counter: e.target.value.length});
+    this.props.hasCounter && this.setState({ counter: e.target.value.length });
     this.props.onChange && this.props.onChange(e);
   }
 }

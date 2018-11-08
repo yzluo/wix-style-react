@@ -1,8 +1,10 @@
 import dropdownLayoutDriverFactory from '../DropdownLayout/DropdownLayout.protractor.driver';
-import {isFocused} from 'wix-ui-test-utils/protractor';
+import { isFocused } from 'wix-ui-test-utils/protractor';
 
 const driverFactory = component => {
-  const dropdownLayoutDriver = dropdownLayoutDriverFactory(component.$('[data-hook="dropdown-layout-wrapper"]'));
+  const dropdownLayoutDriver = dropdownLayoutDriverFactory(
+    component.$('[data-hook="dropdown-layout-wrapper"]'),
+  );
   const input = component.$(`input`);
 
   return {

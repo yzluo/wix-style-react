@@ -2,21 +2,22 @@ import React from 'react';
 import DropdownLayout from '../DropdownLayout';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
-import {badgeSelectItemBuilder} from '../BadgeSelectItemBuilder';
+import { badgeSelectItemBuilder } from '../BadgeSelectItemBuilder';
 import styles from './BadgeSelect.scss';
-import Badge, {SKIN, TYPE, SIZE} from '../Badge/Badge';
+import Badge, { SKIN, TYPE, SIZE } from '../Badge/Badge';
 import ChevronDown from 'wix-ui-icons-common/ChevronDown';
 import ReactDOM from 'react-dom';
 
 export default class BadgeSelect extends React.Component {
-
   static propTypes = {
     /** An array of options. Each option must have a unique `id`, a `text` and a `skin` whose value should match one of `<Badge/>`'s skin values */
-    options: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      skin: PropTypes.oneOf(Object.keys(SKIN)).isRequired,
-      text: PropTypes.string.isRequired
-    })),
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        skin: PropTypes.oneOf(Object.keys(SKIN)).isRequired,
+        text: PropTypes.string.isRequired
+      }),
+    ),
     /** The id of the selected option in the list */
     selectedId: PropTypes.string,
     /** Callback function called whenever the user selects a different option in the list */
@@ -63,40 +64,45 @@ export default class BadgeSelect extends React.Component {
 
   getSelectedOption(props) {
     if (props.options && props.options.length) {
-      return props.options.find(({id}) => id === props.selectedId) || props.options[0];
+      return (
+        props.options.find(({ id }) => id === props.selectedId) ||
+        props.options[0]
+      );
     }
 
     return null;
   }
 
   get options() {
-    const {options} = this.props;
+    const { options } = this.props;
     return map(options, badgeSelectItemBuilder);
   }
 
   hideDropdown() {
-    this.setState({visible: false});
+    this.setState({ visible: false });
   }
 
   showDropdown() {
-    this.setState({visible: true});
+    this.setState({ visible: true });
   }
 
   toggleDropdown() {
-    this.setState({visible: !this.state.visible});
+    this.setState({ visible: !this.state.visible });
   }
 
   handleOutsideClick(event) {
     const ref = ReactDOM.findDOMNode(this.badge);
     if (!ref.contains(event.target)) {
-      this.setState({visible: false});
+      this.setState({ visible: false });
     }
   }
 
-  handleSelect({id: selectedId}) {
-    const {onSelect} = this.props;
-    const selectedBadge = this.props.options.find(({id}) => id === selectedId);
-    this.setState({selectedBadge, visible: false});
+  handleSelect({ id: selectedId }) {
+    const { onSelect } = this.props;
+    const selectedBadge = this.props.options.find(
+      ({ id }) => id === selectedId,
+    );
+    this.setState({ selectedBadge, visible: false });
 
     onSelect && onSelect(selectedBadge);
   }
@@ -117,24 +123,24 @@ export default class BadgeSelect extends React.Component {
   }
 
   render() {
-    const {type, size, uppercase, dataHook} = this.props;
+    const { type, size, uppercase, dataHook } = this.props;
 
     return this.state.selectedBadge ? (
       <div className={styles.container} data-hook={dataHook}>
         <div data-hook="badgeSelect-badge-wrapper" onKeyDown={this.onKeyDown}>
           <Badge
-            ref={badge => this.badge = badge}
-            {...{type, size, uppercase}}
-            suffixIcon={<ChevronDown viewBox="6 6 12 12"/>}
+            ref={badge => (this.badge = badge)}
+            {...{ type, size, uppercase }}
+            suffixIcon={<ChevronDown viewBox="6 6 12 12" />}
             onClick={() => this.toggleDropdown()}
             skin={this.state.selectedBadge.skin}
-            >
+          >
             {this.state.selectedBadge.text}
           </Badge>
         </div>
         <div className={styles.dropdown}>
           <DropdownLayout
-            ref={r => this.dropdownLayout = r}
+            ref={r => (this.dropdownLayout = r)}
             dataHook="badgeSelect-dropdownLayout"
             visible={this.state.visible}
             selectedId={this.state.selectedBadge.id}
@@ -143,7 +149,7 @@ export default class BadgeSelect extends React.Component {
             onClose={() => this.hideDropdown()}
             onClickOutside={e => this.handleOutsideClick(e)}
             inContainer
-            />
+          />
         </div>
       </div>
     ) : null;

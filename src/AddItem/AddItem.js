@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import {withFocusable, focusableStates} from '../common/Focusable';
+import { withFocusable, focusableStates } from '../common/Focusable';
 import AddItemLarge from 'wix-ui-icons-common/system/AddItemLarge';
 import AddItemMedium from 'wix-ui-icons-common/system/AddItemMedium';
 import AddItemSmall from 'wix-ui-icons-common/system/AddItemSmall';
@@ -14,18 +14,18 @@ import AddMedia from 'wix-ui-icons-common/system/AddMedia';
 import styles from './AddItem.scss';
 
 const ICONS = {
-  large: <AddItemLarge data-hook="additem-icon"/>,
-  medium: <AddItemMedium data-hook="additem-icon"/>,
-  small: <AddItemSmall data-hook="additem-icon"/>,
+  large: <AddItemLarge data-hook="additem-icon" />,
+  medium: <AddItemMedium data-hook="additem-icon" />,
+  small: <AddItemSmall data-hook="additem-icon" />,
   tiny: (
     <Add
       data-hook="additem-icon"
       width="26"
       height="26"
-      style={{flexShrink: 0}}
-      />
+      style={{ flexShrink: 0 }}
+    />
   ),
-  custom: <AddMedia data-hook="additem-icon" width="31" height="31"/>
+  custom: <AddMedia data-hook="additem-icon" width="31" height="31" />
 };
 
 const DEFAULT_TOOLTIP_PROPS = {
@@ -80,13 +80,13 @@ class AddItem extends Component {
   };
 
   renderIcon = () => {
-    const {size, theme} = this.props;
+    const { size, theme } = this.props;
     const image = theme === 'image';
     return ICONS[image ? 'custom' : size];
   };
 
   renderText = () => {
-    const {children, disabled, theme, size} = this.props;
+    const { children, disabled, theme, size } = this.props;
     if (!children || theme === 'image') {
       return null;
     }
@@ -100,7 +100,7 @@ class AddItem extends Component {
   };
 
   renderContent = () => {
-    const {tooltipContent, theme, alignItems, size, disabled} = this.props;
+    const { tooltipContent, theme, alignItems, size, disabled } = this.props;
     const box = classnames(styles.box, styles[alignItems], {
       [styles.row]: size === 'tiny',
       [styles[theme]]: theme === 'image'
@@ -151,7 +151,7 @@ class AddItem extends Component {
         onBlur={focusableOnBlur}
         {...focusableStates(this.props)}
         tabIndex={disabled ? null : 0}
-        >
+      >
         {this.renderContent()}
       </div>
     );

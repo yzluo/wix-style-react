@@ -1,31 +1,29 @@
 import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import EditableSelector from '../../src/EditableSelector';
-import {Container, Row, Col} from '../../src/Grid';
+import { Container, Row, Col } from '../../src/Grid';
 import Card from '../../src/Card';
 
 class CardWithEditableSelector extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      options: [
-        {title: 'Pumpkin Seeds'},
-        {title: 'Sunflower Seeds'}
-      ],
+      options: [{ title: 'Pumpkin Seeds' }, { title: 'Sunflower Seeds' }],
       selectedIndex: null
     };
   }
 
-  onOptionAdded = ({newTitle}) => {
+  onOptionAdded = ({ newTitle }) => {
     this.setState({
-      options: [...this.state.options, {title: newTitle}]
+      options: [...this.state.options, { title: newTitle }]
     });
   };
 
-  onOptionEdit = ({newTitle, index}) => {
+  onOptionEdit = ({ newTitle, index }) => {
     this.setState({
-      options: this.state.options.map((option, i) => index === i ? {title: newTitle} : option)
+      options: this.state.options.map((option, i) =>
+        index === i ? { title: newTitle } : option,
+      )
     });
   };
 
@@ -45,7 +43,7 @@ class CardWithEditableSelector extends React.Component {
     });
   };
 
-  onOptionDelete = ({index}) => {
+  onOptionDelete = ({ index }) => {
     let newSelectedIndex = this.state.selectedIndex;
     if (index === this.state.selectedIndex) {
       newSelectedIndex = null;
@@ -60,12 +58,12 @@ class CardWithEditableSelector extends React.Component {
 
   render() {
     return (
-      <div style={{backgroundColor: '#f0f4f7', padding: '20px'}}>
+      <div style={{ backgroundColor: '#f0f4f7', padding: '20px' }}>
         <Container>
           <Row>
             <Col span={4}>
               <Card>
-                <Card.Header title="Editable Selector Inside Card"/>
+                <Card.Header title="Editable Selector Inside Card" />
                 <Card.Content>
                   <EditableSelector
                     dataHook="story-editable-selector"
@@ -76,7 +74,7 @@ class CardWithEditableSelector extends React.Component {
                     toggleType={'radio'}
                     title="Type of Seeds"
                     options={this.state.options}
-                    />
+                  />
                   &nbsp;
                 </Card.Content>
               </Card>

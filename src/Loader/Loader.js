@@ -46,21 +46,20 @@ const sizesInPx = {
 const FULL_CIRCLE_ANGLE = 359;
 
 const sizeToSuccessIcon = {
-  tiny: <ToggleOn/>,
-  small: <CircleLoaderCheckSmall/>,
-  medium: <CircleLoaderCheck/>,
-  large: <CircleLoaderCheck/>
+  tiny: <ToggleOn />,
+  small: <CircleLoaderCheckSmall />,
+  medium: <CircleLoaderCheck />,
+  large: <CircleLoaderCheck />
 };
 
 const sizeToErrorIcon = {
-  tiny: <FormFieldError/>,
-  small: <FormFieldErrorSmall/>,
-  medium: <FormFieldError/>,
-  large: <FormFieldError/>
+  tiny: <FormFieldError />,
+  small: <FormFieldErrorSmall />,
+  medium: <FormFieldError />,
+  large: <FormFieldError />
 };
 
 export default class Loader extends WixComponent {
-
   static displayName = 'Loader';
 
   static propTypes = {
@@ -87,11 +86,15 @@ export default class Loader extends WixComponent {
   };
 
   render() {
-    const {size, color, text, status, statusMessage} = this.props;
+    const { size, color, text, status, statusMessage } = this.props;
     const sizeInPx = sizesInPx[size];
     const shouldShowFullCircle = status !== 'loading';
-    const lightArcAngle = !shouldShowFullCircle ? arcsAngles[size].light : FULL_CIRCLE_ANGLE;
-    const darkArcAngle = !shouldShowFullCircle ? arcsAngles[size].dark : FULL_CIRCLE_ANGLE;
+    const lightArcAngle = !shouldShowFullCircle
+      ? arcsAngles[size].light
+      : FULL_CIRCLE_ANGLE;
+    const darkArcAngle = !shouldShowFullCircle
+      ? arcsAngles[size].dark
+      : FULL_CIRCLE_ANGLE;
     const shouldShowText = size !== 'tiny';
     const successIcon = sizeToSuccessIcon[size];
     const errorIcon = sizeToErrorIcon[size];
@@ -104,43 +107,58 @@ export default class Loader extends WixComponent {
           width: `${sizeInPx}px`,
           height: `${sizeInPx}px`
         }}
-        >
+      >
         <Arc
           angle={lightArcAngle}
           className={css.lightArc}
           strokeWidth={strokeWidth}
           viewBoxSize={sizeInPx}
-          />
+        />
         <Arc
           angle={darkArcAngle}
           className={css.darkArc}
           strokeWidth={strokeWidth}
           viewBoxSize={sizeInPx}
-          />
-        {status !== 'loading' &&
-        <div className={css.statusIndicator}>
-          {status === 'success' && successIcon}
-          {status === 'error' && errorIcon}
-        </div>
-        }
+        />
+        {status !== 'loading' && (
+          <div className={css.statusIndicator}>
+            {status === 'success' && successIcon}
+            {status === 'error' && errorIcon}
+          </div>
+        )}
       </div>
     );
 
     return (
-      <div className={classNames(css.loaderContainer, css[size], css[color], css[status])}>
-        {
-          statusMessage ?
-            <Tooltip dataHook="loader-tooltip" placement="top" textAlign="center" alignment="center" content={statusMessage} theme="dark">
-              {loader}
-            </Tooltip> :
-            loader
-        }
-        {
-          shouldShowText && text &&
+      <div
+        className={classNames(
+          css.loaderContainer,
+          css[size],
+          css[color],
+          css[status],
+        )}
+      >
+        {statusMessage ? (
+          <Tooltip
+            dataHook="loader-tooltip"
+            placement="top"
+            textAlign="center"
+            alignment="center"
+            content={statusMessage}
+            theme="dark"
+          >
+            {loader}
+          </Tooltip>
+        ) : (
+          loader
+        )}
+        {shouldShowText && text && (
           <div className={css.text}>
-            <Heading appearance="H6" dataHook="loader-text">{this.props.text}</Heading>
+            <Heading appearance="H6" dataHook="loader-text">
+              {this.props.text}
+            </Heading>
           </div>
-        }
+        )}
       </div>
     );
   }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles.scss';
 
-const Layout = ({children, gap, cols}) =>
+const Layout = ({ children, gap, cols }) => (
   <div
     style={{
       gridGap: gap,
@@ -11,7 +11,8 @@ const Layout = ({children, gap, cols}) =>
     }}
     className={styles.root}
     children={children}
-    />;
+  />
+);
 
 Layout.displayName = 'Layout';
 

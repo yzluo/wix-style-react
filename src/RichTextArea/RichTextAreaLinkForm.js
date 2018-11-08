@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FormField from '../FormField';
 import Button from '../Button';
@@ -12,14 +12,14 @@ class RichTextAreaLinkForm extends Component {
     text: this.props.selection
   };
 
-  getChangeHandler = field => ({target: {value}}) => {
-    this.setState({[field]: value});
+  getChangeHandler = field => ({ target: { value } }) => {
+    this.setState({ [field]: value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
 
-    const {onSubmit} = this.props;
+    const { onSubmit } = this.props;
     onSubmit && onSubmit(this.state);
   };
 
@@ -35,18 +35,28 @@ class RichTextAreaLinkForm extends Component {
               placeholder="URL this link should go to"
               size="small"
               width="190px"
-              />
+            />
           </FormField>
         </div>
         <div className={styles.buttons}>
           <span className={styles.button}>
-            <Button theme="icon-standardsecondary" onClick={this.props.onCancel} height="small" type="button">
-              <X/>
+            <Button
+              theme="icon-standardsecondary"
+              onClick={this.props.onCancel}
+              height="small"
+              type="button"
+            >
+              <X />
             </Button>
           </span>
           <span className={styles.button}>
-            <Button theme="icon-standard" height="small" type="submit" disabled={!this.state.href}>
-              <Check/>
+            <Button
+              theme="icon-standard"
+              height="small"
+              type="submit"
+              disabled={!this.state.href}
+            >
+              <Check />
             </Button>
           </span>
         </div>
@@ -65,7 +75,7 @@ class RichTextAreaLinkForm extends Component {
             placeholder="Text to display"
             size="small"
             width="190px"
-            />
+          />
         </FormField>
       </div>
     );

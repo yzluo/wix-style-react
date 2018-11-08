@@ -35,11 +35,11 @@ export default {
   examples: (
     <div>
       <CodeExample title="Standard" code={ExampleStandardRaw}>
-        <ExampleStandard/>
+        <ExampleStandard />
       </CodeExample>
 
       <CodeExample title="Dark" code={ExampleDarkRaw}>
-        <ExampleDark/>
+        <ExampleDark />
       </CodeExample>
     </div>
   )

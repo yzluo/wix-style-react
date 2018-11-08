@@ -10,14 +10,16 @@ const searchDriverFactory = args => {
     element: args.element && args.element.childNodes[0]
   });
 
-  const {element} = args;
+  const { element } = args;
 
   return {
     ...inputWithOptionsDriver,
     driver: {
       ...inputWithOptionsDriver.driver,
       isExpandable: () => element.className.includes(EXPANDABLE_CLASS),
-      isCollapsed: () => element.className.includes(EXPANDABLE_COLLAPSED) && !element.className.includes(EXPANDABLE_EXPANDED)
+      isCollapsed: () =>
+        element.className.includes(EXPANDABLE_COLLAPSED) &&
+        !element.className.includes(EXPANDABLE_EXPANDED)
     }
   };
 };

@@ -1,10 +1,16 @@
 import React from 'react';
-import {any} from 'prop-types';
-import {BulkSelectionConsumer, BulkSelectionContextPropTypes} from '../BulkSelection';
+import { any } from 'prop-types';
+import {
+  BulkSelectionConsumer,
+  BulkSelectionContextPropTypes
+} from '../BulkSelection';
 
 export const TableToolbarContainer = props => {
   return (
-    <BulkSelectionConsumer consumerCompName="Table.ToolbarContainer" providerCompName="Table">
+    <BulkSelectionConsumer
+      consumerCompName="Table.ToolbarContainer"
+      providerCompName="Table"
+    >
       {props.children}
     </BulkSelectionConsumer>
   );

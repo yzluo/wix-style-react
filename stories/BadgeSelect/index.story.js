@@ -1,7 +1,11 @@
 import React from 'react';
 import BadgeSelect from 'wix-style-react/BadgeSelect';
-import {SKIN, TYPE, SIZE} from 'wix-ui-backoffice/dist/src/components/Badge/constants';
-import {storySettings} from './storySettings';
+import {
+  SKIN,
+  TYPE,
+  SIZE
+} from 'wix-ui-backoffice/dist/src/components/Badge/constants';
+import { storySettings } from './storySettings';
 
 const options = Object.values(SKIN).map((skin, id) => ({
   id: id.toString(),
@@ -17,8 +21,8 @@ const CenterBadgeSelect = props => (
       display: 'flex',
       justifyContent: 'center'
     }}
-    >
-    <BadgeSelect {...props}/>
+  >
+    <BadgeSelect {...props} />
   </div>
 );
 
@@ -35,15 +39,13 @@ export default {
     dataHook: storySettings.dataHook,
     options,
     selectedId: '0',
-    onSelect: ({id}) => setState({selectedId: id}),
+    onSelect: ({ id }) => setState({ selectedId: id }),
     uppercase: true
   }),
 
   exampleProps: {
-    selectedId: options.map(({id}) => id),
-    options: [
-      {label: 'All badges', value: options}
-    ],
+    selectedId: options.map(({ id }) => id),
+    options: [{ label: 'All badges', value: options }],
     type: Object.keys(TYPE),
     size: Object.keys(SIZE)
   }

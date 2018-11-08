@@ -40,7 +40,8 @@ class ThemedInput extends Input {
       [styles.hasHover]: forceHover,
       [styles.hasFocus]: forceFocus || this.state.focus,
       [styles.roundInput]: roundInput,
-      [styles.hasValue]: (value && value.length) || (this.input && !!this.input.value),
+      [styles.hasValue]:
+        (value && value.length) || (this.input && !!this.input.value),
       [styles.noRightBorderRadius]: noRightBorderRadius === true, // assert boolean type
       [styles.noLeftBorderRadius]: noLeftBorderRadius === true, // assert boolean type
       /* Adding [noRightBorderRadius] and [noLeftBorderRadius] as a string className, is a hack for backward compatibility with
@@ -53,14 +54,27 @@ class ThemedInput extends Input {
     const placeholder = this.props.placeholder;
     return (
       <div
-        className={classNames(classes, styles.root, styles[`theme-${theme}`], styles[`size-${size}${withSelection ? '-with-selection' : ''}`], className)}
+        className={classNames(
+          classes,
+          styles.root,
+          styles[`theme-${theme}`],
+          styles[`size-${size}${withSelection ? '-with-selection' : ''}`],
+          className,
+        )}
         data-hook={dataHook}
-        >
-        {(theme === 'amaterial') &&
-        <label className={styles.materialTitle} htmlFor={id}>{title}</label>}
-        {super.render({placeholder})}
-        {(theme === 'material') && <div className={`${styles.bar} ${styles.barBlack}`}/>}
-        {(theme === 'amaterial') && <div className={`${styles.bar} ${styles.barBlue}`}/>}
+      >
+        {theme === 'amaterial' && (
+          <label className={styles.materialTitle} htmlFor={id}>
+            {title}
+          </label>
+        )}
+        {super.render({ placeholder })}
+        {theme === 'material' && (
+          <div className={`${styles.bar} ${styles.barBlack}`} />
+        )}
+        {theme === 'amaterial' && (
+          <div className={`${styles.bar} ${styles.barBlue}`} />
+        )}
       </div>
     );
   }

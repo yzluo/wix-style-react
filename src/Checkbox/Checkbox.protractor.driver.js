@@ -1,7 +1,7 @@
 import styles from './Checkbox.scss';
 import focusableDriverFactory from '../common/Focusable/Focusable.protractor.driver';
-import {mergeDrivers} from '../../test/utils/private-drivers';
-import {hasAttribute, hasClass} from '../../test/utils/protractor-helpers';
+import { mergeDrivers } from '../../test/utils/private-drivers';
+import { hasAttribute, hasClass } from '../../test/utils/protractor-helpers';
 
 /**
  * @return <T extends InternalFocusableDriver>
@@ -38,7 +38,6 @@ const checkboxDriverFactory = element => {
   };
 
   return mergeDrivers(publicDriver, focusableDriver);
-
 };
 
 export default checkboxDriverFactory;

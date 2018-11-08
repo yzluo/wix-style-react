@@ -6,7 +6,7 @@ import Input from 'wix-style-react/Input';
 export default class TextFieldBasicExample extends React.Component {
   state = {
     value: ''
-  }
+  };
 
   render() {
     return (
@@ -14,14 +14,13 @@ export default class TextFieldBasicExample extends React.Component {
         label="This is the FormField label"
         required
         infoContent="This is the info tooltip content"
-        >
+      >
         <Input
           placeholder="Placeholder Text"
           value={this.state.value}
-          onChange={event => this.setState({value: event.target.value})}
-          />
+          onChange={event => this.setState({ value: event.target.value })}
+        />
       </FormField>
     );
   }
 }
-

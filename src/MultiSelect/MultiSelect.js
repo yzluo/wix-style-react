@@ -11,7 +11,7 @@ class MultiSelect extends InputWithOptions {
     super(props);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onPaste = this.onPaste.bind(this);
-    this.state = {pasteDetected: false};
+    this.state = { pasteDetected: false };
   }
 
   hideOptions() {
@@ -20,9 +20,9 @@ class MultiSelect extends InputWithOptions {
   }
 
   onClickOutside() {
-    const {value, options, onSelect} = this.props;
+    const { value, options, onSelect } = this.props;
     if (!options.length && value) {
-      onSelect([{id: value.trim(), label: value.trim()}]);
+      onSelect([{ id: value.trim(), label: value.trim() }]);
     }
     if (this.state.showOptions) {
       this.hideOptions();
@@ -33,7 +33,9 @@ class MultiSelect extends InputWithOptions {
     const optionIds = this.props.options.map(option => option.id);
     const tagIds = this.props.tags.map(tag => tag.id);
     const unselectedOptionsIds = difference(optionIds, tagIds);
-    return this.props.options.filter(option => unselectedOptionsIds.includes(option.id));
+    return this.props.options.filter(option =>
+      unselectedOptionsIds.includes(option.id),
+    );
   }
 
   dropdownAdditionalProps() {
@@ -55,7 +57,7 @@ class MultiSelect extends InputWithOptions {
           onReorder={this.props.onReorder}
           maxNumRows={this.props.maxNumRows}
           mode={this.props.mode}
-          />
+        />
       ),
       onKeyDown: this.onKeyDown,
       delimiters: this.props.delimiters,
@@ -64,12 +66,12 @@ class MultiSelect extends InputWithOptions {
   }
 
   onPaste() {
-    this.setState({pasteDetected: true});
+    this.setState({ pasteDetected: true });
   }
 
   _onChange(event) {
     if (!this.state.pasteDetected) {
-      this.setState({inputValue: event.target.value});
+      this.setState({ inputValue: event.target.value });
       this.props.onChange && this.props.onChange(event);
     } else {
       const delimitersRegexp = new RegExp(this.props.delimiters.join('|'), 'g');
@@ -80,13 +82,16 @@ class MultiSelect extends InputWithOptions {
         .filter(str => str);
 
       this.clearInput();
-      this.setState({pasteDetected: false});
+      this.setState({ pasteDetected: false });
 
       const suggestedOptions = tags.map(tag => {
         const tagObj = this.getUnselectedOptions().find(
-          element => this.props.valueParser(element).toLowerCase() === tag.toLowerCase()
+          element =>
+            this.props.valueParser(element).toLowerCase() === tag.toLowerCase(),
         );
-        return tagObj ? tagObj : {id: uniqueId('customOption_'), value: tag, theme: 'error'};
+        return tagObj
+          ? tagObj
+          : { id: uniqueId('customOption_'), value: tag, theme: 'error' };
       });
 
       this.onSelect(suggestedOptions);
@@ -98,7 +103,7 @@ class MultiSelect extends InputWithOptions {
   }
 
   _onManuallyInput(inputValue) {
-    const {value, options} = this.props;
+    const { value, options } = this.props;
 
     if (value && value.trim()) {
       if (options.length) {
@@ -109,9 +114,8 @@ class MultiSelect extends InputWithOptions {
         if (maybeNearestOption) {
           this.onSelect([maybeNearestOption]);
         }
-
       } else {
-        this.props.onSelect([{id: value.trim(), label: value.trim()}]);
+        this.props.onSelect([{ id: value.trim(), label: value.trim() }]);
       }
     }
 
@@ -131,7 +135,7 @@ class MultiSelect extends InputWithOptions {
   }
 
   onKeyDown(event) {
-    const {tags, value, onRemoveTag} = this.props;
+    const { tags, value, onRemoveTag } = this.props;
 
     if (
       tags.length > 0 &&
@@ -151,8 +155,8 @@ class MultiSelect extends InputWithOptions {
     }
   }
 
-  optionToTag({id, value, tag, theme}) {
-    return tag ? {id, ...tag} : {id, label: value, theme};
+  optionToTag({ id, value, tag, theme }) {
+    return tag ? { id, ...tag } : { id, label: value, theme };
   }
 
   onSelect(options) {
@@ -175,7 +179,7 @@ class MultiSelect extends InputWithOptions {
     if (this.props.onManuallyInput) {
       this.props.onManuallyInput(
         inputValue,
-        this.optionToTag({id: uniqueId('customOption_'), value: inputValue})
+        this.optionToTag({ id: uniqueId('customOption_'), value: inputValue }),
       );
     }
 
@@ -185,7 +189,7 @@ class MultiSelect extends InputWithOptions {
   clearInput() {
     this.input.clear();
     if (this.props.onChange) {
-      this.props.onChange({target: {value: ''}});
+      this.props.onChange({ target: { value: '' } });
     }
   }
 }

@@ -35,7 +35,7 @@ class PopoverMenu extends WixComponent {
   };
 
   placementStyle = placement =>
-    this.placements[placement] || styles.topPlacement
+    this.placements[placement] || styles.topPlacement;
 
   menuItems = items =>
     React.Children.map(items, (item, i) => {
@@ -52,36 +52,28 @@ class PopoverMenu extends WixComponent {
             this.tooltip.hide();
             item.props.onClick();
           }}
-          />
+        />
       );
     });
 
-  menu = () =>
+  menu = () => (
     <ul
-      className={classnames(
-        styles.menu,
-        {
-          [styles.large]: this.props.size === 'large',
-          [styles.placementTop]: this.props.placement === 'top',
-          [styles.placementBottom]: this.props.placement === 'bottom'
-        }
-      )}
-      >
+      className={classnames(styles.menu, {
+        [styles.large]: this.props.size === 'large',
+        [styles.placementTop]: this.props.placement === 'top',
+        [styles.placementBottom]: this.props.placement === 'bottom'
+      })}
+    >
       {this.menuItems(this.props.children)}
     </ul>
+  );
 
   render() {
-    const {
-      placement,
-      size,
-      maxWidth,
-      buttonHeight,
-      buttonTheme
-    } = this.props;
+    const { placement, size, maxWidth, buttonHeight, buttonTheme } = this.props;
 
     return (
       <Tooltip
-        ref={tooltip => this.tooltip = tooltip}
+        ref={tooltip => (this.tooltip = tooltip)}
         placement={placement}
         alignment="center"
         content={this.menu()}
@@ -97,13 +89,9 @@ class PopoverMenu extends WixComponent {
         appendTo={this.props.appendTo}
         appendToParent={this.props.appendToParent}
         zIndex={this.props.zIndex}
-        >
-        <Button
-          type="button"
-          height={buttonHeight}
-          theme={buttonTheme}
-          >
-          <More/>
+      >
+        <Button type="button" height={buttonHeight} theme={buttonTheme}>
+          <More />
         </Button>
       </Tooltip>
     );

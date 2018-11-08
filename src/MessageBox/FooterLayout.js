@@ -17,12 +17,9 @@ const FooterLayout = ({
   enableCancel,
   sideActions
 }) => {
-  const footerButtonsClassNames = classNames(
-    styles.footerbuttons,
-    {
-      [styles.withSideActions]: sideActions && (cancelText || confirmText)
-    }
-  );
+  const footerButtonsClassNames = classNames(styles.footerbuttons, {
+    [styles.withSideActions]: sideActions && (cancelText || confirmText)
+  });
   return (
     <div>
       <div className={styles.footer} data-hook="message-box-footer">
@@ -37,7 +34,7 @@ const FooterLayout = ({
               onClick={onCancel}
               dataHook="cancellation-button"
               children={cancelText}
-              />
+            />
           )}
           {confirmText && (
             <Button
@@ -47,7 +44,7 @@ const FooterLayout = ({
               onClick={onOk}
               dataHook="confirmation-button"
               children={confirmText}
-              />
+            />
           )}
         </div>
       </div>
@@ -57,7 +54,7 @@ const FooterLayout = ({
           data-hook="footer-layout-bottom-children"
           className={styles.bottomChildren}
           children={bottomChildren}
-          />
+        />
       )}
     </div>
   );

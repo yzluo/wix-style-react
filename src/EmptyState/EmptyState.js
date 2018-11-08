@@ -10,23 +10,23 @@ import Text from '../Text';
  * # `<EmptyState/>` component
  * > Representing a state of an empty page, section, table, etc.
  */
-const EmptyState = ({
-  theme,
-  title,
-  subtitle,
-  image,
-  children,
-  dataHook
-}) => (
+const EmptyState = ({ theme, title, subtitle, image, children, dataHook }) => (
   <div
     className={classNames(styles.wrapper, styles[theme])}
     data-hook={dataHook}
-    >
+  >
     <div className={styles.container}>
       {image && (
-        <div className={styles.imageContainer} data-hook="empty-state-image-container">
+        <div
+          className={styles.imageContainer}
+          data-hook="empty-state-image-container"
+        >
           {typeof image === 'string' ? (
-            <img className={styles.imageElement} src={image} data-hook="image-element"/>
+            <img
+              className={styles.imageElement}
+              src={image}
+              data-hook="image-element"
+            />
           ) : (
             React.cloneElement(image, {
               'data-hook': 'image-node'
@@ -36,7 +36,10 @@ const EmptyState = ({
       )}
 
       {title && (
-        <div className={styles.titleContainer} data-hook="empty-state-title-container">
+        <div
+          className={styles.titleContainer}
+          data-hook="empty-state-title-container"
+        >
           {theme === 'section' ? (
             <Text weight="normal">{title}</Text>
           ) : (
@@ -45,12 +48,18 @@ const EmptyState = ({
         </div>
       )}
 
-      <div className={styles.subtitleContainer} data-hook="empty-state-subtitle-container">
+      <div
+        className={styles.subtitleContainer}
+        data-hook="empty-state-subtitle-container"
+      >
         <Text secondary>{subtitle}</Text>
       </div>
 
       {children && (
-        <div className={styles.childrenContainer} data-hook="empty-state-children-container">
+        <div
+          className={styles.childrenContainer}
+          data-hook="empty-state-children-container"
+        >
           {children}
         </div>
       )}
@@ -61,7 +70,6 @@ const EmptyState = ({
 EmptyState.displayName = 'EmptyState';
 
 EmptyState.propTypes = {
-
   /** The theme of the EmptyState */
   theme: PropTypes.oneOf(['page', 'page-no-border', 'section']),
 
@@ -85,6 +93,5 @@ EmptyState.defaultProps = {
   image: null,
   children: null
 };
-
 
 export default EmptyState;
