@@ -15,25 +15,15 @@ class GenericModal extends Component {
   }
 
   renderComposerLayout() {
-    /* eslint-disable */
-    const onCloseButtonClick = () => console.log('close button clicked');
-    const onInfoButtonClick = () => console.log('question mark button clicked');
-    const onConfirmButtonClick = () => console.log('confirm button clicked');
-    const onCancelButtonClick = () => console.log('cancel button clicked');
-    /* eslint-enable */
-
-    const confirmButtonContent = 'Save test';
-    const cancelButtonContent = 'Cancel test';
+    const confirmButtonContent = 'Save!';
+    const cancelButtonContent = 'Cancel!';
+    const content = 'hello world! '.repeat(150);
 
     return (<ComposerLayout
-      content={<div >Hello</div>}
+      content={<div style={{wordBreak: 'all'}}>{content}</div>}
       title="title"
       headerSideActions={<div>Some header Side Actions</div>}
       footerSideActions={<div>Some footer Side Actions</div>}
-      onCloseButtonClick={onCloseButtonClick}
-      onInfoButtonClick={onInfoButtonClick}
-      onConfirmButtonClick={onConfirmButtonClick}
-      onCancelButtonClick={onCancelButtonClick}
       confirmButtonContent={confirmButtonContent}
       cancelButtonContent={cancelButtonContent}
       fullscreen

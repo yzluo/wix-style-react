@@ -1,40 +1,37 @@
 import React, {PropTypes} from 'react';
 import {Row} from './Row';
 import Button from '../Backoffice/Button';
-import TextLink from '../TextLink';
+import styles from './FooterLayout.scss';
 
 
 const FooterLayout = props => {
-
   const rightAlignedItems = (<div>
     {props.showCancelButton &&
-    <div
-      style={{display: 'inline'}}
-      onClick={props.isCancelButtonEnabled && props.onCancelButtonClick}
-      >
-      <TextLink
-        data-hook="cancel-button"
-        disabled={props.isCancelButtonEnabled}
-        >
-        {props.cancelButtonContent}
-      </TextLink>
-    </div>
+    <Button
+      dataHook="cancel-button"
+      disabled={!props.isCancelButtonEnabled}
+      onClick={props.onCancelButtonClick}
+      children={props.cancelButtonContent}
+      theme="whiteblue"
+      />
     }
 
     {props.showConfirmButton &&
-      <Button
-        dataHook="confirm-button"
-        disabled={!props.isConfirmButtonEnabled}
-        onClick={props.onConfirmButtonClick}
-        children={props.confirmButtonContent}
-        />
+    <Button
+      dataHook="confirm-button"
+      disabled={!props.isConfirmButtonEnabled}
+      onClick={props.onConfirmButtonClick}
+      children={props.confirmButtonContent}
+      />
     }
   </div>);
   return (
-    <Row
-      rightAlignedItems={rightAlignedItems}
-      leftAlignedItems={props.sideActions}
-      />
+    <div className={styles.footerLayout}>
+      <Row
+        rightAlignedItems={rightAlignedItems}
+        leftAlignedItems={props.sideActions}
+        />
+    </div>
   );
 }
 ;

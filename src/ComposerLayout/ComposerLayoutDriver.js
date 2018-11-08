@@ -1,39 +1,42 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {isClassExists} from '../../test/utils';
-import ReactTestUtils from 'react-dom/test-utils';
-import {buttonTestkitFactory} from '../../testkit';
+import {findByHook} from '../../test/utils';
+import {buttonTestkitFactory, genericLayoutTestkitFactory} from '../../testkit';
 
-const composerLayoutDriverFactory = ({element, wrapper, component}) => {
-  const getAttribute = (element, attribute) => element.getAttribute(attribute);
+
+const composerLayoutDriverFactory = ({element}) => {
   const header = element.querySelector('[data-hook="header"]');
   const footer = element.querySelector('[data-hook="footer"]');
-  const closeButtonTestkit = buttonTestkitFactory({wrapper: element, dataHook: 'close-button'});
-  const infoButtonTestkit = buttonTestkitFactory({wrapper: element, dataHook: 'info-button'});
+  const closeButtonTestkit = buttonTestkitFactory({wrapper: header, dataHook: 'close-button'});
+  const infoButtonTestkit = buttonTestkitFactory({wrapper: header, dataHook: 'info-button'});
+  const genericLayoutTestkit = genericLayoutTestkitFactory({wrapper: element, dataHook: 'generic-layout'});
+  const confirmButtonTestkit = buttonTestkitFactory({wrapper: footer, dataHook: 'confirm-button'});
+  const cancelButtonTestkit = buttonTestkitFactory({wrapper: footer, dataHook: 'cancel-button'});
 
   return {
     exists: () => !!element,
-    isRenderedInFullscreen: true,
+    isRenderedInFullscreen: () => genericLayoutTestkit.isFullscreen(),
     getContent: () => element.querySelector('[data-hook="content"]').innerHTML,
 
     header: {
       isHeaderRendered: () => !!header,
-      getTitle: () => header.querySelector('[data-hook="title"]').innerHTML,
-      getSideActions: () => header.querySelector('[data-hook="side-actions"]').innerHTML,
-      isCloseButtonRendered: () => !!header.querySelector('[data-hook="close-button"]'),
-      isInfoButtonRendered: () => !!header.querySelector('[data-hook="info-button"]'),
+      getTitle: () => findByHook(header, 'title').innerHTML,
+      getSideActions: () => findByHook(header, 'side-actions').innerHTML,
+      isCloseButtonRendered: () => closeButtonTestkit.exists(),
+      isInfoButtonRendered: () => infoButtonTestkit.exists(),
       clickOnCloseButton: () => closeButtonTestkit.click(),
       clickOnInfoButton: () => infoButtonTestkit.click()
-
     },
 
     footer: {
-      isFooterRendered: () => !!footer
-    },
-
-    setProps: props => {
-      const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
-      ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);
+      isFooterRendered: () => !!footer,
+      isConfirmButtonRendered: () => confirmButtonTestkit.exists(),
+      isCancelButtonRendered: () => cancelButtonTestkit.exists(),
+      getConfirmButtonContent: () => confirmButtonTestkit.getButtonTextContent(),
+      getCancelButtonContent: () => cancelButtonTestkit.getButtonTextContent(),
+      isConfirmButtonEnabled: () => !confirmButtonTestkit.isButtonDisabled(),
+      isCancelButtonEnabled: () => !cancelButtonTestkit.isButtonDisabled(),
+      clickOnConfirmButton: () => confirmButtonTestkit.click(),
+      clickOnCancelButton: () => cancelButtonTestkit.click(),
+      getSideActions: () => findByHook(footer, 'side-actions').innerHTML
     }
   };
 };

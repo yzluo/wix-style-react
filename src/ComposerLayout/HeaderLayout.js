@@ -1,6 +1,8 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import InfoIcon from 'wix-style-react/new-icons/Info';
 import XIcon from 'wix-style-react/new-icons/X';
+import styles from './HeaderLayout.scss';
 
 import {Row} from './Row';
 
@@ -14,11 +16,13 @@ export const HeaderLayout = props => {
   const title = <div data-hook="title">{props.title}</div>;
   const sideActions = <div data-hook="side-actions">{props.sideActions}</div>;
   return (
-    <Row
-      rightAlignedItems={rightAlignedItems}
-      centerAlignedItems={title}
-      leftAlignedItems={sideActions}
-      />
+    <div className={styles.headerLayout}>
+      <Row
+        rightAlignedItems={rightAlignedItems}
+        centerAlignedItems={title}
+        leftAlignedItems={sideActions}
+        />
+    </div>
   );
 };
 
