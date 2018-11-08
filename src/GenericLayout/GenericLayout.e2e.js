@@ -21,7 +21,7 @@ describe('GenericLayout', () => {
 
       const button = buttonTestkitFactory({dataHook: 'open-default-generic-layout-in-modal-button'});
 
-      button.click();
+      await button.click();
       await verifyItem('default-generic-layout');
     });
   });
@@ -33,7 +33,7 @@ describe('GenericLayout', () => {
 
       const button = buttonTestkitFactory({dataHook: 'open-fullscreen-generic-layout-in-modal-button'});
 
-      button.click();
+      await button.click();
       await verifyItem('fullscreen-generic-layout');
     });
   });

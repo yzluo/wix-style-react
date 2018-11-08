@@ -21,21 +21,42 @@ describe('GenericLayout', () => {
   });
 
   it('should render header', () => {
-    const driver = createDriver(renderWithProps({header: 'Header'}));
+    const driver = createDriver(renderWithProps({
+      header: <div data-hook="generic-layout-header">Header</div>
+    }));
 
-    expect(driver.headerTextContent()).toEqual('Header');
+    const headerTextContent = driver
+      .getElement()
+      .querySelector('[data-hook="generic-layout-header"]')
+      .textContent;
+
+    expect(headerTextContent).toEqual('Header');
   });
 
   it('should render content', () => {
-    const driver = createDriver(renderWithProps({content: 'Content'}));
+    const driver = createDriver(renderWithProps({
+      content: <div data-hook="generic-layout-content">Content</div>
+    }));
 
-    expect(driver.contentTextContent()).toEqual('Content');
+    const contentTextContent = driver
+      .getElement()
+      .querySelector('[data-hook="generic-layout-content"]')
+      .textContent;
+
+    expect(contentTextContent).toEqual('Content');
   });
 
   it('should render footer', () => {
-    const driver = createDriver(renderWithProps({footer: 'Footer'}));
+    const driver = createDriver(renderWithProps({
+      footer: <div data-hook="generic-layout-footer">Footer</div>
+    }));
 
-    expect(driver.footerTextContent()).toEqual('Footer');
+    const footerTextContent = driver
+      .getElement()
+      .querySelector('[data-hook="generic-layout-footer"]')
+      .textContent;
+
+    expect(footerTextContent).toEqual('Footer');
   });
 
   describe('fullscreen', () => {

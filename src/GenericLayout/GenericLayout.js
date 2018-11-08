@@ -24,15 +24,12 @@ export default class GenericLayout extends WixComponent {
     );
 
     return (
-      <div className={containerClassNames} data-hook="generic-layout">
-        <div data-hook="generic-layout-header">{header}</div>
+      <div className={containerClassNames}>
+        <div>{header}</div>
 
-        <div
-          className={styles.content}
-          data-hook="generic-layout-content"
-          >{content}</div>
+        <div className={styles.content}>{content}</div>
 
-        <div data-hook="generic-layout-footer">{footer}</div>
+        <div>{footer}</div>
       </div>
     );
   }
@@ -48,3 +45,5 @@ GenericLayout.propTypes = {
 GenericLayout.defaultProps = {
   fullscreen: false
 };
+
+GenericLayout.displayName = 'GenericLayout';
