@@ -14,7 +14,8 @@ Types of changes:
 1. **Docs** for documentation changes
 
 ## Next
-
+### Changed
+- `<Tag>`- add bo tooltip instead of native title for Tag [#2431](https://github.com/wix/wix-style-react/pull/2431)
 ## 5.9.1 - 2018-11-07
 
 ### Deprecated

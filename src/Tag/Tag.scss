@@ -157,14 +157,3 @@
   background-color: $GR30;
   color: $D30;
 }
-
-//Ellipsis - TODO, should replace with Text ellipsis once the display-inline is solved
-.tagEllipsis {
-  overflow: hidden;
-}
-
-.tagTextEllipsis {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
