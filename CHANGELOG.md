@@ -16,6 +16,10 @@ Types of changes:
 ## Next
 ### Changed
 - `<Tag>`- add bo tooltip instead of native title for Tag [#2431](https://github.com/wix/wix-style-react/pull/2431)
+
+## Fixed
+- removed unnecessary console.log in deprecation logger.
+
 ## 5.9.1 - 2018-11-07
 
 ### Deprecated
@@ -23,6 +27,9 @@ Types of changes:
 
 ### Changed
 - `<Input>` - change placeholder color for the Input component [#2402](https://github.com/wix/wix-style-react/pull/2402)
+
+- `<MessageBoxMarketerialLayout/>` - update typography [#2411](https://github.com/wix/wix-style-react/pull/2411)
+
 
 ## 5.9.0 - 2018-11-05
 ### Added
