@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 let deprecationLog = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
@@ -13,7 +12,6 @@ if (process.env.NODE_ENV !== 'production') {
      */
     log(message) {
       if (!this.reportedMessages.has(message)) {
-        console.log(message);
         this.reportedMessages.add(message);
         this.printWarning(message);
       }
@@ -21,7 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
     printWarning = msg => {
       const message = `Wix-Style-React: [WARNING] ${msg}`;
       if (console) {
-        console.warn(message);
+        console.warn(message); // eslint-disable-line
       }
       try {
         // --- Welcome to debugging wix-style-react ---
