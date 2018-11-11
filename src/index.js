@@ -80,3 +80,4 @@ export {default as FilePicker} from './FilePicker';
 export {Container, RawContainer, Columns, Columns as Row, AutoAdjustedColumns, AutoAdjustedColumns as AutoAdjustedRow, Col} from './Grid';
 export {Layout, Cell} from './Layout';
 export {default as Typography} from './Typography';
+export {default as GenericModalLayout} from './GenericModalLayout';

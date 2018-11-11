@@ -113,6 +113,7 @@ import '../../stories/Highlighter.story.js'; // Highlighter
 // Components API
 import '../../stories/components/Dropdown/Dropdown.story.js';
 import '../../stories/FormField/FormField.story.js';
+import '../../stories/GenericModalLayout/GenericModalLayout.story.js';
 import '../../stories/Heading/index.story';
 import '../../stories/Input';
 import '../../stories/InputArea/index.story.js';
