@@ -15,7 +15,7 @@ Types of changes:
 
 ## Next
 
-### Fixed
+### Added
 - `<InputArea>` - add name prop to inputarea component [#2449](https://github.com/wix/wix-style-react/pull/2449/files)
 
 ## 5.10.0 - 2018-11-11
