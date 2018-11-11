@@ -49,7 +49,7 @@ const MyComponent = () =>
 * Use [demo pages](https://wix-wix-style-react.surge.sh/) to find all available components with examples.
 
 ## Contributing
-Please refer to the [Contribution page](https://github.com/wix/wix-style-react/blob/master/CONTRIBUTION.md)
+Please refer to the [Contributing page](https://github.com/wix/wix-style-react/blob/master/CONTRIBUTING.md)
 
 ## Tests
 Please refer to the [Testing page](https://github.com/wix/wix-style-react/blob/master/docs/contribution/TESTING.md)
