@@ -19,6 +19,9 @@ Types of changes:
 - `<InputArea>` - add name prop to inputarea component [#2449](https://github.com/wix/wix-style-react/pull/2449)
 - `<GenericModalLayout/>` - add new component [#2439](https://github.com/wix/wix-style-react/pull/2439)
 
+### Changed
+- `<TableActionCell>` - allow passing `PopoverMenu` props [#2417](https://github.com/wix/wix-style-react/pull/2417)
+
 ## 5.10.0 - 2018-11-11
 
 ### Changed
