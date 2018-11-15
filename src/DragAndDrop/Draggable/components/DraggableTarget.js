@@ -52,6 +52,7 @@ const target = {
     monitorItem.realTime.containerId = props.containerId;
 
     let levelChange = 0;
+    monitorItem.ignoreDrop = false;
     if (props.withLevels) {
       // Determine rectangle on screen
       const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
@@ -70,9 +71,11 @@ const target = {
       // When dragging upwards, only move when the cursor is above 50%
 
       // Dragging downwards || Dragging upwards
-      if ((dragIndex < hoverIndex && hoverClientY < hoverMiddleY) ||
-        (dragIndex > hoverIndex && hoverClientY > hoverMiddleY)) {
+      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+        // levelChange++;
+      } else if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
         levelChange++;
+        monitorItem.ignoreDrop = dragIndex - hoverIndex === 1;
       }
     }
     /**
@@ -81,17 +84,14 @@ const target = {
         it required for case, when we moving item from 1 container to another
       )
     */
-    props.onHover(dragIndex, hoverIndex, {
+    /** set new index for item */
+    monitorItem.index = props.onHover(dragIndex, hoverIndex, {
       id: monitorItem.id,
       item: monitorItem.originalItem,
       levelChange,
       dragIndex,
       hoverIndex
     });
-    /** set new index for item */
-    if (!levelChange) {
-      monitorItem.index = hoverIndex;
-    }
   }
 };
 

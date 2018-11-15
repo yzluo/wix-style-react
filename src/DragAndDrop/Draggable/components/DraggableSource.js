@@ -46,7 +46,8 @@ const source = {
         item
       });
     }
-    if (monitor.getDropResult()) {
+    const monitorItem = monitor.getItem();
+    if (monitor.getDropResult() && !monitorItem.ignoreDrop) {
       onDrop({
         payload: monitor.getItem().originalItem, // original item
         removedIndex: index, // original item index

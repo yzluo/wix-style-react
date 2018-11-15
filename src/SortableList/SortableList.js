@@ -25,14 +25,16 @@ export default class SortableList extends WixComponent {
   }
 
   handleHover = (removedIndex, addedIndex, options = {}) => {
+    const {dragIndex, hoverIndex, levelChange} = options;
+    console.info('!!!options', options.levelChange);
+    const changeIndex = !levelChange || dragIndex < hoverIndex;
     this.setState(prevState => {
       const nextItems = [...prevState.items];
-      const {dragIndex, hoverIndex, levelChange} = options;
       if (this.props.withLevels) {
         nextItems[dragIndex].level = nextItems[hoverIndex].level + levelChange;
       }
 
-      if (!levelChange) {
+      if (changeIndex) {
         if (!nextItems.find(it => it.id === options.id)) {
           nextItems.splice(addedIndex, 0, options.item);
         } else {
@@ -42,6 +44,8 @@ export default class SortableList extends WixComponent {
 
       return {items: nextItems};
     });
+
+    return changeIndex ? hoverIndex : dragIndex;
   };
 
   handleDrop = ({payload, addedIndex, removedIndex, addedToContainerId, removedFromContainerId}) => {
@@ -120,6 +124,7 @@ export default class SortableList extends WixComponent {
                 key={`${item.id}-${index}-${this.props.containerId}`}
                 id={item.id}
                 index={index}
+                level={item.level}
                 item={item}
                 withLevels={withLevels}
                 renderItem={this.props.renderItem}

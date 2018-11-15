@@ -26,6 +26,7 @@ Draggable.propTypes = {
   renderItem: PropTypes.func,
   /* position of item in container items array */
   index: PropTypes.number,
+  level: PropTypes.number,
   /* uniq id of an item */
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /* model that represent item */
