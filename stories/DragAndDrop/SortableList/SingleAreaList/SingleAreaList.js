@@ -18,23 +18,28 @@ export default class SingleAreaList extends React.Component {
     items: [
       {
         id: generateId(),
-        text: 'Item 1'
+        text: 'Item 1',
+        level: 0
       },
       {
         id: generateId(),
-        text: 'Item 2'
+        text: 'Item 2',
+        level: 1
       },
       {
         id: generateId(),
-        text: 'Item 3'
+        text: 'Item 3',
+        level: 0
       },
       {
         id: generateId(),
-        text: 'Item 4'
+        text: 'Item 4',
+        level: 0
       },
       {
         id: generateId(),
-        text: 'Item 5'
+        text: 'Item 5',
+        level: 0
       }
     ]
   };
@@ -65,7 +70,7 @@ export default class SingleAreaList extends React.Component {
       });
 
     return (
-      <div className={classes} data-hook={`item-${id}`}>
+      <div className={classes} data-hook={`item-${id}`} style={{marginLeft: item.level * 40}}>
         {item.text}
         {
           this.props.withHandle ? this.renderHandle({connectHandle, id, isPlaceholder}) : null
@@ -79,6 +84,7 @@ export default class SingleAreaList extends React.Component {
       <div className={styles.root}>
         <h3 className={styles.title}>Draggable Area</h3>
         <SortableList
+          withLevels
           withHandle={this.props.withHandle}
           className={styles.sortableList}
           containerId="single-area-1"

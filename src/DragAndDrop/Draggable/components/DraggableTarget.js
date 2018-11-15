@@ -1,4 +1,5 @@
 import React from 'react';
+import { findDOMNode } from 'react-dom';
 import WixComponent from '../../../BaseComponents/WixComponent';
 import PropTypes from 'prop-types';
 import {DropTarget} from 'react-dnd';
@@ -49,6 +50,31 @@ const target = {
     */
     monitorItem.realTime.onMoveOut = props.onMoveOut;
     monitorItem.realTime.containerId = props.containerId;
+
+    let levelChange = 0;
+    if (props.withLevels) {
+      // Determine rectangle on screen
+      const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
+
+      // Get vertical middle
+      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+
+      // Determine mouse position
+      const clientOffset = monitor.getClientOffset();
+
+      // Get pixels to the top
+      const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+
+      // Only perform the move when the mouse has crossed half of the items height
+      // When dragging downwards, only move when the cursor is below 50%
+      // When dragging upwards, only move when the cursor is above 50%
+
+      // Dragging downwards || Dragging upwards
+      if ((dragIndex < hoverIndex && hoverClientY < hoverMiddleY) ||
+        (dragIndex > hoverIndex && hoverClientY > hoverMiddleY)) {
+        levelChange++;
+      }
+    }
     /**
       call callback, to ask parent to do some action, for example swap items or add new one,
       we send original position of item and new one, also id of item and original item state(
@@ -57,10 +83,15 @@ const target = {
     */
     props.onHover(dragIndex, hoverIndex, {
       id: monitorItem.id,
-      item: monitorItem.originalItem
+      item: monitorItem.originalItem,
+      levelChange,
+      dragIndex,
+      hoverIndex
     });
     /** set new index for item */
-    monitorItem.index = hoverIndex;
+    if (!levelChange) {
+      monitorItem.index = hoverIndex;
+    }
   }
 };
 

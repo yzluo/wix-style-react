@@ -27,10 +27,17 @@ export default class SortableList extends WixComponent {
   handleHover = (removedIndex, addedIndex, options = {}) => {
     this.setState(prevState => {
       const nextItems = [...prevState.items];
-      if (!nextItems.find(it => it.id === options.id)) {
-        nextItems.splice(addedIndex, 0, options.item);
-      } else {
-        nextItems.splice(addedIndex, 0, ...nextItems.splice(removedIndex, 1));
+      const {dragIndex, hoverIndex, levelChange} = options;
+      if (this.props.withLevels) {
+        nextItems[dragIndex].level = nextItems[hoverIndex].level + levelChange;
+      }
+
+      if (!levelChange) {
+        if (!nextItems.find(it => it.id === options.id)) {
+          nextItems.splice(addedIndex, 0, options.item);
+        } else {
+          nextItems.splice(addedIndex, 0, ...nextItems.splice(removedIndex, 1));
+        }
       }
 
       return {items: nextItems};
@@ -86,7 +93,7 @@ export default class SortableList extends WixComponent {
   }
 
   render() {
-    const {className, contentClassName, groupName, dragPreview} = this.props;
+    const {className, contentClassName, groupName, dragPreview, withLevels} = this.props;
     const common = {
       groupName,
       containerId: this.props.containerId,
@@ -114,6 +121,7 @@ export default class SortableList extends WixComponent {
                 id={item.id}
                 index={index}
                 item={item}
+                withLevels={withLevels}
                 renderItem={this.props.renderItem}
                 withHandle={this.props.withHandle}
                 usePortal={this.props.usePortal}
@@ -136,6 +144,7 @@ SortableList.propTypes = {
   ...Draggable.propTypes,
   /** in case of wrong position of item during drag you can force SortableList to use portals */
   usePortal: PropTypes.bool,
+  withLevels: PropTypes.bool,
   /**
     if you are having nested SortableLists,
     list that you are currently dragging need to be marked as dragPreview
