@@ -13,10 +13,12 @@ import {SingleAreaList, MultiAreaList, MultiAreaListWithSortableColumns, Styles 
 import Introduction from './Introduction';
 import Styles from './Styles';
 import DragDropContextProvider from './DragDropContextProvider';
+import ChangePosition from './ChangePosition';
 
 storiesOf('WIP/Drag And Drop', module)
   .add('Introduction', () => <Introduction/>)
   .add('Styles', () => <Styles/>)
+  .add('ChangePosition', () => <ChangePosition/>)
   .add('DragDropContextProvider', () => <DragDropContextProvider/>);
 
 storiesOf('WIP/Drag And Drop/SortableList', module)

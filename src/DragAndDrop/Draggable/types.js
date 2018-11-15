@@ -1,3 +1,4 @@
 export const ItemTypes = {
-  DRAGGABLE: 'Draggable'
+  DRAGGABLE: 'Draggable',
+  BOX: 'Box'
 };
