@@ -50,8 +50,10 @@ describe('Calendar', () => {
 
   describe('selectedDays prop', () => {
     it('overrides the value prop', () => {
-      const value = new Date(2018, 10, 1);
-      const selectedDays = new Date(2018, 9, 1);
+      const NOVEMBER = 10;
+      const OCTOBER = 9;
+      const value = new Date(2018, NOVEMBER, 1);
+      const selectedDays = new Date(2018, OCTOBER, 1);
 
       const driver = createDriver(
         <Calendar
@@ -62,28 +64,100 @@ describe('Calendar', () => {
       expect(driver.getMonthCaption()).toEqual('October');
     });
   });
-/*
+
   describe('clicking on a day', () => {
-    let onSelectedDaysChange;
+    let onSelectedDaysChange, onChange;
 
     beforeEach(() => {
+      onChange = jest.fn();
       onSelectedDaysChange = jest.fn();
     });
+    describe('with selectionMode=\'day\'', () => {
+      it('should call onSelectedDaysChange with the clicked day', () => {
+        const driver = createDriver(
+          <Calendar
+            selectedDays={new Date(2018, 10, 5)}
+            onSelectedDaysChange={onSelectedDaysChange}
+            selectionMode={'day'}
+            />
+        );
 
-    it('with selectionMode=\'day\' will select that day', () => {
-      const driver = createDriver(
-        <Calendar
-          selectedDays={selectedDays}
-          onSelectedDaysChange={onSelectedDaysChange}
-          />
-      );
+        expect(onSelectedDaysChange.mock.calls.length).toEqual(0);
 
-  //    const {inputDriver, calendarDriver} = createDriver(<DatePicker onChange={noop} disabled/>);
-  //    inputDriver.trigger('click');
+        driver.clickOnNthDay(0);
 
-      console.log('-------------', onSelectedDaysChange.mock.calls)
-      expect(onSelectedDaysChange.mock.calls.length).toEqual(1);
-    })
+        expect(onSelectedDaysChange.mock.calls.length).toEqual(1);
+        expect(onSelectedDaysChange.mock.calls[0][0].getDate()).toEqual(1);
+      });
 
-  });*/
+      it('should call onChange with the clicked day given onSelectedDaysChange NOT provided', () => {
+        const driver = createDriver(
+          <Calendar
+            selectedDays={new Date(2018, 10, 1)}
+            onChange={onChange}
+            selectionMode={'day'}
+            />
+        );
+
+        expect(onChange.mock.calls.length).toEqual(0);
+
+        driver.clickOnNthDay(0);
+
+        expect(onChange.mock.calls.length).toEqual(1);
+        expect(onChange.mock.calls[0][0].getDate()).toEqual(1);
+      });
+    });
+
+    describe('with selectionMode=\'range\'', () => {
+      it('should call onSelectedDaysChange({from : clicked day}) when selectedDays is undefined', () => {
+      });
+
+      it('should call onSelectedDaysChange({from : clicked day}) when selectedDays is a Range', () => {
+      });
+
+      it('will fire onSelectedDaysChange with just {from} if selectedDays isn\'t just {from}...', () => {
+        const driver = createDriver(
+          <Calendar
+            selectedDays={new Date(2018, 10, 5)}
+            onSelectedDaysChange={onSelectedDaysChange}
+            selectionMode={'range'}
+            />
+        );
+
+        driver.clickOnNthDay(0);
+        expect(onSelectedDaysChange.mock.calls.length).toEqual(1);
+        expect(onSelectedDaysChange.mock.calls[0][0].from.getDate()).toEqual(1);
+      });
+
+      it(`should call onSelectedDaysChange() with clicked day as the 'to' when selectedDays has 'from' only`, () => {
+        const driver = createDriver(
+          <Calendar
+            selectedDays={{from: new Date(2018, 10, 1)}}
+            onSelectedDaysChange={onSelectedDaysChange}
+            selectionMode={'range'}
+            />
+        );
+
+        driver.clickOnNthDay(2);
+        expect(onSelectedDaysChange.mock.calls.length).toEqual(1);
+        expect(onSelectedDaysChange.mock.calls[0][0].from.getDate()).toEqual(1);
+        expect(onSelectedDaysChange.mock.calls[0][0].to.getDate()).toEqual(3);
+      });
+
+      it('should call onChange given onSelectedDaysChange NOT provided', () => {
+        const driver = createDriver(
+          <Calendar
+            selectedDays={new Date(2018, 10, 5)}
+            onChange={onChange}
+            selectionMode={'range'}
+            />
+        );
+
+        driver.clickOnNthDay(0);
+        expect(onChange.mock.calls.length).toEqual(1);
+        expect(onChange.mock.calls[0][0].from.getDate()).toEqual(1);
+      });
+
+    });
+  });
 });

@@ -8,17 +8,22 @@ class ControlledCalendarExample extends React.Component {
     super(props);
     this.state = {
       date: new Date('2017/05/01'),
-      selectedDays: {from: new Date('2017/05/02'), to: new Date('2017/05/05')},
-      excludePastDates: true
+      selectedDays: {to: new Date('2018/11/14')},
+      excludePastDates: false,
+      selectionMode: 'range'
     };
   }
 
-  onChange(date) {
-    this.setState({date});
+  onSelectedDaysChange(selectedDays) {
+    this.setState({selectedDays});
   }
 
   toggleExclude() {
     this.setState(({excludePastDates}) => ({excludePastDates: !excludePastDates}));
+  }
+
+  toggleSelectionMode() {
+    this.setState({selectionMode: this.state.selectionMode === 'day' ? 'range' : 'day'});
   }
 
   render() {
@@ -26,8 +31,9 @@ class ControlledCalendarExample extends React.Component {
       <div>
         <Calendar
           excludePastDates={this.state.excludePastDates}
-          onSelectedDaysChange={date => this.onChange(date)}
+          onSelectedDaysChange={selectedDays => this.onSelectedDaysChange(selectedDays)}
           selectedDays={this.state.selectedDays}
+          selectionMode={this.state.selectionMode}
           />
         <div style={{display: 'flex'}}>
           <ToggleSwitch
@@ -35,6 +41,13 @@ class ControlledCalendarExample extends React.Component {
             onChange={() => this.toggleExclude()}
             />
           <Label>Exclude Past Days</Label>
+        </div>
+        <div style={{display: 'flex'}}>
+          <ToggleSwitch
+            checked={this.state.selectionMode === 'day'}
+            onChange={() => this.toggleSelectionMode()}
+            />
+          <Label>Selection Mode: {this.state.selectionMode === 'day' ? 'Single day' : 'Date range'}</Label>
         </div>
       </div>
     );

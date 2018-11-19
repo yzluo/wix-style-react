@@ -6,6 +6,7 @@ import addMonths from 'date-fns/add_months';
 import startOfMonth from 'date-fns/start_of_month';
 import classNames from 'classnames';
 import deprecationLog from '../utils/deprecationLog';
+import parse from 'date-fns/parse';
 
 import WixComponent from '../BaseComponents/WixComponent';
 import localeUtilsFactory from '../LocaleUtils';
@@ -27,8 +28,7 @@ export default class Calendar extends WixComponent {
     super(props);
 
     this.state = {
-      month: this._getMonth(props),
-      rangeSelection: {}
+      month: this._getMonth(props)
     };
   }
 
@@ -41,12 +41,13 @@ export default class Calendar extends WixComponent {
 
   _handleDayClick = (value, modifiers = {}) => {
     if (this.props.selectionMode === 'range') {
-      if (!this.state.rangeSelection.from || this.state.rangeSelection.to) {
-        this.setState({rangeSelection: {from: value}});
+      if (!this.props.selectedDays.from || this.props.selectedDays.to) {
+        (this.props.onSelectedDaysChange || this.props.onChange)({from: value}, modifiers);
       } else {
-        const newVal = {from: this.state.rangeSelection.from, to: value};
-        this.setState({rangeSelection: newVal});
-        (this.props.onSelectedDaysChange || this.props.onChange)(value, modifiers);
+        const newVal = this.props.selectedDays.from < value ?
+          {from: this.props.selectedDays.from, to: value} : {from: value, to: this.props.selectedDays.from};
+
+        (this.props.onSelectedDaysChange || this.props.onChange)(newVal, modifiers);
         this.props.shouldCloseOnSelect && this.props.onClose();
       }
     } else {
@@ -62,7 +63,7 @@ export default class Calendar extends WixComponent {
     } = props;
 
     const {from, to} = selectedDays || {};
-    return from || to || selectedDays || value;
+    return from || to || selectedDays || parse(value || new Date());
   }
 
   _createDayPickerProps = () => {
@@ -87,6 +88,23 @@ export default class Calendar extends WixComponent {
     const firstOfMonth = new Date(month.getFullYear(), month.getMonth(), 1);
     const lastOfMonth = new Date(month.getFullYear(), month.getMonth() + 1, 0);
 
+    let selectedDaysProp;
+    if (from && !to) {
+      const date = new Date(from);
+      date.setDate(from.getDate() - 1);
+      selectedDaysProp = {after: date};
+    } else if (!from && to) {
+      const date = new Date(to);
+      date.setDate(to.getDate() + 1);
+      selectedDaysProp = {before: date};
+    } else if (from && to) {
+      selectedDaysProp = selectedDays;
+    } else if (selectedDays) {
+      selectedDaysProp = selectedDays;
+    } else {
+      selectedDaysProp = propsValue;
+    }
+
     const captionElement = (
       <DatePickerHead
         {...{
@@ -104,13 +122,28 @@ export default class Calendar extends WixComponent {
         />
     );
 
+    function renderDay(day, modifiers) {
+      const relevantModifiers = ['start', 'end', 'selected'];
+      for (const modifier of relevantModifiers) {
+        if (modifier in modifiers) {
+          return (
+            <div className={`${modifier}Background`}>
+              <div className={'circle'}>{day.getDate()}</div>
+            </div>
+          );
+        }
+      }
+
+      return day.getDate();
+    }
+
     return {
       disabledDays: excludePastDates ?
         {before: new Date()} :
         date => !filterDate(date),
       initialMonth: month,
       initialYear: month,
-      selectedDays: selectedDays || propsValue,
+      selectedDays: selectedDaysProp,
       month,
       year: month,
       firstDayOfWeek: 1,
@@ -124,7 +157,8 @@ export default class Calendar extends WixComponent {
       onDayKeyDown: this._handleDayKeyDown,
       numberOfMonths: twoMonths ? 2 : 1,
       className: twoMonths ? 'DayPicker--TwoMonths' : '',
-      modifiers: {start: from, end: to, firstOfMonth, lastOfMonth, singleDay}
+      modifiers: {start: from, end: to, firstOfMonth, lastOfMonth, singleDay},
+      renderDay
     };
   };
 

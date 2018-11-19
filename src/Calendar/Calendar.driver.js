@@ -5,6 +5,7 @@ import map from 'lodash/map';
 const calendarDriverFactory = ({element, wrapper}) => {
   const getCalendar = () => element.querySelector('.DayPicker');
   const getNthDay = n => element.querySelectorAll('[role="gridcell"]:not([class*="outside"]):not([class*="disabled"])')[n];
+  const getNthDayOfTheMonth = n => element.querySelectorAll('[role="gridcell"]:not([class*="outside"])')[n];
   const getSelectedDay = () => element.querySelector('[role="gridcell"][aria-selected=true]');
   const getSelectedDays = () => element.querySelectorAll('[role="gridcell"][aria-selected=true]');
   const getYearDropdown = () => element.querySelector('[data-hook="datepicker-year-dropdown-button"]');
@@ -28,6 +29,7 @@ const calendarDriverFactory = ({element, wrapper}) => {
     getCurrentMonthWithYear: () => getMonthAndYear() ? getMonthAndYear().map(element => element.textContent).join(' ') : '',
     getNthWeekDayName: (n = 0) => getNthWeekDayName(n) ? getNthWeekDayName(n).textContent : '',
     clickOnNthDay: (n = 0) => getNthDay(n) && ReactTestUtils.Simulate.click(getNthDay(n)),
+    clickOnNthDayOfTheMonth: (n = 0) => getNthDayOfTheMonth(n) && ReactTestUtils.Simulate.click(getNthDayOfTheMonth(n)),
     clickOnSelectedDay: () => ReactTestUtils.Simulate.click(getSelectedDay()),
     clickOnYearDropdown: () => ReactTestUtils.Simulate.click(getYearDropdown()),
     clickOnNthYear: (n = 1) => ReactTestUtils.Simulate.mouseDown(getNthYear(n)),
