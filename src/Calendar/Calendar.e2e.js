@@ -11,8 +11,7 @@ describe('Calendar', () => {
   const dataHook = 'calendar';
   const driver = calendarTestkitFactory({dataHook});
 
-  eyes.fit('should render with a selected day', async () => {
-    console.log('---', storyUrl({selectedDays: new Date('2017/05/01')}))
+  eyes.it('should render with a selected day', async () => {
     await browser.get(storyUrl({selectedDays: new Date('2017/05/01')}));
     await waitForVisibilityOf(driver.getElement(), 'Cannot find Calendar');
   }, {enableSnapshotAtBrowserGet: false});
