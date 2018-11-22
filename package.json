@@ -118,6 +118,8 @@
     "logLevel": "verbose"
   },
   "dependencies": {
+    "@ui-autotools/registry": "^3.0.0",
+    "@ui-autotools/scripts": "^3.0.1",
     "bootstrap-sass": "^3.3.7",
     "classnames": "^2.2.5",
     "color": "^2.0.0",
