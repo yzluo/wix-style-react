@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Simulate} from 'react-dom/test-utils';
 import {reactUniDriver} from 'unidriver';
 
 // At the moment our tests support both Jsdom and browser environment.
@@ -35,6 +36,10 @@ export class ReactDOMTestContainer {
     return this;
   }
 
+  renderSync(jsx) {
+    return new Promise(resolve => resolve(ReactDOM.render(jsx, this.node)));
+  }
+
   // This function's signature should be:
   // <P, T extends React.Component<P>>(jsx: React.ComponentElement<P, T>): Promise<T>;
   // But TypeScript has this weird bug where it can derive the instance type from
@@ -66,10 +71,22 @@ export class ReactDOMTestContainer {
     return this;
   }
 
-  // Adapter for react based uni driver
+  // Adapter for driver
+  createRenderer(driverFactory) {
+    return jsx => {
+      this.renderSync(jsx);
+      return driverFactory({
+        element: this.componentNode,
+        wrapper: this.node,
+        eventTrigger: Simulate
+      });
+    };
+  }
+
+  // Adapter for uni driver
   createUniRenderer(driverFactory) {
     return jsx => {
-      ReactDOM.render(jsx, this.node);
+      this.renderSync(jsx);
       const base = reactUniDriver(this.componentNode);
       return driverFactory(base);
     };
