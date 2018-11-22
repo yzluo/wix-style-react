@@ -18,7 +18,7 @@ describe('RichTextArea', () => {
   const pressTab = times =>
     browser
       .actions()
-      .sendKeys([...Array(times)].map(() => protractor.Key.TAB))
+      .sendKeys(Array(times).fill().map(() => protractor.Key.TAB))
       .perform();
   const focusEditor = () => pressTab(EDITOR_TAB_ORDINAL);
 
