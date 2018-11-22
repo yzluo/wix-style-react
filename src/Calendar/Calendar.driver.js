@@ -1,13 +1,11 @@
 import ReactTestUtils from 'react-dom/test-utils';
 import dropdownLayoutDriverFactory from '../DropdownLayout/DropdownLayout.driver';
-import map from 'lodash/map';
 
 const calendarDriverFactory = ({element, wrapper}) => {
   const getCalendar = () => element.querySelector('.DayPicker');
   const getNthDay = n => element.querySelectorAll('[role="gridcell"]:not([class*="outside"]):not([class*="disabled"])')[n];
   const getNthDayOfTheMonth = n => element.querySelectorAll('[role="gridcell"]:not([class*="outside"])')[n];
   const getSelectedDay = () => element.querySelector('[role="gridcell"][aria-selected=true]');
-  const getSelectedDays = () => element.querySelectorAll('[role="gridcell"][aria-selected=true]');
   const getYearDropdown = () => element.querySelector('[data-hook="datepicker-year-dropdown-button"]');
   const getMonthDropdownButton = () => element.querySelector('[data-hook="datepicker-month-dropdown-button"]');
   const getNthYear = n => element.querySelector(`[data-hook="dropdown-item-${n}"]`);
@@ -48,7 +46,6 @@ const calendarDriverFactory = ({element, wrapper}) => {
     pressLeftArrow: () => ReactTestUtils.Simulate.keyDown(getFocusedDay(), {key: 'ArrowLeft', keyCode: 37}),
     pressRightArrow: () => ReactTestUtils.Simulate.keyDown(getFocusedDay(), {key: 'ArrowRight', keyCode: 39}),
     getSelectedDay: () => getSelectedDay().textContent,
-    getSelectedDays: () => map(getSelectedDays(), 'textContent'),
     getWidth: () => element.style.width,
     triggerKeyDown: params => ReactTestUtils.Simulate.keyDown(getFocusedDay(), params),
     isFocusedDayVisuallyUnfocused: () => getFocusedDay().classList.contains('DayPicker-Day--unfocused'),

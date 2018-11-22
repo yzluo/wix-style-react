@@ -19,9 +19,9 @@ $hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
 
 .calendar :global .DayPicker {
   width: $calendarWidth;
-  @include FontLight;
-  font-size: 14px;
-  line-height: 1.29;
+  //@include FontLight;
+  //font-size: 14px;
+  //line-height: 1.29;
   color: $D40;
   background-color: $D80;
 
@@ -80,16 +80,11 @@ $hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
         left: 0px;
         right: 0px;
         border-radius: 50%;
-        //border: 3px solid #aadbfc;
         box-shadow: 0 0 0 3px #aabdfc;
         content: " ";
         display: block;
         z-index: 11;
       }
-
-/*      .selectedBackground {
-        background: transparent;
-      }*/
     }
 
     &.DayPicker-Day--unfocused,
@@ -113,7 +108,7 @@ $hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
 
     &--selected {
       background-color: $B10;
-      color: $D80;
+      //color: $D80;
       &:hover {
         background-color: $B20;
       }
@@ -124,77 +119,57 @@ $hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
       color: $D55;
     }
 
-    &.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-      background-color: $B50 !important;
-      border-radius: 0px !important;
+    &.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside):not(.DayPicker-Day--singleDay) {
+      background-color: $B50;
+      border-radius: 0;
       box-shadow: none;
       color: $D10;
     }
-    &.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside):last-of-type {
+    &.DayPicker-Day--selected:not(.DayPicker-Day--outside):last-of-type,
+    &.DayPicker-Day--lastOfMonth:not(.DayPicker-Day--outside) {
       border-top-right-radius: 50% !important;
       border-bottom-right-radius: 50% !important;
     }
-    &.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside):first-of-type {
+    &.DayPicker-Day--selected:not(.DayPicker-Day--outside):first-of-type,
+    &.DayPicker-Day--firstOfMonth:not(.DayPicker-Day--outside) {
       border-top-left-radius: 50% !important;
       border-bottom-left-radius: 50% !important;
-    }
-    &.DayPicker-Day--firstOfMonth:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-      border-top-left-radius: 50% !important;
-      border-bottom-left-radius: 50% !important;
-    }
-    &.DayPicker-Day--lastOfMonth:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-      border-top-right-radius: 50% !important;
-      border-bottom-right-radius: 50% !important;
     }
 
-    &.DayPicker-Day--singleDay:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-      border-radius: 50% !important;
+    &.DayPicker-Day--singleDay:not(.DayPicker-Day--outside),
+    &.DayPicker-Day--start.DayPicker-Day--end:not(.DayPicker-Day--outside) {
+      background: none !important;
+      border-radius: 50%;
     }
   
     &.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside),
-    &.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside) {
-
+    &.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside),
+    &.DayPicker-Day--singleDay:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
       .circle {
-        background-color: #3899ec !important;
-        border-radius: 50% !important;
-        color: #FFFFFF;
-        z-index: 2;
-        position: absolute;
+        background-color: #3899ec;
+        border-radius: 50%;
         width: 100%;
         height: 100%;
-        top: 0;
-        right: 0;
         text-align: center;
-        line-height: 36px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
-
-      .startBackground {
-        position: absolute;
-        background: linear-gradient(to left, $B50 0%,$B50 50%,#000000 50%,transparent 50%,transparent 100%); /* W3C */
-        width: 100%;
-        height: 100%;
-        top: 0;
-        right: 0;
-        z-index: 1;
-      }
-      
-      .endBackground {
-        position: absolute;
-        background: linear-gradient(to right, $B50 0%,$B50 50%,#000000 50%,transparent 50%,transparent 100%); /* W3C */
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 1;
-      }
-      
-      position: relative;
     }
 
+    &.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside) {
+      background: linear-gradient(to left, $B50 0%,$B50 50%,#000000 50%,transparent 50%,transparent 100%);
+      border-radius: 0;
+    }
+    
+    &.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside) {
+      background: linear-gradient(to right, $B50 0%,$B50 50%,#000000 50%,transparent 50%,transparent 100%);
+      border-radius: 0;
+    }
+    
     &--outside {
       pointer-events: none;
-      color: transparent !important;
-      background-color: transparent !important;
+      visibility: hidden;
     }
   }
 

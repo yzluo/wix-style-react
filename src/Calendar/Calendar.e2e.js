@@ -24,4 +24,29 @@ describe('Calendar', () => {
       }}));
     await waitForVisibilityOf(driver.getElement(), 'Cannot find Calendar');
   }, {enableSnapshotAtBrowserGet: false});
+
+  eyes.it('should correctly render when selectedDays is an infinite date range starting in the current month', async () => {
+    await browser.get(storyUrl({
+      selectedDays: {
+        from: new Date('2017/05/02')
+      }}));
+    await waitForVisibilityOf(driver.getElement(), 'Cannot find Calendar');
+  }, {enableSnapshotAtBrowserGet: false});
+
+  eyes.it('should correctly render when selectedDays is an infinite date range ending in the current month', async () => {
+    await browser.get(storyUrl({
+      selectedDays: {
+        to: new Date('2017/05/02')
+      }}));
+    await waitForVisibilityOf(driver.getElement(), 'Cannot find Calendar');
+  }, {enableSnapshotAtBrowserGet: false});
+
+  eyes.it('should correctly render when selectedDays is aa range of one day', async () => {
+    await browser.get(storyUrl({
+      selectedDays: {
+        from: new Date('2017/05/02'),
+        to: new Date('2017/05/02')
+      }}));
+    await waitForVisibilityOf(driver.getElement(), 'Cannot find Calendar');
+  }, {enableSnapshotAtBrowserGet: false});
 });
