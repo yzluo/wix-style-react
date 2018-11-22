@@ -90,7 +90,7 @@ const variants = props => (
 storiesOf(`${TESTS_PREFIX}/5. Buttons`, module).add('5.0 ButtonLayout', () => {
   const props = pick(
     queryString.parse(window.location.search),
-    Object.keys(Button.propTypes),
+    'height', 'hover',
   );
   return (
     <div>

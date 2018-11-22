@@ -71,7 +71,7 @@ describe('Backoffice Button', () => {
     });
   });
 
-  describe('render variations', () => {
+  fdescribe('render variations', () => {
     ['x-small', 'small', 'medium', 'large', 'x-large'].forEach(height => {
       [false, true].forEach(hover => {
         const props = { height, hover };
