@@ -16,7 +16,7 @@ import nl from 'date-fns/locale/nl';
 import da from 'date-fns/locale/da';
 import * as no from 'date-fns/locale/nb';
 
-const MONTHS_INDICE = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 , 11];
+const MONTHS_INDICE = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const locales = {
   en,
   es,
