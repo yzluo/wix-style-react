@@ -44,9 +44,6 @@
     "proxy-wix-ui-icons": "node scripts/proxy-wix-ui-icons"
   },
   "yoshi": {
-    "features": {
-      "addStoriesToBaseGlob": true
-    },
     "entry": {
       "app": "index.js"
     },
@@ -95,6 +92,7 @@
     "identity-obj-proxy": "^3.0.0",
     "import-path": "^1.0.6",
     "protractor-browser-logs": "^1.0.352",
+    "protractor": "^5.4.1",
     "query-string": "^6.1.0",
     "react": "^15.5.4",
     "react-dnd-test-backend": "^5.0.1",
@@ -107,7 +105,8 @@
     "sinon": "^1.17.6",
     "wait-for-cond": "^1.0.3",
     "wix-storybook-utils": "^2.0.53",
-    "yoshi": "^2.8.3"
+    "yoshi": "^3.16.1",
+    "yoshi-style-dependencies": "^3.16.0"
   },
   "peerDependencies": {
     "react": "^15.0.0",
@@ -184,19 +183,17 @@
     ]
   },
   "eslintConfig": {
-    "extends": "wix/react",
+    "extends": "yoshi",
     "env": {
       "jest": true
     },
     "rules": {
+      "import/no-unresolved": 0,
+      "react/forbid-foreign-prop-types": 0,
       "react/jsx-handler-names": 0,
       "react/no-find-dom-node": 0,
       "react/no-string-refs": 0,
       "react/jsx-boolean-value": 2,
-      "comma-dangle": [
-        "error",
-        "never"
-      ],
       "no-restricted-properties": [
         "error",
         {
@@ -222,14 +219,6 @@
         {
           "name": "Proxy",
           "message": "Proxy not supported in IE11."
-        }
-      ],
-      "indent": 0,
-      "indent-legacy": [
-        2,
-        2,
-        {
-          "SwitchCase": 1
         }
       ],
       "no-console": "error"

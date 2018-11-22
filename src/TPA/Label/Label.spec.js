@@ -44,7 +44,7 @@ describe('Label', () => {
     expect(labelTestkit.getContent()).toEqual('<span>some text</span>');
   });
 
-  it('should contain passed dom element', () => {
+  it(`should contain 'for' attribute`, () => {
     const div = document.createElement('div');
     const dataHook = 'Label-hook';
     const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(
@@ -57,7 +57,8 @@ describe('Label', () => {
     const labelTestkit = labelTestkitFactory({wrapper, dataHook});
     expect(labelTestkit.getAttribute('for')).toEqual('some-id');
   });
-  it('should contain passed dom element', () => {
+
+  it(`should contain 'data-hook' attribute`, () => {
     const div = document.createElement('div');
     const dataHook = 'Label-hook';
     const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(

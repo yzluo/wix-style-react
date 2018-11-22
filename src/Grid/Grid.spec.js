@@ -11,7 +11,7 @@ describe('Grid `<Container/>`', () => {
       expect(element.hasClass('test')).toEqual(true);
     });
 
-    it('should pass className to columns element', () => {
+    it('should pass classNames to columns element', () => {
       const element = shallow(<Container className={classNames('test1', 'test2')}/>);
       expect(element.hasClass('test1')).toEqual(true);
       expect(element.hasClass('test2')).toEqual(true);
@@ -56,7 +56,7 @@ describe('Grid <Col/>', () => {
       expect(element.hasClass('colMd12')).toEqual(true);
     });
 
-    it('should add col xl class when using xl attribute ', () => {
+    it('should add multiple col classes when using breakpoints attributes', () => {
       const element = shallow(<Col sm="3" md="12" lg="1" xl="5"/>);
       expect(element.hasClass('colXl5')).toEqual(true);
       expect(element.hasClass('colLg1')).toEqual(true);

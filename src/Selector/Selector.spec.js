@@ -2,6 +2,7 @@ import React from 'react';
 import selectorDriverFactory from './Selector.driver';
 import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import Selector from './Selector';
+import { ASSET_PREFIX } from '../../test/utils';
 
 describe('Selector', () => {
   const createDriver = createDriverFactory(selectorDriverFactory);
@@ -55,7 +56,7 @@ describe('Selector', () => {
     );
     expect(driver.hasImage()).toBe(true);
     expect(driver.getImage()).toBeInstanceOf(HTMLImageElement);
-    expect(driver.getImage().src).toBe('img.png');
+    expect(driver.getImage().src).toBe(`${ASSET_PREFIX}img.png`);
   });
 
   it('should render a radio toggle by default', () => {

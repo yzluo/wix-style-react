@@ -6,7 +6,7 @@ import {createTestStoryUrl} from '../../test/utils/storybook-helpers';
 
 import {storySettings} from '../../stories/PageHeader/storySettings';
 
-describe('PageHeader', async () => {
+describe('PageHeader', () => {
   const testStoryUrl = testName => createTestStoryUrl({...storySettings, testName});
 
   const dataHook = 'story-page-header';
@@ -18,7 +18,7 @@ describe('PageHeader', async () => {
     return driver;
   };
 
-  describe('Long title', async () => {
+  describe('Long title', () => {
     eyes.it('should disaply multiline title and subtitle', async () => {
       await initTest('1. Long Title and Subtitle');
     });

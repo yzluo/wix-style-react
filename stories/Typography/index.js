@@ -3,7 +3,7 @@ import {storiesOf} from '@storybook/react';
 
 import {renderSizeAndWeightTable, renderColorTable} from './TextExample';
 import {renderHeadingTable} from './HeadingExample';
-import {getTestStoryKind, Category} from '../../stories/storiesHierarchy';
+import {getTestStoryKind, Category} from '../storiesHierarchy';
 
 const kind = getTestStoryKind({category: Category.FOUNDATION, storyName: '1.2 Typography'});
 storiesOf(kind, module)

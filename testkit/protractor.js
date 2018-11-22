@@ -1,5 +1,4 @@
 import 'regenerator-runtime/runtime';
-/*eslint no-duplicate-imports: 0*/
 import {
   protractorTestkitFactoryCreator,
   protractorUniTestkitFactoryCreator

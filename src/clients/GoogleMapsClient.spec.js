@@ -42,18 +42,38 @@ describe('GoogleMapsClient', () => {
 });
 
 function GoogleMapsMock(autocompleteInstance, geocoderInstance, placesServiceInstance) {
+  class AutocompleteService {
+    constructor() {
+      return autocompleteInstance;
+    }
+  }
+
+  class Geocoder {
+    constructor() {
+      return geocoderInstance;
+    }
+  }
+
+  class Map {}
+
+  class PlacesService {
+    constructor() {
+      return placesServiceInstance;
+    }
+  }
+
   return {
     maps: {
-      Map: () => {},
+      Map: Map,
       places: {
-        AutocompleteService: () => autocompleteInstance,
-        PlacesService: () => placesServiceInstance,
+        AutocompleteService: AutocompleteService,
+        PlacesService: PlacesService,
         PlacesServiceStatus: {
           OK: 'OK',
           ZERO_RESULTS: 'ZERO_RESULTS'
         }
       },
-      Geocoder: () => geocoderInstance,
+      Geocoder: Geocoder,
       GeocoderStatus: {
         OK: 'OK',
         ZERO_RESULTS: 'ZERO_RESULTS'

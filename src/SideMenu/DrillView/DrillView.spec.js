@@ -120,17 +120,6 @@ describe('DrillView', () => {
     expect(driver.getMenuDriver().footerContent()).toBe(getFooter(1));
     expect(driver.getMenuDriver().hasBackLink()).toBe(true);
     expect(driver.getMenuDriver().isLinkActiveByIndex(activeIndex)).toBe(true);
-  });
-
-  it('should initially render the sub menu of the active link', () => {
-    const activeLevel = 1;
-    const activeIndex = 1;
-    const driver = createSideMenu(1, {activeLevel, activeIndex});
-
-    expect(driver.getMenuDriver().headerContent()).toBe(getHeader(1));
-    expect(driver.getMenuDriver().footerContent()).toBe(getFooter(1));
-    expect(driver.getMenuDriver().hasBackLink()).toBe(true);
-    expect(driver.getMenuDriver().isLinkActiveByIndex(activeIndex)).toBe(true);
     expect(driver.getMenuDriver().navigationCategoryContent(0)).toBe('SubMenu1_1');
   });
 

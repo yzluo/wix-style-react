@@ -97,7 +97,7 @@ const variants = props => (
 
 storiesOf(`${TESTS_PREFIX}/5. Buttons`, module)
   .add('5.0 ButtonLayout', () => {
-    const props = pick(queryString.parse(window.location.search), Object.keys(Button.propTypes));
+    const props = pick(queryString.parse(window.location.search), ['height', 'hover']);
     return (
       <div>
         <p>props={JSON.stringify(props)}</p>

@@ -19,7 +19,7 @@ export default class SomeContentComponent extends React.Component {
           </code>
         </pre>}
         { this.props.shortContent && <div>Short content</div> }
-        {[...Array(this.props.shortContent ? 0 : 5)].map((x, i) =>
+        {(this.props.shortContent ? [] : [0,1,2,3,4]).map((x, i) =>
           <div key={i}>
             {
               this.props.showScss &&

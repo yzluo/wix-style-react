@@ -13,7 +13,7 @@ describe('RichTextArea', () => {
   const storyUrl = getStoryUrl(settings.category, settings.storyName);
   const richTextAreaTestkit = richTextAreaTestkitFactory({dataHook: settings.dataHook});
 
-  const pressTab = times => browser.actions().sendKeys([...Array(times)].map(() => protractor.Key.TAB)).perform();
+  const pressTab = times => browser.actions().sendKeys(Array(times).fill().map(() => protractor.Key.TAB)).perform();
   const focusEditor = () => pressTab(EDITOR_TAB_ORDINAL);
 
   // TODO: We can change this to beforeAll (to make the test go faster),

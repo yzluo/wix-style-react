@@ -3,8 +3,13 @@ import ImageViewer from './ImageViewer';
 import ImageViewerDriverFactory from './ImageViewer.driver';
 import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 
+import { ReactDOMTestContainer } from "../../test/dom-test-container";
+
 describe('ImageViewer', () => {
-  const createDriver = createDriverFactory(ImageViewerDriverFactory);
+  const createDriver = new ReactDOMTestContainer()
+    .unmountAfterEachTest()
+    .createLegacyRenderer(ImageViewerDriverFactory);
+
   let props, driver;
   const IMAGE_URL = 'some-image-url.png';
   const addImage = jest.fn();
