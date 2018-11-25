@@ -16,7 +16,8 @@ describe('MessageBoxMarketerialLayout', () => {
   const requiredProps = {
     title: 'title',
     content: <div/>,
-    onClose: () => {}
+    onClose: () => {
+    }
   };
 
   describe('action buttons', () => {
@@ -43,6 +44,16 @@ describe('MessageBoxMarketerialLayout', () => {
       const props = Object.assign({}, requiredProps, {});
       const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
       expect(driver.getPrimaryButton()).toBeNull();
+    });
+
+    it('should not display disabled primary button if primaryButtonDisabled is true', () => {
+      const props = Object.assign({}, requiredProps, {
+        primaryButtonLabel: 'primaryButtonLabel',
+        primaryButtonDisabled: true
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+      expect(driver.getPrimaryButton().attributes.disabled).toBeTruthy();
+
     });
 
     it('should display the secondary button label text on top the secondary button', () => {

@@ -20,6 +20,7 @@ class MessageBoxMarketerialLayout extends WixComponent {
       title,
       content,
       primaryButtonLabel,
+      primaryButtonDisabled,
       secondaryButtonLabel,
       onPrimaryButtonClick,
       onSecondaryButtonClick,
@@ -70,6 +71,7 @@ class MessageBoxMarketerialLayout extends WixComponent {
                 theme={`full${primaryButtonTheme || theme}`}
                 onClick={onPrimaryButtonClick}
                 dataHook="primary-button"
+                disabled={primaryButtonDisabled}
                 >
                 {primaryButtonLabel}
               </Button>
@@ -102,6 +104,7 @@ MessageBoxMarketerialLayout.propTypes = {
   title: PropTypes.node.isRequired,
   content: PropTypes.node.isRequired,
   primaryButtonLabel: PropTypes.string,
+  primaryButtonDisabled: PropTypes.bool,
   secondaryButtonLabel: PropTypes.string,
   onPrimaryButtonClick: PropTypes.func,
   onSecondaryButtonClick: PropTypes.func,
