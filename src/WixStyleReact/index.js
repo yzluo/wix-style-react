@@ -1,0 +1,1 @@
+export {WixStyleReact} from './WixStyleReact';

@@ -46,6 +46,11 @@ export const textButtonTestkitFactory = puppeteerUniTestkitFactoryCreator(
   textButtonDriverFactory
 );
 
+import {avatarDriverFactory} from '../src/Avatar/Avatar.driver';
+export const avatarTestkitFactory = puppeteerUniTestkitFactoryCreator(
+  avatarDriverFactory
+);
+
 import {iconButtonDriverFactory} from '../src/IconButton/IconButton.driver';
 export const iconButtonTestkitFactory = puppeteerUniTestkitFactoryCreator(
   iconButtonDriverFactory

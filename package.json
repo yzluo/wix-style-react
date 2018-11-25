@@ -106,7 +106,7 @@
     "regenerator-runtime": "^0.11.0",
     "sinon": "^1.17.6",
     "wait-for-cond": "^1.0.3",
-    "wix-storybook-utils": "^2.0.47",
+    "wix-storybook-utils": "^2.0.53",
     "yoshi": "^2.8.3"
   },
   "peerDependencies": {

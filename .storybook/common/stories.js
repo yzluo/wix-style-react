@@ -108,6 +108,7 @@ import '../../stories/BadgeSelect/index.story.js'; // 12.2 BadgeSelect
 import '../../stories/CounterBadge'; //12.3 CounterBadge
 import '../../stories/FullTextView.story.js'; //12.4 FullTextView
 import '../../stories/Tag.story.js'; // 12.5 Tag
+import '../../stories/Avatar/Avatar.story'; // 12.6 Avatar
 import '../../stories/Highlighter.story.js'; // Highlighter
 
 // Components API
@@ -140,8 +141,10 @@ import '../../stories/TPA/Label';
 
 // Tests
 import '../../stories/Typography/TypographyTestStories';
-import '../../stories/Page/PageTestStories.js'; // Tests/2.5 + Page/
-import '../../stories/PageHeader/PageHeaderTestStories.js'; // Tests/2.5 + PageHeader/
+import '../../stories/Page/PageTestStories.js'; // Tests/2. Layout/2.5 + Page/
+import '../../stories/PageHeader/PageHeaderTestStories.js'; // Tests/2. Layout/2.5 + PageHeader/
+import '../../stories/Button/ButtonTestStory'; // Tests/5. Buttons
 import '../../stories/Tooltip/Composite/PopoverMenuRegressionTest.js'; // Tests/7.3. Popover Menu/
 import '../../stories/Button/ButtonTestStory';
 import '../../stories/Calendar/CalendarTestStory';
+import '../../stories/Avatar/AvatarTestStory'; // Tests/12. Other

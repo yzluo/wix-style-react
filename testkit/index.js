@@ -377,6 +377,11 @@ export const textButtonTestkitFactory = uniTestkitFactoryCreator(
   textButtonDriverFactory
 );
 
+import {avatarDriverFactory} from '../src/Avatar/Avatar.driver';
+export const avatarTestkitFactory = uniTestkitFactoryCreator(
+  avatarDriverFactory
+);
+
 import {iconButtonDriverFactory} from '../src/IconButton/IconButton.driver';
 export const iconButtonTestkitFactory = uniTestkitFactoryCreator(
   iconButtonDriverFactory
