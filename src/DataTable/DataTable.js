@@ -9,7 +9,6 @@ import {Animator} from 'wix-animations';
 import InfoCircle from 'wix-ui-icons-common/InfoCircle';
 import Tooltip from '../Tooltip/Tooltip';
 import InfoIcon from '../common/InfoIcon';
-import omit from 'lodash/omit';
 import deprecationLog from '../utils/deprecationLog';
 
 export const DataTableHeader = props => (
@@ -405,6 +404,9 @@ DataTable.defaultProps = {
   showLastRowDivider: true
 };
 
+/* eslint-disable no-unused-vars */
+const {moveBy, dataHook, ...infoTooltipProps} = Tooltip.propTypes;
+
 DataTable.propTypes = {
   dataHook: PropTypes.string,
   /** An id to pass to the table */
@@ -419,7 +421,7 @@ DataTable.propTypes = {
     ]).isRequired,
     render: PropTypes.func.isRequired,
     sortable: PropTypes.bool,
-    infoTooltipProps: PropTypes.shape(omit(Tooltip.propTypes, ['moveBy', 'dataHook'])),
+    infoTooltipProps: PropTypes.shape(infoTooltipProps),
     sortDescending: PropTypes.bool,
     align: PropTypes.oneOf(['start', 'center', 'end'])
   })).isRequired,

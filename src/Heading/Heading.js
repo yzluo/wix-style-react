@@ -1,6 +1,5 @@
 import React from 'react';
 import {oneOf, bool, any} from 'prop-types';
-import omit from 'lodash/omit';
 import style from './Heading.st.css';
 
 export const APPEARANCES = {
@@ -12,14 +11,18 @@ export const APPEARANCES = {
   H6: 'H6'
 };
 
-const Heading = ({light, appearance, children, ...rest}) => React.createElement(
+const Heading = ({light, appearance, children, ...rest}) => {
+  /* eslint-disable no-unused-vars */
+  const {dataHook, ...headingProps} = rest;
+  return React.createElement(
   appearance.toLowerCase(),
-  {
-    ...omit(rest, ['dataHook']),
-    ...style('root', {light, appearance}, rest)
-  },
+    {
+      ...headingProps,
+      ...style('root', {light, appearance}, rest)
+    },
   children
-);
+  );
+};
 
 Heading.displayName = 'Heading';
 

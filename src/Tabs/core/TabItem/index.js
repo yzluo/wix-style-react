@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import pick from 'lodash/pick';
+import pick from '../../../utils/operators/pick';
 
 import withTooltip from '../withTooltip';
 import * as TabPropTypes from '../constants/tab-prop-types';

@@ -1,7 +1,6 @@
 import React from 'react';
 import DropdownLayout from '../DropdownLayout';
 import PropTypes from 'prop-types';
-import map from 'lodash/map';
 import {badgeSelectItemBuilder} from '../BadgeSelectItemBuilder';
 import styles from './BadgeSelect.scss';
 import Badge, {SKIN, TYPE, SIZE} from '../Badge/Badge';
@@ -75,7 +74,7 @@ export default class BadgeSelect extends React.Component {
 
   get options() {
     const {options} = this.props;
-    return map(options, badgeSelectItemBuilder);
+    return Array.isArray(options) ? options.map(badgeSelectItemBuilder) : [];
   }
 
   hideDropdown() {

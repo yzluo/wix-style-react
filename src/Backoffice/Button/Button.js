@@ -3,7 +3,6 @@ import {func, node, string} from 'prop-types';
 import styles from '../../ButtonLayout/ButtonLayout.scss';
 import WixComponent from '../../BaseComponents/WixComponent';
 import ButtonLayout from '../../ButtonLayout/ButtonLayout';
-import omit from 'omit';
 import {withFocusable, focusableStates} from '../../common/Focusable';
 import {pickAccessibilityProps} from '../../common/accessibility';
 
@@ -37,6 +36,12 @@ class Button extends WixComponent {
 
   addSuffix = () => this.addIcon('suffix', this.props.suffixIcon);
 
+  getButtonLayoutProps = () => {
+    /* eslint-disable no-unused-vars */
+    const {id, onClick, prefixIcon, suffix, type, ...buttonLayoutProps} = this.props;
+    return buttonLayoutProps;
+  }
+
   render() {
     const {
       disabled,
@@ -47,10 +52,7 @@ class Button extends WixComponent {
       onMouseLeave
     } = this.props;
 
-    const buttonLayoutProps = omit(
-      ['id', 'onClick', 'prefixIcon', 'suffixIcon', 'type'],
-      this.props
-    );
+    const buttonLayoutProps = this.getButtonLayoutProps();
     return (
       <ButtonLayout {...buttonLayoutProps}>
         <button

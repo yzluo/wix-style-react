@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
-import values from 'lodash/values';
+import values from '../utils/operators/values';
 
 const arbitraryEmptyElement = () => document.createElement('div');
 

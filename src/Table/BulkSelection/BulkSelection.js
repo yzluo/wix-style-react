@@ -1,6 +1,5 @@
 import React from 'react';
 import {string, number, arrayOf, oneOfType, func, any} from 'prop-types';
-import isEqual from 'lodash/isEqual';
 import createReactContext from 'create-react-context';
 export const BulkSelectionContext = createReactContext();
 
@@ -48,7 +47,7 @@ export class BulkSelection extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedIds && !isEqual(nextProps.selectedIds, this.state.selectedIds)) {
+    if (nextProps.selectedIds && !this.areSelectedIdsEqual(nextProps.selectedIds, this.state.selectedIds)) {
       this.setSelectedIds(nextProps.selectedIds.slice());
     }
   }
@@ -93,6 +92,17 @@ export class BulkSelection extends React.Component {
     this.setState({selectedIds, helpers: this.createHelpers(selectedIds)}, () => {
       this.props.onSelectionChanged && this.props.onSelectionChanged(selectedIds.slice(), change);
     });
+  }
+
+  areSelectedIdsEqual = (selectedIds1, selectedIds2) => {
+    if ((selectedIds1 === undefined && selectedIds2 === undefined) || (selectedIds1 === null && selectedIds2 === null)) {
+      return true;
+    }
+
+    return Array.isArray(selectedIds1) &&
+      Array.isArray(selectedIds2) &&
+      selectedIds1.length === selectedIds2.length &&
+      selectedIds1.every((item, index) => item === selectedIds2[index]);
   }
 
   createHelpers(selectedIds) {

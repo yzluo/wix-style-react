@@ -1,6 +1,5 @@
 import React from 'react';
 import {any, oneOf, string} from 'prop-types';
-import omit from 'omit';
 import classNames from 'classnames';
 import WixComponent from '../../BaseComponents/WixComponent';
 import tpaStyleInjector from '../TpaStyleInjector';
@@ -21,16 +20,31 @@ class Button extends WixComponent {
     theme: 'fill'
   };
 
+  getButtonProps = () => {
+    /* eslint-disable no-unused-vars */
+    const {injectedStyles, children, theme, className, dataHook, ...buttonProps} = this.props;
+    return buttonProps;
+  }
+
   render() {
     const {children, theme, className} = this.props;
     const {locals} = styles;
-    const classes = (classNames([
-      [locals['wix-style-react-button']],
-      [locals[`wix-style-react-button-${theme}`]]
-    ], className)).trim();
+    const classes = classNames(
+      [
+        [locals['wix-style-react-button']],
+        [locals[`wix-style-react-button-${theme}`]]
+      ],
+      className
+    ).trim();
+
+    const buttonProps = this.getButtonProps();
 
     return (
-      <button className={classes} data-theme={theme} {...omit(['injectedStyles', 'children', 'theme', 'className', 'dataHook'], this.props)}>
+      <button
+        className={classes}
+        data-theme={theme}
+        {...buttonProps}
+        >
         {children}
       </button>
     );

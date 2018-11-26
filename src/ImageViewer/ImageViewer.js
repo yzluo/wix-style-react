@@ -4,7 +4,6 @@ import Delete from 'wix-ui-icons-common/Delete';
 import Replace from 'wix-ui-icons-common/Replace';
 import FormFieldError from 'wix-ui-icons-common/system/FormFieldError';
 import classNames from 'classnames';
-import omit from 'omit';
 
 import style from './ImageViewer.scss';
 import Tooltip from '../Tooltip';
@@ -115,6 +114,9 @@ ImageViewer.defaultProps = {
   removeImageInfo: 'Remove'
 };
 
+/* eslint-disable no-unused-vars */
+const {content, ...imageViewerTooltipProps} = Tooltip.propTypes;
+
 ImageViewer.propTypes = {
   /** Image url, blank for not uploaded */
   imageUrl: PropTypes.string,
@@ -128,7 +130,7 @@ ImageViewer.propTypes = {
    */
   tooltipPlacement: PropTypes.string,
   /** Tooltip props, common for all tooltips */
-  tooltipProps: PropTypes.shape(omit(['content'], Tooltip.propTypes)),
+  tooltipProps: PropTypes.shape(imageViewerTooltipProps),
   /** Show update button */
   showUpdateButton: PropTypes.bool,
   /** Add image click handler */

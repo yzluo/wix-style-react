@@ -1,4 +1,3 @@
-import omit from 'lodash/omit';
 /**
  * Symbol for accessing driver methods which are internal
  * (we don't want to expose them to WSR consumers)
@@ -31,9 +30,13 @@ export function mergeDrivers(target, source) {
  */
 export function flattenInternalDriver(driver) {
   if (driver[INTERNAL_DRIVER_SYMBOL]) {
+    const driverCopy = Object.assign({}, driver);
+    const driverInternalMethods = driver[INTERNAL_DRIVER_SYMBOL];
+    delete driverCopy[INTERNAL_DRIVER_SYMBOL];
+
     return {
-      ...omit(driver, INTERNAL_DRIVER_SYMBOL),
-      ...driver[INTERNAL_DRIVER_SYMBOL]
+      ...driverCopy,
+      ...driverInternalMethods
     };
   } else {
     return driver;

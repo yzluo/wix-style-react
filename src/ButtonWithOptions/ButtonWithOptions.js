@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import omit from 'lodash/omit';
 
 import WixComponent from '../BaseComponents/WixComponent';
 import DropdownLayout from '../DropdownLayout/DropdownLayout';
@@ -80,7 +79,8 @@ class ButtonWithOptions extends WixComponent {
   }
 
   renderDropdownLayout() {
-    const dropdownProps = omit(this.props, ['dataHook', 'restrainDropdownSize']);
+    /* eslint-disable no-unused-vars */
+    const {dataHook, restrainDropdownSize, ...dropdownProps} = this.props;
 
     const dropdownLayoutOptions = React.Children.map(this.optionsElement, option => {
       const {children: value, ...rest} = option.props;

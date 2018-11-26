@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import omit from 'lodash/omit';
 
 import Ticker from './Ticker';
 import Unit from './Unit';
@@ -115,6 +114,9 @@ class Input extends Component {
     const ariaAttribute = {};
     Object.keys(this.props).filter(key => key.startsWith('aria')).map(key => ariaAttribute['aria-' + key.substr(4).toLowerCase()] = this.props[key]);
 
+    /* eslint-disable no-unused-vars */
+    const {className, ...inputElementProps} = props;
+
     const inputElement = (
       <input
         style={{textOverflow}}
@@ -145,7 +147,7 @@ class Input extends Component {
         onCompositionStart={() => this.onCompositionChange(true)}
         onCompositionEnd={() => this.onCompositionChange(false)}
         {...ariaAttribute}
-        {...omit(props, 'className')}
+        {...inputElementProps}
         />);
 
     //needs additional wrapper with class .prefixSuffixWrapper to fix inputs with prefix in ie11

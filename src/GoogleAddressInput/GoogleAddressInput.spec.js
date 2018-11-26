@@ -1,6 +1,7 @@
 import 'react';
 import {componentFactory} from './GoogleAddressInput.driver';
 import _ from 'lodash/fp';
+import eventually from 'wix-eventually';
 import sinon from 'sinon';
 import {GoogleAddressInputHandler} from './GoogleAddressInput';
 import InputWithOptions from '../InputWithOptions';
@@ -161,28 +162,22 @@ describe('GoogleAddressInput', () => {
       expect(input.select.calledOnce).toEqual(true);
     });
 
-    it('If user changes the value in the autocomplete box, request suggestions from google.maps', done => {
+    it('If user changes the value in the autocomplete box, request suggestions from google.maps', async () => {
 
       const component = createShallow({Client: GmapsTestClient, countryCode: 'XX'});
       const event = {target: {value: 'Hatomer 49'}};
       component.find('InputWithOptions').props().onInput(event);
 
-      // Defer to make sure all promises run
-      _.defer(() => {
-        try {
-          component.update();
-          expect(component.find('InputWithOptions').props().options).toEqual([
-            {id: 0, value: '{"components":"country:XX","input":"Hatomer 49"} - 1'},
-            {id: 1, value: '{"components":"country:XX","input":"Hatomer 49"} - 2'}
-          ]);
-          done();
-        } catch (e) {
-          done.fail(e);
-        }
+      await eventually(() => {
+        component.update();
+        expect(component.find('InputWithOptions').props().options).toEqual([
+          {id: 0, value: '{"components":"country:XX","input":"Hatomer 49"} - 1'},
+          {id: 1, value: '{"components":"country:XX","input":"Hatomer 49"} - 2'}
+        ]);
       });
     });
 
-    it('If user pressed <enter> with a suggested value, geocode the suggested value, and call the onSet callback  (with geocode handler)', done => {
+    it('If user pressed <enter> with a suggested value, geocode the suggested value, and call the onSet callback  (with geocode handler)', async () => {
 
       const onSet = sinon.spy();
 
@@ -190,18 +185,12 @@ describe('GoogleAddressInput', () => {
       component.setState({suggestions: defaultSuggestions});
       component.find('InputWithOptions').props().onSelect({id: 0, value: 'my address'});
 
-      // Defer to make sure all promises run
-      _.defer(() => {
-        try {
-          expect(onSet.args[0][0]).toEqual(buildResult('my address'));
-          done();
-        } catch (e) {
-          done.fail(e);
-        }
+      await eventually(() => {
+        expect(onSet.args[0][0]).toEqual(buildResult('my address'));
       });
     });
 
-    it('If user pressed <enter> with a suggested value, geocode the suggested value, and call the onSet callback (with places handler)', done => {
+    it('If user pressed <enter> with a suggested value, geocode the suggested value, and call the onSet callback (with places handler)', async () => {
 
       const onSet = sinon.spy();
 
@@ -214,66 +203,42 @@ describe('GoogleAddressInput', () => {
       component.setState({suggestions: defaultSuggestions});
       component.find('InputWithOptions').props().onSelect({id: 0, value: 'my address'});
 
-      // Defer to make sure all promises run
-      _.defer(() => {
-        try {
-          expect(onSet.args[0][0]).toEqual(buildResult('my address'));
-          done();
-        } catch (e) {
-          done.fail(e);
-        }
+      await eventually(() => {
+        expect(onSet.args[0][0]).toEqual(buildResult('my address'));
       });
     });
 
-    it('If user pressed <enter> with a value that is not on the suggestions list, try to suggest it and geocode if successful', done => {
+    it('If user pressed <enter> with a value that is not on the suggestions list, try to suggest it and geocode if successful', async () => {
       const onSet = sinon.spy();
 
       const component = createShallow({Client: GmapsTestClient, countryCode: 'XX', onSet});
       component.setState({suggestions: defaultSuggestions});
       component.find('InputWithOptions').props().onManuallyInput('my addr');
 
-      // Defer to make sure all promises run
-      _.defer(() => {
-        try {
-          expect(onSet.called).toBeFalsy();
-          done();
-        } catch (e) {
-          done.fail(e);
-        }
+      await eventually(() => {
+        expect(onSet.called).toBeFalsy();
       });
     });
 
-    it('If user pressed <enter> with a value that is not on the suggestions list, try to suggest it and return null if unsuccessful', done => {
+    it('If user pressed <enter> with a value that is not on the suggestions list, try to suggest it and return null if unsuccessful', async () => {
       const onSet = sinon.spy();
       const component = createShallow({Client: GmapsTestClient, countryCode: 'YY', onSet});
       component.setState({suggestions: defaultSuggestions});
       component.find('InputWithOptions').props().onManuallyInput('dontfind');
 
-      // Defer to make sure all promises run
-      _.defer(() => {
-        try {
-          expect(onSet.called).toBeFalsy();
-          done();
-        } catch (e) {
-          done.fail(e);
-        }
+      await eventually(() => {
+        expect(onSet.called).toBeFalsy();
       });
     });
 
-    it('If user pressed <enter> and there is no value on the suggestions list and fallbackToManual is set to true, search for the value anyway', done => {
+    it('If user pressed <enter> and there is no value on the suggestions list and fallbackToManual is set to true, search for the value anyway', async () => {
       const onSet = sinon.spy();
       const component = createShallow({Client: GmapsTestClient, countryCode: 'YY', onSet, fallbackToManual: true});
       component.setState({suggestions: []});
       component.find('InputWithOptions').props().onManuallyInput('dontfind');
 
-      // Defer to make sure all promises run
-      _.defer(() => {
-        try {
-          expect(onSet.args[0][0]).toEqual(buildResult('dontfind'));
-          done();
-        } catch (e) {
-          done.fail(e);
-        }
+      await eventually(() => {
+        expect(onSet.args[0][0]).toEqual(buildResult('dontfind'));
       });
     });
 

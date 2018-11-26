@@ -1,7 +1,7 @@
 import React from 'react';
 import color from 'color';
 import {object, func} from 'prop-types';
-import mapValues from 'lodash/mapValues';
+import mapValues from '../utils/operators/mapValues';
 
 import WixComponent from '../BaseComponents/WixComponent';
 import Input from '../Input';

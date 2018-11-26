@@ -140,7 +140,7 @@ describe('StatsWidget', () => {
         onSelect={stub}
         >
         <ButtonWithOptions.Button/>
-        {[<ButtonWithOptions.Option key={1}>value</ButtonWithOptions.Option>]}
+        {[<ButtonWithOptions.Option id="1" key={1}>value</ButtonWithOptions.Option>]}
       </StatsWidget.Filter>
     );
     createComponent({title, statistics, children});

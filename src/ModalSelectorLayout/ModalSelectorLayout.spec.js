@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import times from 'lodash/times';
+import times from '../utils/operators/times';
 
 import {modalSelectorLayoutTestkitFactory as enzymeModalSelectorLayoutTestkitFactory} from '../../testkit/enzyme';
 import {modalSelectorLayoutTestkitFactory} from '../../testkit';

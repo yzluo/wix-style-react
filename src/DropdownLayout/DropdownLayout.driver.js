@@ -2,7 +2,7 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
 import styles from './DropdownLayout.scss';
-import values from 'lodash/values';
+import values from '../utils/operators/values';
 import {isClassExists} from '../../test/utils';
 
 const dropdownLayoutDriverFactory = ({element, wrapper, component}) => {

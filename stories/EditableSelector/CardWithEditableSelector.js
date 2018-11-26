@@ -1,5 +1,4 @@
 import React from 'react';
-import cloneDeep from 'lodash/cloneDeep';
 import EditableSelector from '../../src/EditableSelector';
 import {Container, Row, Col} from '../../src/Grid';
 import Card from '../../src/Card';
@@ -34,7 +33,7 @@ class CardWithEditableSelector extends React.Component {
     if (index === selectedIndex) {
       return;
     }
-    const newOptions = cloneDeep(this.state.options);
+    const newOptions = this.state.options.map(opt => Object.assign({}, opt));
     if (selectedIndex !== null) {
       newOptions[selectedIndex].isSelected = false;
     }

@@ -3,9 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
-import isEqual from 'lodash/isEqual';
-import trim from 'lodash/trim';
-import findIndex from 'lodash/findIndex';
 import scrollIntoView from '../utils/scrollIntoView';
 
 const modulu = (n, m) => {
@@ -66,9 +63,9 @@ class DropdownLayout extends WixComponent {
       return true;
     }
 
-    return typeof option.id !== 'undefined' && trim(option.id).length > 0 && (
+    return typeof option.id !== 'undefined' && option.id.toString().trim().length > 0 && (
       React.isValidElement(option.value) ||
-      (typeof option.value === 'string' && trim(option.value).length > 0)
+      (typeof option.value === 'string' && option.value.trim().length > 0)
     );
   }
 
@@ -318,17 +315,20 @@ class DropdownLayout extends WixComponent {
       this.setState({selectedId: nextProps.selectedId});
     }
 
-    if (!isEqual(this.props.options, nextProps.options)) {
-      if (nextProps.options.some(option => !this._isLegalOption(option))) {
-        throw new Error(`DropdownLayout: Invalid options provided: ${nextProps.options}`);
-      }
-
-      if (this.state.hovered !== NOT_HOVERED_INDEX) {
-        this.setState({
-          hovered: findIndex(nextProps.options, item => item.id === this.props.options[this.state.hovered].id)
-        });
-      }
+    if (nextProps.options.some(option => !this._isLegalOption(option))) {
+      throw new Error(`DropdownLayout: Invalid options provided: ${nextProps.options}`);
     }
+
+    // make sure the same item is hovered if options changed
+    if (this.state.hovered !== NOT_HOVERED_INDEX && this.props.options[this.state.hovered].id !== nextProps.options[this.state.hovered].id) {
+      this.setState({
+        hovered: this.findIndex(nextProps.options, item => item.id === this.props.options[this.state.hovered].id)
+      });
+    }
+  }
+
+  findIndex(arr, predicate) {
+    return (Array.isArray(arr) ? arr : []).findIndex(predicate);
   }
 
   _isSelectableOption(option) {

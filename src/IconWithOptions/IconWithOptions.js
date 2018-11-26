@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import WixComponent from '../BaseComponents/WixComponent';
-import omit from 'lodash/omit';
 import DropdownLayout from '../DropdownLayout/DropdownLayout';
 import styles from './IconWithOptions.scss';
 import classNames from 'classnames';
@@ -23,7 +22,8 @@ class IconWithOptions extends WixComponent {
   }
 
   renderDropdownLayout() {
-    const dropdownProps = omit(this.props, ['dataHook']);
+    /* eslint-disable no-unused-vars */
+    const {dataHook, ...dropdownProps} = this.props;
 
     const dropdownLayoutOptions = React.Children.map(this.optionsElement, option => {
       const {children: value, ...rest} = option.props;

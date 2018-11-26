@@ -1,5 +1,5 @@
 import React from 'react';
-import times from 'lodash/times';
+import times from '../src/utils/operators/times';
 
 import ModalSelectorLayout from 'wix-style-react/ModalSelectorLayout';
 import Button from 'wix-style-react/Button';
