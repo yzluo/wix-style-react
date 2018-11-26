@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import {Simulate} from 'react-dom/test-utils';
 import {reactUniDriver} from 'unidriver';
@@ -37,12 +36,6 @@ export class ReactDOMTestContainer {
   // it will be depracated in React 17.
   renderAsync(jsx) {
     return new Promise(resolve => ReactDOM.render(jsx, this.node, resolve)); //eslint-disable-line react/no-render-return-value
-  }
-
-  renderWithRef(jsx) {
-    const ref = React.createRef();
-    jsx = React.cloneElement(jsx, {ref});
-    return this.render(jsx).then(() => ref.current);
   }
 
   unmount() {
