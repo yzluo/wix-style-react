@@ -66,8 +66,8 @@ export class ReactDOMTestContainer {
 
   // Adapter for driver
   createRenderer(driverFactory) {
-    return jsx => {
-      this.renderSync(jsx);
+    return async jsx => {
+      await this.renderSync(jsx);
       return driverFactory({
         element: this.componentNode,
         wrapper: this.node,
