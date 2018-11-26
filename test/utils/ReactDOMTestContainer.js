@@ -37,10 +37,6 @@ export class ReactDOMTestContainer {
     return new Promise(resolve => resolve(ReactDOM.render(jsx, this.node)));
   }
 
-  // This function's signature should be:
-  // <P, T extends React.Component<P>>(jsx: React.ComponentElement<P, T>): Promise<T>;
-  // But TypeScript has this weird bug where it can derive the instance type from
-  // React.createElement(Component), but cannot derive it from <Component />.
   renderWithRef(jsx) {
     const ref = React.createRef();
     jsx = React.cloneElement(jsx, {ref});
@@ -82,8 +78,8 @@ export class ReactDOMTestContainer {
 
   // Adapter for uni driver
   createUniRenderer(driverFactory) {
-    return jsx => {
-      this.renderSync(jsx);
+    return async jsx => {
+      await this.renderSync(jsx);
       const base = reactUniDriver(this.componentNode);
       return driverFactory(base);
     };
