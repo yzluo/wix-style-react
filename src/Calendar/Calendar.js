@@ -31,6 +31,19 @@ export default class Calendar extends WixComponent {
     };
   }
 
+  static renderDay(day, modifiers) {
+    const relevantModifiers = ['start', 'end', 'selected'];
+    for (const modifier of relevantModifiers) {
+      if (modifier in modifiers) {
+        return (
+          <div className={'dayCircle'}>{day.getDate()}</div>
+        );
+      }
+    }
+
+    return day.getDate();
+  }
+
   _setMonth = month => {
     this.setState({month});
   }
@@ -120,19 +133,6 @@ export default class Calendar extends WixComponent {
         />
     );
 
-    function renderDay(day, modifiers) {
-      const relevantModifiers = ['start', 'end', 'selected'];
-      for (const modifier of relevantModifiers) {
-        if (modifier in modifiers) {
-          return (
-            <div className={`circle`}>{day.getDate()}</div>
-          );
-        }
-      }
-
-      return day.getDate();
-    }
-
     return {
       disabledDays: excludePastDates ?
         {before: new Date()} :
@@ -154,7 +154,7 @@ export default class Calendar extends WixComponent {
       numberOfMonths: twoMonths ? 2 : 1,
       className: twoMonths ? 'DayPicker--TwoMonths' : '',
       modifiers: {start: from, end: to, firstOfMonth, lastOfMonth, singleDay},
-      renderDay
+      renderDay: Calendar.renderDay
     };
   };
 
@@ -216,7 +216,7 @@ Calendar.propTypes = {
 
   className: PropTypes.string,
 
-   /** Callback function called whenever the user selects a day in the calendar */
+   /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
   onChange: PropTypes.func.isRequired,
 
   /** Callback function called whenever user press escape or click outside of the element */

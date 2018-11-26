@@ -17,6 +17,10 @@ class ControlledCalendarExample extends React.Component {
     this.setState({value});
   }
 
+  onMonthChange(value) {
+    this.setState({month: value});
+  }
+
   toggleExclude() {
     this.setState(({excludePastDates}) => ({excludePastDates: !excludePastDates}));
   }
@@ -31,7 +35,9 @@ class ControlledCalendarExample extends React.Component {
         <Calendar
           excludePastDates={this.state.excludePastDates}
           onChange={value => this.onChange(value)}
+          onMonthChange={value => this.onMonthChange(value)}
           value={this.state.value}
+          month={this.state.month}
           selectionMode={this.state.selectionMode}
           />
         <div style={{display: 'flex'}}>
