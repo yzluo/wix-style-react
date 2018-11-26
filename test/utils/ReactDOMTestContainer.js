@@ -33,7 +33,7 @@ export class ReactDOMTestContainer {
     return this;
   }
 
-  renderSync(jsx) {
+  renderAsync(jsx) {
     return new Promise(resolve => resolve(ReactDOM.render(jsx, this.node)));
   }
 
@@ -67,7 +67,7 @@ export class ReactDOMTestContainer {
   // Adapter for driver
   createRenderer(driverFactory) {
     return async jsx => {
-      await this.renderSync(jsx);
+      await this.renderAsync(jsx);
       return driverFactory({
         element: this.componentNode,
         wrapper: this.node,
@@ -79,7 +79,7 @@ export class ReactDOMTestContainer {
   // Adapter for uni driver
   createUniRenderer(driverFactory) {
     return async jsx => {
-      await this.renderSync(jsx);
+      await this.renderAsync(jsx);
       const base = reactUniDriver(this.componentNode);
       return driverFactory(base);
     };
