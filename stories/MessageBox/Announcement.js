@@ -12,7 +12,6 @@ import AnnouncementStandardRaw from '!raw-loader!./AnnouncementExamples/Standard
 import PremiumAction from './AnnouncementExamples/PremiumAction';
 import PremiumActionRaw from '!raw-loader!./AnnouncementExamples/PremiumAction';
 
-
 import DisabledAction from './AnnouncementExamples/DisabledAction';
 import DisabledActionRaw from '!raw-loader!./AnnouncementExamples/DisabledAction';
 
@@ -24,39 +23,39 @@ Components to be used within \`wix-style-react/Modal\`:
 `;
 
 const layoutStyles = {
-  margin: '0 30px'
+  margin: '0 30px',
 };
 
 export default () => (
   <TabbedView tabs={['Usage', 'API', 'TestKits']}>
     <div>
-      <Markdown source={introduction}/>
+      <Markdown source={introduction} />
       <div style={layoutStyles}>
         <CodeExample
           title="Standard"
           code={AnnouncementStandardRaw}
-          children={<AnnouncementStandard/>}
-          />
+          children={<AnnouncementStandard />}
+        />
         <CodeExample
           title="Premium Action"
           code={PremiumActionRaw}
-          children={<PremiumAction/>}
-          />
+          children={<PremiumAction />}
+        />
         <CodeExample
           title="Footnote"
           code={FootnoteRaw}
-          children={<Footnote/>}
-          />
+          children={<Footnote />}
+        />
         <CodeExample
           title="Disabled Action"
           code={DisabledActionRaw}
-          children={<DisabledAction/>}
-          />
+          children={<DisabledAction />}
+        />
       </div>
     </div>
 
-    <Markdown source={Readme}/>
+    <Markdown source={Readme} />
 
-    <Markdown source={ReadmeTestKit}/>
+    <Markdown source={ReadmeTestKit} />
   </TabbedView>
 );

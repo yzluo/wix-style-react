@@ -1,10 +1,10 @@
 import React from 'react';
-import {string} from 'prop-types';
+import { string } from 'prop-types';
 import classNames from 'classnames';
 import WixComponent from '../../BaseComponents/WixComponent';
 import tpaStyleInjector from '../TpaStyleInjector';
 
-let styles = {locals: {}};
+let styles = { locals: {} };
 try {
   styles = require('!css-loader?modules&camelCase&localIdentName="[path][name]__[local]__[hash:base64:5]"!sass-loader!./TextLink.scss');
 } catch (e) {}
@@ -13,13 +13,13 @@ class TextLink extends WixComponent {
   static propTypes = {
     link: string.isRequired,
     id: string,
-    children: string
+    children: string,
   };
 
   static defaultProps = {
     disabled: false,
     rel: null,
-    target: null
+    target: null,
   };
 
   getLinkProps = () => {
@@ -37,11 +37,11 @@ class TextLink extends WixComponent {
   };
 
   render() {
-    const {children, className, link} = this.props;
-    const {locals} = styles;
+    const { children, className, link } = this.props;
+    const { locals } = styles;
     const classes = classNames(
       [locals['wix-style-react-text-link']],
-      className
+      className,
     ).trim();
     const linkProps = this.getLinkProps();
 

@@ -7,7 +7,6 @@ import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
 import ExampleFullscreen from './ExampleFullscreen';
 import ExampleFullscreenRaw from '!raw-loader!./ExampleFullscreen';
 
-
 export default {
   category: 'Components',
   storyName: 'GenericModalLayout',
@@ -18,24 +17,18 @@ export default {
     header: 'header',
     content: 'content',
     footer: 'footer',
-    fullscreen: false
+    fullscreen: false,
   },
 
   examples: (
     <div>
-      <CodeExample
-        title="Default"
-        code={ExampleStandardRaw}
-        >
-        <ExampleStandard/>
+      <CodeExample title="Default" code={ExampleStandardRaw}>
+        <ExampleStandard />
       </CodeExample>
 
-      <CodeExample
-        title="Fullscreen"
-        code={ExampleFullscreenRaw}
-        >
-        <ExampleFullscreen/>
+      <CodeExample title="Fullscreen" code={ExampleFullscreenRaw}>
+        <ExampleFullscreen />
       </CodeExample>
     </div>
-  )
+  ),
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import TextButton from 'wix-style-react/TextButton';
-import {storySettings} from './storySettings';
+import { storySettings } from './storySettings';
 import icons from '../utils/icons-for-story';
 
 import TextButtonStory from './examples';
@@ -17,13 +17,13 @@ export default {
     underline: 'none',
     weight: 'thin',
     size: 'medium',
-    disabled: false
+    disabled: false,
   },
   exampleProps: {
     onClick: () => 'Clicked!',
     prefixIcon: icons,
-    suffixIcon: icons
+    suffixIcon: icons,
   },
 
-  examples: <TextButtonStory/>
+  examples: <TextButtonStory />,
 };

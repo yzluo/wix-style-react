@@ -20,14 +20,14 @@ export default class Calendar extends WixComponent {
     filterDate: () => true,
     shouldCloseOnSelect: true,
     rtl: false,
-    onClose: () => {}
+    onClose: () => {},
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      month: this._getMonth(props)
+      month: this._getMonth(props),
     };
   }
 
@@ -35,9 +35,7 @@ export default class Calendar extends WixComponent {
     const relevantModifiers = ['start', 'end', 'selected'];
     for (const modifier of relevantModifiers) {
       if (modifier in modifiers) {
-        return (
-          <div className={styles.dayCircle}>{day.getDate()}</div>
-        );
+        return <div className={styles.dayCircle}>{day.getDate()}</div>;
       }
     }
 
@@ -45,20 +43,25 @@ export default class Calendar extends WixComponent {
   }
 
   _setMonth = month => {
-    this.setState({month});
-  }
+    this.setState({ month });
+  };
 
   _handleDayClick = (value, modifiers = {}) => {
     const propsValue = this.props.value || {};
-    const {onChange, shouldCloseOnSelect} = this.props;
+    const { onChange, shouldCloseOnSelect } = this.props;
 
     if (this.props.selectionMode === 'range') {
-      if ((!propsValue.from && !propsValue.to) || (propsValue.from && propsValue.to)) {
-        onChange({from: value}, modifiers);
+      if (
+        (!propsValue.from && !propsValue.to) ||
+        (propsValue.from && propsValue.to)
+      ) {
+        onChange({ from: value }, modifiers);
       } else {
         const anchor = propsValue.from || propsValue.to;
-        const newVal = anchor < value ?
-          {from: anchor, to: value} : {from: value, to: anchor};
+        const newVal =
+          anchor < value
+            ? { from: anchor, to: value }
+            : { from: value, to: anchor };
 
         onChange(newVal, modifiers);
         shouldCloseOnSelect && this.props.onClose();
@@ -70,15 +73,15 @@ export default class Calendar extends WixComponent {
   };
 
   _getMonth = props => {
-    const {value} = props;
+    const { value } = props;
 
-    const {from, to} = value || {};
+    const { from, to } = value || {};
     if (!from && !to && !(value instanceof Date)) {
       return new Date();
     } else {
       return parse(from || to || value);
     }
-  }
+  };
 
   _createDayPickerProps = () => {
     const {
@@ -89,7 +92,7 @@ export default class Calendar extends WixComponent {
       excludePastDates,
       value: propsValue,
       rtl,
-      twoMonths
+      twoMonths,
     } = this.props;
 
     const month = this.state.month || this._getMonth(this.props) || new Date();
@@ -105,13 +108,13 @@ export default class Calendar extends WixComponent {
     if (from && !to) {
       const date = new Date(from);
       date.setDate(from.getDate() - 1);
-      selectedDaysProp = {after: parse(date)};
+      selectedDaysProp = { after: parse(date) };
     } else if (!from && to) {
       const date = new Date(to);
       date.setDate(to.getDate() + 1);
-      selectedDaysProp = {before: parse(date)};
+      selectedDaysProp = { before: parse(date) };
     } else if (from && to) {
-      selectedDaysProp = {from: parse(from), to: parse(to)};
+      selectedDaysProp = { from: parse(from), to: parse(to) };
     } else {
       selectedDaysProp = parse(propsValue);
     }
@@ -128,15 +131,15 @@ export default class Calendar extends WixComponent {
           onLeftArrowClick: () =>
             this._setMonth(startOfMonth(addMonths(month, -1))),
           onRightArrowClick: () =>
-            this._setMonth(startOfMonth(addMonths(month, 1)))
+            this._setMonth(startOfMonth(addMonths(month, 1))),
         }}
-        />
+      />
     );
 
     return {
-      disabledDays: excludePastDates ?
-        {before: new Date()} :
-        date => !filterDate(date),
+      disabledDays: excludePastDates
+        ? { before: new Date() }
+        : date => !filterDate(date),
       initialMonth: month,
       initialYear: month,
       selectedDays: selectedDaysProp,
@@ -153,8 +156,8 @@ export default class Calendar extends WixComponent {
       onDayKeyDown: this._handleDayKeyDown,
       numberOfMonths: twoMonths ? 2 : 1,
       className: twoMonths ? 'DayPicker--TwoMonths' : '',
-      modifiers: {start: from, end: to, firstOfMonth, lastOfMonth, singleDay},
-      renderDay: Calendar.renderDay
+      modifiers: { start: from, end: to, firstOfMonth, lastOfMonth, singleDay },
+      renderDay: Calendar.renderDay,
     };
   };
 
@@ -169,14 +172,14 @@ export default class Calendar extends WixComponent {
     27: this.props.onClose,
 
     // tab
-    9: this.props.onClose
+    9: this.props.onClose,
   };
 
   _focusSelectedDay = dayPickerRef => {
     if (dayPickerRef) {
       this.dayPickerRef = dayPickerRef;
       const selectedDay = this.dayPickerRef.dayPicker.querySelector(
-        '.DayPicker-Day--selected'
+        '.DayPicker-Day--selected',
       );
 
       if (selectedDay) {
@@ -188,7 +191,7 @@ export default class Calendar extends WixComponent {
 
   _handleDayKeyDown = () => {
     const unfocusedDay = this.dayPickerRef.dayPicker.querySelector(
-      '.DayPicker-Day--unfocused'
+      '.DayPicker-Day--unfocused',
     );
 
     if (unfocusedDay) {
@@ -202,7 +205,7 @@ export default class Calendar extends WixComponent {
         <DayPicker
           ref={this._focusSelectedDay}
           {...this._createDayPickerProps()}
-          />
+        />
       </div>
     );
   }
@@ -216,7 +219,7 @@ Calendar.propTypes = {
 
   className: PropTypes.string,
 
-   /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
+  /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
   onChange: PropTypes.func.isRequired,
 
   /** Callback function called whenever user press escape or click outside of the element */
@@ -263,11 +266,11 @@ Calendar.propTypes = {
       'sv',
       'no',
       'nl',
-      'da'
+      'da',
     ]),
     PropTypes.shape({
       distanceInWords: PropTypes.object,
-      format: PropTypes.object
-    })
-  ])
+      format: PropTypes.object,
+    }),
+  ]),
 };

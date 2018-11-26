@@ -6,23 +6,23 @@ import classNames from 'classnames';
 import style from './Table.st.css';
 import DataTable from '../DataTable';
 import Checkbox from '../Checkbox';
-import {TableContext} from './TableContext';
-import {BulkSelection, BulkSelectionState} from './BulkSelection';
+import { TableContext } from './TableContext';
+import { BulkSelection, BulkSelectionState } from './BulkSelection';
 import Tooltip from '../Tooltip/Tooltip';
 import {
   TableToolbarToggler,
   TableToolbarContainer,
   TableTitleBar,
   TableContent,
-  TableEmptyState
+  TableEmptyState,
 } from './components';
 
-export function createColumns({tableProps, bulkSelectionContext}) {
+export function createColumns({ tableProps, bulkSelectionContext }) {
   const createCheckboxColumn = ({
     toggleAll,
     bulkSelectionState,
     toggleSelectionById,
-    isSelected
+    isSelected,
   }) => {
     return {
       title: (
@@ -31,7 +31,7 @@ export function createColumns({tableProps, bulkSelectionContext}) {
           checked={bulkSelectionState === BulkSelectionState.ALL}
           indeterminate={bulkSelectionState === BulkSelectionState.SOME}
           onChange={() => toggleAll()}
-          />
+        />
       ),
       render: (row, rowNum) => {
         const id = defaultTo(row.id, rowNum);
@@ -41,17 +41,17 @@ export function createColumns({tableProps, bulkSelectionContext}) {
               dataHook="row-select"
               checked={isSelected(id)}
               onChange={() => toggleSelectionById(id)}
-              />
+            />
           </div>
         );
       },
-      width: '12px'
+      width: '12px',
     };
   };
 
-  return tableProps.showSelection ?
-    [createCheckboxColumn(bulkSelectionContext), ...tableProps.columns] :
-    tableProps.columns;
+  return tableProps.showSelection
+    ? [createCheckboxColumn(bulkSelectionContext), ...tableProps.columns]
+    : tableProps.columns;
 }
 
 export function getDataTableProps(tableProps) {
@@ -68,7 +68,7 @@ export function getDataTableProps(tableProps) {
   return {
     ...props,
     newDesign: true,
-    rowClass: classNames(tableProps.rowClass, style.tableRow)
+    rowClass: classNames(tableProps.rowClass, style.tableRow),
   };
 }
 
@@ -100,10 +100,10 @@ export class Table extends React.Component {
         data-hook={this.props.dataHook}
         {...style(
           'root',
-          {isRowClickable: !!this.props.onRowClick},
-          this.props
+          { isRowClickable: !!this.props.onRowClick },
+          this.props,
         )}
-        >
+      >
         {children}
       </div>
     ) : (
@@ -119,10 +119,10 @@ export class Table extends React.Component {
             ref={_ref => (this.bulkSelection = _ref)}
             selectedIds={this.props.selectedIds}
             allIds={this.props.data.map((rowData, rowIndex) =>
-              defaultTo(rowData.id, rowIndex)
+              defaultTo(rowData.id, rowIndex),
             )}
             onSelectionChanged={this.props.onSelectionChanged}
-            >
+          >
             {this.renderChildren()}
           </BulkSelection>
         ) : (
@@ -138,9 +138,9 @@ Table.displayName = 'Table';
 Table.defaultProps = {
   ...DataTable.defaultProps,
   showSelection: false,
-  children: [<Table.Content key="content"/>],
+  children: [<Table.Content key="content" />],
   withWrapper: true,
-  showLastRowDivider: false
+  showLastRowDivider: false,
 };
 
 Table.propTypes = {
@@ -160,8 +160,8 @@ Table.propTypes = {
       sortable: PropTypes.bool,
       infoTooltipProps: PropTypes.shape(Tooltip.propTypes),
       sortDescending: PropTypes.bool,
-      align: PropTypes.oneOf(['start', 'center', 'end'])
-    })
+      align: PropTypes.oneOf(['start', 'center', 'end']),
+    }),
   ).isRequired,
   /** A func that gets row data and returns a class(es) to apply to that specific row */
   dynamicRowClass: PropTypes.func,
@@ -218,14 +218,14 @@ Table.propTypes = {
    *  If data objects do not have id property, then the data row's index would be used as an id. */
   selectedIds: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
-    PropTypes.arrayOf(PropTypes.number)
+    PropTypes.arrayOf(PropTypes.number),
   ]),
   /** The width of the fixed table. Can be in percentages or pixels. */
   width: PropTypes.string,
   /**
    *  When false then Table would not create a `<div/>` wrapper around it's children.
    *  Useful when using `<Table/>` to wrap a `<Page/>` component, in that case we use the `<Table/>` only as a context provider and it doesn't render anything to the DOM by itself.*/
-  withWrapper: PropTypes.bool
+  withWrapper: PropTypes.bool,
 };
 
 // export default Table;

@@ -1,10 +1,10 @@
 import React from 'react';
-import {func, node, string} from 'prop-types';
+import { func, node, string } from 'prop-types';
 import styles from '../../ButtonLayout/ButtonLayout.scss';
 import WixComponent from '../../BaseComponents/WixComponent';
 import ButtonLayout from '../../ButtonLayout/ButtonLayout';
-import {withFocusable, focusableStates} from '../../common/Focusable';
-import {pickAccessibilityProps} from '../../common/accessibility';
+import { withFocusable, focusableStates } from '../../common/Focusable';
+import { pickAccessibilityProps } from '../../common/accessibility';
 
 class Button extends WixComponent {
   static displayName = 'Button';
@@ -18,17 +18,17 @@ class Button extends WixComponent {
     type: string,
     onClick: func,
     onMouseEnter: func,
-    onMouseLeave: func
+    onMouseLeave: func,
   };
 
   static defaultProps = {
-    ...ButtonLayout.defaultProps
+    ...ButtonLayout.defaultProps,
   };
 
   addIcon = (affix, icon) =>
     icon && (
       <div data-hook={`btn-${affix}`} className={styles.affixIcon}>
-        {React.cloneElement(icon, {className: styles[affix]})}
+        {React.cloneElement(icon, { className: styles[affix] })}
       </div>
     );
 
@@ -38,9 +38,16 @@ class Button extends WixComponent {
 
   getButtonLayoutProps = () => {
     /* eslint-disable no-unused-vars */
-    const {id, onClick, prefixIcon, suffix, type, ...buttonLayoutProps} = this.props;
+    const {
+      id,
+      onClick,
+      prefixIcon,
+      suffix,
+      type,
+      ...buttonLayoutProps
+    } = this.props;
     return buttonLayoutProps;
-  }
+  };
 
   render() {
     const {
@@ -49,7 +56,7 @@ class Button extends WixComponent {
       children,
       type,
       onMouseEnter,
-      onMouseLeave
+      onMouseLeave,
     } = this.props;
 
     const buttonLayoutProps = this.getButtonLayoutProps();
@@ -65,7 +72,7 @@ class Button extends WixComponent {
           onBlur={this.props.focusableOnBlur}
           {...focusableStates(this.props)}
           {...pickAccessibilityProps(this.props)}
-          >
+        >
           {this.addPrefix()}
           {children}
           {this.addSuffix()}

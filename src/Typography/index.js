@@ -16,13 +16,12 @@ if (process.env.NODE_ENV !== 'production') {
     get(target, prop) {
       if (deprecatedRegExp.test(prop)) {
         deprecationLog(
-        `Typography class ${prop} is deprecated. Please use new classes described at https://wix-wix-style-react.surge.sh/?selectedKind=Styling&selectedStory=1.2%20Typography%20Classes`
+          `Typography class ${prop} is deprecated. Please use new classes described at https://wix-wix-style-react.surge.sh/?selectedKind=Styling&selectedStory=1.2%20Typography%20Classes`,
         );
       }
       return target[prop];
-    }
+    },
   });
 }
 
 export default typographyProxy;
-

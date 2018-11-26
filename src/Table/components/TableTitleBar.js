@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {DataTableHeader} from '../../DataTable';
-import {getDataTableProps, createColumns} from '../Table';
-import {TableContext} from '../TableContext';
-import {BulkSelectionConsumer} from '../BulkSelection';
+import { DataTableHeader } from '../../DataTable';
+import { getDataTableProps, createColumns } from '../Table';
+import { TableContext } from '../TableContext';
+import { BulkSelectionConsumer } from '../BulkSelection';
 
 /**
  * TitleBar (aka DataTableHeader)
@@ -15,21 +15,27 @@ export const TableTitleBar = () => {
         const dataTableProps = getDataTableProps(tableProps);
         if (tableProps.showSelection) {
           return (
-            <BulkSelectionConsumer consumerCompName="Table.TitleBar" providerCompName="Table">
+            <BulkSelectionConsumer
+              consumerCompName="Table.TitleBar"
+              providerCompName="Table"
+            >
               {bulkSelectionContext => (
                 <div data-hook="table-title-bar">
                   <DataTableHeader
                     {...dataTableProps}
-                    columns={createColumns({tableProps, bulkSelectionContext})}
-                    />
+                    columns={createColumns({
+                      tableProps,
+                      bulkSelectionContext,
+                    })}
+                  />
                 </div>
-            )}
+              )}
             </BulkSelectionConsumer>
           );
         } else {
           return (
             <div data-hook="table-title-bar">
-              <DataTableHeader {...dataTableProps}/>
+              <DataTableHeader {...dataTableProps} />
             </div>
           );
         }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {func, oneOf, string} from 'prop-types';
+import { func, oneOf, string } from 'prop-types';
 import Button from '../Button';
 import Close from '../new-icons/system/Close';
 import CloseLarge from '../new-icons/system/CloseLarge';
@@ -9,7 +9,14 @@ import CloseLarge from '../new-icons/system/CloseLarge';
   TODO should be refactored later, together with buttons cleanup
 */
 
-const CloseButton = ({arialLabel, dataHook, size, theme, onClick, className}) => {
+const CloseButton = ({
+  arialLabel,
+  dataHook,
+  size,
+  theme,
+  onClick,
+  className,
+}) => {
   return (
     <Button
       className={className}
@@ -18,8 +25,8 @@ const CloseButton = ({arialLabel, dataHook, size, theme, onClick, className}) =>
       height={size === 'small' ? 'medium' : 'large'}
       theme={theme}
       onClick={onClick}
-      >
-      {size === 'small' ? <Close/> : <CloseLarge/>}
+    >
+      {size === 'small' ? <Close /> : <CloseLarge />}
     </Button>
   );
 };
@@ -30,13 +37,13 @@ CloseButton.propTypes = {
   dataHook: string,
   size: oneOf(['small', 'large']),
   theme: string,
-  onClick: func
+  onClick: func,
 };
 
 CloseButton.defaultProps = {
   arialLabel: 'close button',
   theme: 'close-transparent',
-  size: 'large'
+  size: 'large',
 };
 
 CloseButton.displayName = 'CloseButton';

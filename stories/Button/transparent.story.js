@@ -11,7 +11,7 @@ export default {
   componentProps: {
     height: 'small',
     theme: 'transparent',
-    children: 'Click Me'
+    children: 'Click Me',
   },
 
   exampleProps: {
@@ -19,6 +19,6 @@ export default {
     onMouseEnter: () => 'Mouse Enter!',
     onMouseLeave: () => 'Mouse Leave!',
     prefixIcon: icons,
-    suffixIcon: icons
-  }
+    suffixIcon: icons,
+  },
 };

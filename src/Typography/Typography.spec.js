@@ -13,9 +13,8 @@ describe('Typography deprecation', () => {
     expect(typography.h4_1).toEqual('h4_1');
     expect(typography.h5_1).toEqual('h5_1');
     expect(typography.h6_1).toEqual('h6_1');
-    expect(global.console.warn.mock.calls.length).toEqual(6);
+    expect(global.console.warn.mock.calls).toHaveLength(6);
   });
-
 
   it('Should show deprecationLog for old text classes', () => {
     expect(typography.t1).toEqual('t1');
@@ -31,7 +30,7 @@ describe('Typography deprecation', () => {
     expect(typography.t5_1).toEqual('t5_1');
     expect(typography.t6_1).toEqual('t6_1');
     // Some tx_2, adn tx_3, etc... don't exist, so don't bother to test it.
-    expect(global.console.warn.mock.calls.length).toEqual(12);
+    expect(global.console.warn.mock.calls).toHaveLength(12);
   });
 
   it('Should not show deprecationLog for new classes', () => {
@@ -66,7 +65,7 @@ describe('Typography deprecation', () => {
     expectClass('link');
     expectClass('disabled');
 
-    expect(global.console.warn.mock.calls.length).toEqual(0);
+    expect(global.console.warn.mock.calls).toHaveLength(0);
   });
 
   afterAll(() => {

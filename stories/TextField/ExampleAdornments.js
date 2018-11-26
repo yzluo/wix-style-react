@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Layout, Cell} from 'wix-style-react/Layout';
+import { Layout, Cell } from 'wix-style-react/Layout';
 import Input from 'wix-style-react/Input';
 import FormField from 'wix-style-react/FormField';
 
 const defaultProps = {
-  placeholder: 'Search term'
+  placeholder: 'Search term',
 };
 
 const Example = () => (
@@ -15,12 +15,22 @@ const Example = () => (
       <Layout>
         <Cell span="4">
           <FormField label="[Status: Loading] + tooltip">
-            <Input {...defaultProps} status={'loading'} statusMessage="I am a message"/><br/>
+            <Input
+              {...defaultProps}
+              status={'loading'}
+              statusMessage="I am a message"
+            />
+            <br />
           </FormField>
         </Cell>
         <Cell span="4">
           <FormField label="[Status: Error] + tooltip">
-            <Input {...defaultProps} status={'error'} statusMessage="I am a message"/><br/>
+            <Input
+              {...defaultProps}
+              status={'error'}
+              statusMessage="I am a message"
+            />
+            <br />
           </FormField>
         </Cell>
       </Layout>
@@ -29,12 +39,14 @@ const Example = () => (
       <Layout>
         <Cell span="4">
           <FormField label="Unit">
-            <Input {...defaultProps} unit="$"/><br/>
+            <Input {...defaultProps} unit="$" />
+            <br />
           </FormField>
         </Cell>
         <Cell span="4">
           <FormField label="Unit + [Status: Error]">
-            <Input {...defaultProps} unit="$" status={'error'}/><br/>
+            <Input {...defaultProps} unit="$" status={'error'} />
+            <br />
           </FormField>
         </Cell>
       </Layout>
@@ -43,7 +55,8 @@ const Example = () => (
       <Layout>
         <Cell span="4">
           <FormField label="Help + tooltip">
-            <Input {...defaultProps} help helpMessage="I am a message"/><br/>
+            <Input {...defaultProps} help helpMessage="I am a message" />
+            <br />
           </FormField>
         </Cell>
       </Layout>
@@ -52,7 +65,7 @@ const Example = () => (
 );
 
 Example.propTypes = {
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 export default Example;

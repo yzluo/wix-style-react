@@ -15,17 +15,17 @@ const NON_COMPONENT_FOLDER_NAMES = [
   'BaseComponents',
   'Typography',
   'TPA',
-  'Animations'
+  'Animations',
 ];
 
 const matches = haystack => needle => haystack.some(h => needle === h);
 
 const defaultOrRoot = object => object.default || object;
 
-const Components = ({cwd, ignore = []}) => {
+const Components = ({ cwd, ignore = [] }) => {
   const componentNameInvalidators = [
     path.extname,
-    matches(NON_COMPONENT_FOLDER_NAMES.concat(ignore))
+    matches(NON_COMPONENT_FOLDER_NAMES.concat(ignore)),
   ];
 
   const components = fs

@@ -1,7 +1,7 @@
 import styles from './Checkbox.scss';
 import focusableDriverFactory from '../common/Focusable/Focusable.protractor.driver';
-import {mergeDrivers} from '../../test/utils/private-drivers';
-import {hasAttribute, hasClass} from '../../test/utils/protractor-helpers';
+import { mergeDrivers } from '../../test/utils/private-drivers';
+import { hasAttribute, hasClass } from '../../test/utils/protractor-helpers';
 
 /**
  * @return <T extends InternalFocusableDriver>
@@ -13,7 +13,7 @@ export const internalDriverFactory = element => {
   return {
     // Implements: InternalFocusableDriver
     focusableElement: element,
-    clickableGetters: [getBox, getTextChildren]
+    clickableGetters: [getBox, getTextChildren],
   };
 };
 
@@ -24,7 +24,7 @@ const checkboxDriverFactory = element => {
   const focusableDriver = focusableDriverFactory({
     rootElement: element,
     nativeFocusableElement: element,
-    clickableElements: [checkboxElement, childrenElement]
+    clickableElements: [checkboxElement, childrenElement],
   });
 
   const publicDriver = {
@@ -34,11 +34,10 @@ const checkboxDriverFactory = element => {
     getInput: () => element.$(`input`),
     isChecked: () => element.$(`input`).isSelected(),
     isDisabled: () => hasAttribute(element.$(`input`), 'disabled'),
-    hasError: () => hasClass(element, styles.hasError)
+    hasError: () => hasClass(element, styles.hasError),
   };
 
   return mergeDrivers(publicDriver, focusableDriver);
-
 };
 
 export default checkboxDriverFactory;

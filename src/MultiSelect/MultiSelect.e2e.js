@@ -1,7 +1,7 @@
-import {multiSelectTestkitFactory} from '../../testkit/protractor';
-import {waitForVisibilityOf, mouseEnter} from 'wix-ui-test-utils/protractor';
-import {getStoryUrl} from '../../test/utils/storybook-helpers';
-import {protractor} from 'protractor';
+import { multiSelectTestkitFactory } from '../../testkit/protractor';
+import { waitForVisibilityOf, mouseEnter } from 'wix-ui-test-utils/protractor';
+import { getStoryUrl } from '../../test/utils/storybook-helpers';
+import { protractor } from 'protractor';
 import eyes from 'eyes.it';
 
 describe('MultiSelect', () => {
@@ -12,11 +12,19 @@ describe('MultiSelect', () => {
   });
 
   eyes.it('should show focus style + hover (focused by keyboard)', async () => {
-    const driver = multiSelectTestkitFactory({dataHook: 'multi-select-standard'});
+    const driver = multiSelectTestkitFactory({
+      dataHook: 'multi-select-standard',
+    });
     const element = driver.element();
     await waitForVisibilityOf(element, 'Cannot find <MultiSelect/>');
-    await browser.actions().sendKeys(protractor.Key.TAB).perform();
-    await browser.actions().sendKeys(protractor.Key.TAB).perform();
+    await browser
+      .actions()
+      .sendKeys(protractor.Key.TAB)
+      .perform();
+    await browser
+      .actions()
+      .sendKeys(protractor.Key.TAB)
+      .perform();
     // Should be focused
     await eyes.checkWindow('focused by keyboard (not hovered)');
     await mouseEnter(element);
@@ -24,7 +32,9 @@ describe('MultiSelect', () => {
   });
 
   eyes.it('should show hover style (Standard)', async () => {
-    const driver = multiSelectTestkitFactory({dataHook: 'multi-select-standard'});
+    const driver = multiSelectTestkitFactory({
+      dataHook: 'multi-select-standard',
+    });
     const element = driver.element();
     await waitForVisibilityOf(element, 'Cannot find <MultiSelect/>');
     await mouseEnter(element);
@@ -35,7 +45,9 @@ describe('MultiSelect', () => {
   });
 
   eyes.it('should show hover style (when Reorderable)', async () => {
-    const driver = multiSelectTestkitFactory({dataHook: 'multi-select-reorderable'});
+    const driver = multiSelectTestkitFactory({
+      dataHook: 'multi-select-reorderable',
+    });
     const element = driver.element();
     await waitForVisibilityOf(element, 'Cannot find <MultiSelect/>');
     await mouseEnter(element);
@@ -44,16 +56,21 @@ describe('MultiSelect', () => {
     await mouseEnter(element);
   });
 
-  eyes.it('should break to new line when needed', async () => {
-    const ELEMENT_HEIGHT_MULTILINE = 66;
-    const driver = multiSelectTestkitFactory({dataHook: 'multi-select-limited'});
-    await waitForVisibilityOf(driver.element(), 'Cannot find <MultiSelect/>');
-    for (let i = 0; i < 9; i++) {
-      await driver.addTag();
-    }
-    const height = await driver.getHeight();
+  eyes.it(
+    'should break to new line when needed',
+    async () => {
+      const ELEMENT_HEIGHT_MULTILINE = 66;
+      const driver = multiSelectTestkitFactory({
+        dataHook: 'multi-select-limited',
+      });
+      await waitForVisibilityOf(driver.element(), 'Cannot find <MultiSelect/>');
+      for (let i = 0; i < 9; i++) {
+        await driver.addTag();
+      }
+      const height = await driver.getHeight();
 
-    expect(height).toBe(ELEMENT_HEIGHT_MULTILINE);
-
-  }, {version: '<Input/> - On text click - select all'});
+      expect(height).toBe(ELEMENT_HEIGHT_MULTILINE);
+    },
+    { version: '<Input/> - On text click - select all' },
+  );
 });

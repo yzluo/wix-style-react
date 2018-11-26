@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {ButtonNext} from 'wix-ui-core/button-next';
+import React, { Component } from 'react';
+import { ButtonNext } from 'wix-ui-core/button-next';
 import cx from 'classnames';
-import {textButton} from 'wix-ui-core/themes/backoffice';
-import {string, node, oneOf, element, bool} from 'prop-types';
+import { textButton } from 'wix-ui-core/themes/backoffice';
+import { string, node, oneOf, element, bool } from 'prop-types';
 
 class TextButton extends Component {
   static displayName = 'TextButton';
@@ -27,14 +27,14 @@ class TextButton extends Component {
     /** String based node */
     children: node,
     /** String based data hook */
-    dataHook: string
+    dataHook: string,
   };
 
   static defaultProps = {
     skin: 'standard',
     underline: 'none',
     weight: 'thin',
-    size: 'medium'
+    size: 'medium',
   };
 
   render() {

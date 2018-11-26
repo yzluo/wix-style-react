@@ -1,5 +1,5 @@
 import React from 'react';
-import {func, any, array} from 'prop-types';
+import { func, any, array } from 'prop-types';
 import Wix from 'Wix';
 import WixStyleProvider from './WixStyleProvider';
 
@@ -9,20 +9,24 @@ export default class WixStyleTpaProvider extends React.Component {
     this.update = this.update.bind(this);
     this.state = {
       theme: props.themeCreator(),
-      events: props.events.filter(event => Wix.Events[event] !== undefined)
+      events: props.events.filter(event => Wix.Events[event] !== undefined),
     };
   }
 
   update(data) {
-    this.setState({theme: this.props.themeCreator(data)});
+    this.setState({ theme: this.props.themeCreator(data) });
   }
 
   componentDidMount() {
-    this.state.events.forEach(event => Wix.addEventListener(Wix.Events[event], this.update));
+    this.state.events.forEach(event =>
+      Wix.addEventListener(Wix.Events[event], this.update),
+    );
   }
 
   componentWillUnmout() {
-    this.state.events.forEach(event => Wix.removeEventListener(Wix.Events[event], this.update));
+    this.state.events.forEach(event =>
+      Wix.removeEventListener(Wix.Events[event], this.update),
+    );
   }
 
   render() {
@@ -37,9 +41,9 @@ export default class WixStyleTpaProvider extends React.Component {
 WixStyleTpaProvider.propTypes = {
   themeCreator: func,
   children: any,
-  events: array
+  events: array,
 };
 
 WixStyleTpaProvider.defaultProps = {
-  events: ['STYLE_PARAMS_CHANGE']
+  events: ['STYLE_PARAMS_CHANGE'],
 };

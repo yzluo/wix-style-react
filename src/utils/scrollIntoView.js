@@ -8,16 +8,14 @@ export default function scrollIntoView(parentElement, focusedElement) {
   // We'll change the `scrollTop` only when needed. For example, when the
   // focused element is already in the view, we won't change it.
   if (focusedRect.bottom > parentRect.bottom) {
-
     // The hovered element is *below* the view
     parentElement.scrollTop = Math.min(
       focusedElement.offsetTop +
-      focusedElement.clientHeight -
-      parentElement.offsetHeight,
-      parentElement.scrollHeight
+        focusedElement.clientHeight -
+        parentElement.offsetHeight,
+      parentElement.scrollHeight,
     );
   } else if (focusedRect.top < parentRect.top) {
-
     // The hovered element is *above* the view
     parentElement.scrollTop = Math.max(focusedElement.offsetTop, 0);
   }

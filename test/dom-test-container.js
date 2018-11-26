@@ -72,15 +72,13 @@ export class ReactDOMTestContainer {
   }
 
   // Adapter for drivers written for wix-ui-test-utils/createDriverFactory
-  createLegacyRenderer(
-    driverFactory
-  ) {
-    return (jsx) => {
+  createLegacyRenderer(driverFactory) {
+    return jsx => {
       this.renderSync(jsx);
       return driverFactory({
         element: this.componentNode,
         wrapper: this.node,
-        eventTrigger: Simulate
+        eventTrigger: Simulate,
       });
     };
   }

@@ -8,7 +8,7 @@ export default function pickBy(obj, predicate = identity) {
 
   return Object.keys(obj).reduce((acc, key) => {
     if (predicate(obj[key], key)) {
-      return {...acc, [key]: obj[key]};
+      return { ...acc, [key]: obj[key] };
     }
 
     return acc;

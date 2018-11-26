@@ -1,6 +1,6 @@
 import React from 'react';
 import IconButton from 'wix-style-react/IconButton';
-import {storySettings} from './storySettings';
+import { storySettings } from './storySettings';
 import More from 'wix-style-react/new-icons/More';
 
 import IconButtonStory from './examples';
@@ -13,16 +13,16 @@ export default {
   componentPath: '../../src/IconButton',
 
   componentProps: {
-    children: <More/>,
+    children: <More />,
     skin: 'standard',
     priority: 'primary',
-    size: 'medium'
+    size: 'medium',
   },
 
   exampleProps: {
     onClick: () => 'Clicked!',
-    children: icons
+    children: icons,
   },
 
-  examples: <IconButtonStory/>
+  examples: <IconButtonStory />,
 };

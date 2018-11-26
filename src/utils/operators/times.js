@@ -12,4 +12,3 @@ export default function times(invokeAmount, iteratee = identity) {
 
   return range(0, invokeAmount).map(iteratee);
 }
-

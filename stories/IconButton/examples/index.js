@@ -9,7 +9,7 @@ import ExamplesSecondary from '!raw-loader!./ExamplesSecondary';
 const controlledWidth = {
   height: 'auto',
   width: '100%',
-  display: 'flex'
+  display: 'flex',
 };
 
 const halfColumn = {
@@ -17,7 +17,7 @@ const halfColumn = {
   flexDirection: 'column',
   padding: '10px',
   width: '48%',
-  lineHeight: '1.6'
+  lineHeight: '1.6',
 };
 
 const Container = ({children}) => <div style={controlledWidth}>{children}</div>; //eslint-disable-line
@@ -27,7 +27,7 @@ const Box = ({children}) => <div style={halfColumn}>{children}</div>; //eslint-d
 class IconButtonStory extends React.Component {
   render() {
     return (
-      <div style={{margin: '0px 0 16px', paddingLeft: '20px'}}>
+      <div style={{ margin: '0px 0 16px', paddingLeft: '20px' }}>
         <Container>
           <Box>
             <LiveCodeExample
@@ -35,7 +35,7 @@ class IconButtonStory extends React.Component {
               previewRow
               title="IconButton - priority: primary"
               initialCode={ExamplesPrimary}
-              />
+            />
           </Box>
           <Box>
             <LiveCodeExample
@@ -43,7 +43,7 @@ class IconButtonStory extends React.Component {
               previewRow
               title="IconButton - priority: secondary"
               initialCode={ExamplesSecondary}
-              />
+            />
           </Box>
         </Container>
         <Container>
@@ -53,7 +53,7 @@ class IconButtonStory extends React.Component {
               previewRow
               title="IconButton - size"
               initialCode={ExamplesSizes}
-              />
+            />
           </Box>
         </Container>
       </div>

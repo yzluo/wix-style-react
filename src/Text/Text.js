@@ -1,5 +1,5 @@
 import React from 'react';
-import {oneOf, bool, string, any} from 'prop-types';
+import { oneOf, bool, string, any } from 'prop-types';
 import style from './Text.st.css';
 import deprecationLog from '../utils/deprecationLog';
 
@@ -11,20 +11,20 @@ import deprecationLog from '../utils/deprecationLog';
 export const SIZES = {
   tiny: 'tiny',
   small: 'small',
-  medium: 'medium'
+  medium: 'medium',
 };
 
 export const SKINS = {
   standard: 'standard',
   error: 'error',
   success: 'success',
-  premium: 'premium'
+  premium: 'premium',
 };
 
 export const WEIGHTS = {
   thin: 'thin',
   normal: 'normal',
-  bold: 'bold'
+  bold: 'bold',
 };
 
 const Text = ({
@@ -45,7 +45,7 @@ const Text = ({
   }
 
   /* eslint-disable no-unused-vars */
-  const {dataHook, ...textProps} = rest;
+  const { dataHook, ...textProps } = rest;
 
   return React.createElement(
     tagName,
@@ -59,12 +59,12 @@ const Text = ({
           skin,
           light: light && skin === SKINS.standard,
           weight,
-          bold
+          bold,
         },
-        rest
-      )
+        rest,
+      ),
     },
-    children
+    children,
   );
 };
 
@@ -96,7 +96,7 @@ Text.propTypes = {
   weight: oneOf(Object.keys(WEIGHTS)),
 
   /** is the text bold */
-  bold: bool
+  bold: bool,
 };
 
 Text.defaultProps = {
@@ -105,7 +105,7 @@ Text.defaultProps = {
   skin: SKINS.standard,
   light: false,
   weight: WEIGHTS.thin,
-  tagName: 'span'
+  tagName: 'span',
 };
 
 export default Text;

@@ -17,7 +17,7 @@ class InputWithTags extends React.Component {
     this.select = this.select.bind(this);
     this.renderReorderableTag = this.renderReorderableTag.bind(this);
 
-    this.state = {inputValue: '', inputHasFocus: false};
+    this.state = { inputValue: '', inputHasFocus: false };
   }
 
   componentDidMount() {
@@ -31,14 +31,14 @@ class InputWithTags extends React.Component {
 
   handleInputFocus(e) {
     !this.state.inputHasFocus &&
-      this.setState({inputHasFocus: true}, () => {
+      this.setState({ inputHasFocus: true }, () => {
         this.props.onFocus && this.props.onFocus(e);
       });
   }
 
   handleInputBlur(e) {
     this.state.inputHasFocus &&
-      this.setState({inputHasFocus: false}, () => {
+      this.setState({ inputHasFocus: false }, () => {
         this.props.onBlur && this.props.onBlur(e);
       });
   }
@@ -57,7 +57,7 @@ class InputWithTags extends React.Component {
       ...inputProps
     } = this.props;
 
-    const {inputHasFocus: hasFocus} = this.state;
+    const { inputHasFocus: hasFocus } = this.state;
     const isSelectMode = mode === 'select';
 
     const className = classNames({
@@ -68,7 +68,7 @@ class InputWithTags extends React.Component {
       [styles.hasFocus]: hasFocus,
       [styles.hasMaxHeight]:
         !isUndefined(this.props.maxHeight) ||
-        !isUndefined(this.props.maxNumRows)
+        !isUndefined(this.props.maxNumRows),
     });
 
     /* eslint-disable no-unused-vars */
@@ -105,19 +105,19 @@ class InputWithTags extends React.Component {
     return (
       <div
         className={className}
-        style={{maxHeight}}
+        style={{ maxHeight }}
         onClick={() => this.handleClick()}
         data-hook={this.props.dataHook}
-        >
+      >
         {onReorder ? (
           <SortableList
             contentClassName={styles.tagsContainer}
             items={tags}
             onDrop={onReorder}
             renderItem={this.renderReorderableTag}
-            />
+          />
         ) : (
-          tags.map(({label, ...rest}) => (
+          tags.map(({ label, ...rest }) => (
             <Tag
               key={rest.id}
               dataHook="tag"
@@ -126,18 +126,18 @@ class InputWithTags extends React.Component {
               onRemove={onRemoveTag}
               className={styles.tag}
               {...rest}
-              >
+            >
               {label}
             </Tag>
           ))
         )}
         <span
           className={classNames(styles.input, {
-            [styles.emptyInput]: !tags.length
+            [styles.emptyInput]: !tags.length,
           })}
           data-hook="inner-input-with-tags"
-          >
-          <div className={styles.hiddenDiv} style={{fontSize}}>
+        >
+          <div className={styles.hiddenDiv} style={{ fontSize }}>
             {this.state.inputValue}
           </div>
 
@@ -153,12 +153,12 @@ class InputWithTags extends React.Component {
             readOnly={isSelectMode}
             onChange={e => {
               if (!delimiters.includes(e.target.value)) {
-                this.setState({inputValue: e.target.value});
+                this.setState({ inputValue: e.target.value });
                 desiredProps.onChange && desiredProps.onChange(e);
               }
             }}
             withSelection
-            />
+          />
         </span>
 
         {(isSelectMode || error) && (
@@ -168,7 +168,7 @@ class InputWithTags extends React.Component {
               status={error && 'error'}
               statusMessage={errorMessage}
               menuArrow={isSelectMode}
-              />
+            />
           </div>
         )}
       </div>
@@ -176,18 +176,18 @@ class InputWithTags extends React.Component {
   }
 
   renderReorderableTag({
-    item: {id, label, ...itemProps},
+    item: { id, label, ...itemProps },
     previewStyles,
     isPlaceholder,
     isPreview,
     ...rest
   }) {
-    const {onRemoveTag, disabled} = this.props;
+    const { onRemoveTag, disabled } = this.props;
     const classes = classNames(styles.tag, {
       [defaultDndStyles.itemPlaceholder]: isPlaceholder,
       [styles.draggedTagPlaceholder]: isPlaceholder,
       [defaultDndStyles.itemPreview]: isPreview,
-      [styles.draggedTag]: isPreview
+      [styles.draggedTag]: isPreview,
     });
 
     return (
@@ -201,7 +201,7 @@ class InputWithTags extends React.Component {
           {...itemProps}
           useOldMargins={false}
           {...rest}
-          >
+        >
           {label}
         </Tag>
       </div>
@@ -222,7 +222,7 @@ class InputWithTags extends React.Component {
 
   clear() {
     this.setState({
-      inputValue: ''
+      inputValue: '',
     });
   }
 }
@@ -245,14 +245,14 @@ InputWithTags.propTypes = {
   errorMessage: PropTypes.string,
   mode: PropTypes.oneOf(['select']),
   delimiters: PropTypes.array,
-  width: PropTypes.string
+  width: PropTypes.string,
 };
 
 InputWithTags.defaultProps = {
   onRemoveTag: () => {},
   tags: [],
   placeholder: '',
-  delimiters: []
+  delimiters: [],
 };
 
 export default InputWithTags;

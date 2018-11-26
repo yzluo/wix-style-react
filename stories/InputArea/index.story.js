@@ -23,7 +23,7 @@ import ExampleSizesRaw from '!raw-loader!./ExampleSizes';
 
 export const AUTO_EXAMPLE_DATA_HOOK = 'storybook-inputarea';
 
-import {storySettings} from './storySettings';
+import { storySettings } from './storySettings';
 
 export default {
   category: storySettings.category,
@@ -36,34 +36,34 @@ export default {
     error: false,
     theme: 'normal',
     hasCounter: false,
-    resizable: false
+    resizable: false,
   },
 
   examples: (
     <div>
       <CodeExample title="Standard" code={ExampleStandardRaw}>
-        <ExampleStandard/>
+        <ExampleStandard />
       </CodeExample>
 
       <CodeExample title="Error" code={ExampleErrorRaw}>
-        <ExampleError/>
+        <ExampleError />
       </CodeExample>
 
       <CodeExample title="PaneltitleStyle" code={ExamplePaneltitleStyleRaw}>
-        <ExamplePaneltitleStyle/>
+        <ExamplePaneltitleStyle />
       </CodeExample>
 
       <CodeExample title="Controlled input" code={ExampleControlledRaw}>
-        <ExampleControlled/>
+        <ExampleControlled />
       </CodeExample>
 
       <CodeExample title="Sizes" code={ExampleSizesRaw}>
-        <ExampleSizes/>
+        <ExampleSizes />
       </CodeExample>
 
       <CodeExample title="Commands test" code={ExampleRefsRaw}>
-        <ExampleRefs/>
+        <ExampleRefs />
       </CodeExample>
     </div>
-  )
+  ),
 };

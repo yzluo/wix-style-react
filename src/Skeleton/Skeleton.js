@@ -16,39 +16,35 @@ export default class Skeleton extends WixComponent {
     content: PropTypes.arrayOf(
       PropTypes.shape({
         type: PropTypes.oneOf(['line']).isRequired,
-        size: PropTypes.oneOf(['small', 'medium', 'large', 'full']).isRequired
-      })
+        size: PropTypes.oneOf(['small', 'medium', 'large', 'full']).isRequired,
+      }),
     ).isRequired,
     alignment: PropTypes.oneOf(['start', 'middle']),
-    spacing: PropTypes.oneOf(['small', 'medium', 'large'])
+    spacing: PropTypes.oneOf(['small', 'medium', 'large']),
   };
 
   static defaultProps = {
     alignment: 'start',
     spacing: 'medium',
-    content: [{type: 'line', size: 'small'}]
+    content: [{ type: 'line', size: 'small' }],
   };
 
   render() {
-    const {content, alignment, spacing} = this.props;
+    const { content, alignment, spacing } = this.props;
     return (
       <div>
         {content.map((item, key) => (
           <div
             key={key}
             data-hook="placeholder-line"
-            className={classnames(
-              styles.placeholderLine,
-              styles[spacing],
-              {
-                [styles.middle]: alignment === 'middle'
-              }
-              )}
-            >
+            className={classnames(styles.placeholderLine, styles[spacing], {
+              [styles.middle]: alignment === 'middle',
+            })}
+          >
             <div
               data-hook="placeholder-chunk"
               className={classnames(styles.chunk, styles[item.size])}
-              />
+            />
           </div>
         ))}
       </div>

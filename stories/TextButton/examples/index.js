@@ -12,7 +12,7 @@ import ExamplesWeight from '!raw-loader!./ExamplesWeight';
 const controlledWidth = {
   height: 'auto',
   width: '100%',
-  display: 'flex'
+  display: 'flex',
 };
 
 const halfColumn = {
@@ -20,7 +20,7 @@ const halfColumn = {
   flexDirection: 'column',
   padding: '10px',
   width: '48%',
-  lineHeight: '1.6'
+  lineHeight: '1.6',
 };
 
 const Container = ({children}) => <div style={controlledWidth}>{children}</div>; //eslint-disable-line
@@ -30,7 +30,7 @@ const Box = ({children}) => <div style={halfColumn}>{children}</div>; //eslint-d
 class TextButtonStory extends React.Component {
   render() {
     return (
-      <div style={{margin: '0px 0 16px', paddingLeft: '20px'}}>
+      <div style={{ margin: '0px 0 16px', paddingLeft: '20px' }}>
         <Container>
           <Box>
             <LiveCodeExample
@@ -38,7 +38,7 @@ class TextButtonStory extends React.Component {
               previewRow
               title="TextButton - underline:none (default)"
               initialCode={ExamplesNone}
-              />
+            />
           </Box>
           <Box>
             <LiveCodeExample
@@ -46,7 +46,7 @@ class TextButtonStory extends React.Component {
               previewRow
               title="TextButton - underline:onHover"
               initialCode={ExamplesOnHover}
-              />
+            />
           </Box>
         </Container>
         <Container>
@@ -56,7 +56,7 @@ class TextButtonStory extends React.Component {
               previewRow
               title="TextButton - underline:always"
               initialCode={ExamplesUnderline}
-              />
+            />
           </Box>
           <Box>
             <LiveCodeExample
@@ -64,7 +64,7 @@ class TextButtonStory extends React.Component {
               previewRow
               title="TextButton - prefixIcon & suffixIcon"
               initialCode={ExamplesAffixes}
-              />
+            />
           </Box>
         </Container>
         <Container>
@@ -74,7 +74,7 @@ class TextButtonStory extends React.Component {
               previewRow
               title=" TextButton - size"
               initialCode={ExamplesSizes}
-              />
+            />
           </Box>
           <Box>
             <LiveCodeExample
@@ -82,7 +82,7 @@ class TextButtonStory extends React.Component {
               previewRow
               title="TextButton - weight"
               initialCode={ExamplesWeight}
-              />
+            />
           </Box>
         </Container>
       </div>

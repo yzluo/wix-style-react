@@ -1,57 +1,67 @@
 import 'regenerator-runtime/runtime';
 import {
   puppeteerTestkitFactoryCreator,
-  puppeteerUniTestkitFactoryCreator
+  puppeteerUniTestkitFactoryCreator,
 } from 'wix-ui-test-utils/puppeteer';
 
 import inputDriverFactory from '../src/Input/Input.puppeteer.driver';
+
 export const inputTestkitFactory = puppeteerTestkitFactoryCreator(
-  inputDriverFactory
+  inputDriverFactory,
 );
 
 import buttonDriverFactory from '../src/Backoffice/Button/Button.puppeteer.driver';
+
 export const buttonTestkitFactory = puppeteerTestkitFactoryCreator(
-  buttonDriverFactory
+  buttonDriverFactory,
 );
 
 import formFieldDriverFactory from '../src/FormField/FormField.puppeteer.driver';
+
 export const formFieldTestkitFactory = puppeteerTestkitFactoryCreator(
-  formFieldDriverFactory
+  formFieldDriverFactory,
 );
 
 import tableDriverFactory from '../src/Table/Table.puppeteer.driver';
+
 export const tableTestkitFactory = puppeteerTestkitFactoryCreator(
-  tableDriverFactory
+  tableDriverFactory,
 );
 
 import headingDriverFactory from '../src/Heading/Heading.puppeteer.driver';
+
 export const headingTestkitFactory = puppeteerTestkitFactoryCreator(
-  headingDriverFactory
+  headingDriverFactory,
 );
 
 import textDriverFactory from '../src/Text/Text.puppeteer.driver';
+
 export const textTestkitFactory = puppeteerTestkitFactoryCreator(
-  textDriverFactory
+  textDriverFactory,
 );
 
 import tooltipDriverFactory from '../src/Tooltip/Tooltip.puppeteer.driver';
+
 export const tooltipTestkitFactory = puppeteerTestkitFactoryCreator(
-  tooltipDriverFactory
+  tooltipDriverFactory,
 );
 
 // wix-ui-core (unidriver)
 
-import {textButtonDriverFactory} from '../src/TextButton/TextButton.driver';
+import { textButtonDriverFactory } from '../src/TextButton/TextButton.driver';
+
 export const textButtonTestkitFactory = puppeteerUniTestkitFactoryCreator(
-  textButtonDriverFactory
+  textButtonDriverFactory,
 );
 
-import {avatarDriverFactory} from '../src/Avatar/Avatar.driver';
+import { avatarDriverFactory } from '../src/Avatar/Avatar.driver';
+
 export const avatarTestkitFactory = puppeteerUniTestkitFactoryCreator(
-  avatarDriverFactory
+  avatarDriverFactory,
 );
 
-import {iconButtonDriverFactory} from '../src/IconButton/IconButton.driver';
+import { iconButtonDriverFactory } from '../src/IconButton/IconButton.driver';
+
 export const iconButtonTestkitFactory = puppeteerUniTestkitFactoryCreator(
-  iconButtonDriverFactory
+  iconButtonDriverFactory,
 );

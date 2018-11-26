@@ -1,1 +1,1 @@
-export {WixStyleReact} from './WixStyleReact';
+export { WixStyleReact } from './WixStyleReact';

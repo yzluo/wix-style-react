@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {ButtonNext} from 'wix-ui-core/button-next';
+import React, { Component } from 'react';
+import { ButtonNext } from 'wix-ui-core/button-next';
 import cx from 'classnames';
-import {iconButton} from 'wix-ui-core/themes/backoffice';
-import {string, node, bool, oneOf} from 'prop-types';
+import { iconButton } from 'wix-ui-core/themes/backoffice';
+import { string, node, bool, oneOf } from 'prop-types';
 
 class IconButton extends Component {
   static displayName = 'IconButton';
@@ -21,14 +21,14 @@ class IconButton extends Component {
     /** Applies disabled styles */
     disabled: bool,
     /** String based data hook */
-    dataHook: string
+    dataHook: string,
   };
 
   static defaultProps = {
     skin: 'standard',
     priority: 'primary',
     size: 'medium',
-    disabled: false
+    disabled: false,
   };
 
   render() {
@@ -51,9 +51,9 @@ class IconButton extends Component {
         data-hook={dataHook}
         className={classNames}
         disabled={disabled}
-        >
+      >
         {React.cloneElement(children, {
-          size: size === 'small' ? '18px' : '24px'
+          size: size === 'small' ? '18px' : '24px',
         })}
       </ButtonNext>
     );

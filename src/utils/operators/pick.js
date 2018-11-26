@@ -17,7 +17,7 @@ export default function pick(obj, paths = []) {
 
   return Object.keys(obj).reduce((acc, key) => {
     if (pathsArr.indexOf(key) !== -1) {
-      return {...acc, [key]: obj[key]};
+      return { ...acc, [key]: obj[key] };
     }
 
     return acc;

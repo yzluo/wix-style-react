@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import WixComponent from '../BaseComponents/WixComponent';
 import Input from '../Input';
 import omit from 'omit';
-import DropdownLayout, {DIVIDER_OPTION_VALUE} from '../DropdownLayout/DropdownLayout';
+import DropdownLayout, {
+  DIVIDER_OPTION_VALUE,
+} from '../DropdownLayout/DropdownLayout';
 import Highlighter from '../Highlighter/Highlighter';
-import {chainEventHandlers} from '../utils/ChainEventHandlers';
+import { chainEventHandlers } from '../utils/ChainEventHandlers';
 
 class InputWithOptions extends WixComponent {
-
   // Abstraction
   inputClasses() {}
   dropdownClasses() {}
@@ -31,7 +32,7 @@ class InputWithOptions extends WixComponent {
       inputValue: props.value || '',
       showOptions: false,
       lastOptionsShow: 0,
-      isEditing: false
+      isEditing: false,
     };
 
     this._onSelect = this._onSelect.bind(this);
@@ -52,14 +53,17 @@ class InputWithOptions extends WixComponent {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (!this.props.showOptionsIfEmptyInput &&
-        ((!prevProps.value && this.props.value) || (!prevState.inputValue && this.state.inputValue))) {
+    if (
+      !this.props.showOptionsIfEmptyInput &&
+      ((!prevProps.value && this.props.value) ||
+        (!prevState.inputValue && this.state.inputValue))
+    ) {
       this.showOptions();
     }
   }
 
   onCompositionChange(isComposing) {
-    this.setState({isComposing});
+    this.setState({ isComposing });
   }
 
   onClickOutside() {
@@ -68,16 +72,23 @@ class InputWithOptions extends WixComponent {
 
   renderInput() {
     const inputAdditionalProps = this.inputAdditionalProps();
-    const inputProps = Object.assign(omit(Object.keys(DropdownLayout.propTypes).concat(['onChange', 'dataHook']), this.props), inputAdditionalProps);
+    const inputProps = Object.assign(
+      omit(
+        Object.keys(DropdownLayout.propTypes).concat(['onChange', 'dataHook']),
+        this.props,
+      ),
+      inputAdditionalProps,
+    );
 
-    const {inputElement} = inputProps;
+    const { inputElement } = inputProps;
     return React.cloneElement(inputElement, {
       menuArrow: true,
-      ref: input => this.input = input,
+      ref: input => (this.input = input),
       ...inputProps,
       onKeyDown: chainEventHandlers(
         inputAdditionalProps && inputAdditionalProps.onKeyDown,
-        this._onKeyDown),
+        this._onKeyDown,
+      ),
       theme: this.props.theme,
       onChange: this._onChange,
       onInputClicked: this._onInputClicked,
@@ -85,42 +96,56 @@ class InputWithOptions extends WixComponent {
       onBlur: this._onBlur,
       onCompositionChange: this.onCompositionChange,
       width: inputElement.props.width,
-      textOverflow: inputElement.props.textOverflow
+      textOverflow: inputElement.props.textOverflow,
     });
   }
 
   _processOptions(options) {
-    return !this.props.highlight ? options : (
-      options.map(option => {
-        return {
-          ...option,
-          value: option.value === DIVIDER_OPTION_VALUE ? option.value : (
-            <Highlighter match={this.state.inputValue} dataHook={`highlighter-${option.id}`}>
-              {option.value}
-            </Highlighter>
-          )
-        };
-      })
-    );
+    return !this.props.highlight
+      ? options
+      : options.map(option => {
+          return {
+            ...option,
+            value:
+              option.value === DIVIDER_OPTION_VALUE ? (
+                option.value
+              ) : (
+                <Highlighter
+                  match={this.state.inputValue}
+                  dataHook={`highlighter-${option.id}`}
+                >
+                  {option.value}
+                </Highlighter>
+              ),
+          };
+        });
   }
 
   _renderDropdownLayout() {
     const inputOnlyProps = omit(['tabIndex'], Input.propTypes);
-    const dropdownProps = Object.assign(omit(Object.keys(inputOnlyProps).concat(['dataHook']), this.props), this.dropdownAdditionalProps());
+    const dropdownProps = Object.assign(
+      omit(Object.keys(inputOnlyProps).concat(['dataHook']), this.props),
+      this.dropdownAdditionalProps(),
+    );
 
-    const customStyle = {marginLeft: this.props.dropdownOffsetLeft};
+    const customStyle = { marginLeft: this.props.dropdownOffsetLeft };
 
     if (this.props.dropdownWidth) {
       customStyle.width = this.props.dropdownWidth;
     }
 
-    const isDropdownLayoutVisible = this.state.showOptions &&
+    const isDropdownLayoutVisible =
+      this.state.showOptions &&
       (this.props.showOptionsIfEmptyInput || this.state.inputValue.length > 0);
 
     return (
-      <div className={this.dropdownClasses()} style={customStyle} data-hook="dropdown-layout-wrapper">
+      <div
+        className={this.dropdownClasses()}
+        style={customStyle}
+        data-hook="dropdown-layout-wrapper"
+      >
         <DropdownLayout
-          ref={dropdownLayout => this.dropdownLayout = dropdownLayout}
+          ref={dropdownLayout => (this.dropdownLayout = dropdownLayout)}
           {...dropdownProps}
           options={this._processOptions(dropdownProps.options)}
           theme={this.props.theme}
@@ -128,13 +153,13 @@ class InputWithOptions extends WixComponent {
           onClose={this.hideOptions}
           onSelect={this._onSelect}
           isComposing={this.state.isComposing}
-          />
+        />
       </div>
     );
   }
 
   render() {
-    const {dropDirectionUp} = this.props;
+    const { dropDirectionUp } = this.props;
     return (
       <div>
         {dropDirectionUp ? this._renderDropdownLayout() : null}
@@ -148,12 +173,12 @@ class InputWithOptions extends WixComponent {
 
   hideOptions() {
     if (this.state.showOptions) {
-      this.setState({showOptions: false});
+      this.setState({ showOptions: false });
     }
   }
 
   showOptions() {
-    this.setState({showOptions: true, lastOptionsShow: Date.now()});
+    this.setState({ showOptions: true, lastOptionsShow: Date.now() });
   }
 
   closeOnSelect() {
@@ -161,7 +186,7 @@ class InputWithOptions extends WixComponent {
   }
 
   get isReadOnly() {
-    const {readOnly} = this.inputAdditionalProps() || {};
+    const { readOnly } = this.inputAdditionalProps() || {};
     return readOnly;
   }
 
@@ -172,9 +197,9 @@ class InputWithOptions extends WixComponent {
    * @returns {boolean}
    */
   shouldOpenDropdown(key) {
-    const openKeys = this.isReadOnly ?
-      ['Enter', 'Spacebar', ' ', 'ArrowDown'] :
-      ['ArrowDown'];
+    const openKeys = this.isReadOnly
+      ? ['Enter', 'Spacebar', ' ', 'ArrowDown']
+      : ['ArrowDown'];
 
     return openKeys.includes(key);
   }
@@ -211,7 +236,7 @@ class InputWithOptions extends WixComponent {
     }
 
     const suggestedOption = this.props.options.find(
-      element => element.value === inputValue
+      element => element.value === inputValue,
     );
 
     if (this.props.onManuallyInput) {
@@ -221,23 +246,27 @@ class InputWithOptions extends WixComponent {
 
   _onSelect(option, isSelectedOption) {
     this.showOptions();
-    const {onSelect} = this.props;
+    const { onSelect } = this.props;
 
     if (this.closeOnSelect()) {
-      this.setState({showOptions: false});
+      this.setState({ showOptions: false });
     }
 
     if (isSelectedOption) {
-      this.setState({showOptions: false});
+      this.setState({ showOptions: false });
     }
 
     if (onSelect) {
-      onSelect(this.props.highlight ? this.props.options.find(opt => opt.id === option.id) : option);
+      onSelect(
+        this.props.highlight
+          ? this.props.options.find(opt => opt.id === option.id)
+          : option,
+      );
     }
   }
 
   _onChange(event) {
-    this.setState({inputValue: event.target.value});
+    this.setState({ inputValue: event.target.value });
 
     if (this.props.onChange) {
       this.props.onChange(event);
@@ -251,7 +280,7 @@ class InputWithOptions extends WixComponent {
 
   _onInputClicked(event) {
     if (this.state.showOptions) {
-      if ((Date.now() - this.state.lastOptionsShow > 2000)) {
+      if (Date.now() - this.state.lastOptionsShow > 2000) {
         this.hideOptions();
       }
     } else {
@@ -268,7 +297,7 @@ class InputWithOptions extends WixComponent {
       return;
     }
     this._focused = true;
-    this.setState({isEditing: false});
+    this.setState({ isEditing: false });
     if (this.props.onFocus) {
       this.props.onFocus(e);
     }
@@ -286,10 +315,10 @@ class InputWithOptions extends WixComponent {
       return;
     }
 
-    const {key} = event;
+    const { key } = event;
 
     if (key !== 'ArrowDown' && key !== 'ArrowUp') {
-      this.setState({isEditing: true});
+      this.setState({ isEditing: true });
     }
 
     if (this.shouldOpenDropdown(key)) {
@@ -298,7 +327,6 @@ class InputWithOptions extends WixComponent {
     }
 
     if (this.shouldDelegateKeyDown(key)) {
-
       // Delegate event and get result
       const eventWasHandled = this.dropdownLayout._onKeyDown(event);
 
@@ -332,12 +360,12 @@ InputWithOptions.defaultProps = {
   onSelect: () => {},
   options: [],
   closeOnSelect: true,
-  inputElement: <Input/>,
+  inputElement: <Input />,
   valueParser: option => option.value,
   dropdownWidth: null,
   dropdownOffsetLeft: '0',
   showOptionsIfEmptyInput: true,
-  autocomplete: 'off'
+  autocomplete: 'off',
 };
 
 InputWithOptions.propTypes = {
@@ -353,7 +381,7 @@ InputWithOptions.propTypes = {
   dropdownOffsetLeft: PropTypes.string,
   /** Controls whether to show options if input is empty */
   showOptionsIfEmptyInput: PropTypes.bool,
-  highlight: PropTypes.bool
+  highlight: PropTypes.bool,
 };
 
 InputWithOptions.displayName = 'InputWithOptions';

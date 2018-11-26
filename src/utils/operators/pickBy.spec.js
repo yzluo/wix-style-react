@@ -12,21 +12,21 @@ describe('pickBy operator', () => {
   });
 
   it('should return an empty object for non-function pick function', () => {
-    expect(pickBy({a: 1}, 'not-a-function')).toEqual({});
+    expect(pickBy({ a: 1 }, 'not-a-function')).toEqual({});
   });
 
   it('should return given input', () => {
-    expect(pickBy({a: 1})).toEqual({a: 1});
+    expect(pickBy({ a: 1 })).toEqual({ a: 1 });
   });
 
   it('should pick input values by predicate', () => {
-    const anObject = {a: 1, b: 2, c: 3, d: 4, e: 5, f: 6};
+    const anObject = { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 };
     const biggerThanThree = value => value > 3;
-    expect(pickBy(anObject, biggerThanThree)).toEqual({d: 4, e: 5, f: 6});
+    expect(pickBy(anObject, biggerThanThree)).toEqual({ d: 4, e: 5, f: 6 });
   });
 
   it('should call predicate with (value, key)', () => {
-    const anObject = {a: 1};
+    const anObject = { a: 1 };
     const pickFunc = sinon.spy();
     pickBy(anObject, pickFunc);
 

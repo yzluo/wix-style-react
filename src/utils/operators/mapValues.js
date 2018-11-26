@@ -7,6 +7,6 @@ export default function mapValues(obj, iteratee = identity) {
   }
 
   return Object.keys(obj).reduce((acc, key) => {
-    return {...acc, [key]: iteratee(obj[key], key, obj)};
+    return { ...acc, [key]: iteratee(obj[key], key, obj) };
   }, {});
 }

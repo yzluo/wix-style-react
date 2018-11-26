@@ -18,12 +18,12 @@ describe('values operator', () => {
   });
 
   it('should return an array of object own values', () => {
-    const anObject = {a: 1, b: '2', c: true};
+    const anObject = { a: 1, b: '2', c: true };
     const result = values(anObject);
     const expectedValues = [1, '2', true];
 
     // iteration order is not guaranteed
     expectedValues.forEach(val => expect(result).toContain(val));
-    expect(result.length).toBe(3);
+    expect(result).toHaveLength(3);
   });
 });

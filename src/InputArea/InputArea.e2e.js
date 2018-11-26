@@ -1,13 +1,19 @@
 import eyes from 'eyes.it';
-import {inputAreaTestkitFactory} from '../../testkit/protractor';
-import {waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
-import {createStoryUrl} from '../../test/utils/storybook-helpers';
+import { inputAreaTestkitFactory } from '../../testkit/protractor';
+import { waitForVisibilityOf } from 'wix-ui-test-utils/protractor';
+import { createStoryUrl } from '../../test/utils/storybook-helpers';
 
-import {storySettings} from '../../stories/InputArea/storySettings';
+import { storySettings } from '../../stories/InputArea/storySettings';
 
 describe('input area page', () => {
-  const storyUrl = createStoryUrl({kind: storySettings.category, story: storySettings.storyName, withExamples: false});
-  const inputAreaTestkit = inputAreaTestkitFactory({dataHook: 'storybook-inputarea'});
+  const storyUrl = createStoryUrl({
+    kind: storySettings.category,
+    story: storySettings.storyName,
+    withExamples: false,
+  });
+  const inputAreaTestkit = inputAreaTestkitFactory({
+    dataHook: 'storybook-inputarea',
+  });
 
   beforeEach(async () => {
     await browser.get(storyUrl);
@@ -20,7 +26,10 @@ describe('input area page', () => {
 
   eyes.it('should show focus styles', async () => {
     expect(await inputAreaTestkit.isFocused()).toBeFalsy();
-    await browser.actions().sendKeys(protractor.Key.TAB).perform();
+    await browser
+      .actions()
+      .sendKeys(protractor.Key.TAB)
+      .perform();
     expect(await inputAreaTestkit.isFocused()).toBeTruthy();
   });
 

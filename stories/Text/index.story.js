@@ -1,6 +1,6 @@
 import React from 'react';
 import Text from 'wix-style-react/Text';
-import {SIZES, SKINS, WEIGHTS} from '../../src/Text';
+import { SIZES, SKINS, WEIGHTS } from '../../src/Text';
 
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
@@ -19,7 +19,7 @@ import H1TagNameExampleRaw from '!raw-loader!./ExampleH1TagName';
 import LinkExample from './ExampleLink';
 import LinkExampleRaw from '!raw-loader!./ExampleLink';
 
-import {storySettings} from './storySettings';
+import { storySettings } from './storySettings';
 
 export default {
   category: storySettings.kind,
@@ -36,31 +36,30 @@ export default {
     skin: SKINS.standard,
     weight: WEIGHTS.thin,
     tagName: 'span',
-    ellipsis: false
+    ellipsis: false,
   },
 
   examples: (
     <div>
       <CodeExample title="Multiline Example" code={MultilineExampleRaw}>
-        <MultilineExample/>
+        <MultilineExample />
       </CodeExample>
 
       <CodeExample title="Ellipsis Example" code={EllipsisExampleRaw}>
-        <EllipsisExample/>
+        <EllipsisExample />
       </CodeExample>
 
       <CodeExample title="Custom TagName Example" code={H1TagNameExampleRaw}>
-        <H1TagNameExample/>
+        <H1TagNameExample />
       </CodeExample>
 
       <CodeExample title="Link Example" code={LinkExampleRaw}>
-        <LinkExample/>
+        <LinkExample />
       </CodeExample>
 
       <CodeExample title="Typography Examples" code={TypographyExampleRaw}>
-        <TypographyExample/>
+        <TypographyExample />
       </CodeExample>
     </div>
-  )
+  ),
 };
-

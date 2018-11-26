@@ -1,4 +1,4 @@
-import {Category} from '../storiesHierarchy';
+import { Category } from '../storiesHierarchy';
 
 export const storySettings = {
   category: Category.WIP,
@@ -7,8 +7,6 @@ export const storySettings = {
   testStories: {
     SIZES: '1. Avatar sizes',
     COLORS: '2. Avatar colors',
-    PLACEHOLDER: '3. Avatar placeholder'
-  }
+    PLACEHOLDER: '3. Avatar placeholder',
+  },
 };
-
-
