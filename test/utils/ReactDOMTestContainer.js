@@ -32,9 +32,11 @@ export class ReactDOMTestContainer {
     this.node.remove();
     return this;
   }
-
+  // Disable eslint rule react/no-render-return-value for ReactDOM.render()
+  // Future version of react may use this method asynchronously and also
+  // it will be depracated in React 17.
   renderAsync(jsx) {
-    return new Promise(resolve => resolve(ReactDOM.render(jsx, this.node)));
+    return new Promise(resolve => ReactDOM.render(jsx, this.node, resolve)); //eslint-disable-line react/no-render-return-value
   }
 
   renderWithRef(jsx) {
