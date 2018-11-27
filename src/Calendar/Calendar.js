@@ -36,7 +36,7 @@ export default class Calendar extends WixComponent {
     for (const modifier of relevantModifiers) {
       if (modifier in modifiers) {
         return (
-          <div className={'dayCircle'}>{day.getDate()}</div>
+          <div className={styles.dayCircle}>{day.getDate()}</div>
         );
       }
     }
