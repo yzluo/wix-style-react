@@ -26,7 +26,7 @@
   "scripts": {
     "start": "./scripts/npm-start.sh",
     "pretest": "npm run lint && ./scripts/ensure-dist.sh",
-    "test": "npm run test:unit && npm run test:e2e",
+    "test": "npm run test:unit",
     "test:unit": "yoshi test --jest",
     "test:watch": "yoshi test --jest --watch",
     "pretest:e2e": "./scripts/ensure-dist.sh",
