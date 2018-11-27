@@ -5,7 +5,6 @@
  */
 
 import '../../stories/Introduction';
-import '../../stories/Composite'; // TODO: Move to introduction
 
 // 1. Foundations
 import '../../stories/Typography/TypographyStory.js'; // 1.2 Typography
