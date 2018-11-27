@@ -201,21 +201,23 @@ describe('Calendar', () => {
         expect(onChange.mock.calls[0][0].from.getDate()).toEqual(1);
         expect(onChange.mock.calls[0][0].to.getDate()).toEqual(3);
       });
-      it(`should call onChange({from: $clickedDay, to: $to}) when value has only 'to'`, () => {
+
+      it(`should call onChange({from: $clickedDay, to: $to}) when a day is clicked, given only 'to'`, () => {
         const driver = createDriver(
           <Calendar
-            value={{to: new Date(2018, 10, 1)}}
+            value={{to: new Date(2018, 10, 3)}}
             onChange={onChange}
             selectionMode={'range'}
             />
         );
 
-        driver.clickOnNthDay(2);
+        driver.clickOnNthDay(0);
         expect(onChange.mock.calls.length).toEqual(1);
         expect(onChange.mock.calls[0][0].from.getDate()).toEqual(1);
         expect(onChange.mock.calls[0][0].to.getDate()).toEqual(3);
       });
-      it(`should call onChange({from: $clickedDay, to: $from}) if the clicked day is earlier than the provided 'from'`, () => {
+
+      it(`should call onChange({from: $clickedDay, to: $from}) when a day is clicked, given only 'from'`, () => {
         const driver = createDriver(
           <Calendar
             value={{from: new Date(2018, 10, 10)}}
