@@ -437,7 +437,7 @@ DropdownLayout.propTypes = {
   /** A fixed footer to the list */
   fixedFooter: PropTypes.node,
   maxHeightPixels: PropTypes.number,
-  minWidthPixels: PropTypes.number,
+  miWidthPixels: PropTypes.number,
   withArrow: PropTypes.bool,
   closeOnSelect: PropTypes.bool,
   onMouseEnter: PropTypes.func,

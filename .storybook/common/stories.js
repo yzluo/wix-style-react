@@ -110,6 +110,7 @@ import '../../stories/FullTextView.story.js'; //12.4 FullTextView
 import '../../stories/Tag.story.js'; // 12.5 Tag
 import '../../stories/Avatar/Avatar.story'; // 12.6 Avatar
 import '../../stories/Highlighter.story.js'; // Highlighter
+import '../../stories/ItemPicker/index.story'; // ItemPickerOption
 
 // Components API
 import '../../stories/components/Dropdown/Dropdown.story.js';
