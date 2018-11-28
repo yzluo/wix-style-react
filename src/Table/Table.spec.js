@@ -224,6 +224,25 @@ describe('Table', () => {
         );
         expect(driver.getBulkSelectionState() === 'SOME').toBeTruthy();
       });
+
+      it('should display bulk-selection as checked when data and selectedIds change', () => {
+        const { driver, wrapper } = createEnzymeDriver(
+          <Table
+            {...defaultProps}
+            data={[{ id: ID_1, a: 'value 1', b: 'value 2' }]}
+            selectedIds={[ID_1]}
+          />,
+        );
+        expect(driver.getBulkSelectionState() === 'ALL').toBeTruthy();
+        wrapper.setProps({
+          data: [
+            { id: ID_1, a: 'value 1', b: 'value 2' },
+            { id: ID_2, a: 'value 3', b: 'value 4' },
+          ],
+          selectedIds: [ID_1, ID_2],
+        });
+        expect(driver.getBulkSelectionState() === 'ALL').toBeTruthy();
+      });
     });
 
     describe('Update row selection', () => {
