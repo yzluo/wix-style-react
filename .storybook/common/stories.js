@@ -35,7 +35,7 @@ import '../../stories/FieldWithSelectionComposite'; // 3.3 Field With Selection
 import '../../stories/TimeInput.story.js'; // 3.4 TimeInput
 import '../../stories/DatePicker.story.js'; // 3.6 DatePicker
 import '../../stories/Range'; // 3.7 Range
-import '../../stories/MultiSelect'; // 3.8 Tags
+import '../../stories/MultiSelect/index.story'; // 3.8 Tags
 import '../../stories/MultiSelectComposite'; // 3.8 + MultiSelectComposite
 import '../../stories/Search/index.story'; // 3.9 Search
 import '../../stories/ImageViewer/index.story'; // 3.10 ImageViewer

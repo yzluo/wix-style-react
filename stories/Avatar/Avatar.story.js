@@ -3,7 +3,7 @@ import * as icons from 'wix-ui-icons-common';
 
 import Avatar from '../../src/Avatar';
 import { storySettings } from './storySettings';
-import { AutoStoryComponentWrapper } from '../AutoStoryComponentWrapper';
+import { createAutoExampleWrapper } from '../AutoExampleWrapper';
 
 const IMG_REAL_URL = 'https://randomuser.me/api/portraits/women/39.jpg';
 const IMG_INVALID_URL = 'https://1234.me/4321.jpg';
@@ -11,8 +11,7 @@ const IMG_INVALID_URL = 'https://1234.me/4321.jpg';
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
-  component: Avatar,
-  componentWrapper: AutoStoryComponentWrapper,
+  component: createAutoExampleWrapper(Avatar),
   componentPath: '../../src/Avatar/Avatar.js',
 
   componentProps: {
