@@ -13,6 +13,12 @@ Types of changes:
 1. **Breaking** for breaking changes
 1. **Docs** for documentation changes
 
+## Next
+
+### Fixed
+
+- `<Table/>` - Fix bulkSelectionState when data changes [#2500](https://github.com/wix/wix-style-react/pull/2500)
+
 ## 5.14.0 - 2018-11-26
 
 ### Added
