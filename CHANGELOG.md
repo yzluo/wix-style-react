@@ -22,6 +22,7 @@ Types of changes:
 ### Fixed
 
 - `<Table/>` - Fix bulkSelectionState when data changes [#2500](https://github.com/wix/wix-style-react/pull/2500)
+- `<Table/>` - testkit - Add ability to use Table driver when using Table in Page [#2515](https://github.com/wix/wix-style-react/pull/2515)
 
 ## 5.14.0 - 2018-11-26
 
