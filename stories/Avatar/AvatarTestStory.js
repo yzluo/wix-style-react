@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { getTestStoryKind } from '../storiesHierarchy';
 import Avatar from '../../src/Avatar';
 import { storySettings } from './storySettings';
-import style from './AvatarTestStory.scss';
+import style from './AvatarStory.scss';
 
 const kind = getTestStoryKind({
   category: storySettings.category,

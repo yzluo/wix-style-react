@@ -16,6 +16,7 @@ const GREEN_THUMB = (
 const TagWrapper = ({ story__withThumb, ...rest }) =>
   story__withThumb ? <Tag thumb={GREEN_THUMB} {...rest} /> : <Tag {...rest} />;
 TagWrapper.propTypes = Tag.propTypes;
+TagWrapper.displayName = Tag.displayName;
 
 export default {
   category: '12. Other',
