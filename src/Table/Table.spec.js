@@ -7,6 +7,7 @@ import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import { tableTestkitFactory } from '../../testkit';
 import { tableTestkitFactory as enzymeTableTestkitFactory } from '../../testkit/enzyme';
 import { mount } from 'enzyme';
+import { ReactDOMTestContainer } from '../../test/dom-test-container';
 
 describe('Table', () => {
   const createDriver = createDriverFactory(TableDriverFactory);
@@ -407,6 +408,51 @@ describe('Table', () => {
         </Table>,
       );
       expect(!!driver.getTitlebar()).toBeTruthy();
+    });
+  });
+
+  describe('withWrapper', () => {
+    const testContainer = new ReactDOMTestContainer().unmountAfterEachTest();
+
+    it('should have working test drivers when without wrapper', () => {
+      testContainer.render(TableDriverFactory);
+      testContainer.renderSync(
+        <Table
+          {...defaultProps}
+          showSelection
+          selectedIds={allSelected()}
+          withWrapper={false}
+        >
+          <div>
+            <div>
+              <Table.Titlebar dataHook="test-table-titlebar" />
+            </div>
+            <div>
+              <Table.Content
+                titleBarVisible={false}
+                dataHook="test-table-content"
+              />
+            </div>
+          </div>
+        </Table>,
+      );
+
+      const titlebarDriver = tableTestkitFactory({
+        wrapper: testContainer.componentNode,
+        dataHook: 'test-table-titlebar',
+      });
+
+      const bulkSelectionCheckboxDriver = titlebarDriver.getBulkSelectionCheckboxDriver();
+      expect(bulkSelectionCheckboxDriver.isChecked()).toBeTruthy();
+
+      const contentDriver = tableTestkitFactory({
+        wrapper: testContainer.componentNode,
+        dataHook: 'test-table-content',
+      });
+
+      expect(!!contentDriver.element).toBe(true);
+      expect(contentDriver.getRowsCount()).toBe(defaultProps.data.length);
+      expect(contentDriver.isRowSelected(0)).toBeTruthy();
     });
   });
 
