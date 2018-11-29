@@ -15,6 +15,10 @@ Types of changes:
 
 ## Next
 
+### Added
+
+- `<Avatar/>` - Improve story: props and examples [#2514](https://github.com/wix/wix-style-react/pull/2514)
+
 ### Fixed
 
 - `<Table/>` - Fix bulkSelectionState when data changes [#2500](https://github.com/wix/wix-style-react/pull/2500)
