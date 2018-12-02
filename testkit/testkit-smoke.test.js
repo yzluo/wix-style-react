@@ -45,7 +45,7 @@ const FAILING_COMPONENTS = [
   'IconWithOptions',
   'Layout',
   'MessageBox',
-  'Modal',
+  // 'Modal',
   'ModalSelectorLayout',
   'MultiSelect',
   'MultiSelectCheckbox',
@@ -136,6 +136,12 @@ const COMPONENTS = {
   StatsWidget: {
     props: {
       title: 'test title',
+    },
+  },
+  Modal: {
+    props: {
+      isOpen: false,
+      contentLabel: 'modal_12345678',
     },
   },
 };
