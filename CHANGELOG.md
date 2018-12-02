@@ -21,6 +21,7 @@ Types of changes:
 
 ### Fixed
 
+- `<Checkbox/>` - protractor driver - fix click [#2525](https://github.com/wix/wix-style-react/pull/2525)
 - `<Table/>` - Fix bulkSelectionState when data changes [#2500](https://github.com/wix/wix-style-react/pull/2500)
 - `<Table/>` - testkit - Add ability to use Table driver when using Table in Page [#2515](https://github.com/wix/wix-style-react/pull/2515)
 
