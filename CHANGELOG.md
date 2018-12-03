@@ -13,6 +13,12 @@ Types of changes:
 1. **Breaking** for breaking changes
 1. **Docs** for documentation changes
 
+## Next
+
+### Fixed
+
+- `<Dropdownlayout/>` - Fix update of hovered index [#2530](https://github.com/wix/wix-style-react/pull/2530)
+
 ## 5.15.0 - 2018-12-02
 
 ### Added
