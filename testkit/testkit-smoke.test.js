@@ -30,7 +30,6 @@ const FAILING_COMPONENTS = [
   'CloseButton',
   'ColorPicker',
   'Composite',
-  'DataTable',
   'DatePicker',
   'DragAndDrop',
   'DragDropContextProvider',
@@ -58,7 +57,6 @@ const FAILING_COMPONENTS = [
   'RichTextArea',
   'RichTextAreaComposite',
   'SideMenuDrill',
-  'Table',
   'TableToolbar',
   'Tabs',
   'TextArea',
@@ -122,6 +120,12 @@ const COMPONENTS = {
       onChange: () => {},
     },
   },
+  DataTable: {
+    props: {
+      data: [{ a: 'value 1', b: 'value 2' }],
+      columns: [{ title: 'A', render: row => row.a }],
+    },
+  },
   Slider: {
     props: {
       onChange: () => {},
@@ -136,6 +140,12 @@ const COMPONENTS = {
   StatsWidget: {
     props: {
       title: 'test title',
+    },
+  },
+  Table: {
+    props: {
+      data: [{ a: 'value 1', b: 'value 2' }],
+      columns: [{ title: 'A', render: row => row.a }],
     },
   },
   Modal: {
