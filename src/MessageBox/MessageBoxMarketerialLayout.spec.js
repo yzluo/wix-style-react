@@ -10,6 +10,7 @@ import {
 import { messageBoxMarketerialLayoutTestkitFactory } from '../../testkit';
 import { messageBoxMarketerialLayoutTestkitFactory as enzymeMessageBoxTestkitFactory } from '../../testkit/enzyme';
 import { mount } from 'enzyme';
+import { render, cleanup } from '../../test/utils/react';
 
 describe('MessageBoxMarketerialLayout', () => {
   const createDriver = createDriverFactory(MessageBoxMarketerialLayoutFactory);
@@ -18,6 +19,8 @@ describe('MessageBoxMarketerialLayout', () => {
     content: <div />,
     onClose: () => {},
   };
+
+  afterEach(() => cleanup());
 
   describe('action buttons', () => {
     it('should display the primary button label text on top the primary button', () => {
@@ -192,6 +195,18 @@ describe('MessageBoxMarketerialLayout', () => {
           '[data-hook="footer-layout-bottom-children"]',
         ),
       ).toBeNull();
+    });
+  });
+
+  describe('illustration prop', () => {
+    it('should render the illustration render slot', () => {
+      const { getByText } = render(
+        <MessageBoxMarketerialLayout
+          {...requiredProps}
+          illustration={<div data-hook="my-illustration">XXX</div>}
+        />,
+      );
+      expect(!!getByText('XXX')).toBeTruthy();
     });
   });
 

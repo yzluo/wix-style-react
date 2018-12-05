@@ -25,6 +25,7 @@ class MessageBoxMarketerialLayout extends WixComponent {
       onPrimaryButtonClick,
       onSecondaryButtonClick,
       imageUrl,
+      illustration,
       onClose,
       theme,
       primaryButtonTheme,
@@ -60,6 +61,7 @@ class MessageBoxMarketerialLayout extends WixComponent {
               <img src={imageUrl} data-hook="header-image" />
             </div>
           )}
+          {illustration}
         </div>
         <div className={styles.title} data-hook="message-box-title">
           <Heading appearance="H1">{title}</Heading>
@@ -114,6 +116,7 @@ MessageBoxMarketerialLayout.propTypes = {
   onPrimaryButtonClick: PropTypes.func,
   onSecondaryButtonClick: PropTypes.func,
   imageUrl: PropTypes.string,
+  illustration: PropTypes.node,
   onClose: PropTypes.func.isRequired,
   imageComponent: PropTypes.node,
   footerBottomChildren: PropTypes.node,
