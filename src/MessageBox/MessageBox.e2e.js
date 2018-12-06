@@ -1,4 +1,4 @@
-import eyes from 'eyes.it';
+import { eyesItInstance } from '../../test/utils/eyes-it';
 import {
   buttonTestkitFactory,
   messageBoxFunctionalLayoutTestkitFactory,
@@ -7,15 +7,22 @@ import {
   waitForVisibilityOf,
   scrollToElement,
 } from 'wix-ui-test-utils/protractor';
-import { createStoryUrl } from '../../test/utils/storybook-helpers';
+import {
+  createStoryUrl,
+  createTestStoryUrl,
+} from '../../test/utils/storybook-helpers';
+
+import { storySettings } from '../../stories/MessageBox/storySettings';
 
 const byDataHook = dataHook => $(`[data-hook="${dataHook}"]`);
 
-async function verifyItem(dataHook) {
+const eyes = eyesItInstance();
+
+async function verifyItem(dataHook, eyesIt = eyes) {
   const element = byDataHook(dataHook);
   await waitForVisibilityOf(element, `Cannot find ${dataHook}`);
   await scrollToElement(element);
-  await eyes.checkWindow(dataHook);
+  await eyesIt.checkWindow(dataHook);
 }
 
 describe('MessageBox', () => {
@@ -117,6 +124,34 @@ describe('MessageBox', () => {
       await verifyItem(primaryTheme);
       await verifyItem(footnote);
       await verifyItem(disabledAction);
+    });
+
+    fdescribe('TestPages', () => {
+      const eyesIt = eyesItInstance({ width: 700, height: 600 });
+
+      const takeSnapshots = async testPageSettings => {
+        const storyUrl = createTestStoryUrl({
+          category: storySettings.category,
+          storyName: storySettings.storyName,
+          testName: testPageSettings.testName,
+        });
+        await browser.get(storyUrl);
+        for (const dataHook of Object.keys(testPageSettings.dataHooks)) {
+          await verifyItem(testPageSettings.dataHooks[dataHook], eyesIt);
+        }
+      };
+
+      fdescribe('illustration ', () => {
+        eyes.it('should not break design', async () => {
+          await takeSnapshots(storySettings.tests.illustration);
+        });
+      });
+
+      describe('imageComponent ', () => {
+        eyes.it('should not break design', async () => {
+          await takeSnapshots(storySettings.tests.imageComponent);
+        });
+      });
     });
   });
 });

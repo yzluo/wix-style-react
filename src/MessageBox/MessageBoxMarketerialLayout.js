@@ -11,6 +11,7 @@ import Button from '../Backoffice/Button';
 
 import * as styles from './MessageBoxMarketerialLayout.scss';
 
+//TODO: Move this to propTypes validation, only when `imgUrl` prop is used.
 deprecationLog(
   'MessageBoxMarketerialLayout have issue with image positioning. Please use fixImagePosition prop to fix it. Next major version will have a fix by default.',
 );
@@ -34,14 +35,14 @@ class MessageBoxMarketerialLayout extends WixComponent {
       fixImagePosition,
     } = this.props;
 
-    const headerClasses = classNames({
-      [styles.header]: true,
-      [styles[`header-${theme}`]]: true,
-    });
-
     return (
-      <div className={styles.root}>
-        <div className={headerClasses}>
+      <div
+        className={classNames(styles.root, {
+          [styles.hasIllustration]: illustration,
+          [styles[`header-${theme}`]]: true,
+        })}
+      >
+        <div className={styles.header}>
           <div className={styles.close}>
             <CloseButton
               dataHook="close-button"
@@ -50,19 +51,26 @@ class MessageBoxMarketerialLayout extends WixComponent {
               skin="lightFilled"
             />
           </div>
-          {imageComponent ? (
-            <div className={styles.headerImageComponent}>{imageComponent}</div>
-          ) : (
-            <div
-              className={classNames(styles.headerImage, {
-                [styles.headerImageFix]: fixImagePosition,
-              })}
-            >
-              <img src={imageUrl} data-hook="header-image" />
-            </div>
-          )}
-          {illustration}
+          {!illustration &&
+            (imageComponent ? (
+              <div className={styles.headerImageComponent}>
+                {imageComponent}
+              </div>
+            ) : (
+              imageUrl && (
+                <div
+                  className={classNames(styles.headerImage, {
+                    [styles.headerImageFix]: fixImagePosition,
+                  })}
+                >
+                  <img src={imageUrl} data-hook="header-image" />
+                </div>
+              )
+            ))}
         </div>
+        {illustration && (
+          <div className={styles.illustration}>{illustration}</div>
+        )}
         <div className={styles.title} data-hook="message-box-title">
           <Heading appearance="H1">{title}</Heading>
         </div>

@@ -9,6 +9,7 @@ export const getTestStoryKind = ({ category, storyName }) =>
 export const Category = {
   FOUNDATION: '1. Foundation',
   INPUTS: '3. Inputs',
+  MODALS: '9. Modals',
   OTHER: '12. Other',
   COMPONENTS: 'Components',
   STYLING: 'Styling',

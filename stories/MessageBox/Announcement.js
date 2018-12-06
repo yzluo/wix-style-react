@@ -18,6 +18,9 @@ import DisabledActionRaw from '!raw-loader!./AnnouncementExamples/DisabledAction
 import Footnote from './AnnouncementExamples/Footnote';
 import FootnoteRaw from '!raw-loader!./AnnouncementExamples/Footnote';
 
+import AnnouncementIllustration from './AnnouncementExamples/Illustration';
+import AnnouncementIllustrationRaw from '!raw-loader!./AnnouncementExamples/Illustration';
+
 const introduction = `# Announcement (\`<MessageBoxMarketerialLayout/>\`)
 Components to be used within \`wix-style-react/Modal\`:
 `;
@@ -50,6 +53,12 @@ export default () => (
           title="Disabled Action"
           code={DisabledActionRaw}
           children={<DisabledAction />}
+        />
+
+        <CodeExample
+          title="Illustration"
+          code={AnnouncementIllustrationRaw}
+          children={<AnnouncementIllustration />}
         />
       </div>
     </div>

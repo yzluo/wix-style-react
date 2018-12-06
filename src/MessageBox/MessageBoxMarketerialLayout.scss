@@ -8,7 +8,16 @@
   border-radius: 8px;
 }
 $headerHeight: 120px;
+$illustrationBaseHeight: 100px;
 $headerImageHeight: 185px;
+
+$headerBackgroundBlue: $B10;
+$headerBackgroundPurple: $P10;
+
+@mixin illustrationBackground($color) {
+  background: linear-gradient(to bottom, $color 0%,$color 50%,#000000 50%,transparent 50%,transparent 100%);
+}
+
 .header {
   border-radius: 8px 8px 0 0;
   height: $headerHeight;
@@ -16,11 +25,16 @@ $headerImageHeight: 185px;
   position: relative;
 }
 
-.header-purple {
-  background-color: $P10;
+.root.hasIllustration .header {
+  height: $headerHeight - ($illustrationBaseHeight / 2);
+  margin-bottom: 0px;
 }
-.header-blue {
-  background-color: $B10;
+
+.root.header-purple .header {
+  background-color: $headerBackgroundPurple;
+}
+.root.header-blue .header{
+  background-color: $headerBackgroundBlue;
 }
 
 .header-image {
@@ -54,6 +68,22 @@ $headerImageHeight: 185px;
   right: 18px;
   top: 18px;
   z-index: 10;
+}
+
+.illustration {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.root.header-blue .illustration {
+  @include illustrationBackground($color: $headerBackgroundBlue);
+}
+
+.root.header-purple .illustration {
+  @include illustrationBackground($color: $headerBackgroundPurple);
 }
 
 .title {

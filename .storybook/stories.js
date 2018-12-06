@@ -141,4 +141,5 @@ import '../stories/Page/PageTestStories.js'; // Tests/2. Layout/2.5 + Page/
 import '../stories/PageHeader/PageHeaderTestStories.js'; // Tests/2. Layout/2.5 + PageHeader/
 import '../stories/Button/ButtonTestStory'; // Tests/5. Buttons
 import '../stories/Tooltip/Composite/PopoverMenuRegressionTest.js'; // Tests/7.3. Popover Menu/
+import '../stories/MessageBox/AnnouncementTestStory'; // Tests/9. Modals/9.4 Announcement
 import '../stories/Avatar/AvatarTestStory'; // Tests/12. Other
