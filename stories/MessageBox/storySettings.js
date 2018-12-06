@@ -7,9 +7,9 @@ export const storySettings = {
     illustration: {
       testName: '1. Illustration',
       dataHooks: {
-        standard: 'standard1',
-        purple: 'purple1',
-        highestImage: 'image1',
+        standard: 'standard',
+        purple: 'purple',
+        highestImage: 'highestImage',
       },
     },
     imageComponent: {

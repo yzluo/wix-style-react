@@ -126,7 +126,7 @@ describe('MessageBox', () => {
       await verifyItem(disabledAction);
     });
 
-    fdescribe('TestPages', () => {
+    describe('TestPages', () => {
       const eyesIt = eyesItInstance({ width: 700, height: 600 });
 
       const takeSnapshots = async testPageSettings => {
@@ -141,7 +141,7 @@ describe('MessageBox', () => {
         }
       };
 
-      fdescribe('illustration ', () => {
+      describe('illustration ', () => {
         eyes.it('should not break design', async () => {
           await takeSnapshots(storySettings.tests.illustration);
         });

@@ -9,22 +9,17 @@ import IllustrationIcon from './AnnouncementExamples/IllustrationIcon';
 import styles from './AnnouncementTestStory.scss';
 import { storySettings } from './storySettings';
 
-import { Snapshot } from './Snapshot';
-
 const Announcement = props => {
-  const { snapshotName, ...rest } = props;
   return (
-    <Snapshot name={props.snapshotName}>
-      <MessageBoxMarketerialLayout
-        title="Looking good! Your site is on Google"
-        content="All of your pages are indexed and now come up as separate search results on Google. This is great for your visbility!"
-        confirmText="Button"
-        theme="blue"
-        primaryButtonLabel="Button"
-        secondaryButtonLabel="Secondary action"
-        {...rest}
-      />
-    </Snapshot>
+    <MessageBoxMarketerialLayout
+      title="Looking good! Your site is on Google"
+      content="All of your pages are indexed and now come up as separate search results on Google. This is great for your visbility!"
+      confirmText="Button"
+      theme="blue"
+      primaryButtonLabel="Button"
+      secondaryButtonLabel="Secondary action"
+      {...props}
+    />
   );
 };
 
@@ -36,18 +31,18 @@ const AnnouncementTests = storiesOf(
 AnnouncementTests.add('1. Illustration', () => {
   const hooks = storySettings.tests.illustration.dataHooks;
   return (
-    <div>
+    <div className={styles.container}>
       <Announcement
-        snapshotName={hooks.standard}
+        dataHook={hooks.standard}
         illustration={<IllustrationIcon />}
       />
       <Announcement
-        snapshotName={hooks.purple}
+        dataHook={hooks.purple}
         illustration={<IllustrationIcon />}
         theme="purple"
       />
       <Announcement
-        snapshotName={hooks.highestImage}
+        dataHook={hooks.highestImage}
         illustration={<img src="https://picsum.photos/100/150?image=0" />}
       />
     </div>
