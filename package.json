@@ -77,6 +77,7 @@
     "@stylable/dom-test-kit": "^0.1.0",
     "@types/react": "^15.5.4",
     "@ui-autotools/registry": "^3.0.0",
+    "@ui-autotools/sanity": "^2.1.0",
     "@ui-autotools/scripts": "^3.0.1",
     "autosuggest-highlight": "^3.1.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
@@ -120,7 +121,6 @@
     "logLevel": "verbose"
   },
   "dependencies": {
-    
     "bootstrap-sass": "^3.3.7",
     "classnames": "^2.2.5",
     "color": "^2.0.0",
