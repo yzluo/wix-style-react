@@ -377,3 +377,9 @@ import { closeButtonDriverFactory } from '../src/CloseButton/CloseButton.driver'
 export const closeButtonTestkitFactory = protractorUniTestkitFactoryCreator(
   closeButtonDriverFactory,
 );
+
+import { counterDriverFactory } from '../src/Counter/Counter.driver';
+
+export const counterTestkitFactory = protractorUniTestkitFactoryCreator(
+  counterDriverFactory,
+);

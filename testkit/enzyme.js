@@ -500,3 +500,9 @@ import { closeButtonDriverFactory } from '../src/CloseButton/CloseButton.driver'
 export const closeButtonTestkitFactory = enzymeUniTestkitFactoryCreator(
   closeButtonDriverFactory,
 );
+
+import { counterDriverFactory } from '../src/Counter/Counter.driver';
+
+export const counterTestkitFactory = enzymeUniTestkitFactoryCreator(
+  counterDriverFactory,
+);

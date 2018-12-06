@@ -103,3 +103,4 @@ export { default as GenericModalLayout } from './GenericModalLayout';
 export { default as TextButton } from './TextButton';
 export { default as IconButton } from './IconButton';
 export { default as CloseButton } from './CloseButton';
+export { default as Counter } from './Counter';

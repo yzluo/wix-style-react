@@ -71,3 +71,9 @@ import { closeButtonDriverFactory } from '../src/CloseButton/CloseButton.driver'
 export const closeButtonTestkitFactory = puppeteerUniTestkitFactoryCreator(
   closeButtonDriverFactory,
 );
+
+import { counterDriverFactory } from '../src/Counter/Counter.driver';
+
+export const counterTestkitFactory = puppeteerUniTestkitFactoryCreator(
+  counterDriverFactory,
+);

@@ -119,6 +119,7 @@ import '../stories/Layout';
 import '../stories/Text/index.story';
 import '../stories/Skeleton.story.js';
 import '../stories/Collapse.story';
+import '../stories/Counter/index.story';
 
 // Styling
 import '../stories/Typography/TypographyClassesStory';
