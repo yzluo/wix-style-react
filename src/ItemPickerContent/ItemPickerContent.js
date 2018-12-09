@@ -5,6 +5,7 @@ import DropdownLayout from '../DropdownLayout/DropdownLayout';
 import Search from '../Search/Search';
 import * as styles from './ItemPickerContent.scss'
 import debounce from 'lodash/debounce';
+import { dataHooks } from "./utils";
 
 export class ItemPickerContent extends WixComponent {
   constructor(props) {
@@ -57,7 +58,7 @@ export class ItemPickerContent extends WixComponent {
 
   pickerDropdown = () =>
     <DropdownLayout
-      dataHook='items-dropdown'
+      dataHook={dataHooks.itemsDropdown}
       className={styles.pickerDropdown}
       options={this.state.items.map(this.displayItem)}
       fixedFooter={this.props.footer}
@@ -70,7 +71,7 @@ export class ItemPickerContent extends WixComponent {
     <span data-hook='item-picker-drop-down' className={styles.picker}>
       <div className={styles.searchWrapper}>
         <Search
-          data-hook={'search'}
+          data-hook={dataHooks.search}
           className={styles.search}
           onChange={inputText => this.onChange(inputText)}
           placeholder={'Search...'}

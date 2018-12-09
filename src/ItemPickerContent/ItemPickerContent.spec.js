@@ -18,30 +18,12 @@ describe('item picker', () => {
                        }}/>;
 
 
-  it.skip('should display empty message when there are no items', () => {
-    const driver = createDriver(itemPickerContentComponent());
 
-    expect(driver.emptyMessageExists()).toBeTruthy();
-  });
 
 
   it('should have search component', () => {
-    const fetchItems = jest.fn(() => Promise.resolve({}));
-    const driver = createDriver(itemPickerContentComponent({ fetchItems }));
-
-    expect(fetchItems).toHaveBeenCalledWith({ query: '' });
+    const driver = createDriver(itemPickerContentComponent());
+    expect(driver.searchExists()).toBeTruthy();
   });
 
-  it.skip('should fetch items when mount', () => {
-    const fetchItems = jest.fn(() => Promise.resolve({}));
-    const driver = createDriver(itemPickerContentComponent({ fetchItems }));
-    const someSearch = 's';
-
-    driver.searchFor(someSearch);
-
-    expect(fetchItems).toHaveBeenCalledWith({ query: someSearch });
-  });
-
-  it.skip('should fetch items and display them if exists', () => {
-    });
 });
