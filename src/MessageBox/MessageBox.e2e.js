@@ -16,7 +16,10 @@ import { storySettings } from '../../stories/MessageBox/storySettings';
 
 const byDataHook = dataHook => $(`[data-hook="${dataHook}"]`);
 
-const eyes = eyesItInstance();
+const eyes = eyesItInstance({
+  enableSnapshotAtBrowserGet: false,
+  enableSnapshotAtEnd: false,
+});
 
 async function verifyItem(dataHook, eyesIt = eyes) {
   const element = byDataHook(dataHook);
@@ -127,7 +130,11 @@ describe('MessageBox', () => {
     });
 
     describe('TestPages', () => {
-      const eyesIt = eyesItInstance({ width: 700, height: 600 });
+      const eyesIt = eyesItInstance({
+        enableSnapshotAtBrowserGet: false,
+        enableSnapshotAtEnd: false,
+        windowSize: { width: 700, height: 600 },
+      });
 
       const takeSnapshots = async testPageSettings => {
         const storyUrl = createTestStoryUrl({
