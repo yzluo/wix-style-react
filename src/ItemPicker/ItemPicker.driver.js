@@ -1,8 +1,11 @@
 import React from 'react';
-import { tooltipTestkitFactory } from "../../testkit";
+import { tooltipTestkitFactory } from '../../testkit';
 
-const itemPickerDriverFactory = ({ element, wrapper}) => {
-  const tooltipDriver = tooltipTestkitFactory({ wrapper: element, dataHook: 'item-picker' });
+const itemPickerDriverFactory = ({ element, wrapper }) => {
+  const tooltipDriver = tooltipTestkitFactory({
+    wrapper: element,
+    dataHook: 'item-picker',
+  });
 
   return {
     tooltipShown: () => tooltipDriver.isShown(),

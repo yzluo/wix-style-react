@@ -1,15 +1,39 @@
 import React from 'react';
-import { emptyStateTestkitFactory, searchTestkitFactory } from "../../testkit";
-import { dataHooks } from "./utils";
+import {
+  emptyStateTestkitFactory,
+  searchTestkitFactory,
+  dropdownLayoutTestkitFactory,
+} from '../../testkit';
+import { dataHooks } from './utils';
+import { resolveIn } from '../../test/utils';
 
-const itemPickerContentDriverFactory = ({ element }) => {
-  const emptyStateDriver = emptyStateTestkitFactory({ wrapper: element, dataHook: 'empty-message' });
-  const searchTestKit = searchTestkitFactory({ wrapper: element, dataHook: dataHooks.search });
+const itemPickerContentDriverFactory = ({ element, wrapper }) => {
+  const emptyStateTestkit = emptyStateTestkitFactory({
+    wrapper: element,
+    dataHook: dataHooks.emptyMessage,
+  });
+
+  const searchTestkit = searchTestkitFactory({
+    wrapper: element,
+    dataHook: dataHooks.search,
+  });
+
+  let dropdownTestkit;
+  resolveIn(1000).then(() => {
+    dropdownTestkit = dropdownLayoutTestkitFactory({
+      wrapper: element,
+      dataHook: dataHooks.itemsDropdown,
+    });
+  });
 
   return {
-    searchExists: () => searchTestKit.exists(),
-    emptyMessageExists: () => emptyStateDriver.exists(),
-    searchFor: key => searchDriver.pressKey(key)
+    searchExists: () => searchTestkit.exists(),
+    emptyMessageExists: () => emptyStateTestkit.exists(),
+    dropdownExists: () => dropdownTestkit.exists(),
+    searchFor: query => {
+      searchTestkit.inputDriver.focus();
+      searchTestkit.inputDriver.enterText(query);
+    },
   };
 };
 

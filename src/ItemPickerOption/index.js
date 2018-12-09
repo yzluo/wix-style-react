@@ -1,1 +1,0 @@
-export { ItemPickerOption } from './ItemPickerOption';

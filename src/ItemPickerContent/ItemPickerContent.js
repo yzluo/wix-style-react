@@ -3,9 +3,9 @@ import WixComponent from '../BaseComponents/WixComponent';
 import PropTypes from 'prop-types';
 import DropdownLayout from '../DropdownLayout/DropdownLayout';
 import Search from '../Search/Search';
-import * as styles from './ItemPickerContent.scss'
+import * as styles from './ItemPickerContent.scss';
 import debounce from 'lodash/debounce';
-import { dataHooks } from "./utils";
+import { dataHooks } from './utils';
 
 export class ItemPickerContent extends WixComponent {
   constructor(props) {
@@ -18,7 +18,7 @@ export class ItemPickerContent extends WixComponent {
     emptyStateComponent: PropTypes.any,
     itemBuilder: PropTypes.func,
     footer: PropTypes.any,
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func,
   };
 
   componentWillMount() {
@@ -28,7 +28,7 @@ export class ItemPickerContent extends WixComponent {
   onSelectedItem = ({ id }) => {
     const selectedItem = this.state.items.find(item => item.id === id);
     this.setState({
-      inputText: selectedItem.title
+      inputText: selectedItem.title,
     });
     this.props.onSelect(selectedItem);
   };
@@ -44,42 +44,42 @@ export class ItemPickerContent extends WixComponent {
   onChange = inputText => {
     inputText = inputText.target.value;
     this.setState({
-      inputText: inputText
+      inputText: inputText,
     });
 
     this.debouncedQueryItems(inputText);
   };
 
   displayItem = item => {
-    return { id: item.id, value: this.props.itemBuilder(item) }
+    return this.props.itemBuilder(item);
   };
 
   isEmpty = () => !this.state.items.length;
 
-  pickerDropdown = () =>
+  pickerDropdown = () => (
     <DropdownLayout
       dataHook={dataHooks.itemsDropdown}
       className={styles.pickerDropdown}
       options={this.state.items.map(this.displayItem)}
       fixedFooter={this.props.footer}
-      onSelect={item => this.onSelectedItem({id: item.id})}
+      onSelect={item => this.onSelectedItem({ id: item.id })}
       inContainer
       visible
-    />;
+    />
+  );
 
-  render = () =>
-    <span data-hook='item-picker-drop-down' className={styles.picker}>
+  render = () => (
+    <span data-hook={dataHooks.itemPickerContent} className={styles.picker}>
       <div className={styles.searchWrapper}>
         <Search
-          data-hook={dataHooks.search}
+          dataHook={dataHooks.search}
           className={styles.search}
           onChange={inputText => this.onChange(inputText)}
           placeholder={'Search...'}
           value={this.state.inputText}
         />
       </div>
-      {this.isEmpty() ? this.props.emptyStateComponent() : this.pickerDropdown()}
-      </span>
+      {this.isEmpty() ? this.props.emptyStateComponent : this.pickerDropdown()}
+    </span>
+  );
 }
-
-

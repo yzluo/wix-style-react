@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { ItemPicker } from '../../src/ItemPicker';
 import EmptyState from '../../src/EmptyState/EmptyState';
 import Text from '../../src/Text/Text';
 import TextLink from '../../src/TextLink/TextLink';
 import Add from '../../new-icons/Add';
 import { ItemPickerOptionBuilder } from '../../src/ItemPickerOptionBuilder';
-import Button from '../../src/Backoffice/Button/Button';
+import { ItemPickerContent } from '../../src/ItemPickerContent';
 
 function fetchItems({ query }) {
   const items = [
@@ -51,31 +50,26 @@ const footer = (
   </div>
 );
 
-const button = <Button>Toggle picker tooltip</Button>;
-
 const onSelect = item => item + ' selected!';
 
 export default {
   category: '12. Other',
-  storyName: '12.7 ItemPicker',
-  component: ItemPicker,
-  componentPath: '../../src/ItemPicker/ItemPicker.js',
+  storyName: '12.8 ItemPickerContent',
+  component: ItemPickerContent,
+  componentPath: '../../src/ItemPickerContent/ItemPickerContent.js',
   componentProps: {
     footer,
     emptyStateComponent,
     itemBuilder,
-    button,
     fetchItems,
     onSelect,
   },
 
   examples: (
-    <ItemPicker
-      fetchitems={fetchItems}
+    <ItemPickerContent
       footer={footer}
       emptyStateComponent={emptyStateComponent}
       itemBuilder={itemBuilder}
-      button={button}
       fetchItems={fetchItems}
       onSelect={onSelect}
     />

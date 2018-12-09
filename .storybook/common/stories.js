@@ -110,7 +110,8 @@ import '../../stories/FullTextView.story.js'; //12.4 FullTextView
 import '../../stories/Tag.story.js'; // 12.5 Tag
 import '../../stories/Avatar/Avatar.story'; // 12.6 Avatar
 import '../../stories/Highlighter.story.js'; // Highlighter
-import '../../stories/ItemPicker/index.story'; // ItemPickerOption
+import '../../stories/ItemPicker/index.story'; // ItemPicker
+import '../../stories/ItemPickerContent/index.story'; // ItemPickerContent
 
 // Components API
 import '../../stories/components/Dropdown/Dropdown.story.js';
@@ -132,6 +133,7 @@ import '../../stories/Typography/TypographyClassesStory';
 import '../../stories/WIP';
 import '../../stories/DragAndDrop/DragAndDrop.js';
 import '../../stories/Builders/BadgeSelectItemBuilder';
+import '../../stories/Builders/ItemPickerOptionBuilder';
 
 // TPA
 import '../../stories/TPA/Button';
