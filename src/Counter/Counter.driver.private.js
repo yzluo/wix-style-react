@@ -4,12 +4,6 @@ export const counterPrivateDriverFactory = base => {
   return {
     ...publicDriverFactory(base),
 
-    /** Get the increment button text */
-    getIncrementText: async () =>
-      base.$('[data-hook="counter-increment"]').text(),
-
-    /** Get the increment button text */
-    getDecrementText: async () =>
-      base.$('[data-hook="counter-decrement"]').text(),
+    // Add here driver methods that considered "private"
   };
 };

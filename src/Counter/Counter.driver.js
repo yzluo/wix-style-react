@@ -5,18 +5,12 @@ export const counterDriverFactory = base => {
     ...baseUniDriverFactory(base),
 
     /** Get the current count */
-    getCount: async () =>
-      base
-        .$('[data-hook="counter-count"]')
-        .text()
-        .then(parseInt),
+    getCountText: async () => base.$('[data-hook="counter-count"]').text(),
 
     /** Click the increment button */
-    clickIncrement: async () =>
-      base.$('[data-hook="counter-increment"]').click(),
+    clickButton: async () => base.$('[data-hook="counter-button"]').click(),
 
     /** Click the decrement button */
-    clickDecrement: async () =>
-      base.$('[data-hook="counter-decrement"]').click(),
+    getButtonText: async () => base.$('[data-hook="counter-button"]').text(),
   };
 };

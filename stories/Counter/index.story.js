@@ -13,12 +13,12 @@ export default {
 
   componentProps: {
     dataHook: storySettings.dataHook,
-    incrementText: 'Inc',
-    decrementText: 'Dec',
+    buttonText: undefined,
   },
 
   exampleProps: {
-    onCountUpdate: newCount => `Called with new count: ${newCount}`,
+    // Put here presets of props, for more info:
+    // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
   },
 
   examples: (
@@ -28,9 +28,7 @@ export default {
         title="Live code example"
         initialCode={`
 <Counter
-  initialCount={100}
-  onCountUpdate={newCount => console.log(newCount)}
-  theme="fullgreen"
+  buttonText="Press me for a surprise"
   />
         `}
       />

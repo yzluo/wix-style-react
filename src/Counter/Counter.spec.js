@@ -11,46 +11,23 @@ describe('Counter', () => {
     const driver = createDriver(<Counter />);
 
     expect(await driver.exists()).toBeTruthy();
-    expect(await driver.getCount()).toEqual(0);
-  });
-
-  it('should allow setting the initial count', async () => {
-    const driver = createDriver(<Counter initialCount={5} />);
-
-    expect(await driver.getCount()).toEqual(5);
+    expect(await driver.getButtonText()).toEqual('Click me!');
   });
 
   it('should increment', async () => {
     const driver = createDriver(<Counter />);
 
-    await driver.clickIncrement();
-    expect(await driver.getCount()).toEqual(1);
-  });
+    await driver.clickButton();
+    await driver.clickButton();
 
-  it('should decrement', async () => {
-    const driver = createDriver(<Counter />);
-
-    await driver.clickDecrement();
-    expect(await driver.getCount()).toEqual(-1);
-  });
-
-  it('should call onCountUpdate', async () => {
-    const onCountUpdateMock = jest.fn();
-    const driver = createDriver(
-      <Counter initialCount={5} onCountUpdate={onCountUpdateMock} />,
+    expect(await driver.getCountText()).toEqual(
+      'You clicked this button 2 times',
     );
-
-    await driver.clickIncrement();
-    expect(onCountUpdateMock).toHaveBeenCalledTimes(1);
-    expect(onCountUpdateMock).toHaveBeenCalledWith(6);
   });
 
   it('should allow changing the buttons text', async () => {
-    const driver = createDriver(
-      <Counter incrementText="Increment" decrementText="Decrement" />,
-    );
+    const driver = createDriver(<Counter buttonText="Press me" />);
 
-    expect(await driver.getIncrementText()).toEqual('Increment');
-    expect(await driver.getDecrementText()).toEqual('Decrement');
+    expect(await driver.getButtonText()).toEqual('Press me');
   });
 });
