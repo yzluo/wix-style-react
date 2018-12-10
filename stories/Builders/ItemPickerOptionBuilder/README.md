@@ -3,10 +3,10 @@
 > An option builder for the `<DropdownLayout/>` component and its consumers.
 
 ```js
-import { ItemPickerOptionBuilder } from '../../../src/ItemPickerOptionBuilder';
+import { ItemPickerOptionBuilder } from 'wix-style-react/ItemPickerOptionBuilder';
 ```
 
-
+### `ItemPickerOptionBuilder({ id: string | number, title: string, subtitle: string, imageUrl: string }): DropdownLayoutOption`
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
