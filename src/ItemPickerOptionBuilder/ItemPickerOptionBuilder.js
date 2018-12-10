@@ -1,12 +1,11 @@
 import React from 'react';
-import styles from "./ItemPickerOptionBuilder.scss";
-import Avatar from "../Avatar/Avatar";
-import Text from "../Text/ProxyText";
+import styles from './ItemPickerOptionBuilder.scss';
+import Avatar from '../Avatar/Avatar';
+import Text from '../Text/ProxyText';
 import { dataHooks, itemPickerOptionsConfig as configs } from './utils';
 
-
 export const ItemPickerOption = props => {
-  const renderTitle = () =>
+  const renderTitle = () => (
     <div>
       <Text
         ellipsis
@@ -18,7 +17,8 @@ export const ItemPickerOption = props => {
       >
         {props.title}
       </Text>
-    </div>;
+    </div>
+  );
 
   const renderSubtitle = () =>
     props.subtitle ? (
@@ -36,8 +36,7 @@ export const ItemPickerOption = props => {
       </div>
     ) : null;
 
-
-  const renderAvatar = () =>
+  const renderAvatar = () => (
     <div>
       <Avatar
         className={styles.avatar}
@@ -46,13 +45,11 @@ export const ItemPickerOption = props => {
         imgProps={{ src: props.imageUrl }}
         data-hook={dataHooks.pickerOptionAvatar}
       />
-    </div>;
+    </div>
+  );
 
   return (
-    <div
-      className={styles.itemPickerOption}
-      data-hook={dataHooks.pickerOption}
-    >
+    <div className={styles.itemPickerOption} data-hook={dataHooks.pickerOption}>
       {renderAvatar()}
       <div>
         {renderTitle()}
@@ -62,11 +59,9 @@ export const ItemPickerOption = props => {
   );
 };
 
-
 export const ItemPickerOptionBuilder = ({ id, title, subtitle, imageUrl }) => ({
   id,
-  value: <ItemPickerOption title={title}
-                           subtitle={subtitle}
-                           imageUrl={imageUrl}/>
+  value: (
+    <ItemPickerOption title={title} subtitle={subtitle} imageUrl={imageUrl} />
+  ),
 });
-

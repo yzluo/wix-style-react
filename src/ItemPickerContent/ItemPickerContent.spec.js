@@ -35,10 +35,11 @@ describe('item picker', () => {
   });
 
   it('should call fetch items when mounted ', () => {
-    const fetchItems = jest.fn().mockImplementation(() => Promise.resolve([]));
+    const fetchItems = jest.fn(query => Promise.resolve([]));
     const driver = createDriver(itemPickerContentComponent({ fetchItems }));
 
     expect(fetchItems).toHaveBeenCalledTimes(1);
+    expect(fetchItems).toHaveBeenCalledWith({ query: '' });
   });
 
   it('should present dropdown when items are found', () => {
@@ -49,14 +50,14 @@ describe('item picker', () => {
     expect(driver.dropdownExists()).toBeTruthy();
   });
 
-  it('should call fetch items with searched query', () => {
-    const someQuery = 'someQuery';
-    const fetchItems = jest
-      .fn()
-      .mockImplementation(query => Promise.resolve([]));
+  it('should call fetch items with searched query', async () => {
+    const query = 'someQuery';
+    const fetchItems = jest.fn(query => Promise.resolve([]));
     const driver = createDriver(itemPickerContentComponent({ fetchItems }));
 
-    driver.searchFor(someQuery);
-    expect(fetchItems).toHaveBeenCalledTimes(2);
+    driver.searchFor(query);
+    await driver.waitForDebounce();
+    // expect(fetchItems).toHaveBeenCalledTimes(2);
+    expect(fetchItems).toHaveBeenCalledWith({ query });
   });
 });

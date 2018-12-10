@@ -34,6 +34,8 @@ const itemPickerContentDriverFactory = ({ element, wrapper }) => {
       searchTestkit.inputDriver.focus();
       searchTestkit.inputDriver.enterText(query);
     },
+    waitForDebounce: async () =>
+      resolveIn(10000).then(() => {}),
   };
 };
 

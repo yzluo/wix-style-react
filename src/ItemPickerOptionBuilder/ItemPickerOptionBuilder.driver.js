@@ -1,6 +1,6 @@
 import React from 'react';
 import { textTestkitFactory } from '../../testkit';
-import { dataHooks } from '../ItemPickerOptionBuilder/utils';
+import { dataHooks } from './utils';
 
 const itemPickerOptionDriverFactory = ({ element }) => {
   const titleDriver = textTestkitFactory({

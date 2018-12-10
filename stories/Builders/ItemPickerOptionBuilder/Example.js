@@ -13,7 +13,7 @@ const options = [
   ItemPickerOptionBuilder({ id: 0, title: 'Title 1', subtitle: 'subtitle 1' }),
   ItemPickerOptionBuilder({ id: 1, title: 'Title 2', subtitle: 'subtitle 2' }),
   ItemPickerOptionBuilder({ id: 2, title: 'Title 3', subtitle: 'subtitle 3' }),
-  ItemPickerOptionBuilder({ id: 3, title: 'No subtitle item'}),
+  ItemPickerOptionBuilder({ id: 3, title: 'No subtitle item' }),
   ItemPickerOptionBuilder({ id: 3, title: 'Title 4', subtitle: 'subtitle 4' }),
 ];
 
