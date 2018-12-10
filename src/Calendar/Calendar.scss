@@ -19,8 +19,7 @@ $dayBadgeSize: 36px;
 .calendar :global .DayPicker {
   width: $calendarWidth;
   @include Text($size: small, $weight: thin);
-  background-color: $D80;
-
+  
   abbr {
     text-decoration: none;
   }
@@ -37,6 +36,7 @@ $dayBadgeSize: 36px;
   }
 
   &-Body {
+    background-color: $D80;
     padding: 0 $rootPadding $rootPadding;
   }
 

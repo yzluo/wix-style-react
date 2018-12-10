@@ -179,7 +179,7 @@ export default class Calendar extends WixComponent {
   };
 
   _createDayPickerProps = () => {
-    const { locale, filterDate, excludePastDates, twoMonths } = this.props;
+    const { locale, filterDate, excludePastDates, numOfMonths } = this.props;
 
     const value = Calendar.parseValue(this.props.value);
 
@@ -212,8 +212,8 @@ export default class Calendar extends WixComponent {
       navbarElement: () => null,
       captionElement,
       onDayKeyDown: this._handleDayKeyDown,
-      numberOfMonths: twoMonths ? 2 : 1,
-      className: twoMonths ? 'DayPicker--TwoMonths' : '',
+      numberOfMonths: numOfMonths,
+      className: numOfMonths == 2 ? 'DayPicker--TwoMonths' : '',
       modifiers: { start: from, end: to, firstOfMonth, lastOfMonth, singleDay },
       renderDay: Calendar.renderDay,
     };
@@ -270,10 +270,8 @@ export default class Calendar extends WixComponent {
 }
 
 Calendar.propTypes = {
-  /** Use 2 months layout */
-  /* TODO WIP, uncomment after feature done
-  twoMonths: PropTypes.bool,
-  */
+  /** Display multiple months, currently allowing only 1 or 2 */
+  numOfMonths: PropTypes.oneOf([1, 2]),
 
   className: PropTypes.string,
 
