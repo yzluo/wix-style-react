@@ -1,5 +1,5 @@
 import Registry from '@ui-autotools/registry';
-import EmptyState from './';
+import EmptyState from '.';
 
 const emptyStateMetadata = Registry.getComponentMetadata(EmptyState);
 
