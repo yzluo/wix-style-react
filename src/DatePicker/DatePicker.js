@@ -224,7 +224,7 @@ export default class DatePicker extends WixComponent {
       onClose: this.closeCalendar,
       value,
       shouldCloseOnSelect,
-      twoMonths,
+      numOfMonths: twoMonths ? 2 : 1,
     };
 
     return (
