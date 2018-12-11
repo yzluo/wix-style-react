@@ -1,8 +1,14 @@
 import eyes from 'eyes.it';
-import {scrollToElement, waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
+import {
+  scrollToElement,
+  waitForVisibilityOf,
+} from 'wix-ui-test-utils/protractor';
 
-import {createStoryUrl} from '../../test/utils/storybook-helpers';
-import {buttonTestkitFactory, genericModalLayoutTestkitFactory} from '../../testkit/protractor';
+import { createStoryUrl } from '../../test/utils/storybook-helpers';
+import {
+  buttonTestkitFactory,
+  genericModalLayoutTestkitFactory,
+} from '../../testkit/protractor';
 
 const byDataHook = dataHook => $(`[data-hook="${dataHook}"]`);
 
@@ -16,16 +22,21 @@ async function verifyItem(dataHook) {
 describe('GenericModalLayout', () => {
   describe('default', () => {
     eyes.it('should open generic modal layout in modal', async () => {
-      const storyUrl = createStoryUrl({kind: 'Components', story: 'GenericModalLayout'});
+      const storyUrl = createStoryUrl({
+        kind: 'Components',
+        story: 'GenericModalLayout',
+      });
       await browser.get(storyUrl);
 
-      const button = buttonTestkitFactory({dataHook: 'open-default-generic-modal-layout-in-modal-button'});
+      const button = buttonTestkitFactory({
+        dataHook: 'open-default-generic-modal-layout-in-modal-button',
+      });
 
       await button.click();
       await verifyItem('default-generic-modal-layout');
 
       const driver = genericModalLayoutTestkitFactory({
-        dataHook: 'default-generic-modal-layout'
+        dataHook: 'default-generic-modal-layout',
       });
 
       expect(await driver.isFullscreen()).toBeFalsy();
@@ -33,20 +44,28 @@ describe('GenericModalLayout', () => {
   });
 
   describe('fullscreen', () => {
-    eyes.it('should open fullscreen generic modal layout in modal', async () => {
-      const storyUrl = createStoryUrl({kind: 'Components', story: 'GenericModalLayout'});
-      await browser.get(storyUrl);
+    eyes.it(
+      'should open fullscreen generic modal layout in modal',
+      async () => {
+        const storyUrl = createStoryUrl({
+          kind: 'Components',
+          story: 'GenericModalLayout',
+        });
+        await browser.get(storyUrl);
 
-      const button = buttonTestkitFactory({dataHook: 'open-fullscreen-generic-modal-layout-in-modal-button'});
+        const button = buttonTestkitFactory({
+          dataHook: 'open-fullscreen-generic-modal-layout-in-modal-button',
+        });
 
-      await button.click();
-      await verifyItem('fullscreen-generic-modal-layout');
+        await button.click();
+        await verifyItem('fullscreen-generic-modal-layout');
 
-      const driver = genericModalLayoutTestkitFactory({
-        dataHook: 'fullscreen-generic-modal-layout'
-      });
+        const driver = genericModalLayoutTestkitFactory({
+          dataHook: 'fullscreen-generic-modal-layout',
+        });
 
-      expect(await driver.isFullscreen()).toBeTruthy();
-    });
+        expect(await driver.isFullscreen()).toBeTruthy();
+      },
+    );
   });
 });

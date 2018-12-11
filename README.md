@@ -23,10 +23,11 @@ yarn add wix-style-react
 import React from 'react';
 import Button from 'wix-style-react/Button';
 
-const MyComponent = () =>
-  <Button onClick={() => console.log('thanks for clicking :)')}>
-    Click me!
-  </Button>;
+const App = () => (
+    <Button onClick={() => console.log('thanks for clicking :)')}>
+      Click me!
+    </Button>
+);
 ```
 
 ## Requirements

@@ -3,9 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker/DayPicker';
 import addMonths from 'date-fns/add_months';
-import parse from 'date-fns/parse';
 import startOfMonth from 'date-fns/start_of_month';
 import classNames from 'classnames';
+import parse from 'date-fns/parse';
 
 import WixComponent from '../BaseComponents/WixComponent';
 import localeUtilsFactory from '../LocaleUtils';
@@ -19,69 +19,188 @@ export default class Calendar extends WixComponent {
     className: '',
     filterDate: () => true,
     shouldCloseOnSelect: true,
-    rtl: false,
-    onClose: () => {}
+    onClose: () => {},
   };
 
   constructor(props) {
     super(props);
 
+    const initialMonth = Calendar.getNextMonth(props.value);
     this.state = {
-      month: props.value
+      month: initialMonth || new Date(),
     };
   }
 
-  // TODO: Change to getDerivedStateFromProps with React ^16.0.0
-  componentWillReceiveProps(nextProps) {
-    this.setState({month: nextProps.value});
+  static dateToMonth(date) {
+    return date ? date.getFullYear() * 100 + date.getMonth() : null;
   }
 
-  _setMonth = month => this.setState({month});
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value !== this.props.value) {
+      const month = Calendar.getNextMonth(nextProps.value, this.state.month);
+      if (month) {
+        this.setState({ month });
+      }
+    }
+  }
 
-  _handleDayClick = (value, modifiers = {}) => {
-    this.props.onChange(value, modifiers);
-    this.props.shouldCloseOnSelect && this.props.onClose();
+  static renderDay(day, modifiers) {
+    const relevantModifiers = ['start', 'end', 'selected'];
+    for (const modifier of relevantModifiers) {
+      if (modifier in modifiers) {
+        return (
+          <div
+            className={styles.dayCircle}
+            data-date={`${day.getFullYear()}-${day.getMonth()}-${day.getDate()}`}
+          >
+            {day.getDate()}
+          </div>
+        );
+      }
+    }
+
+    return (
+      <div
+        data-date={`${day.getFullYear()}-${day.getMonth()}-${day.getDate()}`}
+      >
+        {day.getDate()}
+      </div>
+    );
+  }
+
+  _setMonth = month => {
+    this.setState({ month });
   };
 
-  _createDayPickerProps = () => {
-    const {
-      locale,
-      showMonthDropdown,
-      showYearDropdown,
-      filterDate,
-      excludePastDates,
-      value: propsValue,
-      rtl,
-      twoMonths
-    } = this.props;
+  _handleDayClick = (value, modifiers = {}) => {
+    const propsValue = this.props.value || {};
+    const { onChange, shouldCloseOnSelect } = this.props;
 
-    const month = this.state.month || propsValue || new Date();
+    if (this.props.selectionMode === 'range') {
+      if (
+        (!propsValue.from && !propsValue.to) ||
+        (propsValue.from && propsValue.to)
+      ) {
+        onChange({ from: value }, modifiers);
+      } else {
+        const anchor = propsValue.from || propsValue.to;
+        const newVal =
+          anchor < value
+            ? { from: anchor, to: value }
+            : { from: value, to: anchor };
+
+        onChange(newVal, modifiers);
+        shouldCloseOnSelect && this.props.onClose();
+      }
+    } else {
+      onChange(value, modifiers);
+      shouldCloseOnSelect && this.props.onClose();
+    }
+  };
+
+  static optionalParse = dateOrString =>
+    typeof dateOrString === 'string' ? parse(dateOrString) : dateOrString;
+
+  static parseValue = value => {
+    if (!value) {
+      return new Date();
+    }
+    if (typeof value === 'string') {
+      return parse(value);
+    } else if (value instanceof Date) {
+      return value;
+    } else {
+      return {
+        from: Calendar.optionalParse(value.from),
+        to: Calendar.optionalParse(value.to),
+      };
+    }
+  };
+
+  static isSingleDay(value) {
+    return value instanceof Date;
+  }
+
+  static getNextMonth = (nextPropsValue, currentMonthDate) => {
+    const nextValue = Calendar.parseValue(nextPropsValue);
+    const currentMonth = Calendar.dateToMonth(currentMonthDate);
+
+    if (Calendar.isSingleDay(nextValue)) {
+      if (currentMonth !== Calendar.dateToMonth(nextValue)) {
+        return nextValue;
+      }
+    } else {
+      const fromMonth = Calendar.dateToMonth(nextValue.from);
+      const toMonth = Calendar.dateToMonth(nextValue.to);
+      if (fromMonth && (!currentMonth || currentMonth < fromMonth)) {
+        return nextValue.from;
+      } else if (toMonth && (!currentMonth || currentMonth > toMonth)) {
+        return nextValue.to;
+      }
+    }
+
+    return null;
+  };
+
+  _getSelectedDays(value) {
+    const { from, to } = value || {};
+    if (from && to) {
+      return { from: from, to: to };
+    } else if (from) {
+      return { after: prevDay(from) };
+    } else if (to) {
+      return { before: nextDay(to) };
+    } else {
+      // Single day OR empty value
+      return value;
+    }
+  }
+
+  _createCaptionElement = month => {
+    const { locale, showMonthDropdown, showYearDropdown } = this.props;
+
     const localeUtils = localeUtilsFactory(locale);
 
-    const captionElement = (
+    return (
       <DatePickerHead
         {...{
           date: month,
           showYearDropdown,
           showMonthDropdown,
           localeUtils,
-          rtl,
           onChange: this._setMonth,
           onLeftArrowClick: () =>
             this._setMonth(startOfMonth(addMonths(month, -1))),
           onRightArrowClick: () =>
-            this._setMonth(startOfMonth(addMonths(month, 1)))
+            this._setMonth(startOfMonth(addMonths(month, 1))),
         }}
-        />
+      />
     );
+  };
+
+  _createDayPickerProps = () => {
+    const { locale, filterDate, excludePastDates, twoMonths } = this.props;
+
+    const value = Calendar.parseValue(this.props.value);
+
+    const month = this.state.month;
+    const localeUtils = localeUtilsFactory(locale);
+    const { from, to } = value || {};
+    const singleDay = !from && !to && value;
+
+    const firstOfMonth = new Date(month.getFullYear(), month.getMonth(), 1);
+    const lastOfMonth = new Date(month.getFullYear(), month.getMonth() + 1, 0);
+
+    const captionElement = this._createCaptionElement(month);
+    const selectedDays = this._getSelectedDays(value);
 
     return {
-      disabledDays: excludePastDates ?
-        {before: new Date()} :
-        date => !filterDate(date),
+      disabledDays: excludePastDates
+        ? { before: new Date() }
+        : date => !filterDate(date),
       initialMonth: month,
       initialYear: month,
-      selectedDays: parse(propsValue),
+      selectedDays,
       month,
       year: month,
       firstDayOfWeek: 1,
@@ -94,7 +213,9 @@ export default class Calendar extends WixComponent {
       captionElement,
       onDayKeyDown: this._handleDayKeyDown,
       numberOfMonths: twoMonths ? 2 : 1,
-      className: twoMonths ? 'DayPicker--TwoMonths' : ''
+      className: twoMonths ? 'DayPicker--TwoMonths' : '',
+      modifiers: { start: from, end: to, firstOfMonth, lastOfMonth, singleDay },
+      renderDay: Calendar.renderDay,
     };
   };
 
@@ -109,14 +230,14 @@ export default class Calendar extends WixComponent {
     27: this.props.onClose,
 
     // tab
-    9: this.props.onClose
+    9: this.props.onClose,
   };
 
   _focusSelectedDay = dayPickerRef => {
     if (dayPickerRef) {
       this.dayPickerRef = dayPickerRef;
       const selectedDay = this.dayPickerRef.dayPicker.querySelector(
-        '.DayPicker-Day--selected'
+        '.DayPicker-Day--selected',
       );
 
       if (selectedDay) {
@@ -128,7 +249,7 @@ export default class Calendar extends WixComponent {
 
   _handleDayKeyDown = () => {
     const unfocusedDay = this.dayPickerRef.dayPicker.querySelector(
-      '.DayPicker-Day--unfocused'
+      '.DayPicker-Day--unfocused',
     );
 
     if (unfocusedDay) {
@@ -142,7 +263,7 @@ export default class Calendar extends WixComponent {
         <DayPicker
           ref={this._focusSelectedDay}
           {...this._createDayPickerProps()}
-          />
+        />
       </div>
     );
   }
@@ -156,7 +277,7 @@ Calendar.propTypes = {
 
   className: PropTypes.string,
 
-  /** Callback function called whenever the user selects a day in the calendar */
+  /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
   onChange: PropTypes.func.isRequired,
 
   /** Callback function called whenever user press escape or click outside of the element */
@@ -168,11 +289,18 @@ Calendar.propTypes = {
   /** Only the truthy dates are selectable */
   filterDate: PropTypes.func,
 
-  /** RTL mode */
-  rtl: PropTypes.bool,
-
   /** The selected date */
-  value: PropTypes.object,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Date),
+    PropTypes.shape({
+      from: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+      to: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+    }),
+  ]),
+
+  /** Whether the user should be able to select a date range, or just a single day */
+  selectionMode: PropTypes.oneOf(['day', 'range']),
 
   /** Display a selectable yearDropdown */
   showYearDropdown: PropTypes.bool,
@@ -200,11 +328,23 @@ Calendar.propTypes = {
       'sv',
       'no',
       'nl',
-      'da'
+      'da',
     ]),
     PropTypes.shape({
       distanceInWords: PropTypes.object,
-      format: PropTypes.object
-    })
-  ])
+      format: PropTypes.object,
+    }),
+  ]),
 };
+
+function nextDay(date) {
+  const day = new Date(date);
+  day.setDate(day.getDate() + 1);
+  return day;
+}
+
+function prevDay(date) {
+  const day = new Date(date);
+  day.setDate(day.getDate() - 1);
+  return day;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Container, Row, Col} from 'wix-style-react/Grid';
+import { Container, Row, Col } from 'wix-style-react/Grid';
 import Card from 'wix-style-react/Card';
 import Collapse from 'wix-style-react/Collapse';
 
@@ -13,14 +13,14 @@ import Tooltip from 'wix-style-react/Tooltip';
 export default class extends React.Component {
   state = {
     firstCardOpen: true,
-    secondCardOpen: false
+    secondCardOpen: false,
   };
 
   render() {
-    const {firstCardOpen, secondCardOpen} = this.state;
+    const { firstCardOpen, secondCardOpen } = this.state;
 
     return (
-      <div style={{background: '#F0F4F7', padding: 30}}>
+      <div style={{ background: '#F0F4F7', padding: 30 }}>
         <Container>
           <Row>
             <Col span={6}>
@@ -31,15 +31,15 @@ export default class extends React.Component {
                   suffix={
                     <Button
                       onClick={() =>
-                        this.setState(({firstCardOpen}) => ({
-                          firstCardOpen: !firstCardOpen
+                        this.setState(({ firstCardOpen }) => ({
+                          firstCardOpen: !firstCardOpen,
                         }))
                       }
-                      >
+                    >
                       {firstCardOpen ? 'Close' : 'Open'}
                     </Button>
                   }
-                  />
+                />
 
                 <Collapse open={firstCardOpen}>
                   <Card.Content>{field()}</Card.Content>
@@ -57,19 +57,19 @@ export default class extends React.Component {
                       content={`Click me to ${
                         secondCardOpen ? 'squeeze' : 'expand'
                       }!`}
-                      >
+                    >
                       <TextLink
                         onClick={() =>
-                          this.setState(({secondCardOpen}) => ({
-                            secondCardOpen: !secondCardOpen
+                          this.setState(({ secondCardOpen }) => ({
+                            secondCardOpen: !secondCardOpen,
                           }))
                         }
-                        >
+                      >
                         {secondCardOpen ? 'Close' : 'Open'}
                       </TextLink>
                     </Tooltip>
                   }
-                  />
+                />
 
                 <Collapse open={secondCardOpen}>
                   <Card.Content>{field()}</Card.Content>
@@ -86,7 +86,7 @@ export default class extends React.Component {
 function field() {
   return (
     <FormField label="Text Field">
-      <Input placeholder="You can type here"/>
+      <Input placeholder="You can type here" />
     </FormField>
   );
 }

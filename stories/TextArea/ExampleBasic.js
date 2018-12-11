@@ -5,8 +5,8 @@ import InputArea from 'wix-style-react/InputArea';
 
 export default class BasicExample extends React.Component {
   state = {
-    value: ''
-  }
+    value: '',
+  };
 
   render() {
     return (
@@ -14,14 +14,13 @@ export default class BasicExample extends React.Component {
         label="This is the FormField label"
         required
         infoContent="This is the info tooltip content"
-        >
+      >
         <InputArea
           placeholder="Placeholder Text"
           value={this.state.value}
-          onChange={event => this.setState({value: event.target.value})}
-          />
+          onChange={event => this.setState({ value: event.target.value })}
+        />
       </FormField>
     );
   }
 }
-

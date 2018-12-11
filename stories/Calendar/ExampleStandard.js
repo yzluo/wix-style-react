@@ -7,17 +7,31 @@ class ControlledCalendarExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date('2017/05/01'),
-      excludePastDates: true
+      value: { from: new Date('2018/11/14'), to: new Date('2018/11/18') },
+      excludePastDates: false,
+      twoMonths: false,
+      selectionMode: 'range',
     };
   }
 
-  onChange(date) {
-    this.setState({date});
+  onChange(value) {
+    this.setState({ value });
+  }
+
+  onMonthChange(value) {
+    this.setState({ month: value });
   }
 
   toggleExclude() {
-    this.setState(({excludePastDates}) => ({excludePastDates: !excludePastDates}));
+    this.setState(({ excludePastDates }) => ({
+      excludePastDates: !excludePastDates,
+    }));
+  }
+
+  toggleSelectionMode() {
+    this.setState({
+      selectionMode: this.state.selectionMode === 'day' ? 'range' : 'day',
+    });
   }
 
   render() {
@@ -25,19 +39,33 @@ class ControlledCalendarExample extends React.Component {
       <div>
         <Calendar
           excludePastDates={this.state.excludePastDates}
-          onChange={date => this.onChange(date)}
-          value={this.state.date}
-          />
-        <div style={{display: 'flex'}}>
+          onChange={value => this.onChange(value)}
+          onMonthChange={value => this.onMonthChange(value)}
+          value={this.state.value}
+          month={this.state.month}
+          selectionMode={this.state.selectionMode}
+          twoMonths={this.state.twoMonths}
+        />
+        <div style={{ display: 'flex' }}>
           <ToggleSwitch
             checked={this.state.excludePastDates}
             onChange={() => this.toggleExclude()}
-            />
+          />
           <Label>Exclude Past Days</Label>
+        </div>
+        <div style={{ display: 'flex' }}>
+          <ToggleSwitch
+            checked={this.state.selectionMode === 'day'}
+            onChange={() => this.toggleSelectionMode()}
+          />
+          <Label>
+            Selection Mode:{' '}
+            {this.state.selectionMode === 'day' ? 'Single day' : 'Date range'}
+          </Label>
         </div>
       </div>
     );
   }
 }
 
-export default () => <ControlledCalendarExample/>;
+export default () => <ControlledCalendarExample />;

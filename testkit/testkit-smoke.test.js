@@ -1,12 +1,13 @@
 import React from 'react';
-import {mount} from 'enzyme';
+import { mount } from 'enzyme';
+import { render, cleanup } from 'react-testing-library';
 import path from 'path';
 
 import {
   isTestkitExists,
   isEnzymeTestkitExists,
   isUniEnzymeTestkitExists,
-  isUniTestkitExists
+  isUniTestkitExists,
 } from '../test/utils/testkit-sanity';
 import importAllComponents from '../test/utils/import-all-components';
 
@@ -26,11 +27,9 @@ const FAILING_COMPONENTS = [
   'ButtonLayout',
   'ButtonWithOptions',
   'CalendarPanel',
-  'Card',
-  'CloseButton',
+  'Card', // Component has no testkit
   'ColorPicker',
   'Composite',
-  'DataTable',
   'DatePicker',
   'DragAndDrop',
   'DragDropContextProvider',
@@ -42,10 +41,11 @@ const FAILING_COMPONENTS = [
   'GoogleAddressInputWithLabel',
   'Grid', // Component has no testkit
   'HBox', // Component has no testkit
+  'RichTextAreaComposite',
   'IconWithOptions',
   'Layout',
   'MessageBox',
-  'Modal',
+  // 'Modal',
   'ModalSelectorLayout',
   'MultiSelect',
   'MultiSelectCheckbox',
@@ -55,17 +55,14 @@ const FAILING_COMPONENTS = [
   'PageHeader',
   'PopoverMenuItem',
   'Range',
-  'RichTextArea',
-  'RichTextAreaComposite',
   'SideMenuDrill',
-  'Table',
   'TableToolbar',
   'Tabs',
   'TextArea',
   'TextField',
   'Tooltip',
   'VBox', // Component has no testkit
-  'Collapse'
+  'Collapse',
 ];
 
 /**
@@ -84,57 +81,84 @@ const FAILING_COMPONENTS = [
  */
 const COMPONENTS = {
   TextButton: {
-    unidriver: true
+    unidriver: true,
+  },
+  IconButton: {
+    unidriver: true,
+  },
+  CloseButton: {
+    unidriver: true,
+  },
+  RichTextArea: {
+    beforeAllHook: () => (window.getSelection = () => ({})),
   },
   Tag: {
     props: {
       useOldMargins: false,
       id: 'hello',
-      children: 'a'
-    }
+      children: 'a',
+    },
   },
   ImageViewer: {
     props: {
-      imageUrl: ''
-    }
+      imageUrl: '',
+    },
   },
   FormField: {
     props: {
-      children: <div/>
-    }
+      children: <div />,
+    },
   },
   BadgeSelect: {
     props: {
-      options: [{id: '0', skin: 'general', text: 'general'}],
-      selectedId: '0'
-    }
+      options: [{ id: '0', skin: 'general', text: 'general' }],
+      selectedId: '0',
+    },
   },
   Breadcrumbs: {
     props: {
-      items: [{id: 0, value: 'Option 1'}, {id: 1, value: 'Option 2'}]
-    }
+      items: [{ id: 0, value: 'Option 1' }, { id: 1, value: 'Option 2' }],
+    },
   },
   Calendar: {
     props: {
-      onChange: () => {}
-    }
+      onChange: () => {},
+    },
+  },
+  DataTable: {
+    props: {
+      data: [{ a: 'value 1', b: 'value 2' }],
+      columns: [{ title: 'A', render: row => row.a }],
+    },
   },
   Slider: {
     props: {
-      onChange: () => {}
-    }
+      onChange: () => {},
+    },
   },
   Selector: {
     props: {
       id: 1,
-      title: 'title'
-    }
+      title: 'title',
+    },
   },
   StatsWidget: {
     props: {
-      title: 'test title'
-    }
-  }
+      title: 'test title',
+    },
+  },
+  Table: {
+    props: {
+      data: [{ a: 'value 1', b: 'value 2' }],
+      columns: [{ title: 'A', render: row => row.a }],
+    },
+  },
+  Modal: {
+    props: {
+      isOpen: false,
+      contentLabel: 'modal_12345678',
+    },
+  },
 };
 
 const cwd = path.resolve(__dirname, '..', 'src');
@@ -146,78 +170,122 @@ const lowerFirst = a =>
 
 const AllComponents = importAllComponents({
   cwd,
-  ignore: FAILING_COMPONENTS
+  ignore: FAILING_COMPONENTS,
 });
 
+const handleBeforeAllHook = (beforeTask, afterTask) => {
+  beforeAll(async () => beforeTask && (await beforeTask()));
+  afterAll(async () => afterTask && (await afterTask));
+};
+
+const handleUniDriverConfig = config => {
+  DRIVER_ASSERTS.enzymeUni(config);
+  DRIVER_ASSERTS.vanillaUni(config);
+};
+
+const handleDriverConfig = config => {
+  DRIVER_ASSERTS.enzyme(config);
+  DRIVER_ASSERTS.vanilla(config);
+};
+
+const handleNoConfig = config => {
+  DRIVER_ASSERTS.enzyme(config);
+  DRIVER_ASSERTS.vanilla(config);
+};
+
 const DRIVER_ASSERTS = {
-  enzyme: ({name, component, props}) => {
+  enzyme: ({ name, component, props, beforeAllHook, afterAllHook }) => {
     describe('Enzyme testkits', () => {
+      handleBeforeAllHook(beforeAllHook, afterAllHook);
       it(`${name} should have enzyme testkit`, () => {
         expect(
           isEnzymeTestkitExists(
             React.createElement(component, props),
             enzymeTestkitFactories[`${lowerFirst(name)}TestkitFactory`],
-            mount
-          )
+            mount,
+          ),
         );
       });
     });
   },
 
-  vanilla: ({name, component, props}) => {
+  vanilla: ({ name, component, props, beforeAllHook, afterAllHook }) => {
     describe('ReactTestUtils testkits', () => {
+      handleBeforeAllHook(beforeAllHook, afterAllHook);
       it(`${name} should have ReactTestUtils testkit`, () => {
         expect(
           isTestkitExists(
             React.createElement(component, props),
-            reactTestUtilsTestkitFactories[`${lowerFirst(name)}TestkitFactory`]
-          )
+            reactTestUtilsTestkitFactories[`${lowerFirst(name)}TestkitFactory`],
+          ),
         );
       });
     });
+    describe('ReactTestUtils update dataHook', () => {
+      handleBeforeAllHook(beforeAllHook, afterAllHook);
+      /* eslint-disable jest/no-disabled-tests */
+      xit(`${name} should have an updated dataHook`, () => {
+        /* eslint-enable jest/no-disabled-tests */
+        const hook1 = 'my-data-hook-1';
+        const hook2 = 'my-data-hook-2';
+        const { rerender, container } = render(
+          React.createElement(component, { ...props, dataHook: hook1 }),
+        );
+        expect(
+          !!container.querySelector(`[data-hook="${hook1}"]`),
+        ).toBeTruthy();
+
+        rerender(React.createElement(component, { ...props, dataHook: hook2 }));
+        expect(
+          !!container.querySelector(`[data-hook="${hook2}"]`),
+        ).toBeTruthy();
+      });
+    });
   },
-  enzymeUni: ({name, component, props}) => {
+  enzymeUni: ({ name, component, props, beforeAllHook, afterAllHook }) => {
     describe('Enzyme unidriver testkits', () => {
+      handleBeforeAllHook(beforeAllHook, afterAllHook);
       it(`${name} should have enzyme testkit`, () => {
         expect(
           isUniEnzymeTestkitExists(
             React.createElement(component, props),
             enzymeTestkitFactories[`${lowerFirst(name)}TestkitFactory`],
-            mount
-          )
+            mount,
+          ),
         );
       });
     });
   },
-  vanillaUni: ({name, component, props}) => {
+  vanillaUni: ({ name, component, props, beforeAllHook, afterAllHook }) => {
     describe('ReactTestUtils unidriver testkits', () => {
+      handleBeforeAllHook(beforeAllHook, afterAllHook);
       it(`${name} should have ReactTestUtils testkit`, () => {
         expect(
           isUniTestkitExists(
             React.createElement(component, props),
-            reactTestUtilsTestkitFactories[`${lowerFirst(name)}TestkitFactory`]
-          )
+            reactTestUtilsTestkitFactories[`${lowerFirst(name)}TestkitFactory`],
+          ),
         );
       });
     });
-  }
+  },
 };
 
 Object.entries(AllComponents).forEach(([name, component]) => {
   const driverConfig = COMPONENTS[name];
 
-  if (driverConfig) {
-    const drivers = driverConfig.drivers || ['vanilla', 'enzyme'];
-    const props = driverConfig.props || {};
+  const config = {
+    beforeAllHook: () => {},
+    ...driverConfig,
+    name,
+    component,
+  };
 
-    if (driverConfig.unidriver) {
-      DRIVER_ASSERTS.enzymeUni({name, component, props: {}});
-      DRIVER_ASSERTS.vanillaUni({name, component, props: {}});
-    } else {
-      drivers.map(driver => DRIVER_ASSERTS[driver]({name, component, props}));
-    }
-  } else {
-    DRIVER_ASSERTS.enzyme({name, component, props: {}});
-    DRIVER_ASSERTS.vanilla({name, component, props: {}});
-  }
+  // handle unidriver
+  driverConfig && driverConfig.unidriver && handleUniDriverConfig(config);
+  // handle simple driverConfig
+  driverConfig && !driverConfig.unidriver && handleDriverConfig(config);
+
+  // handle no-config
+  !driverConfig && handleNoConfig({ name, component });
 });

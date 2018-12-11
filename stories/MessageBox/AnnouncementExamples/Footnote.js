@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import {MessageBoxMarketerialLayout} from 'wix-style-react/MessageBox';
+import { MessageBoxMarketerialLayout } from 'wix-style-react/MessageBox';
 import Text from 'wix-style-react/Text';
 import TextLink from 'wix-style-react/TextLink';
 
@@ -25,5 +25,5 @@ export default () => (
         </TextLink>
       </div>
     }
-    />
+  />
 );

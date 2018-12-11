@@ -1,1 +1,1 @@
-export {default} from './GenericModalLayout';
+export { default } from './GenericModalLayout';

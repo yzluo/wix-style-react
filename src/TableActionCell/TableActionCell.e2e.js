@@ -1,16 +1,27 @@
 import eyes from 'eyes.it';
-import {createStoryUrl, waitForVisibilityOf, scrollToElement} from 'wix-ui-test-utils/protractor';
+import {
+  createStoryUrl,
+  waitForVisibilityOf,
+  scrollToElement,
+} from 'wix-ui-test-utils/protractor';
 
-import {storySettings} from '../../stories/TableActionCell/storySettings';
-import {tableActionCellTestkitFactory} from '../../testkit/protractor';
+import { storySettings } from '../../stories/TableActionCell/storySettings';
+import { tableActionCellTestkitFactory } from '../../testkit/protractor';
 
-const hoverElement = element => browser.actions().mouseMove(element).perform();
+const hoverElement = element =>
+  browser
+    .actions()
+    .mouseMove(element)
+    .perform();
 
 describe('Table Action Cell', () => {
-  const storyUrl = createStoryUrl({kind: storySettings.kind, story: storySettings.storyName});
+  const storyUrl = createStoryUrl({
+    kind: storySettings.kind,
+    story: storySettings.storyName,
+  });
 
   const verifyItem = async (name, dataHook) => {
-    const driver = tableActionCellTestkitFactory({dataHook});
+    const driver = tableActionCellTestkitFactory({ dataHook });
     const element = driver.element();
 
     await waitForVisibilityOf(element, `Cannot find ${dataHook}`);
@@ -45,7 +56,7 @@ describe('Table Action Cell', () => {
     'Always visible secondary actions': 'story-always-visible-secondary',
     'Only secondary actions': 'story-only-secondary',
     'Only visible secondary actions': 'story-only-visible-secondary',
-    'Primary and secondary actions with RTL': 'story-primary-secondary-rtl'
+    'Primary and secondary actions with RTL': 'story-primary-secondary-rtl',
   };
 
   beforeAll(async () => {

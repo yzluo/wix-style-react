@@ -4,10 +4,9 @@ import RadioGroup from '../src/RadioGroup';
 const exampleChildren = [
   {
     label: '4 radios',
-    value:
-      [1, 2, 3, 4].map(n =>
-        <RadioGroup.Radio key={n} value={n} children={`Option ${n}`}/>
-      )
+    value: [1, 2, 3, 4].map(n => (
+      <RadioGroup.Radio key={n} value={n} children={`Option ${n}`} />
+    )),
   },
   {
     label: '2 radios',
@@ -19,19 +18,20 @@ const exampleChildren = [
       <RadioGroup.Radio key={1} value={2}>
         <div>Option 2</div>
         <small>Also pretty good option</small>
-      </RadioGroup.Radio>
-    ]
-  }
+      </RadioGroup.Radio>,
+    ],
+  },
 ];
 
 const exampleOptions = [
   {
     label: 'none disabled',
-    value: []
-  }, {
+    value: [],
+  },
+  {
     label: 'with disabled options',
-    value: [1, 2]
-  }
+    value: [1, 2],
+  },
 ];
 
 export default {
@@ -45,13 +45,13 @@ export default {
     hasError: false,
     size: 'medium',
     children: exampleChildren[0].value,
-    onChange: value => setState({value}),
-    dataHook: 'storybook-radiogroup'
+    onChange: value => setState({ value }),
+    dataHook: 'storybook-radiogroup',
   }),
 
   exampleProps: {
     disabledRadios: exampleOptions,
     children: exampleChildren,
-    onChange: value => value
-  }
+    onChange: value => value,
+  },
 };

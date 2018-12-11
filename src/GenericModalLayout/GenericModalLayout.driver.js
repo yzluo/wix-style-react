@@ -1,9 +1,8 @@
-import {isClassExists} from '../../test/utils';
+import { isClassExists } from '../../test/utils';
 
-
-export default ({element}) => {
+export default ({ element }) => {
   return {
     exists: () => !!element,
-    isFullscreen: () => isClassExists(element, 'fullscreenContainer')
+    isFullscreen: () => isClassExists(element, 'fullscreenContainer'),
   };
 };

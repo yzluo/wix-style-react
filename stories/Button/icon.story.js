@@ -12,13 +12,13 @@ export default {
 
   componentProps: {
     theme: 'icon-standard',
-    children: <Icons.X/>
+    children: <Icons.X />,
   },
 
   exampleProps: {
     onClick: () => 'Clicked!',
     onMouseEnter: () => 'Mouse Enter!',
     onMouseLeave: () => 'Mouse Leave!',
-    children: icons
-  }
+    children: icons,
+  },
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import Markdown from 'wix-storybook-utils/Markdown';
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
@@ -19,28 +19,28 @@ import ExampleEmptyStateRaw from '!raw-loader!./ExampleEmptyState';
 
 storiesOf('2. Layout', module).add('Card', () => (
   <div>
-    <Markdown source={CardReadme}/>
+    <Markdown source={CardReadme} />
 
     <CodeExample title="Basic Example" code={ExampleBasicRaw}>
-      <ExampleBasic/>
+      <ExampleBasic />
     </CodeExample>
 
     <CodeExample
       title="Cards with action headers"
       code={ExampleGridActionHeadersRaw}
-      >
-      <ExampleGridActionHeaders/>
+    >
+      <ExampleGridActionHeaders />
     </CodeExample>
 
     <CodeExample
       title="Cards with <Collapse/> component"
       code={ExampleCollapseRaw}
-      >
-      <ExampleCollapse/>
+    >
+      <ExampleCollapse />
     </CodeExample>
 
     <CodeExample title="Card with an EmptyState" code={ExampleEmptyStateRaw}>
-      <ExampleEmptyState/>
+      <ExampleEmptyState />
     </CodeExample>
   </div>
 ));

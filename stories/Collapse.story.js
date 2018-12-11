@@ -5,15 +5,15 @@ import FormField from 'wix-style-react/FormField';
 import Input from 'wix-style-react/Input';
 
 const exampleChildren = [
-  {label: 'Simple text', value: 'Lorem perferendis sapiente quas facilis!'},
+  { label: 'Simple text', value: 'Lorem perferendis sapiente quas facilis!' },
   {
     label: 'FormField with Input',
     value: (
       <FormField label="Enter your name">
-        <Input/>
+        <Input />
       </FormField>
-    )
-  }
+    ),
+  },
 ];
 
 export default {
@@ -22,6 +22,6 @@ export default {
   component: Collapse,
   componentPath: '../src/Collapse',
 
-  componentProps: {children: exampleChildren[0].value, open: true},
-  exampleProps: {children: exampleChildren}
+  componentProps: { children: exampleChildren[0].value, open: true },
+  exampleProps: { children: exampleChildren },
 };

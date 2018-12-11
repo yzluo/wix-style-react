@@ -17,7 +17,50 @@ Types of changes:
 
 ### Added
 
-- `<TextButton/>` - new component to be used for minimal distraction. [#2434](https://github.com/wix/wix-style-react/pull/2434)
+- `<CloseButton>` - new component [#2480](https://github.com/wix/wix-style-react/pull/2480)
+- `<Tag/>`, `<MultiSelect/>` - Added RTL support [#2356](https://github.com/wix/wix-style-react/pull/2356)
+- `<Input/>`, `<InputArea/>` - Added name ( & type) attribute driver.click() callback [#2528](https://github.com/wix/wix-style-react/pull/2528)
+- `<Calendar/>` - Add range support [#2533](https://github.com/wix/wix-style-react/pull/2533)
+
+### Fixed
+
+- `<WixComponent/>` - Update dataHook on componentDidUpdate [#2542](https://github.com/wix/wix-style-react/pull/2542)
+
+### Changed
+
+- `<Breadcrumbs/>` - do not limit breadcrumb width given only one item [#2553](https://github.com/wix/wix-style-react/pull/2553)
+
+## 5.15.1 - 2018-12-03
+
+### Fixed
+
+- `<Dropdownlayout/>` - Fix update of hovered index [#2530](https://github.com/wix/wix-style-react/pull/2530)
+
+## 5.15.0 - 2018-12-02
+
+### Added
+
+- `<Avatar/>` - Improve story: props and examples [#2514](https://github.com/wix/wix-style-react/pull/2514)
+
+### Fixed
+
+- `<Checkbox/>` - protractor driver - fix click [#2525](https://github.com/wix/wix-style-react/pull/2525)
+- `<Table/>` - Fix bulkSelectionState when data changes [#2500](https://github.com/wix/wix-style-react/pull/2500)
+- `<Table/>` - testkit - Add ability to use Table driver when using Table in Page [#2515](https://github.com/wix/wix-style-react/pull/2515)
+
+### Docs
+
+- `<Modal/>` - Component Test & Docs - Do proper cleanup of document.body between tests [#2516](https://github.com/wix/wix-style-react/pull/2516)
+
+## 5.14.0 - 2018-11-26
+
+### Added
+
+- `<TextButton/>` - Add new component [#2434](https://github.com/wix/wix-style-react/pull/2434)
+- `<IconButton/>` - Add new component [#2445](https://github.com/wix/wix-style-react/pull/2445)
+
+### Changed
+- `<DropdownLayout/>` - support controlled mode selection and fix keyboard marking [#2466](https://github.com/wix/wix-style-react/pull/2466)
 
 ### Fixed
 

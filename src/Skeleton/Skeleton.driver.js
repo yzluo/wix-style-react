@@ -3,7 +3,7 @@ import styles from './Skeleton.scss';
 const selector = element => hook =>
   element.querySelectorAll(`[data-hook="${hook}"]`);
 
-export default ({element}) => {
+export default ({ element }) => {
   const byHook = selector(element);
 
   return {
@@ -21,9 +21,9 @@ export default ({element}) => {
       const [assertions] = Array.from(byHook('placeholder-chunk')).reduce(
         ([result, [expectedSize, ...restSizes]], chunkElement) => [
           result.concat(chunkElement.classList.contains(styles[expectedSize])),
-          restSizes
+          restSizes,
         ],
-        [[], sizes]
+        [[], sizes],
       );
 
       return assertions.every(Boolean);
@@ -31,6 +31,6 @@ export default ({element}) => {
 
     /** return boolean representing whether given alignment is rendered */
     hasAlignment: alignment =>
-      byHook('placeholder-line')[0].classList.contains(styles[alignment])
+      byHook('placeholder-line')[0].classList.contains(styles[alignment]),
   };
 };

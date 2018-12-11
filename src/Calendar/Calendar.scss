@@ -1,15 +1,14 @@
 @import '../common.scss';
+@import '../Typography/text.scss';
 
 $rootPadding: 24px;
 $rootBackgroundColor: $D80;
 $dayHoverColor: $B50;
 $calendarWidth: 300px;
 $dayBadgeSize: 36px;
-$boxShadowWidth: 3px;
-$hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
 
 @mixin todayShadow($additionalShadow: false) {
-  $boxShadow: 0 0 0 $boxShadowWidth $rootBackgroundColor inset;
+  $boxShadow: 0 0 0 $focusBoxShadowWidth $rootBackgroundColor inset;
   @if $additionalShadow {
     box-shadow: $boxShadow, $additionalShadow;
   } @else {
@@ -19,10 +18,7 @@ $hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
 
 .calendar :global .DayPicker {
   width: $calendarWidth;
-  @include FontLight;
-  font-size: 14px;
-  line-height: 1.29;
-  color: $D40;
+  @include Text($size: small, $weight: thin);
   background-color: $D80;
 
   abbr {
@@ -66,10 +62,28 @@ $hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
     cursor: pointer;
     color: $D10;
     z-index: 1;
+    position: relative;
 
     &:focus {
       outline: none;
-      box-shadow: $hoverBoxShadow;
+      z-index: 10;
+
+      &:after {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        border-radius: 50%;
+        @include FocusBox;
+        content: " ";
+        display: block;
+        z-index: 11;
+      }
+
+      :local(.dayCircle) {
+        box-shadow: $focusBoxShadow;
+      }
     }
 
     &.DayPicker-Day--unfocused,
@@ -83,7 +97,7 @@ $hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
       z-index: 0;
 
       &:focus {
-        @include todayShadow($hoverBoxShadow);
+        @include todayShadow($focusBoxShadow);
       }
     }
 
@@ -91,18 +105,72 @@ $hoverBoxShadow: 0 0 0 $boxShadowWidth $F00;
       background-color: $B50;
     }
 
-    &--selected {
+    &--selected:not(.DayPicker-Day--outside) {
       background-color: $B10;
-      color: $D80;
-      &:hover {
-        background-color: $B20;
-      }
+      @include TextColor($light: true);
     }
 
     &--outside,
     &--disabled {
       pointer-events: none;
       color: $D55;
+    }
+
+    &.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside):not(.DayPicker-Day--singleDay) {
+      background-color: $B50;
+      border-radius: 0;
+      box-shadow: none;
+      color: $D10;
+    }
+    &.DayPicker-Day--selected:not(.DayPicker-Day--outside):last-of-type,
+    &.DayPicker-Day--lastOfMonth:not(.DayPicker-Day--outside) {
+      border-top-right-radius: 50% !important;
+      border-bottom-right-radius: 50% !important;
+    }
+    &.DayPicker-Day--selected:not(.DayPicker-Day--outside):first-of-type,
+    &.DayPicker-Day--firstOfMonth:not(.DayPicker-Day--outside) {
+      border-top-left-radius: 50% !important;
+      border-bottom-left-radius: 50% !important;
+    }
+
+    &.DayPicker-Day--singleDay:not(.DayPicker-Day--outside),
+    &.DayPicker-Day--start.DayPicker-Day--end:not(.DayPicker-Day--outside) {
+      background: none !important;
+      border-radius: 50%;
+    }
+  
+    &.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside),
+    &.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside),
+    &.DayPicker-Day--singleDay:not(.DayPicker-Day--outside) {
+      :local(.dayCircle) {
+        background-color: $B10;
+      }
+
+      &:hover {
+        :local(.dayCircle) {
+          background-color: $B20;
+        }
+      }
+    }
+
+    :local(.dayCircle) {
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside) {
+      background: linear-gradient(to left, $B50 0%,$B50 50%,#000000 50%,transparent 50%,transparent 100%);
+      border-radius: 0;
+    }
+    
+    &.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside) {
+      background: linear-gradient(to right, $B50 0%,$B50 50%,#000000 50%,transparent 50%,transparent 100%);
+      border-radius: 0;
     }
   }
 

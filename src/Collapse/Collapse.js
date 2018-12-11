@@ -6,8 +6,8 @@ import ReactCollapse from 'react-collapse';
  *
  * Easily create accordions or within `<Card/>` to collapse its `<Card.Content/>`.
  */
-const Collapse = ({children, open, dataHook}) => (
-  <ReactCollapse data-hook={dataHook} isOpened={open} children={children}/>
+const Collapse = ({ children, open, dataHook }) => (
+  <ReactCollapse data-hook={dataHook} isOpened={open} children={children} />
 );
 
 Collapse.displayName = 'Collapse';
@@ -15,11 +15,11 @@ Collapse.displayName = 'Collapse';
 Collapse.propTypes = {
   children: PropTypes.node,
   open: PropTypes.bool,
-  dataHook: PropTypes.string
+  dataHook: PropTypes.string,
 };
 
 Collapse.defaultProps = {
-  open: true
+  open: true,
 };
 
 export default Collapse;

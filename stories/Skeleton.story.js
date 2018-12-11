@@ -1,5 +1,5 @@
 import Skeleton from '../src/Skeleton';
-import {Category} from './storiesHierarchy';
+import { Category } from './storiesHierarchy';
 
 const exampleContent = [
   {
@@ -7,35 +7,35 @@ const exampleContent = [
     value: [
       {
         size: 'small',
-        type: 'line'
+        type: 'line',
       },
       {
         size: 'large',
-        type: 'line'
+        type: 'line',
       },
       {
         size: 'medium',
-        type: 'line'
-      }
-    ]
+        type: 'line',
+      },
+    ],
   },
   {
     label: 'small/medium/full',
     value: [
       {
         size: 'small',
-        type: 'line'
+        type: 'line',
       },
       {
         size: 'medium',
-        type: 'line'
+        type: 'line',
       },
       {
         size: 'full',
-        type: 'line'
-      }
-    ]
-  }
+        type: 'line',
+      },
+    ],
+  },
 ];
 
 export default {
@@ -46,10 +46,10 @@ export default {
 
   componentProps: {
     content: exampleContent[0].value,
-    dataHook: 'storybook-skeleton'
+    dataHook: 'storybook-skeleton',
   },
 
   exampleProps: {
-    content: exampleContent
-  }
+    content: exampleContent,
+  },
 };
