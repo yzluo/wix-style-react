@@ -25,7 +25,7 @@ $dayBadgeSize: 36px;
   }
 
   &-Weekdays {
-    background-color: $D80;
+    background-color: $rootBackgroundColor;
     padding: 0 $rootPadding;
   }
 
@@ -36,7 +36,7 @@ $dayBadgeSize: 36px;
   }
 
   &-Body {
-    background-color: $D80;
+    background-color: $rootBackgroundColor;
     padding: 0 $rootPadding $rootPadding;
   }
 
@@ -174,7 +174,7 @@ $dayBadgeSize: 36px;
     }
   }
 
-  &--TwoMonths {
+  &.TwoMonths {
     .DayPicker-Months {
       display: flex;
 

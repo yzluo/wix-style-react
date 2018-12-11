@@ -213,7 +213,7 @@ export default class Calendar extends WixComponent {
       captionElement,
       onDayKeyDown: this._handleDayKeyDown,
       numberOfMonths: numOfMonths,
-      className: numOfMonths == 2 ? 'DayPicker--TwoMonths' : '',
+      className: numOfMonths > 1 ? 'TwoMonths' : '',
       modifiers: { start: from, end: to, firstOfMonth, lastOfMonth, singleDay },
       renderDay: Calendar.renderDay,
     };
