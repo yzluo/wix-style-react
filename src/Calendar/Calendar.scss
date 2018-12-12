@@ -174,7 +174,7 @@ $dayBadgeSize: 36px;
     }
   }
 
-  &.TwoMonths {
+  &:local(.TwoMonths) {
     .DayPicker-Months {
       display: flex;
 

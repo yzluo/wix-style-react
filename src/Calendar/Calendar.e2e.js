@@ -52,7 +52,7 @@ describe('Calendar', () => {
         storyUrl({
           selectedDays: {
             from: new Date('2017/05/02'),
-            to: new Date('2017/05/06'),
+            to: new Date('2017/06/06'),
           },
           numOfMonths: 2,
         }),
