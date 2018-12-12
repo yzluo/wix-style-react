@@ -14,10 +14,10 @@ storiesOf(
     queryString.parse(window.location.search),
     'selectedDays',
   );
-  const numOfMonthsParam = pick(
-    queryString.parse(window.location.search),
+  const numOfMonths = pick(queryString.parse(window.location.search), [
     'numOfMonths',
-  );
+    'numOfMonths',
+  ]);
 
   const obj = selectedDaysParam.selectedDays
     ? JSON.parse(selectedDaysParam.selectedDays)
@@ -35,7 +35,7 @@ storiesOf(
       <Calendar
         dataHook="calendar"
         value={selectedDays}
-        numOfMonths={numOfMonthsParam.numOfMonths}
+        numOfMonths={numOfMonths}
         onChange={() => void 0}
       />
     </div>
