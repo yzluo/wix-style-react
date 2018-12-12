@@ -31,6 +31,9 @@
   &:hover:not(:active) {
     background-color: $B50;
   }
+  &:active {
+    background-color: $B40;
+  }
 }
 
 .arrow-icon {
