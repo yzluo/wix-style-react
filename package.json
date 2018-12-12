@@ -30,7 +30,7 @@
     "test:unit": "yoshi test --jest",
     "test:watch": "yoshi test --jest --watch",
     "pretest:e2e": "./scripts/ensure-dist.sh",
-    "test:e2e": "concurrently 'npm run test:e2e-only' 'node scripts/e2e-server.js' --names 'protractor,e2e-server' --success first --kill-others",
+    "test:e2e": "autotools-snap --files ./src/**/*.meta.js",
     "test:e2e-only": "NODE_ENV=production yoshi test --protractor",
     "copy-public-styles": "cp src/*.scss .",
     "build": "npm run lint && npm run proxy-wix-ui-icons && npm run copy-public-styles && yoshi build && npm run storybook:build && npm run export-components",
