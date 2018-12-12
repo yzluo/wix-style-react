@@ -10,31 +10,27 @@ storiesOf(
   getTestStoryKind({ category: Category.INPUTS, storyName: '3.13 Calendar' }),
   module,
 ).add('1. selectedDays', () => {
-  const selectedDaysParam = pick(
+  const { selectedDays, numOfMonths } = pick(
     queryString.parse(window.location.search),
-    'selectedDays',
+    ['selectedDays', 'numOfMonths'],
   );
-  const numOfMonths = pick(queryString.parse(window.location.search), [
-    'numOfMonths',
-    'numOfMonths',
-  ]);
 
-  const obj = selectedDaysParam.selectedDays
-    ? JSON.parse(selectedDaysParam.selectedDays)
+  const obj = selectedDays
+    ? JSON.parse(selectedDays)
     : JSON.parse(JSON.stringify(new Date()));
-  let selectedDays;
+  let value;
   if (typeof obj === 'object') {
-    selectedDays = {};
-    selectedDays.from = obj.from && new Date(Date.parse(obj.from));
-    selectedDays.to = obj.to && new Date(Date.parse(obj.to));
+    value = {};
+    value.from = obj.from && new Date(Date.parse(obj.from));
+    value.to = obj.to && new Date(Date.parse(obj.to));
   } else {
-    selectedDays = new Date(Date.parse(obj));
+    value = new Date(Date.parse(obj));
   }
   return (
     <div>
       <Calendar
         dataHook="calendar"
-        value={selectedDays}
+        value={value}
         numOfMonths={numOfMonths}
         onChange={() => void 0}
       />

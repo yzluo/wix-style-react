@@ -45,7 +45,7 @@ describe('Calendar', () => {
     { enableSnapshotAtBrowserGet: false },
   );
 
-  eyes.fit(
+  eyes.it(
     'should correctly render two months',
     async () => {
       await browser.get(
