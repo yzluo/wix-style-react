@@ -120,3 +120,10 @@ $headerImageHeight: 185px;
 .bottomChildren {
   margin-top: -28px;
 }
+
+@include withRTL {
+  .close {
+    left: 18px;
+    right: auto;
+  }
+}

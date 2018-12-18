@@ -19,3 +19,20 @@
 .footerbuttons > :first-of-type:not(:last-of-type) {
   margin-right: 12px;
 }
+
+@include withRTL {
+  .footerbuttons {
+    margin-left: 0;
+    margin-right: auto;
+
+    &.withSideActions {
+      padding-left: 0;
+      padding-right: 24px;
+    }
+  }
+
+  .footerbuttons > :first-of-type:not(:last-of-type) {
+    margin-left: 12px;
+    margin-right: 0;
+  }
+}
