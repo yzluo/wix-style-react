@@ -5,6 +5,9 @@ const dropdownLayoutPrivateDriverFactory = ({
   wrapper,
   component,
 }) => {
+  const options = element.querySelector('[data-hook=dropdown-layout-options]');
+  const optionAt = position => options.childNodes[position];
+  const optionsLength = () => options.childNodes.length;
   return {
     ...dropdownLayoutDriverFactory({
       element,
@@ -12,6 +15,8 @@ const dropdownLayoutPrivateDriverFactory = ({
       component,
     }),
     element,
+    optionAt,
+    optionsLength,
   };
 };
 

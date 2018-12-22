@@ -13,6 +13,11 @@ const modulu = (n, m) => {
 const NOT_HOVERED_INDEX = -1;
 export const DIVIDER_OPTION_VALUE = '-';
 
+const itemRoleByContainerRole = {
+  list: 'listitem',
+  listbox: 'option',
+};
+
 class DropdownLayout extends WixComponent {
   constructor(props) {
     super(props);
@@ -326,7 +331,7 @@ class DropdownLayout extends WixComponent {
     overrideStyle,
     dataHook,
   }) {
-    const { itemHeight, selectedHighlight } = this.props;
+    const { itemHeight, selectedHighlight, role } = this.props;
 
     const optionClassName = classNames({
       [styles.option]: !overrideStyle,
@@ -349,6 +354,7 @@ class DropdownLayout extends WixComponent {
         onMouseEnter={() => this._onMouseEnter(idx)}
         onMouseLeave={this._onMouseLeave}
         data-hook={dataHook}
+        role={itemRoleByContainerRole[role]}
       >
         {typeof option.value === 'function'
           ? option.value({ selected })

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
-import DropdownLayout from './DropdownLayout';
+import DropdownLayout, { DIVIDER_OPTION_VALUE } from './DropdownLayout';
 import dropdownLayoutPrivateDriverFactory from './DropdownLayout.private.driver';
 import dropdownLayoutDriverFactory from './DropdownLayout.driver';
 import { dropdownLayoutTestkitFactory } from '../../testkit';
@@ -621,6 +621,30 @@ describe('DropdownLayout', () => {
         <DropdownLayout options={options} role="listbox" />,
       );
       expect(driver.element.getAttribute('role')).toBe('listbox');
+    });
+
+    it(`should have role 'listitem' for all non-divider options`, () => {
+      const driver = createDriver(<DropdownLayout visible options={options} />);
+      options.forEach((option, index) => {
+        if (option.value === DIVIDER_OPTION_VALUE) {
+          expect(driver.optionAt(index).getAttribute('role')).toBe(null);
+        } else {
+          expect(driver.optionAt(index).getAttribute('role')).toBe('listitem');
+        }
+      });
+    });
+
+    it(`should have role 'option' for all non-divider options`, () => {
+      const driver = createDriver(
+        <DropdownLayout visible options={options} role="listbox" />,
+      );
+      options.forEach((option, index) => {
+        if (option.value === DIVIDER_OPTION_VALUE) {
+          expect(driver.optionAt(index).getAttribute('role')).toBe(null);
+        } else {
+          expect(driver.optionAt(index).getAttribute('role')).toBe('option');
+        }
+      });
     });
   });
 
