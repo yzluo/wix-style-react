@@ -2,13 +2,14 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import DropdownLayout from './DropdownLayout';
+import dropdownLayoutPrivateDriverFactory from './DropdownLayout.private.driver';
 import dropdownLayoutDriverFactory from './DropdownLayout.driver';
 import { dropdownLayoutTestkitFactory } from '../../testkit';
 import { dropdownLayoutTestkitFactory as enzymeDropdownLayoutTestkitFactory } from '../../testkit/enzyme';
 import { mount } from 'enzyme';
 
 describe('DropdownLayout', () => {
-  const createDriver = createDriverFactory(dropdownLayoutDriverFactory);
+  const createDriver = createDriverFactory(dropdownLayoutPrivateDriverFactory);
   const options = [
     { id: 0, value: 'Option 1' },
     { id: 1, value: 'Option 2' },
@@ -606,6 +607,20 @@ describe('DropdownLayout', () => {
         dataHook: props.dataHook,
       });
       expect(testkit.hasTheme('material')).toBe(true);
+    });
+  });
+
+  describe('a11y', () => {
+    it(`should have role 'list' by default`, () => {
+      const driver = createDriver(<DropdownLayout options={options} />);
+      expect(driver.element.getAttribute('role')).toBe('list');
+    });
+
+    it(`should have the provided role`, () => {
+      const driver = createDriver(
+        <DropdownLayout options={options} role="listbox" />,
+      );
+      expect(driver.element.getAttribute('role')).toBe('listbox');
     });
   });
 

@@ -238,6 +238,7 @@ class DropdownLayout extends WixComponent {
       onMouseEnter,
       onMouseLeave,
       inContainer,
+      role,
     } = this.props;
     const contentContainerClassName = classNames({
       [styles.contentContainer]: true,
@@ -258,6 +259,7 @@ class DropdownLayout extends WixComponent {
         onKeyDown={this._onKeyDown}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        role={role}
       >
         <div
           className={contentContainerClassName}
@@ -451,6 +453,7 @@ DropdownLayout.propTypes = {
   itemHeight: PropTypes.oneOf(['small', 'big']),
   selectedHighlight: PropTypes.bool,
   inContainer: PropTypes.bool,
+  role: PropTypes.string,
 };
 
 DropdownLayout.defaultProps = {
@@ -461,6 +464,7 @@ DropdownLayout.defaultProps = {
   itemHeight: 'small',
   selectedHighlight: true,
   inContainer: false,
+  role: 'list',
 };
 
 DropdownLayout.NONE_SELECTED_ID = NOT_HOVERED_INDEX;
