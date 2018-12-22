@@ -627,20 +627,20 @@ describe('DropdownLayout', () => {
       const driver = createDriver(<DropdownLayout visible options={options} />);
       options.forEach((option, index) => {
         if (option.value === DIVIDER_OPTION_VALUE) {
-          expect(driver.optionAt(index).getAttribute('role')).toBe(null);
+          expect(driver.optionAt(index).getAttribute('role')).toBe('separator');
         } else {
           expect(driver.optionAt(index).getAttribute('role')).toBe('listitem');
         }
       });
     });
 
-    it(`should have role 'option' for all non-divider options`, () => {
+    it(`should have role 'option' for all options and 'separator' for dividers`, () => {
       const driver = createDriver(
         <DropdownLayout visible options={options} role="listbox" />,
       );
       options.forEach((option, index) => {
         if (option.value === DIVIDER_OPTION_VALUE) {
-          expect(driver.optionAt(index).getAttribute('role')).toBe(null);
+          expect(driver.optionAt(index).getAttribute('role')).toBe('separator');
         } else {
           expect(driver.optionAt(index).getAttribute('role')).toBe('option');
         }

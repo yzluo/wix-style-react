@@ -318,7 +318,14 @@ class DropdownLayout extends WixComponent {
   }
 
   _renderDivider(idx, dataHook) {
-    return <div key={idx} className={styles.divider} data-hook={dataHook} />;
+    return (
+      <div
+        key={idx}
+        className={styles.divider}
+        data-hook={dataHook}
+        role="separator"
+      />
+    );
   }
 
   _renderItem({
