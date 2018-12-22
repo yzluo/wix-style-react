@@ -3,6 +3,7 @@ import ReactTestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 
 import inputWithOptionsDriverFactory from './InputWithOptions.driver';
+import inputWithOptionsPrivateDriverFactory from './InputWithOptions.private.driver';
 import InputWithOptions from './InputWithOptions';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import { makeControlled } from '../../test/utils';
@@ -564,6 +565,25 @@ const runInputWithOptionsTest = driverFactory => {
       });
     });
 
+    describe('a11y', () => {
+      it(`should have role 'combobox'`, () => {
+        const driver = createDriver(<InputWithOptions options={options} />);
+        expect(driver.element.getAttribute('role')).toBe('combobox');
+      });
+
+      it(`should have role 'listbox' for the DropdownLayout`, () => {
+        const driver = createDriver(<InputWithOptions options={options} />);
+        expect(driver.dropdownLayoutElement.getAttribute('role')).toBe(
+          'listbox',
+        );
+      });
+
+      it(`should have 'aria-expanded false`, () => {
+        const driver = createDriver(<InputWithOptions options={options} />);
+        expect(driver.element.getAttribute('aria-expanded')).toBe('false');
+      });
+    });
+
     describe('testkit', () => {
       it('should exist', () => {
         const div = document.createElement('div');
@@ -618,6 +638,6 @@ const runInputWithOptionsTest = driverFactory => {
   });
 };
 
-runInputWithOptionsTest(inputWithOptionsDriverFactory);
+runInputWithOptionsTest(inputWithOptionsPrivateDriverFactory);
 
 export { runInputWithOptionsTest };

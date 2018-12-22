@@ -154,6 +154,7 @@ class InputWithOptions extends WixComponent {
           onClose={this.hideOptions}
           onSelect={this._onSelect}
           isComposing={this.state.isComposing}
+          role="listbox"
         />
       </div>
     );
@@ -162,7 +163,7 @@ class InputWithOptions extends WixComponent {
   render() {
     const { dropDirectionUp } = this.props;
     return (
-      <div>
+      <div role="combobox" aria-expanded={this.state.showOptions}>
         {dropDirectionUp ? this._renderDropdownLayout() : null}
         <div data-input-parent className={this.inputClasses()}>
           {this.renderInput()}
