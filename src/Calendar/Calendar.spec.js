@@ -1,3 +1,4 @@
+//file.only
 import React from 'react';
 import calendarDriverFactory from './Calendar.driver';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
@@ -245,14 +246,25 @@ describe('Calendar', () => {
         nextValue,
         expectedInitialMonth,
         expectedMonth,
+        numOfMonths = 1,
       }) {
         const { driver, rerender } = render(
-          <Calendar value={initialValue} onChange={() => {}} />,
+          <Calendar
+            numOfMonths={numOfMonths}
+            value={initialValue}
+            onChange={() => {}}
+          />,
         );
         expect(driver.getMonthCaption()).toEqual(
           monthNames[expectedInitialMonth],
         );
-        rerender(<Calendar value={nextValue} onChange={() => {}} />);
+        rerender(
+          <Calendar
+            numOfMonths={numOfMonths}
+            value={nextValue}
+            onChange={() => {}}
+          />,
+        );
         expect(driver.getMonthCaption()).toEqual(monthNames[expectedMonth]);
       }
 
@@ -274,6 +286,36 @@ describe('Calendar', () => {
         });
       });
 
+      it('when numOfMonths=2 - should not change the displayed month, provided that the new month is the following month', () => {
+        testCase({
+          initialValue: new Date(2018, OCTOBER, 1),
+          expectedInitialMonth: OCTOBER,
+          nextValue: new Date(2018, NOVEMBER, 1),
+          expectedMonth: OCTOBER,
+          numOfMonths: 2,
+        });
+      });
+
+      it('when numOfMonths=2 - should change the displayed month, provided that the new month more than one month away from the current month', () => {
+        testCase({
+          initialValue: new Date(2018, NOVEMBER, 1),
+          expectedInitialMonth: NOVEMBER,
+          nextValue: new Date(2019, OCTOBER, 1),
+          expectedMonth: SEPTEMBER,
+          numOfMonths: 2,
+        });
+      });
+
+      it('when numOfMonths=2 - should change the displayed month, provided that the new month is before the current month', () => {
+        testCase({
+          initialValue: new Date(2018, OCTOBER, 1),
+          expectedInitialMonth: OCTOBER,
+          nextValue: new Date(2018, SEPTEMBER, 1),
+          expectedMonth: SEPTEMBER,
+          numOfMonths: 2,
+        });
+      });
+
       it('should change the displayed month, provided that the current month is later than the new Date', () => {
         testCase({
           initialValue: new Date(2018, OCTOBER, 1),
@@ -283,7 +325,19 @@ describe('Calendar', () => {
         });
       });
 
-      it('should not change the displayed month, provided that the current month is contained in the new Range', () => {
+      it('should change the displayed month, provided that the current month is contained in the new Range', () => {
+        testCase({
+          initialValue: new Date(2018, OCTOBER, 1),
+          expectedInitialMonth: OCTOBER,
+          nextValue: {
+            from: new Date(2018, SEPTEMBER, 1),
+            to: new Date(2018, NOVEMBER, 1),
+          },
+          expectedMonth: SEPTEMBER,
+        });
+      });
+
+      it('numOfMonths=2 - should not change the displayed month, provided that the to month is shown', () => {
         testCase({
           initialValue: new Date(2018, OCTOBER, 1),
           expectedInitialMonth: OCTOBER,
@@ -292,6 +346,7 @@ describe('Calendar', () => {
             to: new Date(2018, NOVEMBER, 1),
           },
           expectedMonth: OCTOBER,
+          numOfMonths: 2,
         });
       });
 
@@ -304,6 +359,19 @@ describe('Calendar', () => {
             to: new Date(2018, NOVEMBER, 1),
           },
           expectedMonth: OCTOBER,
+        });
+      });
+
+      it('numOfMonths=2 - should not move the displayed month forward, provided that the to month one month after the current month', () => {
+        testCase({
+          initialValue: new Date(2018, SEPTEMBER, 1),
+          expectedInitialMonth: SEPTEMBER,
+          nextValue: {
+            from: new Date(2018, OCTOBER, 1),
+            to: new Date(2018, OCTOBER, 4),
+          },
+          numOfMonths: 2,
+          expectedMonth: SEPTEMBER,
         });
       });
 

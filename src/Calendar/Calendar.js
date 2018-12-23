@@ -20,12 +20,17 @@ export default class Calendar extends WixComponent {
     filterDate: () => true,
     shouldCloseOnSelect: true,
     onClose: () => {},
+    numOfMonths: 1,
   };
 
   constructor(props) {
     super(props);
 
-    const initialMonth = Calendar.getNextMonth(props.value);
+    const initialMonth = Calendar.getNextMonth(
+      props.value,
+      null,
+      props.numOfMonths,
+    );
     this.state = {
       month: initialMonth || new Date(),
     };
@@ -37,7 +42,11 @@ export default class Calendar extends WixComponent {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
-      const month = Calendar.getNextMonth(nextProps.value, this.state.month);
+      const month = Calendar.getNextMonth(
+        nextProps.value,
+        this.state.month,
+        nextProps.numOfMonths,
+      );
       if (month) {
         this.setState({ month });
       }
@@ -121,25 +130,87 @@ export default class Calendar extends WixComponent {
     return value instanceof Date;
   }
 
-  static getNextMonth = (nextPropsValue, currentMonthDate) => {
+  static dateMonthDiff = (b, a) => {
+    const yearA = Math.floor(a / 100);
+    const yearB = Math.floor(b / 100);
+    const monthA = a % 100;
+    const monthB = b % 100;
+    return monthB - monthA + 12 * (yearB - yearA);
+  };
+
+  static getMonthShiftToView = (month, numOfMonths, currentMonth) => {
+    if (!currentMonth) {
+      return 0;
+    }
+    const monthsDiff = Calendar.dateMonthDiff(month, currentMonth);
+    if (monthsDiff < 0) {
+      return 0;
+    } else if (monthsDiff >= numOfMonths) {
+      return 1 - numOfMonths;
+    }
+    return false;
+  };
+
+  static getMonthReturnValue = (dateValue, numOfMonths, currentMonth) => {
+    const toMonth = Calendar.dateToMonth(dateValue);
+    const returnValue = new Date(dateValue);
+    const shiftValue = Calendar.getMonthShiftToView(
+      toMonth,
+      numOfMonths,
+      currentMonth,
+    );
+    if (shiftValue !== false) {
+      returnValue.setMonth(returnValue.getMonth() + shiftValue);
+      return returnValue;
+    }
+    return null;
+  };
+
+  static getNextMonth = (nextPropsValue, currentMonthDate, numOfMonths) => {
     const nextValue = Calendar.parseValue(nextPropsValue);
     const currentMonth = Calendar.dateToMonth(currentMonthDate);
 
     if (Calendar.isSingleDay(nextValue)) {
-      if (currentMonth !== Calendar.dateToMonth(nextValue)) {
-        return nextValue;
-      }
+      return Calendar.getMonthReturnValue(nextValue, numOfMonths, currentMonth);
     } else {
       const fromMonth = Calendar.dateToMonth(nextValue.from);
       const toMonth = Calendar.dateToMonth(nextValue.to);
-      if (fromMonth && (!currentMonth || currentMonth < fromMonth)) {
-        return nextValue.from;
-      } else if (toMonth && (!currentMonth || currentMonth > toMonth)) {
-        return nextValue.to;
+      if (fromMonth && toMonth) {
+        const toDiff = Calendar.dateMonthDiff(toMonth, currentMonth);
+        const fromDiff = Calendar.dateMonthDiff(fromMonth, currentMonth);
+        const absFromDiff = Math.abs(
+          fromDiff > 0 ? fromDiff - numOfMonths + 1 : fromDiff,
+        );
+        const absToDiff = Math.abs(
+          toDiff > 0 ? toDiff - numOfMonths + 1 : toDiff,
+        );
+        if (absFromDiff <= absToDiff) {
+          return Calendar.getMonthReturnValue(
+            nextValue.from,
+            numOfMonths,
+            currentMonth,
+          );
+        } else {
+          return Calendar.getMonthReturnValue(
+            nextValue.to,
+            numOfMonths,
+            currentMonth,
+          );
+        }
+      } else if (fromMonth) {
+        return Calendar.getMonthReturnValue(
+          nextValue.from,
+          numOfMonths,
+          currentMonth,
+        );
+      } else if (toMonth) {
+        return Calendar.getMonthReturnValue(
+          nextValue.to,
+          numOfMonths,
+          currentMonth,
+        );
       }
     }
-
-    return null;
   };
 
   _getSelectedDays(value) {
