@@ -21,9 +21,11 @@ If your component's `unidriver` is composing other components that don’t use u
 3. The Private drivers are extending the public ones and should be used internally when testing the components.
 
 ## Best Practices
+
+1. All driver members should be functions (not variables), for consitency.
 1. Drivers should be used for when testing and do one of the following:
-  * Make a side effect (e.g. click)
-  * Retrieve some primitive value as string, number or boolean (e.g. some value / is checked)
+  - Make a side effect (e.g. click)
+  - Retrieve some primitive value as string, number or boolean (e.g. some value / is checked)
 1. Drivers should help testing the behavior and the DOM and not test React, so never check for component props.
 1. Components use `data-hook`s to easily locate parts of the DOM. We use them in the driver to query the elements.
 1. Drivers are tested internally in the library and exposed to consumers as TestKits.
