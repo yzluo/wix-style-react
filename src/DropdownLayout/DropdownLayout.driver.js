@@ -19,6 +19,21 @@ const dropdownLayoutDriverFactory = ({ element, wrapper, component }) => {
     return onSuccess();
   };
 
+  const optionDriver = option => ({
+    element: () => option,
+    mouseEnter: () => ReactTestUtils.Simulate.mouseEnter(option),
+    mouseLeave: () => ReactTestUtils.Simulate.mouseLeave(option),
+    isHovered: () => isClassExists(option, 'hovered'),
+    isSelected: () => isClassExists(option, 'selected'),
+    isHoveredWithGlobalClassName: () =>
+      isClassExists(option, 'wixstylereactHovered'),
+    isSelectedWithGlobalClassName: () =>
+      isClassExists(option, 'wixstylereactSelected'),
+    content: () => option.textContent,
+    click: () => ReactTestUtils.Simulate.mouseDown(option),
+    isDivider: () => isClassExists(option, 'divider'),
+  });
+
   return {
     exists: () => !!element,
     isShown: () => isClassExists(contentContainer, 'shown'),
@@ -80,6 +95,7 @@ const dropdownLayoutDriverFactory = ({ element, wrapper, component }) => {
       ReactTestUtils.Simulate.keyDown(element, { key: 'Escape' }),
     optionContentAt: position =>
       doIfOptionExists(position, () => optionAt(position).textContent),
+    /** @Deprecated Use optionAtDriver */
     optionAt,
     optionsContent: () =>
       values(options.childNodes).map(option => option.textContent),
@@ -93,6 +109,7 @@ const dropdownLayoutDriverFactory = ({ element, wrapper, component }) => {
       );
       option && ReactTestUtils.Simulate.mouseDown(option);
     },
+    /** @deprecated use optionAtDriver(pos).isDivider() */
     isOptionADivider: position =>
       doIfOptionExists(position, () =>
         isClassExists(optionAt(position), 'divider'),
@@ -115,25 +132,14 @@ const dropdownLayoutDriverFactory = ({ element, wrapper, component }) => {
     optionById(optionId) {
       return this.optionByHook(`dropdown-item-${optionId}`);
     },
+    optionAtDriver: position =>
+      doIfOptionExists(position, () => optionDriver(optionAt(position))),
     optionByHook: hook => {
       const option = options.querySelector(`[data-hook=${hook}]`);
       if (!option) {
         throw new Error(`an option with data-hook ${hook} was not found`);
       }
-      return {
-        element: () => option,
-        mouseEnter: () => ReactTestUtils.Simulate.mouseEnter(option),
-        mouseLeave: () => ReactTestUtils.Simulate.mouseLeave(option),
-        isHovered: () => isClassExists(option, 'hovered'),
-        isSelected: () => isClassExists(option, 'selected'),
-        isHoveredWithGlobalClassName: () =>
-          isClassExists(option, 'wixstylereactHovered'),
-        isSelectedWithGlobalClassName: () =>
-          isClassExists(option, 'wixstylereactSelected'),
-        content: () => option.textContent,
-        click: () => ReactTestUtils.Simulate.mouseDown(option),
-        isDivider: () => isClassExists(option, 'divider'),
-      };
+      return optionDriver(option);
     },
   };
 };

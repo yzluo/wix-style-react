@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
-import DropdownLayout, { DIVIDER_OPTION_VALUE } from './DropdownLayout';
+import DropdownLayout from './DropdownLayout';
 import dropdownLayoutPrivateDriverFactory from './DropdownLayout.private.driver';
 import dropdownLayoutDriverFactory from './DropdownLayout.driver';
 import { dropdownLayoutTestkitFactory } from '../../testkit';
@@ -85,13 +85,13 @@ describe('DropdownLayout', () => {
     const driver = createDriver(<DropdownLayout visible options={options} />);
     expect(driver.optionsLength()).toBe(7);
     expect(driver.optionContentAt(0)).toBe('Option 1');
-    expect(driver.isOptionADivider(4)).toBeTruthy();
+    expect(driver.optionAtDriver(4).isDivider()).toBeTruthy();
     expect(
       driver.optionByHook('dropdown-divider-divider1').isDivider(),
     ).toBeTruthy();
     expect(driver.optionContentAt(5)).toBe('Option 4');
 
-    expect(driver.isOptionADivider(6)).toBeTruthy();
+    expect(driver.optionAtDriver(6).isDivider()).toBeTruthy();
     expect(driver.optionByHook('dropdown-divider-6').isDivider()).toBeTruthy();
   });
 
@@ -625,26 +625,28 @@ describe('DropdownLayout', () => {
 
     it(`should have role 'listitem' for all non-divider options`, () => {
       const driver = createDriver(<DropdownLayout visible options={options} />);
-      options.forEach((option, index) => {
-        if (option.value === DIVIDER_OPTION_VALUE) {
-          expect(driver.optionAt(index).getAttribute('role')).toBe('separator');
+      for (let i = 0; i < driver.optionsLength(); i++) {
+        const option = driver.optionAtDriver(i);
+        if (option.isDivider()) {
+          expect(option.element().getAttribute('role')).toBe('separator');
         } else {
-          expect(driver.optionAt(index).getAttribute('role')).toBe('listitem');
+          expect(option.element().getAttribute('role')).toBe('listitem');
         }
-      });
+      }
     });
 
     it(`should have role 'option' for all options and 'separator' for dividers`, () => {
       const driver = createDriver(
         <DropdownLayout visible options={options} role="listbox" />,
       );
-      options.forEach((option, index) => {
-        if (option.value === DIVIDER_OPTION_VALUE) {
-          expect(driver.optionAt(index).getAttribute('role')).toBe('separator');
+      for (let i = 0; i < driver.optionsLength(); i++) {
+        const option = driver.optionAtDriver(i);
+        if (option.isDivider()) {
+          expect(option.element().getAttribute('role')).toBe('separator');
         } else {
-          expect(driver.optionAt(index).getAttribute('role')).toBe('option');
+          expect(option.element().getAttribute('role')).toBe('option');
         }
-      });
+      }
     });
   });
 
