@@ -19,21 +19,6 @@ const dropdownLayoutDriverFactory = ({ element, wrapper, component }) => {
     return onSuccess();
   };
 
-  const optionDriver = option => ({
-    element: () => option,
-    mouseEnter: () => ReactTestUtils.Simulate.mouseEnter(option),
-    mouseLeave: () => ReactTestUtils.Simulate.mouseLeave(option),
-    isHovered: () => isClassExists(option, 'hovered'),
-    isSelected: () => isClassExists(option, 'selected'),
-    isHoveredWithGlobalClassName: () =>
-      isClassExists(option, 'wixstylereactHovered'),
-    isSelectedWithGlobalClassName: () =>
-      isClassExists(option, 'wixstylereactSelected'),
-    content: () => option.textContent,
-    click: () => ReactTestUtils.Simulate.mouseDown(option),
-    isDivider: () => isClassExists(option, 'divider'),
-  });
-
   return {
     exists: () => !!element,
     isShown: () => isClassExists(contentContainer, 'shown'),
@@ -143,5 +128,22 @@ const dropdownLayoutDriverFactory = ({ element, wrapper, component }) => {
     },
   };
 };
+
+const optionDriver = option => ({
+  /** @deprecated */
+  element: () => option,
+  getAttribute: attr => option.getAttribute(attr),
+  mouseEnter: () => ReactTestUtils.Simulate.mouseEnter(option),
+  mouseLeave: () => ReactTestUtils.Simulate.mouseLeave(option),
+  isHovered: () => isClassExists(option, 'hovered'),
+  isSelected: () => isClassExists(option, 'selected'),
+  isHoveredWithGlobalClassName: () =>
+    isClassExists(option, 'wixstylereactHovered'),
+  isSelectedWithGlobalClassName: () =>
+    isClassExists(option, 'wixstylereactSelected'),
+  content: () => option.textContent,
+  click: () => ReactTestUtils.Simulate.mouseDown(option),
+  isDivider: () => isClassExists(option, 'divider'),
+});
 
 export default dropdownLayoutDriverFactory;

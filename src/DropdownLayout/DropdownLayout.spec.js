@@ -613,14 +613,14 @@ describe('DropdownLayout', () => {
   describe('a11y', () => {
     it(`should have role 'list' by default`, () => {
       const driver = createDriver(<DropdownLayout options={options} />);
-      expect(driver.element.getAttribute('role')).toBe('list');
+      expect(driver.getAttribute('role')).toBe('list');
     });
 
     it(`should have the provided role`, () => {
       const driver = createDriver(
         <DropdownLayout options={options} role="listbox" />,
       );
-      expect(driver.element.getAttribute('role')).toBe('listbox');
+      expect(driver.getAttribute('role')).toBe('listbox');
     });
 
     it(`should have role 'listitem' for all non-divider options`, () => {
@@ -628,23 +628,23 @@ describe('DropdownLayout', () => {
       for (let i = 0; i < driver.optionsLength(); i++) {
         const option = driver.optionAtDriver(i);
         if (option.isDivider()) {
-          expect(option.element().getAttribute('role')).toBe('separator');
+          expect(option.getAttribute('role')).toBe('separator');
         } else {
-          expect(option.element().getAttribute('role')).toBe('listitem');
+          expect(option.getAttribute('role')).toBe('listitem');
         }
       }
     });
 
-    it(`should have role 'option' for all options and 'separator' for dividers`, () => {
+    it(`should have role 'option' for all options and 'separator' for dividers when role='listbox'`, () => {
       const driver = createDriver(
         <DropdownLayout visible options={options} role="listbox" />,
       );
       for (let i = 0; i < driver.optionsLength(); i++) {
         const option = driver.optionAtDriver(i);
         if (option.isDivider()) {
-          expect(option.element().getAttribute('role')).toBe('separator');
+          expect(option.getAttribute('role')).toBe('separator');
         } else {
-          expect(option.element().getAttribute('role')).toBe('option');
+          expect(option.getAttribute('role')).toBe('option');
         }
       }
     });

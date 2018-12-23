@@ -11,7 +11,8 @@ const dropdownLayoutPrivateDriverFactory = ({
       wrapper,
       component,
     }),
-    element,
+    /** Get DOM attribute of the root element */
+    getAttribute: attr => element.getAttribute(attr),
   };
 };
 

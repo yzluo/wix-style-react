@@ -568,19 +568,19 @@ const runInputWithOptionsTest = driverFactory => {
     describe('a11y', () => {
       it(`should have role 'combobox'`, () => {
         const driver = createDriver(<InputWithOptions options={options} />);
-        expect(driver.element.getAttribute('role')).toBe('combobox');
+        expect(driver.getAttribute('role')).toBe('combobox');
       });
 
       it(`should have role 'listbox' for the DropdownLayout`, () => {
-        const driver = createDriver(<InputWithOptions options={options} />);
-        expect(driver.dropdownLayoutElement.getAttribute('role')).toBe(
-          'listbox',
+        const { dropdownLayoutDriver } = createDriver(
+          <InputWithOptions options={options} />,
         );
+        expect(dropdownLayoutDriver.getAttribute('role')).toBe('listbox');
       });
 
       it(`should have 'aria-expanded false`, () => {
         const driver = createDriver(<InputWithOptions options={options} />);
-        expect(driver.element.getAttribute('aria-expanded')).toBe('false');
+        expect(driver.getAttribute('aria-expanded')).toBe('false');
       });
     });
 
