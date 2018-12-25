@@ -12,7 +12,8 @@ describe('Calendar', () => {
 
   const SEPTEMBER = 8,
     OCTOBER = 9,
-    NOVEMBER = 10;
+    NOVEMBER = 10,
+    DECEMBER = 11;
 
   const monthNames = 'January February March April May June July August September October November December'.split(
     ' ',
@@ -268,6 +269,62 @@ describe('Calendar', () => {
         expect(driver.getMonthCaption()).toEqual(monthNames[expectedMonth]);
       }
 
+      describe('2 months view', () => {
+        it('should not change the displayed month, provided that the new month is the following month', () => {
+          testCase({
+            initialValue: new Date(2018, OCTOBER, 1),
+            expectedInitialMonth: OCTOBER,
+            nextValue: new Date(2018, NOVEMBER, 1),
+            expectedMonth: OCTOBER,
+            numOfMonths: 2,
+          });
+        });
+
+        it('should change the displayed month, provided that the new month more than one month away from the current month', () => {
+          testCase({
+            initialValue: new Date(2018, OCTOBER, 1),
+            expectedInitialMonth: OCTOBER,
+            nextValue: new Date(2018, DECEMBER, 1),
+            expectedMonth: NOVEMBER,
+            numOfMonths: 2,
+          });
+        });
+
+        it('should change the displayed month, provided that the new month is before the current month', () => {
+          testCase({
+            initialValue: new Date(2018, OCTOBER, 1),
+            expectedInitialMonth: OCTOBER,
+            nextValue: new Date(2018, SEPTEMBER, 1),
+            expectedMonth: SEPTEMBER,
+            numOfMonths: 2,
+          });
+        });
+        it('should not change the displayed month, provided that the to month is shown', () => {
+          testCase({
+            initialValue: new Date(2018, OCTOBER, 1),
+            expectedInitialMonth: OCTOBER,
+            nextValue: {
+              from: new Date(2018, SEPTEMBER, 1),
+              to: new Date(2018, NOVEMBER, 1),
+            },
+            expectedMonth: OCTOBER,
+            numOfMonths: 2,
+          });
+        });
+        it('should change the month to contain most of the range', () => {
+          testCase({
+            initialValue: new Date(2018, OCTOBER, 1),
+            expectedInitialMonth: OCTOBER,
+            nextValue: {
+              from: new Date(2018, NOVEMBER, 1),
+              to: new Date(2018, DECEMBER, 1),
+            },
+            expectedMonth: NOVEMBER,
+            numOfMonths: 2,
+          });
+        });
+      });
+
       it('should not change the displayed month, provided that current month contains the new Date', () => {
         testCase({
           initialValue: new Date(2018, OCTOBER, 1),
@@ -283,36 +340,6 @@ describe('Calendar', () => {
           expectedInitialMonth: OCTOBER,
           nextValue: new Date(2018, NOVEMBER, 1),
           expectedMonth: NOVEMBER,
-        });
-      });
-
-      it('when numOfMonths=2 - should not change the displayed month, provided that the new month is the following month', () => {
-        testCase({
-          initialValue: new Date(2018, OCTOBER, 1),
-          expectedInitialMonth: OCTOBER,
-          nextValue: new Date(2018, NOVEMBER, 1),
-          expectedMonth: OCTOBER,
-          numOfMonths: 2,
-        });
-      });
-
-      it('when numOfMonths=2 - should change the displayed month, provided that the new month more than one month away from the current month', () => {
-        testCase({
-          initialValue: new Date(2018, NOVEMBER, 1),
-          expectedInitialMonth: NOVEMBER,
-          nextValue: new Date(2019, OCTOBER, 1),
-          expectedMonth: SEPTEMBER,
-          numOfMonths: 2,
-        });
-      });
-
-      it('when numOfMonths=2 - should change the displayed month, provided that the new month is before the current month', () => {
-        testCase({
-          initialValue: new Date(2018, OCTOBER, 1),
-          expectedInitialMonth: OCTOBER,
-          nextValue: new Date(2018, SEPTEMBER, 1),
-          expectedMonth: SEPTEMBER,
-          numOfMonths: 2,
         });
       });
 
@@ -334,19 +361,6 @@ describe('Calendar', () => {
             to: new Date(2018, NOVEMBER, 1),
           },
           expectedMonth: SEPTEMBER,
-        });
-      });
-
-      it('numOfMonths=2 - should not change the displayed month, provided that the to month is shown', () => {
-        testCase({
-          initialValue: new Date(2018, OCTOBER, 1),
-          expectedInitialMonth: OCTOBER,
-          nextValue: {
-            from: new Date(2018, SEPTEMBER, 1),
-            to: new Date(2018, NOVEMBER, 1),
-          },
-          expectedMonth: OCTOBER,
-          numOfMonths: 2,
         });
       });
 

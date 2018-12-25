@@ -6,7 +6,7 @@ import addMonths from 'date-fns/add_months';
 import startOfMonth from 'date-fns/start_of_month';
 import classNames from 'classnames';
 import parse from 'date-fns/parse';
-
+import minBy from 'lodash/minBy';
 import WixComponent from '../BaseComponents/WixComponent';
 import localeUtilsFactory from '../LocaleUtils';
 import DatePickerHead from './DatePickerHead';
@@ -26,11 +26,7 @@ export default class Calendar extends WixComponent {
   constructor(props) {
     super(props);
 
-    const initialMonth = Calendar.getNextMonth(
-      props.value,
-      null,
-      props.numOfMonths,
-    );
+    const initialMonth = Calendar.getNextMonth(props.value, props.numOfMonths);
     this.state = {
       month: initialMonth || new Date(),
     };
@@ -44,8 +40,8 @@ export default class Calendar extends WixComponent {
     if (nextProps.value !== this.props.value) {
       const month = Calendar.getNextMonth(
         nextProps.value,
-        this.state.month,
         nextProps.numOfMonths,
+        this.state.month,
       );
       if (month) {
         this.setState({ month });
@@ -166,7 +162,44 @@ export default class Calendar extends WixComponent {
     return null;
   };
 
-  static getNextMonth = (nextPropsValue, currentMonthDate, numOfMonths) => {
+  static getShiftValueToMaxOverlap = (
+    from,
+    to,
+    numOfMonths,
+    currentMonthDate,
+  ) => {
+    const frameStart = Calendar.dateToMonth(currentMonthDate);
+    const frameEndDate = new Date(currentMonthDate);
+    frameEndDate.setMonth(frameEndDate.getMonth() + numOfMonths - 1);
+    const frameEnd = Calendar.dateToMonth(frameEndDate);
+
+    const fromDiffStart = Calendar.dateMonthDiff(from, frameStart);
+    const fromDiffEnd = Calendar.dateMonthDiff(from, frameEnd);
+    const toDiffStart = Calendar.dateMonthDiff(to, frameStart);
+    const toDiffEnd = Calendar.dateMonthDiff(to, frameEnd);
+
+    if (fromDiffStart >= 0 && toDiffEnd <= 0) {
+      return 0;
+    }
+
+    if (fromDiffEnd > 0) {
+      return (
+        fromDiffEnd -
+        1 +
+        Math.min(numOfMonths, Calendar.dateMonthDiff(to, from) + 1)
+      );
+    } else if (toDiffStart < 0) {
+      return (
+        toDiffStart +
+        1 -
+        Math.min(numOfMonths, Calendar.dateMonthDiff(to, from) + 1)
+      );
+    } else {
+      return minBy([fromDiffStart, toDiffEnd], Math.abs);
+    }
+  };
+
+  static getNextMonth = (nextPropsValue, numOfMonths, currentMonthDate) => {
     const nextValue = Calendar.parseValue(nextPropsValue);
     const currentMonth = Calendar.dateToMonth(currentMonthDate);
 
@@ -176,27 +209,17 @@ export default class Calendar extends WixComponent {
       const fromMonth = Calendar.dateToMonth(nextValue.from);
       const toMonth = Calendar.dateToMonth(nextValue.to);
       if (fromMonth && toMonth) {
-        const toDiff = Calendar.dateMonthDiff(toMonth, currentMonth);
-        const fromDiff = Calendar.dateMonthDiff(fromMonth, currentMonth);
-        const absFromDiff = Math.abs(
-          fromDiff > 0 ? fromDiff - numOfMonths + 1 : fromDiff,
+        const returnValue = new Date(currentMonthDate || null);
+        returnValue.setMonth(
+          returnValue.getMonth() +
+            Calendar.getShiftValueToMaxOverlap(
+              fromMonth,
+              toMonth,
+              numOfMonths,
+              currentMonthDate,
+            ),
         );
-        const absToDiff = Math.abs(
-          toDiff > 0 ? toDiff - numOfMonths + 1 : toDiff,
-        );
-        if (absFromDiff <= absToDiff) {
-          return Calendar.getMonthReturnValue(
-            nextValue.from,
-            numOfMonths,
-            currentMonth,
-          );
-        } else {
-          return Calendar.getMonthReturnValue(
-            nextValue.to,
-            numOfMonths,
-            currentMonth,
-          );
-        }
+        return returnValue;
       } else if (fromMonth) {
         return Calendar.getMonthReturnValue(
           nextValue.from,
