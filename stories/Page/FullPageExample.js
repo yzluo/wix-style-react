@@ -37,6 +37,8 @@ class FullPageExample extends React.Component {
     shortContent: bool,
     maxWidth: number,
     sidePadding: number,
+    stretchVertically: bool,
+    bottomPadding: number,
   };
 
   render() {
@@ -50,6 +52,8 @@ class FullPageExample extends React.Component {
           <Page
             maxWidth={this.props.maxWidth}
             sidePadding={this.props.sidePadding}
+            bottomPadding={this.props.bottomPadding}
+            stretchVertically={this.props.stretchVertically}
           >
             {header(Breadcrumbs)}
             {tail}
@@ -89,5 +93,9 @@ if (displayAdditionalStories) {
     .add(
       '2.13 + Page Example with short content sidePadding and maxWidth',
       () => <FullPageExample sidePadding={0} maxWidth={800} shortContent />,
+    )
+    .add(
+      '2.14 + Page Example with short content bottomPadding and stretchVertically',
+      () => <FullPageExample shortContent bottomPadding={120} stretchVertically/>,
     );
 }

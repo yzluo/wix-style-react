@@ -233,6 +233,8 @@ class Page extends WixComponent {
       className,
       children,
       minWidth,
+      stretchVertically,
+      bottomPadding,
     } = this.props;
     const { minimized } = this.state;
     const hasBackgroundImage = !!backgroundImageUrl;
@@ -251,18 +253,20 @@ class Page extends WixComponent {
       minimizedFixedContainerHeight,
     } = this._calculateHeaderMeasurements({ PageTail });
 
+    const classNameStretchVertically = stretchVertically ? s.stretchVertically: '';
+
     const contentLayoutProps = {
       className: classNames(s.content, {
         [s.contentFullScreen]: contentFullScreen,
-      }),
+      }, classNameStretchVertically),
       style: contentFullScreen ? null : pageDimensionsStyle,
     };
 
     return (
-      <div className={classNames(s.pageWrapper, className)}>
+      <div className={classNames(s.pageWrapper, className, classNameStretchVertically)}>
         <div
-          className={s.page}
-          style={{ minWidth: minWidth + 2 * PAGE_SIDE_PADDING_PX }}
+          className={classNames(s.page, classNameStretchVertically)}
+          style={{ minWidth: minWidth + 2 * PAGE_SIDE_PADDING_PX, paddingBottom: bottomPadding }}
         >
           <div
             data-hook="page-fixed-container"
@@ -336,7 +340,7 @@ class Page extends WixComponent {
                 style={{ height: gradientHeight }}
               />
             )}
-            <div className={s.contentContainer}>
+            <div className={classNames(s.contentContainer, classNameStretchVertically)}>
               <div {...contentLayoutProps}>
                 {this._safeGetChildren(PageContent)}
               </div>
@@ -377,6 +381,8 @@ Page.propTypes = {
   minWidth: PropTypes.number,
   /** Sets padding of the sides of the page */
   sidePadding: PropTypes.number,
+  /** Sets padding at the bottom of the page */
+  bottomPadding: PropTypes.number,
   /** A css class to be applied to the component's root element */
   className: PropTypes.string,
   /** Header background color class name, allows to add a gradient to the header */
@@ -385,6 +391,8 @@ Page.propTypes = {
   gradientCoverTail: PropTypes.bool,
   /** Is called with the Page's scrollable content ref **/
   scrollableContentRef: PropTypes.func,
+  /** If true, page and page content will cover available height */
+  stretchVertically: PropTypes.bool,
 
   children: PropTypes.arrayOf((children, key) => {
     const childrenObj = getChildrenObject(children);

@@ -12,7 +12,7 @@ export default class SomeContentComponent extends React.Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: 'white' }}>
+      <div style={{ backgroundColor: 'white', minHeight: '100%' }}>
         {this.props.showScss && !this.props.shortContent && (
           <pre>
             <code>{stylesRaw}</code>

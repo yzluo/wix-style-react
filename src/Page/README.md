@@ -10,8 +10,10 @@ The PageHeader component is the header implementation that will be changed when 
 | backgroundImageUrl | string | null | false | Background image url of the header beackground |
 | maxWidth | number | null | false | Sets the max width of the header and the content |
 | sidePadding | number | null | false | Sets padding of the sides of the page |
+| bottomPadding | number | null | false | Sets padding for the bottom of the page content |
 | gradientClassName | string | null | false | Header background color class name, allows to add a gradient to the header |
 | gradientCoverTail | bool | true | false | Should gradient cover Page.Tail |
+| stretchVertically | bool | false | false | If true, the page content will use all of its container's height |
 
 ## Children
 
@@ -20,7 +22,7 @@ The PageHeader component is the header implementation that will be changed when 
 | Page.Header | Page.Header | null | true | The PageHeader object which defines the components within the Header |
 | Page.Tail | Page.Tail | null | false | A placeholder for a component which sticks to the bottom of the header. Page.Tail.children receive `minimized` flag |
 | Page.Content | Page.Content | null | true | A placeholder for the page scrollable body, support `fullScreen` property which spans the content on the available area |
-| Page.FixedContent | Page.FixedContent | null | false | A placeholder for the a component which sticks to the bottom of the Tail (or bottom of Header if there is no Tail). It gets the same layout as the Page.Content. If Page.content `fullScreen` is enabled, then this FixedContent will be also full screen. |
+| Page.FixedContent | Page.FixedContent | null | false | A placeholder for a component which sticks to the bottom of the Tail (or bottom of Header if there is no Tail). It gets the same layout as the Page.Content. If Page.content `fullScreen` is enabled, then this FixedContent will be also full screen. |
 
 
 ## Usage
