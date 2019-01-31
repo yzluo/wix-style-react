@@ -156,7 +156,7 @@ const calendarDriverFactory = ({ element }) => {
         const date = item.childNodes[0]
           .getAttribute('data-date')
           .split('-')
-          .map(item => parseInt(item));
+          .map(part => parseInt(part));
         result.push(new Date(date[0], date[1], date[2]));
       });
       return result;

@@ -1,0 +1,69 @@
+:import {
+  -st-from: "wix-ui-core/dist/src/hocs/Focusable/Focusable.st.css";
+  -st-default: Focusable;
+}
+
+:import {
+  -st-from: "wix-ui-core/dist/src/themes/backoffice/colors.st.css";
+  -st-named: F00, B20, B50, D55;
+}
+
+:import {
+  -st-from: "../../Text/Text.st.css";
+  -st-default: Text;
+}
+
+.root {
+  -st-extends: Focusable;
+  -st-states: selected;
+  /* Positioning */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+ 
+  /* Sizing */
+  flex-basis: 100%;
+  height: 36px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  /* Border & Spacing */
+  background: transparent;
+  border: solid 2px transparent;
+  border-radius: 6px;
+  padding: 0 24px;
+
+  /* Disable native focus */
+  outline: none;
+}
+
+.root:not(:disabled):hover {
+  background-color: value(B50);
+}
+
+.root:not(:disabled):focus-visible {
+  box-shadow: 0 0 0 3px value(F00);
+}
+
+.root:disabled {
+  color: value(D55);
+}
+
+/* Selected styles */ 
+
+.root:selected {
+  border-color: value(B20);
+  z-index: 1000;
+}
+
+.root:selected:disabled {
+  border-color: value(D55);
+}
+
+/* Additional classes */
+
+.prefix {
+  flex-shrink: 0;
+  margin: 0 6px 0 -6px;
+}

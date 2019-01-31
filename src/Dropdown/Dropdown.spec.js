@@ -147,10 +147,7 @@ describe('Dropdown', () => {
 
     it('should have no selection if selectedId does not exist', () => {
       const { dropdownLayoutDriver } = createDriver(
-        <Dropdown
-          options={[{ id: 0, value: 'Option 1' }]}
-          selectedId={99}
-        />,
+        <Dropdown options={[{ id: 0, value: 'Option 1' }]} selectedId={99} />,
       );
 
       expect(dropdownLayoutDriver.optionById(0).isSelected()).toBeFalsy();

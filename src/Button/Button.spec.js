@@ -1,7 +1,4 @@
-import React from 'react';
-
-import { render, cleanup } from '../../test/utils/unit';
-import { depLogger } from '../utils/deprecationLog';
+import { cleanup } from '../../test/utils/unit';
 import Button from '.';
 
 describe('Button', () => {

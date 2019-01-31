@@ -33,7 +33,7 @@ class PopoverMenuItem extends WixComponent {
       <li className={styles.rootDivider}>
         <div className={styles.divider} />
       </li>
-      ) : (
+    ) : (
       <li
         className={classnames(styles.root, {
           [styles.large]: this.props.size === 'large',

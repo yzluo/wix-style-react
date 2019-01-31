@@ -1,0 +1,78 @@
+:import {
+  -st-from: "wix-ui-core/dist/src/hocs/Focusable/Focusable.st.css";
+  -st-default: Focusable;
+}
+
+:import {
+  -st-from: "wix-ui-core/dist/src/themes/backoffice/colors.st.css";
+  -st-named: F00, B20, B50, D55, D80;
+}
+
+.root {
+  width: 100%;
+}
+
+.button {
+  -st-extends: Focusable;
+  -st-states: selected;
+  /* Positioning */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+ 
+  /* Sizing */
+  flex-basis: 100%;
+  width: 100%;
+  height: 36px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  /* Border & Spacing */
+  background: transparent;
+  border: solid 2px transparent;
+  padding: 0 6px;
+  border-radius: 6px;
+
+
+  /* Disable native focus */
+  outline: none;
+}
+
+.button:not(:disabled):hover {
+  background-color: value(B50);
+}
+
+.button:not(:disabled):focus-visible {
+  box-shadow: 0 0 0 3px value(F00);
+}
+
+.button:disabled {
+  color: value(D55);
+}
+/* Selected styles */ 
+
+.button:selected {
+  border-color: value(B20);
+  z-index: 1000;
+}
+
+.button:selected:disabled {
+  border-color: value(D55);
+}
+
+/* Additional styles */ 
+
+.text {
+  -st-states: shown;
+}
+
+.text:shown {
+   color: value(D80);
+}
+
+.textWrapper {
+  padding: 12px 24px;
+  text-align: center;
+  color: value(D80);
+}

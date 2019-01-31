@@ -85,6 +85,7 @@ export const richTextAreaTestkitFactory = enzymeTestkitFactoryCreator(load('../s
 export const richTextAreaCompositeTestkitFactory = enzymeTestkitFactoryCreator(load('../src/RichTextAreaComposite/RichTextAreaComposite.driver'));
 export const searchTestkitFactory = enzymeTestkitFactoryCreator(load('../src/Search/Search.driver'));
 export const sectionHelperTestkitFactory = enzymeTestkitFactoryCreator(load('../src/SectionHelper/SectionHelper.driver'));
+export const segmentedToggleTestkitFactory = enzymeUniTestkitFactoryCreator(load('../src/SegmentedToggle/SegmentedToggle.driver'));
 export const selectorTestkitFactory = enzymeTestkitFactoryCreator(load('../src/Selector/Selector.driver'));
 export const sideMenuTestkitFactory = enzymeTestkitFactoryCreator(load('../src/SideMenu/core/SideMenu.driver'));
 export const sideMenuDrillTestkitFactory = enzymeTestkitFactoryCreator(load('../src/SideMenu/DrillView/DrillView.driver'));

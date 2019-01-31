@@ -6,10 +6,8 @@ import InfiniteScroll from '../utils/InfiniteScroll';
 import SortByArrowUp from '../new-icons/system/SortByArrowUp';
 import SortByArrowDown from '../new-icons/system/SortByArrowDown';
 import { Animator } from 'wix-animations';
-import InfoCircle from 'wix-ui-icons-common/InfoCircle';
 import Tooltip from '../Tooltip/Tooltip';
 import InfoIcon from '../common/InfoIcon';
-import deprecationLog from '../utils/deprecationLog';
 
 export const DataTableHeader = props => {
   const { dataHook } = props;

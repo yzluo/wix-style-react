@@ -130,6 +130,22 @@ describe('FormField', () => {
     await inputDriver.enterText('11111-11111-11111-11111');
   });
 
+  eyes.it('should render length count when label is inline', async () => {
+    await browser.get(storyUrlWithExamples);
+    const formFieldDriver = formFieldTestkitFactory({
+      dataHook: 'storybook-formfield-inline-label-length-count',
+    });
+    const element = formFieldDriver.element();
+    const inputDriver = inputTestkitFactory({
+      dataHook: 'storybook-formfield-inline-label-length-count-input',
+    });
+    await waitForVisibilityOf(element, 'Cannot find FormField component');
+    await scrollToElement(element);
+    await eyes.checkWindow('count is zero');
+    await inputDriver.enterText('11111-11111');
+    await inputDriver.enterText('11111-11111-11111-11111');
+  });
+
   eyes.it('should be rendered within Grid', async () => {
     await browser.get(storyUrlWithExamples);
     const formFieldDriver = formFieldTestkitFactory({

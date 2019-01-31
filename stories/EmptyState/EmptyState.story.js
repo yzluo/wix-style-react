@@ -76,7 +76,9 @@ export default {
 
       <ul>
         <li>
-          <TextButton onClick={linkTo('2. Layout', '2.5 Page')}>Page</TextButton>
+          <TextButton onClick={linkTo('2. Layout', '2.5 Page')}>
+            Page
+          </TextButton>
           <br />
         </li>
         <li>
@@ -90,7 +92,9 @@ export default {
           <br />
         </li>
         <li>
-          <TextButton onClick={linkTo('9. Modals', '9.1 Alert')}>Alert</TextButton>
+          <TextButton onClick={linkTo('9. Modals', '9.1 Alert')}>
+            Alert
+          </TextButton>
           <br />
         </li>
         <li>

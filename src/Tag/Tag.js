@@ -6,7 +6,6 @@ import CloseButton from '../CloseButton';
 import WixComponent from '../BaseComponents/WixComponent';
 import Text from '../Text';
 import noop from 'lodash/noop';
-import deprecationLog from '../utils/deprecationLog';
 import { dataHooks } from './Tag.helpers';
 
 const tagToTextSize = {

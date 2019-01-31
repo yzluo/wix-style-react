@@ -316,7 +316,7 @@ export default class Calendar extends WixComponent {
     }
   };
 
-  _handleDayKeyDown = (_value, _modifiers = {}, event = null) => {
+  _handleDayKeyDown = (_value, _modifiers, event = null) => {
     this._preventActionEventDefault(event);
 
     const unfocusedDay = this.dayPickerRef.dayPicker.querySelector(

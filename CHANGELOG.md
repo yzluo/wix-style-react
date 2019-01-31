@@ -18,7 +18,8 @@ Types of changes:
 
 ### Added
 
-- `<Calendar/>` - Add `autoFocus` prop #2838(https://github.com/wix/wix-style-react/pull/2838)
+- `<SegmentedToggle/>` - new component [#2797](https://github.com/wix/wix-style-react/pull/2797)
+- `<Calendar/>` - Add `autoFocus` prop [#2838](https://github.com/wix/wix-style-react/pull/2838)
 
 ### Fixed
 

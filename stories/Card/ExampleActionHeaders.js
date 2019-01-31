@@ -44,7 +44,9 @@ export default () => (
                   content="And a tooltip!"
                 >
                   <div>
-                    <TextButton as="a" href="http://www.wix.com/">Link to Wix</TextButton>
+                    <TextButton as="a" href="http://www.wix.com/">
+                      Link to Wix
+                    </TextButton>
                   </div>
                 </Tooltip>
               }

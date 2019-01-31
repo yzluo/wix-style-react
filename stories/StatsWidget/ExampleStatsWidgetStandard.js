@@ -2,7 +2,7 @@ import React from 'react';
 import StatsWidget from '../../src/StatsWidget';
 import styles from './ExampleStatsWidget.scss';
 import { Container } from '../../src/Grid';
-import { storySettings } from './storySettings'
+import { storySettings } from './storySettings';
 
 const statistics = [
   {

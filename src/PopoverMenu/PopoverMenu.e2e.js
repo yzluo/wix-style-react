@@ -100,7 +100,11 @@ describe('PopoverMenu', () => {
     await waitForVisibilityOf(driver.menu.element());
 
     await browser.wait(
-      waitForVisibilityOf(driver.menu.element(by.css(`[data-hook="${storySettings.itemDataHookDivider}"]`))),
+      waitForVisibilityOf(
+        driver.menu.element(
+          by.css(`[data-hook="${storySettings.itemDataHookDivider}"]`),
+        ),
+      ),
       1000,
       'PopoverMenu has no divider',
     );

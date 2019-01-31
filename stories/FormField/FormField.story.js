@@ -14,6 +14,8 @@ import ToggleSwitch from 'wix-style-react/ToggleSwitch';
 
 import ExampleWithLengthCount from './ExampleWithLengthCount';
 import ExampleWithLengthCountRaw from '!raw-loader!./ExampleWithLengthCount';
+import ExampleInlineWithLengthCount from './ExampleInlineWithLengthCount';
+import ExampleInlineWithLengthCountRaw from '!raw-loader!./ExampleInlineWithLengthCount';
 import ExampleWithinGridRaw from '!raw-loader!./ExampleWithinGrid';
 
 const ID = 'formFieldId';
@@ -102,6 +104,15 @@ export default {
       <CodeExample title="With Length Count" code={ExampleWithLengthCountRaw}>
         <div style={{ width: '500px' }}>
           <ExampleWithLengthCount />
+        </div>
+      </CodeExample>
+
+      <CodeExample
+        title="Inline Label With Length Count"
+        code={ExampleInlineWithLengthCountRaw}
+      >
+        <div style={{ width: '500px' }}>
+          <ExampleInlineWithLengthCount />
         </div>
       </CodeExample>
 

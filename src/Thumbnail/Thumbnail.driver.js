@@ -8,7 +8,7 @@ const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 
 export const thumbnailDriverFactory = base => {
   const byHook = hook => base.$(`[data-hook*="${hook}"]`);
-  const getStyle = async (rule) =>
+  const getStyle = async rule =>
     (await base.attr('style')).match(new RegExp(`${rule}: (.*?);`))[1];
 
   const titleDriver = async () =>

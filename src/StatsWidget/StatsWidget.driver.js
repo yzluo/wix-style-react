@@ -2,7 +2,6 @@ import dropdownLayoutDriverFactory from '../DropdownLayout/DropdownLayout.driver
 import headerDriverFactory from '../Card/Header/Header.driver';
 import { badgeDriverFactory } from 'wix-ui-backoffice/dist/src/components/Badge/Badge.driver';
 import { findByHook } from '../../test/utils';
-import deprecationLog from '../utils/deprecationLog';
 
 const statsWidgetDriverFactory = ({ element }) => {
   const getBadgeDriver = elm => badgeDriverFactory({ element: elm });

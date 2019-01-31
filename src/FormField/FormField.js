@@ -109,6 +109,8 @@ class FormField extends React.Component {
     return children;
   }
 
+  _hasCharCounter = () => typeof this.state.lengthLeft === 'number';
+
   _renderInfoIcon = () => {
     const { infoContent, infoTooltipProps } = this.props;
     return (
@@ -134,6 +136,7 @@ class FormField extends React.Component {
         data-hook="formfield-inline-suffixes"
         className={classnames(styles.suffixesInline, {
           [styles.minLabelHeight]: !children,
+          [styles.inlineWithCharCounter]: this._hasCharCounter(),
         })}
       >
         <Label
@@ -148,6 +151,11 @@ class FormField extends React.Component {
     );
   };
 
+  _hasInlineLabel = (label, labelPlacement) =>
+    label &&
+    (labelPlacement === labelPlacements.left ||
+      labelPlacement === labelPlacements.right);
+
   render() {
     const {
       label,
@@ -160,11 +168,6 @@ class FormField extends React.Component {
       stretchContent,
     } = this.props;
     const { lengthLeft } = this.state;
-
-    const hasInlineLabel = (label, labelPlacement) =>
-      label &&
-      (labelPlacement === labelPlacements.left ||
-        labelPlacement === labelPlacements.right);
 
     return (
       <div
@@ -194,7 +197,7 @@ class FormField extends React.Component {
 
             {required && asterisk}
             {this._renderInfoIcon()}
-            {typeof lengthLeft === 'number' && charactersLeft(lengthLeft)}
+            {this._hasCharCounter() && charactersLeft(lengthLeft)}
           </div>
         )}
 
@@ -203,16 +206,20 @@ class FormField extends React.Component {
             data-hook="formfield-children"
             className={classnames(styles.children, {
               [styles.childrenWithInlineSuffixes]:
-                !label || hasInlineLabel(label, labelPlacement),
+                !label || this._hasInlineLabel(label, labelPlacement),
             })}
           >
+            {(!label || labelPlacement !== labelPlacements.top) &&
+              this._hasCharCounter() &&
+              charactersLeft(lengthLeft)}
             {this.renderChildren()}
           </div>
         )}
 
         {!label && (required || infoContent) && this._renderInlineSuffixes()}
 
-        {hasInlineLabel(label, labelPlacement) && this._renderInlineSuffixes()}
+        {this._hasInlineLabel(label, labelPlacement) &&
+          this._renderInlineSuffixes()}
       </div>
     );
   }

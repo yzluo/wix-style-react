@@ -11,7 +11,8 @@ import ExamplesAnchor from '!raw-loader!./ExamplesAnchor';
 import { Layout, Cell } from '../../../src/Layout';
 import styles from './ButtonsSpacing.scss';
 
-const Link = props => <a {...props} />;
+const Link = ({ children, ...rest }) => <a {...rest}>{children}</a>;
+
 class IconButtonStory extends React.Component {
   render() {
     return (

@@ -1,0 +1,23 @@
+:import {
+  -st-from: "wix-ui-core/dist/src/themes/backoffice/colors.st.css";
+  -st-named: F00, B30, D80, D55;
+}
+
+.root {
+  -st-states: disabled;
+  /* Positioning */
+  display: flex;
+  /* Sizing */
+  box-sizing: border-box;
+  /* Border & Spacing */
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px value(B30);
+  /* Styles */
+  background: value(D80);
+  /* Disable native focus */
+  outline:none;
+}
+
+.root:disabled {
+  box-shadow: 0 0 0 1px value(D55);
+}

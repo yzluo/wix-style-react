@@ -267,4 +267,9 @@ module.exports = {
   Box: { unidriver },
 
   Thumbnail: { unidriver },
+
+  SegmentedToggle: {
+    testkitPath: '../src/SegmentedToggle/SegmentedToggle.driver',
+    unidriver,
+  },
 };

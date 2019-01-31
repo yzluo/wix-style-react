@@ -123,7 +123,7 @@ describe('FormField', () => {
     it('should be rendered', () => {
       const text = 'hello';
       const driver = createDriver(renderFormField({ children: text }));
-      expect(driver.getChildren().innerHTML).toEqual(text);
+      expect(driver.getChildren().textContent).toEqual(text);
     });
 
     it('should apply minHeight on label wrapper when there is no children', () => {
@@ -146,7 +146,7 @@ describe('FormField', () => {
         );
       });
 
-      describe('with `label` prop', () => {
+      describe('setCharactersLeft', () => {
         it('should display counter when `setCharactersLeft` called', () => {
           const charactersLeft = 87987;
           const driver = createDriver(
@@ -158,7 +158,7 @@ describe('FormField', () => {
           expect(driver.getLengthLeft()).toBe(charactersLeft);
         });
 
-        it('should display different color when lengtLeft < 0', () => {
+        it('should display different color when lengthLeft < 0', () => {
           const charactersLeft = -1;
           const driver = createDriver(
             renderFormField({
@@ -169,7 +169,7 @@ describe('FormField', () => {
           expect(driver.isLengthExceeded()).toBe(true);
         });
 
-        it('should display 0 when lengtLeft === 0', () => {
+        it('should display 0 when lengthLeft === 0', () => {
           const charactersLeft = 0;
           const driver = createDriver(
             renderFormField({
@@ -179,14 +179,39 @@ describe('FormField', () => {
           );
           expect(driver.getLengthLeft()).toBe(0);
         });
-      });
 
-      describe('without `label` prop', () => {
-        it('should not display counter', () => {
+        it('should display counter even when label is empty', () => {
+          const charactersLeft = 50;
           const driver = createDriver(
-            renderFormField({ children: setCharactersLeftOnMount(1) }),
+            renderFormField({
+              children: setCharactersLeftOnMount(charactersLeft),
+            }),
           );
-          expect(driver.getLengthLeft()).toEqual(null);
+          expect(driver.getLengthLeft()).toBe(charactersLeft);
+        });
+
+        it('should display counter when label is placed on the right', () => {
+          const charactersLeft = 50;
+          const driver = createDriver(
+            renderFormField({
+              label,
+              labelPlacement: 'right',
+              children: setCharactersLeftOnMount(charactersLeft),
+            }),
+          );
+          expect(driver.getLengthLeft()).toBe(charactersLeft);
+        });
+
+        it('should display counter when label is placed on the left', () => {
+          const charactersLeft = 50;
+          const driver = createDriver(
+            renderFormField({
+              label,
+              labelPlacement: 'left',
+              children: setCharactersLeftOnMount(charactersLeft),
+            }),
+          );
+          expect(driver.getLengthLeft()).toBe(charactersLeft);
         });
       });
     });

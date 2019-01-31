@@ -10,7 +10,9 @@ import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import Tooltip from '../../Tooltip/Tooltip';
 
 describe('InputAreaWithLabelComposite', () => {
-  const createDriver = createDriverFactory(inputAreaWithLabelCompositeDriverFactory);
+  const createDriver = createDriverFactory(
+    inputAreaWithLabelCompositeDriverFactory,
+  );
   const createAutoCompleteDriver = createDriverFactory(
     autoCompleteCompositeDriverFactory,
   );

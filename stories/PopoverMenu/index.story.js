@@ -93,7 +93,7 @@ export default {
           <ExampleDisabledLarge />
         </div>
       </CodeExample>
-      <CodeExample title="With divider" code={ExampleWithDividerRaw} >
+      <CodeExample title="With divider" code={ExampleWithDividerRaw}>
         <div style={exampleContainerStyle}>
           <ExampleWithDivider />
         </div>

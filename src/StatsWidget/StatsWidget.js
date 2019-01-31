@@ -10,7 +10,6 @@ import Badge from '../Badge';
 import DropdownBase from '../DropdownBase';
 import TextButton from '../TextButton';
 import ChevronDown from '../new-icons/ChevronDown';
-import deprecationLog from '../utils/deprecationLog';
 
 function renderTrend(percent, invertPercentColor) {
   const badgeProps = {

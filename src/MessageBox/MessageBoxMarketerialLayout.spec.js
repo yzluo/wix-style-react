@@ -1,5 +1,4 @@
 import React from 'react';
-import { consoleErrors } from 'wix-ui-test-utils/dist/src/jest-setup';
 import MessageBoxMarketerialLayout from './MessageBoxMarketerialLayout';
 import MessageBoxMarketerialLayoutFactory from './MessageBoxMarketerialLayout.driver';
 import sinon from 'sinon';
@@ -10,7 +9,6 @@ import {
 import { messageBoxMarketerialLayoutTestkitFactory } from '../../testkit';
 import { messageBoxMarketerialLayoutTestkitFactory as enzymeMessageBoxTestkitFactory } from '../../testkit/enzyme';
 import { mount } from 'enzyme';
-import { depLogger } from '../utils/deprecationLog';
 import { createRendererWithDriver, cleanup } from '../../test/utils/react';
 
 describe('MessageBoxMarketerialLayout', () => {
@@ -30,9 +28,7 @@ describe('MessageBoxMarketerialLayout', () => {
       const props = Object.assign({}, requiredProps, {
         primaryButtonLabel: 'primaryButtonLabel',
       });
-      const driver = createDriver(
-        <MessageBoxMarketerialLayout {...props} />,
-      );
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
       expect(driver.getPrimaryButtonText()).toBe(props.primaryButtonLabel);
     });
 

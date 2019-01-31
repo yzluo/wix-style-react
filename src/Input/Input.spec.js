@@ -19,6 +19,7 @@ import {
 } from '../../test/utils/unit';
 
 describe('Input', () => {
+  /* eslint-disable-next-line no-shadow */
   const render = createRendererWithDriver(inputDriverFactory);
   const createDriver = createDriverFactory(inputDriverFactory);
   const ControlledInput = makeControlled(Input);

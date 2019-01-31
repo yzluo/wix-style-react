@@ -14,7 +14,7 @@ import ExamplesAnchor from '!raw-loader!./ExamplesAnchor';
 import { Layout, Cell } from '../../../src/Layout';
 import styles from './ButtonsSpacing.scss';
 
-const Link = props => <a {...props} />;
+const Link = ({ children, ...rest }) => <a {...rest}>{children}</a>;
 
 class TextButtonStory extends React.Component {
   render() {

@@ -24,8 +24,8 @@ This way, if one day we want to add a controlled version of the prop, we simply 
 
 In the above case, when we want to make a version with a controlled `selectedId`, but we didn't call the prop `initialSelectedId` in the first place, then to avoid a breaking change, we should do the following steps:
 
-- Add a new `controlled` boolean prop. When `true` the `selectedId` would act as a controlled prop.
+- Add a new `update` boolean prop. When `true` the `selectedId` would act as a controlled prop.
 - Add an `initialSelectedId` prop.
-- Add deprecationLog that prints only when `selectedId` is used and `controlled=false`. The log should instruct the consumer to use `initialSelectedId` instead.
+- Add [`deprecationLog`](../internal/DEPRECATION_GUIDE.md) that prints only when `selectedId` is used and `update=false`. The log should instruct the consumer to use `initialSelectedId` instead.
 
-Later on, we can have a major version, where we make selectedId controlled and deprecate the controlled prop.
+Later on, we can have a major version, where we make selectedId controlled and deprecate the `upgrade` prop.

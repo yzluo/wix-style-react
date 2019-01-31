@@ -85,6 +85,7 @@ export const richTextAreaTestkitFactory = testkitFactoryCreator(load('../src/Ric
 export const richTextAreaCompositeTestkitFactory = testkitFactoryCreator(load('../src/RichTextAreaComposite/RichTextAreaComposite.driver'));
 export const searchTestkitFactory = testkitFactoryCreator(load('../src/Search/Search.driver'));
 export const sectionHelperTestkitFactory = testkitFactoryCreator(load('../src/SectionHelper/SectionHelper.driver'));
+export const segmentedToggleTestkitFactory = uniTestkitFactoryCreator(load('../src/SegmentedToggle/SegmentedToggle.driver'));
 export const selectorTestkitFactory = testkitFactoryCreator(load('../src/Selector/Selector.driver'));
 export const sideMenuTestkitFactory = testkitFactoryCreator(load('../src/SideMenu/core/SideMenu.driver'));
 export const sideMenuDrillTestkitFactory = testkitFactoryCreator(load('../src/SideMenu/DrillView/DrillView.driver'));

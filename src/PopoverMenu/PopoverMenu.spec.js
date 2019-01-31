@@ -108,9 +108,7 @@ describe('PopoverMenu', () => {
   it('should not render arrow when prop showArrow=false', async () => {
     const driver = createDriver(
       <PopoverMenu showArrow={false}>
-        <PopoverMenuItem
-          dataHook={menuItemDataHook}
-        />
+        <PopoverMenuItem dataHook={menuItemDataHook} />
       </PopoverMenu>,
     ).init.menuItemDataHook(menuItemDataHook);
     driver.click();

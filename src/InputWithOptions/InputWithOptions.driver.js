@@ -1,6 +1,5 @@
 import inputDriverFactory from '../Input/Input.driver';
 import dropdownLayoutDriverFactory from '../DropdownLayout/DropdownLayout.driver';
-import deprecationLog from '../utils/deprecationLog';
 
 const inputWithOptionsDriverFactory = ({ element }) => {
   const inputWrapper = element && element.childNodes[0];
