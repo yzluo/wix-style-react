@@ -5,6 +5,8 @@ const ProgressBar = require('progress');
 
 const STEP_WIDTH = 9;
 const STEPS = 4;
+const options = { stdio: 'pipe', env: { FORCE_COLOR: true } };
+
 const progress = new ProgressBar(
   'Transpiling `src` -> `dist` :bar :percent :dir',
   {
@@ -12,11 +14,9 @@ const progress = new ProgressBar(
   },
 );
 
-const options = { stdio: 'pipe', env: { FORCE_COLOR: true } };
-
 const testkit = execa
   .shell(
-    'babel testkit --out-dir dist/testkit --copy-files --plugins=babel-plugin-transform-es2015-modules-commonjs',
+    'babel testkit --out-dir dist/testkit --copy-files --plugins=@babel/plugin-transform-modules-commonjs',
     {
       ...options,
     },
@@ -29,7 +29,7 @@ const testkit = execa
 
 const stories = execa
   .shell(
-    'babel stories --out-dir dist/stories --copy-files --plugins=babel-plugin-transform-es2015-modules-commonjs',
+    'babel stories --out-dir dist/stories --copy-files --plugins=@babel/plugin-transform-modules-commonjs',
     {
       ...options,
     },
@@ -42,7 +42,7 @@ const stories = execa
 
 const sources = (async () => {
   await execa.shell(
-    'babel src --out-dir dist/es/src --copy-files --ignore "src/**/*.spec.js","src/**/*.driver.js"',
+    'babel src --out-dir dist/es/src --copy-files --ignore "*.spec.js","*.driver.js"',
     {
       ...options,
     },
@@ -51,7 +51,7 @@ const sources = (async () => {
     dir: 'es6',
   });
   await execa.shell(
-    'babel dist/es/src --out-dir dist/src --copy-files --plugins=babel-plugin-transform-es2015-modules-commonjs --no-babelrc',
+    'babel dist/es/src --out-dir dist/src --copy-files --plugins=@babel/plugin-transform-modules-commonjs --no-babelrc --ignore "*.spec.js","*.driver.js"',
     {
       ...options,
     },
