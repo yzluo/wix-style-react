@@ -14,6 +14,8 @@ const progress = new ProgressBar(
   },
 );
 
+const startTime = new Date();
+
 const testkit = execa
   .shell(
     'babel testkit --out-dir dist/testkit --copy-files --plugins=@babel/plugin-transform-modules-commonjs',
@@ -61,7 +63,11 @@ const sources = (async () => {
   });
 })();
 
-Promise.all([testkit, stories, sources]).catch(error => {
-  progress.interrupt('Error');
-  return Promise.reject(error);
-});
+Promise.all([testkit, stories, sources])
+  .then(() => {
+    console.log(`✨ Done in ${Math.round(new Date() - startTime) / 1000}s`);
+  })
+  .catch(error => {
+    progress.interrupt('Error');
+    return Promise.reject(error);
+  });
