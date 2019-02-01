@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uniqueId from 'lodash/uniqueId';
-import classNames from 'classnames';
 
 import RadioButton from './RadioButton/RadioButton';
 import styles from './RadioGroup.scss';
@@ -26,16 +25,11 @@ class RadioGroup extends WixComponent {
       value,
       vAlign,
       display,
-      type,
       spacing,
       lineHeight,
     } = this.props;
     return (
-      <div
-        className={classNames(styles[display], {
-          [styles.buttonType]: type === 'button',
-        })}
-      >
+      <div className={styles[display]}>
         {React.Children.map(this.props.children, (radio, index) => (
           <RadioGroup.Radio
             dataHook={radio.props.dataHook}
@@ -43,7 +37,7 @@ class RadioGroup extends WixComponent {
             name={this.name}
             onChange={onChange}
             vAlign={vAlign}
-            type={type}
+            type="default"
             disabled={
               disabled || disabledRadios.indexOf(radio.props.value) !== -1
             }
@@ -81,9 +75,6 @@ RadioGroup.propTypes = {
   /** Make the entire control disabled */
   disabled: PropTypes.bool,
 
-  /** Decided which type of child controls to render */
-  type: PropTypes.oneOf(['default', 'button']),
-
   /** Display direction of the radios */
   display: PropTypes.oneOf(['vertical', 'horizontal']),
 
@@ -109,7 +100,6 @@ RadioGroup.defaultProps = {
   display: 'vertical',
   spacing: '12px',
   lineHeight: '24px',
-  type: 'default',
 };
 
 RadioGroup.Radio = RadioButton;

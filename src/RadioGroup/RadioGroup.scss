@@ -153,11 +153,6 @@ button.radioButton {
   }
 }
 
-.buttonType {
-  border: solid 1px $B40;
-  border-radius: 6px;
-}
-
 .radio-button-wrapper {
   display: flex;
   justify-content: center;
@@ -184,9 +179,5 @@ button.radioButton {
       margin-left: 0;
       margin-right: 1px;
     }
-  }
-
-  .buttonType {
-    flex-direction: row-reverse;
   }
 }
