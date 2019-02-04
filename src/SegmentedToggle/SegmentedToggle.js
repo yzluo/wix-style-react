@@ -26,9 +26,7 @@ class SegmentedToggle extends React.Component {
   _onClick = evt => {
     const { onClick } = this.props;
     const { value } = evt.currentTarget;
-    this.setState({ selected: value }, () =>
-      onClick && onClick(evt, value),
-    );
+    this.setState({ selected: value }, () => onClick && onClick(evt, value));
   };
 
   render() {

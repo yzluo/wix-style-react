@@ -69,7 +69,7 @@ class ToggleIcon extends React.Component {
           </Popover.Element>
           <Popover.Content>
             <div className={styles.textWrapper}>
-              <Text {...styles('text', { shown })} size="small" weight="normal">
+              <Text light size="small" weight="normal">
                 {tooltipText}
               </Text>
             </div>

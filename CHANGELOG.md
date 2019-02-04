@@ -16,14 +16,29 @@ Types of changes:
 
 ## Next
 
+- (Docs,Testkit) - Fix missing Testkits' docs by proxying the drivers from backoffice [#2853](https://github.com/wix/wix-style-react/pull/2853)
+
+## 6.1.0 - 2019-02-01
+
 ### Added
 
 - `<SegmentedToggle/>` - new component [#2797](https://github.com/wix/wix-style-react/pull/2797)
-- `<Calendar/>` - Add `autoFocus` prop [#2838](https://github.com/wix/wix-style-react/pull/2838)
+- `<Calendar/>` - add `autoFocus` prop [#2838](https://github.com/wix/wix-style-react/pull/2838)
+
+- `<Text/>` - added `disabled` skin [#2849](https://github.com/wix/wix-style-react/pull/2849)
+
+- `Typography.scss` - added `disabled` skin [#2872](https://github.com/wix/wix-style-react/pull/2872)
 
 ### Fixed
 
-- Changing vertical padding on side menu [#2837](https://github.com/wix/wix-style-react/pull/2837)
+- `<SideMenu/>` - fix vertical padding according to spec [#2837](https://github.com/wix/wix-style-react/pull/2837)
+- `<Thumbnail/>` - minor css fixes [#2840](https://github.com/wix/wix-style-react/pull/2840)
+- `<Input/>` - fix line-height [#2835](https://github.com/wix/wix-style-react/pull/2835)
+- `<FormField/>` - show char counter even if label is not displayed [#2855](https://github.com/wix/wix-style-react/pull/2855)
+
+### Docs
+
+- integrate Google analytics with Storybook [#2860](https://github.com/wix/wix-style-react/pull/2860)
 
 ## 6.0.0 - 2019-01-28
 

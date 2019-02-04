@@ -115,19 +115,13 @@ module.exports = {
 
   Card: { skipSanityTest, noTestkit },
 
-  LinearProgressBar: {
-    manualExport,
-  },
+  LinearProgressBar: {},
 
-  CircularProgressBar: {
-    manualExport,
-  },
+  CircularProgressBar: {},
 
   Composite: { skipSanityTest, noTestkit },
 
-  FloatingHelper: {
-    manualExport,
-  },
+  FloatingHelper: {},
 
   FullTextView: { skipSanityTest, noTestkit },
 
@@ -160,21 +154,17 @@ module.exports = {
     unidriver,
   },
 
-  Label: { manualExport },
+  Label: {},
 
   SideMenu: {
     testkitPath: '../src/SideMenu/core/SideMenu.driver',
   },
 
-  ToggleSwitch: { manualExport },
+  ToggleSwitch: {},
 
-  CounterBadge: {
-    manualExport,
-  },
+  CounterBadge: {},
 
-  Badge: {
-    manualExport,
-  },
+  Badge: {},
 
   Button: { unidriver },
 

@@ -1,7 +1,7 @@
 {
   "name": "wix-style-react",
   "description": "wix-style-react",
-  "version": "6.0.0",
+  "version": "6.1.1",
   "main": "./dist/src/index.js",
   "module": "./dist/es/src/index.js",
   "sideEffects": [
@@ -87,10 +87,10 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-2": "^7.0.0",
-    "@storybook/addon-google-analytics": "4.0.0",
-    "@storybook/addon-links": "^3.4.10",
-    "@storybook/addon-options": "4.0.0-alpha.14",
-    "@storybook/react": "4.0.0-alpha.14",
+    "@storybook/addon-google-analytics": "^4.1.11",
+    "@storybook/addon-links": "^4.1.11",
+    "@storybook/addon-options": "^4.1.11",
+    "@storybook/react": "^4.1.11",
     "@stylable/dom-test-kit": "^0.1.6",
     "@types/react": "^15.6.20",
     "babel-core": "^7.0.0-bridge.0",
@@ -131,7 +131,8 @@
     "webpack-cli": "^3.2.1",
     "wix-storybook-utils": "^2.0.62",
     "yoshi": "^3.16.1",
-    "yoshi-style-dependencies": "^3.16.0"
+    "yoshi-style-dependencies": "^3.16.0",
+    "terser": "3.14.0"
   },
   "peerDependencies": {
     "react": "^15.0.0",
@@ -150,6 +151,7 @@
     "date-fns": "^1.29.0",
     "deep-eql": "^3.0.0",
     "difference": "^1.0.2",
+    "dnd-core": "^2.6.0",
     "hoist-non-react-methods": "^1.1.0",
     "is-image": "^1.0.1",
     "is-url": "^1.2.2",

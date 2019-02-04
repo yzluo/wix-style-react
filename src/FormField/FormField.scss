@@ -19,6 +19,7 @@ $childrenMargin: 6px;
 
 .children {
   flex: 0 0 100%;
+  max-width: 100%;
 
   &.childrenWithInlineSuffixes {
     flex: 0 0 auto;

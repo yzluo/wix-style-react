@@ -51,6 +51,7 @@ import './MultiSelectCheckbox/index.story.js'; // 4.1 + MultiSelectCheckbox
 import './CheckBox/index.story.js'; // 4.2 Checkbox
 import './RadioGroup.story.js'; // 4.3 RadioGroup
 import './ToggleSwitch/index.story'; // 4.4 ToggleSwitch
+import './SegmentedToggle/index.story'; // 4.5 SegmentedToggle
 import './Slider/index.story'; // 4.7 Slider
 
 // 5. Buttons
@@ -127,7 +128,6 @@ import './Proportion/index.story.js';
 import './Skeleton.story.js';
 import './Text/index.story';
 import './Thumbnail/index.story';
-import './SegmentedToggle/index.story';
 
 // Styling
 import './Typography/TypographyClassesStory';
@@ -158,7 +158,7 @@ import './Thumbnail/testStory';
 import './EditableSelector/testStory';
 import './Slider/testStory'; // 4.7 Slider
 import './StatsWidget/testStory'; // 2.7 StatsWidget
-import './SegmentedToggle/testStory';
+import './SegmentedToggle/testStory'; // 4.5 SegmentedToggle
 
 // The generated test component
 import './GeneratedTestComponent/index.story';

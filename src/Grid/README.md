@@ -75,8 +75,13 @@ export default () =>
   <summary>`<Row/>`</summary>
 
   Use as wrapper for columns. Only `<Col/>`s should be its children.
-
   One `<Row/>` should not have more than 12 `<Col/>`s.
+  
+  
+  | propName               | propType | defaultValue | isRequired | description                                    |
+  | ---                    | ---      | ---          | ---        | ---                                            |
+  | stretchViewsVertically | bool     | -            | -          | Make all the views in that row the same height |
+
 </details>
 
 <details>
@@ -88,7 +93,6 @@ export default () =>
   | ---                    | ---      | ---          | ---        | ---                                            |
   | span                   | number   | -            | +          | The columns span of this column                |
   | rtl                    | bool     | -            | -          | Reverses the columns ordering                  |
-  | stretchViewsVertically | bool     | -            | -          | Make all the views in that row the same height |
 </details>
 
 <details>

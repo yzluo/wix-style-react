@@ -11,16 +11,6 @@ import {
   uniTestkitFactoryCreator,
 } from 'wix-ui-test-utils/vanilla';
 
-export {
-  badgeTestkitFactory,
-  stylableCounterBadgeTestkitFactory as counterBadgeTestkitFactory,
-  toggleSwitchTestkitFactory,
-  labelTestkitFactory,
-  floatingHelperTestkitFactory,
-  linearProgressBarTestkitFactory,
-  circularProgressBarTestkitFactory,
-} from 'wix-ui-backoffice/dist/src/testkit';
-
 const load = path => {
   const item = require(path);
 
@@ -35,6 +25,7 @@ export const addItemTestkitFactory = testkitFactoryCreator(load('../src/AddItem/
 export const autoCompleteTestkitFactory = testkitFactoryCreator(load('../src/AutoComplete/AutoComplete.driver'));
 export const autoCompleteCompositeTestkitFactory = testkitFactoryCreator(load('../src/AutoCompleteComposite/AutoCompleteComposite.driver'));
 export const avatarTestkitFactory = uniTestkitFactoryCreator(load('../src/Avatar/Avatar.driver'));
+export const badgeTestkitFactory = testkitFactoryCreator(load('../src/Badge/Badge.driver'));
 export const badgeSelectTestkitFactory = testkitFactoryCreator(load('../src/BadgeSelect/BadgeSelect.driver'));
 export const boxTestkitFactory = uniTestkitFactoryCreator(load('../src/Box/Box.driver'));
 export const breadcrumbsTestkitFactory = testkitFactoryCreator(load('../src/Breadcrumbs/Breadcrumbs.driver'));
@@ -45,9 +36,11 @@ export const calendarPanelFooterTestkitFactory = uniTestkitFactoryCreator(load('
 export const cardGalleryItemTestkitFactory = uniTestkitFactoryCreator(load('../src/CardGalleryItem/CardGalleryItem.driver'));
 export const carouselTestkitFactory = testkitFactoryCreator(load('../src/Carousel/Carousel.driver'));
 export const checkboxTestkitFactory = testkitFactoryCreator(load('../src/Checkbox/Checkbox.driver'));
+export const circularProgressBarTestkitFactory = testkitFactoryCreator(load('../src/CircularProgressBar/CircularProgressBar.driver'));
 export const closeButtonTestkitFactory = uniTestkitFactoryCreator(load('../src/CloseButton/CloseButton.driver'));
 export const colorPickerTestkitFactory = testkitFactoryCreator(load('../src/ColorPicker/ColorPicker.driver'));
 export const contactItemBuilderTestkitFactory = testkitFactoryCreator(load('../src/ContactItemBuilder/ContactItemBuilder.driver'));
+export const counterBadgeTestkitFactory = testkitFactoryCreator(load('../src/CounterBadge/CounterBadge.driver'));
 export const dataTableTestkitFactory = testkitFactoryCreator(load('../src/DataTable/DataTable.driver'));
 export const datePickerTestkitFactory = testkitFactoryCreator(load('../src/DatePicker/DatePicker.driver'));
 export const dropdownTestkitFactory = testkitFactoryCreator(load('../src/Dropdown/Dropdown.driver'));
@@ -56,6 +49,7 @@ export const dropdownLayoutTestkitFactory = testkitFactoryCreator(load('../src/D
 export const editableSelectorTestkitFactory = testkitFactoryCreator(load('../src/EditableSelector/EditableSelector.driver'));
 export const emptyStateTestkitFactory = testkitFactoryCreator(load('../src/EmptyState/EmptyState.driver'));
 export const filePickerTestkitFactory = testkitFactoryCreator(load('../src/FilePicker/FilePicker.driver'));
+export const floatingHelperTestkitFactory = testkitFactoryCreator(load('../src/FloatingHelper/FloatingHelper.driver'));
 export const formFieldTestkitFactory = testkitFactoryCreator(load('../src/FormField/FormField.driver'));
 export const generatedTestComponentTestkitFactory = uniTestkitFactoryCreator(load('../src/GeneratedTestComponent/GeneratedTestComponent.driver'));
 export const genericModalLayoutTestkitFactory = testkitFactoryCreator(load('../src/GenericModalLayout/GenericModalLayout.driver'));
@@ -67,6 +61,8 @@ export const imageViewerTestkitFactory = testkitFactoryCreator(load('../src/Imag
 export const inputTestkitFactory = testkitFactoryCreator(load('../src/Input/Input.driver'));
 export const inputAreaTestkitFactory = testkitFactoryCreator(load('../src/InputArea/InputArea.driver'));
 export const inputWithOptionsTestkitFactory = testkitFactoryCreator(load('../src/InputWithOptions/InputWithOptions.driver'));
+export const labelTestkitFactory = testkitFactoryCreator(load('../src/Label/Label.driver'));
+export const linearProgressBarTestkitFactory = testkitFactoryCreator(load('../src/LinearProgressBar/LinearProgressBar.driver'));
 export const loaderTestkitFactory = testkitFactoryCreator(load('../src/Loader/Loader.driver'));
 export const modalTestkitFactory = testkitFactoryCreator(load('../src/Modal/Modal.driver'));
 export const modalSelectorLayoutTestkitFactory = testkitFactoryCreator(load('../src/ModalSelectorLayout/ModalSelectorLayout.driver'));
@@ -101,6 +97,7 @@ export const textTestkitFactory = testkitFactoryCreator(load('../src/Text/Text.d
 export const textButtonTestkitFactory = uniTestkitFactoryCreator(load('../src/TextButton/TextButton.driver'));
 export const thumbnailTestkitFactory = uniTestkitFactoryCreator(load('../src/Thumbnail/Thumbnail.driver'));
 export const timeInputTestkitFactory = testkitFactoryCreator(load('../src/TimeInput/TimeInput.driver'));
+export const toggleSwitchTestkitFactory = testkitFactoryCreator(load('../src/ToggleSwitch/ToggleSwitch.driver'));
 export const tooltipTestkitFactory = testkitFactoryCreator(load('../src/Tooltip/Tooltip.driver'));
 export const headerTestkitFactory = testkitFactoryCreator(load('../src/Card/Header/Header.driver'));
 export const draggableTestkitFactory = testkitFactoryCreator(load('../src/DragAndDrop/Draggable/Draggable.driver'));

@@ -4,13 +4,13 @@
 
 ## Button TestKit API
 
-| method                                | arguments | returned value | description                        |
-| ------------------------------------- | --------- | -------------- | ---------------------------------- |
-| async => await exists()               | -         | boolean        | returns true if element in the DOM |
-| async => await element()              | -         | element        | returns the component element      |
-| async => await click()                | -         | -              | clicks on the button               |
-| async => await getButtonTextContent() | -         | string         | returns the button text            |
-| async => await isButtonDisabled()     | -         | boolean        | returns true if button is disabled |
+| method               | arguments | returned value     | description                        |
+| -------------------- | --------- | ------------------ | ---------------------------------- |
+| exists               | -         | `Promise<boolean>` | returns true if element in the DOM |
+| element              | -         | `Promise<element>` | returns the component element      |
+| click                | -         | `Promise<void>`    | clicks on the button               |
+| getButtonTextContent | -         | `Promise<string>`  | returns the button text            |
+| isButtonDisabled     | -         | `Promise<boolean>` | returns true if button is disabled |
 
 ## ReactTestUtils Example
 
