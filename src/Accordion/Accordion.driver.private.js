@@ -1,5 +1,6 @@
 import { accordionDriverFactory as publicDriverFactory } from './Accordion.driver';
 
-export const accordionPrivateDriverFactory = driverInterface => ({
-  ...publicDriverFactory(driverInterface),
+export const accordionPrivateDriverFactory = base => ({
+  ...publicDriverFactory(base),
+  getAmmountOfDisplayedRows: async () => base.$$('[data-hook="accordion-row"]').count()
 });

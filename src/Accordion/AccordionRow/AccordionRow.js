@@ -4,8 +4,9 @@ import {Animator} from 'wix-animations';
 import Text from '../../Text';
 import MoreLessButton from '../MoreLessButton';
 import PropTypes from "prop-types";
+import classNames from 'classnames';
 
-class Row extends React.PureComponent {
+class AccordionRow extends React.PureComponent {
 
   static displayName = 'Row';
 
@@ -13,17 +14,12 @@ class Row extends React.PureComponent {
     dataHook: PropTypes.string,
     id: PropTypes.number,
     title: PropTypes.string,
-    moreLabel: PropTypes.string,
-    lessLabel: PropTypes.string,
+    expandLabel: PropTypes.string,
+    collapseLabel: PropTypes.string,
     content: PropTypes.node,
     icon: PropTypes.node,
-    open: PropTypes.bool,
+    isOpen: PropTypes.bool,
     toggleView: PropTypes.func,
-  };
-
-  static defaultProps = {
-    moreLabel: 'More',
-    lessLabel: 'Less',
   };
 
   state = {
@@ -43,13 +39,15 @@ class Row extends React.PureComponent {
       dataHook,
       icon,
       title,
-      toggleView,
-      moreLabel,
-      lessLabel,
-      open,
+      toggleOpenClose,
+      expandLabel,
+      collapseLabel,
+      isOpen,
       content,
       id
     } = this.props;
+    const buttonsStyle = classNames(styles.moreLessButton, {isOpen:styles.isOpen});
+
     return (
       <div
         className={styles.wrapper}
@@ -61,17 +59,17 @@ class Row extends React.PureComponent {
           {icon && <div className={styles.headerIcon} data-hook="icon">{icon}</div>}
           {title && <Text data-hook="title">{title}</Text>}
         </div>
-        <div className={`${styles.moreLessButton} ${open ? styles.open : ''}`}>
+        <div className={buttonsStyle}>
           <MoreLessButton
             expend={hover}
-            open={open}
-            onClickHandler={() => toggleView(id)}
+            isOpen={isOpen}
+            onClickHandler={() => toggleOpenClose(id)}
             dataHook={dataHook}
-            moreLabel={moreLabel}
-            lessLabel={lessLabel}
+            expandLabel={expandLabel}
+            collapseLabel={collapseLabel}
           />
         </div>
-        <Animator show={open} height>
+        <Animator show={isOpen} height>
           <div data-hook="content" className={styles.collapse}>{content}</div>
         </Animator>
       </div>
@@ -79,4 +77,4 @@ class Row extends React.PureComponent {
   }
 }
 
-export default Row;
+export default AccordionRow;

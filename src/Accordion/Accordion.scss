@@ -1,18 +1,13 @@
-$row-sides-padding: 30px;
-$row-top-padding: 24px;
-$moreLessPosition: 30px;
-$moreLess-height: 30px;
-$icon-accordion-padding: 24px;
+@import '../common.scss';
+
 .root {
-  text-align: center;
 
   .rowWrapper:not(:last-child) {
-    border-bottom: 1px solid #dfe5eb;
-    background-color: white;
+    border-bottom: 1px solid $D60;
+    background-color: $D80;
   }
 
   .rowWrapper {
-    background-color: white;
+    background-color: $D80;
   }
-
 }

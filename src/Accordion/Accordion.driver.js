@@ -7,21 +7,11 @@ export const accordionDriverFactory = base => {
   return {
     ...baseUniDriverFactory(base),
 
-    getTitleOfRow: async (idx) => getRowAtIndex(idx).$('[data-hook="title"]').text(),
-    getIconAt: async (idx) => getRowAtIndex(idx).$('[data-hook="icon"]').exists(),
-    isContentOpen: async (idx) => getRowAtIndex(idx).$('[data-hook="content"]').exists(),
+    getTitleOfRowAt: async (idx) => getRowAtIndex(idx).$('[data-hook="title"]').text(),
+    isIconExistsAt: async (idx) => getRowAtIndex(idx).$('[data-hook="icon"]').exists(),
+    isRowExpandedAt: async (idx) => getRowAtIndex(idx).$('[data-hook="content"]').exists(),
     clickAtRow: async (idx) => getRowAtIndex(idx).$('[data-hook="toggle-accordion-wrapper"]').click(),
     isRowOpenAt: async (idx) => getRowAtIndex(idx).$('[data-hook="toggle-accordion-wrapper"]').hasClass('open'),
-    getToggleButtonLabelAt: async (idx) => getRowAtIndex(idx).$('[data-hook="toggle-accordion-wrapper"]').$( '[data-hook="toggle-accordion-button"]').text(),
-    getRows: async () => base.$$('[data-hook="accordion-row"]').count()
-
-    // /** Get the current count */
-    // getCountText: async () => base.$('[data-hook="accordion-count"]').text(),
-    //
-    // /** Click the button */
-    // clickButton: async () => base.$('[data-hook="accordion-button"]').click(),
-    //
-    // /** Get the button's text */
-    // getButtonText: async () => base.$('[data-hook="accordion-button"]').text(),
+    getToggleButtonLabelAt: async (idx) => getRowAtIndex(idx).$('[data-hook="toggle-accordion-wrapper"]').$( '[data-hook="toggle-accordion-button"]').text()
   };
 };

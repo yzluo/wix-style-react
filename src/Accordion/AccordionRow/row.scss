@@ -1,5 +1,9 @@
 @import '../../common.scss';
-@import '../Accordion';
+$row-sides-padding: 30px;
+$row-top-padding: 24px;
+$icon-accordion-padding: 24px;
+$moreLessPosition: 30px;
+$moreLess-height: 30px;
 
 .collapse,
 .row {

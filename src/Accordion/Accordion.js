@@ -1,30 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Accordion.scss';
-import Row from './Row';
-import AccordionHeader from './AccordionHeader';
+import AccordionRow from './AccordionRow';
 
-class Accordion extends React.PureComponent {
+class Accordion extends React.Component {
   static displayName = 'Accordion';
 
   static propTypes = {
     dataHook: PropTypes.string,
 
-    /** Title for the Collapse */
-    title: PropTypes.string,
-    /** Row Data */
+    /** Row Data: {title: string, icon: node, content: node, expandLabel: string, collapseLabel: string}*/
     data: PropTypes.array,
   };
 
   static defaultProps = {
-    title: 'Accordion title',
   };
 
   state = {
     openId: null,
   };
 
-  toggleDisplay = id => {
+  toggle = id => {
     this.setState(({ openId }) => {
       if (openId === id) {
         return { openId: -1 };
@@ -33,24 +29,18 @@ class Accordion extends React.PureComponent {
     });
   };
 
-  hasIcon = () => {
-    const { data } = this.props;
-    return data && data.filter(row => row.icon).length !== 0;
-  };
-
   render() {
     const { openId } = this.state;
-    const { dataHook, data, title } = this.props;
+    const { dataHook, data} = this.props;
 
     return (
       <div className={styles.root} data-hook={dataHook}>
-        {title && <AccordionHeader title={title} withIcon={this.hasIcon()} />}
         {data && data.map((row, index) => (
           <div className={styles.rowWrapper} key={index}>
-            <Row
+            <AccordionRow
               dataHook={'accordion-row'}
               id={index}
-              toggleView={this.toggleDisplay}
+              toggleView={this.toggle}
               {...row}
               open={openId === index}
             />

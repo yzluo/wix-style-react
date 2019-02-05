@@ -1,1 +1,1 @@
-export { default } from './Component.js';
+export { default } from './MoreLessButton.js';

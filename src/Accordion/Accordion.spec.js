@@ -26,13 +26,13 @@ describe('Accordion', () => {
       }
     ];
     const driver = createDriver(<Accordion data={data}/>);
-    expect(await driver.getTitleOfRow(0)).toEqual('hello');
+    expect(await driver.getTitleOfRowAt(0)).toEqual('hello');
   });
 
   it('should not render any rows', async () => {
     const driver = createDriver(<Accordion/>);
 
-    expect(await driver.getRows()).toEqual(0);
+    expect(await driver.getAmmountOfDisplayedRows()).toEqual(0);
   });
 
   it('should render rows with icons', async () => {
@@ -48,49 +48,28 @@ describe('Accordion', () => {
       }
     ];
     const driver = createDriver(<Accordion data={data}/>);
-    expect(await driver.getIconAt(0)).toBeTruthy();
-    expect(await driver.getIconAt(1)).toBeFalsy();
+    expect(await driver.isIconExistsAt(0)).toBeTruthy();
+    expect(await driver.isIconExistsAt(1)).toBeFalsy();
   });
 
   it('should specific row content on click', async () => {
 
     const driver = createDriver(<Accordion data={towItemsData}/>);
-    expect(await driver.isContentOpen(0)).toBeFalsy();
-    expect(await driver.isContentOpen(1)).toBeFalsy();
+    expect(await driver.isRowExpandedAt(0)).toBeFalsy();
+    expect(await driver.isRowExpandedAt(1)).toBeFalsy();
 
     await driver.clickAtRow(0);
-    expect(await driver.isContentOpen(0)).toBeTruthy();
-    expect(await driver.isContentOpen(1)).toBeFalsy();
+    expect(await driver.isRowExpandedAt(0)).toBeTruthy();
+    expect(await driver.isRowExpandedAt(1)).toBeFalsy();
   })
 
-  it('should check the default more less button labels', async () => {
+  it('should verify the expand and collapse labels', async () => {
     const driver = createDriver(<Accordion data={towItemsData}/>);
     expect(await driver.getToggleButtonLabelAt(0)).toEqual('More');
     await driver.clickAtRow(0);
     expect(await driver.getToggleButtonLabelAt(0)).toEqual('Less');
   });
 
-  it('should override default more less button labels', async () => {
-    const data = [
-      {
-        title: 'hello',
-        icon: (<InfoCircle/>),
-        content: 'test',
-        moreLabel: 'hello',
-        lessLabel: 'goodbye'
-      },
-      {
-        title: 'hello',
-        content: 'test',
-        moreLabel: 'add',
-        lessLabel: 'subtract'
-      }
-    ];
-    const driver = createDriver(<Accordion data={data}/>);
-    expect(await driver.getToggleButtonLabelAt(0)).toEqual(data[0].moreLabel);
-    await driver.clickAtRow(0);
-    expect(await driver.getToggleButtonLabelAt(0)).toEqual(data[0].lessLabel);
-  });
 
   it('should toggle the open between rows', async () => {
     const driver = createDriver(<Accordion data={towItemsData}/>);
