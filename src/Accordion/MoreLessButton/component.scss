@@ -1,0 +1,36 @@
+@import '../../common.scss';
+
+.toggleButtons {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+
+  .button,
+  .downArrow {
+    position: absolute;
+    transition: all .2s;
+  }
+
+  .downArrow {
+    opacity: 1;
+    padding-right: 12px;
+    padding-top: 5px;
+    fill: $B10;
+  }
+
+  .button {
+    opacity: 0;
+  }
+
+  &.expend,
+  &.open,
+  &:hover {
+    .button {
+      opacity: 1;
+    }
+
+    .downArrow {
+      opacity: 0;
+    }
+  }
+}

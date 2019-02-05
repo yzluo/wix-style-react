@@ -1,0 +1,49 @@
+@import '../../common.scss';
+@import '../Accordion';
+
+.collapse,
+.row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.row {
+  padding: $row-top-padding $row-sides-padding;
+  width: calc(100% - #{$row-sides-padding * 2});
+  transition: background-color .3s;
+
+  &:hover {
+    background-color: $B40;
+  }
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+}
+
+.headerIcon {
+  margin-right: $icon-accordion-padding;
+}
+
+.collapse {
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 6px 30px 90px 78px;
+}
+
+.moreLessButton {
+  position: absolute;
+  right: $row-sides-padding;
+  bottom: 18px;
+  height: $moreLess-height;
+  transition: bottom .2s;
+
+  &.open {
+    bottom: $moreLessPosition;
+  }
+}

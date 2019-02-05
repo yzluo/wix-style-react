@@ -21,6 +21,7 @@ const load = path => {
     : item;
 };
 
+export const accordionTestkitFactory = enzymeTestkitFactoryCreator(load('../src/Accordion/Accordion.driver'));
 export const addItemTestkitFactory = enzymeTestkitFactoryCreator(load('../src/AddItem/AddItem.driver'));
 export const autoCompleteTestkitFactory = enzymeTestkitFactoryCreator(load('../src/AutoComplete/AutoComplete.driver'));
 export const autoCompleteCompositeTestkitFactory = enzymeTestkitFactoryCreator(load('../src/AutoCompleteComposite/AutoCompleteComposite.driver'));

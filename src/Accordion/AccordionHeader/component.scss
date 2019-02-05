@@ -1,0 +1,13 @@
+@import '../../common.scss';
+@import '../Accordion';
+.header {
+  background-color: $B40;
+  padding: 9px #{$row-sides-padding};
+  display: flex;
+  align-items: flex-start;
+
+  &.withIcon {
+    padding-left: calc( #{$row-sides-padding + $icon-accordion-padding} + 24px);
+  }
+}
+

@@ -402,3 +402,9 @@ import { segmentedToggleDriverFactory } from '../src/SegmentedToggle/SegmentedTo
 export const segmentedToggleTestkitFactory = protractorUniTestkitFactoryCreator(
   segmentedToggleDriverFactory,
 );
+
+import { accordionDriverFactory } from '../src/Accordion/Accordion.driver';
+
+export const accordionTestkitFactory = protractorUniTestkitFactoryCreator(
+  accordionDriverFactory,
+);
