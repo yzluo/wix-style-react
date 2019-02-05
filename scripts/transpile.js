@@ -2,9 +2,12 @@
 
 const execa = require('execa');
 const ProgressBar = require('progress');
+const rm = require('rimraf');
+const mkdirp = require('mkdirp');
+const transpileSrc = require('./transpileSrc');
 
 const STEP_WIDTH = 9;
-const STEPS = 4;
+const STEPS = 3;
 const options = { stdio: 'pipe', env: { FORCE_COLOR: true } };
 
 const progress = new ProgressBar(
@@ -15,6 +18,9 @@ const progress = new ProgressBar(
 );
 
 const startTime = new Date();
+
+rm.sync('./dist');
+mkdirp.sync('./dist');
 
 const testkit = execa
   .shell(
@@ -42,30 +48,15 @@ const stories = execa
     });
   });
 
-const sources = (async () => {
-  await execa.shell(
-    'babel src --out-dir dist/es/src --copy-files --ignore "*.spec.js","*.driver.js"',
-    {
-      ...options,
-    },
-  );
+const src = transpileSrc().then(() => {
   progress.tick(STEP_WIDTH, {
-    dir: 'es6',
+    dir: 'src',
   });
-  await execa.shell(
-    'babel dist/es/src --out-dir dist/src --copy-files --plugins=@babel/plugin-transform-modules-commonjs --no-babelrc --ignore "*.spec.js","*.driver.js"',
-    {
-      ...options,
-    },
-  );
-  progress.tick(STEP_WIDTH, {
-    dir: 'es5',
-  });
-})();
+});
 
-Promise.all([testkit, stories, sources])
+Promise.all([testkit, stories, src])
   .then(() => {
-    console.log(`✨ Done in ${Math.round(new Date() - startTime) / 1000}s`);
+    console.log(`🚀 Done in ${Math.round(new Date() - startTime) / 1000}s`);
   })
   .catch(error => {
     progress.interrupt('Error');
