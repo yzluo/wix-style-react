@@ -70,17 +70,19 @@ describe('Accordion', () => {
     expect(await driver.getToggleButtonLabelAt(0)).toEqual('Less');
   });
 
-
-  it('should toggle the open between rows', async () => {
+  it('should collapse an expended row on click', async () => {
     const driver = createDriver(<Accordion data={towItemsData}/>);
 
     expect(await driver.isRowOpenAt(0)).toBeFalsy();
-    expect(await driver.isRowOpenAt(1)).toBeFalsy();
 
     await driver.clickAtRow(0);
     expect(await driver.isRowOpenAt(0)).toBeTruthy();
-    expect(await driver.isRowOpenAt(1)).toBeFalsy();
+  })
 
+  it('should expend a row on click and close an already expanded row', async () => {
+    const driver = createDriver(<Accordion data={towItemsData}/>);
+
+    await driver.clickAtRow(0);
     await driver.clickAtRow(1);
     expect(await driver.isRowOpenAt(1)).toBeTruthy();
     expect(await driver.isRowOpenAt(0)).toBeFalsy();
@@ -88,6 +90,5 @@ describe('Accordion', () => {
     await driver.clickAtRow(1);
     expect(await driver.isRowOpenAt(1)).toBeFalsy();
     expect(await driver.isRowOpenAt(0)).toBeFalsy();
-
   });
 });
