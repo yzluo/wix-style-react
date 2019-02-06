@@ -6,12 +6,12 @@
   justify-content: flex-end;
 
   .button,
-  .downArrow {
+  .expand-collapse-arrow {
     position: absolute;
     transition: all .2s;
   }
 
-  .downArrow {
+  .expand-collapse-arrow {
     opacity: 1;
     padding-right: 12px;
     padding-top: 5px;
@@ -29,7 +29,7 @@
       opacity: 1;
     }
 
-    .downArrow {
+    .expand-collapse-arrow {
       opacity: 0;
     }
   }

@@ -1,14 +1,13 @@
 import React from 'react';
-import styles from './AccordionRow.scss';
-import {Animator} from 'wix-animations';
+import styles from './AccordionItem.scss';
+import { Animator } from 'wix-animations';
 import Text from '../../Text';
 import MoreLessButton from '../MoreLessButton';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-class AccordionRow extends React.PureComponent {
-
-  static displayName = 'Row';
+class AccordionItem extends React.PureComponent {
+  static displayName = 'AccordionItem';
 
   static propTypes = {
     dataHook: PropTypes.string,
@@ -24,17 +23,17 @@ class AccordionRow extends React.PureComponent {
 
   state = {
     hover: false,
-  }
+  };
 
   toggleHoverOut = () => {
     this.setState({ hover: false });
-  }
+  };
   toggleHoverIn = () => {
     this.setState({ hover: true });
-  }
+  };
 
   render() {
-    const {hover} = this.state;
+    const { hover } = this.state;
     const {
       dataHook,
       icon,
@@ -44,9 +43,11 @@ class AccordionRow extends React.PureComponent {
       collapseLabel,
       isOpen,
       content,
-      id
+      id,
     } = this.props;
-    const buttonsStyle = classNames(styles.moreLessButton, {isOpen:styles.isOpen});
+    const buttonsStyle = classNames(styles.moreLessButton, {
+      isOpen: styles.isOpen,
+    });
 
     return (
       <div
@@ -55,26 +56,31 @@ class AccordionRow extends React.PureComponent {
         onMouseEnter={this.toggleHoverIn}
         onMouseLeave={this.toggleHoverOut}
       >
-        <div className={styles.row}>
-          {icon && <div className={styles.headerIcon} data-hook="icon">{icon}</div>}
+        <div className={styles.item}>
+          {icon && (
+            <div className={styles.headerIcon} data-hook="icon">
+              {icon}
+            </div>
+          )}
           {title && <Text data-hook="title">{title}</Text>}
         </div>
         <div className={buttonsStyle}>
           <MoreLessButton
-            expend={hover}
+            dataHook="toggle-accordion-wrapper"
             isOpen={isOpen}
-            onClickHandler={() => toggleOpenClose(id)}
-            dataHook={dataHook}
+            handleClick={() => toggleOpenClose(id)}
             expandLabel={expandLabel}
             collapseLabel={collapseLabel}
           />
         </div>
         <Animator show={isOpen} height>
-          <div data-hook="content" className={styles.collapse}>{content}</div>
+          <div data-hook="content" className={styles.collapse}>
+            {content}
+          </div>
         </Animator>
       </div>
     );
   }
 }
 
-export default AccordionRow;
+export default AccordionItem;

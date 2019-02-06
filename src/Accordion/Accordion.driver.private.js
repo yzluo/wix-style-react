@@ -2,5 +2,5 @@ import { accordionDriverFactory as publicDriverFactory } from './Accordion.drive
 
 export const accordionPrivateDriverFactory = base => ({
   ...publicDriverFactory(base),
-  getAmmountOfDisplayedRows: async () => base.$$('[data-hook="accordion-row"]').count()
+  getAmmountOfItems: async () => base.$$('[data-hook="accordion-row"]').count(),
 });

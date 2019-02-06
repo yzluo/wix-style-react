@@ -1,94 +1,110 @@
 import React from 'react';
-import {createUniDriverFactory} from 'wix-ui-test-utils/uni-driver-factory';
-import InfoCircle from "../../new-icons/InfoCircle";
+import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 
 import Accordion from './Accordion';
-import {accordionPrivateDriverFactory} from './Accordion.driver.private';
+import { accordionPrivateDriverFactory } from './Accordion.driver.private';
+
+import { eventually } from '../../test/utils/unit/eventually';
 
 describe('Accordion', () => {
+  const FakeIcon = () => <div>fake icon</div>;
   const createDriver = createUniDriverFactory(accordionPrivateDriverFactory);
-  const towItemsData = [
-    {
-      title: 'hello',
-      icon: (<InfoCircle/>),
-      content: 'test'
-    },
-    {
-      title: 'hello1',
-      icon: (<InfoCircle/>),
-      content: 'test1'
-    }
-  ];
-  it('should render a list of row items', async () => {
-    const data = [
+
+  describe('items data', async () => {
+    it('should render a list of items', async () => {
+      const data = [
+        {
+          title: 'first item',
+        },
+      ];
+      const driver = createDriver(<Accordion data={data} />);
+      expect(await driver.getItemTitleAt(0)).toEqual('first item');
+    });
+
+    it('should not render any items', async () => {
+      const driver = createDriver(<Accordion />);
+      expect(await driver.getAmmountOfItems()).toEqual(0);
+    });
+
+    it('should render item with icon', async () => {
+      const data = [
+        {
+          title: 'first item',
+          icon: <FakeIcon />,
+          content: 'first item content',
+        },
+      ];
+      const driver = createDriver(<Accordion data={data} />);
+      expect(await driver.isIconExistsAt(0)).toBeTruthy();
+    });
+
+    it('should render item without an icon', async () => {
+      const data = [
+        {
+          title: 'first item',
+          content: 'first item content',
+        },
+      ];
+      const driver = createDriver(<Accordion data={data} />);
+      expect(await driver.isIconExistsAt(0)).toBeFalsy();
+    });
+  });
+
+  describe('exapnd and collapse behavior', () => {
+    const singleItem = [
       {
-        title: 'hello'
-      }
+        title: 'first item',
+        icon: <FakeIcon />,
+        content: 'first item content',
+        expandLabel: 'see more',
+        collapseLabel: 'see less',
+      },
     ];
-    const driver = createDriver(<Accordion data={data}/>);
-    expect(await driver.getTitleOfRowAt(0)).toEqual('hello');
-  });
 
-  it('should not render any rows', async () => {
-    const driver = createDriver(<Accordion/>);
-
-    expect(await driver.getAmmountOfDisplayedRows()).toEqual(0);
-  });
-
-  it('should render rows with icons', async () => {
-    const data = [
+    const multipleItems = [
       {
-        title: 'hello',
-        icon: (<InfoCircle/>),
-        content: 'test'
+        title: 'first item',
+        icon: <FakeIcon />,
+        content: 'first item content',
+        expandLabel: 'see more',
+        collapseLabel: 'see less',
       },
       {
-        title: 'hello',
-        content: 'test'
-      }
+        title: 'second item',
+        icon: <FakeIcon />,
+        content: 'second item content',
+        expandLabel: 'see more',
+        collapseLabel: 'see less',
+      },
     ];
-    const driver = createDriver(<Accordion data={data}/>);
-    expect(await driver.isIconExistsAt(0)).toBeTruthy();
-    expect(await driver.isIconExistsAt(1)).toBeFalsy();
-  });
 
-  it('should open a row on click', async () => {
+    it('should display a collapsed item by default', async () => {
+      const driver = createDriver(<Accordion data={singleItem} />);
+      expect(await driver.isItemExpandedAt(0)).toBeFalsy();
+    });
 
-    const driver = createDriver(<Accordion data={towItemsData}/>);
-    expect(await driver.isRowExpandedAt(0)).toBeFalsy();
-    expect(await driver.isRowExpandedAt(1)).toBeFalsy();
+    it('should expand an item on click', async () => {
+      const driver = createDriver(<Accordion data={singleItem} />);
+      await driver.clickToggleButtonAt(0);
+      expect(await driver.isItemExpandedAt(0)).toBeTruthy();
+    });
 
-    await driver.clickToggleButtonAt(0);
-    expect(await driver.isRowExpandedAt(0)).toBeTruthy();
-    expect(await driver.isRowExpandedAt(1)).toBeFalsy();
-  })
+    it('should accept an expand and collapse button labels', async () => {
+      const driver = createDriver(<Accordion data={singleItem} />);
+      expect(await driver.getToggleButtonLabelAt(0)).toEqual('see more');
+      await driver.clickToggleButtonAt(0);
+      expect(await driver.getToggleButtonLabelAt(0)).toEqual('see less');
+    });
 
-  it('should verify the expand and collapse labels', async () => {
-    const driver = createDriver(<Accordion data={towItemsData}/>);
-    expect(await driver.getToggleButtonLabelAt(0)).toEqual('More');
-    await driver.clickToggleButtonAt(0);
-    expect(await driver.getToggleButtonLabelAt(0)).toEqual('Less');
-  });
+    it('should allow only a single item to be expanded by default', async () => {
+      const driver = createDriver(<Accordion data={multipleItems} />);
 
-  it('should collapse an expended row on click', async () => {
-    const driver = createDriver(<Accordion data={towItemsData}/>);
-
-    expect(await driver.isRowOpenAt(0)).toBeFalsy();
-
-    await driver.clickToggleButtonAt(0);
-    expect(await driver.isRowOpenAt(0)).toBeTruthy();
-  })
-
-  it('should expend a row on click and close an already expanded row', async () => {
-    const driver = createDriver(<Accordion data={towItemsData}/>);
-
-    await driver.clickToggleButtonAt(0);
-    await driver.clickToggleButtonAt(1);
-    expect(await driver.isRowOpenAt(1)).toBeTruthy();
-    expect(await driver.isRowOpenAt(0)).toBeFalsy();
-
-    await driver.clickToggleButtonAt(1);
-    expect(await driver.isRowOpenAt(1)).toBeFalsy();
-    expect(await driver.isRowOpenAt(0)).toBeFalsy();
+      await driver.clickToggleButtonAt(0);
+      await driver.clickToggleButtonAt(1);
+      await eventually(async () =>
+        expect(await driver.isItemExpandedAt(0)).toBeFalsy(),
+      );
+      expect(await driver.isItemExpandedAt(1)).toBeTruthy();
+    });
   });
 });

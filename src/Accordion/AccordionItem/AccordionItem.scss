@@ -6,7 +6,7 @@ $moreLessPosition: 30px;
 $moreLess-height: 30px;
 
 .collapse,
-.row {
+.item {
   display: flex;
   align-items: flex-start;
 }
@@ -15,7 +15,7 @@ $moreLess-height: 30px;
   position: relative;
 }
 
-.row {
+.item {
   padding: $row-top-padding $row-sides-padding;
   width: calc(100% - #{$row-sides-padding * 2});
   transition: background-color .3s;

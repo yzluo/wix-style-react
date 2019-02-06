@@ -1,29 +1,35 @@
 import React from 'react';
-import {storySettings} from './storySettings';
+import { storySettings } from './storySettings';
 import LiveCodeExample from '../utils/Components/LiveCodeExample';
 
 import Accordion from '../../src/Accordion';
-import InfoCircle from "../../src/new-icons/InfoCircle";
+import InfoCircle from '../../src/new-icons/InfoCircle';
 
 const exampleData = [
   {
     label: 'Simple data',
-    value: [{
-      title: 'title',
-      icon: <InfoCircle/>,
-      content: (
-        <div>
-          lauren ipsum lauren ipsum lauren ipsum lauren ipsum lauren ipsum
-          lauren ipsum lauren ipsum lauren ipsum{' '}
-        </div>
-      ),
-    },
+    value: [
+      {
+        title: 'title',
+        icon: <InfoCircle />,
+        expandLabel: 'More',
+        collapseLabel: 'Less',
+        content: (
+          <div>
+            lauren ipsum lauren ipsum lauren ipsum lauren ipsum lauren ipsum
+            lauren ipsum lauren ipsum lauren ipsum{' '}
+          </div>
+        ),
+      },
       {
         title: 'title1',
-        icon: <InfoCircle/>,
+        icon: <InfoCircle />,
+        expandLabel: 'More',
+        collapseLabel: 'Less',
         content: 'dummy content',
-      }],
-  }
+      },
+    ],
+  },
 ];
 
 export default {
@@ -39,13 +45,13 @@ export default {
   },
 
   exampleProps: {
-    data: exampleData
+    data: exampleData,
     // Put here presets of props, for more info:
     // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
   },
 
   examples: (
-    <div style={{maxWidth: 627}}>
+    <div style={{ maxWidth: 627 }}>
       <LiveCodeExample
         compact
         title="Live code example"
