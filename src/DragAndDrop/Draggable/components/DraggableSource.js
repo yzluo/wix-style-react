@@ -223,7 +223,7 @@ export default class DraggableSource extends React.Component {
     return renderItem({
       id,
       item,
-      previewStyles,
+      previewStyles: {width: this.state.itemWidth, ...previewStyles},
       isPreview: true,
       connectHandle: noop,
     });
@@ -238,7 +238,6 @@ export default class DraggableSource extends React.Component {
         renderPreview={this._renderPreview}
         id={id}
         draggedType={ItemTypes.DRAGGABLE}
-        width={this.state.itemWidth}
       />
     );
   }
