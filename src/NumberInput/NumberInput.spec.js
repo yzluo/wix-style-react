@@ -9,25 +9,16 @@ describe('NumberInput', () => {
 
   it('should render', async () => {
     const driver = createDriver(<NumberInput />);
-
     expect(await driver.exists()).toBeTruthy();
-    expect(await driver.getButtonText()).toEqual('Click me!');
   });
 
-  it('should increment', async () => {
-    const driver = createDriver(<NumberInput />);
-
-    await driver.clickButton();
-    await driver.clickButton();
-
-    expect(await driver.getCountText()).toEqual(
-      'You clicked this button 2 times',
+  it('should increment value', async () => {
+    const value = 0,
+      onChange = jest.fn();
+    const driver = createDriver(
+      <NumberInput onChange={onChange} value={value} />,
     );
-  });
-
-  it('should allow changing the button text', async () => {
-    const driver = createDriver(<NumberInput buttonText="Press me" />);
-
-    expect(await driver.getButtonText()).toEqual('Press me');
+    await driver.clickOnIncrement();
+    expect(await driver.onChange).toHaveBeenCalledWith(value + 1);
   });
 });
