@@ -5,8 +5,8 @@ import ChevronDown from '../../new-icons/ChevronDown';
 import ChevronUp from '../../new-icons/ChevronUp';
 import classNames from 'classnames';
 
-export default ({expend, open, onClickHandler, expandLabel, collapseLabel}) => {
-  const toggleStyle = classNames(styles.toggleButtons, {open:styles.open, expend: styles.expend});
+export default ({expend, isOpen, onClickHandler, expandLabel, collapseLabel}) => {
+  const toggleStyle = classNames(styles.toggleButtons, {isOpen:styles.open, expend: styles.expend});
   return (
     <div
       data-hook='toggle-accordion-wrapper'
@@ -16,12 +16,12 @@ export default ({expend, open, onClickHandler, expandLabel, collapseLabel}) => {
       <Button
         dataHook="toggle-accordion-button"
         as="button"
-        suffixIcon={open ? <ChevronUp/> : <ChevronDown/>}
+        suffixIcon={isOpen ? <ChevronUp/> : <ChevronDown/>}
         className={styles.button}
-        priority={open ? "secondary" : 'primary'}
+        priority={isOpen ? "secondary" : 'primary'}
         size="small"
       >
-        {open ? collapseLabel : expandLabel}
+        {isOpen ? collapseLabel : expandLabel}
       </Button>
     </div>
   );
