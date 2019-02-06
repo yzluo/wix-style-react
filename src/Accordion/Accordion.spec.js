@@ -52,13 +52,13 @@ describe('Accordion', () => {
     expect(await driver.isIconExistsAt(1)).toBeFalsy();
   });
 
-  it('should specific row content on click', async () => {
+  it('should open a row on click', async () => {
 
     const driver = createDriver(<Accordion data={towItemsData}/>);
     expect(await driver.isRowExpandedAt(0)).toBeFalsy();
     expect(await driver.isRowExpandedAt(1)).toBeFalsy();
 
-    await driver.clickAtRow(0);
+    await driver.clickToggleButtonAt(0);
     expect(await driver.isRowExpandedAt(0)).toBeTruthy();
     expect(await driver.isRowExpandedAt(1)).toBeFalsy();
   })
@@ -66,7 +66,7 @@ describe('Accordion', () => {
   it('should verify the expand and collapse labels', async () => {
     const driver = createDriver(<Accordion data={towItemsData}/>);
     expect(await driver.getToggleButtonLabelAt(0)).toEqual('More');
-    await driver.clickAtRow(0);
+    await driver.clickToggleButtonAt(0);
     expect(await driver.getToggleButtonLabelAt(0)).toEqual('Less');
   });
 
@@ -75,19 +75,19 @@ describe('Accordion', () => {
 
     expect(await driver.isRowOpenAt(0)).toBeFalsy();
 
-    await driver.clickAtRow(0);
+    await driver.clickToggleButtonAt(0);
     expect(await driver.isRowOpenAt(0)).toBeTruthy();
   })
 
   it('should expend a row on click and close an already expanded row', async () => {
     const driver = createDriver(<Accordion data={towItemsData}/>);
 
-    await driver.clickAtRow(0);
-    await driver.clickAtRow(1);
+    await driver.clickToggleButtonAt(0);
+    await driver.clickToggleButtonAt(1);
     expect(await driver.isRowOpenAt(1)).toBeTruthy();
     expect(await driver.isRowOpenAt(0)).toBeFalsy();
 
-    await driver.clickAtRow(1);
+    await driver.clickToggleButtonAt(1);
     expect(await driver.isRowOpenAt(1)).toBeFalsy();
     expect(await driver.isRowOpenAt(0)).toBeFalsy();
   });

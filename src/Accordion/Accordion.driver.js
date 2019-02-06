@@ -10,7 +10,7 @@ export const accordionDriverFactory = base => {
     getTitleOfRowAt: async (idx) => getRowAtIndex(idx).$('[data-hook="title"]').text(),
     isIconExistsAt: async (idx) => getRowAtIndex(idx).$('[data-hook="icon"]').exists(),
     isRowExpandedAt: async (idx) => getRowAtIndex(idx).$('[data-hook="content"]').exists(),
-    clickAtRow: async (idx) => getRowAtIndex(idx).$('[data-hook="toggle-accordion-wrapper"]').click(),
+    clickToggleButtonAt: async (idx) => getRowAtIndex(idx).$('[data-hook="toggle-accordion-wrapper"]').click(),
     isRowOpenAt: async (idx) => getRowAtIndex(idx).$('[data-hook="toggle-accordion-wrapper"]').hasClass('open'),
     getToggleButtonLabelAt: async (idx) => getRowAtIndex(idx).$('[data-hook="toggle-accordion-wrapper"]').$( '[data-hook="toggle-accordion-button"]').text()
   };

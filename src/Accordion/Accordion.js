@@ -13,9 +13,6 @@ class Accordion extends React.Component {
     data: PropTypes.array,
   };
 
-  static defaultProps = {
-  };
-
   state = {
     openId: null,
   };

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './row.scss';
+import styles from './AccordionRow.scss';
 import {Animator} from 'wix-animations';
 import Text from '../../Text';
 import MoreLessButton from '../MoreLessButton';
