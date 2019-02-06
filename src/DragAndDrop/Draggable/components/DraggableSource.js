@@ -108,7 +108,10 @@ const collect = (connect, monitor) => ({
 export default class DraggableSource extends React.Component {
   state = {
     offsetOfHandle: { x: 0, y: 0 },
+    itemWidth: null
   };
+
+  rootNode = null;
 
   componentDidMount() {
     if (this.props.connectDragPreview) {
@@ -208,6 +211,13 @@ export default class DraggableSource extends React.Component {
     );
   }
 
+  _setRootNode = node => {
+    if (node && this.rootNode !== node) {
+      this.rootNode = node;
+      this.setState({itemWidth: this.rootNode.getBoundingClientRect().width});
+    }
+  }
+
   _renderPreview = ({ previewStyles }) => {
     const { renderItem, id, item } = this.props;
     return renderItem({
@@ -228,6 +238,7 @@ export default class DraggableSource extends React.Component {
         renderPreview={this._renderPreview}
         id={id}
         draggedType={ItemTypes.DRAGGABLE}
+        width={this.state.itemWidth}
       />
     );
   }
@@ -235,7 +246,7 @@ export default class DraggableSource extends React.Component {
   render() {
     const { connectDragSource } = this.props;
     return connectDragSource ? (
-      <div ref={node => (this.rootNode = node)}>
+      <div ref={this._setRootNode}>
         {this._renderDraggableItem()}
         {this._renderPreviewItem()}
       </div>
