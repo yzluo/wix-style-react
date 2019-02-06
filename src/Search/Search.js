@@ -16,8 +16,9 @@ export default class Search extends WixComponent {
 
   static propTypes = {
     ...InputWithOptions.propTypes,
-    placeholder: PropTypes.string,
+    /** Will display the search icon only until clicked */
     expandable: PropTypes.bool,
+    /** Custom function for filtering options */
     predicate: PropTypes.func,
   };
 

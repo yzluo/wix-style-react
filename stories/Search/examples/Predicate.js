@@ -1,6 +1,7 @@
 import React from 'react';
 
-import * as wsrScope from '../../../src/index';
+import * as wsrScope from '../../../src';
+import { Layout, Cell } from '../../../src/Layout';
 import LiveCodeExample from '../../utils/Components/LiveCodeExample';
 import { Section } from '../../UXStoryTemplate';
 
@@ -10,9 +11,9 @@ class SearchPredicate extends React.Component {
   constructor() {
     this.state = {
       options: [
-        { id: 1, value: <div style={{color: 'blue'}}>111</div>, metadata: { keywords: ['one', '1', 'first'] }},
-        { id: 2, value: <div style={{color: 'orange'}}>222</div>, metadata: { keywords: ['two', '2', 'second'] }},
-        { id: 3, value: <div style={{color: 'red'}}>333</div>, metadata: { keywords: ['three', '3', 'third'] }},
+        { id: 1, value: <div>😇</div>, metadata: { keywords: ['good', 'angel', 'holy', 'emoji'] }},
+        { id: 2, value: <div>🤓</div>, metadata: { keywords: ['nerd', 'glasses', 'smart', 'emoji'] }},
+        { id: 3, value: <div>🤠</div>, metadata: { keywords: ['cowboy', 'hat', 'ranch', 'emoji'] }},
       ],
       value: '',
     };
@@ -35,16 +36,21 @@ class SearchPredicate extends React.Component {
 export default () => {
   return (
     <Section title="Predicate">
-      <wsrScope.Layout>
-        <wsrScope.Cell span={6}>
+      <Layout>
+        <Cell span={6}>
+          <h3>
+            You may add data (e.g metadata key) to your options items, helpful
+            for searching using a custom predicate function
+          </h3>
           <LiveCodeExample
             scope={wsrScope}
             compact
             title="Using custom predicate function for filtering"
             initialCode={Example}
           />
-        </wsrScope.Cell>
-      </wsrScope.Layout>
+          <p>Try searching 'good', 'cowboy', 'emoji' and see what happens</p>
+        </Cell>
+      </Layout>
     </Section>
   );
 };

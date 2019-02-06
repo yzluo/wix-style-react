@@ -255,21 +255,4 @@ describe('Search', () => {
       expect(driver.isCollapsed()).toBeFalsy();
     });
   });
-  describe('Testkits', () => {
-    it('Using ReactTestUtils testkit', () => {
-      expect(
-        isTestkitExists(<Search options={options} />, searchTestkitFactory),
-      ).toBe(true);
-    });
-
-    it('Using Enzyme testkit', () => {
-      expect(
-        isEnzymeTestkitExists(
-          <Search options={options} />,
-          enzymeSearchTestkitFactory,
-          mount,
-        ),
-      ).toBe(true);
-    });
-  });
 });
