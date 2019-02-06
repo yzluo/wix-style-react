@@ -19,7 +19,7 @@ class AccordionRow extends React.PureComponent {
     content: PropTypes.node,
     icon: PropTypes.node,
     isOpen: PropTypes.bool,
-    toggleView: PropTypes.func,
+    toggleOpenClose: PropTypes.func,
   };
 
   state = {
