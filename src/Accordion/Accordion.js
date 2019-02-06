@@ -9,15 +9,23 @@ class Accordion extends React.Component {
   static propTypes = {
     dataHook: PropTypes.string,
 
-    /** Row Data: {title: string, icon: node, content: node, expandLabel: string, collapseLabel: string}*/
-    data: PropTypes.array,
+    /** accordion data nodes */
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.node,
+        icon: PropTypes.node,
+        content: PropTypes.node,
+        expandLabel: PropTypes.node,
+        collapseLabel: PropTypes.node,
+      }),
+    ),
   };
 
   state = {
     openId: null,
   };
 
-  toggle = id => {
+  _toggle = id => {
     this.setState({
       openId: this.state.openId !== id ? id : -1,
     });
@@ -35,7 +43,7 @@ class Accordion extends React.Component {
               <AccordionItem
                 dataHook="accordion-row"
                 id={index}
-                toggleOpenClose={this.toggle}
+                toggleOpenClose={this._toggle}
                 {...row}
                 isOpen={openId === index}
               />
