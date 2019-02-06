@@ -37,7 +37,7 @@ class Accordion extends React.Component {
             <AccordionRow
               dataHook={'accordion-row'}
               id={index}
-              toggleView={this.toggle}
+              toggleOpenClose={this.toggle}
               {...row}
               open={openId === index}
             />
