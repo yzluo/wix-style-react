@@ -1,7 +1,7 @@
 import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 
 export const accordionDriverFactory = base => {
-  const getItemAt = idx => base.$$('[data-hook="accordion-row"]').get(idx);
+  const getItemAt = idx => base.$$('[data-hook="accordion-item"]').get(idx);
 
   return {
     ...baseUniDriverFactory(base),

@@ -41,7 +41,7 @@ class Accordion extends React.Component {
           data.map((row, index) => (
             <div className={styles.rowWrapper} key={index}>
               <AccordionItem
-                dataHook="accordion-row"
+                dataHook="accordion-item"
                 id={index}
                 toggleOpenClose={this._toggle}
                 {...row}

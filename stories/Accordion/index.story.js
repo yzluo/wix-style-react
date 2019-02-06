@@ -10,19 +10,19 @@ const exampleData = [
     label: 'Simple data',
     value: [
       {
-        title: 'title',
+        title: 'First Item',
         icon: <InfoCircle />,
         expandLabel: 'More',
         collapseLabel: 'Less',
         content: (
           <div>
             lauren ipsum lauren ipsum lauren ipsum lauren ipsum lauren ipsum
-            lauren ipsum lauren ipsum lauren ipsum{' '}
+            lauren ipsum lauren ipsum lauren ipsum
           </div>
         ),
       },
       {
-        title: 'title1',
+        title: 'Second Item',
         icon: <InfoCircle />,
         expandLabel: 'More',
         collapseLabel: 'Less',
@@ -46,19 +46,36 @@ export default {
 
   exampleProps: {
     data: exampleData,
-    // Put here presets of props, for more info:
-    // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
   },
 
   examples: (
     <div style={{ maxWidth: 627 }}>
       <LiveCodeExample
         compact
-        title="Live code example"
+        title="Card with Accordion"
         initialCode={`
-          <Accordion
-            dataHook="story-accordion-live-example"
-            />
+          <Card>
+            <Card.Header title="Example Card with Accordion"/>
+            <Accordion
+              dataHook="story-accordion-live-example"
+              data={
+                [
+                  {
+                    title: 'First Item',
+                    icon: <InfoCircle />,
+                    expandLabel: 'More',
+                    collapseLabel: 'Less',
+                    content: (
+                      <div>
+                        lauren ipsum lauren ipsum lauren ipsum lauren ipsum lauren ipsum
+                        lauren ipsum lauren ipsum lauren ipsum
+                      </div>
+                    ),
+                  }
+                ]
+              }
+              />
+          </Card>
         `}
       />
     </div>
