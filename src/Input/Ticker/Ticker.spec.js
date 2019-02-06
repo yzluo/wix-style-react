@@ -4,7 +4,6 @@ import { tickerPrivateDriverFactory } from './testkit/Ticker.driver.private';
 import Ticker from './Ticker';
 
 describe('<Ticker/>', () => {
-  // const createDriver = props => tickerDriverFactory(componentFactory(props));
   const createDriver = createUniDriverFactory(tickerPrivateDriverFactory);
   it('should create a ticker', async () => {
     const driver = createDriver(<Ticker />);

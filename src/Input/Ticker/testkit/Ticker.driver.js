@@ -6,10 +6,8 @@ export const tickerDriverFactory = base => {
   return {
     ...baseUniDriverFactory(base),
 
-    getUp: () => base.$(`.${styles.up}`),
-    getDown: () => base.$(`.${styles.down}`),
-    clickUp: async () => base.$(`.${styles.up}`).click(),
-    clickDown: async () => base.$(`.${styles.down}`).click(),
+    clickUp: () => base.$(`.${styles.up}`).click(),
+    clickDown: () => base.$(`.${styles.down}`).click(),
     isUpDisabled: () => base.$(`.${styles.up}`).hasClass(styles.disabled),
     isDownDisabled: () => base.$(`.${styles.down}`).hasClass(styles.disabled),
     exists: () => base.exists(),
