@@ -39,7 +39,7 @@ class Accordion extends React.Component {
               id={index}
               toggleOpenClose={this.toggle}
               {...row}
-              open={openId === index}
+              isOpen={openId === index}
             />
           </div>
         ))}
