@@ -162,3 +162,6 @@ import './SegmentedToggle/testStory'; // 4.5 SegmentedToggle
 
 // The generated test component
 import './GeneratedTestComponent/index.story';
+
+// This import was added by the component generator
+import './NumberInput/index.story';

@@ -402,3 +402,9 @@ import { segmentedToggleDriverFactory } from '../src/SegmentedToggle/SegmentedTo
 export const segmentedToggleTestkitFactory = protractorUniTestkitFactoryCreator(
   segmentedToggleDriverFactory,
 );
+
+import { numberInputDriverFactory } from '../src/NumberInput/NumberInput.driver';
+
+export const numberInputTestkitFactory = protractorUniTestkitFactoryCreator(
+  numberInputDriverFactory,
+);
