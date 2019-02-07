@@ -7,6 +7,11 @@ import Input from '../Input/Input';
 class NumberInput extends React.PureComponent {
   static displayName = 'NumberInput';
 
+  increment = () => {
+    const { value, onChange } = this.props;
+    onChange((value + 1).toString());
+  };
+
   render() {
     const { dataHook, value, onChange } = this.props;
 
@@ -16,7 +21,12 @@ class NumberInput extends React.PureComponent {
           type="number"
           value={value}
           onChange={onChange}
-          suffix={<Input.Ticker dataHook="number-input-ticker" />}
+          suffix={
+            <Input.Ticker
+              onUp={this.increment}
+              dataHook="number-input-ticker"
+            />
+          }
         />
       </div>
     );
