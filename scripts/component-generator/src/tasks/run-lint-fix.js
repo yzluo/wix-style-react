@@ -1,13 +1,18 @@
 const path = require('path');
 const { exec } = require('child_process');
-const utils = require('./utils');
-const logger = require('./logger');
+
+const utils = require('../utils');
 
 const runLintFix = glob => {
   return new Promise(resolve => {
     const pathToExecutable = path.join(
       __dirname,
-      '../../../node_modules/.bin/yoshi',
+      '..',
+      '..',
+      '..',
+      'node_modules',
+      '.bin',
+      'yoshi',
     );
 
     const execProc = exec(`${pathToExecutable} lint --fix ${glob}`);
@@ -15,15 +20,9 @@ const runLintFix = glob => {
   });
 };
 
-module.exports = async ({ ComponentName }) => {
-  const spinner = logger.spinner('Fixing potential lint issues');
-
+module.exports = async ({ ComponentName }) =>
   await runLintFix(
     `${utils.getComponentPath(ComponentName)}/* ${utils.getComponentStoryPath(
       ComponentName,
     )}/*`,
   );
-
-  spinner.stop();
-  logger.success('Linting issues fixed');
-};

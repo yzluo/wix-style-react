@@ -1,16 +1,12 @@
-const skipSanityTest = true;
-const noTestkit = true;
-const manualExport = true;
-const unidriver = true;
-
 /*
  * This file exports object with config for component testkits.
+ * Ideally there should be no config, it is used for cases that are not following convention.
  *
  * Glossary:
  *   regular components export testkits and pass sanity tests automatically (no config).
  *   non-regular components need additional config for export and sanity tests to be automated.
  *
- * { [component.displayName]: TestkitDefinitions }
+ * { [component.displayName]: TestkitDefinition }
  *
  * [component.displayName] = {
  *   // what kind of drivers should be tested
@@ -41,225 +37,171 @@ const unidriver = true;
 
 module.exports = {
   SideMenuDrill: {
-    skipSanityTest,
+    skipSanityTest: true,
     testkitPath: '../src/SideMenu/DrillView/DrillView.driver',
   },
 
-  BadgeSelectItemBuilder: { skipSanityTest, noTestkit },
+  BadgeSelectItemBuilder: { skipSanityTest: true, noTestkit: true },
 
   ColorPicker: {
-    skipSanityTest, // missing export in testkit/index.js, so skipping for now
+    skipSanityTest: true, // missing export in testkit/index.js, so skipping for now
   },
 
   MultiSelect: {
-    skipSanityTest, // testkit does not have root `exists` method
+    skipSanityTest: true, // testkit does not have root `exists` method
   },
-
-  MultiSelectComposite: {},
 
   MultiSelectCheckbox: {
-    skipSanityTest, // testkit does not have root `exists` method
+    skipSanityTest: true, // testkit does not have root `exists` method
   },
 
-  AutoCompleteComposite: {},
+  DragAndDrop: { skipSanityTest: true, noTestkit: true },
 
-  DragAndDrop: { skipSanityTest, noTestkit },
-
-  DragDropContextProvider: { skipSanityTest, noTestkit },
+  DragDropContextProvider: { skipSanityTest: true, noTestkit: true },
 
   EndorseContentLayout: {
-    skipSanityTest,
+    skipSanityTest: true,
     // TODO: testkit of this component is not following convention.
     // It is used only internally and before automated export was not exported manually
-    noTestkit,
+    noTestkit: true,
   },
 
   GoogleAddressInput: {
-    skipSanityTest,
+    skipSanityTest: true,
     // TODO: testkit of this component is not following convention.
     // It is used only internally and before automated export was not exported manually
-    noTestkit,
+    noTestkit: true,
   },
 
-  GoogleAddressInputWithLabel: { skipSanityTest },
+  GoogleAddressInputWithLabel: { skipSanityTest: true },
 
-  Grid: { skipSanityTest, noTestkit },
+  Grid: { skipSanityTest: true, noTestkit: true },
 
-  HBox: { skipSanityTest, noTestkit },
+  HBox: { skipSanityTest: true, noTestkit: true },
 
-  Layout: { skipSanityTest, noTestkit },
+  Layout: { skipSanityTest: true, noTestkit: true },
 
-  MessageBox: { skipSanityTest, noTestkit },
+  MessageBox: { skipSanityTest: true, noTestkit: true },
 
   Header: {
     testkitPath: '../src/Card/Header/Header.driver',
     // TODO: this is actually  Card.Header, but is exported just as header
-    skipSanityTest,
+    skipSanityTest: true,
   },
 
-  Page: { skipSanityTest },
+  Page: { skipSanityTest: true },
 
-  PageHeader: { skipSanityTest },
+  PageHeader: { skipSanityTest: true },
 
-  PopoverMenuItem: { skipSanityTest, noTestkit },
+  PopoverMenuItem: { skipSanityTest: true, noTestkit: true },
 
-  Popover: {},
+  TableToolbar: { skipSanityTest: true, noTestkit: true },
 
-  TableToolbar: { skipSanityTest, noTestkit },
+  Tooltip: { skipSanityTest: true },
 
-  Tooltip: { skipSanityTest },
+  VBox: { skipSanityTest: true, noTestkit: true },
 
-  VBox: { skipSanityTest, noTestkit },
+  Collapse: { skipSanityTest: true, noTestkit: true },
 
-  Collapse: { skipSanityTest, noTestkit },
+  Card: { skipSanityTest: true, noTestkit: true },
 
-  Card: { skipSanityTest, noTestkit },
+  Composite: { skipSanityTest: true, noTestkit: true },
 
-  LinearProgressBar: {},
-
-  CircularProgressBar: {},
-
-  Composite: { skipSanityTest, noTestkit },
-
-  FloatingHelper: {},
-
-  FullTextView: { skipSanityTest, noTestkit },
+  FullTextView: { skipSanityTest: true, noTestkit: true },
 
   RichTextArea: {
     beforeAllHook: () => (window.getSelection = () => ({})),
   },
 
-  RichTextAreaComposite: {},
-
-  Range: {},
-
-  Avatar: { unidriver },
-
-  Tag: {},
+  Avatar: { unidriver: true },
 
   TextButton: {
-    unidriver,
+    unidriver: true,
   },
 
   IconButton: {
-    unidriver,
-    skipSanityTest,
+    unidriver: true,
+    skipSanityTest: true,
   },
 
   CloseButton: {
-    unidriver,
+    unidriver: true,
   },
 
   CardGalleryItem: {
-    unidriver,
+    unidriver: true,
   },
-
-  Label: {},
 
   SideMenu: {
     testkitPath: '../src/SideMenu/core/SideMenu.driver',
   },
 
-  ToggleSwitch: {},
-
-  CounterBadge: {},
-
-  Badge: {},
-
-  Button: { unidriver },
-
-  ImageViewer: {},
-
-  FormField: {},
-
-  BadgeSelect: {},
-
-  Breadcrumbs: {},
-
-  Calendar: {},
-
-  CalendarPanel: {},
+  Button: { unidriver: true },
 
   CalendarPanelFooter: {
-    unidriver,
+    unidriver: true,
   },
 
-  DataTable: {},
-
-  Slider: {},
-
-  Selector: {},
-
-  StatsWidget: {},
-
-  Table: {},
-
-  Tabs: {},
-
-  Modal: {},
-
-  ContactItemBuilder: { skipSanityTest },
+  ContactItemBuilder: { skipSanityTest: true },
 
   Draggable: {
     testkitPath: '../src/DragAndDrop/Draggable/Draggable.driver',
-    skipSanityTest,
+    skipSanityTest: true,
   },
 
   EditableRow: {
     testkitPath: '../src/EditableSelector/EditableRow/EditableRow.driver',
-    skipSanityTest,
+    skipSanityTest: true,
   },
 
   FieldLabelAttributes: {
     testkitPath: '../src/FieldLabelAttributes/FieldLabelAttributes.driver',
-    skipSanityTest,
+    skipSanityTest: true,
   },
 
   FieldWithSelectionComposite: {
     testkitPath:
       '../src/Composite/FieldWithSelectionComposite/FieldWithSelectionComposite.driver',
-    skipSanityTest,
+    skipSanityTest: true,
   },
 
   Carousel: {
     drivers: ['enzyme'],
   },
 
-  Notification: {},
-
   DatePicker: {
-    skipSanityTest, // testkit does not have root `exists` method
+    skipSanityTest: true, // testkit does not have root `exists` method
   },
 
-  ModalSelectorLayout: {},
+  Proportion: { unidriver: true, drivers: ['enzyme'] },
 
-  Proportion: { unidriver, drivers: ['enzyme'] },
+  GeneratedTestComponent: { unidriver: true, drivers: ['enzyme'] },
 
-  GeneratedTestComponent: { unidriver, drivers: ['enzyme'] },
-
-  DropdownBase: { unidriver },
+  DropdownBase: { unidriver: true },
 
   RadioButton: {
     testkitPath: '../src/RadioGroup/RadioButton/RadioButton.driver',
-    skipSanityTest,
+    skipSanityTest: true,
   },
 
   MessageBoxMarketerialLayout: {
     testkitPath: '../src/MessageBox/MessageBoxMarketerialLayout.driver',
-    skipSanityTest,
+    skipSanityTest: true,
   },
 
   MessageBoxFunctionalLayout: {
     testkitPath: '../src/MessageBox/MessageBoxFunctionalLayout.driver',
-    skipSanityTest,
+    skipSanityTest: true,
   },
 
-  Box: { unidriver },
+  Box: { unidriver: true },
 
-  Thumbnail: { unidriver },
+  Thumbnail: { unidriver: true },
 
   SegmentedToggle: {
     testkitPath: '../src/SegmentedToggle/SegmentedToggle.driver',
-    unidriver,
+    unidriver: true,
   },
+
+  RichTextInputArea: { unidriver: true },
 };

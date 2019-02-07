@@ -1,8 +1,9 @@
 const path = require('path');
 const { exec } = require('child_process');
-const utils = require('./utils');
-const logger = require('./logger');
-const createValuesMap = require('./create-values-map');
+
+const utils = require('../utils');
+const logger = require('../logger');
+const createValuesMap = require('../create-values-map');
 
 const runTransform = (
   transformName,
@@ -11,13 +12,22 @@ const runTransform = (
   { ComponentName, componentName },
 ) => {
   return new Promise((resolve, reject) => {
-    const transformPath = path.join(__dirname, 'transforms', transformName);
+    const transformPath = path.join(
+      __dirname,
+      '..',
+      'transforms',
+      transformName,
+    );
     const pathToExecutable = path.join(
       __dirname,
-      '../../../node_modules/.bin/jscodeshift',
+      '..',
+      '..',
+      '..',
+      '..',
+      'node_modules',
+      '.bin',
+      'jscodeshift',
     );
-
-    const spinner = logger.spinner(description);
 
     const execProc = exec(
       `${pathToExecutable} \
@@ -28,7 +38,6 @@ const runTransform = (
     );
 
     execProc.stderr.on('data', data => {
-      spinner.error();
       logger.error(
         `Error while running codemod ${transformName}: ${data.toString()}`,
       );
@@ -37,7 +46,6 @@ const runTransform = (
     });
 
     execProc.on('exit', () => {
-      spinner.stop();
       logger.success(description);
 
       resolve();
@@ -50,21 +58,28 @@ module.exports = async answers => {
 
   await runTransform(
     'stories-file.js',
-    'Adding story to the stories file',
+    'Add story to the stories file',
     utils.getDestinationPath('stories/index.js'),
     { ComponentName, componentName },
   );
 
   await runTransform(
     'index-file.js',
-    'Adding component export to the index file',
+    'Add component export to the index file',
     utils.getDestinationPath('src/index.js'),
     { ComponentName, componentName },
   );
 
   await runTransform(
+    'testkit-definitions.js',
+    'Update testkit-definitions.js file',
+    utils.getDestinationPath('testkit/testkit-definitions.js'),
+    { ComponentName, componentName },
+  );
+
+  await runTransform(
     'testkit-exports.js',
-    'Add testkit exports',
+    'Add protractor & puppeteer testkit exports',
     [
       utils.getDestinationPath('testkit/protractor.js'),
       utils.getDestinationPath('testkit/puppeteer.js'),

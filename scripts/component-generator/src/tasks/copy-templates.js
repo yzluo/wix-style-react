@@ -1,8 +1,8 @@
 const fs = require('fs-extra');
-const logger = require('./logger');
-const utils = require('./utils');
-const replaceTemplates = require('./replace-templates');
-const createValuesMap = require('./create-values-map');
+const logger = require('../logger');
+const utils = require('../utils');
+const replaceTemplates = require('../replace-templates');
+const createValuesMap = require('../create-values-map');
 
 const createFileMap = ({ ComponentName, description, testComponent }) => {
   const filesToCopy = [

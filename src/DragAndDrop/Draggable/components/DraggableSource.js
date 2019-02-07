@@ -78,6 +78,17 @@ const source = {
       }
     }
   },
+  canDrag: ({ id, index, containerId, groupName, item, canDrag }) => {
+    return canDrag
+      ? canDrag({
+          id,
+          index,
+          containerId,
+          groupName,
+          item,
+        })
+      : true;
+  },
   isDragging: ({ id, containerId, groupName }, monitor) => {
     const item = monitor.getItem();
     const isSameGroup =
@@ -133,6 +144,33 @@ export default class DraggableSource extends React.Component {
     }
   }
 
+  _getWrapperStyles() {
+    const {
+      shift,
+      ignoreMouseEvents,
+      animationDuration,
+      animationTiming,
+    } = this.props;
+    const [xShift, yShift] = shift || [0, 0];
+    const hasShift = xShift || yShift;
+
+    const transition = ignoreMouseEvents
+      ? `transform ${animationDuration}ms ${animationTiming}`
+      : undefined;
+    const transform = hasShift
+      ? `translate(${xShift}px, ${yShift}px)`
+      : undefined;
+    const willChange = hasShift ? 'transform' : undefined;
+    const pointerEvents = ignoreMouseEvents || hasShift ? 'none' : undefined;
+
+    return {
+      willChange,
+      transition,
+      transform,
+      pointerEvents,
+    };
+  }
+
   _renderDraggableItem() {
     const {
       isDragging,
@@ -142,28 +180,29 @@ export default class DraggableSource extends React.Component {
       id,
       item,
     } = this.props;
-    if (withHandle) {
-      return renderItem({
-        id,
-        item,
-        isPlaceholder: isDragging,
-        connectHandle: handle => {
-          const handleWithRef = React.cloneElement(handle, {
-            ref: node => (this.handleNode = ReactDOM.findDOMNode(node)),
-          });
-          return connectDragSource(handleWithRef);
-        },
-      });
-    }
 
-    return connectDragSource(
-      renderItem({
-        id,
-        item,
-        isPlaceholder: isDragging,
-        connectHandle: noop,
-      }),
-    );
+    const content = withHandle
+      ? renderItem({
+          id,
+          item,
+          isPlaceholder: isDragging,
+          connectHandle: handle => {
+            const handleWithRef = React.cloneElement(handle, {
+              ref: node => (this.handleNode = ReactDOM.findDOMNode(node)),
+            });
+            return connectDragSource(handleWithRef);
+          },
+        })
+      : connectDragSource(
+          renderItem({
+            id,
+            item,
+            isPlaceholder: isDragging,
+            connectHandle: noop,
+          }),
+        );
+
+    return <div style={this._getWrapperStyles()}>{content}</div>;
   }
 
   _renderPreview = ({ previewStyles }) => {
@@ -218,4 +257,14 @@ DraggableSource.propTypes = {
   onMoveOut: PropTypes.func,
   onDragStart: PropTypes.func,
   onDragEnd: PropTypes.func,
+
+  /** visual positioning shifting for an element (transform: translate) without moving it from its real position at DOM (left, top) */
+  shift: PropTypes.arrayOf(PropTypes.number),
+  ignoreMouseEvents: PropTypes.bool,
+  /** animation duration in ms, default = 0 - disabled */
+  animationDuration: PropTypes.number,
+  /** animation timing function, default = linear */
+  animationTiming: PropTypes.string,
+  /** callback that could prevent item from dragging */
+  canDrag: PropTypes.func,
 };

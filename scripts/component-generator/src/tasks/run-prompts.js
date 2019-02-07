@@ -1,6 +1,7 @@
 const prompts = require('prompts');
-const utils = require('./utils');
-const logger = require('./logger');
+
+const utils = require('../utils');
+const logger = require('../logger');
 
 module.exports = async () => {
   let promptAborted = false;
