@@ -1,6 +1,6 @@
 import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 
-import styles from '../Ticker.scss';
+import styles from './Ticker.scss';
 
 export const tickerDriverFactory = base => {
   return {

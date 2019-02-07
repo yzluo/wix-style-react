@@ -1,6 +1,6 @@
 import React from 'react';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
-import { tickerPrivateDriverFactory } from './testkit/Ticker.driver.private';
+import { tickerPrivateDriverFactory } from './Ticker.driver.private';
 import Ticker from './Ticker';
 
 describe('<Ticker/>', () => {
