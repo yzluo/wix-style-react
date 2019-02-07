@@ -237,6 +237,8 @@ export default class DraggableSource extends React.Component {
         usePortal={usePortal}
         renderPreview={this._renderPreview}
         id={id}
+        // pass 'width' this prop to rerender element with changed width from state
+        width={this.state.itemWidth}
         draggedType={ItemTypes.DRAGGABLE}
       />
     );

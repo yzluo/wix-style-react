@@ -89,6 +89,7 @@ Some details about complex props
   so you able to style your item by cheking isPreview.
   - `id` - an id from item that you render
   - `previewStyles` - styles that coming from SortableList, `you always need to apply` them on your root div, inside of renderItem
+  You can add default item width as style={{...previewStyles, width: your_width }}
   - `item` - item that you are render
 
   Example without handle:
