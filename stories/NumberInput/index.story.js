@@ -4,6 +4,29 @@ import LiveCodeExample from '../utils/Components/LiveCodeExample';
 
 import NumberInput from '../../src/NumberInput';
 
+const example = `
+class NumberField extends React.Component {
+  constructor() {
+    this.state = {
+      value: 0,
+    };
+  }
+
+  render() {
+    const onChange = e => this.setState({ value: e.target.value });
+
+    return (
+      <FormField label="Number">
+        <NumberInput
+          {...this.props}
+          value={this.state.value}
+          onChange={onChange}
+        />
+      </FormField>
+    );
+  }
+}
+`;
 export default {
   category: storySettings.kind,
   storyName: storySettings.storyName,
@@ -13,7 +36,6 @@ export default {
 
   componentProps: {
     dataHook: storySettings.dataHook,
-    buttonText: undefined,
   },
 
   exampleProps: {
@@ -26,12 +48,7 @@ export default {
       <LiveCodeExample
         compact
         title="Live code example"
-        initialCode={`
-<NumberInput
-  dataHook="story-number-input-live-example"
-  buttonText="Press me for a surprise"
-  />
-        `}
+        initialCode={example}
       />
     </div>
   ),

@@ -119,6 +119,7 @@ import './GenericModalLayout/GenericModalLayout.story.js';
 import './GoogleAddressInput/index.story.js';
 import './Heading/index.story';
 import './Input/Input.story';
+import './NumberInput/index.story';
 import './InputArea/index.story.js';
 import './Layout/index.story.js';
 import './Layout';
@@ -162,6 +163,3 @@ import './SegmentedToggle/testStory'; // 4.5 SegmentedToggle
 
 // The generated test component
 import './GeneratedTestComponent/index.story';
-
-// This import was added by the component generator
-import './NumberInput/index.story';

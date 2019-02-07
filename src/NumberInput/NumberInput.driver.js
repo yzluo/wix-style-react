@@ -10,6 +10,7 @@ export const numberInputDriverFactory = base => {
     ...baseUniDriverFactory(base),
 
     /** Get the current count */
-    clickOnIncrement: async () => getTickerDriver().clickUp(),
+    clickOnIncrement: () => getTickerDriver().clickUp(),
+    clickOnDecrement: () => getTickerDriver().clickDown(),
   };
 };
