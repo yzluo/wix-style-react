@@ -5,7 +5,6 @@ const glob = require('glob');
 const fs = require('fs');
 const path = require('path');
 const mkdirp = require('mkdirp');
-const rm = require('rimraf');
 const { parse } = require('@babel/parser');
 const { transformFromAstAsync } = require('@babel/core');
 

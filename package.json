@@ -37,7 +37,7 @@
     "prebuild": "npm run generate-testkit-exports",
     "build": "npm run lint && npm run proxy-wix-ui-icons && npm run generate-test-component && npm run transpile && npm run storybook:build",
     "prepublishOnly": "npm run bundle",
-    "bundle": "webpack --config node_modules/yoshi/config/webpack.config.client.js",
+    "bundle": "webpack --config node_modules/yoshi/config/webpack.config.client.js --debug --display-error-details",
     "transpile": "node ./scripts/transpile.js",
     "transpile:watch": "babel src --out-dir dist/es/src --copy-files --watch",
     "postbuild": "npm run copy-public-styles && npm run export-components",
@@ -135,11 +135,11 @@
     "tempy": "^0.2.1",
     "terser": "3.14.0",
     "wait-for-cond": "^1.0.3",
-    "webpack-cli": "^3.2.1",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
     "wix-storybook-utils": "^2.0.62",
     "yoshi": "^4.0.0-alpha.0",
-    "yoshi-style-dependencies": "^3.16.0",
-    "terser": "3.14.0"
+    "yoshi-style-dependencies": "^3.16.0"
   },
   "peerDependencies": {
     "react": "^15.0.0",
