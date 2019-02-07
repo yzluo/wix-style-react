@@ -212,6 +212,7 @@ export default class DraggableSource extends React.Component {
   }
 
   _setRootNode = node => {
+    // Don't need to reset the values if node remains the same
     if (node && this.rootNode !== node) {
       this.rootNode = node;
       this.setState({itemWidth: this.rootNode.getBoundingClientRect().width});
