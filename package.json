@@ -239,6 +239,11 @@
     "env": {
       "jest": true
     },
+    "parserOptions": {
+      "ecmaFeatures": {
+        "legacyDecorators": true
+      }
+    },
     "rules": {
       "import/no-unresolved": 0,
       "jsx-a11y/alt-text": 0,
