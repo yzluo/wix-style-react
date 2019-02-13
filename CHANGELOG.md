@@ -14,6 +14,18 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
+## next
+
+### Added
+
+- `<SortableList/>` - add listOfPropsThatAffectItems to fix render bug [#2925](https://github.com/wix/wix-style-react/pull/2925)
+- `<PageHeader/>` - Add ellipsis to title and subtitle [#2871](https://github.com/wix/wix-style-react/pull/2871)
+- `<FloatingNotification/>` - New Component [#2820](https://github.com/wix/wix-style-react/pull/2820)
+
+### Fixed
+
+- `<ContactItemBuilder/>` - fixed ellipsis [#2951](https://github.com/wix/wix-style-react/pull/2951)
+
 ## 6.3.0 - 2019-02-10
 
 ### Added
@@ -23,6 +35,7 @@ Types of changes:
 - `<SortableList/>` - add animation api [#2852](https://github.com/wix/wix-style-react/pull/2852)
 - `<Autocomplete/>` - add empty state feature [#2899](https://github.com/wix/wix-style-react/pull/2899)
 - `<Input/>` - add `<Input.Affix/>` and `<Input.IconAffix/>` for prefix/suffix rendering [#2887](https://github.com/wix/wix-style-react/pull/2887)
+- `<ColorPicker/>` - add teskit method for cancel action button[#2933](https://github.com/wix/wix-style-react/pull/2933)
 
 ### Fixed
 
@@ -34,6 +47,7 @@ Types of changes:
 - `<Carousel/>` - fix transition speed [#2927](https://github.com/wix/wix-style-react/pull/2927)
 - `<Carousel/>` - fix autoplay speed [#2926](https://github.com/wix/wix-style-react/pull/2926)
 - `<Typography/>` - Fix h2 line height from 42px to 36px[#2829](https://github.com/wix/wix-style-react/pull/2829)
+- `<ColorPicker/>` - migrated deprecated action buttons to IconButton[#2933](https://github.com/wix/wix-style-react/pull/2933)
 
 ### Docs
 

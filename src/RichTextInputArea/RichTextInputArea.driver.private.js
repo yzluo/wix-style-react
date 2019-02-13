@@ -1,9 +1,9 @@
-import { richTextInputAreaDriverFactory as publicDriverFactory } from './RichTextInputArea.driver';
+import publicDriverFactory, { getTextArea } from './RichTextInputArea.driver';
 
-export const richTextInputAreaPrivateDriverFactory = base => {
+export default base => {
   return {
     ...publicDriverFactory(base),
-
-    // Add here driver methods that considered "private"
+    hoverTextArea: async () => await getTextArea(base).hover(),
+    clickTextArea: async () => await getTextArea(base).click(),
   };
 };

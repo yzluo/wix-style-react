@@ -1,12 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Editor,
-  EditorState,
-  ContentState,
-  convertFromHTML,
-  convertToRaw,
-} from 'draft-js';
+import { ContentState, convertFromHTML, convertToRaw } from '@wix/draft-js';
+import { EditorState, RichContentEditor } from 'wix-rich-content-editor';
 import draftToHtml from 'draftjs-to-html';
 
 import styles from './RichTextInputArea.scss';
@@ -40,9 +35,10 @@ class RichTextInputArea extends React.PureComponent {
 
     return (
       <div data-hook={dataHook} className={styles.root}>
-        <Editor
+        <RichContentEditor
           editorState={this.state.editorState}
           onChange={this._onEditorChange}
+          textToolbarType="static"
         />
       </div>
     );
@@ -65,14 +61,12 @@ class RichTextInputArea extends React.PureComponent {
 
   _updateContentByValue = value => {
     const blocksFromHtml = convertFromHTML(value);
-
     if (blocksFromHtml.contentBlocks) {
       const content = ContentState.createFromBlockArray(blocksFromHtml);
       const updatedEditorState = EditorState.push(
         this.state.editorState,
         content,
       );
-
       this.setState({ editorState: updatedEditorState });
     }
   };

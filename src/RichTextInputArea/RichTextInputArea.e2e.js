@@ -1,11 +1,11 @@
 import {
   createStoryUrl,
   waitForVisibilityOf,
-  scrollToElement,
+  protractorUniTestkitFactoryCreator,
 } from 'wix-ui-test-utils/protractor';
 
 import { eyesItInstance } from '../../test/utils/eyes-it';
-import { richTextInputAreaTestkitFactory } from '../../testkit/protractor';
+import richTextInputAreaPrivateDriverFactory from './RichTextInputArea.driver.private';
 import { storySettings } from '../../stories/RichTextInputArea/storySettings';
 
 const eyes = eyesItInstance();
@@ -17,14 +17,16 @@ describe('RichTextInputArea', () => {
   });
 
   const createDriver = async (dataHook = storySettings.dataHook) => {
-    const driver = richTextInputAreaTestkitFactory({ dataHook });
+    const driver = protractorUniTestkitFactoryCreator(
+      richTextInputAreaPrivateDriverFactory,
+    )({
+      dataHook,
+    });
 
     await waitForVisibilityOf(
       await driver.element(),
       `Cannot find <RichTextInputArea/> component with dataHook of ${dataHook}`,
     );
-
-    await scrollToElement(await driver.element());
 
     return driver;
   };
@@ -37,7 +39,25 @@ describe('RichTextInputArea', () => {
     await createDriver();
   });
 
-  eyes.it('should render live example', async () => {
+  eyes.it('should enter simple text', async () => {
+    const driver = await createDriver();
+    await driver.enterText('This is a rich text area');
+  });
+
+  eyes.it(
+    `should change the text area's background color on hover`,
+    async () => {
+      const driver = await createDriver();
+      await driver.hoverTextArea();
+    },
+  );
+
+  eyes.it(`should change the text area's border on click`, async () => {
+    const driver = await createDriver();
+    await driver.clickTextArea();
+  });
+
+  eyes.it('should render with rich text', async () => {
     await createDriver('story-rich-text-input-area-live-example');
   });
 });
