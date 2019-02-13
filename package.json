@@ -37,7 +37,7 @@
     "prebuild": "npm run generate-testkit-exports",
     "build": "npm run lint && npm run proxy-wix-ui-icons && npm run generate-test-component && npm run transpile && npm run storybook:build",
     "prepublishOnly": "npm run bundle",
-    "bundle": "webpack --config node_modules/yoshi/config/webpack.config.client.js --debug --display-error-details",
+    "bundle": "webpack --config ./node_modules/yoshi/config/webpack.config.client.js --debug --display-error-details --progress",
     "transpile": "node ./scripts/transpile.js",
     "transpile:watch": "babel src --out-dir dist/es/src --copy-files --watch",
     "postbuild": "npm run copy-public-styles && npm run export-components",
