@@ -8,7 +8,6 @@ import {
   Error,
   Controlled,
   Sizes,
-  Rounded,
   InstanceMethods,
   Loader,
   Affix,
@@ -20,7 +19,7 @@ export default {
   storyName: storySettings.storyName,
 
   component: MaterialInput,
-  componentPath: '../../src/MaterialInput/MaterialInput.js',
+  componentPath: '../../src/MaterialInput/ThemedInput.js',
 
   componentProps: setState => ({
     dataHook: storySettings.dataHook,
@@ -56,7 +55,6 @@ export default {
       {/*<IconAffix />*/}
       {/*<Controlled />*/}
       {/*<Sizes />*/}
-      {/*<Rounded />*/}
       {/*<InstanceMethods />*/}
     </div>
   ),
