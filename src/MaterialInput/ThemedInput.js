@@ -1,10 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
-import MaterialInput from './MaterialInput';
+import Input from '../Input/Input';
 
 import styles from './MaterialInput.scss';
 
-class ThemedInput extends MaterialInput {
+class ThemedInput extends React.Component {
+  state = {
+    focus: false
+  };
+
   render() {
     const {
       id,
@@ -14,8 +18,7 @@ class ThemedInput extends MaterialInput {
       rtl,
       disabled,
       status,
-      error,
-      placeholder,
+      statusMessage,
       forceHover,
       forceFocus,
       className,
@@ -23,12 +26,7 @@ class ThemedInput extends MaterialInput {
       withSelection,
     } = this.props;
 
-    let hasError = status === MaterialInput.StatusError;
-
-    // Check for deprecated fields and use them if provided
-    if (error) {
-      hasError = true;
-    }
+    let hasError = status === Input.StatusError;
 
     const classes = {
       [styles.rtl]: !!rtl,
@@ -51,11 +49,10 @@ class ThemedInput extends MaterialInput {
         )}
         data-hook={dataHook}
       >
-        <label className={styles.materialTitle} htmlFor={id}>
-          {title}
-        </label>
-        {super.render({ placeholder })}
+        <label className={styles.materialTitle} htmlFor={id}>{title}</label>
+        <Input {...this.props}/>
         <div className={`${styles.bar} ${styles.barBlue}`} />
+        <div>{statusMessage}</div>
       </div>
     );
   }
