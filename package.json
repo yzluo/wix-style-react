@@ -31,8 +31,9 @@
     "test:unit": "yoshi test --jest",
     "test:watch": "yoshi test --jest --watch",
     "pretest:e2e": "./scripts/ensure-dist.sh",
-    "test:e2e": "concurrently 'npm run test:e2e-only' 'node scripts/e2e-server.js' --names 'protractor,e2e-server' --success first --kill-others",
+    "test:e2e": "concurrently 'npm run test:e2e-only' 'node scripts/e2e-server.js' --names 'protractor,e2e-server' --success first --kill-others && npm run test:e2e-runtime",
     "test:e2e-only": "NODE_ENV=production yoshi test --protractor",
+    "test:e2e-runtime": "cd ./test/e2e-runtime/imports && NODE_ENV=production npm run test",
     "copy-public-styles": "cp src/*.scss .",
     "prebuild": "npm run generate-testkit-exports",
     "build": "npm run lint && npm run proxy-wix-ui-icons && npm run generate-test-component && npm run transpile && npm run storybook:build",
@@ -112,13 +113,14 @@
     "enzyme-adapter-react-15": "^1.2.0",
     "eslint-plugin-react": "^6.8.0",
     "execa": "^1.0.0",
-    "express": "^4.15.2",
+    "express": "^4.16.4",
     "eyes.it": "^2.0.0",
     "fs-extra": "^7.0.1",
     "globby": "^8.0.1",
     "husky": "~0.14.0",
     "identity-obj-proxy": "^3.0.0",
     "import-path": "^1.0.0",
+    "jest-yoshi-preset": "^3.30.3",
     "lint-staged": "^7.3.0",
     "mkdirp": "^0.5.1",
     "ora": "^3.0.0",
@@ -126,6 +128,7 @@
     "prompts": "^1.2.1",
     "protractor": "^5.4.1",
     "protractor-browser-logs": "^1.0.351",
+    "puppeteer": "^1.12.2",
     "query-string": "^6.1.0",
     "react": "^15.5.4",
     "react-dnd-test-backend": "^5.0.1",
@@ -143,6 +146,7 @@
     "terser": "3.14.0",
     "thread-loader": "^2.1.2",
     "url-loader": "^1.1.2",
+    "velocity": "^0.7.2",
     "wait-for-cond": "^1.0.3",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
@@ -215,6 +219,7 @@
     "testPathIgnorePatterns": [
       "<rootDir>/dist/",
       "<rootDir>/node_modules/",
+      "<rootDir>/test/e2e-runtime",
       "<rootDir>/scripts/component-generator/templates/"
     ]
   },
@@ -252,6 +257,7 @@
     ],
     "ignore": [
       "./scripts/component-generator/templates/",
+      "./test/e2e-runtime/",
       "./node_modules"
     ]
   },
