@@ -12,17 +12,10 @@ $disabledColor: #cbd3dc;
   align-items: center;
   @include BoxSizing();
   @include FontRoman();
-}
 
-.theme-amaterial {
   input, label + div {
     padding-left: 0;
     padding-right: 0;
-  }
-
-  .errorIcon {
-    padding: 0 6px 16px;
-    color: $errorColor;
   }
 
   .message {
@@ -45,23 +38,24 @@ $disabledColor: #cbd3dc;
     max-width: 100%;
   }
 
-  .input {
-    @include FontLight();
-    opacity: 0;
-    z-index: 1;
-    transition: border-bottom .3s, border-color .3s, border-width .3s, border .3s, opacity 0s ease-in-out;
-    line-height: 1;
-    display: block;
-    margin-top: 0;
-    background: none;
-    border-radius: 0;
-    border-style: solid; // Firefox fix
-
-    // Fix number inputs in Firefox to be full-width
-    width: 100%;
-    box-sizing: border-box;
-    color: #162d3d;
-  }
+  // // cant reach it
+  //.input {
+  //  @include FontLight();
+  //  opacity: 0;
+  //  z-index: 1;
+  //  transition: border-bottom .3s, border-color .3s, border-width .3s, border .3s, opacity 0s ease-in-out;
+  //  line-height: 1;
+  //  display: block;
+  //  margin-top: 0;
+  //  background: none;
+  //  border-radius: 0;
+  //  border-style: solid; // Firefox fix
+  //
+  //  // Fix number inputs in Firefox to be full-width
+  //  width: 100%;
+  //  box-sizing: border-box;
+  //  color: #162d3d;
+  //}
 
   &.size-normal {
     padding-bottom: 4px;

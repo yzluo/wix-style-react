@@ -56,7 +56,6 @@ class ThemedInput extends React.Component {
         className={classNames(
           conditionalClasses,
           styles.root,
-          styles[`theme-amaterial`],
           inputStyles[`size-${size}${withSelection ? '-with-selection' : ''}`],
           className,
         )}
