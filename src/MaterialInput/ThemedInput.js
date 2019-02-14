@@ -5,15 +5,16 @@ import omit from 'omit';
 
 import Input from '../Input/Input';
 import styles from '../Input/Input.scss';
+
 // import styles from './MaterialInput.scss';
 
 class ThemedInput extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     focus: false
-  //   };
-  // }
+  constructor() {
+    super();
+    this.state = {
+      focus: false
+    };
+  }
 
   render() {
     const {
@@ -25,6 +26,7 @@ class ThemedInput extends React.Component {
       disabled,
       status,
       statusMessage,
+      helpMessage,
       forceHover,
       forceFocus,
       className,
@@ -32,19 +34,22 @@ class ThemedInput extends React.Component {
       withSelection,
     } = this.props;
 
-    const rejectedProps = ['prefix', 'className', 'error', 'errorMessage', 'roundInput', 'noLeftBorderRadius', 'noRightBorderRadius'];
-    const wsrInputProps = Object.assign(omit(rejectedProps, this.props), {theme: 'amaterial', });
+    const rejectedProps = ['prefix', 'className', 'help', 'helpMessage', 'statusMessage', 'error', 'errorMessage', 'roundInput', 'noLeftBorderRadius', 'noRightBorderRadius'];
+    const wsrInputProps = omit(rejectedProps, this.props);
 
-    const hasFocus = forceFocus || (this.wsrInput && this.wsrInput.state.focus);
     const hasValue = (value && value.length) || (this.wsrInput && this.wsrInput.input && !!this.wsrInput.input.value);
     const classes = {
       [styles.rtl]: !!rtl,
       [styles.disabled]: disabled,
       [styles.hasError]: status === Input.StatusError,
       [styles.hasHover]: forceHover,
-      [styles.hasFocus]: hasFocus,
+      [styles.hasFocus]: forceFocus || (this.state.focus),
       [styles.hasValue]: hasValue,
     };
+
+    const renderStatusLine = () => !disabled &&
+      (status && <div>{statusMessage}</div>) ||
+      (<div>{helpMessage}</div>);
 
     return (
       <div
@@ -60,9 +65,12 @@ class ThemedInput extends React.Component {
         <label className={styles.materialTitle} htmlFor={id}>{title}</label>
         <Input {...wsrInputProps}
                ref={wsrInput => (this.wsrInput = wsrInput)}
+               onFocus={() => this.setState({focus: true})}
+               onBlur={() => this.setState({focus: false})}
+               // theme="amaterial" //for big error suffix
         />
         <div className={`${styles.bar} ${styles.barBlue}`} />
-        <div>{statusMessage}</div>
+        {renderStatusLine()}
       </div>
     );
   }
