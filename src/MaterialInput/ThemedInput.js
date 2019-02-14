@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import omit from 'omit';
 
 import Input from '../Input/Input';
-import styles from '../Input/Input.scss';
+import inputStyles from '../Input/Input.scss';
+import styles from './MaterialInput.scss';
 
-// import styles from './MaterialInput.scss';
 
 class ThemedInput extends React.Component {
   constructor() {
@@ -34,12 +34,12 @@ class ThemedInput extends React.Component {
       withSelection,
     } = this.props;
 
-    const rejectedProps = ['prefix', 'className', 'help', 'helpMessage', 'statusMessage', 'error', 'errorMessage', 'roundInput', 'noLeftBorderRadius', 'noRightBorderRadius'];
+    const rejectedProps = ['theme', 'prefix', 'className', 'help', 'helpMessage', 'statusMessage', 'error', 'errorMessage', 'roundInput', 'noLeftBorderRadius', 'noRightBorderRadius'];
     const wsrInputProps = omit(rejectedProps, this.props);
 
     const hasValue = (value && value.length) || (this.wsrInput && this.wsrInput.input && !!this.wsrInput.input.value);
-    const classes = {
-      [styles.rtl]: !!rtl,
+    const conditionalClasses = {
+      [inputStyles.rtl]: !!rtl,
       [styles.disabled]: disabled,
       [styles.hasError]: status === Input.StatusError,
       [styles.hasHover]: forceHover,
@@ -48,26 +48,25 @@ class ThemedInput extends React.Component {
     };
 
     const renderStatusLine = () => !disabled &&
-      (status && <div>{statusMessage}</div>) ||
-      (<div>{helpMessage}</div>);
+      (status && <div className={styles.message}>{statusMessage}</div>) ||
+      (<div className={styles.message}>{helpMessage}</div>);
 
     return (
       <div
         className={classNames(
-          classes,
+          conditionalClasses,
           styles.root,
           styles[`theme-amaterial`],
-          styles[`size-${size}${withSelection ? '-with-selection' : ''}`],
+          inputStyles[`size-${size}${withSelection ? '-with-selection' : ''}`],
           className,
         )}
         data-hook={dataHook}
       >
-        <label className={styles.materialTitle} htmlFor={id}>{title}</label>
+        <label htmlFor={id}>{title}</label>
         <Input {...wsrInputProps}
                ref={wsrInput => (this.wsrInput = wsrInput)}
                onFocus={() => this.setState({focus: true})}
                onBlur={() => this.setState({focus: false})}
-               // theme="amaterial" //for big error suffix
         />
         <div className={`${styles.bar} ${styles.barBlue}`} />
         {renderStatusLine()}
@@ -115,17 +114,17 @@ ThemedInput.propTypes = {
   /** Input status - use to display an status indication for the user. for example: 'error' or 'loading' */
   status: PropTypes.oneOf([Input.StatusError, Input.StatusLoading]),
 
-  /** The status (error/loading) message to display when hovering the status icon, if not given or empty there will be no tooltip */
+  /** The status (error/loading) message to display under the input*/
   statusMessage: PropTypes.node,
 
-  forceFocus: PropTypes.bool,
-  forceHover: PropTypes.bool,
-
-  /** Adding a suffix help icon */
-  help: PropTypes.bool,
-
-  /** The help message to display when hovering the help icon, if not given or empty there will be no tooltip */
+  /** The help message to display under the input if no statusMessage */
   helpMessage: PropTypes.node,
+
+  /** for debug */
+  forceFocus: PropTypes.bool,
+
+  /** for debug */
+  forceHover: PropTypes.bool,
   id: PropTypes.string,
 
   /** Input max length */
@@ -171,8 +170,8 @@ ThemedInput.propTypes = {
   /** called when user pastes text from clipboard (using mouse or keyboard shortcut) */
   onPaste: PropTypes.func,
 
-  /** onShow prop for the error and help tooltips */
-  onTooltipShow: PropTypes.func,
+  /** The material design style floating label for input */
+  title: PropTypes.string,
 
   /** Placeholder to display */
   placeholder: PropTypes.string,
@@ -198,11 +197,6 @@ ThemedInput.propTypes = {
   /** Text overflow behaviour */
   textOverflow: PropTypes.string,
 
-  /** The material design style floating label for input */
-  title: PropTypes.string,
-
-  /** Placement of the error and help tooltips */
-  tooltipPlacement: PropTypes.string,
   type: PropTypes.string,
 
   /** Inputs value */
