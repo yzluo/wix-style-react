@@ -11,7 +11,7 @@ const ColorPickerActions = ({ onCancel, onConfirm }) => (
   <div className={css.root}>
     <IconButton
       dataHook="color-picker-cancel-button"
-      size="small"
+      size="medium"
       priority="secondary"
       onClick={onCancel}
     >
@@ -19,7 +19,7 @@ const ColorPickerActions = ({ onCancel, onConfirm }) => (
     </IconButton>
     <IconButton
       dataHook="color-picker-confirm-button"
-      size="small"
+      size="medium"
       onClick={onConfirm}
     >
       <Check />
