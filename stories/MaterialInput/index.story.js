@@ -2,7 +2,7 @@ import React from 'react';
 import { storySettings } from './storySettings';
 import LiveCodeExample from '../utils/Components/LiveCodeExample';
 
-import MaterialInput from '../../src/MaterialInput';
+import NoBorderInput from '../../src/MaterialInput';
 import {
   Standard,
   Error,
@@ -18,8 +18,8 @@ export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
 
-  component: MaterialInput,
-  componentPath: '../../src/MaterialInput/ThemedInput.js',
+  component: NoBorderInput,
+  componentPath: '../../src/MaterialInput/NoBorderInput.js',
 
   componentProps: setState => ({
     dataHook: storySettings.dataHook,
@@ -40,7 +40,7 @@ export default {
     <div style={{ maxWidth: 627 }}>
       <LiveCodeExample
         compact
-        title="Material input standard example"
+        title="No border input standard example"
         initialCode={`
           <MaterialInput
             dataHook="story-material-input-live-example"

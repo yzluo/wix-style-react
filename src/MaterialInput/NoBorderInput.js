@@ -5,10 +5,10 @@ import omit from 'omit';
 
 import Input from '../Input/Input';
 import inputStyles from '../Input/Input.scss';
-import styles from './MaterialInput.scss';
+import styles from './NoBorderInput.scss';
 
 
-class ThemedInput extends React.Component {
+class NoBorderInput extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -74,9 +74,9 @@ class ThemedInput extends React.Component {
   }
 }
 
-ThemedInput.displayName = 'ThemedInput';
+NoBorderInput.displayName = 'NoBorderInput';
 
-ThemedInput.defaultProps = {
+NoBorderInput.defaultProps = {
   autoSelect: false,
   size: 'normal',
   statusMessage: '',
@@ -85,7 +85,7 @@ ThemedInput.defaultProps = {
   maxLength: 524288,
 };
 
-ThemedInput.propTypes = {
+NoBorderInput.propTypes = {
   ariaControls: PropTypes.string,
   ariaDescribedby: PropTypes.string,
   ariaLabel: PropTypes.string,
@@ -198,4 +198,4 @@ ThemedInput.propTypes = {
   required: PropTypes.bool,
 };
 
-export default ThemedInput;
+export default NoBorderInput;
