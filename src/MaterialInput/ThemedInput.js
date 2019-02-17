@@ -61,7 +61,7 @@ class ThemedInput extends React.Component {
         )}
         data-hook={dataHook}
       >
-        <label htmlFor={id}>{title}</label>
+        <label className={styles.label} htmlFor={id}>{title}</label>
         <Input {...wsrInputProps}
                ref={wsrInput => (this.wsrInput = wsrInput)}
                onFocus={() => this.setState({focus: true})}
@@ -77,14 +77,12 @@ class ThemedInput extends React.Component {
 ThemedInput.displayName = 'ThemedInput';
 
 ThemedInput.defaultProps = {
-  autoSelect: true,
+  autoSelect: false,
   size: 'normal',
   statusMessage: '',
   helpMessage: '',
   textOverflow: 'clip',
   maxLength: 524288,
-  withSelection: false,
-  clearButton: false,
 };
 
 ThemedInput.propTypes = {
@@ -131,9 +129,6 @@ ThemedInput.propTypes = {
 
   /** Should the component include a menu arrow */
   menuArrow: PropTypes.bool,
-
-  /** Displays clear button (X) on a non-empty input */
-  clearButton: PropTypes.bool,
 
   /** A single CSS class name to be appended to the Input's wrapper element. */
   className: PropTypes.string,
@@ -200,7 +195,6 @@ ThemedInput.propTypes = {
 
   /** Inputs value */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  withSelection: PropTypes.bool,
   required: PropTypes.bool,
 };
 
