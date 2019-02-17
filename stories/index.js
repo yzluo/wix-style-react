@@ -168,4 +168,4 @@ import './GeneratedTestComponent/index.story';
 import './RichTextInputArea/index.story';
 
 // This import was added by the component generator
-import './MaterialInput/index.story';
+import './NoBorderInput/index.story';

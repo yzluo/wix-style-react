@@ -13,7 +13,7 @@ $disabledColor: #cbd3dc;
   @include BoxSizing();
   @include FontRoman();
 
-  input, label + div {
+  input, .label + div {
     padding-left: 0;
     padding-right: 0;
   }
@@ -66,7 +66,7 @@ $disabledColor: #cbd3dc;
     padding-bottom: 4px;
     @include Size($height: 18px, $fontSize: 14px);
 
-    label {
+    .label {
       font-size: 14px;
     }
   }
@@ -89,7 +89,7 @@ $disabledColor: #cbd3dc;
         background-color: #3899ec;
       }
     }
-    label {
+    .label {
       top: -20px;
       font-size: 12px;
     }
@@ -119,7 +119,7 @@ $disabledColor: #cbd3dc;
       width:100%;
     }
     &.disabled {
-      label, .input {
+      .label, .input {
         color: $disabledColor;
       }
     }

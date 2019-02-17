@@ -2,7 +2,7 @@ import React from 'react';
 import { storySettings } from './storySettings';
 import LiveCodeExample from '../utils/Components/LiveCodeExample';
 
-import NoBorderInput from '../../src/MaterialInput';
+import NoBorderInput from '../../src/NoBorderInput';
 import {
   Standard,
   Error,
@@ -19,7 +19,7 @@ export default {
   storyName: storySettings.storyName,
 
   component: NoBorderInput,
-  componentPath: '../../src/MaterialInput/NoBorderInput.js',
+  componentPath: '../../src/NoBorderInput/NoBorderInput.js',
 
   componentProps: setState => ({
     dataHook: storySettings.dataHook,
@@ -42,7 +42,7 @@ export default {
         compact
         title="No border input standard example"
         initialCode={`
-          <MaterialInput
+          <NoBorderInput
             dataHook="story-material-input-live-example"
             placeholder="this is a placeholder"
           />

@@ -6,11 +6,11 @@ import {
 
 import { eyesItInstance } from '../../test/utils/eyes-it';
 import { materialInputTestkitFactory } from '../../testkit/protractor';
-import { storySettings } from '../../stories/MaterialInput/storySettings';
+import { storySettings } from '../../stories/NoBorderInput/storySettings';
 
 const eyes = eyesItInstance();
 
-describe('MaterialInput', () => {
+describe('NoBorderInput', () => {
   const storyUrl = createStoryUrl({
     kind: storySettings.category,
     story: storySettings.storyName,
