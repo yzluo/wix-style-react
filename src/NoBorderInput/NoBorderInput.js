@@ -67,7 +67,7 @@ class NoBorderInput extends React.Component {
                onFocus={() => this.setState({focus: true})}
                onBlur={() => this.setState({focus: false})}
         />
-        <div className={`${styles.bar} ${styles.barBlue}`} />
+        <div className={classNames(styles.bar, styles.barBlue)} />
         {renderStatusLine()}
       </div>
     );
