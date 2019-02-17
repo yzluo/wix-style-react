@@ -35,7 +35,7 @@ in order to use `wix-style-react`, your module bundler should be configured acco
       modules: {
         rules: [
           {
-            exclude: /\.st.css$/, //This must appear before the "oneOf" property
+            exclude: /\.st.css$/, ˚//This must appear before the "oneOf" property
             oneOf: [
               //...
               {

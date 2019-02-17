@@ -75,10 +75,6 @@ class NumberInput extends WixComponent {
 
 NumberInput.propTypes = {
   ...Input.propTypes,
-  /** Minimum value for input */
-  min: PropTypes.number,
-  /** Maximum value for input */
-  max: PropTypes.number,
   /** Step for each ticker click  */
   step: PropTypes.number,
 };

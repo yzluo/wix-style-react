@@ -117,6 +117,18 @@ export const segmentedToggleTestkitFactory = puppeteerUniTestkitFactoryCreator(
   segmentedToggleDriverFactory,
 );
 
+import { richTextInputAreaDriverFactory } from '../src/RichTextInputArea/RichTextInputArea.driver';
+
+export const richTextInputAreaTestkitFactory = puppeteerUniTestkitFactoryCreator(
+  richTextInputAreaDriverFactory,
+);
+
+import { floatingNotificationDriverFactory } from '../src/FloatingNotification/FloatingNotification.driver';
+
+export const floatingNotificationTestkitFactory = puppeteerUniTestkitFactoryCreator(
+  floatingNotificationDriverFactory,
+);
+
 import { numberInputDriverFactory } from '../src/NumberInput/NumberInput.driver';
 
 export const numberInputTestkitFactory = puppeteerUniTestkitFactoryCreator(

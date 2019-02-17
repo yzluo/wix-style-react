@@ -403,6 +403,18 @@ export const segmentedToggleTestkitFactory = protractorUniTestkitFactoryCreator(
   segmentedToggleDriverFactory,
 );
 
+import { richTextInputAreaDriverFactory } from '../src/RichTextInputArea/RichTextInputArea.driver';
+
+export const richTextInputAreaTestkitFactory = protractorUniTestkitFactoryCreator(
+  richTextInputAreaDriverFactory,
+);
+
+import { floatingNotificationDriverFactory } from '../src/FloatingNotification/FloatingNotification.driver';
+
+export const floatingNotificationTestkitFactory = protractorUniTestkitFactoryCreator(
+  floatingNotificationDriverFactory,
+);
+
 import { numberInputDriverFactory } from '../src/NumberInput/NumberInput.driver';
 
 export const numberInputTestkitFactory = protractorUniTestkitFactoryCreator(
