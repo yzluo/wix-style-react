@@ -230,7 +230,12 @@
           "modules": false
         }
       ],
-      "@babel/preset-react"
+      [
+        "@babel/preset-react",
+        {
+          "development": false
+        }
+      ]
     ],
     "plugins": [
       "@babel/plugin-proposal-export-namespace-from",
