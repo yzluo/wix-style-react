@@ -5,7 +5,7 @@ import {
 } from 'wix-ui-test-utils/protractor';
 
 import { eyesItInstance } from '../../test/utils/eyes-it';
-import { materialInputTestkitFactory } from '../../testkit/protractor';
+import { noBorderInputTestkitFactory } from '../../testkit/protractor';
 import { storySettings } from '../../stories/NoBorderInput/storySettings';
 
 const eyes = eyesItInstance();
@@ -17,11 +17,11 @@ describe('NoBorderInput', () => {
   });
 
   const createDriver = async (dataHook = storySettings.dataHook) => {
-    const driver = materialInputTestkitFactory({ dataHook });
+    const driver = noBorderInputTestkitFactory({ dataHook });
 
     await waitForVisibilityOf(
       await driver.element(),
-      `Cannot find <MaterialInput/> component with dataHook of ${dataHook}`,
+      `Cannot find <NoBorderInput/> component with dataHook of ${dataHook}`,
     );
 
     await scrollToElement(await driver.element());

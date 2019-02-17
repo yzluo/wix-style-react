@@ -123,8 +123,8 @@ export const richTextInputAreaTestkitFactory = puppeteerUniTestkitFactoryCreator
   richTextInputAreaDriverFactory,
 );
 
-import { materialInputDriverFactory } from '../src/MaterialInput/MaterialInput.driver';
+import { noBorderInputDriverFactory } from '../src/NoBorderInput/NoBorderInput.driver';
 
-export const materialInputTestkitFactory = puppeteerUniTestkitFactoryCreator(
-  materialInputDriverFactory,
+export const noBorderInputTestkitFactory = puppeteerUniTestkitFactoryCreator(
+  noBorderInputDriverFactory,
 );
