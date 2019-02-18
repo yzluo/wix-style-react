@@ -25,8 +25,7 @@ export default {
     columns({
       items: [
         description({
-          text:
-            'A snippet to achieve text area used to allow for extended user input.',
+          text: 'A text area can be used to allow for extended user input.',
         }),
         description(),
       ],
@@ -68,7 +67,7 @@ export default {
     columns({
       items: [
         description({
-          title: 'Basic Example',
+          title: 'Plain Example',
           text: 'The most basic example.',
         }),
         liveCode({ compact: true, source: examples.basicExample }),
@@ -88,20 +87,8 @@ export default {
     columns({
       items: [
         description({
-          title: 'Fixed Height',
-          text:
-            'Size of an input area can be fixed. The scrollbar appears for text view.',
-        }),
-        liveCode({ compact: true, source: examples.fixedHeightExample }),
-      ],
-    }),
-
-    columns({
-      items: [
-        description({
-          title: 'Dynamic Height',
-          text:
-            'The resizeable prop defines if an input is resizable by the user.',
+          title: 'Resizable Height',
+          text: 'The text area can changes its size by user drag.',
         }),
         liveCode({ compact: true, source: examples.resizableHeightExample }),
       ],

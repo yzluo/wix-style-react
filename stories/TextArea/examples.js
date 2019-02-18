@@ -15,19 +15,6 @@ infoContent="This is the info tooltip content"
 </FormField>
 `;
 
-export const fixedHeightExample = `
-<FormField
-label="This is the FormField label"
-required
-infoContent="This is the info tooltip content"
->
-  <InputArea
-    placeholder="Placeholder Text"
-    value="Free Philippine Real Estate Ads Forums And Classifieds Advertising On A Budget Part 3 Frequency Frequency Frequency Forums Philippine"
-  />
-</FormField>
-`;
-
 export const resizableHeightExample = `
 <FormField
 label="This is the FormField label"
