@@ -19,6 +19,7 @@ class AccordionItem extends React.PureComponent {
     icon: PropTypes.node,
     isOpen: PropTypes.bool,
     toggleOpenClose: PropTypes.func,
+    toggleOpen: PropTypes.func,
   };
 
   state = {
@@ -43,6 +44,7 @@ class AccordionItem extends React.PureComponent {
       collapseLabel,
       isOpen,
       content,
+      toggleOpen,
       id,
     } = this.props;
     const buttonsStyle = classNames(styles.moreLessButton, {
@@ -57,6 +59,7 @@ class AccordionItem extends React.PureComponent {
         data-hook={dataHook}
         onMouseEnter={this.toggleHoverIn}
         onMouseLeave={this.toggleHoverOut}
+        onClick={() => toggleOpen(id)}
       >
         <div className={itemStyle}>
           {icon && (

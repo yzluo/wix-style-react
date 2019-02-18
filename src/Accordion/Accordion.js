@@ -26,10 +26,17 @@ class Accordion extends React.Component {
   };
 
   _toggle = id => {
+
     this.setState({
       openId: this.state.openId !== id ? id : -1,
     });
   };
+
+  _toggleRow = id => {
+    this.setState({
+      openId: id,
+    });
+  }
 
   render() {
     const { openId } = this.state;
@@ -44,6 +51,7 @@ class Accordion extends React.Component {
                 dataHook="accordion-item"
                 id={index}
                 toggleOpenClose={this._toggle}
+                toggleOpen={this._toggleRow}
                 {...row}
                 isOpen={openId === index}
               />

@@ -16,7 +16,10 @@ export default ({
     [styles.open]: isOpen,
   });
   return (
-    <div data-hook={dataHook} className={toggleStyle} onClick={handleClick}>
+    <div data-hook={dataHook} className={toggleStyle} onClick={e => {
+      e.stopPropagation()
+      handleClick()}
+    }>
       <ChevronDown className={styles.expandCollapseArrow} size="18px" />
       <Button
         dataHook="toggle-accordion-button"
