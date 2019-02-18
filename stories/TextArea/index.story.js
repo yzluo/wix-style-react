@@ -25,7 +25,7 @@ export default {
     columns({
       items: [
         description({
-          text: 'To edit multiline text.',
+          text: 'A textarea can be used to allow for extended user input.',
         }),
         description(),
       ],
@@ -77,6 +77,16 @@ export default {
     columns({
       items: [
         description({
+          title: 'Without a label',
+          text: 'Text Area can also be used without FormField label',
+        }),
+        liveCode({ compact: true, source: examples.withoutALabelExample }),
+      ],
+    }),
+
+    columns({
+      items: [
+        description({
           title: 'Fixed Height',
           text:
             'Size of an input area can be fixed. The scrollbar appears for text view.',
@@ -92,16 +102,6 @@ export default {
           text: 'Size of an input area can also expand by user drag.',
         }),
         liveCode({ compact: true, source: examples.resizableHeightExample }),
-      ],
-    }),
-
-    columns({
-      items: [
-        description({
-          title: 'Without a label',
-          text: 'Text Area can also be used without FormField label',
-        }),
-        liveCode({ compact: true, source: examples.withoutALabelExample }),
       ],
     }),
   ],
