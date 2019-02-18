@@ -29,7 +29,7 @@ import './Card';
 
 // 3. Inputs
 import './TextField/index.story'; // 3.1. Text Field
-import './TextArea'; // 3.2a Text Area
+import './TextArea/index.story'; // 3.2a Text Area
 import './RichTextAreaComposite'; // 3.2b RichTextAreaComposite
 import './RichTextArea/RichTextArea.story.js'; // 3.2b + RichTextArea
 import './FieldWithSelectionComposite'; // 3.3 Field With Selection
