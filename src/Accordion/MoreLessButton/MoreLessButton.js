@@ -29,8 +29,11 @@ export default ({
         handleClick();
       }}
     >
-      {!hover && (
+      {!hover && !isOpen && (
         <ChevronDown className={styles.expandCollapseArrow} size="18px" />
+      )}
+      {!hover && isOpen && (
+        <ChevronUp className={styles.expandCollapseArrow} size="18px" />
       )}
       {hover && (
         <Button
