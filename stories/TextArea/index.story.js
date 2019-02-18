@@ -61,7 +61,7 @@ export default {
     }),
 
     description({
-      title: 'Examples',
+      text: '## Examples',
     }),
 
     columns({
