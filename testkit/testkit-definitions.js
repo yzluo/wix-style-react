@@ -188,7 +188,5 @@ module.exports = {
 
   RichTextInputArea: { unidriver: true },
 
-  NoBorderInput: {
-    unidriver: true
-  }
+  NoBorderInput: {},
 };

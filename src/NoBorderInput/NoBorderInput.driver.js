@@ -1,16 +1,18 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import inputDriverFactory from '../Input/Input.driver';
 
-export const noBorderInputDriverFactory = base => {
+const noBorderInputDriverFactory = ({ element }) => {
+  const inputDriver = inputDriverFactory({
+    element: element.querySelector('[data-hook="base-input"]'),
+    wrapper: element,
+  });
+
   return {
-    ...baseUniDriverFactory(base),
-
-    /** Get the current count */
-    getCountText: async () => base.$('[data-hook="NoBorderInput-count"]').text(),
-
-    /** Click the button */
-    clickButton: async () => base.$('[data-hook="NoBorderInput-button"]').click(),
-
-    /** Get the button's text */
-    getButtonText: async () => base.$('[data-hook="NoBorderInput-button"]').text(),
+    ...inputDriver,
+    // No unique functions at the moment
+    // anyUniqueDriverFunctionForThisComponent: () => {
+    //  .......
+    // },
   };
 };
+
+export default noBorderInputDriverFactory;
