@@ -31,7 +31,7 @@ import './Card';
 import './TextField/index.story'; // 3.1. Text Field
 import './TextArea'; // 3.2a Text Area
 import './RichTextAreaComposite'; // 3.2b RichTextAreaComposite
-import './RichTextArea/RichTextArea.story.js'; // 3.2b + RichTextArea
+import './RichTextArea/index.story.js'; // 3.2b + RichTextArea
 import './FieldWithSelectionComposite'; // 3.3 Field With Selection
 import './TimeInput.story.js'; // 3.4 TimeInput
 import './DatePicker.story.js'; // 3.6 DatePicker
@@ -126,6 +126,7 @@ import './Layout/index.story.js';
 import './Layout';
 import './components/MultiSelect/index.story';
 import './Proportion/index.story.js';
+import './RichTextArea/api.story';
 import './Skeleton.story.js';
 import './Text/index.story';
 import './Thumbnail/index.story';

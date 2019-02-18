@@ -2,7 +2,7 @@ import eyes from 'eyes.it';
 import { richTextAreaTestkitFactory } from '../../testkit/protractor';
 import { waitForVisibilityOf } from 'wix-ui-test-utils/protractor';
 import { getStoryUrl } from '../../test/utils/storybook-helpers';
-import { settings } from '../../stories/RichTextArea/RichTextArea.story';
+import { settings } from '../../stories/RichTextArea/index.story';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import { BUTTON_TYPES } from './RichTextArea.protractor.driver';
 import { flattenInternalDriver } from '../../test/utils/private-drivers';
