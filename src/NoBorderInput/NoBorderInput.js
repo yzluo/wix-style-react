@@ -7,12 +7,11 @@ import Input from '../Input/Input';
 import inputStyles from '../Input/Input.scss';
 import styles from './NoBorderInput.scss';
 
-
 class NoBorderInput extends React.Component {
   constructor() {
     super();
     this.state = {
-      focus: false
+      focus: false,
     };
   }
 
@@ -34,22 +33,42 @@ class NoBorderInput extends React.Component {
       withSelection,
     } = this.props;
 
-    const rejectedProps = ['theme', 'prefix', 'className', 'help', 'helpMessage', 'statusMessage', 'error', 'errorMessage', 'roundInput', 'noLeftBorderRadius', 'noRightBorderRadius'];
+    const rejectedProps = [
+      'theme',
+      'prefix',
+      'className',
+      'help',
+      'helpMessage',
+      'statusMessage',
+      'error',
+      'errorMessage',
+      'roundInput',
+      'noLeftBorderRadius',
+      'noRightBorderRadius',
+    ];
     const wsrInputProps = omit(rejectedProps, this.props);
 
-    const hasValue = (value && value.length) || (this.wsrInput && this.wsrInput.input && !!this.wsrInput.input.value);
+    const hasValue =
+      (value && value.length) ||
+      (this.wsrInput && this.wsrInput.input && !!this.wsrInput.input.value);
     const conditionalClasses = {
       [inputStyles.rtl]: !!rtl,
       [styles.disabled]: disabled,
       [styles.hasError]: status === Input.StatusError,
       [styles.hasHover]: forceHover,
-      [styles.hasFocus]: forceFocus || (this.state.focus),
+      [styles.hasFocus]: forceFocus || this.state.focus,
       [styles.hasValue]: hasValue,
     };
+    const statusClass =
+      status && statusMessage ? styles.errorMessage : styles.helpMessage;
+    const statusText = status && statusMessage ? statusMessage : helpMessage;
 
-    const renderStatusLine = () => !disabled &&
-      (status && <div className={styles.message}>{statusMessage}</div>) ||
-      (<div className={styles.message}>{helpMessage}</div>);
+    const renderStatusLine = () =>
+      !disabled && (
+        <div className={classNames(statusClass, styles.message)}>
+          {statusText}
+        </div>
+      );
 
     return (
       <div
@@ -61,11 +80,15 @@ class NoBorderInput extends React.Component {
         )}
         data-hook={dataHook}
       >
-        <label className={styles.label} htmlFor={id}>{title}</label>
-        <Input {...wsrInputProps}
-               ref={wsrInput => (this.wsrInput = wsrInput)}
-               onFocus={() => this.setState({focus: true})}
-               onBlur={() => this.setState({focus: false})}
+        <label className={styles.label} htmlFor={id}>
+          {title}
+        </label>
+        <Input
+          className={styles.nbinput}
+          {...wsrInputProps}
+          ref={wsrInput => (this.wsrInput = wsrInput)}
+          onFocus={() => this.setState({ focus: true })}
+          onBlur={() => this.setState({ focus: false })}
         />
         <div className={classNames(styles.bar, styles.barBlue)} />
         {renderStatusLine()}

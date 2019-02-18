@@ -13,15 +13,28 @@ $disabledColor: #cbd3dc;
   @include BoxSizing();
   @include FontRoman();
 
-  input, .label + div {
+  .nbinput, input, .label + div {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .nbinput, input {
+    opacity: 0;
+    height: 36px;
+    @include FontLight();
   }
 
   .message {
     font-size: 12px;
     line-height: 18px;
+  }
+
+  .helpMessage {
     color: $statusColor;
+  }
+
+  .errorMessage {
+    color: $errorColor !important;
   }
 
   .label {
@@ -29,7 +42,7 @@ $disabledColor: #cbd3dc;
 
     transition:all .2s ease-in-out;
     position: absolute;
-    top: 0;
+    top: 6px;
     padding: 0;
     color: $statusColor;
     white-space: nowrap;
@@ -37,25 +50,6 @@ $disabledColor: #cbd3dc;
     text-overflow: ellipsis;
     max-width: 100%;
   }
-
-  // // cant reach it
-  //.input {
-  //  @include FontLight();
-  //  opacity: 0;
-  //  z-index: 1;
-  //  transition: border-bottom .3s, border-color .3s, border-width .3s, border .3s, opacity 0s ease-in-out;
-  //  line-height: 1;
-  //  display: block;
-  //  margin-top: 0;
-  //  background: none;
-  //  border-radius: 0;
-  //  border-style: solid; // Firefox fix
-  //
-  //  // Fix number inputs in Firefox to be full-width
-  //  width: 100%;
-  //  box-sizing: border-box;
-  //  color: #162d3d;
-  //}
 
   &.size-normal {
     padding-bottom: 4px;
@@ -73,13 +67,11 @@ $disabledColor: #cbd3dc;
 
   &.hasFocus,
   &.hasValue {
-    .input {
+    .nbinput, input {
+      border-bottom: 0;
       @include Placeholder($paletteE6);
       transition: opacity 0.3s ease-in-out;
       opacity: 1;
-    }
-    input {
-      border-bottom: 0;
     }
 
     .bar {
@@ -90,7 +82,7 @@ $disabledColor: #cbd3dc;
       }
     }
     .label {
-      top: -20px;
+      top: -12px;
       font-size: 12px;
     }
   }
@@ -139,9 +131,9 @@ $disabledColor: #cbd3dc;
       background: $errorColor;
     }
 
-    .message {
-      color: $errorColor;
-    }
+    // .errorMessage {
+    //   color: $errorColor;
+    // }
 
     &:hover:not(.disabled) {
       .bar, .input:hover ~ .barBlue, .input.hasHover ~ .barBlue {
