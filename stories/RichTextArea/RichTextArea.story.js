@@ -73,7 +73,7 @@ RichTextArea is an input for rich text`, // TODO: Ask for a description
     ...[
       {
         title: 'Composition with FormField',
-        text: 'Text Input supports 3 sizes',
+        text: 'RichTextArea can be included inside a regular FormField',
         source: examples.composition,
       },
     ].map(example),

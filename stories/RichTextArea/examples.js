@@ -4,7 +4,7 @@ import RichTextArea from 'wix-style-react/RichTextArea'
 `;
 
 export const composition = `
-<FormField>
+<FormField label="Editor" infoContent="I help you to fill text">
   <RichTextArea />
 </FormField>
 `;
