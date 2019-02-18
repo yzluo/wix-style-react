@@ -13,6 +13,7 @@ $moreLess-height: 30px;
 
 .wrapper {
   position: relative;
+
 }
 
 .item {
@@ -20,7 +21,7 @@ $moreLess-height: 30px;
   width: calc(100% - #{$row-sides-padding * 2});
   transition: background-color .3s;
 
-  &:hover {
+  &:not(.open):hover {
     background-color: $B40;
   }
 }

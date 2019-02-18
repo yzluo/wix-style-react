@@ -48,7 +48,9 @@ class AccordionItem extends React.PureComponent {
     const buttonsStyle = classNames(styles.moreLessButton, {
       isOpen: styles.isOpen,
     });
-
+    const itemStyle = classNames(styles.item, {
+      [styles.open]: isOpen,
+    });
     return (
       <div
         className={styles.wrapper}
@@ -56,7 +58,7 @@ class AccordionItem extends React.PureComponent {
         onMouseEnter={this.toggleHoverIn}
         onMouseLeave={this.toggleHoverOut}
       >
-        <div className={styles.item}>
+        <div className={itemStyle}>
           {icon && (
             <div className={styles.headerIcon} data-hook="icon">
               {icon}
