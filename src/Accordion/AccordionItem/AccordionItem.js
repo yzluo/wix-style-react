@@ -67,7 +67,13 @@ class AccordionItem extends React.PureComponent {
               {icon}
             </div>
           )}
-          {title && <Text data-hook="title">{title}</Text>}
+          {title && (
+            <div className={styles.headerText}>
+              <Text data-hook="title" ellipsis>
+                {title}
+              </Text>
+            </div>
+          )}
         </div>
         <div className={buttonsStyle}>
           <MoreLessButton

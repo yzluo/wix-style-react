@@ -35,6 +35,10 @@ $moreLess-height: 30px;
   margin-right: $icon-accordion-padding;
 }
 
+.headerText {
+  width: calc(100% - 140px);
+}
+
 .collapse {
   align-items: flex-start;
   flex-direction: column;
