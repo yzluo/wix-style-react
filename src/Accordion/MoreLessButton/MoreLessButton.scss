@@ -19,18 +19,19 @@
   }
 
   .button {
-    opacity: 0;
+    pointer-events: none;
+
+    &.active {
+      pointer-events: inherit;
+    }
   }
 
   &.expend,
   &.open,
   &:hover {
-    .button {
-      opacity: 1;
-    }
-
     .expand-collapse-arrow {
       opacity: 0;
     }
   }
+
 }

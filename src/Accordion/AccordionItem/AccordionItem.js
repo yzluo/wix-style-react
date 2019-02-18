@@ -82,6 +82,7 @@ class AccordionItem extends React.PureComponent {
             handleClick={() => toggleOpenClose(id)}
             expandLabel={expandLabel}
             collapseLabel={collapseLabel}
+            hover={hover}
           />
         </div>
         <Animator show={isOpen} height>

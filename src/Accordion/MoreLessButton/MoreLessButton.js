@@ -11,25 +11,38 @@ export default ({
   handleClick,
   expandLabel,
   collapseLabel,
+  hover,
 }) => {
   const toggleStyle = classNames(styles.toggleButtons, {
     [styles.open]: isOpen,
   });
+
+  const buttonStyle = classNames(styles.button, {
+    [styles.active]: isOpen,
+  });
   return (
-    <div data-hook={dataHook} className={toggleStyle} onClick={e => {
-      e.stopPropagation()
-      handleClick()}
-    }>
-      <ChevronDown className={styles.expandCollapseArrow} size="18px" />
-      <Button
-        dataHook="toggle-accordion-button"
-        suffixIcon={isOpen ? <ChevronUp /> : <ChevronDown />}
-        className={styles.button}
-        priority={isOpen ? 'secondary' : 'primary'}
-        size="small"
-      >
-        {isOpen ? collapseLabel : expandLabel}
-      </Button>
+    <div
+      data-hook={dataHook}
+      className={toggleStyle}
+      onClick={e => {
+        e.stopPropagation();
+        handleClick();
+      }}
+    >
+      {!hover && (
+        <ChevronDown className={styles.expandCollapseArrow} size="18px" />
+      )}
+      {hover && (
+        <Button
+          dataHook="toggle-accordion-button"
+          suffixIcon={isOpen ? <ChevronUp /> : <ChevronDown />}
+          className={buttonStyle}
+          priority={isOpen ? 'secondary' : 'primary'}
+          size="small"
+        >
+          {isOpen ? collapseLabel : expandLabel}
+        </Button>
+      )}
     </div>
   );
 };

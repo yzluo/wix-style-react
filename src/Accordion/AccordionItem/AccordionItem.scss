@@ -25,6 +25,7 @@ $collapse-top-padding: 24px;
 
   &:not(.open):hover {
     background-color: $B40;
+    cursor: pointer;
   }
 }
 
