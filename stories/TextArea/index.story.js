@@ -25,7 +25,8 @@ export default {
     columns({
       items: [
         description({
-          text: 'A textarea can be used to allow for extended user input.',
+          text:
+            'A snippet to achieve text area used to allow for extended user input.',
         }),
         description(),
       ],
