@@ -20,7 +20,7 @@ import './ScrollBar'; // 1.8 ScrollBar
 // 2. Layout
 import './Page/index.story.js'; // 2.5 Page
 import './PageHeader/index.story.js'; // 2.5 + PageHeader
-import './Page/FullPageExample.js'; // 2.5 + Page Example
+import './Page/PageExampleStories.js'; // 2.5 + Page Examples
 import './EmptyState/EmptyState.story'; // 2.6 EmptyState
 import './StatsWidget/index.story'; // 2.7 StatsWidget
 import './AddItem/AddItem.story'; // 2.8 AddItem
@@ -28,7 +28,7 @@ import './Grid';
 import './Card';
 
 // 3. Inputs
-import './TextField'; // 3.1 Text Field
+import './TextField/index.story'; // 3.1. Text Field
 import './TextArea'; // 3.2a Text Area
 import './RichTextAreaComposite'; // 3.2b RichTextAreaComposite
 import './RichTextArea/RichTextArea.story.js'; // 3.2b + RichTextArea
@@ -116,11 +116,11 @@ import './Carousel/index.story.js';
 import './Collapse.story';
 import './components/Dropdown/Dropdown.story.js';
 import './DropdownBase/index.story';
-import './FormField/FormField.story.js';
+import './FormField/index.story.js';
 import './GenericModalLayout/GenericModalLayout.story.js';
 import './GoogleAddressInput/index.story.js';
 import './Heading/index.story';
-import './Input/Input.story';
+import './Input/index.story';
 import './InputArea/index.story.js';
 import './Layout/index.story.js';
 import './Layout';
@@ -143,6 +143,7 @@ import './Builders/ContactItemBuilder';
 import './Typography/TypographyTestStories';
 import './Input/InputTestStories';
 import './Page/PageTestStories.js'; // Tests/2. Layout/2.5 + Page/
+import './Page/PageTestStoriesDeprecated.js'; // Tests/2. Layout/2.5 + Page/Deprecated
 import './PageHeader/PageHeaderTestStories.js'; // Tests/2. Layout/2.5 + PageHeader/
 import './Button/testButton'; // Tests/5. Button/5.1 Button
 import './IconButton/testStory'; // Tests/5. Button/5.2 IconButton
@@ -162,6 +163,7 @@ import './Slider/testStory'; // 4.7 Slider
 import './StatsWidget/testStory'; // 2.7 StatsWidget
 import './SegmentedToggle/testStory'; // 4.5 SegmentedToggle
 import './FloatingNotification/FloatingNotificationTestStory'; // 8.2 FloatingNotification
+import './FormField/testStory';
 
 // The generated test component
 import './GeneratedTestComponent/index.story';

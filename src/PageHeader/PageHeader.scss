@@ -86,7 +86,10 @@
     height: 30px;
     margin-top: 6px;
     margin-left: auto;
-    transition: margin .2s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+    &.animationEnabled {
+      transition: margin .2s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
   
     &.withBreadcrumbs {
       margin-top: 36px;
@@ -97,8 +100,6 @@
     }
   }  
 }
-
-
 
 @include withRTL() {
   .breadcrumbsContainer {

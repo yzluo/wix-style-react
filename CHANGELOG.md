@@ -14,13 +14,14 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## next
+## 6.4.0 - 2019-02-18
 
 ### Added
 
 - `<SortableList/>` - add listOfPropsThatAffectItems to fix render bug [#2925](https://github.com/wix/wix-style-react/pull/2925)
 - `<PageHeader/>` - Add ellipsis to title and subtitle [#2871](https://github.com/wix/wix-style-react/pull/2871)
 - `<FloatingNotification/>` - New Component [#2820](https://github.com/wix/wix-style-react/pull/2820)
+- `<Page/>` - New Generation - With Position Sticky ! [#2935](https://github.com/wix/wix-style-react/pull/2935)
 
 ### Fixed
 
