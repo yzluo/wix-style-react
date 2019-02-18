@@ -77,7 +77,7 @@ export default {
     columns({
       items: [
         description({
-          title: 'Without a label',
+          title: 'No Label',
           text: 'Can be used without a label.',
         }),
         liveCode({ compact: true, source: examples.withoutALabelExample }),

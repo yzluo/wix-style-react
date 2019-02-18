@@ -11,7 +11,6 @@ infoContent="This is the info tooltip content"
 >
   <InputArea
     placeholder="Placeholder Text"
-    value="Hello"
   />
 </FormField>
 `;
