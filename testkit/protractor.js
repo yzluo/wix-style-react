@@ -335,6 +335,12 @@ export const textButtonTestkitFactory = protractorUniTestkitFactoryCreator(
   textButtonDriverFactory,
 );
 
+import { timeInputDriverFactory } from '../src/TimeInput/TimeInput.unidriver';
+
+export const timeInputTestkitFactory = protractorUniTestkitFactoryCreator(
+  timeInputDriverFactory,
+);
+
 import { avatarDriverFactory } from '../src/Avatar/Avatar.driver';
 
 export const avatarTestkitFactory = protractorUniTestkitFactoryCreator(
