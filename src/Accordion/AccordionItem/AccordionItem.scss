@@ -4,6 +4,7 @@ $row-top-padding: 24px;
 $icon-accordion-padding: 24px;
 $moreLessPosition: 30px;
 $moreLess-height: 30px;
+$collapse-top-padding: 24px;
 
 .collapse,
 .item {
@@ -42,7 +43,7 @@ $moreLess-height: 30px;
 .collapse {
   align-items: flex-start;
   flex-direction: column;
-  padding: 6px 30px 90px 78px;
+  padding: $collapse-top-padding 30px 90px 78px;
   background-color: $B60;
 }
 
