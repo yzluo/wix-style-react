@@ -68,7 +68,7 @@ export default {
       items: [
         description({
           title: 'Basic Example',
-          text: 'The most basic example',
+          text: 'The most basic example.',
         }),
         liveCode({ compact: true, source: examples.basicExample }),
       ],
@@ -78,7 +78,7 @@ export default {
       items: [
         description({
           title: 'Without a label',
-          text: 'Text Area can also be used without FormField label',
+          text: 'Can be used without a label.',
         }),
         liveCode({ compact: true, source: examples.withoutALabelExample }),
       ],
@@ -99,7 +99,8 @@ export default {
       items: [
         description({
           title: 'Dynamic Height',
-          text: 'Size of an input area can also expand by user drag.',
+          text:
+            'The resizeable prop defines if an input is resizable by the user.',
         }),
         liveCode({ compact: true, source: examples.resizableHeightExample }),
       ],
