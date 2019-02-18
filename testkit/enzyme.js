@@ -10,16 +10,7 @@ import {
   enzymeTestkitFactoryCreator,
   enzymeUniTestkitFactoryCreator,
 } from 'wix-ui-test-utils/enzyme';
-
-const load = path => {
-  const item = require(path);
-
-  return item.default
-    ? item.default
-    : Object.keys(item).length === 1
-    ? Object.values(item)[0]
-    : item;
-};
+import { load } from './utils';
 
 export const addItemTestkitFactory = enzymeTestkitFactoryCreator(load('../src/AddItem/AddItem.driver'));
 export const autoCompleteTestkitFactory = enzymeTestkitFactoryCreator(load('../src/AutoComplete/AutoComplete.driver'));
