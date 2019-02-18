@@ -2,6 +2,7 @@
 $row-sides-padding: 30px;
 $row-top-padding: 24px;
 $icon-accordion-padding: 24px;
+$icon-accordion-height: 24px;
 $moreLessPosition: 30px;
 $moreLess-height: 30px;
 $collapse-top-padding: 24px;
@@ -34,6 +35,7 @@ $collapse-top-padding: 24px;
 
 .headerIcon {
   margin-right: $icon-accordion-padding;
+  height: $icon-accordion-height;
 }
 
 .headerText {
