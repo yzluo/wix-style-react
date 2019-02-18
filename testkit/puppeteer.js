@@ -116,3 +116,16 @@ import { segmentedToggleDriverFactory } from '../src/SegmentedToggle/SegmentedTo
 export const segmentedToggleTestkitFactory = puppeteerUniTestkitFactoryCreator(
   segmentedToggleDriverFactory,
 );
+
+import { richTextInputAreaDriverFactory } from '../src/RichTextInputArea/RichTextInputArea.driver';
+
+export const richTextInputAreaTestkitFactory = puppeteerUniTestkitFactoryCreator(
+  richTextInputAreaDriverFactory,
+);
+
+
+import { floatingNotificationDriverFactory } from '../src/FloatingNotification/FloatingNotification.driver';
+
+export const floatingNotificationTestkitFactory = puppeteerUniTestkitFactoryCreator(
+  floatingNotificationDriverFactory,
+);
