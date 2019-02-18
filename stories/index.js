@@ -28,7 +28,7 @@ import './Grid';
 import './Card';
 
 // 3. Inputs
-import './TextField/index.story'; // 3.1. Text Field
+import './TextInput/index.story'; // 3.1. Text Input
 import './TextArea'; // 3.2a Text Area
 import './RichTextAreaComposite'; // 3.2b RichTextAreaComposite
 import './RichTextArea/RichTextArea.story.js'; // 3.2b + RichTextArea
