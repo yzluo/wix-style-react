@@ -4,6 +4,7 @@ import Button from '../../Button';
 import ChevronDown from '../../new-icons/ChevronDown';
 import ChevronUp from '../../new-icons/ChevronUp';
 import classNames from 'classnames';
+import TextButton from '../../TextButton';
 
 export default ({
   dataHook,
@@ -32,19 +33,21 @@ export default ({
       {!hover && !isOpen && (
         <ChevronDown className={styles.expandCollapseArrow} size="18px" />
       )}
-      {!hover && isOpen && (
-        <ChevronUp className={styles.expandCollapseArrow} size="18px" />
-      )}
-      {hover && (
+      {hover && !isOpen && (
         <Button
           dataHook="toggle-accordion-button"
-          suffixIcon={isOpen ? <ChevronUp /> : <ChevronDown />}
+          suffixIcon={<ChevronDown />}
           className={buttonStyle}
           priority={isOpen ? 'secondary' : 'primary'}
           size="small"
         >
-          {isOpen ? collapseLabel : expandLabel}
+          {expandLabel}
         </Button>
+      )}
+      {isOpen && (
+        <TextButton suffixIcon={<ChevronUp />} className={buttonStyle}>
+          {collapseLabel}
+        </TextButton>
       )}
     </div>
   );
